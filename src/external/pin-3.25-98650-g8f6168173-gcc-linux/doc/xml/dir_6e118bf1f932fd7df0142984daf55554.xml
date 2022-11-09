@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_6e118bf1f932fd7df0142984daf55554" kind="dir">
+    <compoundname>pin_elf</compoundname>
+    <innerfile refid="image__elf_8PH">image_elf.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/pin_elf/"/>
+  </compounddef>
+</doxygen>

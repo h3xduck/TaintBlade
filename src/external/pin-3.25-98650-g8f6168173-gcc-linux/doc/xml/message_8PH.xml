@@ -1,0 +1,1310 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="message_8PH" kind="file" language="C++">
+    <compoundname>message.PH</compoundname>
+    <innerclass refid="classLOGFILE" prot="public">LOGFILE</innerclass>
+    <innerclass refid="classMESSAGE__TYPE" prot="public">MESSAGE_TYPE</innerclass>
+    <innerclass refid="classMESSAGE__TYPE__ALWAYS__ON" prot="public">MESSAGE_TYPE_ALWAYS_ON</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="message_8PH_1aa93213122f4e469d7399089142b24277" prot="public" static="no">
+        <name>PIN_G_MESSAGE_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="9" column="10" bodyfile="Source/pin/base/message.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a6b03268e28e680c49fd47548fcd9cd73" prot="public" static="no">
+        <name>QMESSAGE</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <initializer>    do                            \
+    {                             \
+        if (t.on()) t.Message(m); \
+    }                             \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="249" column="9" bodyfile="Source/pin/base/message.PH" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a79038e2d1a7c127bb842860057104186" prot="public" static="no">
+        <name>QMESSAGE0</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>p</defname></param>
+        <param><defname>e</defname></param>
+        <initializer>    do                                     \
+    {                                      \
+        if (t.on()) t.Message(m, p, e, 0); \
+    }                                      \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="255" column="9" bodyfile="Source/pin/base/message.PH" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a50850ac4fc90da976231519f7aeb4ed9" prot="public" static="no">
+        <name>QMESSAGE1</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>p</defname></param>
+        <param><defname>e</defname></param>
+        <param><defname>a1</defname></param>
+        <initializer>    do                                         \
+    {                                          \
+        if (t.on()) t.Message(m, p, e, 1, a1); \
+    }                                          \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="261" column="9" bodyfile="Source/pin/base/message.PH" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ad0300363b4979d8122cda0477bd9d310" prot="public" static="no">
+        <name>QMESSAGE2</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>p</defname></param>
+        <param><defname>e</defname></param>
+        <param><defname>a1</defname></param>
+        <param><defname>a2</defname></param>
+        <initializer>    do                                             \
+    {                                              \
+        if (t.on()) t.Message(m, p, e, 2, a1, a2); \
+    }                                              \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="267" column="9" bodyfile="Source/pin/base/message.PH" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1aa9461f9e3045fde53f2ca5223eaa3d1e" prot="public" static="no">
+        <name>QMESSAGEP</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>p</defname></param>
+        <initializer>    do                               \
+    {                                \
+        if (t.on()) t.Message(m, p); \
+    }                                \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="273" column="9" bodyfile="Source/pin/base/message.PH" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ac2f44f98ad71fe22b8dbd6b7f3df3948" prot="public" static="no">
+        <name>QMESSAGE_LIMIT</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>max</defname></param>
+        <initializer>    do                            \
+    {                             \
+        static int qqq = 0;       \
+        if (qqq++ &gt;= max) break;  \
+        if (t.on()) t.Message(m); \
+    }                             \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="279" column="9" bodyfile="Source/pin/base/message.PH" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a4b198d703d79c427f56fac2cc2990ca0" prot="public" static="no">
+        <name>QMESSAGE0_NORETURN</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>p</defname></param>
+        <param><defname>e</defname></param>
+        <initializer>    do                                             \
+    {                                              \
+        if (t.on()) t.MessageNoReturn(m, p, e, 0); \
+    }                                              \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="308" column="10" bodyfile="Source/pin/base/message.PH" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a03be3d50f8bd2d15c22ea9a59f34f771" prot="public" static="no">
+        <name>QMESSAGE1_NORETURN</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>p</defname></param>
+        <param><defname>e</defname></param>
+        <param><defname>a1</defname></param>
+        <initializer>    do                                                 \
+    {                                                  \
+        if (t.on()) t.MessageNoReturn(m, p, e, 1, a1); \
+    }                                                  \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="314" column="9" bodyfile="Source/pin/base/message.PH" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ab8e33eba0101ab5081b698302e66da97" prot="public" static="no">
+        <name>QMESSAGE2_NORETURN</name>
+        <param><defname>t</defname></param>
+        <param><defname>m</defname></param>
+        <param><defname>p</defname></param>
+        <param><defname>e</defname></param>
+        <param><defname>a1</defname></param>
+        <param><defname>a2</defname></param>
+        <initializer>    do                                                     \
+    {                                                      \
+        if (t.on()) t.MessageNoReturn(m, p, e, 2, a1, a2); \
+    }                                                      \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="320" column="9" bodyfile="Source/pin/base/message.PH" bodystart="320" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a7836026199f2afa33870a79c24c96149" prot="public" static="no">
+        <name>ASSERTQ</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE0_NORETURN(<ref refid="group__MESSAGE_1gac4bd4afaaa16f2d150fef4befb2dd284" kindref="member">LEVEL_BASE::MessageTypeAssert</ref>, message, TRUE, <ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9a592e8b0bba9097f7ac303101a570ad64" kindref="member">PIN_ERR_ASSERT</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="328" column="9" bodyfile="Source/pin/base/message.PH" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a465a9fb9c892f05c42bb425fbaa628f2" prot="public" static="no">
+        <name>PIN_ASSERT_FILE</name>
+        <initializer>__FILE__</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="333" column="10" bodyfile="Source/pin/base/message.PH" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1aa06eedd6f738a415870e97a375337d51" prot="public" static="no">
+        <name>ASSERT</name>
+        <param><defname>condition</defname></param>
+        <param><defname>message</defname></param>
+        <initializer>    do                                                                                                                           \
+    {                                                                                                                            \
+        if (!(condition)) ASSERTQ(<ref refid="group__MESSAGE_1gaf62129cb4ae95fcde2fa1c7d86cf3310" kindref="member">LEVEL_BASE::AssertString</ref>(PIN_ASSERT_FILE, __FUNCTION__, __LINE__, std::string(&quot;&quot;) + message)); \
+    }                                                                                                                            \
+    while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="336" column="9" bodyfile="Source/pin/base/message.PH" bodystart="336" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a2418fea077d35e74c35bf6aec848699f" prot="public" static="no">
+        <name>ASSERTX</name>
+        <param><defname>condition</defname></param>
+        <initializer>ASSERT(condition, &quot;assertion failed: &quot; #condition &quot;\n&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="343" column="9" bodyfile="Source/pin/base/message.PH" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1acdae6516bc46c7c152bd05023cde124d" prot="public" static="no">
+        <name>NYI</name>
+        <param></param>
+        <initializer>ASSERT(0, &quot;Not Yet Implemented\n&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="345" column="9" bodyfile="Source/pin/base/message.PH" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ab8eaf62f983d5c98641fcf9d662bfa6d" prot="public" static="no">
+        <name>PIN_ERROR_DEBUGGER</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE0_NORETURN(<ref refid="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" kindref="member">MessageTypeError</ref>, message, TRUE, <ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9acc9d693926bba8acb4a03336284176b3" kindref="member">PIN_ERR_DEBUGGER</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="350" column="9" bodyfile="Source/pin/base/message.PH" bodystart="350" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a88778d4e988ebf3172aa11feabad48d0" prot="public" static="no">
+        <name>PIN_ERROR</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE0_NORETURN(<ref refid="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" kindref="member">MessageTypeError</ref>, message, TRUE, <ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9afc15c2e29db256ad8f4e0b64bb5e9c32" kindref="member">PIN_ERR_INTERNAL</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="352" column="9" bodyfile="Source/pin/base/message.PH" bodystart="352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a69fa824234b4377cb323debee1147f19" prot="public" static="no">
+        <name>PIN_ERROR0</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <initializer>QMESSAGE0_NORETURN(<ref refid="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" kindref="member">MessageTypeError</ref>, message, TRUE, type)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="353" column="9" bodyfile="Source/pin/base/message.PH" bodystart="353" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a3ed0c3e2d1ecd1e167ceb2a7f6387c9c" prot="public" static="no">
+        <name>PIN_ERROR1</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <param><defname>arg1</defname></param>
+        <initializer>QMESSAGE1_NORETURN(<ref refid="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" kindref="member">MessageTypeError</ref>, message, TRUE, type, arg1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="354" column="9" bodyfile="Source/pin/base/message.PH" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a60141befe97e18ff691f82dd820e24a2" prot="public" static="no">
+        <name>PIN_ERROR2</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <param><defname>arg1</defname></param>
+        <param><defname>arg2</defname></param>
+        <initializer>QMESSAGE2_NORETURN(<ref refid="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" kindref="member">MessageTypeError</ref>, message, TRUE, type, arg1, arg2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="355" column="9" bodyfile="Source/pin/base/message.PH" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a3e900b81ded91d53aab01f25244a64ca" prot="public" static="no">
+        <name>PIN_FATAL_ERROR</name>
+        <param><defname>message</defname></param>
+        <initializer>    {                                                                        \
+        PIN_ERROR(message);                                                  \
+        MESSAGE_TYPE::PrintMessageAndExit(message, &quot;E: &quot;, PIN_ERR_INTERNAL); \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="360" column="9" bodyfile="Source/pin/base/message.PH" bodystart="360" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1adc9ff38733dfdef5e7a7194133b0a5f1" prot="public" static="no">
+        <name>PIN_NON_FATAL_ERROR</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE0(<ref refid="group__MESSAGE_1ga62d237731d8259c9ebc826ae2296f86a" kindref="member">MessageTypeNonFatalError</ref>, message, TRUE, <ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9afc15c2e29db256ad8f4e0b64bb5e9c32" kindref="member">PIN_ERR_INTERNAL</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="369" column="9" bodyfile="Source/pin/base/message.PH" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a6c62836f70e93a767ae3e157aae3d5ae" prot="public" static="no">
+        <name>PIN_NON_FATAL_ERROR0</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <initializer>QMESSAGE0(<ref refid="group__MESSAGE_1ga62d237731d8259c9ebc826ae2296f86a" kindref="member">MessageTypeNonFatalError</ref>, message, TRUE, type)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="370" column="9" bodyfile="Source/pin/base/message.PH" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1aefc3747c38ae455dd519bca9cb83630a" prot="public" static="no">
+        <name>PIN_NON_FATAL_ERROR1</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <param><defname>arg1</defname></param>
+        <initializer>QMESSAGE1(<ref refid="group__MESSAGE_1ga62d237731d8259c9ebc826ae2296f86a" kindref="member">MessageTypeNonFatalError</ref>, message, TRUE, type, arg1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="371" column="9" bodyfile="Source/pin/base/message.PH" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a583f5a3c8631c4005accfe369d4e3aed" prot="public" static="no">
+        <name>PIN_CRITICAL_ERROR</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE0(<ref refid="group__MESSAGE_1ga7cd443734d0d2991536de0ee711e5e13" kindref="member">MessageTypeCriticalError</ref>, message, TRUE, <ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9afc15c2e29db256ad8f4e0b64bb5e9c32" kindref="member">PIN_ERR_INTERNAL</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="377" column="9" bodyfile="Source/pin/base/message.PH" bodystart="377" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ad17f00638ac90a8acc7ce0f56d96cdf6" prot="public" static="no">
+        <name>PIN_CRITICAL_ERROR0</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <initializer>QMESSAGE0(<ref refid="group__MESSAGE_1ga7cd443734d0d2991536de0ee711e5e13" kindref="member">MessageTypeCriticalError</ref>, message, TRUE, type)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="378" column="9" bodyfile="Source/pin/base/message.PH" bodystart="378" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a97590bd2c99311327fed3b3b373cd81e" prot="public" static="no">
+        <name>PIN_CRITICAL_ERROR1</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <param><defname>arg1</defname></param>
+        <initializer>QMESSAGE1(<ref refid="group__MESSAGE_1ga7cd443734d0d2991536de0ee711e5e13" kindref="member">MessageTypeCriticalError</ref>, message, TRUE, type, arg1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="379" column="9" bodyfile="Source/pin/base/message.PH" bodystart="379" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a96552e9a0c2f746d864c2fa20989ad3d" prot="public" static="no">
+        <name>PIN_CRITICAL_ERROR2</name>
+        <param><defname>message</defname></param>
+        <param><defname>type</defname></param>
+        <param><defname>arg1</defname></param>
+        <param><defname>arg2</defname></param>
+        <initializer>QMESSAGE2(<ref refid="group__MESSAGE_1ga7cd443734d0d2991536de0ee711e5e13" kindref="member">MessageTypeCriticalError</ref>, message, TRUE, type, arg1, arg2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="380" column="9" bodyfile="Source/pin/base/message.PH" bodystart="380" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a168ca81ba5668ecab74c9cd904278a35" prot="public" static="no">
+        <name>PIN_OUT_OF_MEMORY</name>
+        <param><defname>message</defname></param>
+        <initializer>MESSAGE_TYPE::PrintMessageAndExit(message, &quot;Pin is out of memory: &quot;, PIN_ERR_OUT_OF_MEMORY)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="387" column="9" bodyfile="Source/pin/base/message.PH" bodystart="387" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1aac8ea9268a84e4039b6a55b8e8d15756" prot="public" static="no">
+        <name>CONSOLE</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1ga48d5bb4413580e66c0cbe0c62a7157c0" kindref="member">MessageTypeConsole</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="389" column="9" bodyfile="Source/pin/base/message.PH" bodystart="389" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ade0c3b6f1357342defbc31b11c79b62f" prot="public" static="no">
+        <name>CONSOLE_NOPREFIX</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1gaf0725dd234d0d258e9d3cac4555066f9" kindref="member">MessageTypeConsoleNoPrefix</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="391" column="9" bodyfile="Source/pin/base/message.PH" bodystart="391" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ae49188aa0dbc2a2c64e8ee5ee233b12a" prot="public" static="no">
+        <name>PHASE</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1ga4f821bef0c718d3309a37eae9df638a9" kindref="member">MessageTypePhase</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="393" column="9" bodyfile="Source/pin/base/message.PH" bodystart="393" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1aaf99b8fcaa4b837f684ea0505ed34487" prot="public" static="no">
+        <name>WARNING</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1gaad69a758279fd9bfd3489b97f1169b88" kindref="member">MessageTypeWarning</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="395" column="9" bodyfile="Source/pin/base/message.PH" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ae0318629f6bab7120a040db02608883f" prot="public" static="no">
+        <name>WARNING_LIMIT</name>
+        <param><defname>message</defname></param>
+        <param><defname>n</defname></param>
+        <initializer>QMESSAGE_LIMIT(<ref refid="group__MESSAGE_1gaad69a758279fd9bfd3489b97f1169b88" kindref="member">MessageTypeWarning</ref>, message, n)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="396" column="9" bodyfile="Source/pin/base/message.PH" bodystart="396" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ac6f5ec8ccddbed7d0afa63a22d446938" prot="public" static="no">
+        <name>KNOWN</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1ga7875e83d858f698af2bf5fc3a1733f82" kindref="member">MessageTypeKnown</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="398" column="9" bodyfile="Source/pin/base/message.PH" bodystart="398" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a2a8b00a51272c4331891bda404ff7fcc" prot="public" static="no">
+        <name>KNOWN_LIMIT</name>
+        <param><defname>message</defname></param>
+        <param><defname>n</defname></param>
+        <initializer>QMESSAGE_LIMIT(<ref refid="group__MESSAGE_1ga7875e83d858f698af2bf5fc3a1733f82" kindref="member">MessageTypeKnown</ref>, message, n)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="399" column="9" bodyfile="Source/pin/base/message.PH" bodystart="399" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a04a117a4d31fa8b12a406b1aa66864f3" prot="public" static="no">
+        <name>LOG</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1ga5cb439b2add5adeb1e52878778fc6a7c" kindref="member">MessageTypeLog</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="401" column="9" bodyfile="Source/pin/base/message.PH" bodystart="401" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a809f816dd6df4e17499413cff1926fd4" prot="public" static="no">
+        <name>INFO</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1gad0b79d44d5878cd72506894a299e5a6a" kindref="member">MessageTypeInfo</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="403" column="9" bodyfile="Source/pin/base/message.PH" bodystart="403" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1aa84814c27a2ad8810f715862b09386fa" prot="public" static="no">
+        <name>INFO_LIMIT</name>
+        <param><defname>message</defname></param>
+        <param><defname>n</defname></param>
+        <initializer>QMESSAGE_LIMIT(<ref refid="group__MESSAGE_1gad0b79d44d5878cd72506894a299e5a6a" kindref="member">MessageTypeInfo</ref>, message, n)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="404" column="9" bodyfile="Source/pin/base/message.PH" bodystart="404" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a7318372863807b085357a4edb86e05b0" prot="public" static="no">
+        <name>OPPORTUNITY</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1gab8b17cf639f16e31b614fee5dd322d66" kindref="member">MessageTypeOpportunity</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="406" column="9" bodyfile="Source/pin/base/message.PH" bodystart="406" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ac330af473d317eedc89b19e259d11b2f" prot="public" static="no">
+        <name>OPPORTUNITY_LIMIT</name>
+        <param><defname>message</defname></param>
+        <param><defname>n</defname></param>
+        <initializer>QMESSAGE_LIMIT(<ref refid="group__MESSAGE_1gab8b17cf639f16e31b614fee5dd322d66" kindref="member">MessageTypeOpportunity</ref>, message, n)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="407" column="9" bodyfile="Source/pin/base/message.PH" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1a03edfede4e03f20bbbde1f1c9ddab6d3" prot="public" static="no">
+        <name>PIN_DEBUG</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1gaadaf9f0e417d7e40546cbc7c5ca13e2f" kindref="member">MessageTypeDebug</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="408" column="9" bodyfile="Source/pin/base/message.PH" bodystart="408" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="message_8PH_1ad6433236b5cfd1c8dfecc5c6c1ee52d1" prot="public" static="no">
+        <name>STATS</name>
+        <param><defname>message</defname></param>
+        <initializer>QMESSAGE(<ref refid="group__MESSAGE_1ga1d1cf353a9422a3f9029188bda3a9fde" kindref="member">MessageTypeStats</ref>, message)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="409" column="9" bodyfile="Source/pin/base/message.PH" bodystart="409" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__MESSAGE_1ga9ca6006a59fa53a5cd728fa1efcd4b61" prot="public" static="no" strong="no">
+        <type></type>
+        <name>LOGTYPE</name>
+        <enumvalue id="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a439c8fd120012113aa39dfece22ed55f" prot="public">
+          <name>LOGTYPE_CONSOLE</name>
+          <briefdescription>
+<para>log only to the console </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a55c459bc261afda3e99e7c126491fa55" prot="public">
+          <name>LOGTYPE_LOGFILE</name>
+          <briefdescription>
+<para>log only to the log file </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a064310dc6c50c3aead74122ab8aa290f" prot="public">
+          <name>LOGTYPE_CONSOLE_AND_LOGFILE</name>
+          <briefdescription>
+<para>log to both the log file and console </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type that represents where to put the log. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="50" column="1" bodyfile="Source/pin/base/message.PH" bodystart="49" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__MESSAGE_1gaddbdb603ecc23c5f2c1aed799c413280" prot="public" static="no">
+        <type>BOOL(*</type>
+        <definition>typedef BOOL(* MESSAGE_CALLBACK) (const std::string &amp;message, PIN_ERRTYPE type, INT32 userType, INT32 severity, INT32 numArgs, va_list ap)</definition>
+        <argsstring>)(const std::string &amp;message, PIN_ERRTYPE type, INT32 userType, INT32 severity, INT32 numArgs, va_list ap)</argsstring>
+        <name>MESSAGE_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A call-back function that is called whenever a <ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref> object prints a message.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">messageName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the <ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref> object. This is empty for messages printed via PrintMessageAndExit(). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text of the message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variable list of additional arguments for the message.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>When TRUE is returned, the message is also printed to the console if the <ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref> would normally do this. When FALSE is returned, the message is not printed to the console. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="71" column="9" bodyfile="Source/pin/base/message.PH" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__MESSAGE_1ga62d237731d8259c9ebc826ae2296f86a" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeNonFatalError</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeNonFatalError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Error message object for non-fatal error. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="160" column="21" declfile="Source/pin/base/message.PH" declline="160" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref></type>
+        <definition>MESSAGE_TYPE_ALWAYS_ON MessageTypeError</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Error message object (terminates) (Always on message, using mesgoff from command line has no effect) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="165" column="31" declfile="Source/pin/base/message.PH" declline="165" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga7cd443734d0d2991536de0ee711e5e13" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeCriticalError</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeCriticalError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Error message object for fatal errors that require post-logging handling. These errors do not cause the process termination in the MESSAGE_TYPE::Message() function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="172" column="21" declfile="Source/pin/base/message.PH" declline="172" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gaad69a758279fd9bfd3489b97f1169b88" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeWarning</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeWarning</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Warning message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="177" column="21" declfile="Source/pin/base/message.PH" declline="177" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga48d5bb4413580e66c0cbe0c62a7157c0" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeConsole</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeConsole</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Console message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="182" column="21" declfile="Source/pin/base/message.PH" declline="182" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gaf0725dd234d0d258e9d3cac4555066f9" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeConsoleNoPrefix</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeConsoleNoPrefix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Console message object - No prefix </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="187" column="21" declfile="Source/pin/base/message.PH" declline="187" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gac4bd4afaaa16f2d150fef4befb2dd284" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref></type>
+        <definition>MESSAGE_TYPE_ALWAYS_ON MessageTypeAssert</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeAssert</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assert message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="192" column="31" declfile="Source/pin/base/message.PH" declline="192" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga4f821bef0c718d3309a37eae9df638a9" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypePhase</definition>
+        <argsstring></argsstring>
+        <name>MessageTypePhase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Phase message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="197" column="21" declfile="Source/pin/base/message.PH" declline="197" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga7875e83d858f698af2bf5fc3a1733f82" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeKnown</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeKnown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Known-warning message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="202" column="21" declfile="Source/pin/base/message.PH" declline="202" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gad0b79d44d5878cd72506894a299e5a6a" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeInfo</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Info message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="207" column="21" declfile="Source/pin/base/message.PH" declline="207" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gaadaf9f0e417d7e40546cbc7c5ca13e2f" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeDebug</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeDebug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Debug message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="212" column="21" declfile="Source/pin/base/message.PH" declline="212" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gab8b17cf639f16e31b614fee5dd322d66" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeOpportunity</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeOpportunity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Optimization opportunity message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="217" column="21" declfile="Source/pin/base/message.PH" declline="217" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga1d1cf353a9422a3f9029188bda3a9fde" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeStats</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeStats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Statistcis message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="222" column="21" declfile="Source/pin/base/message.PH" declline="222" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga5cb439b2add5adeb1e52878778fc6a7c" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeLog</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeLog</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Log message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="227" column="21" declfile="Source/pin/base/message.PH" declline="227" declcolumn="21"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__MESSAGE_1ga994bf9ba5c7e36f35ee4ce8e40cc4600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT64</type>
+        <definition>UINT64 MilliSecondsElapsed</definition>
+        <argsstring>()</argsstring>
+        <name>MilliSecondsElapsed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MilliSeconds elapsed since last invocation of this function </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="232" column="15" declfile="Source/pin/base/message.PH" declline="232" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__MESSAGE_1gaf62129cb4ae95fcde2fa1c7d86cf3310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string AssertString</definition>
+        <argsstring>(const char *fileName, const char *functionName, unsigned line, const std::string &amp;message)</argsstring>
+        <name>AssertString</name>
+        <param>
+          <type>const char *</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string for an assertion failure.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the file containing the assertion failure or the empty string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">functionName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the function containing the assertion failure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Line number of the assertion failure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message describing the failure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="242" column="20" declfile="Source/pin/base/message.PH" declline="242" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__MESSAGE_1ga67817cdea2d7ae08bae1f24ec0640142" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID BreakMe</definition>
+        <argsstring>()</argsstring>
+        <name>BreakMe</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="247" column="13" declfile="Source/pin/base/message.PH" declline="247" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_MESSAGE_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_MESSAGE_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classLOGFILE" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLOGFILE" kindref="compound">LOGFILE</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="classLOGFILE_1ac0beeea6ef7460d95ddd8a99b14f5ba6" kindref="member">Open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CHAR*<sp/>name,<sp/>BOOL<sp/>append)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>BOOL<sp/>IsOpen()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>VOID<sp/>Close()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="classLOGFILE_1ad1b403ecdee046ba262660278c70ed2f" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CHAR*<sp/>message,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/><ref refid="classLOGFILE_1ad1b403ecdee046ba262660278c70ed2f" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>VOID<sp/>WriteAtPosition(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CHAR*<sp/>message,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classLOGFILE" kindref="compound">LOGFILE</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__MESSAGE_1ga9ca6006a59fa53a5cd728fa1efcd4b61" kindref="member">LOGTYPE</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a439c8fd120012113aa39dfece22ed55f" kindref="member">LOGTYPE_CONSOLE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a55c459bc261afda3e99e7c126491fa55" kindref="member">LOGTYPE_LOGFILE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a064310dc6c50c3aead74122ab8aa290f" kindref="member">LOGTYPE_CONSOLE_AND_LOGFILE</ref><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>BOOL<sp/>(*<ref refid="group__MESSAGE_1gaddbdb603ecc23c5f2c1aed799c413280" kindref="member">MESSAGE_CALLBACK</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/><ref refid="group__ERROR__FILE_1gaeda9680c6d7a2340a2fd22ab6302b2b9" kindref="member">PIN_ERRTYPE</ref><sp/>type,<sp/>INT32<sp/>userType,<sp/>INT32<sp/>severity,<sp/>INT32<sp/>numArgs,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_list<sp/>ap);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classMESSAGE__TYPE" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>(*_panic_callback)();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>(*_terminate_callback)();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>std::string<sp/>_log_fname;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref>*<sp/>_list;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/><ref refid="classLOGFILE" kindref="compound">LOGFILE</ref>*<sp/>_logstream;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>BOOL<sp/>_logstreamAppend;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/><ref refid="group__MESSAGE_1gaddbdb603ecc23c5f2c1aed799c413280" kindref="member">MESSAGE_CALLBACK</ref><sp/>_message_callback;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>_name;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>_prefix;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>_comment;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>_terminate;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>_trace;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>_enabled;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>_resource;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__MESSAGE_1ga9ca6006a59fa53a5cd728fa1efcd4b61" kindref="member">LOGTYPE</ref><sp/>_log;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref>*<sp/>_next;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>RegisterPanicCallBack(VOID<sp/>(*cb)());</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>RegisterTerminateCallBack(VOID<sp/>(*cb)());</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>RegisterLogFile(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name,<sp/>BOOL<sp/>append);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>std::string<sp/>GetLogFileName();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref>*<sp/>Find(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>BOOL<sp/>Disable(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>BOOL<sp/>Enable(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>UINT32<sp/>Number();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>std::string<sp/>StringLongAll();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>BOOL<sp/>IsTerminating();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>NORETURN<sp/>VOID<sp/>PrintMessageAndExit(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message2,<sp/><ref refid="group__ERROR__FILE_1gaeda9680c6d7a2340a2fd22ab6302b2b9" kindref="member">PIN_ERRTYPE</ref><sp/>errType<sp/>=<sp/><ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9ae23249419158a25051069ad451c6b6c3" kindref="member">PIN_ERR_NONE</ref>,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INT32<sp/>numArgs<sp/>=<sp/>0,<sp/>...);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>RegisterMessageCallBack(<ref refid="group__MESSAGE_1gaddbdb603ecc23c5f2c1aed799c413280" kindref="member">MESSAGE_CALLBACK</ref><sp/>fun);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>UnregisterMessageCallBack();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/><ref refid="group__MESSAGE_1gaddbdb603ecc23c5f2c1aed799c413280" kindref="member">MESSAGE_CALLBACK</ref><sp/>MessageCallBack();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>BOOL<sp/>ErrorFileSpecified();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>STATIC<sp/>VOID<sp/>DumpTrace();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref>(std::string<sp/>name,<sp/>std::string<sp/>prefix,<sp/>BOOL<sp/>terminate,<sp/>BOOL<sp/>trace,<sp/>BOOL<sp/>enabled,<sp/>BOOL<sp/>resource,<sp/><ref refid="group__MESSAGE_1ga9ca6006a59fa53a5cd728fa1efcd4b61" kindref="member">LOGTYPE</ref><sp/>log,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>comment);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/>Message(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/>BOOL<sp/>printPrefix<sp/>=<sp/>TRUE,<sp/><ref refid="group__ERROR__FILE_1gaeda9680c6d7a2340a2fd22ab6302b2b9" kindref="member">PIN_ERRTYPE</ref><sp/>errType<sp/>=<sp/><ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9ae23249419158a25051069ad451c6b6c3" kindref="member">PIN_ERR_NONE</ref>,<sp/>INT32<sp/>numArgs<sp/>=<sp/>0,<sp/>...);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/>NORETURN<sp/>MessageNoReturn(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/>BOOL<sp/>printPrefix<sp/>=<sp/>TRUE,<sp/><ref refid="group__ERROR__FILE_1gaeda9680c6d7a2340a2fd22ab6302b2b9" kindref="member">PIN_ERRTYPE</ref><sp/>errType<sp/>=<sp/><ref refid="group__ERROR__FILE_1ggaeda9680c6d7a2340a2fd22ab6302b2b9ae23249419158a25051069ad451c6b6c3" kindref="member">PIN_ERR_NONE</ref>,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INT32<sp/>numArgs<sp/>=<sp/>0,<sp/>...);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>on()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_enabled;<sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/>disable()<sp/>{<sp/>_enabled<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/>enable()<sp/>{<sp/>_enabled<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Compare(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref>&amp;<sp/>k2)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/>MessageInternal(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/>BOOL<sp/>printPrefix,<sp/><ref refid="group__ERROR__FILE_1gaeda9680c6d7a2340a2fd22ab6302b2b9" kindref="member">PIN_ERRTYPE</ref><sp/>errType,<sp/>va_list<sp/>va,<sp/>INT32<sp/>numArgs);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="classMESSAGE__TYPE__ALWAYS__ON" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref>(std::string<sp/>name,<sp/>std::string<sp/>prefix,<sp/>BOOL<sp/>terminate,<sp/>BOOL<sp/>trace,<sp/>BOOL<sp/>resource,<sp/><ref refid="group__MESSAGE_1ga9ca6006a59fa53a5cd728fa1efcd4b61" kindref="member">LOGTYPE</ref><sp/>log,</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>comment)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref>(name,<sp/>prefix,<sp/>terminate,<sp/>trace,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>resource,<sp/>log,<sp/>comment)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>{}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>on()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1ga62d237731d8259c9ebc826ae2296f86a" kindref="member">MessageTypeNonFatalError</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref><sp/><ref refid="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" kindref="member">MessageTypeError</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1ga7cd443734d0d2991536de0ee711e5e13" kindref="member">MessageTypeCriticalError</ref>;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1gaad69a758279fd9bfd3489b97f1169b88" kindref="member">MessageTypeWarning</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1ga48d5bb4413580e66c0cbe0c62a7157c0" kindref="member">MessageTypeConsole</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1gaf0725dd234d0d258e9d3cac4555066f9" kindref="member">MessageTypeConsoleNoPrefix</ref>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref><sp/><ref refid="group__MESSAGE_1gac4bd4afaaa16f2d150fef4befb2dd284" kindref="member">MessageTypeAssert</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1ga4f821bef0c718d3309a37eae9df638a9" kindref="member">MessageTypePhase</ref>;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1ga7875e83d858f698af2bf5fc3a1733f82" kindref="member">MessageTypeKnown</ref>;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1gad0b79d44d5878cd72506894a299e5a6a" kindref="member">MessageTypeInfo</ref>;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1gaadaf9f0e417d7e40546cbc7c5ca13e2f" kindref="member">MessageTypeDebug</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1gab8b17cf639f16e31b614fee5dd322d66" kindref="member">MessageTypeOpportunity</ref>;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1ga1d1cf353a9422a3f9029188bda3a9fde" kindref="member">MessageTypeStats</ref>;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref><sp/><ref refid="group__MESSAGE_1ga5cb439b2add5adeb1e52878778fc6a7c" kindref="member">MessageTypeLog</ref>;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UINT64<sp/><ref refid="group__MESSAGE_1ga994bf9ba5c7e36f35ee4ce8e40cc4600" kindref="member">MilliSecondsElapsed</ref>();</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__MESSAGE_1gaf62129cb4ae95fcde2fa1c7d86cf3310" kindref="member">AssertString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>fileName,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>functionName,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/>BreakMe();</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE(t,<sp/>m)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="250"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="251"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="252"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.Message(m);<sp/>\</highlight></codeline>
+<codeline lineno="253"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="254"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE0(t,<sp/>m,<sp/>p,<sp/>e)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="256"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="257"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="258"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.Message(m,<sp/>p,<sp/>e,<sp/>0);<sp/>\</highlight></codeline>
+<codeline lineno="259"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="260"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE1(t,<sp/>m,<sp/>p,<sp/>e,<sp/>a1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="262"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="263"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="264"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.Message(m,<sp/>p,<sp/>e,<sp/>1,<sp/>a1);<sp/>\</highlight></codeline>
+<codeline lineno="265"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="266"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE2(t,<sp/>m,<sp/>p,<sp/>e,<sp/>a1,<sp/>a2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="268"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="269"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="270"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.Message(m,<sp/>p,<sp/>e,<sp/>2,<sp/>a1,<sp/>a2);<sp/>\</highlight></codeline>
+<codeline lineno="271"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="272"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGEP(t,<sp/>m,<sp/>p)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="274"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="275"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.Message(m,<sp/>p);<sp/>\</highlight></codeline>
+<codeline lineno="277"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="278"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE_LIMIT(t,<sp/>m,<sp/>max)<sp/>\</highlight></codeline>
+<codeline lineno="280"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="281"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="282"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static<sp/>int<sp/>qqq<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="283"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(qqq++<sp/>&gt;=<sp/>max)<sp/>break;<sp/><sp/>\</highlight></codeline>
+<codeline lineno="284"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.Message(m);<sp/>\</highlight></codeline>
+<codeline lineno="285"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="286"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__KLOCWORK__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE0_NORETURN(t,<sp/>m,<sp/>p,<sp/>e)<sp/>\</highlight></codeline>
+<codeline lineno="290"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="291"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="292"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abort();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="293"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="294"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE1_NORETURN(t,<sp/>m,<sp/>p,<sp/>e,<sp/>a1)<sp/>\</highlight></codeline>
+<codeline lineno="296"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="297"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="298"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abort();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="299"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="300"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE2_NORETURN(t,<sp/>m,<sp/>p,<sp/>e,<sp/>a1,<sp/>a2)<sp/>\</highlight></codeline>
+<codeline lineno="302"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="303"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="304"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abort();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="305"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="306"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE0_NORETURN(t,<sp/>m,<sp/>p,<sp/>e)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="309"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="310"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="311"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.MessageNoReturn(m,<sp/>p,<sp/>e,<sp/>0);<sp/>\</highlight></codeline>
+<codeline lineno="312"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="313"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE1_NORETURN(t,<sp/>m,<sp/>p,<sp/>e,<sp/>a1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="315"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="316"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="317"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.MessageNoReturn(m,<sp/>p,<sp/>e,<sp/>1,<sp/>a1);<sp/>\</highlight></codeline>
+<codeline lineno="318"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="319"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QMESSAGE2_NORETURN(t,<sp/>m,<sp/>p,<sp/>e,<sp/>a1,<sp/>a2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="321"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="322"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="323"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(t.on())<sp/>t.MessageNoReturn(m,<sp/>p,<sp/>e,<sp/>2,<sp/>a1,<sp/>a2);<sp/>\</highlight></codeline>
+<codeline lineno="324"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="325"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERTQ(message)<sp/>QMESSAGE0_NORETURN(LEVEL_BASE::MessageTypeAssert,<sp/>message,<sp/>TRUE,<sp/>PIN_ERR_ASSERT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PIN_ASSERT_NO_FILE_NAME)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_ASSERT_FILE<sp/>&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_ASSERT_FILE<sp/>__FILE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERT(condition,<sp/>message)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="337"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="338"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="339"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!(condition))<sp/>ASSERTQ(LEVEL_BASE::AssertString(PIN_ASSERT_FILE,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>std::string(&quot;&quot;)<sp/>+<sp/>message));<sp/>\</highlight></codeline>
+<codeline lineno="340"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="341"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ASSERTX(condition)<sp/>ASSERT(condition,<sp/>&quot;assertion<sp/>failed:<sp/>&quot;<sp/>#condition<sp/>&quot;\n&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NYI()<sp/>ASSERT(0,<sp/>&quot;Not<sp/>Yet<sp/>Implemented\n&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="348"><highlight class="comment"><sp/>for<sp/>errors<sp/>related<sp/>to<sp/>debugger<sp/>integration</highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_ERROR_DEBUGGER(message)<sp/>QMESSAGE0_NORETURN(MessageTypeError,<sp/>message,<sp/>TRUE,<sp/>PIN_ERR_DEBUGGER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_ERROR(message)<sp/>QMESSAGE0_NORETURN(MessageTypeError,<sp/>message,<sp/>TRUE,<sp/>PIN_ERR_INTERNAL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_ERROR0(message,<sp/>type)<sp/>QMESSAGE0_NORETURN(MessageTypeError,<sp/>message,<sp/>TRUE,<sp/>type)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_ERROR1(message,<sp/>type,<sp/>arg1)<sp/>QMESSAGE1_NORETURN(MessageTypeError,<sp/>message,<sp/>TRUE,<sp/>type,<sp/>arg1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_ERROR2(message,<sp/>type,<sp/>arg1,<sp/>arg2)<sp/>QMESSAGE2_NORETURN(MessageTypeError,<sp/>message,<sp/>TRUE,<sp/>type,<sp/>arg1,<sp/>arg2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/>for<sp/>calling<sp/>even<sp/>before<sp/>the<sp/>MessageType*<sp/>constructors<sp/>may<sp/>have<sp/>executed</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_FATAL_ERROR(message)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="361"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="362"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PIN_ERROR(message);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="363"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MESSAGE_TYPE::PrintMessageAndExit(message,<sp/>&quot;E:<sp/>&quot;,<sp/>PIN_ERR_INTERNAL);<sp/>\</highlight></codeline>
+<codeline lineno="364"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="367"><highlight class="comment"><sp/>*<sp/>Non-fatal<sp/>errors.</highlight></codeline>
+<codeline lineno="368"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_NON_FATAL_ERROR(message)<sp/>QMESSAGE0(MessageTypeNonFatalError,<sp/>message,<sp/>TRUE,<sp/>PIN_ERR_INTERNAL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_NON_FATAL_ERROR0(message,<sp/>type)<sp/>QMESSAGE0(MessageTypeNonFatalError,<sp/>message,<sp/>TRUE,<sp/>type)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_NON_FATAL_ERROR1(message,<sp/>type,<sp/>arg1)<sp/>QMESSAGE1(MessageTypeNonFatalError,<sp/>message,<sp/>TRUE,<sp/>type,<sp/>arg1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="374"><highlight class="comment"><sp/>*<sp/>Fatal<sp/>errors<sp/>that<sp/>require<sp/>post-logging<sp/>handling.</highlight></codeline>
+<codeline lineno="375"><highlight class="comment"><sp/>*<sp/>These<sp/>errors<sp/>do<sp/>not<sp/>cause<sp/>the<sp/>process<sp/>termination<sp/>in<sp/>the<sp/>MESSAGE_TYPE::Message()<sp/>function.</highlight></codeline>
+<codeline lineno="376"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_CRITICAL_ERROR(message)<sp/>QMESSAGE0(MessageTypeCriticalError,<sp/>message,<sp/>TRUE,<sp/>PIN_ERR_INTERNAL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_CRITICAL_ERROR0(message,<sp/>type)<sp/>QMESSAGE0(MessageTypeCriticalError,<sp/>message,<sp/>TRUE,<sp/>type)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_CRITICAL_ERROR1(message,<sp/>type,<sp/>arg1)<sp/>QMESSAGE1(MessageTypeCriticalError,<sp/>message,<sp/>TRUE,<sp/>type,<sp/>arg1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_CRITICAL_ERROR2(message,<sp/>type,<sp/>arg1,<sp/>arg2)<sp/>QMESSAGE2(MessageTypeCriticalError,<sp/>message,<sp/>TRUE,<sp/>type,<sp/>arg1,<sp/>arg2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="383"><highlight class="comment"><sp/>*<sp/>The<sp/>special<sp/>message<sp/>dumper.<sp/>It<sp/>copies<sp/>the<sp/>message<sp/>to<sp/>the<sp/>log<sp/>file,</highlight></codeline>
+<codeline lineno="384"><highlight class="comment"><sp/>*<sp/>sends<sp/>it<sp/>to<sp/>stderr<sp/>and<sp/>exits<sp/>pin<sp/>with<sp/>-1.</highlight></codeline>
+<codeline lineno="385"><highlight class="comment"><sp/>*<sp/>@param<sp/>-<sp/>message<sp/>of<sp/>type<sp/>const<sp/>char*<sp/>to<sp/>dump</highlight></codeline>
+<codeline lineno="386"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_OUT_OF_MEMORY(message)<sp/>MESSAGE_TYPE::PrintMessageAndExit(message,<sp/>&quot;Pin<sp/>is<sp/>out<sp/>of<sp/>memory:<sp/>&quot;,<sp/>PIN_ERR_OUT_OF_MEMORY)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONSOLE(message)<sp/>QMESSAGE(MessageTypeConsole,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONSOLE_NOPREFIX(message)<sp/>QMESSAGE(MessageTypeConsoleNoPrefix,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PHASE(message)<sp/>QMESSAGE(MessageTypePhase,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WARNING(message)<sp/>QMESSAGE(MessageTypeWarning,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WARNING_LIMIT(message,<sp/>n)<sp/>QMESSAGE_LIMIT(MessageTypeWarning,<sp/>message,<sp/>n)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KNOWN(message)<sp/>QMESSAGE(MessageTypeKnown,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KNOWN_LIMIT(message,<sp/>n)<sp/>QMESSAGE_LIMIT(MessageTypeKnown,<sp/>message,<sp/>n)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG(message)<sp/>QMESSAGE(MessageTypeLog,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INFO(message)<sp/>QMESSAGE(MessageTypeInfo,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INFO_LIMIT(message,<sp/>n)<sp/>QMESSAGE_LIMIT(MessageTypeInfo,<sp/>message,<sp/>n)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OPPORTUNITY(message)<sp/>QMESSAGE(MessageTypeOpportunity,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OPPORTUNITY_LIMIT(message,<sp/>n)<sp/>QMESSAGE_LIMIT(MessageTypeOpportunity,<sp/>message,<sp/>n)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_DEBUG(message)<sp/>QMESSAGE(MessageTypeDebug,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATS(message)<sp/>QMESSAGE(MessageTypeStats,<sp/>message)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_MESSAGE_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/base/message.PH"/>
+  </compounddef>
+</doxygen>

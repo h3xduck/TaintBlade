@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="child__process__client_8PH" kind="file" language="C++">
+    <compoundname>child_process_client.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="child__process__client_8PH_1a271704830085166ee64e6f144c3fe1db" prot="public" static="no">
+        <name>PIN_G_CHILD_PROCESS_CLIENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="9" column="10" bodyfile="Source/pin/pin/child_process_client.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" prot="public" static="no">
+        <type>void *</type>
+        <definition>typedef void* CHILD_PROCESS</definition>
+        <argsstring></argsstring>
+        <name>CHILD_PROCESS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin client functions for the follow child process mechanism</para>
+<para>CHILD_PROCESS - Handle for child process APIs </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="16" column="14" bodyfile="Source/pin/pin/child_process_client.PH" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__PIN__PROCESS_1gabccd10f8f7203db2476f28a5c3a8f75b" prot="public" static="no">
+        <type>BOOL(*</type>
+        <definition>typedef BOOL(* FOLLOW_CHILD_PROCESS_CALLBACK) (CHILD_PROCESS cProcess, VOID *val)</definition>
+        <argsstring>)(CHILD_PROCESS cProcess, VOID *val)</argsstring>
+        <name>FOLLOW_CHILD_PROCESS_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call back function before child(Windows*)/exec-ed(Linux*) process is starting to execute. The function can be registered by <ref refid="group__PIN__CONTROL_1gae710eef7b08de1d153a0b7f3469175a0" kindref="member">PIN_AddFollowChildProcessFunction()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Child process handle, it&apos;s lifetime is in the scope of the callback </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE If user is interested to inject Pin (and tool) into child/exec-ed process<linebreak/>
+ FALSE If user is not interested to inject Pin (and tool) into child/exec-ed process<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="31" column="9" bodyfile="Source/pin/pin/child_process_client.PH" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PIN__CONTROL_1gae710eef7b08de1d153a0b7f3469175a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK PIN_AddFollowChildProcessFunction</definition>
+        <argsstring>(FOLLOW_CHILD_PROCESS_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_AddFollowChildProcessFunction</name>
+        <param>
+          <type><ref refid="group__PIN__PROCESS_1gabccd10f8f7203db2476f28a5c3a8f75b" kindref="member">FOLLOW_CHILD_PROCESS_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a notification function that is called before a child/exec-ed process is starting to execute</para>
+<para>NOTE: Only one callback can be registered</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Call-back function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the function</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows, Linux, macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="51" column="21" declfile="Source/pin/pin/child_process_client.PH" declline="51" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1gad9e9d95dd47de9efbf3bf46bb1f549d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga2bf6029042d57fb825536c795c94d1ed" kindref="member">OS_PROCESS_ID</ref></type>
+        <definition>OS_PROCESS_ID CHILD_PROCESS_GetId</definition>
+        <argsstring>(CHILD_PROCESS cProcess)</argsstring>
+        <name>CHILD_PROCESS_GetId</name>
+        <param>
+          <type><ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref></type>
+          <declname>cProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get process id of child process (meaningful only for Windows*)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>child process handle</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>process id of child process</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="65" column="22" declfile="Source/pin/pin/child_process_client.PH" declline="65" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga0d58bd9bcb5f952f248df28876f9c7fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID CHILD_PROCESS_GetCommandLine</definition>
+        <argsstring>(CHILD_PROCESS cProcess, INT *pArgc, const CHAR *const **pArgv)</argsstring>
+        <name>CHILD_PROCESS_GetCommandLine</name>
+        <param>
+          <type><ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref></type>
+          <declname>cProcess</declname>
+        </param>
+        <param>
+          <type>INT *</type>
+          <declname>pArgc</declname>
+        </param>
+        <param>
+          <type>const CHAR *const **</type>
+          <declname>pArgv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get application&apos;s original command line (without Pin&apos;s command line)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>child process handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pArgc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to application&apos;s argc </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pArgv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to application&apos;s argv this data is allocated by Pin and can&apos;t be modified by tool, it&apos;s lifetime is in the scope of the callback</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="81" column="13" declfile="Source/pin/pin/child_process_client.PH" declline="81" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga82625ca6006c9e0a7c94e60162870fb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID CHILD_PROCESS_SetPinCommandLine</definition>
+        <argsstring>(CHILD_PROCESS cProcess, INT argc, const CHAR *const *argv)</argsstring>
+        <name>CHILD_PROCESS_SetPinCommandLine</name>
+        <param>
+          <type><ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref></type>
+          <declname>cProcess</declname>
+        </param>
+        <param>
+          <type>INT</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>const CHAR *const *</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set Pin&apos;s (and tool&apos;s) command line for the child process (e.g. &quot;c:\\pin_path\\pin -probe -follow_execv -t c:\\pintool_path\\tool --&quot;)</para>
+<para>If this API is not called, Pin will be injected into child/exec-ed process with the same command line as of current process.</para>
+<para>NOTE:<itemizedlist>
+<listitem><para>Providing full path for Pin and tool is the safest way to ensure they will be found (e.g. changing execution directory by application)</para>
+</listitem><listitem><para>Use same Pin version for all process tree</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>handle to child process </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin&apos;s (and tool&apos;s) argc </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin&apos;s (and tool&apos;s) argv, this data is allocated by tool and can&apos;t be modified by Pin, it&apos;s lifetime is in the scope of this function</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="106" column="13" declfile="Source/pin/pin/child_process_client.PH" declline="106" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_CHILD_PROCESS_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>child_process_client</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_CHILD_PROCESS_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>BOOL<sp/>(*<ref refid="group__PIN__PROCESS_1gabccd10f8f7203db2476f28a5c3a8f75b" kindref="member">FOLLOW_CHILD_PROCESS_CALLBACK</ref>)(<ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref><sp/>cProcess,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref><sp/><ref refid="group__PIN__CONTROL_1gae710eef7b08de1d153a0b7f3469175a0" kindref="member">PIN_AddFollowChildProcessFunction</ref>(<ref refid="group__PIN__PROCESS_1gabccd10f8f7203db2476f28a5c3a8f75b" kindref="member">FOLLOW_CHILD_PROCESS_CALLBACK</ref><sp/>fun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga2bf6029042d57fb825536c795c94d1ed" kindref="member">OS_PROCESS_ID</ref><sp/><ref refid="group__PIN__PROCESS_1gad9e9d95dd47de9efbf3bf46bb1f549d6" kindref="member">CHILD_PROCESS_GetId</ref>(<ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref><sp/>cProcess);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__PIN__PROCESS_1ga0d58bd9bcb5f952f248df28876f9c7fb" kindref="member">CHILD_PROCESS_GetCommandLine</ref>(<ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref><sp/>cProcess,<sp/>INT*<sp/>pArgc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CHAR*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">**<sp/>pArgv);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__PIN__PROCESS_1ga82625ca6006c9e0a7c94e60162870fb6" kindref="member">CHILD_PROCESS_SetPinCommandLine</ref>(<ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref><sp/>cProcess,<sp/>INT<sp/>argc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CHAR*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/>argv);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_CHILD_PROCESS_CLIENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/child_process_client.PH"/>
+  </compounddef>
+</doxygen>

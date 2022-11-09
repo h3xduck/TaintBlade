@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structkernel__sigaction" kind="struct" language="C++" prot="public">
+    <compoundname>kernel_sigaction</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structkernel__sigaction_1a50a2c278d236396be4548f9b407df17a" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* kernel_sigaction::_handler) (int)</definition>
+        <argsstring>)(int)</argsstring>
+        <name>_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="20" column="5" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkernel__sigaction_1ae6fd26f52ce0bb0ee66d7d77b25695f1" prot="public" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long kernel_sigaction::_flags</definition>
+        <argsstring></argsstring>
+        <name>_flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="21" column="19" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkernel__sigaction_1a79f9caa34c49ab749019e0ed0f251c42" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* kernel_sigaction::_restorer) (void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>_restorer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="22" column="5" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkernel__sigaction_1a559f6454b79498ce2af876bf60127bf1" prot="public" static="no" mutable="no">
+        <type>UINT64</type>
+        <definition>UINT64 kernel_sigaction::_mask</definition>
+        <argsstring></argsstring>
+        <name>_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="23" column="12" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="19" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="18" bodyend="24"/>
+    <listofallmembers>
+      <member refid="structkernel__sigaction_1ae6fd26f52ce0bb0ee66d7d77b25695f1" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_flags</name></member>
+      <member refid="structkernel__sigaction_1a50a2c278d236396be4548f9b407df17a" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_handler</name></member>
+      <member refid="structkernel__sigaction_1a559f6454b79498ce2af876bf60127bf1" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_mask</name></member>
+      <member refid="structkernel__sigaction_1a79f9caa34c49ab749019e0ed0f251c42" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_restorer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

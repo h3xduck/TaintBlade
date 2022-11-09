@@ -1,0 +1,892 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="mutex_8h" kind="file" language="C++">
+    <compoundname>mutex.h</compoundname>
+    <innerclass refid="struct__OS__APIS__MUTEX__TYPE" prot="public">_OS_APIS_MUTEX_TYPE</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="mutex_8h_1abcd386e705b29684027f873c22df9334" prot="public" static="no">
+        <name>OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER</name>
+        <initializer>    {                                                                                                     \
+        OS_MUTEX_DEPTH_SIMPLE, (OS_SPINLOCK_TYPE)0, OS_EVENT_INITIALIZER, (UINT32)0, (UINT32)0, (UINT32)0 \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="56" column="10" bodyfile="Source/os-apis/00-export-include/os-apis/mutex.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__OS__APIS__MUTEX_1ga638ee54875f26596da50328a20af8b82" prot="public" static="no">
+        <name>OS_APIS_MUTEX_DEPTH_SIMPLE_INITIALIZER</name>
+        <initializer>    {                                               \
+        OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Static initializer for a mutex. It is guaranteed that a (simple) mutex initialized this way:</para>
+<para>OS_MUTEX_TYPE mutex = OS_APIS_MUTEX_DEPTH_SIMPLE_INITIALIZER;</para>
+<para>Will be initialized before any constuctor will be called. Also, the static initializer for a simple mutex must be all zeros. This is because we want mutex that is initialized in a default way (all zeros according to the C++ standard) will be initialized correctly to a simple mutex.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="78" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/mutex.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mutex_8h_1aaef88aa254dc9229eea037364c3d108a" prot="public" static="no">
+        <name>OS_APIS_MUTEX_IMPL_DEPTH_RECURSIVE_INITIALIZER</name>
+        <initializer>    {                                                                                                        \
+        OS_MUTEX_DEPTH_RECURSIVE, (OS_SPINLOCK_TYPE)0, OS_EVENT_INITIALIZER, (UINT32)0, (UINT32)0, (UINT32)0 \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="89" column="10" bodyfile="Source/os-apis/00-export-include/os-apis/mutex.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__OS__APIS__MUTEX_1gafd793fbefe953164dadf30802f293b9e" prot="public" static="no">
+        <name>OS_APIS_MUTEX_DEPTH_RECURSIVE_INITIALIZER</name>
+        <initializer>    {                                                  \
+        OS_APIS_MUTEX_IMPL_DEPTH_RECURSIVE_INITIALIZER \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Static initializer for a mutex. It is guaranteed that a (recursive) mutex initialized this way:</para>
+<para>OS_MUTEX_TYPE mutex = OS_APIS_MUTEX_DEPTH_SIMPLE_INITIALIZER;</para>
+<para>Will be initialized before any constuctor will be called.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="107" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/mutex.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="mutex_8h_1afe499f597ecd5847334fd650bb83d725" prot="public" static="no" strong="no">
+        <type></type>
+        <name>_OS_APIS_MUTEX_KIND</name>
+        <enumvalue id="mutex_8h_1afe499f597ecd5847334fd650bb83d725a449615f3c262295a14929783aa31c28b" prot="public">
+          <name>OS_MUTEX_DEPTH_SIMPLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>This lock can only be acquired once, no matter if the same thread tried to acquire it twice. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="mutex_8h_1afe499f597ecd5847334fd650bb83d725a1e023f587c0f03c3cb6caadeff9f9655" prot="public">
+          <name>OS_MUTEX_DEPTH_RECURSIVE</name>
+          <briefdescription>
+<para>Recursive lock that can be acquired recursively by the same thread. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="20" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/mutex.h" bodystart="19" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="mutex_8h_1ab08fa8fd1a13c083465df67767542db5" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT OS_SPINLOCK_TYPE</definition>
+        <argsstring></argsstring>
+        <name>OS_SPINLOCK_TYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="17" column="17" bodyfile="Source/os-apis/00-export-include/os-apis/mutex.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="mutex_8h_1adc020094b8d61d19db3c4a5dc4a3ee94" prot="public" static="no">
+        <type>enum _OS_APIS_MUTEX_KIND</type>
+        <definition>typedef enum _OS_APIS_MUTEX_KIND OS_MUTEX_DEPTH</definition>
+        <argsstring></argsstring>
+        <name>OS_MUTEX_DEPTH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="23" column="16"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__MUTEX_1gababa2660f850ebc2c791de49f0cf8703" prot="public" static="no">
+        <type>struct <ref refid="struct__OS__APIS__MUTEX__TYPE" kindref="compound">_OS_APIS_MUTEX_TYPE</ref></type>
+        <definition>typedef struct _OS_APIS_MUTEX_TYPE OS_MUTEX_TYPE_IMPL</definition>
+        <argsstring></argsstring>
+        <name>OS_MUTEX_TYPE_IMPL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This type holds a representation of a mutex.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="42" column="20"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mutex_8h_1ac2e76a9d373b49b5eefa0ba6a077596c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef PRE_ALIGNTO</definition>
+        <argsstring>(CPU_MEMORY_CACHELINE_SIZE) union</argsstring>
+        <name>PRE_ALIGNTO</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="44" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/mutex.h" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="mutex_8h_1a7bbc25e2bf836bb84088200546ab8e0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>POST_ALIGNTO</definition>
+        <argsstring>(CPU_MEMORY_CACHELINE_SIZE) OS_MUTEX_TYPE</argsstring>
+        <name>POST_ALIGNTO</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="48" column="2" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="48" declcolumn="2"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1gaef7ca0852181a3b3c9745d9d3ce45e42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_MutexInit</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexInit</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize a mutex. A mutex must be initialized before being used. Use this function to initialize the mutex or use one of the static initializers.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to initialize.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="123" column="6" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="123" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga0a8f7f4b5b90ed5a5817d490b0b9467d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_MutexRecursiveInit</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexRecursiveInit</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize a recursive mutex. A mutex must be initialized before being used. Use this function to initialize a recursive mutex or use one of the static initializers.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to initialize.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="136" column="6" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="136" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga4b196034c3784f2938292ebd8f08ae2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_MutexDestroy</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexDestroy</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroys a mutex after it is no longer in use.</para>
+<para><simplesect kind="note"><para>The behavior of a mutex after it was destroyed is undefined. It is the responsibility of the user to verify that no other thread is using the mutex when it comes to destroy it.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to destroy.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="151" column="6" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="151" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1gae9228ec7770c7df546748dc61a1c702d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_MutexLock</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexLock</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Aquire a mutex, blocks until the mutex becomes available (according to the mutex&apos;s semantics).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to acquire.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="162" column="6" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="162" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga7bf7a24aa6797e78a5c4464fc8f005d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_MutexLockTid</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock, NATIVE_TID myTid)</argsstring>
+        <name>OS_MutexLockTid</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>myTid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Aquire a mutex, blocks until the mutex becomes available (according to the mutex&apos;s semantics). This function is similar to <ref refid="group__OS__APIS__MUTEX_1gae9228ec7770c7df546748dc61a1c702d" kindref="member">OS_MutexLock()</ref> except that it accept as an argument the thread ID of the thread that want to acquire the lock (which is usually the current thread).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to acquire. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID of the thread that wants to acquire the mutex. This argument can be INVALID_NATIVE_TID if the thread ID is not known (e.g. in a mutex of type OS_MUTEX_DEPTH_SIMPLE).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="178" column="6" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="178" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga42d14da2dc5fea9a34eefe29c68f2ece" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_MutexTryLock</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexTryLock</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to aquire a mutex:<linebreak/>
+<itemizedlist>
+<listitem><para>If the mutex is available, acquire it and return true.<linebreak/>
+</para>
+</listitem><listitem><para>Otherwise, return false.</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to acquire.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>TRUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the mutex was acquired.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="193" column="8" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="193" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga44269b9d9f8f275b1357cc38a8b364c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_MutexTryLockTid</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock0, NATIVE_TID myTid)</argsstring>
+        <name>OS_MutexTryLockTid</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>myTid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to aquire a mutex:<linebreak/>
+<itemizedlist>
+<listitem><para>If the mutex is available, acquire it and return true.<linebreak/>
+</para>
+</listitem><listitem><para>Otherwise, return false. This function is similar to <ref refid="group__OS__APIS__MUTEX_1ga42d14da2dc5fea9a34eefe29c68f2ece" kindref="member">OS_MutexTryLock()</ref> except that it accept as an argument the thread ID of the thread that want to acquire the lock (which is usually the current thread).</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to acquire. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID of the thread that wants to acquire the mutex. This argument can be INVALID_NATIVE_TID if the thread ID is not known (e.g. in a mutex of type OS_MUTEX_DEPTH_SIMPLE).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>TRUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the mutex was acquired.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="213" column="8" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="213" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1gaae087bbdeb032a9c6b1c800d68ae279e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_MutexIsLocked</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexIsLocked</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks whether a mutex state is locked.<linebreak/>
+Doesn&apos;t affect the mutex state and doesn&apos;t block.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to check.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>TRUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the mutex is locked.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="227" column="8" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="227" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1gab4c439cf86c9e545660138a756937069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_MutexTimedLock</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock, UINT32 timeoutMillis)</argsstring>
+        <name>OS_MutexTimedLock</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>timeoutMillis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Aquire a mutex, blocks until the mutex becomes available (according to the mutex&apos;s semantics). or &apos;timeoutMillis&apos; milli seconds passed. When &apos;timeoutMillis&apos; is zero, this function is identical to <ref refid="group__OS__APIS__MUTEX_1ga42d14da2dc5fea9a34eefe29c68f2ece" kindref="member">OS_MutexTryLock()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to acquire. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">timeoutMillis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The timeout to block.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>TRUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the mutex is locked. FALSE If the timeout was expired and the mutex can&apos;t be acquired during that time.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="244" column="8" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="244" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1gab32e71fd2576d7a2cb71644d323784a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_MutexTimedLockTid</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock0, NATIVE_TID myTid, UINT32 timeoutMillis)</argsstring>
+        <name>OS_MutexTimedLockTid</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>myTid</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>timeoutMillis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Aquire a mutex, blocks until the mutex becomes available (according to the mutex&apos;s semantics). or &apos;timeoutMillis&apos; milli seconds passed. When &apos;timeoutMillis&apos; is zero, this function is identical to <ref refid="group__OS__APIS__MUTEX_1ga42d14da2dc5fea9a34eefe29c68f2ece" kindref="member">OS_MutexTryLock()</ref>. This function is similar to <ref refid="group__OS__APIS__MUTEX_1gab4c439cf86c9e545660138a756937069" kindref="member">OS_MutexTimedLock()</ref> except that it accept as an argument the thread ID of the thread that want to acquire the lock (which is usually the current thread).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to acquire. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">timeoutMillis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The timeout to block. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID of the thread that wants to acquire the mutex. This argument can be INVALID_NATIVE_TID if the thread ID is not known (e.g. in a mutex of type OS_MUTEX_DEPTH_SIMPLE).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>TRUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the mutex is locked. FALSE If the timeout was expired and the mutex can&apos;t be acquired during that time.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="266" column="8" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="266" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga0c35e8a455039efb359a45edacc93dc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+        <definition>NATIVE_TID OS_MutexGetOwner</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexGetOwner</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queries the owner of a recursive mutex.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to query.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>NATIVE_TID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The owner of the mutex of INVALID_NATIVE_TID is the mutex is not locked.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The return value of this function is undefined for non-recursive (simple) mutex.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="281" column="12" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="281" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga8b36189bf6a40cda48dd14bc909ec048" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 OS_MutexGetRecursionLevel</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexGetRecursionLevel</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queries the recursion of a recursive mutex. I.e. the number of times that the unlock functions needs to be called before the mutex can be acquired by other thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to query.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>UINT32</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The recursion level of the mutex.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>For non-recursive (simple) mutex, the return value of this function is 1 if the mutex is lock, or 0 if the mutex is unlocked.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="298" column="8" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="298" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MUTEX_1ga7fbc5a1db4708f0360099fef9ab708b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_MutexUnlock</definition>
+        <argsstring>(volatile OS_MUTEX_TYPE *lock)</argsstring>
+        <name>OS_MutexUnlock</name>
+        <param>
+          <type>volatile OS_MUTEX_TYPE *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases a mutex.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mutex to release.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>TRUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the mutex was locked and as a result of this call was unlocked.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/mutex.h" line="311" column="8" declfile="Source/os-apis/00-export-include/os-apis/mutex.h" declline="311" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OS_APIS_MUTEX_H_INCLUDED_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_MUTEX_H_INCLUDED_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/>OS_SPINLOCK_TYPE;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>_OS_APIS_MUTEX_KIND</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_MUTEX_DEPTH_SIMPLE<sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_MUTEX_DEPTH_RECURSIVE<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}<sp/>OS_MUTEX_DEPTH;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="struct__OS__APIS__MUTEX__TYPE" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__OS__APIS__MUTEX__TYPE" kindref="compound">_OS_APIS_MUTEX_TYPE</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_MUTEX_DEPTH<sp/>kind;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_SPINLOCK_TYPE<sp/>spinlock;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_EVENT<sp/>event;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>num_waiters;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>depth;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>spinlock_fork_count;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}<sp/><ref refid="group__OS__APIS__MUTEX_1gababa2660f850ebc2c791de49f0cf8703" kindref="member">OS_MUTEX_TYPE_IMPL</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>PRE_ALIGNTO(<ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref>)<sp/></highlight><highlight class="keyword">union</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct__OS__APIS__MUTEX__TYPE" kindref="compound">OS_MUTEX_TYPE_IMPL</ref><sp/>impl;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>reserved[2<sp/>*<sp/><ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref>];</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}<sp/>POST_ALIGNTO(<ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref>)<sp/>OS_MUTEX_TYPE;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_MUTEX_DEPTH_SIMPLE,<sp/>(OS_SPINLOCK_TYPE)0,<sp/>OS_EVENT_INITIALIZER,<sp/>(UINT32)0,<sp/>(UINT32)0<sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_MUTEX_DEPTH_SIMPLE,<sp/>(OS_SPINLOCK_TYPE)0,<sp/>OS_EVENT_INITIALIZER,<sp/>(UINT32)0,<sp/>(UINT32)0,<sp/>(UINT32)0<sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor">#define<sp/>OS_APIS_MUTEX_DEPTH_SIMPLE_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER<sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_MUTEX_IMPL_DEPTH_RECURSIVE_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_MUTEX_DEPTH_RECURSIVE,<sp/>(OS_SPINLOCK_TYPE)0,<sp/>OS_EVENT_INITIALIZER,<sp/>(UINT32)0,<sp/>(UINT32)0<sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_MUTEX_IMPL_DEPTH_RECURSIVE_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_MUTEX_DEPTH_RECURSIVE,<sp/>(OS_SPINLOCK_TYPE)0,<sp/>OS_EVENT_INITIALIZER,<sp/>(UINT32)0,<sp/>(UINT32)0,<sp/>(UINT32)0<sp/>\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor">#define<sp/>OS_APIS_MUTEX_DEPTH_RECURSIVE_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_APIS_MUTEX_IMPL_DEPTH_RECURSIVE_INITIALIZER<sp/>\</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__MUTEX_1gaef7ca0852181a3b3c9745d9d3ce45e42" kindref="member">OS_MutexInit</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__MUTEX_1ga0a8f7f4b5b90ed5a5817d490b0b9467d" kindref="member">OS_MutexRecursiveInit</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__MUTEX_1ga4b196034c3784f2938292ebd8f08ae2c" kindref="member">OS_MutexDestroy</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__MUTEX_1gae9228ec7770c7df546748dc61a1c702d" kindref="member">OS_MutexLock</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__MUTEX_1ga7bf7a24aa6797e78a5c4464fc8f005d8" kindref="member">OS_MutexLockTid</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock,<sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>myTid);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__MUTEX_1ga42d14da2dc5fea9a34eefe29c68f2ece" kindref="member">OS_MutexTryLock</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__MUTEX_1ga44269b9d9f8f275b1357cc38a8b364c3" kindref="member">OS_MutexTryLockTid</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock0,<sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>myTid);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__MUTEX_1gaae087bbdeb032a9c6b1c800d68ae279e" kindref="member">OS_MutexIsLocked</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__MUTEX_1gab4c439cf86c9e545660138a756937069" kindref="member">OS_MutexTimedLock</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock,<sp/>UINT32<sp/>timeoutMillis);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__MUTEX_1gab32e71fd2576d7a2cb71644d323784a6" kindref="member">OS_MutexTimedLockTid</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock0,<sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>myTid,<sp/>UINT32<sp/>timeoutMillis);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/><ref refid="group__OS__APIS__MUTEX_1ga0c35e8a455039efb359a45edacc93dc0" kindref="member">OS_MutexGetOwner</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal">UINT32<sp/><ref refid="group__OS__APIS__MUTEX_1ga8b36189bf6a40cda48dd14bc909ec048" kindref="member">OS_MutexGetRecursionLevel</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__MUTEX_1ga7fbc5a1db4708f0360099fef9ab708b5" kindref="member">OS_MutexUnlock</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_MUTEX_TYPE*<sp/>lock);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>OS_APIS_MUTEX_H_INCLUDED_</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/mutex.h"/>
+  </compounddef>
+</doxygen>

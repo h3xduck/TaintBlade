@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_e8dea60438cc7d1cff58a2bf9d94a307" kind="dir">
+    <compoundname>core_ia32_u</compoundname>
+    <innerfile refid="ins__syscall__ia32__unix_8PH">ins_syscall_ia32_unix.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/core_ia32_u/"/>
+  </compounddef>
+</doxygen>

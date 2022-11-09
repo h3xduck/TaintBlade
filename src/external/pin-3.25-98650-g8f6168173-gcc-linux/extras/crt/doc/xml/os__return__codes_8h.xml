@@ -1,0 +1,556 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="os__return__codes_8h" kind="file" language="C++">
+    <compoundname>os_return_codes.h</compoundname>
+    <innerclass refid="struct__OS__RETURN__CODE" prot="public">_OS_RETURN_CODE</innerclass>
+    <innerclass refid="struct__OS__RETURN__CODE__POSIX" prot="public">_OS_RETURN_CODE_POSIX</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="os__return__codes_8h_1af56569883ea70b07787c7be70908a333" prot="public" static="no">
+        <name>OS_RETURN_CODE_IS_SUCCESS</name>
+        <param><defname>r</defname></param>
+        <initializer>(OS_RETURN_CODE_NO_ERROR == r.generic_err)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="93" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a612d5738088d07b4fd928eb1bc918349" prot="public" static="no">
+        <name>OS_RETURN_CODE_POSIX_IS_SUCCESS</name>
+        <param><defname>r</defname></param>
+        <initializer>(-1 != r.function_return_value)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="95" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a96545074f5a9c605c98ed78b7a9cd7ad" prot="public" static="no">
+        <name>OS_RETURN_CODE_DECLARE</name>
+        <param><defname>lvalue</defname></param>
+        <initializer><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref> lvalue = {OS_RETURN_CODE_NO_ERROR, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="97" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a5a91e09fd2b351a20045bbd0f0067dd6" prot="public" static="no">
+        <name>OS_RETURN_CODE_ASSIGN_ERROR</name>
+        <param><defname>lvalue</defname></param>
+        <param><defname>r</defname></param>
+        <param><defname>errno</defname></param>
+        <initializer>    {                                                 \
+        lvalue.generic_err     = r;                   \
+        lvalue.os_specific_err = (int)errno;          \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="99" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a49d77829f7ce4e2cf23c916cf704c3c6" prot="public" static="no">
+        <name>OS_RETURN_CODE_RETURN_ERROR</name>
+        <param><defname>r</defname></param>
+        <param><defname>errno</defname></param>
+        <initializer>    {                                         \
+        <ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref> tmpRet;                \
+        tmpRet.generic_err     = r;           \
+        tmpRet.os_specific_err = (int)errno;  \
+        return tmpRet;                        \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="105" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a0d123c44e6a953da3a73bd875a2400d8" prot="public" static="no">
+        <name>OS_RETURN_CODE_RETURN_SUCCESS</name>
+        <initializer>OS_RETURN_CODE_RETURN_ERROR(OS_RETURN_CODE_NO_ERROR, 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="113" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a4b0c957bb8030d33b5ad615154cb7f91" prot="public" static="no">
+        <name>OS_RETURN_CODE_RETURN_ERROR_UNIX</name>
+        <param><defname>r</defname></param>
+        <param><defname>ret</defname></param>
+        <initializer>OS_RETURN_CODE_RETURN_ERROR(r, OS_SyscallReturnValue(ret))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="115" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a6cc15826e1cb2f09ced7b8f33eb32673" prot="public" static="no">
+        <name>OS_RETURN_CODE_RETURN_ERROR_WINDOWS</name>
+        <param><defname>r</defname></param>
+        <param><defname>ret</defname></param>
+        <initializer>OS_RETURN_CODE_RETURN_ERROR(r, ret)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="116" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="os__return__codes_8h_1a813f5067ee4da5de315fcf119fb14e04" prot="public" static="no">
+        <name>OS_RETURN_CODE_RETURN_ERROR_GENERIC_ONLY</name>
+        <param><defname>r</defname></param>
+        <initializer>OS_RETURN_CODE_RETURN_ERROR(r, 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="118" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__OS__APIS__DEF_1ga00cc35ef61ed25e2c8815c3d8d49f7ca" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_RETURN_CODE_GENERIC</name>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa2fcde240140ec3ce6de266c4eaa28fd4" prot="public">
+          <name>OS_RETURN_CODE_NO_ERROR</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caade7e88ce4205cb3f947ef8be73a14c82" prot="public">
+          <name>OS_RETURN_CODE_INVALID_ARGS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caad1a0ad029355f13a3bcb6bae552dea1c" prot="public">
+          <name>OS_RETURN_CODE_MEMORY_MAP_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caac5afade6050a77042eba419a21a73b87" prot="public">
+          <name>OS_RETURN_CODE_MEMORY_FREE_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa0277d4084c0053cbcea309d47c613361" prot="public">
+          <name>OS_RETURN_CODE_QUERY_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caac92eaa7c24762bc536ccb2377db5407e" prot="public">
+          <name>OS_RETURN_CODE_FLUSH_ICACHE_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa749ef94aebe8bee1d917764a9a3d0b4b" prot="public">
+          <name>OS_RETURN_CODE_MEMORY_PROTECT_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caac92e26c6c398eb59b6bb5c3242e8b672" prot="public">
+          <name>OS_RETURN_CODE_MEMORY_INFO_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa57f853bb5940aa00eb11d33947b6d432" prot="public">
+          <name>OS_RETURN_CODE_FILE_OPERATION_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa902dcd7403c257b5ca4c39a7c7b9506c" prot="public">
+          <name>OS_RETURN_CODE_FILE_OPEN_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa3edb56bcd9737663a0a4f1f480829c35" prot="public">
+          <name>OS_RETURN_CODE_FILE_WRITE_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa51d54434aaff9215a58b8c430cf2474b" prot="public">
+          <name>OS_RETURN_CODE_FILE_READ_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caaecf37c728d3ba1296ee6a62af9512117" prot="public">
+          <name>OS_RETURN_CODE_FILE_SEEK_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caaba7293e7aef88a2a274aa7a102137114" prot="public">
+          <name>OS_RETURN_CODE_FILE_CLOSE_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa3b8a527078226b105a33d5463094e679" prot="public">
+          <name>OS_RETURN_CODE_FILE_DELETE_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa9bde1e9875ed245205b9eb561371590a" prot="public">
+          <name>OS_RETURN_CODE_FILE_FLUSH_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caade5d3e39cd0cb685dd2317787eabfa65" prot="public">
+          <name>OS_RETURN_CODE_FILE_QUERY_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa4068315d5a21be1d9889f4b8f635523f" prot="public">
+          <name>OS_RETURN_CODE_THREAD_CREATE_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caaefc2da7f931fa43261657687f71ebbdd" prot="public">
+          <name>OS_RETURN_CODE_THREAD_EXIT_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caafbde35de5bf7e9621bca8840624bc005" prot="public">
+          <name>OS_RETURN_CODE_THREAD_SUSPEND_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa2ebda8e99da09a908620218a1491e370" prot="public">
+          <name>OS_RETURN_CODE_THREAD_RESUME_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa977216ad3f211f38edac1f0c5aa2b029" prot="public">
+          <name>OS_RETURN_CODE_THREAD_SLEEP_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa3a44c0282df17dfc223ab20e55e54b29" prot="public">
+          <name>OS_RETURN_CODE_THREAD_QUERY_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa5109f37a8e740e2f6b04a195ecedc88c" prot="public">
+          <name>OS_RETURN_CODE_THREAD_EXCEPTION_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caade85ec648094637fd192a94574277f50" prot="public">
+          <name>OS_RETURN_CODE_PROCESS_QUERY_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa5a8fd2590a9e66950f4d9c82f0fa4811" prot="public">
+          <name>OS_RETURN_CODE_PROCESS_UPDATE_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caaee2ed524d7281564d35ae72dbb058391" prot="public">
+          <name>OS_RETURN_CODE_TIME_QUERY_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa11d3849cdb47fc46b20166ec51dfc7df" prot="public">
+          <name>OS_RETURN_CODE_BUFFER_TOO_SHORT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa359e89082854c30c0643dca2cd0ba87c" prot="public">
+          <name>OS_RETURN_CODE_INTERRUPTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caad75280eff76fb70194a0c1f2f4ab5ad0" prot="public">
+          <name>OS_RETURN_CODE_FILE_EXIST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caafeed7d09cddf47cb629fd982e132e5c2" prot="public">
+          <name>OS_RETURN_CODE_NOT_IMPLEMENTED_YET</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caaacdf16df2da4f1a5e5025be39b189b2f" prot="public">
+          <name>OS_RETURN_CODE_EXCEED_LIMIT_OF_OPEN_OBJECTS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caaa807b26efa193bcb73e2f20401b14dee" prot="public">
+          <name>OS_RETURN_CODE_NO_MEMORY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa7d977fad73de6405e960126fb346ca99" prot="public">
+          <name>OS_RETURN_CODE_PROCESS_CREATION_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa35722e0b76be1430ed809ccb05350755" prot="public">
+          <name>OS_RETURN_CODE_PROCESS_WAIT_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caad027248d596297cbf82be8a27beb3270" prot="public">
+          <name>OS_RETURN_CODE_NOT_IMPLEMENTED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa9c6fdfd14a28601e784ff12af76582f5" prot="public">
+          <name>OS_RETURN_CODE_RPC_FAILED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__DEF_1gga00cc35ef61ed25e2c8815c3d8d49f7caa3d142693c0f733d41fffa378448ac9b0" prot="public">
+          <name>OS_RETURN_CODE_BAD_FILE_DESCRIPTOR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describe an OS-API cross OS, generic error </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="21" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="20" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" prot="public" static="no">
+        <type>struct <ref refid="struct__OS__RETURN__CODE" kindref="compound">_OS_RETURN_CODE</ref></type>
+        <definition>typedef struct _OS_RETURN_CODE OS_RETURN_CODE</definition>
+        <argsstring></argsstring>
+        <name>OS_RETURN_CODE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Full error code returned from OS-APIs functions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="69" column="16"/>
+      </memberdef>
+      <memberdef kind="typedef" id="os__return__codes_8h_1a9b1263837444a39ac1f338f682829c08" prot="public" static="no">
+        <type>struct <ref refid="struct__OS__RETURN__CODE__POSIX" kindref="compound">_OS_RETURN_CODE_POSIX</ref></type>
+        <definition>typedef struct _OS_RETURN_CODE_POSIX OS_RETURN_CODE_POSIX</definition>
+        <argsstring></argsstring>
+        <name>OS_RETURN_CODE_POSIX</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="75" column="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2013-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_OS_RETURN_CODES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_OS_RETURN_CODES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_NO_ERROR<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_INVALID_ARGS,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_MEMORY_MAP_FAILED,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_MEMORY_FREE_FAILED,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_QUERY_FAILED,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FLUSH_ICACHE_FAILED,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_MEMORY_PROTECT_FAILED,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_MEMORY_INFO_FAILED,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_OPERATION_FAILED,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_OPEN_FAILED,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_WRITE_FAILED,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_READ_FAILED,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_SEEK_FAILED,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_CLOSE_FAILED,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_DELETE_FAILED,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_FLUSH_FAILED,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_QUERY_FAILED,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_THREAD_CREATE_FAILED,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_THREAD_EXIT_FAILED,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_THREAD_SUSPEND_FAILED,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_THREAD_RESUME_FAILED,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_THREAD_SLEEP_FAILED,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_THREAD_QUERY_FAILED,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_THREAD_EXCEPTION_FAILED,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_PROCESS_QUERY_FAILED,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_PROCESS_UPDATE_FAILED,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_TIME_QUERY_FAILED,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_BUFFER_TOO_SHORT,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_INTERRUPTED,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_FILE_EXIST,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_NOT_IMPLEMENTED_YET,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_EXCEED_LIMIT_OF_OPEN_OBJECTS,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_NO_MEMORY,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_PROCESS_CREATION_FAILED,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_PROCESS_WAIT_FAILED,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_NOT_IMPLEMENTED,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_RPC_FAILED,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_RETURN_CODE_BAD_FILE_DESCRIPTOR</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}<sp/><ref refid="group__OS__APIS__DEF_1ga00cc35ef61ed25e2c8815c3d8d49f7ca" kindref="member">OS_RETURN_CODE_GENERIC</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="struct__OS__RETURN__CODE" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">_OS_RETURN_CODE</ref></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__OS__APIS__DEF_1ga00cc35ef61ed25e2c8815c3d8d49f7ca" kindref="member">OS_RETURN_CODE_GENERIC</ref><sp/><ref refid="struct__OS__RETURN__CODE_1a45784e2e0ca326e8575095f5c21ebd84" kindref="member">generic_err</ref>;<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct__OS__RETURN__CODE_1acba8ab3ec82ed89c8f28ed2933c804fa" kindref="member">os_specific_err</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}<sp/><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="struct__OS__RETURN__CODE__POSIX" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__OS__RETURN__CODE__POSIX" kindref="compound">_OS_RETURN_CODE_POSIX</ref></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>ADDRINT<sp/>function_return_value;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>ADDRINT<sp/>return_errno;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}<sp/><ref refid="struct__OS__RETURN__CODE__POSIX" kindref="compound">OS_RETURN_CODE_POSIX</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C++&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__DEF_1ga00cc35ef61ed25e2c8815c3d8d49f7ca" kindref="member">OS_RETURN_CODE_GENERIC</ref>&amp;<sp/></highlight><highlight class="keyword">generic</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref>&amp;<sp/>code)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>code.<ref refid="struct__OS__RETURN__CODE_1a45784e2e0ca326e8575095f5c21ebd84" kindref="member">generic_err</ref><sp/>==<sp/></highlight><highlight class="keyword">generic</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__DEF_1ga00cc35ef61ed25e2c8815c3d8d49f7ca" kindref="member">OS_RETURN_CODE_GENERIC</ref>&amp;<sp/></highlight><highlight class="keyword">generic</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref>&amp;<sp/>code)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>code.<ref refid="struct__OS__RETURN__CODE_1a45784e2e0ca326e8575095f5c21ebd84" kindref="member">generic_err</ref><sp/>!=<sp/></highlight><highlight class="keyword">generic</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_IS_SUCCESS(r)<sp/>(OS_RETURN_CODE_NO_ERROR<sp/>==<sp/>r.generic_err)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_POSIX_IS_SUCCESS(r)<sp/>(-1<sp/>!=<sp/>r.function_return_value)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_DECLARE(lvalue)<sp/>OS_RETURN_CODE<sp/>lvalue<sp/>=<sp/>{OS_RETURN_CODE_NO_ERROR,<sp/>0}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_ASSIGN_ERROR(lvalue,<sp/>r,<sp/>errno)<sp/>\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lvalue.generic_err<sp/><sp/><sp/><sp/><sp/>=<sp/>r;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lvalue.os_specific_err<sp/>=<sp/>(int)errno;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_RETURN_ERROR(r,<sp/>errno)<sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_RETURN_CODE<sp/>tmpRet;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmpRet.generic_err<sp/><sp/><sp/><sp/><sp/>=<sp/>r;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmpRet.os_specific_err<sp/>=<sp/>(int)errno;<sp/><sp/>\</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>tmpRet;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="111"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_RETURN_SUCCESS<sp/>OS_RETURN_CODE_RETURN_ERROR(OS_RETURN_CODE_NO_ERROR,<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_RETURN_ERROR_UNIX(r,<sp/>ret)<sp/>OS_RETURN_CODE_RETURN_ERROR(r,<sp/>OS_SyscallReturnValue(ret))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_RETURN_ERROR_WINDOWS(r,<sp/>ret)<sp/>OS_RETURN_CODE_RETURN_ERROR(r,<sp/>ret)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_RETURN_CODE_RETURN_ERROR_GENERIC_ONLY(r)<sp/>OS_RETURN_CODE_RETURN_ERROR(r,<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h"/>
+  </compounddef>
+</doxygen>

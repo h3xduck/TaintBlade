@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_dea16d20e9ba7da542c4109d049058e1" kind="dir">
+    <compoundname>os-apis</compoundname>
+    <innerdir refid="dir_96cec3334c2e1c99558031aef984ce5d">00-export-include</innerdir>
+    <innerdir refid="dir_3899e32d7c30dbadd52aa1648e424670">private</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/os-apis/"/>
+  </compounddef>
+</doxygen>

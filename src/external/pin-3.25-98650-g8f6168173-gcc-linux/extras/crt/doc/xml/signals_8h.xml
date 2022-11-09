@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="signals_8h" kind="file" language="C++">
+    <compoundname>signals.h</compoundname>
+    <includes local="yes">os-apis.h</includes>
+    <includes refid="signals-core_8h" local="yes">signals-core.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>os-apis.h</label>
+      </node>
+      <node id="1">
+        <label>signals.h</label>
+        <link refid="signals_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structSIGACTION" prot="public">SIGACTION</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219" prot="public" static="no" strong="no">
+        <type></type>
+        <name>SigactionDefines</name>
+        <enumvalue id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219a133c04fc32381d1ce8335a030ed4eb7e" prot="public">
+          <name>SIGACTION_SIGINFO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219a4c62ffebdaf716f5735a3d223739272a" prot="public">
+          <name>SIGACTION_NODEFER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219a6af548cbcd5b20eea4c030c44d6175a9" prot="public">
+          <name>SIGACTION_RESETHAND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219aa536caf2aae907d211f6b18c95d5f07e" prot="public">
+          <name>SIGACTION_ONSTACK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219a48aa50b56310be0825e20848c85962da" prot="public">
+          <name>SIGACTION_NOCLDSTOP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219ad1cd76392d3b1efc17b13cbec7d162c1" prot="public">
+          <name>SIGACTION_RESTART</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="signals_8h_1aee9a4a558a276f8fc5730345f7bc2219afb79873c505045f622c33c0755487ab5" prot="public">
+          <name>SIGACTION_RESTORER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This enum is used only for the OS_PinSigactionToKernelSigaction function you cannot use these values directly in other OS-APIs functions or system calls </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals.h" line="30" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/signals.h" bodystart="29" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="signals_8h_1a840e64717e6250ee73e07767575fb5ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int OS_MaxSignalNumber</definition>
+        <argsstring>()</argsstring>
+        <name>OS_MaxSignalNumber</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrun the Max number of signals possible </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals.h" line="23" column="5" declfile="Source/os-apis/00-export-include/os-apis/signals.h" declline="23" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="signals_8h_1a143faa467e4e833c5c9b9f85ee759d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT64</type>
+        <definition>UINT64 OS_PinSigactionToKernelSigaction</definition>
+        <argsstring>(SigactionDefines input)</argsstring>
+        <name>OS_PinSigactionToKernelSigaction</name>
+        <param>
+          <type>SigactionDefines</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals.h" line="44" column="8" declfile="Source/os-apis/00-export-include/os-apis/signals.h" declline="44" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__SIGNALS_1ga8736511da8873f1e09877056989c1b63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SigAction</definition>
+        <argsstring>(INT signum, const struct SIGACTION *act, struct SIGACTION *oldact)</argsstring>
+        <name>OS_SigAction</name>
+        <param>
+          <type>INT</type>
+          <declname>signum</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structSIGACTION" kindref="compound">SIGACTION</ref> *</type>
+          <declname>act</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structSIGACTION" kindref="compound">SIGACTION</ref> *</type>
+          <declname>oldact</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change the action taken by a process on receipt of a specific signal. This function is compatible with POSIX sigaction().</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">signum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal to alter its behavior. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">act</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The action to be taken upon signal reception. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">oldact</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The previous action that was taken upon signal reception.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals.h" line="100" column="16" declfile="Source/os-apis/00-export-include/os-apis/signals.h" declline="100" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__SIGNALS_1gab760657fa1a70edbfacba128ccbe1d92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SigSuspend</definition>
+        <argsstring>(const SIGSET_T *mask)</argsstring>
+        <name>OS_SigSuspend</name>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Temporarily replaces the signal mask of the calling process with the mask given by mask and then suspends the process until delivery of a signal whose action is to invoke a signal handler or to terminate a process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mask to use for the signals</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals.h" line="115" column="16" declfile="Source/os-apis/00-export-include/os-apis/signals.h" declline="115" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__SIGNALS_1ga4175fcbfa7821e8d22000e21d03a94e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SigPending</definition>
+        <argsstring>(const SIGSET_T *set)</argsstring>
+        <name>OS_SigPending</name>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the set of signals that are pending for delivery to the calling thread (i.e., the signals which have been raised while blocked). The mask of pending signals is returned in set.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Where to store the signal set.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals.h" line="130" column="16" declfile="Source/os-apis/00-export-include/os-apis/signals.h" declline="130" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__SIGNALS_1gaee16d740855d85b292290106194131e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SendSignalToThread</definition>
+        <argsstring>(NATIVE_PID pid, NATIVE_TID tid, UINT32 signal)</argsstring>
+        <name>OS_SendSignalToThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>pid</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>signal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send signal to a particular thread inside a process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process ID where the thread is running.if it&apos;s INVALID_NATIVE_PID then we ignore the pid. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID to send the signal to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal to send.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals.h" line="146" column="16" declfile="Source/os-apis/00-export-include/os-apis/signals.h" declline="146" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_SIGNALS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_SIGNALS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;os-apis.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;signals-core.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>OS_MaxSignalNumber();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGACTION_SIGINFO,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGACTION_NODEFER,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGACTION_RESETHAND,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGACTION_ONSTACK,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGACTION_NOCLDSTOP,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGACTION_RESTART,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGACTION_RESTORER</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}<sp/>SigactionDefines;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">*<sp/>This<sp/>function<sp/>is<sp/>used<sp/>to<sp/>convert<sp/>the<sp/>defines<sp/>into<sp/>the<sp/>right</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">*<sp/>value<sp/>according<sp/>to<sp/>the<sp/>OS<sp/>(bit<sp/>map<sp/>value)</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">UINT64<sp/>OS_PinSigactionToKernelSigaction(SigactionDefines<sp/>input);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TARGET_MAC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*OS_SIGTRAP_PTR)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int,<sp/>int,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigReturn(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>uctx,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>infostyle);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="structSIGACTION" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSIGACTION" kindref="compound">SIGACTION</ref></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>(*_sa_handler)(int);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structSIGACTION_1a2f8bd550d8503fac198aac68b7bba244" kindref="member">_sa_sigaction</ref>)(int,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*);<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structSIGACTION_1ad306ef8350ea4554a0a4cdde674372a6" kindref="member">_sa_handler_ptr</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>_u;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>SIGSET_T<sp/>sa_mask;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structSIGACTION_1ab2fb8a90f316d91b9ba458c19d1b0a55" kindref="member">sa_flags</ref>;<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*<ref refid="structSIGACTION_1acba757873ba4b82327750c9419e1b627" kindref="member">sa_restorer</ref>)(void);<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TARGET_MAC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">SIGACTION_WITH_TRAMP</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSIGACTION" kindref="compound">SIGACTION</ref><sp/>act;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*sa_tramp)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int,<sp/>int,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TARGET_MAC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/>OS_SigActionWithTrampoline(INT<sp/>signum,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>SIGACTION_WITH_TRAMP*<sp/>actWithTramp,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structSIGACTION" kindref="compound">SIGACTION</ref>*<sp/>oldact);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__SIGNALS_1ga8736511da8873f1e09877056989c1b63" kindref="member">OS_SigAction</ref>(INT<sp/>signum,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structSIGACTION" kindref="compound">SIGACTION</ref>*<sp/>act,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structSIGACTION" kindref="compound">SIGACTION</ref>*<sp/>oldact);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__SIGNALS_1gab760657fa1a70edbfacba128ccbe1d92" kindref="member">OS_SigSuspend</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>mask);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__SIGNALS_1ga4175fcbfa7821e8d22000e21d03a94e9" kindref="member">OS_SigPending</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>set);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__SIGNALS_1gaee16d740855d85b292290106194131e7" kindref="member">OS_SendSignalToThread</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref><sp/>pid,<sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>tid,<sp/>UINT32<sp/>signal);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>OS_APIS_SIGNALS_H</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/signals.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="fpstate__ia32_8PH" kind="file" language="C++">
+    <compoundname>fpstate_ia32.PH</compoundname>
+    <innerclass refid="structXSAVE__HEADER" prot="public">XSAVE_HEADER</innerclass>
+    <innerclass refid="structFPSTATE" prot="public">FPSTATE</innerclass>
+    <innerclass refid="structFPSTATE_1_1XSTATE" prot="public">FPSTATE::XSTATE</innerclass>
+    <innerclass refid="structFPSTATE_1_1VSTATE" prot="public">FPSTATE::VSTATE</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="fpstate__ia32_8PH_1a182e23c50353fa1df8db6afa95ce6afd" prot="public" static="no">
+        <name>PIN_G_FPSTATE_IA32_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="9" column="10" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__CONTEXT_1ga4ca557f14f098e2c733785a3a9a78f50" prot="public" static="no">
+        <type>UTIL::FXSAVE_IA32</type>
+        <definition>typedef UTIL::FXSAVE_IA32 FXSAVE</definition>
+        <argsstring></argsstring>
+        <name>FXSAVE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains declarations of types related to the fp state on ia-32</para>
+<para>The memory layout written by FXSAVE and read by FXRSTOR. It is the legacy part of the FP state </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="18" column="27" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__CONTEXT_1gad1b665d43ed8655d42cf86e474ceb5ea" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t VSTATE_PADDING</definition>
+        <argsstring></argsstring>
+        <name>VSTATE_PADDING</name>
+        <initializer>= 128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of the reserved bytes between the XSTATE and the VSTATE parts of the FP state area, as defined by the xsave layout in the SDM. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="34" column="14" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gaaf302a6d2cb4e89c0355540b1b0951d7" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t FPSTATE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>FPSTATE_SIZE</name>
+        <initializer>= sizeof(<ref refid="structFPSTATE" kindref="compound">FPSTATE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of Pin&apos;s (full) FP state structure. It is larger than the size of the structure used by the fxsave instruction (see FXSAVE). It may be larger than the size of the structure used by the xsave instruction, depending on the features enabled in the xstate_bv field in the extended header. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="83" column="14" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga0f5ad5017cf79566f740ff72e37dfeec" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t FPSTATE_ALIGNMENT</definition>
+        <argsstring></argsstring>
+        <name>FPSTATE_ALIGNMENT</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the alignment that the structure used to save the <ref refid="structFPSTATE" kindref="compound">FPSTATE</ref> The alignment required by xsave is 64, the alignment required by fxsave is 16 - so we use the larger </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="90" column="14" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2010-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_FPSTATE_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>fpstate_ia32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_FPSTATE_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UTIL::FXSAVE_IA32<sp/><ref refid="group__CONTEXT_1ga4ca557f14f098e2c733785a3a9a78f50" kindref="member">FXSAVE</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="structXSAVE__HEADER" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structXSAVE__HEADER" kindref="compound">XSAVE_HEADER</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64<sp/>_xstate_bv;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64<sp/>_xcomp_bv;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64<sp/>_reserved[6];</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__CONTEXT_1gad1b665d43ed8655d42cf86e474ceb5ea" kindref="member">VSTATE_PADDING</ref><sp/>=<sp/>128;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="structFPSTATE" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structFPSTATE" kindref="compound">FPSTATE</ref></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fxsave_legacy<sp/>is<sp/>applicable<sp/>on<sp/>all<sp/>supported<sp/>CPUs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__CONTEXT_1ga4ca557f14f098e2c733785a3a9a78f50" kindref="member">FXSAVE</ref><sp/>fxsave_legacy;<sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>512<sp/><sp/>bytes<sp/>at<sp/>offset<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>following<sp/>are<sp/>only<sp/>applicable<sp/>on<sp/>processors<sp/>that<sp/>support<sp/>XSAVE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="structFPSTATE_1_1XSTATE" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structFPSTATE_1_1XSTATE" kindref="compound">XSTATE</ref></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structXSAVE__HEADER" kindref="compound">XSAVE_HEADER</ref><sp/>_extendedHeader;<sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>64<sp/><sp/><sp/>bytes<sp/>at<sp/>offset<sp/>512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT8<sp/>_ymmUpper[8<sp/>*<sp/>16];<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>upper<sp/>128<sp/>bits<sp/>of<sp/>ymm0-ymm7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>128<sp/><sp/>bytes<sp/>at<sp/>offset<sp/>576</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT8<sp/>_pad[8<sp/>*<sp/>16];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reserved<sp/>-<sp/>no<sp/>ymm8-ymm15<sp/>on<sp/>IA-32<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>128<sp/><sp/>bytes<sp/>at<sp/>offset<sp/>704</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>_xstate;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>following<sp/>is<sp/>only<sp/>applicable<sp/>on<sp/>processors<sp/>that<sp/>support<sp/>AVX512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>So<sp/>far<sp/>there<sp/>are<sp/>832<sp/>bytes<sp/>of<sp/>data<sp/>but<sp/>the<sp/>next<sp/>bulk<sp/>of<sp/>data<sp/>begins<sp/>at<sp/>offset<sp/>1088.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT8<sp/>_reserved[<ref refid="group__CONTEXT_1gad1b665d43ed8655d42cf86e474ceb5ea" kindref="member">VSTATE_PADDING</ref>];<sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>128<sp/><sp/>bytes<sp/>at<sp/>offset<sp/>832</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>_vstate<sp/>is<sp/>comprised<sp/>of<sp/>five<sp/>parts.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>1.<sp/>BND<sp/>registers<sp/>BND0-BND3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>2.<sp/>BND<sp/>control<sp/>and<sp/>status<sp/>registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>3.<sp/>The<sp/>Opmask<sp/>registers<sp/>k0-k7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>4.<sp/>The<sp/>upper<sp/>256<sp/>bits<sp/>of<sp/>zmm0-zmm7<sp/>(and<sp/>padding<sp/>for<sp/>zmm8-zmm15)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>5.<sp/>reserved<sp/>-<sp/>no<sp/>zmm16-zmm31<sp/>on<sp/>IA32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="structFPSTATE_1_1VSTATE" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structFPSTATE_1_1VSTATE" kindref="compound">VSTATE</ref></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT8<sp/>_bndRegs[64];<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>BND<sp/>registers<sp/>BND0-BND3.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>64<sp/><sp/><sp/>bytes<sp/>at<sp/>offset<sp/>960</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT8<sp/>_bndCSR[64];<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>BND<sp/>control<sp/>and<sp/>status<sp/>registers.<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>64<sp/><sp/><sp/>bytes<sp/>at<sp/>offset<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT64<sp/>_kmasks[8];<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>8<sp/>64-bit<sp/>k<sp/>(opmask)<sp/>registers<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>64<sp/><sp/><sp/>bytes<sp/>at<sp/>offset<sp/>1088</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT8<sp/>_zmmUpper[8<sp/>*<sp/>32];<sp/></highlight><highlight class="comment">//<sp/>upper<sp/>256<sp/>bits<sp/>of<sp/>zmm0-zmm7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>256<sp/><sp/>bytes<sp/>at<sp/>offset<sp/>1152</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT8<sp/>_pad256[8<sp/>*<sp/>32];<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reserved<sp/>-<sp/>no<sp/>zmm8-zmm15<sp/>on<sp/>IA-32<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>256<sp/><sp/>bytes<sp/>at<sp/>offset<sp/>1408</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT8<sp/>_pad1024[16<sp/>*<sp/>64];<sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1024<sp/>bytes<sp/>at<sp/>offset<sp/>1664</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>_vstate;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Total<sp/>of<sp/>2688<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__CONTEXT_1gaaf302a6d2cb4e89c0355540b1b0951d7" kindref="member">FPSTATE_SIZE</ref><sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structFPSTATE" kindref="compound">FPSTATE</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="group__CONTEXT_1ga0f5ad5017cf79566f740ff72e37dfeec" kindref="member">FPSTATE_ALIGNMENT</ref><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_FPSTATE_IA32_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/base/fpstate_ia32.PH"/>
+  </compounddef>
+</doxygen>

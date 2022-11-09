@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structPHYSICAL__CONTEXT" kind="struct" language="C++" prot="public">
+    <compoundname>PHYSICAL_CONTEXT</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPHYSICAL__CONTEXT_1a277ca8973c1daa1d301522cee1f930b2" prot="public" static="no" mutable="no">
+        <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+        <definition>CONTEXT* PHYSICAL_CONTEXT::_pCtxt</definition>
+        <argsstring></argsstring>
+        <name>_pCtxt</name>
+        <briefdescription>
+<para>pointer to <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="80" column="13" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPHYSICAL__CONTEXT_1a015fd777d5b8ec586aefcd08cc8b2684" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PHYSICAL_CONTEXT::PHYSICAL_CONTEXT</definition>
+        <argsstring>(CONTEXT *pCtxt)</argsstring>
+        <name>PHYSICAL_CONTEXT</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>pCtxt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor of the <ref refid="structPHYSICAL__CONTEXT" kindref="compound">PHYSICAL_CONTEXT</ref> object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="78" column="5" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="78" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A structure that keeps architectural state of the processor. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PHYSICAL_CONTEXT</label>
+        <link refid="structPHYSICAL__CONTEXT"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_pCtxt</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CONTEXT</label>
+        <link refid="structCONTEXT"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/include/types_vmapi.PH" line="74" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="73" bodyend="81"/>
+    <listofallmembers>
+      <member refid="structPHYSICAL__CONTEXT_1a277ca8973c1daa1d301522cee1f930b2" prot="public" virt="non-virtual"><scope>PHYSICAL_CONTEXT</scope><name>_pCtxt</name></member>
+      <member refid="structPHYSICAL__CONTEXT_1a015fd777d5b8ec586aefcd08cc8b2684" prot="public" virt="non-virtual"><scope>PHYSICAL_CONTEXT</scope><name>PHYSICAL_CONTEXT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

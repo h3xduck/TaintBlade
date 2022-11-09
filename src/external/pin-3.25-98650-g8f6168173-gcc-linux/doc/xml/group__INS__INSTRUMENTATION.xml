@@ -1,0 +1,700 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__INS__INSTRUMENTATION" kind="group">
+    <compoundname>INS_INSTRUMENTATION</compoundname>
+    <title>Instrumentation API</title>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__INS__INSTRUMENTATION_1gaae44fa0b8ce18989425c352137de0a48" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* INS_INSTRUMENT_CALLBACK) (INS ins, VOID *v)</definition>
+        <argsstring>)(INS ins, VOID *v)</argsstring>
+        <name>INS_INSTRUMENT_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><anchor id="group__INS__INSTRUMENTATION_1INS_INSTRUMENT_CALLBACK"/> Call back function used to instrument instructions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="370" column="9" bodyfile="Source/pin/pin/pin_client.PH" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1ga1333734dbf7d552365a24cd945d5691d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK INS_AddInstrumentFunction</definition>
+        <argsstring>(INS_INSTRUMENT_CALLBACK fun, VOID *val)</argsstring>
+        <name>INS_AddInstrumentFunction</name>
+        <param>
+          <type><ref refid="group__INS__INSTRUMENTATION_1gaae44fa0b8ce18989425c352137de0a48" kindref="member">INS_INSTRUMENT_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a function used to instrument at instruction granularity <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instrumentation function for instructions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>passed as the second argument to the instrumentation function</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="775" column="21" declfile="Source/pin/pin/pin_client.PH" declline="775" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1gaa3666869f6f412dd7e1d20bca99e401b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertPredicatedCall</definition>
+        <argsstring>(INS ins, IPOINT ipoint, AFUNPTR funptr,...)</argsstring>
+        <name>INS_InsertPredicatedCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>ipoint</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ref refid="group__INS__INSTRUMENTATION_1gaea02f152d3515f4758b8f979a380da09" kindref="member">INS_InsertCall</ref>. When the instruction has a predicate and the predicate is false, the analysis function is not called.</para>
+<para>On the IA-32 and Intel 64 architectures the only instructions treated as predicated are CMOVcc, FCMOVcc and REPped string ops. For the conditional moves, the predicate is based on the condition codes tested by the instruction. For the REPped string ops the predicate is that the execution count is not zero. For all other instructions the predicate is always true, so INS_InsertPredicatedCall is identical to <ref refid="group__INS__INSTRUMENTATION_1gaea02f152d3515f4758b8f979a380da09" kindref="member">INS_InsertCall</ref>.</para>
+<para>If you want to test both your own condition, and the predicate, you can use <ref refid="group__INS__INSTRUMENTATION_1ga92b34e94caff1d253350efd068e329f2" kindref="member">INS_InsertThenPredicatedCall</ref>, or use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da5f291cb55a7d61a40fa3ab98e191394e" kindref="member">IARG_EXECUTING</ref> to pass the predicate value to an <ref refid="group__INS__INSTRUMENTATION_1ga3b589b45d857832458ca84ac5b6f04be" kindref="member">INS_InsertIfCall</ref>.</para>
+<para>If more than one call is inserted for the same instruction, the order is determined by <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref>. For more information, see <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1608" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1608" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1gaea02f152d3515f4758b8f979a380da09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertCall</definition>
+        <argsstring>(INS ins, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>INS_InsertCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to funptr relative to instruction ins. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instruction to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies before, after, etc. <linebreak/>
+ IPOINT_BEFORE is always valid for all instructions. <linebreak/>
+ IPOINT_AFTER is valid only when a fall-through exists (i.e. Calls and unconditional branches will fail). It is only allowed when INS_IsValidForIpointAfter(ins) is true. <linebreak/>
+ IPOINT_TAKEN_BRANCH is invalid for non-branches. It is only allowed when INS_IsValidForIpointTakenBranch is true. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Insert a call to funptr </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of arguments to pass funptr. See <ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>, terminated with IARG_END</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If more than one call is inserted for the same instruction, the order is determined by <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref>. For more information, see <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1629" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1629" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1ga3b589b45d857832458ca84ac5b6f04be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertIfCall</definition>
+        <argsstring>(INS ins, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>INS_InsertIfCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to funptr relative to an INS. If funptr returns a non-zero ADDRINT, then the immediately following &quot;then&quot; analysis call is executed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instruction to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies before, after, etc. <linebreak/>
+ IPOINT_BEFORE is always valid for all instructions. <linebreak/>
+ IPOINT_AFTER is valid only when a fall-through exists (i.e. Calls and unconditional branches will fail). It is only allowed when INS_IsValidForIpointAfter(ins) is true. <linebreak/>
+ IPOINT_TAKEN_BRANCH is invalid for non-branches. It is only allowed when INS_IsValidForIpointTakenBranch is true. <linebreak/>
+ IPOINT_ANYWHERE is not supported and will result an error. <linebreak/>
+ action value must be identical to the value passed to the corresponding <ref refid="group__INS__INSTRUMENTATION_1gaf88934525048d52d54a76f02d1ec3cf0" kindref="member">INS_InsertThenCall</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Insert a call to funptr. Its return type must be ADDRINT </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of arguments to pass funptr. See <ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>, terminated with IARG_END</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If more than one call is inserted for the same instruction, the order is determined by <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref>. For more information, see <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1657" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1657" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1gaf88934525048d52d54a76f02d1ec3cf0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertThenCall</definition>
+        <argsstring>(INS ins, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>INS_InsertThenCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to funptr relative to an INS. The function is called only if the immediately preceding &quot;if&quot; analysis call returns a non-zero value.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instruction to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies before, after, etc. <linebreak/>
+ IPOINT_BEFORE is always valid for all instructions. <linebreak/>
+ IPOINT_AFTER is valid only when a fall-through exists (i.e. Calls and unconditional branches will fail). It is only allowed when INS_IsValidForIpointAfter(ins) is true. <linebreak/>
+ IPOINT_TAKEN_BRANCH is invalid for non-branches. It is only allowed when INS_IsValidForIpointTakenBranch is true. <linebreak/>
+ IPOINT_ANYWHERE is not supported and will result an error. <linebreak/>
+ action value must be identical to the value passed to the corresponding <ref refid="group__INS__INSTRUMENTATION_1ga3b589b45d857832458ca84ac5b6f04be" kindref="member">INS_InsertIfCall</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Insert a call to funptr </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of arguments to pass funptr. See <ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>, terminated with IARG_END</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If more than one call is inserted for the same instruction, the order is determined by <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref>. For more information, see <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1685" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1685" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1gac83cf4d3b530e2554c85c1428c3cb07c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertIfPredicatedCall</definition>
+        <argsstring>(INS ins, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>INS_InsertIfPredicatedCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to funptr relative to an INS. If funptr returns a non-zero ADDRINT and the instruction has a true predicate, then the immediately following &quot;then&quot; analysis call is executed. If the instruction is not predicated, then this function is identical to <ref refid="group__INS__INSTRUMENTATION_1ga3b589b45d857832458ca84ac5b6f04be" kindref="member">INS_InsertIfCall</ref>.</para>
+<para>Note that funptr <emphasis>may</emphasis> be called even if the predicate is false, the predicate is only defined to guard the execution of the following THEN function. (So if the function inserted here modifies the machine state it might affect the value of the predicate. Best practice is not to modify machine state here!)</para>
+<para>On IA32 and Intel64, the sequences <programlisting><codeline><highlight class="normal">INS_InsertIfCall(...);</highlight></codeline>
+<codeline><highlight class="normal">INS_InsertThenPredicatedCall(...);</highlight></codeline>
+</programlisting> <programlisting><codeline><highlight class="normal">INS_InsertIfPredicatedCall(...);</highlight></codeline>
+<codeline><highlight class="normal">INS_InsertThenCall(...);</highlight></codeline>
+</programlisting> and <programlisting><codeline><highlight class="normal">INS_InsertIfPredicatedCall(...);</highlight></codeline>
+<codeline><highlight class="normal">INS_InsertThenPredicatedCall(...);</highlight></codeline>
+</programlisting></para>
+<para>produce identical results. They all generate code which can be represented like this <programlisting><codeline><highlight class="normal">if<sp/>(UsersIfFunction(...))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(predicate)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UsersThenFunction(...);</highlight></codeline>
+</programlisting> However on other architectures the behavior may be different, and the &quot;IF&quot; call need not always be called.</para>
+<para>This means that on IA32 and Intel64 the user&apos;s IF code is always called, however on these architectures that is very likely to generate faster code, since predicated instructions are rare. The dynamically most important predicated instructions are almost certainly REP MOVS, which have a very low (~80ppm) probablity of being predicated false. Unless the user&apos;s IF code is very large, or has a lower probability of filtering the execution, it is always better to use the test of the user condition to prevent execution of the predicate test. Of course, the code included in a user IF call is expected to be small, since the objective of INS_InsertIfCall, INS_InsertThenCall is to allow the code in the IF to be inlined.</para>
+<para>If you need to know the instruction predicate inside the IF call, you should pass IARG_EXECUTING as an argument and test it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instruction to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies before, after, etc. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a7c7cbebb7a62a40e9f803b1db2e6ce20" kindref="member">IPOINT_BEFORE</ref> is always valid for all instructions. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a42eff26179c6d87348abe492301c12ec" kindref="member">IPOINT_AFTER</ref> is valid only when a fall-through exists (i.e. Calls and unconditional branches will fail). It is only allowed when INS_IsValidForIpointAfter(ins) is true. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a5ef5b45901a8447e5173f50746ab029d" kindref="member">IPOINT_TAKEN_BRANCH</ref> is invalid for non-branches. It is only allowed when INS_IsValidForIpointTakenBranch is true. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Insert a call to funptr. Its return type must be ADDRINT </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of arguments to pass funptr. See <ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>, terminated with IARG_END</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If more than one call is inserted for the same instruction, the order is determined by <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref>. For more information, see <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1756" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1756" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1ga92b34e94caff1d253350efd068e329f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertThenPredicatedCall</definition>
+        <argsstring>(INS ins, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>INS_InsertThenPredicatedCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to funptr relative to an INS. The function is called only if the immediately preceding &quot;if&quot; analysis call returns a non-zero value and the instruction&apos;s predicate is true. See <ref refid="group__INS__INSTRUMENTATION_1gac83cf4d3b530e2554c85c1428c3cb07c" kindref="member">INS_InsertIfPredicatedCall</ref> for details of the semantics of mixing <ref refid="group__INS__INSTRUMENTATION_1ga92b34e94caff1d253350efd068e329f2" kindref="member">INS_InsertThenPredicatedCall</ref> with <ref refid="group__INS__INSTRUMENTATION_1ga3b589b45d857832458ca84ac5b6f04be" kindref="member">INS_InsertIfCall</ref> (and all the other possibilities).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instruction to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies before, after, etc. <linebreak/>
+ IPOINT_BEFORE is always valid for all instructions. <linebreak/>
+ IPOINT_AFTER is valid only when a fall-through exists (i.e. Calls and unconditional branches will fail). It is only allowed when INS_IsValidForIpointAfter(ins) is true. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a5ef5b45901a8447e5173f50746ab029d" kindref="member">IPOINT_TAKEN_BRANCH</ref> is invalid for non-branches. It is only allowed when INS_IsValidForIpointTakenBranch is true. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Insert a call to funptr </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of arguments to pass funptr. See <ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>, terminated with IARG_END</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If more than one call is inserted for the same instruction, the order is determined by <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref>. For more information, see <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1783" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1783" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1ga097198320639318c65fa1ee815cbbe0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertFillBuffer</definition>
+        <argsstring>(INS ins, IPOINT action, BUFFER_ID id,...)</argsstring>
+        <name>INS_InsertFillBuffer</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert analysis code to fill one record in a trace buffer whenever an application instruction executes.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The application instruction. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells whether the record is filled before or after the instruction. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the buffer whose record is filled. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Additional arguments to specify the fields of the trace buffer. These additional arguments take the form: IARG_TYPE arg, [optional IARG parameters], size_t offset, ..., IARG_END The \i arg argument specifies the value to write to the trace record field. The \i offset argument specifies the offset (in bytes) from the start of the trace record to this field. Typically, you would use &quot;offsetof()&quot; for this. if \i arg requires additional parameters, they come before \i offset.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Certain IARG_TYPEs cannot be used with the *_InsertFillBuffer APIs. The unsupported IARG_TYPEs are: IARG_CONTEXT, IARG_REG_REFERENCE, IARG_REG_CONST_REFERENCE, IARG_MULTI_ELEMENT_OPERAND and IARG_REWRITE_SCATTERED_MEMOP.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2960" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2960" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1gaf8750c3e9aa6ac8d2170d09e8867c473" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertFillBufferPredicated</definition>
+        <argsstring>(INS ins, IPOINT action, BUFFER_ID id,...)</argsstring>
+        <name>INS_InsertFillBufferPredicated</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert analysis code to fill one record in a trace buffer whenever an application instruction executes, based on that instruction&apos;s predicate.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The application instruction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the record is filled before or after the instruction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the buffer whose record is filled </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Additional arguments to specify the fields of the trace buffer.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Certain IARG_TYPEs cannot be used with the *_InsertFillBuffer APIs. The unsupported IARG_TYPEs are: IARG_CONTEXT, IARG_REG_REFERENCE, IARG_REG_CONST_REFERENCE, IARG_MULTI_ELEMENT_OPERAND and IARG_REWRITE_SCATTERED_MEMOP.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2982" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2982" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSTRUMENTATION_1gad5a12904140ae5135f7ba8bca8f9df3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertFillBufferThen</definition>
+        <argsstring>(INS ins, IPOINT action, BUFFER_ID id,...)</argsstring>
+        <name>INS_InsertFillBufferThen</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert analysis code to fill one record in a trace buffer whenever an application instruction executes. The record is only inserted if the preceding &quot;if&quot; analysis call returns a non-zero value.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The application instruction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the record is filled before or after the instruction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the buffer whose record is to filled </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Additional arguments to specify the fields of the trace buffer.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Certain IARG_TYPEs cannot be used with the *_InsertFillBuffer APIs. The unsupported IARG_TYPEs are: IARG_CONTEXT, IARG_REG_REFERENCE, IARG_REG_CONST_REFERENCE, IARG_MULTI_ELEMENT_OPERAND and IARG_REWRITE_SCATTERED_MEMOP.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3005" column="13" declfile="Source/pin/pin/pin_client.PH" declline="3005" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Use these functions to instrument instructions. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

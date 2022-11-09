@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="ins__xed__ia32_8PH" kind="file" language="C++">
+    <compoundname>ins_xed_ia32.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ins__xed__ia32_8PH_1abcfbbee4c3c3a52fa3e6dc39231b4f11" prot="public" static="no">
+        <name>PIN_G_INS_XED_IA32_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_xed_ia32.PH" line="9" column="10" bodyfile="Source/pin/core_ia32/ins_xed_ia32.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga14e917d264aacc2b8e7e95963f768ccc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>xed_decoded_inst_t *</type>
+        <definition>xed_decoded_inst_t* INS_XedDec</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_XedDec</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Intel(R) X86 Encoder Decoder low-level support routines.</para>
+<para>This supports the other core_ia32 files and is the lowest level interface to Intel(R) XED encoding/decoding.</para>
+<para><simplesect kind="return"><para>This provides the pointer to the decoded Intel(R) X86 Encoder Decoder instruction. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_xed_ia32.PH" line="19" column="27" declfile="Source/pin/core_ia32/ins_xed_ia32.PH" declline="19" declcolumn="27"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga1ec5f46a0bd404ae2d9e04823f79072c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG INS_XedExactMapToPinReg</definition>
+        <argsstring>(xed_reg_enum_t xed_reg)</argsstring>
+        <name>INS_XedExactMapToPinReg</name>
+        <param>
+          <type>xed_reg_enum_t</type>
+          <declname>xed_reg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a Intel(R) X86 Encoder Decoder xed_reg_enum_t register to a Pin REG type. <simplesect kind="return"><para>a valid pin register, but never an invalid one. Asserts if there is no exact map. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_xed_ia32.PH" line="25" column="12" declfile="Source/pin/core_ia32/ins_xed_ia32.PH" declline="25" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga37648c4d7d964df9973969c497f7eb90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API <ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>PIN_DEPRECATED_API REG INS_XedExactMapToPinReg</definition>
+        <argsstring>(unsigned int r)</argsstring>
+        <name>INS_XedExactMapToPinReg</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a Intel(R) X86 Encoder Decoder xed_reg_enum_t register to a Pin REG type. <simplesect kind="return"><para>a valid pin register, but never an invalid one. Asserts if there is no exact map. </para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: Use <ref refid="group__INS__INSPECTION_1ga1ec5f46a0bd404ae2d9e04823f79072c" kindref="member">INS_XedExactMapToPinReg(xed_reg_enum_t xed_reg)</ref> instead </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_xed_ia32.PH" line="32" column="31" declfile="Source/pin/core_ia32/ins_xed_ia32.PH" declline="32" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaeddde4b64a0009640facf6482bed4850" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>xed_reg_enum_t</type>
+        <definition>xed_reg_enum_t INS_XedExactMapFromPinReg</definition>
+        <argsstring>(REG pin_reg)</argsstring>
+        <name>INS_XedExactMapFromPinReg</name>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>pin_reg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert Pin REG type (application register) to an Intel(R) X86 Encoder Decoder xed_reg_enum_t register. <simplesect kind="return"><para>xed reg mapping to pin reg. if no map returns XED_REG_INVALID </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_xed_ia32.PH" line="39" column="23" declfile="Source/pin/core_ia32/ins_xed_ia32.PH" declline="39" declcolumn="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2022<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_INS_XED_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>ins_xed_ia32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_INS_XED_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>xed_decoded_inst_t*<sp/><ref refid="group__INS__INSPECTION_1ga14e917d264aacc2b8e7e95963f768ccc" kindref="member">INS_XedDec</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__INS__INSPECTION_1ga1ec5f46a0bd404ae2d9e04823f79072c" kindref="member">INS_XedExactMapToPinReg</ref>(xed_reg_enum_t<sp/>xed_reg);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>PIN_DEPRECATED_API<sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__INS__INSPECTION_1ga1ec5f46a0bd404ae2d9e04823f79072c" kindref="member">INS_XedExactMapToPinReg</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>xed_reg_enum_t<sp/><ref refid="group__INS__INSPECTION_1gaeddde4b64a0009640facf6482bed4850" kindref="member">INS_XedExactMapFromPinReg</ref>(<ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/>pin_reg);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_INS_XED_IA32_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/core_ia32/ins_xed_ia32.PH"/>
+  </compounddef>
+</doxygen>

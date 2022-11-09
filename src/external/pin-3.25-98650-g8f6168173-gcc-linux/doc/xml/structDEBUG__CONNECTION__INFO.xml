@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structDEBUG__CONNECTION__INFO" kind="struct" language="C++" prot="public">
+    <compoundname>DEBUG_CONNECTION_INFO</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structDEBUG__CONNECTION__INFO_1aad048415716dec2a5858fb0b82783bf1" prot="public" static="no" mutable="no">
+        <type><ref refid="group__APPDEBUG_1ga25f41d731fbc522fea67abd02f9c04c6" kindref="member">DEBUG_CONNECTION_TYPE</ref></type>
+        <definition>DEBUG_CONNECTION_TYPE DEBUG_CONNECTION_INFO::_type</definition>
+        <argsstring></argsstring>
+        <name>_type</name>
+        <briefdescription>
+<para>Tells the type of debugger connection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1060" column="27" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1060" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUG__CONNECTION__INFO_1a784ff40a14b8040481ca67f63dba8727" prot="public" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL DEBUG_CONNECTION_INFO::_stopAtEntry</definition>
+        <argsstring></argsstring>
+        <name>_stopAtEntry</name>
+        <briefdescription>
+<para>TRUE if Pin stops in debugger at first instruction (-appdebug). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1061" column="10" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1061" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUG__CONNECTION__INFO_1ae609e439aec43105a9373b0979653071" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="struct__tcpServerStruct" kindref="compound">_tcpServerStruct</ref></type>
+        <definition>struct _tcpServerStruct DEBUG_CONNECTION_INFO::_tcpServer</definition>
+        <argsstring></argsstring>
+        <name>_tcpServer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1061" column="10" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1067" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUG__CONNECTION__INFO_1ae5d55610a3c59e5b194cf8b1ff16361d" prot="public" static="no" mutable="no">
+        <type>union DEBUG_CONNECTION_INFO::@1</type>
+        <definition>union DEBUG_CONNECTION_INFO::@1 DEBUG_CONNECTION_INFO::@2</definition>
+        <argsstring></argsstring>
+        <name>@2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1068" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Information that an external application level debugger needs in order to connect to Pin. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>_tcpServerStruct</label>
+        <link refid="struct__tcpServerStruct"/>
+      </node>
+      <node id="1">
+        <label>DEBUG_CONNECTION_INFO</label>
+        <link refid="structDEBUG__CONNECTION__INFO"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_tcpServer</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/include/types_vmapi.PH" line="1059" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1058" bodyend="1069"/>
+    <listofallmembers>
+      <member refid="structDEBUG__CONNECTION__INFO_1a784ff40a14b8040481ca67f63dba8727" prot="public" virt="non-virtual"><scope>DEBUG_CONNECTION_INFO</scope><name>_stopAtEntry</name></member>
+      <member refid="structDEBUG__CONNECTION__INFO_1ae609e439aec43105a9373b0979653071" prot="public" virt="non-virtual"><scope>DEBUG_CONNECTION_INFO</scope><name>_tcpServer</name></member>
+      <member refid="structDEBUG__CONNECTION__INFO_1aad048415716dec2a5858fb0b82783bf1" prot="public" virt="non-virtual"><scope>DEBUG_CONNECTION_INFO</scope><name>_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__OS__APIS__TYPES" kind="group">
+    <compoundname>OS_APIS_TYPES</compoundname>
+    <title>Data types</title>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__OS__APIS__TYPES_1ga9e15fd2d422b99da6f35cd2fb3f2fe8e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>TRI</name>
+        <enumvalue id="group__OS__APIS__TYPES_1gga9e15fd2d422b99da6f35cd2fb3f2fe8ea64a89fe35f6ec4bc99667feb92b0a25a" prot="public">
+          <name>TRI_YES</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__TYPES_1gga9e15fd2d422b99da6f35cd2fb3f2fe8ea9b8a57235847d34cb5759d5399fe3f04" prot="public">
+          <name>TRI_NO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__TYPES_1gga9e15fd2d422b99da6f35cd2fb3f2fe8eaa6bfaad0435f6422c2777235c5f6d3d5" prot="public">
+          <name>TRI_MAYBE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generic type for three-state logic. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="60" column="1" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="59" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char BOOL_T</definition>
+        <argsstring></argsstring>
+        <name>BOOL_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data type for boolean </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="33" column="23" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT NATIVE_FD</definition>
+        <argsstring></argsstring>
+        <name>NATIVE_FD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generic data type to refer to a kernel file object. This is actually an HANDLE in Windows, and a file descriptor (int) on Unix systems. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="156" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" prot="public" static="no">
+        <type>UINT32</type>
+        <definition>typedef UINT32 NATIVE_PID</definition>
+        <argsstring></argsstring>
+        <name>NATIVE_PID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data type that can hold a process ID. On OS-APIs all processes can be refered to by their PIDs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="162" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" prot="public" static="no">
+        <type>UINT32</type>
+        <definition>typedef UINT32 NATIVE_TID</definition>
+        <argsstring></argsstring>
+        <name>NATIVE_TID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data type that can hold a thread ID. On OS-APIs all threads can be refered to by their TIDs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="168" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" prot="public" static="no">
+        <name>CPU_MEMORY_CACHELINE_SIZE</name>
+        <initializer>64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the memory cache line in a single core. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="191" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__OS__APIS__TYPES_1gaba24282e553fe81db10c5299f9995746" prot="public" static="no">
+        <name>FILENAME_BUF_SIZE</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the file name buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="196" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains data-type definitions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>this headerfile contains defines the types that are the foundation of other code </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

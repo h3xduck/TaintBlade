@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="struct__tcpClientStruct" kind="struct" language="C++" prot="public">
+    <compoundname>_tcpClientStruct</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__tcpClientStruct_1a8a1d05343e60bd2df2b6d84cb4894fe8" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* _tcpClientStruct::_ip</definition>
+        <argsstring></argsstring>
+        <name>_ip</name>
+        <briefdescription>
+<para>IP address of machine running debugger (dot decimal format). NULL for local machine. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1076" column="16" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1076" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__tcpClientStruct_1af80ec20e2fa6f6ef4b43bcc0f8e77d2c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int _tcpClientStruct::_tcpPort</definition>
+        <argsstring></argsstring>
+        <name>_tcpPort</name>
+        <briefdescription>
+<para>TCP port that debugger is listening on, waiting for a connection from Pin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1077" column="9" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1077" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Information for DEBUG_CONNECTION_TYPE_TCP_CLIENT. </para>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="1075" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1074" bodyend="1078"/>
+    <listofallmembers>
+      <member refid="struct__tcpClientStruct_1a8a1d05343e60bd2df2b6d84cb4894fe8" prot="public" virt="non-virtual"><scope>_tcpClientStruct</scope><name>_ip</name></member>
+      <member refid="struct__tcpClientStruct_1af80ec20e2fa6f6ef4b43bcc0f8e77d2c" prot="public" virt="non-virtual"><scope>_tcpClientStruct</scope><name>_tcpPort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

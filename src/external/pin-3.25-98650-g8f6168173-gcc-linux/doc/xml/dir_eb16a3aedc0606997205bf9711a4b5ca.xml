@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_eb16a3aedc0606997205bf9711a4b5ca" kind="dir">
+    <compoundname>pin</compoundname>
+    <innerfile refid="child__process__client_8PH">child_process_client.PH</innerfile>
+    <innerfile refid="debug_8PH">debug.PH</innerfile>
+    <innerfile refid="debugger__client_8PH">debugger_client.PH</innerfile>
+    <innerfile refid="deprecated__client_8PH">deprecated_client.PH</innerfile>
+    <innerfile refid="image_8PH">image.PH</innerfile>
+    <innerfile refid="internal__exception__client_8PH">internal_exception_client.PH</innerfile>
+    <innerfile refid="opin__client_8PH">opin_client.PH</innerfile>
+    <innerfile refid="pin__client_8PH">pin_client.PH</innerfile>
+    <innerfile refid="pin__client__replay_8PH">pin_client_replay.PH</innerfile>
+    <innerfile refid="stopped__thread__client_8PH">stopped_thread_client.PH</innerfile>
+    <innerfile refid="sym__undecorate_8PH">sym_undecorate.PH</innerfile>
+    <innerfile refid="thread__client_8PH">thread_client.PH</innerfile>
+    <innerfile refid="tls__client_8PH">tls_client.PH</innerfile>
+    <innerfile refid="versions__client_8PH">versions_client.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/pin/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_6a94ba81a2bc027b3fc630d13d589428" kind="dir">
+    <compoundname>libunwind</compoundname>
+    <innerdir refid="dir_368bd17e59d3f53e38509afcc28cad43">pin_include</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/bionic/libunwind/"/>
+  </compounddef>
+</doxygen>

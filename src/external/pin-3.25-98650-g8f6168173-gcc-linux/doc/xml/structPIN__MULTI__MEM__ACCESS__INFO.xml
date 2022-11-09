@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structPIN__MULTI__MEM__ACCESS__INFO" kind="struct" language="C++" prot="public">
+    <compoundname>PIN_MULTI_MEM_ACCESS_INFO</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPIN__MULTI__MEM__ACCESS__INFO_1a09932956463069d70e36fc48292153bc" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_MULTI_MEM_ACCESS_INFO::numberOfMemops</definition>
+        <argsstring></argsstring>
+        <name>numberOfMemops</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="854" column="12" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="854" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MULTI__MEM__ACCESS__INFO_1a0419cf90e33270d5782346faf12af476" prot="public" static="no" mutable="no">
+        <type><ref refid="structPIN__MEM__ACCESS__INFO" kindref="compound">PIN_MEM_ACCESS_INFO</ref></type>
+        <definition>PIN_MEM_ACCESS_INFO PIN_MULTI_MEM_ACCESS_INFO::memop[MAX_MULTI_MEMOPS]</definition>
+        <argsstring>[MAX_MULTI_MEMOPS]</argsstring>
+        <name>memop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="856" column="25" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="856" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>address of this Type is passed to analysis routine when IARG_MULTI_MEMORYACCESS_EA is requested </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PIN_MULTI_MEM_ACCESS_INFO</label>
+        <link refid="structPIN__MULTI__MEM__ACCESS__INFO"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>memop</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PIN_MEM_ACCESS_INFO</label>
+        <link refid="structPIN__MEM__ACCESS__INFO"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/include/types_vmapi.PH" line="853" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="852" bodyend="857"/>
+    <listofallmembers>
+      <member refid="structPIN__MULTI__MEM__ACCESS__INFO_1a0419cf90e33270d5782346faf12af476" prot="public" virt="non-virtual"><scope>PIN_MULTI_MEM_ACCESS_INFO</scope><name>memop</name></member>
+      <member refid="structPIN__MULTI__MEM__ACCESS__INFO_1a09932956463069d70e36fc48292153bc" prot="public" virt="non-virtual"><scope>PIN_MULTI_MEM_ACCESS_INFO</scope><name>numberOfMemops</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

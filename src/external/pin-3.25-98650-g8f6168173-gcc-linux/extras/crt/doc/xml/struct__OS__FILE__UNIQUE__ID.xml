@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="struct__OS__FILE__UNIQUE__ID" kind="struct" language="C++" prot="public">
+    <compoundname>_OS_FILE_UNIQUE_ID</compoundname>
+    <includes local="no">file.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__OS__FILE__UNIQUE__ID_1a6008d9c59b753201928ca14fc67b0b79" prot="public" static="no" mutable="no">
+        <type>UINT64</type>
+        <definition>UINT64 _OS_FILE_UNIQUE_ID::_reserved[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>_reserved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/file.h" line="81" column="12" bodyfile="Source/os-apis/00-export-include/os-apis/file.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Machine unique ID for file </para>
+    </detaileddescription>
+    <location file="Source/os-apis/00-export-include/os-apis/file.h" line="80" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/file.h" bodystart="79" bodyend="82"/>
+    <listofallmembers>
+      <member refid="struct__OS__FILE__UNIQUE__ID_1a6008d9c59b753201928ca14fc67b0b79" prot="public" virt="non-virtual"><scope>_OS_FILE_UNIQUE_ID</scope><name>_reserved</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

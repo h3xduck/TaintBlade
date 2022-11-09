@@ -1,0 +1,631 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__SEC" kind="group">
+    <compoundname>SEC</compoundname>
+    <title>SEC: Section Object</title>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__SEC_1ga7fc7b3d12ebe2f3b13fe0bf7e3b1542e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>SEC_TYPE</name>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac05c2d91c8a367d4570f14de50f5486d" prot="public">
+          <name>SEC_TYPE_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea3077ea419514ee9bd1fe9f2fe28bf012" prot="public">
+          <name>SEC_TYPE_UNUSED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac7b401ad28292a5bf7728af5c827d78d" prot="public">
+          <name>SEC_TYPE_REGREL</name>
+          <briefdescription>
+<para>relocations </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea47a996e48703561a7c9a5d6eb0b7ec20" prot="public">
+          <name>SEC_TYPE_DYNREL</name>
+          <briefdescription>
+<para>dynamic relocations </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae553adef7efca3121cb283c919b2eab3" prot="public">
+          <name>SEC_TYPE_EXEC</name>
+          <briefdescription>
+<para>contains code </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae7cac3976003e7709bf90c1e5e8a250e" prot="public">
+          <name>SEC_TYPE_DATA</name>
+          <briefdescription>
+<para>contains initialized data </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabcae1ce13af94497e106ef7978f57163" prot="public">
+          <name>SEC_TYPE_DYNAMIC</name>
+          <briefdescription>
+<para>Dynamic linking information (.dynamic) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eab68fd502b63888dd7b8668a0f6609405" prot="public">
+          <name>SEC_TYPE_OPD</name>
+          <briefdescription>
+<para>contains the official procedure descriptors. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea58ee2e8fec4ecbe67bbafe334f5c389b" prot="public">
+          <name>SEC_TYPE_GOT</name>
+          <briefdescription>
+<para>Global offset table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eaf1970987650dc6078cf78cc41057c9f5" prot="public">
+          <name>SEC_TYPE_STACK</name>
+          <briefdescription>
+<para>Stack segment. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea5f15f77c471eb84ac084eb8aea3364cd" prot="public">
+          <name>SEC_TYPE_PLTOFF</name>
+          <briefdescription>
+<para>The procedure linking table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae3b05fb766daef420a0ac47d763129f4" prot="public">
+          <name>SEC_TYPE_HASH</name>
+          <briefdescription>
+<para>A symbol hash table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea7fbd6c5232c7f2f26e591f963e57995a" prot="public">
+          <name>SEC_TYPE_LSDA</name>
+          <briefdescription>
+<para>old exception_info (obsolete) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea7b2513080fff4d6622a5efdb3f6bd535" prot="public">
+          <name>SEC_TYPE_UNWIND</name>
+          <briefdescription>
+<para>Stack unwind information. (exception handling) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eacecf9b4d2b2002bc9fe30c65f075215d" prot="public">
+          <name>SEC_TYPE_UNWINDINFO</name>
+          <briefdescription>
+<para>Stack unwind information. (exception handling) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabedd7362c860c2d690e99ff20115339e" prot="public">
+          <name>SEC_TYPE_REGSYM</name>
+          <briefdescription>
+<para>Static symbol table (.symtab) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabfdd6ff633a9a5a8bcc71752474efe04" prot="public">
+          <name>SEC_TYPE_DYNSYM</name>
+          <briefdescription>
+<para>Dynamic linking symbol table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae0852da9ff9074ed89cfe220d5273e23" prot="public">
+          <name>SEC_TYPE_DEBUG</name>
+          <briefdescription>
+<para>Contains debugging information. <linebreak/>
+ </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea924ebfacf6bb87031823762cac6cabfe" prot="public">
+          <name>SEC_TYPE_BSS</name>
+          <briefdescription>
+<para>contains uninitialized data </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea037cadbcc66d20ac97098a9a3e618db3" prot="public">
+          <name>SEC_TYPE_SYMSTR</name>
+          <briefdescription>
+<para>String table section (.strtab) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eaf983da13d0ec5f8ddee5cfd923fd44ee" prot="public">
+          <name>SEC_TYPE_DYNSTR</name>
+          <briefdescription>
+<para>Dynamic linking string table (.dynstr) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae9e2e53be189b742db7edbd51aa7aba1" prot="public">
+          <name>SEC_TYPE_SECSTR</name>
+          <briefdescription>
+<para>Section header string table. (.shstrtab) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea0ac946fc7c1f35b815d3b9fcd69fc108" prot="public">
+          <name>SEC_TYPE_COMMENT</name>
+          <briefdescription>
+<para>contains version control information. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea9cb3505b9e01cc4705c4e900e1f3e5c1" prot="public">
+          <name>SEC_TYPE_LOOS</name>
+          <briefdescription>
+<para>OS specific. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac7f4657ed8fe6bf8e53a8d7b320e3959" prot="public">
+          <name>SEC_TYPE_USER</name>
+          <briefdescription>
+<para>Application specific. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea3ec46bb89ed4147f1085245d9f04350f" prot="public">
+          <name>SEC_TYPE_PROC</name>
+          <briefdescription>
+<para>Processor specific. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea272bc6d85c77672c497bf0878ea2925b" prot="public">
+          <name>SEC_TYPE_LAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains <ref refid="group__SEC" kindref="compound">SEC: Section Object</ref> and Mapping primitives</para>
+<para>SEC types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/sec.PH" line="17" column="1" bodyfile="Source/pin/core/sec.PH" bodystart="16" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__SEC_1gac542c5ae233d0c42d2eaf1faacef5a82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG SEC_Img</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Img</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Image that contains this section</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="437" column="12" declfile="Source/pin/pin/image.PH" declline="437" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga1b5419aa605f3d8d2a67bc39273c4702" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEC</type>
+        <definition>SEC SEC_Next</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Next</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Section that follows x, or <ref refid="group__SEC_1ga3ffd6d6c315bc044167b1ff53262470c" kindref="member">SEC_Invalid()</ref> is x is last section in the image</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="447" column="12" declfile="Source/pin/pin/image.PH" declline="447" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga50ae8d91ee870b9904f341f706657588" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEC</type>
+        <definition>SEC SEC_Prev</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Prev</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Previous section of x, or <ref refid="group__SEC_1ga3ffd6d6c315bc044167b1ff53262470c" kindref="member">SEC_Invalid()</ref> if x is the first in the image</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="457" column="12" declfile="Source/pin/pin/image.PH" declline="457" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga3ffd6d6c315bc044167b1ff53262470c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEC</type>
+        <definition>SEC SEC_Invalid</definition>
+        <argsstring>()</argsstring>
+        <name>SEC_Invalid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Invalid section value</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="467" column="12" declfile="Source/pin/pin/image.PH" declline="467" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga39bbbb0d30fc82506540d39d2fc1dc1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SEC_Valid</definition>
+        <argsstring>(SEC x)</argsstring>
+        <name>SEC_Valid</name>
+        <param>
+          <type>SEC</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is not <ref refid="group__SEC_1ga3ffd6d6c315bc044167b1ff53262470c" kindref="member">SEC_Invalid()</ref></para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="477" column="13" declfile="Source/pin/pin/image.PH" declline="477" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga83f823574b987c84827acd508b6df53f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>RTN</type>
+        <definition>RTN SEC_RtnHead</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_RtnHead</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>First RTN of x, or <ref refid="group__RTN_1ga2e23300e596b670a387ad7b3ed9c8d59" kindref="member">RTN_Invalid()</ref> if no RTNs</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="487" column="12" declfile="Source/pin/pin/image.PH" declline="487" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1gaffa1bb4f87ad3b6e7263a9f4b3c0ab30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>RTN</type>
+        <definition>RTN SEC_RtnTail</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_RtnTail</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Last RTN of x, or <ref refid="group__RTN_1ga2e23300e596b670a387ad7b3ed9c8d59" kindref="member">RTN_Invalid()</ref> if no RTNs</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="497" column="12" declfile="Source/pin/pin/image.PH" declline="497" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1gac9f957818ba035d1d365ea95e7875bb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; SEC_Name</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Name</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Section name</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="507" column="26" declfile="Source/pin/pin/image.PH" declline="507" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1gae44a85e614a3b05a950ac81e3c6cc7c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__SEC_1ga7fc7b3d12ebe2f3b13fe0bf7e3b1542e" kindref="member">SEC_TYPE</ref></type>
+        <definition>SEC_TYPE SEC_Type</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Type</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Section type</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="517" column="17" declfile="Source/pin/pin/image.PH" declline="517" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga73822e20bc73df6d74f0f31e50db26a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SEC_Mapped</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Mapped</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if section is mapped in memory, unmapped section contain data not needed at run time, like debug information</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="527" column="13" declfile="Source/pin/pin/image.PH" declline="527" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga126f11c6a7c886168fc517e60d053545" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const VOID *</type>
+        <definition>const VOID* SEC_Data</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Data</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Return a pointer to the raw data for the section</para>
+</simplesect>
+On Linux, Pin maps the whole image file for processing. The pointer returned by <ref refid="group__SEC_1ga126f11c6a7c886168fc517e60d053545" kindref="member">SEC_Data()</ref> points inside the mapped file. Note, <ref refid="group__SEC_1ga126f11c6a7c886168fc517e60d053545" kindref="member">SEC_Data()</ref> pointer is always between <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> and <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> + <ref refid="group__IMG_1ga76799de259e3c3b0873a9d4c81745e1c" kindref="member">IMG_SizeMapped()</ref>. If you are analyzing image in image-load callback, please remember that the image will be unmapped after the callback returns and the pointer provided by <ref refid="group__SEC_1ga126f11c6a7c886168fc517e60d053545" kindref="member">SEC_Data()</ref> becomes invalid. If you are working with <ref refid="group__IMG_1ga0a2ed1c58e7215da29194d1800ceee86" kindref="member">IMG_Open()</ref> the pointer is valid until <ref refid="group__IMG_1ga93a7a90e8bba62212028ed33bbfe83b2" kindref="member">IMG_Close()</ref>.</para>
+<para>If section does not have raw data the function returns 0.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="546" column="19" declfile="Source/pin/pin/image.PH" declline="546" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga22539f22877029495af9b7bcc2bed05d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT SEC_Address</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Address</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Address in memory of sec</para>
+</simplesect>
+If image is loaded by system loader, the real virtual address of section will be returned. If the image is mapped by <ref refid="group__IMG_1ga0a2ed1c58e7215da29194d1800ceee86" kindref="member">IMG_Open()</ref> the address will be inside the mapped image. On Unix, if the section is not loadable, 0 will be returned in the both cases. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1320" column="16" declfile="Source/pin/pin/image.PH" declline="1320" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1ga7250812be76096d1f7164ab0d863896c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SEC_IsReadable</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_IsReadable</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if section is readable </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1325" column="13" declfile="Source/pin/pin/image.PH" declline="1325" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1gac00ebe99a13ad14af6a9309c1beb3311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SEC_IsWriteable</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_IsWriteable</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if section is writable </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1330" column="13" declfile="Source/pin/pin/image.PH" declline="1330" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1gac203291f24113eaa74ab022c1a8d1b80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SEC_IsExecutable</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_IsExecutable</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if section is executable </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1335" column="13" declfile="Source/pin/pin/image.PH" declline="1335" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SEC_1gaf2b76e650b100d4dfd2003893a8b3774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>USIZE</type>
+        <definition>USIZE SEC_Size</definition>
+        <argsstring>(SEC sec)</argsstring>
+        <name>SEC_Size</name>
+        <param>
+          <type>SEC</type>
+          <declname>sec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Size of section </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1340" column="14" declfile="Source/pin/pin/image.PH" declline="1340" declcolumn="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A SEC is modeled after the sections found inside elf images. Can be accessed at instrumentation time and analysis time.</para>
+<para>SECs can be mapped or unmapped, a mapped SEC occupies address space inside the IMG. Unmapped SECs often contain debug and relocation information.<linebreak/>
+APIs from this group are available in any thread, including any internal thread spawned by the tool.</para>
+<para>Iteration idioms:</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Forward<sp/>pass<sp/>over<sp/>all<sp/>sections<sp/>in<sp/>an<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">for(<sp/>SEC<sp/>sec=<sp/>IMG_SecHead(img);<sp/>SEC_Valid(sec);<sp/>sec<sp/>=<sp/>SEC_Next(sec)<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Reverse<sp/>pass<sp/>over<sp/>all<sp/>sections<sp/>in<sp/>animage</highlight></codeline>
+<codeline><highlight class="normal">for(<sp/>SEC<sp/>sec=<sp/>IMG_SecTail(img);<sp/>SEC_Valid(sec);<sp/>sec<sp/>=<sp/>SEC_Prev(sec)<sp/>)</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

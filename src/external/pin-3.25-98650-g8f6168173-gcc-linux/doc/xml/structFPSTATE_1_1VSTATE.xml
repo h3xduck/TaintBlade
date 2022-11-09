@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structFPSTATE_1_1VSTATE" kind="struct" language="C++" prot="public">
+    <compoundname>FPSTATE::VSTATE</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structFPSTATE_1_1VSTATE_1a97f4aa8bd7d82bcae25aab5d661f85e2" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::VSTATE::_bndRegs</definition>
+        <argsstring>[64]</argsstring>
+        <name>_bndRegs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="66" column="15" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1VSTATE_1ab5c63aa1720080bae0d65ed185ceb363" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::VSTATE::_bndCSR</definition>
+        <argsstring>[64]</argsstring>
+        <name>_bndCSR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="67" column="15" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1VSTATE_1ac9707589d228019867c069d09a22fe02" prot="public" static="no" mutable="no">
+        <type>UINT64</type>
+        <definition>UINT64 FPSTATE::VSTATE::_kmasks</definition>
+        <argsstring>[8]</argsstring>
+        <name>_kmasks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="68" column="16" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1VSTATE_1a2def8b893b5892fc035cacd0ae9e6482" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::VSTATE::_zmmUpper</definition>
+        <argsstring>[8 *32]</argsstring>
+        <name>_zmmUpper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="69" column="15" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1VSTATE_1ad84e20bf7df2a987c62b4b08c9f3280c" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::VSTATE::_pad256[8 *32]</definition>
+        <argsstring>[8 *32]</argsstring>
+        <name>_pad256</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="70" column="15" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1VSTATE_1abce438b3a70a71fb45c0acdb87016b72" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::VSTATE::_pad1024[16 *64]</definition>
+        <argsstring>[16 *64]</argsstring>
+        <name>_pad1024</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="71" column="15" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1VSTATE_1a32c45d88d87bddf9299d13779d524b9a" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::VSTATE::_zmms[16 *64]</definition>
+        <argsstring>[16 *64]</argsstring>
+        <name>_zmms</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32e.PH" line="69" column="15" bodyfile="Source/pin/base/fpstate_ia32e.PH" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/fpstate_ia32.PH" line="65" column="1" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="64" bodyend="72"/>
+    <listofallmembers>
+      <member refid="structFPSTATE_1_1VSTATE_1ab5c63aa1720080bae0d65ed185ceb363" prot="public" virt="non-virtual"><scope>FPSTATE::VSTATE</scope><name>_bndCSR</name></member>
+      <member refid="structFPSTATE_1_1VSTATE_1a97f4aa8bd7d82bcae25aab5d661f85e2" prot="public" virt="non-virtual"><scope>FPSTATE::VSTATE</scope><name>_bndRegs</name></member>
+      <member refid="structFPSTATE_1_1VSTATE_1ac9707589d228019867c069d09a22fe02" prot="public" virt="non-virtual"><scope>FPSTATE::VSTATE</scope><name>_kmasks</name></member>
+      <member refid="structFPSTATE_1_1VSTATE_1abce438b3a70a71fb45c0acdb87016b72" prot="public" virt="non-virtual"><scope>FPSTATE::VSTATE</scope><name>_pad1024</name></member>
+      <member refid="structFPSTATE_1_1VSTATE_1ad84e20bf7df2a987c62b4b08c9f3280c" prot="public" virt="non-virtual"><scope>FPSTATE::VSTATE</scope><name>_pad256</name></member>
+      <member refid="structFPSTATE_1_1VSTATE_1a32c45d88d87bddf9299d13779d524b9a" prot="public" virt="non-virtual"><scope>FPSTATE::VSTATE</scope><name>_zmms</name></member>
+      <member refid="structFPSTATE_1_1VSTATE_1a2def8b893b5892fc035cacd0ae9e6482" prot="public" virt="non-virtual"><scope>FPSTATE::VSTATE</scope><name>_zmmUpper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,541 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="level__base_8H" kind="file" language="C++">
+    <compoundname>level_base.H</compoundname>
+    <includes local="yes">foundation.H</includes>
+    <includes local="no">string</includes>
+    <includes local="yes">types_marker.h</includes>
+    <includes local="yes">/tmp_proj/pinjen/workspace/pypl-pin-nightly/GitPin/Source/pin/include/types_foundation.H</includes>
+    <includes local="yes">/tmp_proj/pinjen/workspace/pypl-pin-nightly/GitPin/Source/pin/include/types_foundation.PH</includes>
+    <includes local="no">sys/mman.h</includes>
+    <includes local="no">stdarg.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">map</includes>
+    <includes local="no">set</includes>
+    <includes local="no">vector</includes>
+    <includes refid="pin-errtype_8h" local="yes">pin-errtype.h</includes>
+    <includes local="yes">xed-category-enum.h</includes>
+    <includes local="yes">types_base.H</includes>
+    <includes local="yes">/tmp_proj/pinjen/workspace/pypl-pin-nightly/GitPin/Source/pin/include/types_base.PH</includes>
+    <includes local="yes">base/message.H</includes>
+    <includes local="yes">atomic.hpp</includes>
+    <includes local="no">signal.h</includes>
+    <includes local="yes">os-services.hpp</includes>
+    <includes local="yes">pinsync.hpp</includes>
+    <includes local="yes">pinsync_locker.hpp</includes>
+    <includes local="yes">util.hpp</includes>
+    <includes local="yes">my_elf.h</includes>
+    <includes local="no">elf.h</includes>
+    <includes local="yes">base/lock.H</includes>
+    <includes local="yes">base/errfile.H</includes>
+    <includes local="yes">fpstate_defs_ia32.H</includes>
+    <includes local="yes">base/util.H</includes>
+    <includes local="yes">base/util_unicode.H</includes>
+    <includes local="yes">base/singleton.H</includes>
+    <includes local="yes">base/knob.H</includes>
+    <includes local="yes">base/knobs_base.H</includes>
+    <includes local="yes">base/stat.H</includes>
+    <includes local="yes">base/bigarray.H</includes>
+    <includes local="yes">base/parser.H</includes>
+    <includes local="yes">base/pinstatus.H</includes>
+    <includes local="yes">base/version.H</includes>
+    <includes local="yes">base/reg.H</includes>
+    <includes local="yes">mem/swmalloc.H</includes>
+    <includes local="yes">mem/my_malloc.H</includes>
+    <includes local="yes">base_ia32/reginfo_ia32.H</includes>
+    <includes local="yes">base_ia32/reg_ia32.H</includes>
+    <includes local="yes">base_ia32/reg_partial_ia32.H</includes>
+    <includes local="yes">base_ia32/base_ia32.H</includes>
+    <includes local="yes">base_ia32/cpu_info_ia32.H</includes>
+    <includes local="yes">base_l/fpstate_linux.H</includes>
+    <includes local="yes">base_u/sysfuncs_unix.H</includes>
+    <includes local="yes">base_l/sysfuncs_linux.H</includes>
+    <includes local="yes">base/atomicstats.H</includes>
+    <includes local="yes">base/complexlock.H</includes>
+    <includes local="yes">base/complexlock_impl.H</includes>
+    <includes local="yes">base/tls.H</includes>
+    <includes local="yes">base/exception.H</includes>
+    <includes local="yes">base/child_process.H</includes>
+    <includes local="no">asm/errno.h</includes>
+    <includes local="yes">base_l/linux_proc_maps_reader.H</includes>
+    <includes local="yes">pin/sym_undecorate.H</includes>
+    <incdepgraph>
+      <node id="50">
+        <label>base/atomicstats.H</label>
+      </node>
+      <node id="2">
+        <label>foundation.H</label>
+      </node>
+      <node id="8">
+        <label>stdarg.h</label>
+      </node>
+      <node id="32">
+        <label>base/knob.H</label>
+      </node>
+      <node id="39">
+        <label>base/reg.H</label>
+      </node>
+      <node id="45">
+        <label>base_ia32/base_ia32.H</label>
+      </node>
+      <node id="58">
+        <label>pin/sym_undecorate.H</label>
+      </node>
+      <node id="20">
+        <label>os-services.hpp</label>
+      </node>
+      <node id="28">
+        <label>fpstate_defs_ia32.H</label>
+      </node>
+      <node id="29">
+        <label>base/util.H</label>
+      </node>
+      <node id="7">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="41">
+        <label>mem/my_malloc.H</label>
+      </node>
+      <node id="34">
+        <label>base/stat.H</label>
+      </node>
+      <node id="30">
+        <label>base/util_unicode.H</label>
+      </node>
+      <node id="25">
+        <label>elf.h</label>
+      </node>
+      <node id="24">
+        <label>my_elf.h</label>
+      </node>
+      <node id="36">
+        <label>base/parser.H</label>
+      </node>
+      <node id="37">
+        <label>base/pinstatus.H</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="11">
+        <label>map</label>
+      </node>
+      <node id="38">
+        <label>base/version.H</label>
+      </node>
+      <node id="48">
+        <label>base_u/sysfuncs_unix.H</label>
+      </node>
+      <node id="26">
+        <label>base/lock.H</label>
+      </node>
+      <node id="42">
+        <label>base_ia32/reginfo_ia32.H</label>
+      </node>
+      <node id="54">
+        <label>base/exception.H</label>
+      </node>
+      <node id="55">
+        <label>base/child_process.H</label>
+      </node>
+      <node id="21">
+        <label>pinsync.hpp</label>
+      </node>
+      <node id="57">
+        <label>base_l/linux_proc_maps_reader.H</label>
+      </node>
+      <node id="43">
+        <label>base_ia32/reg_ia32.H</label>
+      </node>
+      <node id="56">
+        <label>asm/errno.h</label>
+      </node>
+      <node id="9">
+        <label>cstdio</label>
+      </node>
+      <node id="22">
+        <label>pinsync_locker.hpp</label>
+      </node>
+      <node id="52">
+        <label>base/complexlock_impl.H</label>
+      </node>
+      <node id="16">
+        <label>/tmp_proj/pinjen/workspace/pypl-pin-nightly/GitPin/Source/pin/include/types_base.PH</label>
+      </node>
+      <node id="49">
+        <label>base_l/sysfuncs_linux.H</label>
+      </node>
+      <node id="18">
+        <label>atomic.hpp</label>
+      </node>
+      <node id="13">
+        <label>vector</label>
+      </node>
+      <node id="19">
+        <label>signal.h</label>
+      </node>
+      <node id="1">
+        <label>level_base.H</label>
+        <link refid="level__base_8H"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/tmp_proj/pinjen/workspace/pypl-pin-nightly/GitPin/Source/pin/include/types_foundation.H</label>
+      </node>
+      <node id="53">
+        <label>base/tls.H</label>
+      </node>
+      <node id="6">
+        <label>/tmp_proj/pinjen/workspace/pypl-pin-nightly/GitPin/Source/pin/include/types_foundation.PH</label>
+      </node>
+      <node id="51">
+        <label>base/complexlock.H</label>
+      </node>
+      <node id="10">
+        <label>cstdlib</label>
+      </node>
+      <node id="23">
+        <label>util.hpp</label>
+      </node>
+      <node id="27">
+        <label>base/errfile.H</label>
+      </node>
+      <node id="15">
+        <label>types_base.H</label>
+      </node>
+      <node id="4">
+        <label>types_marker.h</label>
+      </node>
+      <node id="33">
+        <label>base/knobs_base.H</label>
+      </node>
+      <node id="44">
+        <label>base_ia32/reg_partial_ia32.H</label>
+      </node>
+      <node id="46">
+        <label>base_ia32/cpu_info_ia32.H</label>
+      </node>
+      <node id="31">
+        <label>base/singleton.H</label>
+      </node>
+      <node id="14">
+        <label>xed-category-enum.h</label>
+      </node>
+      <node id="12">
+        <label>set</label>
+      </node>
+      <node id="17">
+        <label>base/message.H</label>
+      </node>
+      <node id="35">
+        <label>base/bigarray.H</label>
+      </node>
+      <node id="40">
+        <label>mem/swmalloc.H</label>
+      </node>
+      <node id="47">
+        <label>base_l/fpstate_linux.H</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceLEVEL__BASE">LEVEL_BASE</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="level__base_8H_1a504d912bcfd6e7c10a47b221b9da184f" prot="public" static="no">
+        <name>MAX_ARGS_SIZE</name>
+        <initializer>USHRT_MAX</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/level_base.H" line="164" column="9" bodyfile="Source/pin/include/level_base.H" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2003-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>software<sp/>and<sp/>the<sp/>related<sp/>documents<sp/>are<sp/>Intel<sp/>copyrighted<sp/>materials,<sp/>and<sp/>your</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>use<sp/>of<sp/>them<sp/>is<sp/>governed<sp/>by<sp/>the<sp/>express<sp/>license<sp/>under<sp/>which<sp/>they<sp/>were<sp/>provided<sp/>to</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>you<sp/>(&quot;License&quot;).<sp/>Unless<sp/>the<sp/>License<sp/>provides<sp/>otherwise,<sp/>you<sp/>may<sp/>not<sp/>use,<sp/>modify,</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>copy,<sp/>publish,<sp/>distribute,<sp/>disclose<sp/>or<sp/>transmit<sp/>this<sp/>software<sp/>or<sp/>the<sp/>related</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>documents<sp/>without<sp/>Intel&apos;s<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>This<sp/>software<sp/>and<sp/>the<sp/>related<sp/>documents<sp/>are<sp/>provided<sp/>as<sp/>is,<sp/>with<sp/>no<sp/>express<sp/>or</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>implied<sp/>warranties,<sp/>other<sp/>than<sp/>those<sp/>that<sp/>are<sp/>expressly<sp/>stated<sp/>in<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"></highlight><highlight class="preprocessor">#ifdef<sp/>LEVEL_BASE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>level_base.H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LEVEL_BASE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_WINDOWS)<sp/>&amp;&amp;<sp/>defined(BUILD_CRT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;level_base_crt.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;foundation.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/mman.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdarg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pin-errtype.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_MAC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>grouped<sp/>as<sp/>part<sp/>of<sp/>the<sp/>global<sp/>namespace<sp/>and<sp/>not<sp/>as<sp/>part<sp/>of<sp/>the<sp/>LEVEL_BASE<sp/>namespace<sp/>on<sp/>purpose.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>to<sp/>avoid<sp/>grouping<sp/>system<sp/>headers<sp/>as<sp/>part<sp/>of<sp/>LEVEL_BASE<sp/>namespace<sp/>(mac_portability.H<sp/>include<sp/>system<sp/>headers)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>which<sp/>will<sp/>cause<sp/>errors<sp/>when<sp/>some<sp/>file<sp/>include<sp/>a<sp/>system<sp/>header<sp/>without<sp/>using<sp/>LEVEL_BASE<sp/>namespace!!!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mac_portability.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;xed-category-enum.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>need<sp/>the<sp/>ASSERT<sp/>macros<sp/>to<sp/>be<sp/>defined<sp/>early.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="namespaceLEVEL__BASE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceLEVEL__BASE" kindref="compound">LEVEL_BASE</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;types_base.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/message.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>LEVEL_BASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;atomic.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;signal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;os-services.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pinsync.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pinsync_locker.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;util.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;my_elf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceLEVEL__BASE" kindref="compound">LEVEL_BASE</ref></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/lock.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/errfile.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fpstate_defs_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HOST_IA32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/fpstate_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/util_host_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HOST_IA32E)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/fpstate_ia32e.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/util_host_ia32e.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;No<sp/>host<sp/>arch<sp/>defined&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/util.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/util_unicode.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/singleton.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/knob.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/knobs_base.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/stat.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/bigarray.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/parser.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/pinstatus.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/version.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/reg.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mem/swmalloc.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mem/my_malloc.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_IA32)<sp/>||<sp/>defined(TARGET_IA32E)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_ia32/reginfo_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_ia32/reg_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_ia32/reg_partial_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_ia32/base_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_ia32/cpu_info_ia32.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;no<sp/>target<sp/>arch<sp/>defined&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_l/fpstate_linux.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_LINUX)<sp/>||<sp/>defined(TARGET_MAC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_u/sysfuncs_unix.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_WINDOWS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_w/os_info_win.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_w/sysfuncs_windows.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mpms_w/ms_dllcrt.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_l/sysfuncs_linux.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(TARGET_MAC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;my__structs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_m/sysfuncs_mac.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/>//<sp/>not<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;no<sp/>target<sp/>OS<sp/>defined&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/atomicstats.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/complexlock.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/complexlock_impl.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/tls.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/exception.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base/child_process.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;asm/errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;base_l/linux_proc_maps_reader.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pin/sym_undecorate.H&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Max<sp/>size<sp/>of<sp/>command<sp/>line<sp/>argument<sp/>(64K<sp/>bytes)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_ARGS_SIZE<sp/>USHRT_MAX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>LEVEL_BASE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>!<sp/>(defined(TARGET_WINDOWS)<sp/>&amp;&amp;<sp/>defined(BUILD_CRT))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>LEVEL_BASE_H</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/include/level_base.H"/>
+  </compounddef>
+</doxygen>

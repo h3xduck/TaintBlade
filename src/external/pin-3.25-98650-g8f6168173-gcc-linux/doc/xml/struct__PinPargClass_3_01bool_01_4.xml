@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="struct__PinPargClass_3_01bool_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>_PinPargClass&lt; bool &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct__PinPargClass_3_01bool_01_4_1afad078020832696bfc854a726d14ab01" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structPARG__T" kindref="compound">PARG_T</ref></type>
+        <definition>static PARG_T _PinPargClass&lt; bool &gt;::parg</definition>
+        <argsstring>()</argsstring>
+        <name>parg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="620" column="19" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="620" bodyend="626"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="619" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="618" bodyend="627"/>
+    <listofallmembers>
+      <member refid="struct__PinPargClass_3_01bool_01_4_1afad078020832696bfc854a726d14ab01" prot="public" virt="non-virtual"><scope>_PinPargClass&lt; bool &gt;</scope><name>parg</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

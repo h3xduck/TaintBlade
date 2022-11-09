@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structFPSTATE_1_1XSTATE" kind="struct" language="C++" prot="public">
+    <compoundname>FPSTATE::XSTATE</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structFPSTATE_1_1XSTATE_1a5d34840faacdac3bce375e4aef98dc1a" prot="public" static="no" mutable="no">
+        <type><ref refid="structXSAVE__HEADER" kindref="compound">XSAVE_HEADER</ref></type>
+        <definition>XSAVE_HEADER FPSTATE::XSTATE::_extendedHeader</definition>
+        <argsstring></argsstring>
+        <name>_extendedHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="49" column="22" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1XSTATE_1a8e73b46ccf94030880455ab8a60a5603" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::XSTATE::_ymmUpper</definition>
+        <argsstring>[8 *16]</argsstring>
+        <name>_ymmUpper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="50" column="15" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1_1XSTATE_1ad3d5fbaf487487b6edb23b5d2a9674f9" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::XSTATE::_pad[8 *16]</definition>
+        <argsstring>[8 *16]</argsstring>
+        <name>_pad</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="51" column="15" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>XSAVE_HEADER</label>
+        <link refid="structXSAVE__HEADER"/>
+      </node>
+      <node id="1">
+        <label>FPSTATE::XSTATE</label>
+        <link refid="structFPSTATE_1_1XSTATE"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_extendedHeader</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/fpstate_ia32.PH" line="48" column="1" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="47" bodyend="52"/>
+    <listofallmembers>
+      <member refid="structFPSTATE_1_1XSTATE_1a5d34840faacdac3bce375e4aef98dc1a" prot="public" virt="non-virtual"><scope>FPSTATE::XSTATE</scope><name>_extendedHeader</name></member>
+      <member refid="structFPSTATE_1_1XSTATE_1ad3d5fbaf487487b6edb23b5d2a9674f9" prot="public" virt="non-virtual"><scope>FPSTATE::XSTATE</scope><name>_pad</name></member>
+      <member refid="structFPSTATE_1_1XSTATE_1a8e73b46ccf94030880455ab8a60a5603" prot="public" virt="non-virtual"><scope>FPSTATE::XSTATE</scope><name>_ymmUpper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

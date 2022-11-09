@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classMESSAGE__TYPE__ALWAYS__ON" kind="class" language="C++" prot="public">
+    <compoundname>MESSAGE_TYPE_ALWAYS_ON</compoundname>
+    <basecompoundref refid="classMESSAGE__TYPE" prot="public" virt="non-virtual">MESSAGE_TYPE</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMESSAGE__TYPE__ALWAYS__ON_1ab6de566cca917f7c6731b1b9a9f863fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MESSAGE_TYPE_ALWAYS_ON::MESSAGE_TYPE_ALWAYS_ON</definition>
+        <argsstring>(std::string name, std::string prefix, BOOL terminate, BOOL trace, BOOL resource, LOGTYPE log, std::string comment)</argsstring>
+        <name>MESSAGE_TYPE_ALWAYS_ON</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>terminate</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>trace</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type><ref refid="group__MESSAGE_1ga9ca6006a59fa53a5cd728fa1efcd4b61" kindref="member">LOGTYPE</ref></type>
+          <declname>log</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>comment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="150" column="12" bodyfile="Source/pin/base/message.PH" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classMESSAGE__TYPE__ALWAYS__ON_1a6a9b602b788ec8f715b33f5092744785" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MESSAGE_TYPE_ALWAYS_ON::on</definition>
+        <argsstring>() const</argsstring>
+        <name>on</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="154" column="17" bodyfile="Source/pin/base/message.PH" bodystart="154" bodyend="154"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This type of message cannot be turned off. It is used for PIN&apos;s assertion mechanism to signal to the compiler that once MessageNoReturn() is called, then the application exits <simplesect kind="see"><para><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>MESSAGE_TYPE</label>
+        <link refid="classMESSAGE__TYPE"/>
+      </node>
+      <node id="1">
+        <label>MESSAGE_TYPE_ALWAYS_ON</label>
+        <link refid="classMESSAGE__TYPE__ALWAYS__ON"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>MESSAGE_TYPE</label>
+        <link refid="classMESSAGE__TYPE"/>
+      </node>
+      <node id="1">
+        <label>MESSAGE_TYPE_ALWAYS_ON</label>
+        <link refid="classMESSAGE__TYPE__ALWAYS__ON"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/message.PH" line="148" column="1" bodyfile="Source/pin/base/message.PH" bodystart="147" bodyend="155"/>
+    <listofallmembers>
+      <member refid="classMESSAGE__TYPE_1a1ac7ccd0e0f75be33eda9685eb346c95" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>Compare</name></member>
+      <member refid="classMESSAGE__TYPE_1a285f9c201322ecd133826ce441104d27" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>disable</name></member>
+      <member refid="classMESSAGE__TYPE_1a44f53e6e7cc8cf6d01a941c1cf506094" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>Disable</name></member>
+      <member refid="classMESSAGE__TYPE_1af0a3aa10aa64429eda3b0f71ea40d39c" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>enable</name></member>
+      <member refid="classMESSAGE__TYPE_1a2f70e86d28809332624fd12dd3210cef" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>Enable</name></member>
+      <member refid="classMESSAGE__TYPE_1aaccd6eee711f4febdd2d219f590b8e95" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>ErrorFileSpecified</name></member>
+      <member refid="classMESSAGE__TYPE_1a81a5a88aa8a0dab08a4caa67e36c896c" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>Find</name></member>
+      <member refid="classMESSAGE__TYPE_1a6b23941d1c6892936fbd0fb79fd1cfe0" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>GetLogFileName</name></member>
+      <member refid="classMESSAGE__TYPE_1a8e1ecbdb41e1ec4166f51cfeefa8b69c" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>IsTerminating</name></member>
+      <member refid="classMESSAGE__TYPE_1a21a18a0e7894759ee4cc46b53b0ffbd1" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>Message</name></member>
+      <member refid="classMESSAGE__TYPE_1a0464132e822c15789756bbb0116b2a79" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>MESSAGE_TYPE</name></member>
+      <member refid="classMESSAGE__TYPE__ALWAYS__ON_1ab6de566cca917f7c6731b1b9a9f863fd" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>MESSAGE_TYPE_ALWAYS_ON</name></member>
+      <member refid="classMESSAGE__TYPE_1ad9fe3d641607b58c19b7a1af1578a2d1" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>MessageCallBack</name></member>
+      <member refid="classMESSAGE__TYPE_1a2a2537253ed947e80beabaad71b853e9" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>MessageNoReturn</name></member>
+      <member refid="classMESSAGE__TYPE_1a95f44bfc1a3ab0e10b770539d1f92d84" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>Number</name></member>
+      <member refid="classMESSAGE__TYPE__ALWAYS__ON_1a6a9b602b788ec8f715b33f5092744785" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>on</name></member>
+      <member refid="classMESSAGE__TYPE_1af6932486fcdc805c6aab9b498df873be" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>PrintMessageAndExit</name></member>
+      <member refid="classMESSAGE__TYPE_1aeea8c63a24135cc8d02fa23ba1cca9ea" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>RegisterLogFile</name></member>
+      <member refid="classMESSAGE__TYPE_1a1b298257ac6adfc8e8b4ded4850914dc" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>RegisterMessageCallBack</name></member>
+      <member refid="classMESSAGE__TYPE_1a2fa174a8e810ed231ebed8eda11b0ac5" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>RegisterPanicCallBack</name></member>
+      <member refid="classMESSAGE__TYPE_1ad4b716c9102190b3bbe9396d17453abe" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>RegisterTerminateCallBack</name></member>
+      <member refid="classMESSAGE__TYPE_1a94b6e289b48f7aeea80256c9c6bae118" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>StringLongAll</name></member>
+      <member refid="classMESSAGE__TYPE_1ad4f084850024552a9698d4f0a2c19741" prot="public" virt="non-virtual"><scope>MESSAGE_TYPE_ALWAYS_ON</scope><name>UnregisterMessageCallBack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

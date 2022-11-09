@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structOS__APIS__RW__LOCK__IMPL__T" kind="struct" language="C++" prot="public">
+    <compoundname>OS_APIS_RW_LOCK_IMPL_T</compoundname>
+    <includes local="no">rw-lock.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structOS__APIS__RW__LOCK__IMPL__T_1a69e519250644909dc1697b7e20310dbe" prot="public" static="no" mutable="no">
+        <type><ref refid="group__OS__APIS__MUTEX_1gababa2660f850ebc2c791de49f0cf8703" kindref="member">OS_MUTEX_TYPE_IMPL</ref></type>
+        <definition>OS_MUTEX_TYPE_IMPL OS_APIS_RW_LOCK_IMPL_T::lock</definition>
+        <argsstring></argsstring>
+        <name>lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="32" column="24" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__APIS__RW__LOCK__IMPL__T_1a8e41909b70b0ca0473fd7302315cd2b7" prot="public" static="no" mutable="no">
+        <type>OS_APIS_RW_LOCK_OWNER_TYPE</type>
+        <definition>OS_APIS_RW_LOCK_OWNER_TYPE OS_APIS_RW_LOCK_IMPL_T::owner_type</definition>
+        <argsstring></argsstring>
+        <name>owner_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="33" column="32" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__APIS__RW__LOCK__IMPL__T_1afb1d197fb1f8f3e9c0cb73c4d0af6041" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 OS_APIS_RW_LOCK_IMPL_T::readers</definition>
+        <argsstring></argsstring>
+        <name>readers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="34" column="12" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__APIS__RW__LOCK__IMPL__T_1a97735b411a374963f1cd9ca483e1a699" prot="public" static="no" mutable="no">
+        <type>OS_EVENT</type>
+        <definition>OS_EVENT OS_APIS_RW_LOCK_IMPL_T::no_readers_event</definition>
+        <argsstring></argsstring>
+        <name>no_readers_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="35" column="14" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__APIS__RW__LOCK__IMPL__T_1a1c8da9928af8449895750b6418bec6d9" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 OS_APIS_RW_LOCK_IMPL_T::waiters_count</definition>
+        <argsstring></argsstring>
+        <name>waiters_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="36" column="12" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__APIS__RW__LOCK__IMPL__T_1adbd19870f6ab07e2646b9aa14260b66a" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 OS_APIS_RW_LOCK_IMPL_T::spinlock_fork_count</definition>
+        <argsstring></argsstring>
+        <name>spinlock_fork_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="38" column="12" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This is an opaque struct for readers/writers lock. This struct should be used with the functions declared in this header. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>OS_APIS_RW_LOCK_IMPL_T</label>
+        <link refid="structOS__APIS__RW__LOCK__IMPL__T"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>_OS_APIS_MUTEX_TYPE</label>
+        <link refid="struct__OS__APIS__MUTEX__TYPE"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="31" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="30" bodyend="40"/>
+    <listofallmembers>
+      <member refid="structOS__APIS__RW__LOCK__IMPL__T_1a69e519250644909dc1697b7e20310dbe" prot="public" virt="non-virtual"><scope>OS_APIS_RW_LOCK_IMPL_T</scope><name>lock</name></member>
+      <member refid="structOS__APIS__RW__LOCK__IMPL__T_1a97735b411a374963f1cd9ca483e1a699" prot="public" virt="non-virtual"><scope>OS_APIS_RW_LOCK_IMPL_T</scope><name>no_readers_event</name></member>
+      <member refid="structOS__APIS__RW__LOCK__IMPL__T_1a8e41909b70b0ca0473fd7302315cd2b7" prot="public" virt="non-virtual"><scope>OS_APIS_RW_LOCK_IMPL_T</scope><name>owner_type</name></member>
+      <member refid="structOS__APIS__RW__LOCK__IMPL__T_1afb1d197fb1f8f3e9c0cb73c4d0af6041" prot="public" virt="non-virtual"><scope>OS_APIS_RW_LOCK_IMPL_T</scope><name>readers</name></member>
+      <member refid="structOS__APIS__RW__LOCK__IMPL__T_1adbd19870f6ab07e2646b9aa14260b66a" prot="public" virt="non-virtual"><scope>OS_APIS_RW_LOCK_IMPL_T</scope><name>spinlock_fork_count</name></member>
+      <member refid="structOS__APIS__RW__LOCK__IMPL__T_1a1c8da9928af8449895750b6418bec6d9" prot="public" virt="non-virtual"><scope>OS_APIS_RW_LOCK_IMPL_T</scope><name>waiters_count</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

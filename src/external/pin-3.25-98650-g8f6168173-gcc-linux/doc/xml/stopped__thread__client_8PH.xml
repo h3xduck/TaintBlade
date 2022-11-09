@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="stopped__thread__client_8PH" kind="file" language="C++">
+    <compoundname>stopped_thread_client.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="stopped__thread__client_8PH_1adc7fadf2e108b7f3605043346afdeca1" prot="public" static="no">
+        <name>PIN_G_STOPPED_THREAD_CLIENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="9" column="10" bodyfile="Source/pin/pin/stopped_thread_client.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__THREADS_1ga86826797380b83015d91b08d74e77f20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_StopApplicationThreads</definition>
+        <argsstring>(THREADID tid)</argsstring>
+        <name>PIN_StopApplicationThreads</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin client functions to temporarily stop all application threads, examine their state and resume.</para>
+<para>This function may be called by either an application thread or by a Pin internal thread to stop all other application threads at a &quot;safe point&quot;. Threads that are stopped at a safe point are always stopped in between traces, so the caller is guaranteed that they are not stopped in the middle of any analysis functions or call-back functions. Once stopped, the calling thread can examine and modify the registers of the stopped threads.</para>
+<para>If this function is called by an internal thread, it stops all application threads. If it is called by an application thread, it stops all other application threads. When called by an application thread, this function may be called from an analysis function, but not from a call-back function.</para>
+<para>Since this function blocks until other application threads finish their current trace, the caller must not hold any locks that the other threads might try to acquire. Doing so could result in a deadlock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID of the calling thread.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the target threads are successfully stopped. FALSE indicates that some other thread is trying to stop the calling thread. In such a case, the caller should return from its analysis function to avoid a deadlock.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="47" column="13" declfile="Source/pin/pin/stopped_thread_client.PH" declline="47" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga2ad50e1fd43eddabc5ecebc94a2e7ff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_IsThreadStoppedInDebugger</definition>
+        <argsstring>(THREADID tid)</argsstring>
+        <name>PIN_IsThreadStoppedInDebugger</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns true if the thread with denoted by &apos;tid&apos; given by its arguments was stopped in the debugger. Note: If there is no thread with ID &apos;tid&apos;, this function returns false.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID to check</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the specified thread was stopped in the debugger. FALSE indicates that the thread is either running, or doesn&apos;t exist</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="65" column="13" declfile="Source/pin/pin/stopped_thread_client.PH" declline="65" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga49e352a082b01080241542eb52aef06b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ResumeApplicationThreads</definition>
+        <argsstring>(THREADID tid)</argsstring>
+        <name>PIN_ResumeApplicationThreads</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function may be called after a successful call to <ref refid="group__THREADS_1ga86826797380b83015d91b08d74e77f20" kindref="member">PIN_StopApplicationThreads()</ref> in order to resume execution of the stopped application threads. If a thread&apos;s <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> was changed while it was stopped, it resumes with the new <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>.</para>
+<para>@Note When used in application thread, it is highly recommended to call it in the same analysis function that called <ref refid="group__THREADS_1ga86826797380b83015d91b08d74e77f20" kindref="member">PIN_StopApplicationThreads()</ref>. Deferring the call could result in a deadlock when the thread later tries to acquire a lock held by other application thread it suspended.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID of the calling thread. Should be called in the same thread as corresponding <ref refid="group__THREADS_1ga86826797380b83015d91b08d74e77f20" kindref="member">PIN_StopApplicationThreads()</ref></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The vm lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="89" column="13" declfile="Source/pin/pin/stopped_thread_client.PH" declline="89" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga6e27a968025d489bf756008e847f66fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_GetStoppedThreadCount</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_GetStoppedThreadCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function can be called in two scenarios. First, it may be called after stopping threads with <ref refid="group__THREADS_1ga86826797380b83015d91b08d74e77f20" kindref="member">PIN_StopApplicationThreads()</ref>, in which case it tells the number of application threads that were stopped with that API.</para>
+<para>Alternatively, this function may be called from a call-back that is registered via <ref refid="group__APPDEBUG_1ga8b7429dba7db028dc095a48d026b30f3" kindref="member">PIN_AddDebugInterpreter()</ref>. In this case, it tells the number of application threads that are stopped in the debugger.</para>
+<para><simplesect kind="return"><para>The number of stopped application threads. Returns zero if threads are not currently stopped.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="109" column="15" declfile="Source/pin/pin/stopped_thread_client.PH" declline="109" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga576c8a1cb5ad99011e7dc29d6e07e8e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+        <definition>THREADID PIN_GetStoppedThreadId</definition>
+        <argsstring>(UINT32 i)</argsstring>
+        <name>PIN_GetStoppedThreadId</name>
+        <param>
+          <type>UINT32</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns the Pin thread ID of a stopped application thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An index in the range [0, n-1], where <emphasis>n</emphasis> is the value returned by <ref refid="group__THREADS_1ga6e27a968025d489bf756008e847f66fc" kindref="member">PIN_GetStoppedThreadCount()</ref>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The ID of the indexed thread, which is currently stopped. Returns INVALID_THREADID if <emphasis>i</emphasis> is out of range.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="125" column="17" declfile="Source/pin/pin/stopped_thread_client.PH" declline="125" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga87d2d7426185b7b561e1c9928e980275" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+        <definition>const CONTEXT* PIN_GetStoppedThreadContext</definition>
+        <argsstring>(THREADID tid)</argsstring>
+        <name>PIN_GetStoppedThreadContext</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns the <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> (register state) of a stopped application thread. The caller can inspect the stopped thread&apos;s register state via <ref refid="group__CONTEXT_1ga5b5aea73f92ac62e0767cb32bf8de4ed" kindref="member">PIN_GetContextReg()</ref> and related API&apos;s.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin ID of a stopped thread.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> for thread <emphasis>tid</emphasis> or NULL if that thread is not stopped.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="141" column="22" declfile="Source/pin/pin/stopped_thread_client.PH" declline="141" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga6d16d98c1a90acae42e0f20890b9b882" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+        <definition>CONTEXT* PIN_GetStoppedThreadWriteableContext</definition>
+        <argsstring>(THREADID tid)</argsstring>
+        <name>PIN_GetStoppedThreadWriteableContext</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is similar to <ref refid="group__THREADS_1ga87d2d7426185b7b561e1c9928e980275" kindref="member">PIN_GetStoppedThreadContext()</ref>, but it returns a <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> that may be modified. The caller may modify the stopped thread&apos;s register state via <ref refid="group__CONTEXT_1ga83c0549f92440cf717c08689c47127cd" kindref="member">PIN_SetContextReg()</ref> and related API&apos;s. The stopped thread uses the new register state when it resumes.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin ID of a stopped thread.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> for thread <emphasis>tid</emphasis> or NULL if that thread is not stopped.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/stopped_thread_client.PH" line="158" column="16" declfile="Source/pin/pin/stopped_thread_client.PH" declline="158" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2012-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_STOPPED_THREAD_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>stopped_thread_client</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_STOPPED_THREAD_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__THREADS_1ga86826797380b83015d91b08d74e77f20" kindref="member">PIN_StopApplicationThreads</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__THREADS_1ga2ad50e1fd43eddabc5ecebc94a2e7ff1" kindref="member">PIN_IsThreadStoppedInDebugger</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__THREADS_1ga49e352a082b01080241542eb52aef06b" kindref="member">PIN_ResumeApplicationThreads</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__THREADS_1ga6e27a968025d489bf756008e847f66fc" kindref="member">PIN_GetStoppedThreadCount</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/><ref refid="group__THREADS_1ga576c8a1cb5ad99011e7dc29d6e07e8e3" kindref="member">PIN_GetStoppedThreadId</ref>(UINT32<sp/>i);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/><ref refid="group__THREADS_1ga87d2d7426185b7b561e1c9928e980275" kindref="member">PIN_GetStoppedThreadContext</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/><ref refid="group__THREADS_1ga6d16d98c1a90acae42e0f20890b9b882" kindref="member">PIN_GetStoppedThreadWriteableContext</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_STOPPED_THREAD_CLIENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/stopped_thread_client.PH"/>
+  </compounddef>
+</doxygen>

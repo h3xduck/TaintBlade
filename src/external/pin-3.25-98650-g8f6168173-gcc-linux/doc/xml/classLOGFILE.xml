@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classLOGFILE" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>LOGFILE</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classLOGFILE_1ac0beeea6ef7460d95ddd8a99b14f5ba6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>VOID</type>
+        <definition>virtual VOID LOGFILE::Open</definition>
+        <argsstring>(const CHAR *name, BOOL append)=0</argsstring>
+        <name>Open</name>
+        <param>
+          <type>const CHAR *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>append</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create or open the specified file. If the file does not exist, create the new file.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">append</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If TRUE, new log messages are appended to the file if it already exists. If FALSE, the new file file overwrites any existing file.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>MESSAGE_TYPE::MessageLock is locked when calling this API, therefore MESSAGE_TYPE::MessageInternal() should not be called from this function. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="31" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classLOGFILE_1a244e88d304d922d611aaae5c8b59ec58" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>BOOL</type>
+        <definition>virtual BOOL LOGFILE::IsOpen</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsOpen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="33" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classLOGFILE_1afa6b82b22a13d9eef12d0476cfe4b3b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>VOID</type>
+        <definition>virtual VOID LOGFILE::Close</definition>
+        <argsstring>()=0</argsstring>
+        <name>Close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="34" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classLOGFILE_1ad1b403ecdee046ba262660278c70ed2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>VOID</type>
+        <definition>virtual VOID LOGFILE::Write</definition>
+        <argsstring>(const CHAR *message, size_t length)=0</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const CHAR *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Write the specified message to the file. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="39" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classLOGFILE_1a7aaffc619ca09a778624b5dea477b06d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID LOGFILE::Write</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="40" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classLOGFILE_1adab11570cd807aed1483c7f30c820b41" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>VOID</type>
+        <definition>virtual VOID LOGFILE::WriteAtPosition</definition>
+        <argsstring>(const CHAR *message, size_t length, size_t offset)=0</argsstring>
+        <name>WriteAtPosition</name>
+        <param>
+          <type>const CHAR *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="41" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classLOGFILE_1a8e8a3b74c6470dc5535631e57f41d20a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual LOGFILE::~LOGFILE</definition>
+        <argsstring>()</argsstring>
+        <name>~LOGFILE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="43" column="13" bodyfile="Source/pin/base/message.PH" bodystart="43" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This module contains routines and classes for the handling error messages</para>
+<para>A class for Pin log file </para>
+    </detaileddescription>
+    <location file="Source/pin/base/message.PH" line="17" column="1" bodyfile="Source/pin/base/message.PH" bodystart="16" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classLOGFILE_1afa6b82b22a13d9eef12d0476cfe4b3b7" prot="public" virt="pure-virtual"><scope>LOGFILE</scope><name>Close</name></member>
+      <member refid="classLOGFILE_1a244e88d304d922d611aaae5c8b59ec58" prot="public" virt="pure-virtual"><scope>LOGFILE</scope><name>IsOpen</name></member>
+      <member refid="classLOGFILE_1ac0beeea6ef7460d95ddd8a99b14f5ba6" prot="public" virt="pure-virtual"><scope>LOGFILE</scope><name>Open</name></member>
+      <member refid="classLOGFILE_1ad1b403ecdee046ba262660278c70ed2f" prot="public" virt="pure-virtual"><scope>LOGFILE</scope><name>Write</name></member>
+      <member refid="classLOGFILE_1a7aaffc619ca09a778624b5dea477b06d" prot="public" virt="non-virtual"><scope>LOGFILE</scope><name>Write</name></member>
+      <member refid="classLOGFILE_1adab11570cd807aed1483c7f30c820b41" prot="public" virt="pure-virtual"><scope>LOGFILE</scope><name>WriteAtPosition</name></member>
+      <member refid="classLOGFILE_1a8e8a3b74c6470dc5535631e57f41d20a" prot="public" virt="virtual"><scope>LOGFILE</scope><name>~LOGFILE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

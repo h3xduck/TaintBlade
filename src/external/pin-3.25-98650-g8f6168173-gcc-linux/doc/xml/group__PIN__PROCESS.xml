@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__PIN__PROCESS" kind="group">
+    <compoundname>PIN_PROCESS</compoundname>
+    <title>Pin Process API</title>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" prot="public" static="no">
+        <type>void *</type>
+        <definition>typedef void* CHILD_PROCESS</definition>
+        <argsstring></argsstring>
+        <name>CHILD_PROCESS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin client functions for the follow child process mechanism</para>
+<para>CHILD_PROCESS - Handle for child process APIs </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="16" column="14" bodyfile="Source/pin/pin/child_process_client.PH" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__PIN__PROCESS_1gabccd10f8f7203db2476f28a5c3a8f75b" prot="public" static="no">
+        <type>BOOL(*</type>
+        <definition>typedef BOOL(* FOLLOW_CHILD_PROCESS_CALLBACK) (CHILD_PROCESS cProcess, VOID *val)</definition>
+        <argsstring>)(CHILD_PROCESS cProcess, VOID *val)</argsstring>
+        <name>FOLLOW_CHILD_PROCESS_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call back function before child(Windows*)/exec-ed(Linux*) process is starting to execute. The function can be registered by <ref refid="group__PIN__CONTROL_1gae710eef7b08de1d153a0b7f3469175a0" kindref="member">PIN_AddFollowChildProcessFunction()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Child process handle, it&apos;s lifetime is in the scope of the callback </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE If user is interested to inject Pin (and tool) into child/exec-ed process<linebreak/>
+ FALSE If user is not interested to inject Pin (and tool) into child/exec-ed process<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="31" column="9" bodyfile="Source/pin/pin/child_process_client.PH" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PIN__PROCESS_1gad9e9d95dd47de9efbf3bf46bb1f549d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga2bf6029042d57fb825536c795c94d1ed" kindref="member">OS_PROCESS_ID</ref></type>
+        <definition>OS_PROCESS_ID CHILD_PROCESS_GetId</definition>
+        <argsstring>(CHILD_PROCESS cProcess)</argsstring>
+        <name>CHILD_PROCESS_GetId</name>
+        <param>
+          <type><ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref></type>
+          <declname>cProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get process id of child process (meaningful only for Windows*)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>child process handle</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>process id of child process</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="65" column="22" declfile="Source/pin/pin/child_process_client.PH" declline="65" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga0d58bd9bcb5f952f248df28876f9c7fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID CHILD_PROCESS_GetCommandLine</definition>
+        <argsstring>(CHILD_PROCESS cProcess, INT *pArgc, const CHAR *const **pArgv)</argsstring>
+        <name>CHILD_PROCESS_GetCommandLine</name>
+        <param>
+          <type><ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref></type>
+          <declname>cProcess</declname>
+        </param>
+        <param>
+          <type>INT *</type>
+          <declname>pArgc</declname>
+        </param>
+        <param>
+          <type>const CHAR *const **</type>
+          <declname>pArgv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get application&apos;s original command line (without Pin&apos;s command line)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>child process handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pArgc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to application&apos;s argc </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pArgv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to application&apos;s argv this data is allocated by Pin and can&apos;t be modified by tool, it&apos;s lifetime is in the scope of the callback</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="81" column="13" declfile="Source/pin/pin/child_process_client.PH" declline="81" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga82625ca6006c9e0a7c94e60162870fb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID CHILD_PROCESS_SetPinCommandLine</definition>
+        <argsstring>(CHILD_PROCESS cProcess, INT argc, const CHAR *const *argv)</argsstring>
+        <name>CHILD_PROCESS_SetPinCommandLine</name>
+        <param>
+          <type><ref refid="group__PIN__PROCESS_1ga9830f4f81eb0f4cab7b66cf6c51ac89a" kindref="member">CHILD_PROCESS</ref></type>
+          <declname>cProcess</declname>
+        </param>
+        <param>
+          <type>INT</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>const CHAR *const *</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set Pin&apos;s (and tool&apos;s) command line for the child process (e.g. &quot;c:\\pin_path\\pin -probe -follow_execv -t c:\\pintool_path\\tool --&quot;)</para>
+<para>If this API is not called, Pin will be injected into child/exec-ed process with the same command line as of current process.</para>
+<para>NOTE:<itemizedlist>
+<listitem><para>Providing full path for Pin and tool is the safest way to ensure they will be found (e.g. changing execution directory by application)</para>
+</listitem><listitem><para>Use same Pin version for all process tree</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childProcess</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>handle to child process </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin&apos;s (and tool&apos;s) argc </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin&apos;s (and tool&apos;s) argv, this data is allocated by tool and can&apos;t be modified by Pin, it&apos;s lifetime is in the scope of this function</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/child_process_client.PH" line="106" column="13" declfile="Source/pin/pin/child_process_client.PH" declline="106" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1gaf5f4578464d7e16a4fdc0f95ba21c776" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>NORETURN VOID</type>
+        <definition>NORETURN VOID PIN_ExitProcess</definition>
+        <argsstring>(INT32 exitCode)</argsstring>
+        <name>PIN_ExitProcess</name>
+        <param>
+          <type>INT32</type>
+          <declname>exitCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Terminate the current process immediately, without calling any thread or process fini callbacks that may be registered. (See <ref refid="group__PIN__PROCESS_1ga5188cd2a4da0f268a47a8f74e6664a5a" kindref="member">PIN_ExitApplication</ref>, if you want fini callbacks to be called).</para>
+<para>This function should be used only for abnormal termination of the instrumented process. Normally, the process is terminated when Pin executes a process termination system call on behalf of the application.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">exitCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exit code of the process to be reported to the operating system. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the function never returns.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2820" column="22" declfile="Source/pin/pin/pin_client.PH" declline="2820" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1gae2f936a4d53e616f9cb0ca80b8f5acfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT</type>
+        <definition>INT PIN_GetPid</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_GetPid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns current process id</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2830" column="12" declfile="Source/pin/pin/pin_client.PH" declline="2830" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1gaa6127aeb954da01691382a96ae2ab729" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_IsAmxActive</definition>
+        <argsstring>(THREADID threadId)</argsstring>
+        <name>PIN_IsAmxActive</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>threadId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>AMX auxiliary API</para>
+<para>Return TRUE is if AMX is in use in the specified thread, FALSE otherwise (AMX is in init state). Also return FALSE on CPU does not support AMX. (For additional information see Intel SDM documentation on AMX)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">threadId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin thread ID for which AMX status is requested INVALID_THREADID can be used, Pin will find and use current thread (Not recommended as this flow cost more performance wise)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE is if AMX is in use, FALSE otherwise (AMX is in init state).</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> Intel(R) 64 architecture<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3198" column="13" declfile="Source/pin/pin/pin_client.PH" declline="3198" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1gac4bfc7dcba11e5b4c7a9f53e60bb75d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 TileCfg_GetTileRows</definition>
+        <argsstring>(UINT8 *tileCfgReg, REG tmm)</argsstring>
+        <name>TileCfg_GetTileRows</name>
+        <param>
+          <type>UINT8 *</type>
+          <declname>tileCfgReg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>tmm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return number of rows for the specified tmm tile register and the specified tile configuration value. (For additional information see Intel SDM documentation on AMX)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tileCfgReg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to a buffer holding tile configuration value (generated with IARG_REG_REFERENCE) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tmm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tile register enumeration for which this information is requested.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>number of rows for the specified tmm tile register and the specified tile configuration value.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> Intel(R) 64 architecture<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3215" column="15" declfile="Source/pin/pin/pin_client.PH" declline="3215" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga09beb15faeb089c02f8154834f551d1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 TileCfg_GetTileBytesPerRow</definition>
+        <argsstring>(UINT8 *tileCfgReg, REG tmm)</argsstring>
+        <name>TileCfg_GetTileBytesPerRow</name>
+        <param>
+          <type>UINT8 *</type>
+          <declname>tileCfgReg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>tmm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return number of bytes per row for the specified tmm tile register and the specified tile configuration value. (For additional information see Intel SDM documentation on AMX)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tileCfgReg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to a buffer holding tile configuration value (generated with IARG_REG_REFERENCE) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tmm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tile register enumeration for which this information is requested.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>number of bytes per row for the specified tmm tile register and the specified tile configuration value.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> Intel(R) 64 architecture<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3232" column="15" declfile="Source/pin/pin/pin_client.PH" declline="3232" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga82cdf4b2f74b73228a2dd64f8f49f8ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT8</type>
+        <definition>UINT8 TileCfg_GetPaletteID</definition>
+        <argsstring>(UINT8 *tileCfgReg)</argsstring>
+        <name>TileCfg_GetPaletteID</name>
+        <param>
+          <type>UINT8 *</type>
+          <declname>tileCfgReg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return palette ID for the specified tile configuration value. (For additional information see Intel SDM documentation on AMX)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tileCfgReg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to a buffer holding tile configuration value (generated with IARG_REG_REFERENCE)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>palette ID for the specified tile configuration value.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> Intel(R) 64 architecture<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3248" column="14" declfile="Source/pin/pin/pin_client.PH" declline="3248" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga5188cd2a4da0f268a47a8f74e6664a5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>NORETURN VOID</type>
+        <definition>NORETURN VOID PIN_ExitApplication</definition>
+        <argsstring>(INT32 status)</argsstring>
+        <name>PIN_ExitApplication</name>
+        <param>
+          <type>INT32</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Terminate the current process after calling the relevant thread and process exit callbacks. This call behaves &quot;as if&quot; the application process itself had executed a process termination system call. It therefore <emphasis>does</emphasis> perform all the finalization actions Pin normally takes on application process exit, including calling registered thread and process fini-functions, unlike <ref refid="group__PIN__PROCESS_1gaf5f4578464d7e16a4fdc0f95ba21c776" kindref="member">PIN_ExitProcess</ref>, which exits immediately.</para>
+<para>This API may be called from an instrumentation callback function or an analysis routine. However, it should not be called from any <ref refid="group__PIN__CONTROL_1ga8978f19f9ba6f66dcb9ab0763a32927c" kindref="member">FINI_CALLBACK</ref> or <ref refid="group__PIN__CONTROL_1ga99a915108f24a372d07d45560db7fa87" kindref="member">THREAD_FINI_CALLBACK</ref> routines. It may be called by an application thread or a tool internal thread (that was created via <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread</ref>).</para>
+<para>Be aware, that when called from an internal thread, the calling thread will not exit until after the tool&apos;s fini callbacks return. Therefore, to avoid deadlock, your fini callbacks should not wait for that internal thread to exit.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result argument to exit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This function does not return.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux,Windows,BSD<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="189" column="22" declfile="Source/pin/pin/pin_client_replay.PH" declline="189" declcolumn="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>These APIs provide information about the instrumented process. They are available in any thread, including any internal thread spawned by the tool. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

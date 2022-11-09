@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structPIN__MEM__ACCESS__INFO" kind="struct" language="C++" prot="public">
+    <compoundname>PIN_MEM_ACCESS_INFO</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPIN__MEM__ACCESS__INFO_1aea350bc18b432ee37e1b44801881ee22" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_MEM_ACCESS_INFO::memoryAddress</definition>
+        <argsstring></argsstring>
+        <name>memoryAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="837" column="13" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="837" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__ACCESS__INFO_1a6cbe04af2da3e9dbfe10fd057765735b" prot="public" static="no" mutable="no">
+        <type><ref refid="group__INST__ARGS_1ga624ddd00f45938da5eb525afc5b43195" kindref="member">PIN_MEMOP_ENUM</ref></type>
+        <definition>PIN_MEMOP_ENUM PIN_MEM_ACCESS_INFO::memopType</definition>
+        <argsstring></argsstring>
+        <name>memopType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="838" column="20" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="838" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__ACCESS__INFO_1afc0706fc5c2eb950c9e289981616608a" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_MEM_ACCESS_INFO::bytesAccessed</definition>
+        <argsstring></argsstring>
+        <name>bytesAccessed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="839" column="12" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="839" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__ACCESS__INFO_1ae54cf0fac031c0a0060f43b413b37ca8" prot="public" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL PIN_MEM_ACCESS_INFO::maskOn</definition>
+        <argsstring></argsstring>
+        <name>maskOn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="840" column="10" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="840" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>used in the Type whose address is passed to analysis routine when IARG_MULTI_MEMORYACCESS_EA is requested </para>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="836" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="835" bodyend="841"/>
+    <listofallmembers>
+      <member refid="structPIN__MEM__ACCESS__INFO_1afc0706fc5c2eb950c9e289981616608a" prot="public" virt="non-virtual"><scope>PIN_MEM_ACCESS_INFO</scope><name>bytesAccessed</name></member>
+      <member refid="structPIN__MEM__ACCESS__INFO_1ae54cf0fac031c0a0060f43b413b37ca8" prot="public" virt="non-virtual"><scope>PIN_MEM_ACCESS_INFO</scope><name>maskOn</name></member>
+      <member refid="structPIN__MEM__ACCESS__INFO_1a6cbe04af2da3e9dbfe10fd057765735b" prot="public" virt="non-virtual"><scope>PIN_MEM_ACCESS_INFO</scope><name>memopType</name></member>
+      <member refid="structPIN__MEM__ACCESS__INFO_1aea350bc18b432ee37e1b44801881ee22" prot="public" virt="non-virtual"><scope>PIN_MEM_ACCESS_INFO</scope><name>memoryAddress</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

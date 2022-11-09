@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="struct__OS__RETURN__CODE__POSIX" kind="struct" language="C++" prot="public">
+    <compoundname>_OS_RETURN_CODE_POSIX</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__OS__RETURN__CODE__POSIX_1a3c84c5b323e1e473484f469cb22b4ba8" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT _OS_RETURN_CODE_POSIX::function_return_value</definition>
+        <argsstring></argsstring>
+        <name>function_return_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="73" column="13" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__OS__RETURN__CODE__POSIX_1aad34a01271d2794d667b60f948a17e55" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT _OS_RETURN_CODE_POSIX::return_errno</definition>
+        <argsstring></argsstring>
+        <name>return_errno</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="74" column="13" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="72" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="71" bodyend="75"/>
+    <listofallmembers>
+      <member refid="struct__OS__RETURN__CODE__POSIX_1a3c84c5b323e1e473484f469cb22b4ba8" prot="public" virt="non-virtual"><scope>_OS_RETURN_CODE_POSIX</scope><name>function_return_value</name></member>
+      <member refid="struct__OS__RETURN__CODE__POSIX_1aad34a01271d2794d667b60f948a17e55" prot="public" virt="non-virtual"><scope>_OS_RETURN_CODE_POSIX</scope><name>return_errno</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

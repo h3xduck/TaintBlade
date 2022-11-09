@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="ipc-pipe_8h" kind="file" language="C++">
+    <compoundname>ipc-pipe.h</compoundname>
+    <includes local="yes">os-apis.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>ipc-pipe.h</label>
+        <link refid="ipc-pipe_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>os-apis.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__OS__APIS__FILE_1ga3b5104eac807de465009822c2b5d83cc" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_PIPE_CREATE_FLAGS</name>
+        <enumvalue id="group__OS__APIS__FILE_1gga3b5104eac807de465009822c2b5d83ccaea5e651ff6adf23d266c3f1f9e7783b0" prot="public">
+          <name>OS_PIPE_CREATE_FLAGS_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__FILE_1gga3b5104eac807de465009822c2b5d83ccab405636496ea01e883e2970483b38fa8" prot="public">
+          <name>OS_PIPE_CREATE_FLAGS_READ_SIDE_INHERITABLE</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__FILE_1gga3b5104eac807de465009822c2b5d83cca716cb629d718a72a7667d5dda21b8ce7" prot="public">
+          <name>OS_PIPE_CREATE_FLAGS_WRITE_SIDE_INHERITABLE</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pipes creation flags </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc-pipe.h" line="23" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/ipc-pipe.h" bodystart="22" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga14a140fa66c2f5d69e59dc0900d8b56b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Pipe</definition>
+        <argsstring>(OS_PIPE_CREATE_FLAGS flags, NATIVE_FD *readFd, NATIVE_FD *writeFd)</argsstring>
+        <name>OS_Pipe</name>
+        <param>
+          <type><ref refid="group__OS__APIS__FILE_1ga3b5104eac807de465009822c2b5d83cc" kindref="member">OS_PIPE_CREATE_FLAGS</ref></type>
+          <declname>flags</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>readFd</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>writeFd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates an anonymous pipe, and returns handles to the read and write ends of the pipe.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pipes creation flags </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">readFd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File descriptor for the read side </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">writeFd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File descriptor for the write side</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_INVALID_ARGS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One of the input arguments is invalid. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: All <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc-pipe.h" line="44" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc-pipe.h" declline="44" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_IPC_PIPE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_IPC_PIPE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;os-apis.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PIPE_CREATE_FLAGS_NONE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PIPE_CREATE_FLAGS_READ_SIDE_INHERITABLE<sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>0),<sp/></highlight><highlight class="comment">//<sp/>Child<sp/>processes<sp/>inherits<sp/>the<sp/>pipe&apos;s<sp/>read<sp/>side</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PIPE_CREATE_FLAGS_WRITE_SIDE_INHERITABLE<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>1)<sp/><sp/></highlight><highlight class="comment">//<sp/>Child<sp/>processes<sp/>inherits<sp/>the<sp/>pipe&apos;s<sp/>write<sp/>side</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}<sp/><ref refid="group__OS__APIS__FILE_1ga3b5104eac807de465009822c2b5d83cc" kindref="member">OS_PIPE_CREATE_FLAGS</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__IPC_1ga14a140fa66c2f5d69e59dc0900d8b56b" kindref="member">OS_Pipe</ref>(<ref refid="group__OS__APIS__FILE_1ga3b5104eac807de465009822c2b5d83cc" kindref="member">OS_PIPE_CREATE_FLAGS</ref><sp/>flags,<sp/><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref>*<sp/>readFd,<sp/><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref>*<sp/>writeFd);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>file<sp/>guard</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/ipc-pipe.h"/>
+  </compounddef>
+</doxygen>

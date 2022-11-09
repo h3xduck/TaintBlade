@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="execinfo_8h" kind="file" language="C++">
+    <compoundname>execinfo.h</compoundname>
+    <includes local="no">sys/cdefs.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>sys/cdefs.h</label>
+      </node>
+      <node id="1">
+        <label>execinfo.h</label>
+        <link refid="execinfo_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="execinfo_8h_1a4327157e9bebb7ac9d4d408cca427094" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__BEGIN_DECLS int</type>
+        <definition>__BEGIN_DECLS int backtrace</definition>
+        <argsstring>(void **buffer, int size)</argsstring>
+        <name>backtrace</name>
+        <param>
+          <type>void **</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/bionic/libunwind/pin_include/execinfo.h" line="10" column="5" declfile="Source/bionic/libunwind/pin_include/execinfo.h" declline="10" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="execinfo_8h_1a0b746d48786d86b4b4e882c564f565a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char **</type>
+        <definition>char** backtrace_symbols</definition>
+        <argsstring>(void *const *buffer, int size)</argsstring>
+        <name>backtrace_symbols</name>
+        <param>
+          <type>void *const *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/bionic/libunwind/pin_include/execinfo.h" line="11" column="6" declfile="Source/bionic/libunwind/pin_include/execinfo.h" declline="11" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2016<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/cdefs.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">__BEGIN_DECLS</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>backtrace(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>**buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**backtrace_symbols(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">__END_DECLS</highlight></codeline>
+    </programlisting>
+    <location file="Source/bionic/libunwind/pin_include/execinfo.h"/>
+  </compounddef>
+</doxygen>

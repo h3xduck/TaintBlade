@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__CL__OPTIONS" kind="group">
+    <compoundname>CL_OPTIONS</compoundname>
+    <title>Command Line Switches</title>
+    <briefdescription>
+<para>This section describes the command line switches that are currently supported by Pin. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Pin switches should appear after the pin command, but before the -t &lt;tool&gt; option. The following Pin switches are supported:</para>
+<para><table rows="31" cols="3"><row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-follow_execv </para>
+</entry><entry thead="no"><para>Execute all processes spawned by the execv class system calls with Pin.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-help </para>
+</entry><entry thead="no"><para>Print the help message.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-pause_tool &lt;n&gt; </para>
+</entry><entry thead="no"><para>Pause and print the PID so the debugger can be attached after the tool is loaded. Processing will resume after &quot;n&quot; seconds.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-logfile </para>
+</entry><entry thead="no"><para>Indicates the path and name of the log file. The default path is the current working directory. The default name is pin.log.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-unique_logfile </para>
+</entry><entry thead="no"><para>Appends the pid to the log file name.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-error_file </para>
+</entry><entry thead="no"><para>Indicates the path and name of the error file. The default path is the current working directory. If an error file is specified, all errors will be written to the error file, and will not be displayed on the console. If an error file is not specified, no error file will be created. The error file is designed to be parsed by tools that layer on top of Pin. See <ref refid="group__ERROR__FILE" kindref="compound">Pin Error Reporting Support</ref>.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-unique_error_file </para>
+</entry><entry thead="no"><para>Appends the pid to the error file name.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-injection &lt;mode&gt; </para>
+</entry><entry thead="no"><para>Where &lt;mode&gt; is one of dynamic, self, child, parent. UNIX-only. See <ref refid="index_1INJECTION" kindref="member">Injection</ref>.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-inline </para>
+</entry><entry thead="no"><para>Inline simple analysis routines.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-log_inline </para>
+</entry><entry thead="no"><para>Report which analysis routines have been inlined in the pin.log file.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-cc_memory_size &lt;n&gt; </para>
+</entry><entry thead="no"><para>Max (in bytes) code cache size (0==unlimited, default). Must be a multiple of the code cache block size   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-pid &lt;pid #&gt; </para>
+</entry><entry thead="no"><para>Attach Pin and the Pintool to an already running executable with the given process id.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-pin_memory_range </para>
+</entry><entry thead="no"><para>Restrict Pin to a memory range, 0x80000000:0x90000000 or size: 0:0x10000000.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-restrict_memory </para>
+</entry><entry thead="no"><para>Prevent PIN&apos;s dynamic loader from using these memory regions, 0x10000000:0x20000000   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-pin_memory_size </para>
+</entry><entry thead="no"><para>Limit the number of bytes that can be dynamically allocated by PIN and PIN tool Note that the number of bytes allocated by PIN is defined by the total number of memory pages allocated by PIN multiplied by the page size   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-tool_load_option </para>
+</entry><entry thead="no"><para>Load the tool with additional flags. Currently supported flags are:<linebreak/>
+ <bold>deepbind:</bold> (Linux only) Load the tool with the RTLD_DEEPBIND flag to make it a self-contained library. For more information see the dlopen man pages.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-t &lt;toolname&gt; </para>
+</entry><entry thead="no"><para>Specify the Pintool to use. If you are running a 32-bit application in an IA-32 architecture, or a 64-bit application on an Intel(R) 64 architecture, only -t &lt;toolname&gt; is needed. If you are running an application on an Intel(R) 64 architecture, where all of the components in the chain are either 32-bit or 64-bit, but not both, only -t &lt;toolname&gt; is needed. If you are running an application on an Intel(R) 64 architecture, where components in the chain are both 32-bit and 64-bit, use -t64 &lt;64-bit toolname&gt; to specify the 64-bit tool binary followed by -t &lt;32-bit toolname&gt; to specify the 32-bit tool binary and the tool options. For more information, see <ref refid="index_1MIXED-MODE" kindref="member">Instrumenting Applications on Intel(R) 64 Architectures</ref>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-t64 &lt;64-bit toolname&gt; </para>
+</entry><entry thead="no"><para>Specify 64-bit tool binary for Intel(R) 64 architecture. If you are running an application on an Intel(R) 64 architecture, where components in the chain are both 32-bit and 64-bit, use -t64 together with -t as described above. See <ref refid="index_1MIXED-MODE" kindref="member">Instrumenting Applications on Intel(R) 64 Architectures</ref>. <linebreak/>
+ <bold>Important</bold>: Using -t64 without -t is not recommended, since in this case when given a 32-bit application, Pin will run the application without applying any tool.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-p32 &lt;toolname&gt; </para>
+</entry><entry thead="no"><para>Specify Pin binary for IA-32 architecture. See <ref refid="index_1MIXED-MODE" kindref="member">Instrumenting Applications on Intel(R) 64 Architectures</ref>.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-p64 &lt;toolname&gt; </para>
+</entry><entry thead="no"><para>Specify Pin binary for Intel(R) 64 architecture. See <ref refid="index_1MIXED-MODE" kindref="member">Instrumenting Applications on Intel(R) 64 Architectures</ref>.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-smc_support [1][0] </para>
+</entry><entry thead="no"><para>Enable (1) or disable (0) support for self-modifying code (SMC) in the application. This option is enabled by default.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-smc_strict [0][1] </para>
+</entry><entry thead="no"><para>Enable (1) or disable (0) support for SMC inside basic blocks. By default (0), Pin assumes that basic blocks do not modify their own code.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para><anchor id="group__CL__OPTIONS_1SWITCH_APPDEBUG"/> -appdebug  </para>
+</entry><entry thead="no"><para>Debug the application, stopping in the debugger as soon as the application is launched.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para><anchor id="group__CL__OPTIONS_1SWITCH_APPDEBUG_ENABLE"/> -appdebug_enable  </para>
+</entry><entry thead="no"><para>Enable application level debugger support, but do not stop when the application is launched. Instead, you can connect a debugger after launch.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para><anchor id="group__CL__OPTIONS_1SWITCH_APPDEBUG_SILENT"/> -appdebug_silent  </para>
+</entry><entry thead="no"><para>When application debugging is enabled, Pin normally prints a message telling how to connect an external debugger. This knob disables the message. Pin never prints this message when -appdebug_connection is specified.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para><anchor id="group__CL__OPTIONS_1SWITCH_APPDEBUG_EXCLUDE"/> -appdebug_exclude  </para>
+</entry><entry thead="no"><para>When application debugging and -follow_execv are both specified, the default behavior is to enable debugging on all child processes. This knob, which is repeatable, specifies an application name for which debugging is disabled. Debugging is disabled for a process if it&apos;s argv[0] value matches one of the -appdebug_exclude names.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para><anchor id="group__CL__OPTIONS_1SWITCH_APPDEBUG_ALLOW_REMOTE"/> -appdebug_allow_remote  </para>
+</entry><entry thead="no"><para>When application debugging is enabled, the default behavior requires the debugger to run on the same system as Pin. This knob allows Pin to connect to an external debugger that runs on a remote system. This knob is ignored when -appdebug_connection is specified because -appdebug_connection explicitly specifies the machine on which the debugger runs.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para><anchor id="group__CL__OPTIONS_1SWITCH_APPDEBUG_CONNECTION"/> -appdebug_connection  </para>
+</entry><entry thead="no"><para>When application debugging is enabled, Pin&apos;s default behavior is to open a TCP port and wait for a debugger to connect. This knob reverses the roles; the debugger opens a TCP port and waits for Pin to connect to the port specified in this knob. The format of the knob value should be &quot;[ip]:port&quot;. If the &quot;ip&quot; address is specified, it should be in dot-decimal notation. If &quot;ip&quot; is omitted, Pin connects to the specified port on the local machine. The port number should be specified in decimal. Note that this knob is never used when debugging with GDB.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-detach_reattach </para>
+</entry><entry thead="no"><para>Allow detach and reattach in probe mode. Windows* only.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-debug_instrumented_processes </para>
+</entry><entry thead="no"><para>Print message to allow debugger attach to instrumented processes. Windows* only.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-slow_asserts </para>
+</entry><entry thead="no"><para>Perform expensive sanity checks   </para>
+</entry></row>
+</table>
+</para>
+<para>Pin also supports the following tool switches. Tool switches should be placed after the tool name, but before the double dash (&quot;--&quot;).</para>
+<para><table rows="9" cols="3"><row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-logfile </para>
+</entry><entry thead="no"><para>Indicates the path and name of the log file. The default path is the current working directory. The default name is pintool.log.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-unique_logfile </para>
+</entry><entry thead="no"><para>Appends the pid to the log file name.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-discard_line_info &lt;module_name&gt; </para>
+</entry><entry thead="no"><para>Discard line information for specific module. Module name should be a short name without path, and not a symbolic link   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-discard_line_info_all </para>
+</entry><entry thead="no"><para>Discard line information for all modules.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-help </para>
+</entry><entry thead="no"><para>Print the help message.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-support_jit_api </para>
+</entry><entry thead="no"><para>Enables managed platforms support.  </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-short_name </para>
+</entry><entry thead="no"><para>Use the shortest name for the RTN. Names with version substrings are preferred over the same name without the substring.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-symbol_path &lt;list of paths&gt; </para>
+</entry><entry thead="no"><para>Specifies list of paths separated with semicolons that are searched to find symbol and line information. The list is searched when necessary after default search algorithm is applied. Default list is empty. Windows* only.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para></para>
+</entry><entry thead="no"><para>-slow_asserts </para>
+</entry><entry thead="no"><para>Perform expensive sanity checks. Recommended to be used in development and testing phase.   </para>
+</entry></row>
+</table>
+</para>
+<para>If you want to add your own command line options to your tool, please see <ref refid="group__KNOBS" kindref="compound">KNOBS</ref>. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

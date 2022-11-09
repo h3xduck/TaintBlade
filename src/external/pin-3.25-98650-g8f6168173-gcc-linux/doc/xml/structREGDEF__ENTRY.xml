@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structREGDEF__ENTRY" kind="struct" language="C++" prot="public">
+    <compoundname>REGDEF_ENTRY</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1a3653229ebc75bfe0808aa93a205889ac" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGDEF_ENTRY::reg</definition>
+        <argsstring></argsstring>
+        <name>reg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1167" column="9" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1aa4b86f8c5870b7e9650ec8101e30d598" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 REGDEF_ENTRY::regSpillSize</definition>
+        <argsstring></argsstring>
+        <name>regSpillSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1169" column="12" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1a805bef44a51d3d87c0ea387188e1a089" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REG_1gaec0c649ef5462f4191f265d607fff05d" kindref="member">REGWIDTH</ref></type>
+        <definition>REGWIDTH REGDEF_ENTRY::regWidth</definition>
+        <argsstring></argsstring>
+        <name>regWidth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1170" column="14" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1a23d43e3c834e32fd1a83e279d0a71a9c" prot="public" static="no" mutable="no">
+        <type>UINT64</type>
+        <definition>UINT64 REGDEF_ENTRY::regClassBitMap</definition>
+        <argsstring></argsstring>
+        <name>regClassBitMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1171" column="12" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1acca53b59700a1d8892116bbeb972b736" prot="public" static="no" mutable="no">
+        <type>UINT64</type>
+        <definition>UINT64 REGDEF_ENTRY::regSubClassBitMap</definition>
+        <argsstring></argsstring>
+        <name>regSubClassBitMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1172" column="12" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1a390939aa689640e43dadaf5b72bbaa26" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REG_1gae2f85c31c5c9443be2feeef93d23960e" kindref="member">REG_ALLOC_TYPE</ref></type>
+        <definition>REG_ALLOC_TYPE REGDEF_ENTRY::regAllocType</definition>
+        <argsstring></argsstring>
+        <name>regAllocType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1173" column="20" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1af92800be2b4562af0ea5a1820c99e8a8" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGDEF_ENTRY::regFullName</definition>
+        <argsstring></argsstring>
+        <name>regFullName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1174" column="9" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1a53d536fe5e411075119e957ecf29bba2" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGDEF_ENTRY::regMachineName</definition>
+        <argsstring></argsstring>
+        <name>regMachineName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1175" column="9" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREGDEF__ENTRY_1a62ca0cbb480794410095a65de98a907a" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGDEF_ENTRY::regPinName</definition>
+        <argsstring></argsstring>
+        <name>regPinName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1177" column="9" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1177" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Information about a register. The _regDefTable must contain one entry for each unique register defined in the REG enum. This entry must be in the same row of the _regDefTable as the register is in the REG enum. </para>
+    </detaileddescription>
+    <location file="Source/pin/base_ia32/reg_ia32.PH" line="1166" column="1" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1165" bodyend="1178"/>
+    <listofallmembers>
+      <member refid="structREGDEF__ENTRY_1a3653229ebc75bfe0808aa93a205889ac" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>reg</name></member>
+      <member refid="structREGDEF__ENTRY_1a390939aa689640e43dadaf5b72bbaa26" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regAllocType</name></member>
+      <member refid="structREGDEF__ENTRY_1a23d43e3c834e32fd1a83e279d0a71a9c" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regClassBitMap</name></member>
+      <member refid="structREGDEF__ENTRY_1af92800be2b4562af0ea5a1820c99e8a8" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regFullName</name></member>
+      <member refid="structREGDEF__ENTRY_1a53d536fe5e411075119e957ecf29bba2" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regMachineName</name></member>
+      <member refid="structREGDEF__ENTRY_1a62ca0cbb480794410095a65de98a907a" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regPinName</name></member>
+      <member refid="structREGDEF__ENTRY_1aa4b86f8c5870b7e9650ec8101e30d598" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regSpillSize</name></member>
+      <member refid="structREGDEF__ENTRY_1acca53b59700a1d8892116bbeb972b736" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regSubClassBitMap</name></member>
+      <member refid="structREGDEF__ENTRY_1a805bef44a51d3d87c0ea387188e1a089" prot="public" virt="non-virtual"><scope>REGDEF_ENTRY</scope><name>regWidth</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

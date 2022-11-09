@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="rw-lock_8h" kind="file" language="C++">
+    <compoundname>rw-lock.h</compoundname>
+    <includes local="yes">os-apis.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>rw-lock.h</label>
+        <link refid="rw-lock_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>os-apis.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structOS__APIS__RW__LOCK__IMPL__T" prot="public">OS_APIS_RW_LOCK_IMPL_T</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="rw-lock_8h_1a4deec09d3181678510d280592a71cff9" prot="public" static="no">
+        <name>OS_APIS_RW_LOCK_INITIALIZER</name>
+        <initializer>    {                                                                                                                      \
+        {                                                                                                                  \
+            OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER, OS_APIS_RW_LOCK_OWNER_TYPE_NONE, (UINT32)0, OS_EVENT_INITIALIZER, \
+                (UINT32)0, (UINT32)0                                                                                       \
+        }                                                                                                                  \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Static initializer for OS_APIS_RW_LOCK_T type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="60" column="10" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="rw-lock_8h_1a6569eadab6fe1149a17997914618d1da" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_APIS_RW_LOCK_OWNER_TYPE</name>
+        <enumvalue id="rw-lock_8h_1a6569eadab6fe1149a17997914618d1daa742686030581c5df2d0cfeffe30b2ee9" prot="public">
+          <name>OS_APIS_RW_LOCK_OWNER_TYPE_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="rw-lock_8h_1a6569eadab6fe1149a17997914618d1daa621fa6193e1f26af33cc32e91da76d99" prot="public">
+          <name>OS_APIS_RW_LOCK_OWNER_TYPE_WRITER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="rw-lock_8h_1a6569eadab6fe1149a17997914618d1daae1e85ef9e6ce8e590a8e5d8478de5f93" prot="public">
+          <name>OS_APIS_RW_LOCK_OWNER_TYPE_READER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="20" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="19" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="rw-lock_8h_1ac2e76a9d373b49b5eefa0ba6a077596c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef PRE_ALIGNTO</definition>
+        <argsstring>(CPU_MEMORY_CACHELINE_SIZE) union</argsstring>
+        <name>PRE_ALIGNTO</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="42" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="rw-lock_8h_1a215fae9902ea505f7796ec8dff2a9a08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>POST_ALIGNTO</definition>
+        <argsstring>(CPU_MEMORY_CACHELINE_SIZE) OS_APIS_RW_LOCK_T</argsstring>
+        <name>POST_ALIGNTO</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="46" column="2" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="46" declcolumn="2"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga3bc96921c120dafc2ce6da960c87caf6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockInitialize</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockInitialize</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes a reader-writer lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to initialize</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="78" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="78" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga923da6354d93bb4e0dd8d5bb6de3ba61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockDestroy</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockDestroy</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a reader-writer lock, freeing all exhausted resources associated with the lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to destroy</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="89" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="89" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga4d1e017034dd744a890fdc41dc4fc4ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockAcquireWrite</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockAcquireWrite</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Acquires the lock for writer. Blocks until the writer lock is acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="101" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="101" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga3526da4bff453fbbbc6127efc822c52d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockReleaseWrite</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockReleaseWrite</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases the lock for writer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to release</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="112" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="112" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga8918bcd26d70ff27ef88361714db80e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockAcquireRead</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockAcquireRead</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Acquires the lock for reader. Blocks until the reader lock is acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="124" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="124" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1gab7d5fc7eab89461cdd378727d6ca4e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockReleaseRead</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockReleaseRead</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases the lock for reader.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to release</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="135" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="135" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga52f5e476c184ba6a7e19e9e19865423f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_RWLockRelease</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockRelease</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases the lock that was acquired. The lock kind that was acquired (whether its read or write) is determined by this function.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to release</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the lock was taken (for either read or write) and as a result of this call is unlocked, FALSE otherwise. If the reader lock was released, and a waiting writer was woken up and acquired the lock, the function will return TRUE.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="151" column="8" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="151" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga283bb2cfbc87c890ef694c7412cd370b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_RWLockTryAcquireWrite</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockTryAcquireWrite</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to Acquire the lock for writer. This function returns immediately if the lock can&apos;t be acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE If the writer lock was acquired.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="165" column="8" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="165" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga8cb8d435497794feef67f36a6d40841d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_RWLockTryAcquireRead</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockTryAcquireRead</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to Acquire the lock for reader. This function returns immediately if the lock can&apos;t be acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE If the reader lock was acquired.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="179" column="8" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="179" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OS_APIS_RW_LOCK_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_RW_LOCK_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;os-apis.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_APIS_RW_LOCK_OWNER_TYPE_NONE,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_APIS_RW_LOCK_OWNER_TYPE_WRITER,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_APIS_RW_LOCK_OWNER_TYPE_READER</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}<sp/>OS_APIS_RW_LOCK_OWNER_TYPE;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="structOS__APIS__RW__LOCK__IMPL__T" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct__OS__APIS__MUTEX__TYPE" kindref="compound">OS_MUTEX_TYPE_IMPL</ref><sp/>lock;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_APIS_RW_LOCK_OWNER_TYPE<sp/>owner_type;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>readers;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_EVENT<sp/>no_readers_event;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>waiters_count;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>spinlock_fork_count;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}<sp/><ref refid="structOS__APIS__RW__LOCK__IMPL__T" kindref="compound">OS_APIS_RW_LOCK_IMPL_T</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>PRE_ALIGNTO(<ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref>)<sp/></highlight><highlight class="keyword">union</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOS__APIS__RW__LOCK__IMPL__T" kindref="compound">OS_APIS_RW_LOCK_IMPL_T</ref><sp/>impl;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>reserved[2<sp/>*<sp/><ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref>];</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/>POST_ALIGNTO(<ref refid="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" kindref="member">CPU_MEMORY_CACHELINE_SIZE</ref>)<sp/>OS_APIS_RW_LOCK_T;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor">#ifdef<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_RW_LOCK_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER,<sp/>OS_APIS_RW_LOCK_OWNER_TYPE_NONE,<sp/>(UINT32)0,<sp/>OS_EVENT_INITIALIZER,<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(UINT32)0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_RW_LOCK_INITIALIZER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OS_APIS_MUTEX_IMPL_DEPTH_SIMPLE_INITIALIZER,<sp/>OS_APIS_RW_LOCK_OWNER_TYPE_NONE,<sp/>(UINT32)0,<sp/>OS_EVENT_INITIALIZER,<sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(UINT32)0,<sp/>(UINT32)0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga3bc96921c120dafc2ce6da960c87caf6" kindref="member">OS_RWLockInitialize</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>l);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga923da6354d93bb4e0dd8d5bb6de3ba61" kindref="member">OS_RWLockDestroy</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>l);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga4d1e017034dd744a890fdc41dc4fc4ba" kindref="member">OS_RWLockAcquireWrite</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>lock);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga3526da4bff453fbbbc6127efc822c52d" kindref="member">OS_RWLockReleaseWrite</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>lock);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga8918bcd26d70ff27ef88361714db80e2" kindref="member">OS_RWLockAcquireRead</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>lock);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__RW__LOCK_1gab7d5fc7eab89461cdd378727d6ca4e26" kindref="member">OS_RWLockReleaseRead</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>lock);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga52f5e476c184ba6a7e19e9e19865423f" kindref="member">OS_RWLockRelease</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>l);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga283bb2cfbc87c890ef694c7412cd370b" kindref="member">OS_RWLockTryAcquireWrite</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>l);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__RW__LOCK_1ga8cb8d435497794feef67f36a6d40841d" kindref="member">OS_RWLockTryAcquireRead</ref>(</highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>OS_APIS_RW_LOCK_T*<sp/>l);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>OS_APIS_RW_LOCK_H__</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h"/>
+  </compounddef>
+</doxygen>

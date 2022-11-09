@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_e203be77b60a873c3af063de5cff82a1" kind="dir">
+    <compoundname>pin</compoundname>
+    <innerdir refid="dir_74cc14b9db571419ea878685fc1c3f7e">base</innerdir>
+    <innerdir refid="dir_d899e5468d0baf65a042d017070078e5">base_ia32</innerdir>
+    <innerdir refid="dir_52eed0bee20581757b41ac6936c7828d">core</innerdir>
+    <innerdir refid="dir_2e1310a27e6e866fa4f1b410a6fdfad5">core_ia32</innerdir>
+    <innerdir refid="dir_e8dea60438cc7d1cff58a2bf9d94a307">core_ia32_u</innerdir>
+    <innerdir refid="dir_06ee81fe34f2a11272bc81e4e56bbf9a">include</innerdir>
+    <innerdir refid="dir_eb16a3aedc0606997205bf9711a4b5ca">pin</innerdir>
+    <innerdir refid="dir_6e118bf1f932fd7df0142984daf55554">pin_elf</innerdir>
+    <innerdir refid="dir_bbe9243576ca5a6a1e27fd8b4150f13b">pin_l</innerdir>
+    <innerdir refid="dir_21e20cf0cf232fff582d602bb26a8701">pin_u</innerdir>
+    <innerdir refid="dir_81c5f038f19bafc86419c65bfd967507">vm</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/"/>
+  </compounddef>
+</doxygen>

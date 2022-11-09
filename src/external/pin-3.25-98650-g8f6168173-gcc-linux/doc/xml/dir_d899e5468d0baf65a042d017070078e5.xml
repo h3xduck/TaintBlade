@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_d899e5468d0baf65a042d017070078e5" kind="dir">
+    <compoundname>base_ia32</compoundname>
+    <innerfile refid="base__ia32_8PH">base_ia32.PH</innerfile>
+    <innerfile refid="reg__ia32_8PH">reg_ia32.PH</innerfile>
+    <innerfile refid="reg__partial__ia32_8PH">reg_partial_ia32.PH</innerfile>
+    <innerfile refid="reginfo__ia32_8PH">reginfo_ia32.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base_ia32/"/>
+  </compounddef>
+</doxygen>

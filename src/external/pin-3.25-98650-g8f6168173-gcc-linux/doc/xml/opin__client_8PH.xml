@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="opin__client_8PH" kind="file" language="C++">
+    <compoundname>opin_client.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="opin__client_8PH_1acef8023763f273fe7a29b9aff43015fa" prot="public" static="no">
+        <name>PIN_G_OPIN_CLIENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="9" column="10" bodyfile="Source/pin/pin/opin_client.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PIN__CONTROL_1gafe7c14403bb052dab2caf316db743684" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_IsProbeMode</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_IsProbeMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Return TRUE if -probe on command line or if Tool started application calling <ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">.\n</ref></para>
+</simplesect>
+<simplesect kind="note"><para>Tool can run in Probe mode without specifying -probe on the command line. This switch is provided as a convenience. In that case, <ref refid="group__PIN__CONTROL_1gafe7c14403bb052dab2caf316db743684" kindref="member">PIN_IsProbeMode()</ref> will return FALSE before <ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> was called (Since the default running mode is JIT).</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="27" column="13" declfile="Source/pin/pin/opin_client.PH" declline="27" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CONTROL_1gaad2d0a8d8dca408952f4a48ebcd0a2a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_IsAttaching</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_IsAttaching</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if Pin is being attached to a running application process </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="32" column="13" declfile="Source/pin/pin/opin_client.PH" declline="32" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1gae4151f314f751d6499bba41e92aae6eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL RTN_IsSafeForProbedInsertion</definition>
+        <argsstring>(RTN rtn)</argsstring>
+        <name>RTN_IsSafeForProbedInsertion</name>
+        <param>
+          <type>RTN</type>
+          <declname>rtn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return TRUE if the given RTN is a candidate for function insertion using probes, and FALSE otherwise. This API should be called before attempting to insert a call to an analysis function using <ref refid="group__RTN_1ga3fc9a10265d0dc2f432064c7619ba23c" kindref="member">RTN_InsertCallProbed()</ref>. If you want to replace the given RTN with <ref refid="group__RTN_1gac5c9022ca80b4afff403d27fd37ab7f0" kindref="member">RTN_ReplaceSignatureProbed()</ref> or <ref refid="group__RTN_1ga035b237e79abd711317ae9ad0dc5f3eb" kindref="member">RTN_ReplaceProbed()</ref> you should use <ref refid="group__RTN_1ga042c9fc39928c2779ebc30834982a212" kindref="member">RTN_IsSafeForProbedReplacement()</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to be replaced. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the function can be instrumented, FALSE if it cannot.</para>
+</simplesect>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="53" column="13" declfile="Source/pin/pin/opin_client.PH" declline="53" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1ga186f5491def9b0a47b933199fbdb33e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL RTN_IsSafeForProbedInsertionEx</definition>
+        <argsstring>(RTN rtn, PROBE_MODE mode)</argsstring>
+        <name>RTN_IsSafeForProbedInsertionEx</name>
+        <param>
+          <type>RTN</type>
+          <declname>rtn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return TRUE if the given RTN is a candidate for function insertion using probes, and FALSE otherwise. This API should be called before attempting to insert a call to an analysis function using <ref refid="group__RTN_1ga83c346447585ea8d6438dae426e5c1d4" kindref="member">RTN_InsertCallProbedEx()</ref>. If you want to replace the given RTN with <ref refid="group__RTN_1ga464818cf8c9e60b6174f3fd44ae3a3fc" kindref="member">RTN_ReplaceSignatureProbedEx()</ref> or <ref refid="group__RTN_1gafa329b733d1835c22a76cd1caf025145" kindref="member">RTN_ReplaceProbedEx()</ref> you should use <ref refid="group__RTN_1gaf2b9df2bdaf330c7cbefc54466096729" kindref="member">RTN_IsSafeForProbedReplacementEx()</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to be replaced. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>instrumentation mode, see <ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the function can be instrumented, FALSE if it cannot.</para>
+</simplesect>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="75" column="13" declfile="Source/pin/pin/opin_client.PH" declline="75" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1ga042c9fc39928c2779ebc30834982a212" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL RTN_IsSafeForProbedReplacement</definition>
+        <argsstring>(RTN rtn)</argsstring>
+        <name>RTN_IsSafeForProbedReplacement</name>
+        <param>
+          <type>RTN</type>
+          <declname>rtn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return TRUE if the given RTN is a candidate for probed function replacement, and FALSE otherwise. This API should be called before attempting to replace a function using <ref refid="group__RTN_1gac5c9022ca80b4afff403d27fd37ab7f0" kindref="member">RTN_ReplaceSignatureProbed()</ref> or <ref refid="group__RTN_1ga035b237e79abd711317ae9ad0dc5f3eb" kindref="member">RTN_ReplaceProbed()</ref>. Note that this routine does not guarantee it is safe to place a probe, it merely indicates that certain conditions are not present.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to be replaced. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the function can be replaced, FALSE if it cannot.</para>
+</simplesect>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="95" column="13" declfile="Source/pin/pin/opin_client.PH" declline="95" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1gaf2b9df2bdaf330c7cbefc54466096729" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL RTN_IsSafeForProbedReplacementEx</definition>
+        <argsstring>(RTN rtn, PROBE_MODE mode)</argsstring>
+        <name>RTN_IsSafeForProbedReplacementEx</name>
+        <param>
+          <type>RTN</type>
+          <declname>rtn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return TRUE if the given RTN is a candidate for probed function replacement, and FALSE otherwise. This API should be called before attempting to replace a function using <ref refid="group__RTN_1ga464818cf8c9e60b6174f3fd44ae3a3fc" kindref="member">RTN_ReplaceSignatureProbedEx()</ref>. Note that this routine does not guarantee it is safe to place a probe, it merely indicates that certain conditions are not present.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to be replaced. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>instrumentation mode, see <ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the function can be replaced, FALSE if it cannot.</para>
+</simplesect>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="116" column="13" declfile="Source/pin/pin/opin_client.PH" declline="116" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1gac5c9022ca80b4afff403d27fd37ab7f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>AFUNPTR</type>
+        <definition>AFUNPTR RTN_ReplaceSignatureProbed</definition>
+        <argsstring>(RTN replacedRtn, AFUNPTR replacementFun,...)</argsstring>
+        <name>RTN_ReplaceSignatureProbed</name>
+        <param>
+          <type>RTN</type>
+          <declname>replacedRtn</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>replacementFun</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Replace a routine in the application (orgRtn) by another function defined in the Pintool (replacementFunptr) using probes. The replacement function is not instrumented. Replacement functions typically need to call the replaced routines. However, calls to RTN_Funptr(orgRtn) will be redirected to replacementFunptr. Replacement functions must instead call the returned function pointer, which is a copy of the entry point that is not redirected. The replacement function signature does not have to be the same as the replaced function. In fact while the replaced function may have the CALLINGSTD_REGPARMS calling convention, the replacement function calling convention must not be PIN_FAST_ANALYSIS_CALL (i.e. the replaced function may have register parameters, the replacement function must not). The replacement function arguments must be passed to the replacement function using the Pin IARG_TYPEs, in the same way as <ref refid="group__RTN_1ga806d0aa9f49fa888b684cad52591cdec" kindref="member">RTN_InsertCall()</ref>. A prototype of the routine in the application must also be passed in as an argument. See <ref refid="group__PROTO_1gae01d20f7fd56e3eeebebe41009e7ff89" kindref="member">PROTO_Allocate</ref> for more information. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>orgRtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to be replaced. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>replacementFunptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the replacement function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. One IARG_TYPE must be IARG_PROTOTYPE, and the list must end with IARG_END. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a function pointer to the relocated application function entry point. This allows the replacement routine to execute the replaced routine.</para>
+</simplesect>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para>Use <ref refid="group__RTN_1ga042c9fc39928c2779ebc30834982a212" kindref="member">RTN_IsSafeForProbedReplacement()</ref> to determine if a function is a suitable candidate for probed function replacement.</para>
+<para>Some restrictions apply when using IARG_CONTEXT. See <ref refid="group__INST__ARGS" kindref="compound">Instrumentation arguments</ref> for more information. IARG_THREAD_ID is not supported.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="153" column="16" declfile="Source/pin/pin/opin_client.PH" declline="153" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1ga464818cf8c9e60b6174f3fd44ae3a3fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>AFUNPTR</type>
+        <definition>AFUNPTR RTN_ReplaceSignatureProbedEx</definition>
+        <argsstring>(RTN replacedRtn, PROBE_MODE mode, AFUNPTR replacementFun,...)</argsstring>
+        <name>RTN_ReplaceSignatureProbedEx</name>
+        <param>
+          <type>RTN</type>
+          <declname>replacedRtn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>replacementFun</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Replace a routine in the application (orgRtn) by another function defined in the Pintool (replacementFunptr) using probes.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>replacedRtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to be replaced. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>instrumentation mode, see <ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>replacementFun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the replacement function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. One IARG_TYPE must be IARG_PROTOTYPE, and the list must end with IARG_END. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a function pointer to the relocated application function entry point. This allows the replacement routine to execute the replaced routine.</para>
+</simplesect>
+Use <ref refid="group__RTN_1gaf2b9df2bdaf330c7cbefc54466096729" kindref="member">RTN_IsSafeForProbedReplacementEx()</ref> to determine if a function is a suitable candidate for probed function replacement.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="176" column="16" declfile="Source/pin/pin/opin_client.PH" declline="176" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1ga3fc9a10265d0dc2f432064c7619ba23c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID RTN_InsertCallProbed</definition>
+        <argsstring>(RTN orgRtn, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>RTN_InsertCallProbed</name>
+        <param>
+          <type>RTN</type>
+          <declname>orgRtn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to an analysis routine relative to a RTN.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>orgRtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use IPOINT_BEFORE or IPOINT_AFTER to call funptr before or after execution. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the analysis function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. If using IPOINT_AFTER, one IARG_TYPE must be IARG_PROTOTYPE. The list must end with IARG_END.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para>Use <ref refid="group__RTN_1gae4151f314f751d6499bba41e92aae6eb" kindref="member">RTN_IsSafeForProbedInsertion()</ref> to determine if a function is a suitable candidate for probed function insertion.</para>
+<para>Some restrictions apply when using IARG_CONTEXT. See <ref refid="group__INST__ARGS" kindref="compound">Instrumentation arguments</ref> for more information. IARG_THREAD_ID is not supported.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="202" column="13" declfile="Source/pin/pin/opin_client.PH" declline="202" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__RTN_1ga83c346447585ea8d6438dae426e5c1d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID RTN_InsertCallProbedEx</definition>
+        <argsstring>(RTN orgRtn, IPOINT action, PROBE_MODE mode, AFUNPTR funptr,...)</argsstring>
+        <name>RTN_InsertCallProbedEx</name>
+        <param>
+          <type>RTN</type>
+          <declname>orgRtn</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to an analysis routine relative to a RTN.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>orgRtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application routine to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>use IPOINT_BEFORE or IPOINT_AFTER to call funptr before or after execution. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the analysis function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. If using IPOINT_AFTER, one IARG_TYPE must be IARG_PROTOTYPE. The list must end with IARG_END.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para>Use <ref refid="group__RTN_1ga186f5491def9b0a47b933199fbdb33e9" kindref="member">RTN_IsSafeForProbedInsertionEx()</ref> to determine if a function is a suitable candidate for probed function insertion.</para>
+<para>Some restrictions apply when using IARG_CONTEXT. See <ref refid="group__INST__ARGS" kindref="compound">Instrumentation arguments</ref> for more information. IARG_THREAD_ID is not supported.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="229" column="13" declfile="Source/pin/pin/opin_client.PH" declline="229" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CONTROL_1ga5804cf309051f916da872b279ca46568" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_IsSafeForProbedInsertion</definition>
+        <argsstring>(ADDRINT addr)</argsstring>
+        <name>PIN_IsSafeForProbedInsertion</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the given location is safe for probe insertion. This means that the location contains an instruction which is large enough to be replaced entirely with a jump instruction (i.e. 5/7 bytes long), it is not a control flow instruction, and it doesn&apos;t have memory operand.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application address to instrument </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE/FALSE if the location is safe</para>
+</simplesect>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="248" column="13" declfile="Source/pin/pin/opin_client.PH" declline="248" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CONTROL_1ga7d4d951d45a58249064a42396f4b6610" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InsertCallProbed</definition>
+        <argsstring>(ADDRINT addr, AFUNPTR funptr,...)</argsstring>
+        <name>PIN_InsertCallProbed</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to an analysis routine relative to a location. In this location we expect to find a safe instruction, i.e. an instruction which is large enough to be replaced entirely with a jump instruction (i.e. 5/7 bytes long), it is not a control flow instruction, and it doesn&apos;t have memory operand.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the application address to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the analysis function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. The list must end with IARG_END.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="group__PIN__CONTROL_1ga2e545d491302b50ea78c1bb844a8b544" kindref="member">PIN_StartProgramProbed()</ref> must be used when using this API.</para>
+<para>Some restrictions apply when using IARG_CONTEXT. See <ref refid="group__INST__ARGS" kindref="compound">Instrumentation arguments</ref> for more information. IARG_THREAD_ID is not supported.</para>
+<para><simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="273" column="13" declfile="Source/pin/pin/opin_client.PH" declline="273" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PROTO_1gae01d20f7fd56e3eeebebe41009e7ff89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PROTO_1ga554ff954c3ea33bb537f30e3b500ef1c" kindref="member">PROTO</ref></type>
+        <definition>PROTO PROTO_Allocate</definition>
+        <argsstring>(PARG_T returnArg, CALLINGSTD_TYPE cstype, const char *name,...)</argsstring>
+        <name>PROTO_Allocate</name>
+        <param>
+          <type><ref refid="structPARG__T" kindref="compound">PARG_T</ref></type>
+          <declname>returnArg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__PROTO_1gacfd9f3c8dc22310ce9b9152e8c61b17c" kindref="member">CALLINGSTD_TYPE</ref></type>
+          <declname>cstype</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allocate and initialize a function prototype. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>returnArg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The return argument type and size. See <ref refid="group__PROTO_1gacb4faa1f3649fce55756313c6259519f" kindref="member">PIN_PARG</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cstype</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The calling standard used for compiling this function (CALLINGSTD_DEFAULT recommended). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of function argument type and size. See <ref refid="group__PROTO_1gacb4faa1f3649fce55756313c6259519f" kindref="member">PIN_PARG</ref> for the recommended method of passing function arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>currently PARG_FLOAT, PARG_DOUBLE are supported as return type only and can not be used as function argument types. Any other PRG_* that does not fit in an integer register are not supported neither as function argument nor as return type of replacement functions.</para>
+</simplesect>
+<ref refid="group__PROTO_1gaeebb4a42707b704ebf214a06a6bf4e62" kindref="member">PIN_PARG_END()</ref> must end the argument list, even if the function has no arguments. <simplesect kind="return"><para>proto A pointer to a function prototype. This is an opaque type.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="296" column="14" declfile="Source/pin/pin/opin_client.PH" declline="296" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PROTO_1gac85d3ff3845126b629d630f6f36eae70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PROTO_Free</definition>
+        <argsstring>(PROTO proto)</argsstring>
+        <name>PROTO_Free</name>
+        <param>
+          <type><ref refid="group__PROTO_1ga554ff954c3ea33bb537f30e3b500ef1c" kindref="member">PROTO</ref></type>
+          <declname>proto</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free the specified function prototype. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>proto</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a function prototype.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/opin_client.PH" line="307" column="13" declfile="Source/pin/pin/opin_client.PH" declline="307" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_OPIN_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>opin_client</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_OPIN_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__PIN__CONTROL_1gafe7c14403bb052dab2caf316db743684" kindref="member">PIN_IsProbeMode</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__PIN__CONTROL_1gaad2d0a8d8dca408952f4a48ebcd0a2a3" kindref="member">PIN_IsAttaching</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__RTN_1gae4151f314f751d6499bba41e92aae6eb" kindref="member">RTN_IsSafeForProbedInsertion</ref>(RTN<sp/>rtn);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__RTN_1ga186f5491def9b0a47b933199fbdb33e9" kindref="member">RTN_IsSafeForProbedInsertionEx</ref>(RTN<sp/>rtn,<sp/><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__RTN_1ga042c9fc39928c2779ebc30834982a212" kindref="member">RTN_IsSafeForProbedReplacement</ref>(RTN<sp/>rtn);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__RTN_1gaf2b9df2bdaf330c7cbefc54466096729" kindref="member">RTN_IsSafeForProbedReplacementEx</ref>(RTN<sp/>rtn,<sp/><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>AFUNPTR<sp/><ref refid="group__RTN_1gac5c9022ca80b4afff403d27fd37ab7f0" kindref="member">RTN_ReplaceSignatureProbed</ref>(RTN<sp/>replacedRtn,<sp/>AFUNPTR<sp/>replacementFun,<sp/>...);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>AFUNPTR<sp/><ref refid="group__RTN_1ga464818cf8c9e60b6174f3fd44ae3a3fc" kindref="member">RTN_ReplaceSignatureProbedEx</ref>(RTN<sp/>replacedRtn,<sp/><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref><sp/>mode,<sp/>AFUNPTR<sp/>replacementFun,<sp/>...);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__RTN_1ga3fc9a10265d0dc2f432064c7619ba23c" kindref="member">RTN_InsertCallProbed</ref>(RTN<sp/>orgRtn,<sp/><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref><sp/>action,<sp/>AFUNPTR<sp/>funptr,<sp/>...);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__RTN_1ga83c346447585ea8d6438dae426e5c1d4" kindref="member">RTN_InsertCallProbedEx</ref>(RTN<sp/>orgRtn,<sp/><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref><sp/>action,<sp/><ref refid="group__RTN_1ga9c9b90546cd64ce1579629c87ec84007" kindref="member">PROBE_MODE</ref><sp/>mode,<sp/>AFUNPTR<sp/>funptr,<sp/>...);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__PIN__CONTROL_1ga5804cf309051f916da872b279ca46568" kindref="member">PIN_IsSafeForProbedInsertion</ref>(ADDRINT<sp/>addr);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__PIN__CONTROL_1ga7d4d951d45a58249064a42396f4b6610" kindref="member">PIN_InsertCallProbed</ref>(ADDRINT<sp/>addr,<sp/>AFUNPTR<sp/>funptr,<sp/>...);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__PROTO_1ga554ff954c3ea33bb537f30e3b500ef1c" kindref="member">PROTO</ref><sp/><ref refid="group__PROTO_1gae01d20f7fd56e3eeebebe41009e7ff89" kindref="member">PROTO_Allocate</ref>(<ref refid="structPARG__T" kindref="compound">PARG_T</ref><sp/>returnArg,<sp/><ref refid="group__PROTO_1gacfd9f3c8dc22310ce9b9152e8c61b17c" kindref="member">CALLINGSTD_TYPE</ref><sp/>cstype,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name,<sp/>...);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__PROTO_1gac85d3ff3845126b629d630f6f36eae70" kindref="member">PROTO_Free</ref>(<ref refid="group__PROTO_1ga554ff954c3ea33bb537f30e3b500ef1c" kindref="member">PROTO</ref><sp/>proto);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_OPIN_CLIENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/opin_client.PH"/>
+  </compounddef>
+</doxygen>

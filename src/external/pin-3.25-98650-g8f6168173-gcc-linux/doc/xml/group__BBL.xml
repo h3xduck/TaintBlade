@@ -1,0 +1,471 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__BBL" kind="group">
+    <compoundname>BBL</compoundname>
+    <title>BBL: Single entrance, single exit sequence of instructions</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__BBL_1gac7ea1e91e10bce868bbce497cacabab3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 BBL_NumIns</definition>
+        <argsstring>(BBL bbl)</argsstring>
+        <name>BBL_NumIns</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains <ref refid="group__BBL" kindref="compound">BBL: Single entrance, single exit sequence of instructions</ref> primitives</para>
+<para>Number of INSs within a BBL.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/bbl.PH" line="22" column="15" declfile="Source/pin/core/bbl.PH" declline="22" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1gade725392ec92f3042e8c5b980ca61a8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INS</type>
+        <definition>INS BBL_InsHead</definition>
+        <argsstring>(BBL x)</argsstring>
+        <name>BBL_InsHead</name>
+        <param>
+          <type>BBL</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>First instruction of bbl</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="680" column="12" declfile="Source/pin/pin/image.PH" declline="680" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1ga2740970dd7511488ba2aea081b9298ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INS</type>
+        <definition>INS BBL_InsTail</definition>
+        <argsstring>(BBL x)</argsstring>
+        <name>BBL_InsTail</name>
+        <param>
+          <type>BBL</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Last instruction of bbl</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="690" column="12" declfile="Source/pin/pin/image.PH" declline="690" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1ga79b074eb89b45ec1cf8e0aa9532b9581" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BBL</type>
+        <definition>BBL BBL_Next</definition>
+        <argsstring>(BBL x)</argsstring>
+        <name>BBL_Next</name>
+        <param>
+          <type>BBL</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Next bbl or BBL_INVALID() if this is the end of trace or rtn</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="700" column="12" declfile="Source/pin/pin/image.PH" declline="700" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1ga24f17f1c38cee6deb1ac18c8465d6fc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BBL</type>
+        <definition>BBL BBL_Prev</definition>
+        <argsstring>(BBL x)</argsstring>
+        <name>BBL_Prev</name>
+        <param>
+          <type>BBL</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Previous bbl or BBL_INVALID() if this is the beginning of trace or rtn</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="710" column="12" declfile="Source/pin/pin/image.PH" declline="710" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1gacb48343e32bd7a793b487224ac857b19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL BBL_Valid</definition>
+        <argsstring>(BBL x)</argsstring>
+        <name>BBL_Valid</name>
+        <param>
+          <type>BBL</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is not BBL_INVALID()</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="720" column="13" declfile="Source/pin/pin/image.PH" declline="720" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1gad0a08cca57fae0af6ca98f1002a067bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL BBL_Original</definition>
+        <argsstring>(BBL bbl)</argsstring>
+        <name>BBL_Original</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Whether the BBL data structure has been instrumented or optimized since it was created</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1350" column="13" declfile="Source/pin/pin/image.PH" declline="1350" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1gaa7aa68a764898661e115091ba524c6ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT BBL_Address</definition>
+        <argsstring>(BBL bbl)</argsstring>
+        <name>BBL_Address</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Address of a bbl</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1360" column="16" declfile="Source/pin/pin/image.PH" declline="1360" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1gafc9ce3354eb08c36f2ff849e170e182c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>USIZE</type>
+        <definition>USIZE BBL_Size</definition>
+        <argsstring>(BBL bbl)</argsstring>
+        <name>BBL_Size</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Size of bbl code, in bytes</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1370" column="14" declfile="Source/pin/pin/image.PH" declline="1370" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1ga9b7dabce7f0343da16e3be0bde9fd393" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID BBL_InsertCall</definition>
+        <argsstring>(BBL bbl, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>BBL_InsertCall</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert call relative to a bbl. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bbl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__BBL" kindref="compound">BBL: Single entrance, single exit sequence of instructions</ref> to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies before, after, etc. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a7c7cbebb7a62a40e9f803b1db2e6ce20" kindref="member">IPOINT_BEFORE</ref> is always valid for all BBLs. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a42eff26179c6d87348abe492301c12ec" kindref="member">IPOINT_AFTER</ref> is valid only when a fall-through exists. Can only be used if <ref refid="group__BBL_1ga49b398eb9c10ff80019315d6c2eee84a" kindref="member">BBL_HasFallThrough</ref> is true. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7acf7dee2063098dd79907d19f9c7df65d" kindref="member">IPOINT_ANYWHERE</ref> will put the instrumentation at a place inside the bbl for best performance. <linebreak/>
+ <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a5ef5b45901a8447e5173f50746ab029d" kindref="member">IPOINT_TAKEN_BRANCH</ref> is valid only when the BBL ends with a control-flow instruction. Can only be used if INS_IsValidForIpointTakenBranch(BBL_ins_tail(bbl)) is true. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Analysis function to call </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Arguments to pass to funptr</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2071" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2071" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1gaee158afc4efc9224e85435aa55214272" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID BBL_InsertIfCall</definition>
+        <argsstring>(BBL bbl, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>BBL_InsertIfCall</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to funptr relative to a BBL. If funptr returns a non-zero ADDRINT, then the immediately following &quot;then&quot; analysis call is executed. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bbl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BBL to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies when the analysis call executes. See the documentation in <ref refid="group__BBL_1ga9b7dabce7f0343da16e3be0bde9fd393" kindref="member">BBL_InsertCall()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Analysis function to call. Its return type must be ADDRINT </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Arguments to pass to funptr</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2089" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2089" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1gaa868ef612bc1020554d64b1558cc7cc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID BBL_InsertThenCall</definition>
+        <argsstring>(BBL bbl, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>BBL_InsertThenCall</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a call to funptr relative to a BBL. The function is called only if the immediately preceding &quot;if&quot; analysis call returns a non-zero value. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bbl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BBL to instrument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies when the analysis call executes. See the documentation in <ref refid="group__BBL_1ga9b7dabce7f0343da16e3be0bde9fd393" kindref="member">BBL_InsertCall()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Analysis function to call </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Arguments to pass to funptr</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2108" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2108" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BBL_1ga49b398eb9c10ff80019315d6c2eee84a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL BBL_HasFallThrough</definition>
+        <argsstring>(BBL bbl)</argsstring>
+        <name>BBL_HasFallThrough</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Refer to <ref refid="group__INS__INSPECTION_1ga7602edb17e52e209492bab2c65fc1612" kindref="member">INS_HasFallThrough</ref> for checking if an instruction could have a fall-through path based on the opcode. <simplesect kind="return"><para>TRUE if the BBL has a fall-through bbl within the trace, else returns FALSE.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2120" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2120" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Sequence of instructions that is always entered at the top and exited at the bottom by a fall through and/or taken branch. If Pin detects a jump to an instruction in the middle of a bbl, it will create a new bbl beginning at the target. See <ref refid="index_1GRAN" kindref="member">Instrumentation Granularity</ref>. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

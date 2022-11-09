@@ -1,0 +1,893 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__OS__APIS__IPC" kind="group">
+    <compoundname>OS_APIS_IPC</compoundname>
+    <title>IPC</title>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__OS__APIS__IPC_1ga7d64e90581bdd8948ed13f30f6b6a522" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_APIS_IPC_SOCKET_DOMAIN</name>
+        <enumvalue id="group__OS__APIS__IPC_1gga7d64e90581bdd8948ed13f30f6b6a522a9069fcf91ce65085881442130710b1da" prot="public">
+          <name>OS_APIS_IPC_SOCKET_DOMAIN_INET</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Internet socket. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__IPC_1gga7d64e90581bdd8948ed13f30f6b6a522ab7f778969cc5314c7ef8ca634fda414d" prot="public">
+          <name>OS_APIS_IPC_SOCKET_DOMAIN_UNIX</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Socket domain </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="26" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/ipc.h" bodystart="25" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__OS__APIS__IPC_1ga0de2b9d6f60ccba50e4c7db19697a45a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_APIS_IPC_SOCKET_TYPE</name>
+        <enumvalue id="group__OS__APIS__IPC_1gga0de2b9d6f60ccba50e4c7db19697a45aaa25c5e47916c96deb50046b73aa369f2" prot="public">
+          <name>OS_APIS_IPC_SOCKET_TYPE_STREAM</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Full-duplex byte stream. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Socket domain </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="36" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/ipc.h" bodystart="35" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__OS__APIS__IPC_1gaab521f2803eec423dc1cd570b88d90d2" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_APIS_IPC_SOCKET_PROTOCOL</name>
+        <enumvalue id="group__OS__APIS__IPC_1ggaab521f2803eec423dc1cd570b88d90d2a5e282954e3ecc849584d092ec880e5be" prot="public">
+          <name>OS_APIS_IPC_SOCKET_PROTOCOL_DEFAULT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Full-duplex byte stream. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Socket domain </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="45" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/ipc.h" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__OS__APIS__IPC_1ga26c0ad3e94afe7b80683866c7cda8896" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_APIS_IPC_SHUTDOWN</name>
+        <enumvalue id="group__OS__APIS__IPC_1gga26c0ad3e94afe7b80683866c7cda8896a10843882381f2ffa6877e6277c1cb45e" prot="public">
+          <name>OS_APIS_IPC_SHUTDOWN_INVALID</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Invalid value for socket shutdown. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__IPC_1gga26c0ad3e94afe7b80683866c7cda8896a372ab0a0c07fcdf8f931ef3dd75f95ac" prot="public">
+          <name>OS_APIS_IPC_SHUTDOWN_READ</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+<para>Shutdown socket&apos;s read side. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__IPC_1gga26c0ad3e94afe7b80683866c7cda8896ab03c1ee06dc0d5b137dd36dd8214d596" prot="public">
+          <name>OS_APIS_IPC_SHUTDOWN_WRITE</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+<para>Shutdown socket&apos;s write side. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Value for argument <bold>how</bold> to <ref refid="group__OS__APIS__IPC_1ga6ce1fb8088aa608c14552a4a9bea39d1" kindref="member">OS_Shutdown()</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="54" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/ipc.h" bodystart="53" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__OS__APIS__IPC_1gab1d4d01ba1dcfa1faaf28c50874c1eb6" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_APIS_IPC_SENDTO_FLAGS</name>
+        <enumvalue id="group__OS__APIS__IPC_1ggab1d4d01ba1dcfa1faaf28c50874c1eb6adf730151bd0655a2d460eefbeea405f3" prot="public">
+          <name>OS_APIS_IPC_SENDTO_FLAGS_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No flags specified. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__IPC_1ggab1d4d01ba1dcfa1faaf28c50874c1eb6a23b1132fa5273b867c98414aca3b9a1b" prot="public">
+          <name>OS_APIS_IPC_SENDTO_FLAGS_OOB</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+<para>Send out of band message. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__IPC_1ggab1d4d01ba1dcfa1faaf28c50874c1eb6a7153eed4772f54ac62cf99fb3ab9f778" prot="public">
+          <name>OS_APIS_IPC_SENDTO_FLAGS_DONT_ROUTE</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+<para>bypass routing, use direct interface </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__IPC_1ggab1d4d01ba1dcfa1faaf28c50874c1eb6a1c70fe575381459814bc5f80f3862846" prot="public">
+          <name>OS_APIS_IPC_SENDTO_FLAGS_NO_SIGNAL</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+<para>Don&apos;t send SIGPIPE when the other side of the connection is closed. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Value for argument <bold>how</bold> to <ref refid="group__OS__APIS__IPC_1ga6ce1fb8088aa608c14552a4a9bea39d1" kindref="member">OS_Shutdown()</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="67" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/ipc.h" bodystart="66" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga14a140fa66c2f5d69e59dc0900d8b56b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Pipe</definition>
+        <argsstring>(OS_PIPE_CREATE_FLAGS flags, NATIVE_FD *readFd, NATIVE_FD *writeFd)</argsstring>
+        <name>OS_Pipe</name>
+        <param>
+          <type><ref refid="group__OS__APIS__FILE_1ga3b5104eac807de465009822c2b5d83cc" kindref="member">OS_PIPE_CREATE_FLAGS</ref></type>
+          <declname>flags</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>readFd</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>writeFd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates an anonymous pipe, and returns handles to the read and write ends of the pipe.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pipes creation flags </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">readFd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File descriptor for the read side </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">writeFd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File descriptor for the write side</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_INVALID_ARGS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One of the input arguments is invalid. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: All <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc-pipe.h" line="44" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc-pipe.h" declline="44" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga03d4d6d81193b0aee18e724b08bc9454" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Socket</definition>
+        <argsstring>(OS_APIS_IPC_SOCKET_DOMAIN domain, OS_APIS_IPC_SOCKET_TYPE type, OS_APIS_IPC_SOCKET_PROTOCOL protocol, NATIVE_FD *fd)</argsstring>
+        <name>OS_Socket</name>
+        <param>
+          <type><ref refid="group__OS__APIS__IPC_1ga7d64e90581bdd8948ed13f30f6b6a522" kindref="member">OS_APIS_IPC_SOCKET_DOMAIN</ref></type>
+          <declname>domain</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__IPC_1ga0de2b9d6f60ccba50e4c7db19697a45a" kindref="member">OS_APIS_IPC_SOCKET_TYPE</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__IPC_1gaab521f2803eec423dc1cd570b88d90d2" kindref="member">OS_APIS_IPC_SOCKET_PROTOCOL</ref></type>
+          <declname>protocol</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a socket. See man page of socket(2) for more details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">domain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket domain </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">protocol</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket Protocol </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">fd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Created file descriptor for the socket</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_INVALID_ARGS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One of the input arguments is invalid. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="94" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="94" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga1daa91d902fa7be8dcfff19944dd34d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Accept</definition>
+        <argsstring>(NATIVE_FD sockfd, struct sockaddr *addr, USIZE *addrlen, NATIVE_FD *newfd)</argsstring>
+        <name>OS_Accept</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>sockfd</declname>
+        </param>
+        <param>
+          <type>struct sockaddr *</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>USIZE *</type>
+          <declname>addrlen</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>newfd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Accepts a new connection on a listening socket. See man page of accept(2) for more details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sockfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The listening socket </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the remote connection that was accepted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">addrlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size in bytes of <bold>addr</bold>, returns the number of bytes writen to addr. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">newfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file descriptor of the socket created for this session.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="112" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="112" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga19d9a8ef0c34924ed9ac47f450a35dc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Listen</definition>
+        <argsstring>(NATIVE_FD sockfd, INT backlog)</argsstring>
+        <name>OS_Listen</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>sockfd</declname>
+        </param>
+        <param>
+          <type>INT</type>
+          <declname>backlog</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Listen for incomming connection in a socket. See man page of listen(2) for more details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sockfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The socket to listen on. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">backlog</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of connections to backlog (the meanning of it depends on the OS and kernel version).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="127" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="127" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga07c0e1d8c12c0cfe4e3b861c20c0fac3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Connect</definition>
+        <argsstring>(NATIVE_FD sockfd, const struct sockaddr *addr, USIZE addrlen)</argsstring>
+        <name>OS_Connect</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>sockfd</declname>
+        </param>
+        <param>
+          <type>const struct sockaddr *</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>addrlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Connect this socket to a remote socket. See man page of connet(2) for more details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sockfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The socket to initiate the connect from. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the remote socket to connect to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addrlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size in bytes of <bold>addr</bold>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="143" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="143" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1gad32d0b42ab5fb3a7df1b1a3d083f2431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Bind</definition>
+        <argsstring>(NATIVE_FD sockfd, const struct sockaddr *addr, USIZE addrlen)</argsstring>
+        <name>OS_Bind</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>sockfd</declname>
+        </param>
+        <param>
+          <type>const struct sockaddr *</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>addrlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind this socket to a local address. See man page of bind(2) for more details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sockfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The socket to bind. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address to bind the socket to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addrlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size in bytes of <bold>addr</bold>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="159" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="159" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga6ba7797f7b6361300804b2855a2fa5f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetSockName</definition>
+        <argsstring>(NATIVE_FD sockfd, const struct sockaddr *addr, USIZE *addrlen)</argsstring>
+        <name>OS_GetSockName</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>sockfd</declname>
+        </param>
+        <param>
+          <type>const struct sockaddr *</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>USIZE *</type>
+          <declname>addrlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the local address where the socket was bound. See man page of getsockname(2) for more details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sockfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The socket to initiate the connect from. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address where the socket was bound. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">addrlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size in bytes of <bold>addr</bold>, returns the number of bytes writen to addr.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_OPEN_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="175" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="175" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga6ce1fb8088aa608c14552a4a9bea39d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Shutdown</definition>
+        <argsstring>(NATIVE_FD sockfd, OS_APIS_IPC_SHUTDOWN how)</argsstring>
+        <name>OS_Shutdown</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>sockfd</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__IPC_1ga26c0ad3e94afe7b80683866c7cda8896" kindref="member">OS_APIS_IPC_SHUTDOWN</ref></type>
+          <declname>how</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes all or part of a full-duplex connection on the socket associated with sockfd to be shut down.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sockfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file descriptor of the socket to shut down. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">how</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bitwise OR of the value in OS_APIS_IPC_SHUTDOWN. If OS_APIS_IPC_SHUTDOWN_READ is specified, further receptions will be disallowed. If OS_APIS_IPC_SHUTDOWN_WRITE is specified,further transmissions will be disallowed.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_INVALID_ARGS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the value of <bold>how</bold> is invalid. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_CLOSE_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="193" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="193" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__IPC_1ga0bea137b6fc1dd5849294e2893c75460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SendTo</definition>
+        <argsstring>(NATIVE_FD sockfd, const void *buffer, OS_APIS_IPC_SENDTO_FLAGS flags, const struct sockaddr *dest_addr, USIZE dest_len, USIZE *buf_length)</argsstring>
+        <name>OS_SendTo</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>sockfd</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__IPC_1gab1d4d01ba1dcfa1faaf28c50874c1eb6" kindref="member">OS_APIS_IPC_SENDTO_FLAGS</ref></type>
+          <declname>flags</declname>
+        </param>
+        <param>
+          <type>const struct sockaddr *</type>
+          <declname>dest_addr</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>dest_len</declname>
+        </param>
+        <param>
+          <type>USIZE *</type>
+          <declname>buf_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Transmit a message to another socket.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sockfd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The socket to send data to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message flags </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dest_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket destination address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dest_len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of dest_addr </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">buf_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the bytes in <bold>buffer</bold> / bytes sent</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_FILE_WRITE_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/ipc.h" line="212" column="16" declfile="Source/os-apis/00-export-include/os-apis/ipc.h" declline="212" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>memory.h </para>
+    </briefdescription>
+    <detaileddescription>
+<para>ipc-pipe.h</para>
+<para>Contains IPC related os apis </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

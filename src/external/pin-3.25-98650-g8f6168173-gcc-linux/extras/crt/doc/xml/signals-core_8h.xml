@@ -1,0 +1,643 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="signals-core_8h" kind="file" language="C++">
+    <compoundname>signals-core.h</compoundname>
+    <includedby refid="signals_8h" local="yes">signals.h</includedby>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="signals-core_8h_1ae3c5d8eca3a60d714ecf32f976784316" prot="public" static="no">
+        <type>UINT64</type>
+        <definition>typedef UINT64 SIGSET_T</definition>
+        <argsstring></argsstring>
+        <name>SIGSET_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="20" column="16" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__SIGNALS_1gad30852456cca95699cbb8938281908a1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigSetEmpty</definition>
+        <argsstring>(SIGSET_T *set)</argsstring>
+        <name>OS_SigSetEmpty</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Represents a set of signals</para>
+<para>Initialize the set to contain none of the signals.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="32" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1a008c0550927b3e629659f854af41afb1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int OS_SigIsEmpty</definition>
+        <argsstring>(SIGSET_T *set)</argsstring>
+        <name>OS_SigIsEmpty</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return true if the specified signal set doesn&apos;t contain any signals, false otherwise.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="39" column="19" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1aae732a05ce6d74246e4acf02df1d534c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigSetAdd</definition>
+        <argsstring>(SIGSET_T *set, int signal)</argsstring>
+        <name>OS_SigSetAdd</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>signal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add Signal to the set</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Signal we want to add to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="48" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1a6ffad267eba58fc99a0588ff177b47d1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int OS_SigSetIsMember</definition>
+        <argsstring>(const SIGSET_T *set, int signal)</argsstring>
+        <name>OS_SigSetIsMember</name>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>signal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if signal is part of the set</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Signal we want to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="61" column="19" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="61" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1ad891c46beb4c72cbb9e99566d2a3d2ed" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int OS_SigSetAnyMember</definition>
+        <argsstring>(const SIGSET_T *set, const SIGSET_T *other)</argsstring>
+        <name>OS_SigSetAnyMember</name>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if at least one signal in <emphasis>other</emphasis> is part of the <emphasis>set</emphasis> </para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another signals set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="74" column="19" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1afcd8a85a721389b73563dd5a18a9abc5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigSetAddSet</definition>
+        <argsstring>(SIGSET_T *set, const SIGSET_T *other)</argsstring>
+        <name>OS_SigSetAddSet</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add all signals from <emphasis>other</emphasis> to this set.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="83" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1af354ec278eb24b5383a2c6514c82a602" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigSetRemoveSet</definition>
+        <argsstring>(SIGSET_T *set, const SIGSET_T *other)</argsstring>
+        <name>OS_SigSetRemoveSet</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove all signals from <emphasis>other</emphasis> from this set.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="92" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1a871e387a51f76657798d567fbfa156bc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigIntersect</definition>
+        <argsstring>(SIGSET_T *set, const SIGSET_T *other)</argsstring>
+        <name>OS_SigIntersect</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove signals from <emphasis>set</emphasis> which don&apos;t exist in <emphasis>other</emphasis> (Intersection of <emphasis>set</emphasis> and <emphasis>other</emphasis> into set)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="101" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="101" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1a1c7c937f1e6ecdf010609aee8e0dcdba" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>static UINT32 OS_SigSetGetMaskWord</definition>
+        <argsstring>(const SIGSET_T *set, unsigned i)</argsstring>
+        <name>OS_SigSetGetMaskWord</name>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return one word of the mask (representing 32 signals).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells which word to return: 0 reprsents signals 1-32, 1 represents signals 33-64, etc. The lowest signal number corresponds to the least significant bit.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The mask word. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="114" column="22" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1a20d600a51fa09318352c65a1c91c64b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigSetSetMaskWord</definition>
+        <argsstring>(SIGSET_T *set, unsigned i, UINT32 word)</argsstring>
+        <name>OS_SigSetSetMaskWord</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set one word of the mast (representing 32 signals).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Set</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells which word to set: 0 corresponds to signals 1-32, 1 to signals 33-64, etc. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">word</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The mask word to set. The lowest bit represents the smallest signal. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="129" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="129" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1a59b20ea6e183c22d381be3af835c79ab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigSetFill</definition>
+        <argsstring>(SIGSET_T *set)</argsstring>
+        <name>OS_SigSetFill</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add all the signals to the set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="141" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="141" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="signals-core_8h_1a3556f5482f52762ef8aff413a16458bc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void OS_SigSetRemove</definition>
+        <argsstring>(SIGSET_T *set, int signal)</argsstring>
+        <name>OS_SigSetRemove</name>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>signal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove signal from the set.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="149" column="20" bodyfile="Source/os-apis/00-export-include/os-apis/signals-core.h" bodystart="149" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__SIGNALS_1gad356e9fc0009787d0f4fd75761b2312d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SendSignalToProcess</definition>
+        <argsstring>(NATIVE_PID pid, INT signal)</argsstring>
+        <name>OS_SendSignalToProcess</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>pid</declname>
+        </param>
+        <param>
+          <type>INT</type>
+          <declname>signal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send signal to a process. This function is compatible with POSIX kill().</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The process to send signal to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal to send.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="168" column="16" declfile="Source/os-apis/00-export-include/os-apis/signals-core.h" declline="168" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__SIGNALS_1gaca478df2d2cad5e9e192a0a6afd3f157" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SigProcMask</definition>
+        <argsstring>(INT how, const SIGSET_T *set, SIGSET_T *oldset)</argsstring>
+        <name>OS_SigProcMask</name>
+        <param>
+          <type>INT</type>
+          <declname>how</declname>
+        </param>
+        <param>
+          <type>const SIGSET_T *</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>SIGSET_T *</type>
+          <declname>oldset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change the signal mask, the set of currently blocked signals for the current thread. This function is compatible with POSIX sigprocmask().</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">how</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies how to alter the blocked signals mask: SIG_BLOCK: The set of blocked signals is the union of the current set and the set argument. SIG_UNBLOCK: The signals in set are removed from the current set of blocked signals. It is legal to attempt to unblock a signal which is not blocked. SIG_SETMASK: The set of blocked signals is set to the argument set. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The signal set to alter. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">oldset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The previous blocked signals set.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/signals-core.h" line="188" column="16" declfile="Source/os-apis/00-export-include/os-apis/signals-core.h" declline="188" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2016-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_SIGNALS_CORE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_SIGNALS_CORE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TARGET_MAC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT32<sp/>SIGSET_T;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/>SIGSET_T;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigSetEmpty(SIGSET_T*<sp/>set)<sp/>{<sp/>*set<sp/>=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>OS_SigIsEmpty(SIGSET_T*<sp/>set)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*set<sp/>==<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigSetAdd(SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>signal)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64<sp/>mask<sp/>=<sp/>(UINT64)1<sp/>&lt;&lt;<sp/>(signal<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>*set<sp/>|=<sp/>mask;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>OS_SigSetIsMember(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>signal)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64<sp/>mask<sp/>=<sp/>(UINT64)1<sp/>&lt;&lt;<sp/>(signal<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((*set<sp/>&amp;<sp/>mask)<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>OS_SigSetAnyMember(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>other)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((*set<sp/>&amp;<sp/>*other)<sp/>!=<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigSetAddSet(SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>other)<sp/>{<sp/>*set<sp/>|=<sp/>*other;<sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigSetRemoveSet(SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>other)<sp/>{<sp/>*set<sp/>&amp;=<sp/>~*other;<sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigIntersect(SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>other)<sp/>{<sp/>*set<sp/>&amp;=<sp/>*other;<sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>UINT32<sp/>OS_SigSetGetMaskWord(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((i<sp/>&lt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(SIGSET_T)<sp/>/<sp/>4)<sp/>?<sp/>*((UINT32*)set<sp/>+<sp/>i)<sp/>:<sp/>0);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigSetSetMaskWord(SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i,<sp/>UINT32<sp/>word)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&lt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(SIGSET_T)<sp/>/<sp/>4)</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*((UINT32*)set<sp/>+<sp/>i)<sp/>=<sp/>word;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigSetFill(SIGSET_T*<sp/>set)<sp/>{<sp/>*set<sp/>=<sp/>(8<sp/>==<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(SIGSET_T))<sp/>?<sp/>~(UINT64)0<sp/>:<sp/>~(UINT32)0;<sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>OS_SigSetRemove(SIGSET_T*<sp/>set,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>signal)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64<sp/>mask<sp/>=<sp/>(UINT64)1<sp/>&lt;&lt;<sp/>(signal<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>*set<sp/>&amp;=<sp/>~mask;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__SIGNALS_1gad356e9fc0009787d0f4fd75761b2312d" kindref="member">OS_SendSignalToProcess</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref><sp/>pid,<sp/>INT<sp/>signal);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__SIGNALS_1gaca478df2d2cad5e9e192a0a6afd3f157" kindref="member">OS_SigProcMask</ref>(INT<sp/>how,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SIGSET_T*<sp/>set,<sp/>SIGSET_T*<sp/>oldset);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>OS_APIS_SIGNALS_EXT_H</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/signals-core.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__IMG" kind="group">
+    <compoundname>IMG</compoundname>
+    <title>IMG: Image Object</title>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__IMG_1ga94a20481f21c96ad7ad5147b5148ecb0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>IMG_TYPE</name>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0a52b86071c3bd06ad5cc7e80e54ca2d6d" prot="public">
+          <name>IMG_TYPE_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0ad7ea6bb76b9027bf3f8a8d99adcbf45e" prot="public">
+          <name>IMG_TYPE_STATIC</name>
+          <briefdescription>
+<para>Main image, linked with -static. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0ac7dfdb22b5113a095fec98fc5483082e" prot="public">
+          <name>IMG_TYPE_SHARED</name>
+          <briefdescription>
+<para>Main image, linked against shared libraries. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0a0b07c853ba687a921ec7b32cc014aed4" prot="public">
+          <name>IMG_TYPE_SHAREDLIB</name>
+          <briefdescription>
+<para>Shared library or main image linked with -pie. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0af0b26bb2a24a7def210320ec1b22225e" prot="public">
+          <name>IMG_TYPE_RELOCATABLE</name>
+          <briefdescription>
+<para>Relocatble object (.o file) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0a297b15b21cd9774445e56fa84831191c" prot="public">
+          <name>IMG_TYPE_DYNAMIC_CODE</name>
+          <briefdescription>
+<para>Dynamically created code. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0a9a261f2bd6736dac0e117509c5cc7c23" prot="public">
+          <name>IMG_TYPE_API_CREATED</name>
+          <briefdescription>
+<para>Artificial image created by <ref refid="group__REPLAY_1gadd939297fe51b34aedcbcb8b627a89f2" kindref="member">IMG_CreateAt</ref> () </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga94a20481f21c96ad7ad5147b5148ecb0a54889a25c68f30fd4b23a7c1422d3e2b" prot="public">
+          <name>IMG_TYPE_LAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains IMG primitives </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/img.PH" line="16" column="1" bodyfile="Source/pin/core/img.PH" bodystart="15" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__IMG_1ga38ea70f6ce2ffef5488aefbcc5494bce" prot="public" static="no" strong="no">
+        <type></type>
+        <name>IMG_PROPERTY</name>
+        <enumvalue id="group__IMG_1gga38ea70f6ce2ffef5488aefbcc5494bcea71e1e7459b9ca7057386d82283f6ed37" prot="public">
+          <name>IMG_PROPERTY_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga38ea70f6ce2ffef5488aefbcc5494bceaa22c98dad57958fdc204f8c967d2a2e6" prot="public">
+          <name>IMG_PROPERTY_SHSTK_ENABLED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>CET shadow stack enabled. Supported only for Linux </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga38ea70f6ce2ffef5488aefbcc5494bceab9c7023a95eb0a6b486c996ca06b46f8" prot="public">
+          <name>IMG_PROPERTY_IBT_ENABLED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>CET indirect branch tracking enabled. Supported only for Linux </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__IMG_1gga38ea70f6ce2ffef5488aefbcc5494bcea9453603be8628a04b2705ae232079aa4" prot="public">
+          <name>IMG_PROPERTY_LAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Properties available for an image. Typically defined as meta data within the image. May define some specific hardware that is used or needed or some features enabled by the image. Property may be OS/CPU specific. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/img.PH" line="33" column="1" bodyfile="Source/pin/core/img.PH" bodystart="32" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__IMG_1ga7d103a7d0bfc05892cdf2f9d39df9eba" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* IMAGECALLBACK) (IMG, VOID *)</definition>
+        <argsstring>)(IMG, VOID *)</argsstring>
+        <name>IMAGECALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of function to be called when an image is loaded </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="872" column="9" bodyfile="Source/pin/pin/image.PH" bodystart="872" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__IMG_1gacba3766aac7698896fdb8b02df2a283e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG IMG_Next</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Next</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Of the list of currently loaded images in memory it returns the image loaded after image x, or <ref refid="group__IMG_1gab591ec18986fb117120a714f06a35942" kindref="member">IMG_Invalid()</ref> if x is the last image</para>
+</simplesect>
+Skip shadow image (vdso or dynamic code)</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="100" column="12" declfile="Source/pin/pin/image.PH" declline="100" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gaaa82261cabe74bad0613c43d2346a5cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG IMG_Prev</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Prev</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Of the list of currently loaded images in memory it returns the image loaded prior to image x, or <ref refid="group__IMG_1gab591ec18986fb117120a714f06a35942" kindref="member">IMG_Invalid()</ref> if x is the first image</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="111" column="12" declfile="Source/pin/pin/image.PH" declline="111" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gab591ec18986fb117120a714f06a35942" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG IMG_Invalid</definition>
+        <argsstring>()</argsstring>
+        <name>IMG_Invalid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Used to indicate no image</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="121" column="12" declfile="Source/pin/pin/image.PH" declline="121" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga231a58e55838a4d4cbce3f7c0bfa9f0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL IMG_Valid</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Valid</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is not <ref refid="group__IMG_1gab591ec18986fb117120a714f06a35942" kindref="member">IMG_Invalid()</ref></para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="131" column="13" declfile="Source/pin/pin/image.PH" declline="131" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga2f97057faee2f7ed7e23b88b339f62f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEC</type>
+        <definition>SEC IMG_SecHead</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_SecHead</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>First section in image</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="141" column="12" declfile="Source/pin/pin/image.PH" declline="141" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gad01a20a588a5110b1bb1361eb60eb166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SEC</type>
+        <definition>SEC IMG_SecTail</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_SecTail</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Last section in image </para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="150" column="12" declfile="Source/pin/pin/image.PH" declline="150" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga2d7ae0d04e4da064200e61750c2677ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SYM</type>
+        <definition>SYM IMG_RegsymHead</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_RegsymHead</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>First regular symbol in image</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="160" column="12" declfile="Source/pin/pin/image.PH" declline="160" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gab35f17d40de6a4ecc51db591354d7841" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_EntryAddress</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_EntryAddress</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin image handle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Address of first instruction executed when image is loaded</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="184" column="16" declfile="Source/pin/pin/image.PH" declline="184" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga4f3f8677449add4d0379b5424f5dcfd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL IMG_HasProperty</definition>
+        <argsstring>(IMG img, IMG_PROPERTY property)</argsstring>
+        <name>IMG_HasProperty</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <param>
+          <type><ref refid="group__IMG_1ga38ea70f6ce2ffef5488aefbcc5494bce" kindref="member">IMG_PROPERTY</ref></type>
+          <declname>property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks if image has the specificfied property <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin image handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">property</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the property to check of type <ref refid="group__IMG_1ga38ea70f6ce2ffef5488aefbcc5494bce" kindref="member">IMG_PROPERTY</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if image supports specific property in specific mode</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="197" column="13" declfile="Source/pin/pin/image.PH" declline="197" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gab3bddc2c79c3879f91e61a11c2401f05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; IMG_Name</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Name</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Fully qualified actual file name of image. Image names are encoded in UTF8 (a superset of ASCII), this is supported for Linux (only for locales encoded in UTF8) and Windows</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="208" column="26" declfile="Source/pin/pin/image.PH" declline="208" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gab4b4e29c1e70d42071380597aafd08a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_Gp</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Gp</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Global pointer (GP) of image, if a GP is used to address global data</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="218" column="16" declfile="Source/pin/pin/image.PH" declline="218" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gad01265ee1c2e8f4779092dae99bb2ee4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_LoadOffset</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_LoadOffset</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Offset from the image&apos;s link-time address to its load-time address.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="228" column="16" declfile="Source/pin/pin/image.PH" declline="228" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gafb09205aa6b44d2b9302fc1e422c3d75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_LowAddress</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_LowAddress</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells the lowest address of any code or data loaded by the image.</para>
+<para><simplesect kind="remark"><para>If the image is split in memory, regions from other images might be mapped between its regions. In this case, the function will return the low address of the text segment. See <ref refid="group__IMG_1gaf5fbd7cd458878d79b0fc54615fcf851" kindref="member">IMG_NumRegions</ref>.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin image handle.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The image&apos;s lowest address or the text segment low address if the image is split.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="249" column="16" declfile="Source/pin/pin/image.PH" declline="249" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga83595d9924300a59f727626ca9b8e88d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_HighAddress</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_HighAddress</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells the highest address of any code or data loaded by the image. This is the address of the last byte loaded by the image.</para>
+<para><simplesect kind="remark"><para>If the image is split in memory, regions from other images might be mapped between its regions. In this case, the function will return the high address of the text segment. See <ref refid="group__IMG_1gaf5fbd7cd458878d79b0fc54615fcf851" kindref="member">IMG_NumRegions</ref>.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin image handle.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The image&apos;s highest address or the text segment high address if the image is split.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="272" column="16" declfile="Source/pin/pin/image.PH" declline="272" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gae2299d042776b36435d4240a0363c28a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_StartAddress</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_StartAddress</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>On Windows, the whole image has been loaded by system loader at once. <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> gives the pointer to the image, mapped by loader. If you are working inside image-load callback - <ref refid="group__IMG_1gafb09205aa6b44d2b9302fc1e422c3d75" kindref="member">IMG_LowAddress()</ref> and <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> return the same value.</para>
+<para>On Unix, the loader maps only portions of the image file that contain code and data. Additionally, Pin maps the whole image file for parsing. <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> returns a pointer to the memory mapped file. After return form image-load callback the whole image file is being unmapped and the pointer becomes invalid. The <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> returns 0.</para>
+<para>Note, On Unix, the <ref refid="group__IMG_1gafb09205aa6b44d2b9302fc1e422c3d75" kindref="member">IMG_LowAddress()</ref> and <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> return different values.</para>
+<para>On <ref refid="group__IMG_1ga0a2ed1c58e7215da29194d1800ceee86" kindref="member">IMG_Open()</ref>, Pin maps the whole image into memory and the pointer is valid until <ref refid="group__IMG_1ga93a7a90e8bba62212028ed33bbfe83b2" kindref="member">IMG_Close()</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin image handle.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to the start of the raw image file.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="300" column="16" declfile="Source/pin/pin/image.PH" declline="300" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga76799de259e3c3b0873a9d4c81745e1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>USIZE</type>
+        <definition>USIZE IMG_SizeMapped</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_SizeMapped</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells the size of the raw image mapped by Pin, including the size of the image&apos;s symbolic information, which is not normally mapped by the application. Use this with <ref refid="group__IMG_1gae2299d042776b36435d4240a0363c28a" kindref="member">IMG_StartAddress()</ref> to find the entire memory range of the raw image mapped by Pin.</para>
+<para>Note, this does <emphasis>not</emphasis> give the address range of the image from the application&apos;s perspective. To get that, use <ref refid="group__IMG_1gafb09205aa6b44d2b9302fc1e422c3d75" kindref="member">IMG_LowAddress()</ref> and <ref refid="group__IMG_1ga83595d9924300a59f727626ca9b8e88d" kindref="member">IMG_HighAddress()</ref>.</para>
+<para>On Linux, the file is mapped in image-load callback or after IMG_Open. In other cases the IMG_SizeMapped returns 0.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin image handle.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Size (bytes) of the raw image file mapped by Pin.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="322" column="14" declfile="Source/pin/pin/image.PH" declline="322" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga987423843679af4f9d3c33b22ddec5af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__IMG_1ga94a20481f21c96ad7ad5147b5148ecb0" kindref="member">IMG_TYPE</ref></type>
+        <definition>IMG_TYPE IMG_Type</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Type</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Image type</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="332" column="17" declfile="Source/pin/pin/image.PH" declline="332" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga2be7f100f47a86fadee6d0d65641e0c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL IMG_IsMainExecutable</definition>
+        <argsstring>(IMG x)</argsstring>
+        <name>IMG_IsMainExecutable</name>
+        <param>
+          <type>IMG</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE for the image Pin was applied on in the command line (i.e. first param after <ndash/>)</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="342" column="13" declfile="Source/pin/pin/image.PH" declline="342" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga13e68ba11d7f7922750167713cae89bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL IMG_hasLinesData</definition>
+        <argsstring>(IMG x)</argsstring>
+        <name>IMG_hasLinesData</name>
+        <param>
+          <type>IMG</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if img has debug information that includes the lines information.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="352" column="13" declfile="Source/pin/pin/image.PH" declline="352" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga5b0db709955ea80522d6a6355a3a1f40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL IMG_IsInterpreter</definition>
+        <argsstring>(IMG x)</argsstring>
+        <name>IMG_IsInterpreter</name>
+        <param>
+          <type>IMG</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>On operating systems that have the concept of loader image. (i.e. another program that is resposible to load the application), this function return TRUE for the image of the loader. In operating system that don&apos;t have the concept of loader, this function returns FALSE on all images.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin image handle.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if this is the image of the application&apos;s loader (interpreter).</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="370" column="13" declfile="Source/pin/pin/image.PH" declline="370" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga8ce8a798f255f0f5f9bc4763ac73ae79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL IMG_IsStaticExecutable</definition>
+        <argsstring>(IMG x)</argsstring>
+        <name>IMG_IsStaticExecutable</name>
+        <param>
+          <type>IMG</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if this is the static executable</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="380" column="13" declfile="Source/pin/pin/image.PH" declline="380" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga78ab192435225bca4332a518af45a6bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL IMG_IsVDSO</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_IsVDSO</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>On Linux this function return TRUE for the image of the VDSO. On other operating systems return FALSE for all images.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin image handle.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if this is the VDSO image.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="395" column="13" declfile="Source/pin/pin/image.PH" declline="395" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gaf5fbd7cd458878d79b0fc54615fcf851" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 IMG_NumRegions</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_NumRegions</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>number of consecutive regions of the image in memory</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="405" column="15" declfile="Source/pin/pin/image.PH" declline="405" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gaf67b1793bdcc17e3ba1283adb79baf47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_RegionHighAddress</definition>
+        <argsstring>(IMG img, UINT32 n)</argsstring>
+        <name>IMG_RegionHighAddress</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the high address of the n&apos;th region </para>
+</simplesect>
+<simplesect kind="remark"><para>n starts at 0</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="416" column="16" declfile="Source/pin/pin/image.PH" declline="416" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gad39ae770c8ef64ac89ddf46f68fa9398" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT IMG_RegionLowAddress</definition>
+        <argsstring>(IMG img, UINT32 n)</argsstring>
+        <name>IMG_RegionLowAddress</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the low address of the n&apos;th region </para>
+</simplesect>
+<simplesect kind="remark"><para>n starts at 0</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="427" column="16" declfile="Source/pin/pin/image.PH" declline="427" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gac668f1d1f428a27bb860df384b54f589" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 IMG_Id</definition>
+        <argsstring>(IMG x)</argsstring>
+        <name>IMG_Id</name>
+        <param>
+          <type>IMG</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a unique ID for the image. If an image is unloaded, the ID is not reused for a different image. If an image is unloaded and the same one is loaded back, the ID is different. <simplesect kind="return"><para>Unique ID for the image.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+ <bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="941" column="15" declfile="Source/pin/pin/image.PH" declline="941" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga3a7305685873fd2f1459bb9b57252746" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* IMG_DynamicRawData</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_DynamicRawData</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the pointer to the object that was passed by the application for reporting the creation of a dynamic image via the Jit Profiling API. The pointer is available only for dynamic images, and only during the image load and routine instrumentation callbacks. In all other cases, the function returns NULL.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin image handle.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pointer to the object, or NULL. </para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+ <bold>O/S</bold>: Linux*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="959" column="13" declfile="Source/pin/pin/image.PH" declline="959" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gac39eff1de20a6acbcecc203f5075d825" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG IMG_FindImgById</definition>
+        <argsstring>(UINT32 id)</argsstring>
+        <name>IMG_FindImgById</name>
+        <param>
+          <type>UINT32</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Find image by Id <simplesect kind="return"><para>IMG object, valid or invalid</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+ <bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="970" column="12" declfile="Source/pin/pin/image.PH" declline="970" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gae21bb2ba431c4dd7964736c8102e656e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG IMG_FindByAddress</definition>
+        <argsstring>(ADDRINT address)</argsstring>
+        <name>IMG_FindByAddress</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Find image by address. For each image, check if the address is within the mapped memory region of one of its segments. <simplesect kind="return"><para>IMG object, valid or invalid</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="985" column="12" declfile="Source/pin/pin/image.PH" declline="985" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga4a067152140ead3e23279ab2bd6cd723" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK IMG_AddInstrumentFunction</definition>
+        <argsstring>(IMAGECALLBACK fun, VOID *v)</argsstring>
+        <name>IMG_AddInstrumentFunction</name>
+        <param>
+          <type><ref refid="group__IMG_1ga7d103a7d0bfc05892cdf2f9d39df9eba" kindref="member">IMAGECALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Use this to register a call back to catch the loading of an image <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instrumentation function for images, it is passed an image and v </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value of to pass to fun when an image is loaded</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1015" column="21" declfile="Source/pin/pin/image.PH" declline="1015" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga4717fe8d7cd73c9efe6a414897ad96a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK IMG_AddUnloadFunction</definition>
+        <argsstring>(IMAGECALLBACK fun, VOID *v)</argsstring>
+        <name>IMG_AddUnloadFunction</name>
+        <param>
+          <type><ref refid="group__IMG_1ga7d103a7d0bfc05892cdf2f9d39df9eba" kindref="member">IMAGECALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register fun as a call back to be used when an image is unloaded. This is not an instrumentation function<ndash/>it doesn&apos;t make sense to instrument a function when it removed from memory. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>passed an image and v when an image is unloaded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to pass to fun when an image is unloaded</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API. </para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1031" column="21" declfile="Source/pin/pin/image.PH" declline="1031" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga0a2ed1c58e7215da29194d1800ceee86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG IMG_Open</definition>
+        <argsstring>(const std::string &amp;filename)</argsstring>
+        <name>IMG_Open</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows one to open an image and browse it statically. There can only be one image open at a time. File names are encoded in UTF8 (a superset of ASCII).</para>
+<para><simplesect kind="note"><para>This API can only be used at a safe point, which is before calling <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref>(/or similar)</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The image file name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The opened image, or IMG_INVALID() if the image cannot be opened.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1088" column="12" declfile="Source/pin/pin/image.PH" declline="1088" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga93a7a90e8bba62212028ed33bbfe83b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID IMG_Close</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_Close</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Close the open image.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IMG that was previously opened.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1100" column="13" declfile="Source/pin/pin/image.PH" declline="1100" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1ga58c32c83de8c12d086286a5cf6c7fee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG APP_ImgHead</definition>
+        <argsstring>()</argsstring>
+        <name>APP_ImgHead</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The first image loaded into memory</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1380" column="12" declfile="Source/pin/pin/image.PH" declline="1380" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__IMG_1gad77f6e89bae77270f990e7564f885dab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>IMG</type>
+        <definition>IMG APP_ImgTail</definition>
+        <argsstring>()</argsstring>
+        <name>APP_ImgTail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The last image loaded into memory</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1390" column="12" declfile="Source/pin/pin/image.PH" declline="1390" declcolumn="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An IMG represents all the data structures corresponding to a binary (executable). Can be accessed at instrumentation time and analysis time. Note: Shared libraries are also represented by the IMG abstraction. Moreover, the IMG objects are created in a lazy fashion. Only if a shared library is loaded and IMG is created. Over the lifetime of a process the number IMG objects created may hence increase.<linebreak/>
+APIs from this group are available in any thread, including any internal thread spawned by the tool.</para>
+<para>Example tools:</para>
+<para><ref refid="index_1ImageLoad" kindref="member">Detecting the Loading and Unloading of Images (Image Instrumentation)</ref></para>
+<para>Iteration idioms:</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Visit<sp/>every<sp/>loaded<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">for(<sp/>IMG<sp/>img=<sp/>APP_ImgHead();<sp/>IMG_Valid(img);<sp/>img<sp/>=<sp/>IMG_Next(img)<sp/>)</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

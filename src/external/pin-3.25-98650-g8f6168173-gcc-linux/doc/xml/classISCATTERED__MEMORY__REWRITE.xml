@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classISCATTERED__MEMORY__REWRITE" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ISCATTERED_MEMORY_REWRITE</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classISCATTERED__MEMORY__REWRITE_1aaadbaf68251a4a4f3168d29dbb5cf8cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ISCATTERED_MEMORY_REWRITE::~ISCATTERED_MEMORY_REWRITE</definition>
+        <argsstring>()</argsstring>
+        <name>~ISCATTERED_MEMORY_REWRITE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1136" column="13" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1136" bodyend="1136"/>
+      </memberdef>
+      <memberdef kind="function" id="classISCATTERED__MEMORY__REWRITE_1ad98e8ac391d205490dbe82b2a61c095b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>UINT32</type>
+        <definition>virtual UINT32 ISCATTERED_MEMORY_REWRITE::NumOfElements</definition>
+        <argsstring>() const =0</argsstring>
+        <name>NumOfElements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return number of memory operand elements </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1140" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classISCATTERED__MEMORY__REWRITE_1ac75da3a632c752dfec2f0b369dff8c0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>USIZE</type>
+        <definition>virtual USIZE ISCATTERED_MEMORY_REWRITE::ElementSize</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementSize</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element size in bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1144" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classISCATTERED__MEMORY__REWRITE_1afaeeccf554b9c60d66b8dd64e09c435e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>UINT32</type>
+        <definition>virtual UINT32 ISCATTERED_MEMORY_REWRITE::ElementMaskValue</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementMaskValue</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element mask value - 0 or 1. <linebreak/>
+If the instruction has no active mask - 1 is returned. <linebreak/>
+If the mask register is a KMASK then 1 is returned if the N&apos;th bit in the mask is set. <linebreak/>
+If the mask register is a vector register then 1 is returned if the high bit of the N&apos;th mask element (size of mask element depends on the instruction) is set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1152" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classISCATTERED__MEMORY__REWRITE_1ae5fd1b66a6005fce2539b077a40bce9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>UINT32</type>
+        <definition>virtual UINT32 ISCATTERED_MEMORY_REWRITE::ElementOffset</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementOffset</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element offset in bytes from the beginning of the register to the specified element. <linebreak/>
+This function should be used only for register operands and will result in Pin error if used for memory operands. <linebreak/>
+Users may use the returned offset on buffers received IARG_REG_REFERENCE/IARG_REG_CONST_REFERENCE </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1158" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classISCATTERED__MEMORY__REWRITE_1ae8c65649c17fe13335986061445f316d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>ADDRINT</type>
+        <definition>virtual ADDRINT ISCATTERED_MEMORY_REWRITE::ElementAddress</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementAddress</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element effective address </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1162" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classISCATTERED__MEMORY__REWRITE_1a1d1b078dd4182756879319faa0f8e5e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>VOID</type>
+        <definition>virtual VOID ISCATTERED_MEMORY_REWRITE::SetElementAddress</definition>
+        <argsstring>(UINT32 element_index, ADDRINT address)=0</argsstring>
+        <name>SetElementAddress</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set new element effective address </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1166" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Used in instruction rewrite for operands with scattered memory access. </para>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="1134" column="32" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1134" bodyend="1167"/>
+    <listofallmembers>
+      <member refid="classISCATTERED__MEMORY__REWRITE_1ae8c65649c17fe13335986061445f316d" prot="public" virt="pure-virtual"><scope>ISCATTERED_MEMORY_REWRITE</scope><name>ElementAddress</name></member>
+      <member refid="classISCATTERED__MEMORY__REWRITE_1afaeeccf554b9c60d66b8dd64e09c435e" prot="public" virt="pure-virtual"><scope>ISCATTERED_MEMORY_REWRITE</scope><name>ElementMaskValue</name></member>
+      <member refid="classISCATTERED__MEMORY__REWRITE_1ae5fd1b66a6005fce2539b077a40bce9b" prot="public" virt="pure-virtual"><scope>ISCATTERED_MEMORY_REWRITE</scope><name>ElementOffset</name></member>
+      <member refid="classISCATTERED__MEMORY__REWRITE_1ac75da3a632c752dfec2f0b369dff8c0c" prot="public" virt="pure-virtual"><scope>ISCATTERED_MEMORY_REWRITE</scope><name>ElementSize</name></member>
+      <member refid="classISCATTERED__MEMORY__REWRITE_1ad98e8ac391d205490dbe82b2a61c095b" prot="public" virt="pure-virtual"><scope>ISCATTERED_MEMORY_REWRITE</scope><name>NumOfElements</name></member>
+      <member refid="classISCATTERED__MEMORY__REWRITE_1a1d1b078dd4182756879319faa0f8e5e0" prot="public" virt="pure-virtual"><scope>ISCATTERED_MEMORY_REWRITE</scope><name>SetElementAddress</name></member>
+      <member refid="classISCATTERED__MEMORY__REWRITE_1aaadbaf68251a4a4f3168d29dbb5cf8cf" prot="public" virt="virtual"><scope>ISCATTERED_MEMORY_REWRITE</scope><name>~ISCATTERED_MEMORY_REWRITE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

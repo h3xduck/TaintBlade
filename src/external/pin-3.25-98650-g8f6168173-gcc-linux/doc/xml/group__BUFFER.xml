@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__BUFFER" kind="group">
+    <compoundname>BUFFER</compoundname>
+    <title>Fast Buffering APIs</title>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__BUFFER_1gab76ee2f4d8b082ba5a3d736279b823db" prot="public" static="no">
+        <type>VOID *(*</type>
+        <definition>typedef VOID*(* TRACE_BUFFER_CALLBACK) (BUFFER_ID id, THREADID tid, const CONTEXT *ctxt, VOID *buf, UINT64 numElements, VOID *v)</definition>
+        <argsstring>)(BUFFER_ID id, THREADID tid, const CONTEXT *ctxt, VOID *buf, UINT64 numElements, VOID *v)</argsstring>
+        <name>TRACE_BUFFER_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A call-back function which Pin calls whenever the tools needs to consume a trace buffer (e.g., the trace buffer is full).</para>
+<para>@Note This function may be called on a different thread than the given threadIndex.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the trace buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the thread owning this buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the start of the buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">numElements</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements collected into the buffer which need to be consumed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the buffer to use when the thread resumes. Typically, this is <emphasis>buf</emphasis>, but see also <ref refid="group__BUFFER_1ga621843095c4669fd6511046b4acbe436" kindref="member">PIN_AllocateBuffer()</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="362" column="9" bodyfile="Source/pin/pin/pin_client.PH" bodystart="362" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" prot="public" static="no">
+        <type>UINT32</type>
+        <definition>typedef UINT32 BUFFER_ID</definition>
+        <argsstring></argsstring>
+        <name>BUFFER_ID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tool buffer ID assigned by Pin. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="87" column="16" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__BUFFER_1gaf379010b4b5cf3316089bb041ce5c02b" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+        <definition>const BUFFER_ID BUFFER_ID_INVALID</definition>
+        <argsstring></argsstring>
+        <name>BUFFER_ID_INVALID</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ID returned if defining a buffer fails. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="93" column="17" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__BUFFER_1ga56fa8ed5b1b58950a46f5bab942adfb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+        <definition>BUFFER_ID PIN_DefineTraceBuffer</definition>
+        <argsstring>(size_t recordSize, UINT32 numPages, TRACE_BUFFER_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_DefineTraceBuffer</name>
+        <param>
+          <type>size_t</type>
+          <declname>recordSize</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>numPages</declname>
+        </param>
+        <param>
+          <type><ref refid="group__BUFFER_1gab76ee2f4d8b082ba5a3d736279b823db" kindref="member">TRACE_BUFFER_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Define a trace buffer to use with the Pin trace buffer API. This function defines the shape of the buffer, but doesn&apos;t allocate the buffer itself. Each thread implicitly creates its first buffer on start-up. Additional buffers may then be created using <ref refid="group__BUFFER_1ga621843095c4669fd6511046b4acbe436" kindref="member">PIN_AllocateBuffer</ref>, but this is only needed by tools using &quot;double buffering&quot;.</para>
+<para>Upon exit, the notification callback may be called on a different physical thread than the one that is exiting.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">recordSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size (bytes) of each record in the buffer. This size must be less than the size of an OS page. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">numPages</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of OS pages to allocate for each buffer. This size does not have to be an even multiple of <emphasis>recordSize</emphasis>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A call-back function that is called whenever the buffer is full, or when the thread exits with a partially-full buffer. Note that when called for a full buffer, not during thread exit, this function is called WITHOUT holding any Pin locks. So that multiple threads may be executing the function simultaneously. It is the tool&apos;s responsibility to take care of the multi-thread safety of this function, and any functions called by it. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Passed as the last argument to <emphasis>fun</emphasis>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>On success, a BUFFER_ID. On error (e.g., maximum number of trace buffers exceeded,) returns BUFFER_ID_INVALID.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3040" column="18" declfile="Source/pin/pin/pin_client.PH" declline="3040" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BUFFER_1ga621843095c4669fd6511046b4acbe436" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* PIN_AllocateBuffer</definition>
+        <argsstring>(BUFFER_ID id)</argsstring>
+        <name>PIN_AllocateBuffer</name>
+        <param>
+          <type><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Explicitly allocate a trace buffer. This is only needed for tools which use a &quot;double buffering&quot; technique. When used, the buffer pointer should be returned from the TRACE_BUFFER_CALLBACK call-back.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the trace buffer to allocate.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the new buffer.]</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3058" column="13" declfile="Source/pin/pin/pin_client.PH" declline="3058" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BUFFER_1ga4f86704278faf1b37c8a04e9214bd499" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_DeallocateBuffer</definition>
+        <argsstring>(BUFFER_ID id, VOID *buf)</argsstring>
+        <name>PIN_DeallocateBuffer</name>
+        <param>
+          <type><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Explicitly deallocate a trace buffer. This is only needed by tools using a &quot;double buffering&quot; technique, where it is used to deallocate buffers allocated via <ref refid="group__BUFFER_1ga621843095c4669fd6511046b4acbe436" kindref="member">PIN_AllocateBuffer()</ref>. However, it may be safely called (with no effect) for a thread&apos;s implicit initial buffer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the trace buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the start of the buffer.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3077" column="13" declfile="Source/pin/pin/pin_client.PH" declline="3077" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__BUFFER_1ga0122fc5da88c6a77997475b1a6f74a45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* PIN_GetBufferPointer</definition>
+        <argsstring>(CONTEXT *const ctxt, BUFFER_ID id)</argsstring>
+        <name>PIN_GetBufferPointer</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *const</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__BUFFER_1gaee232a4179b4897b5869a6d5fc98d032" kindref="member">BUFFER_ID</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the address of the current position in the buffer. Needs a <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> that was passed in as a call back argument or IARG_CONTEXT</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the trace buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="3124" column="13" declfile="Source/pin/pin/pin_client.PH" declline="3124" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>APIs to perform low-overhead buffering of data for analysis. Use <ref refid="group__BUFFER_1ga56fa8ed5b1b58950a46f5bab942adfb8" kindref="member">PIN_DefineTraceBuffer()</ref> to create space for storing data, and <ref refid="group__INS__INSTRUMENTATION_1ga097198320639318c65fa1ee815cbbe0c" kindref="member">INS_InsertFillBuffer()</ref> to fill the buffers. When a buffer overflows, or the thread exits, the defined callback will be used to process the data. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

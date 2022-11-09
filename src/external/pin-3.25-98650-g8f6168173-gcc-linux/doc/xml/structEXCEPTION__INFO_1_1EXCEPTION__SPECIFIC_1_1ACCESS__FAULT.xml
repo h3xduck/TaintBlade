@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT" kind="struct" language="C++" prot="public">
+    <compoundname>EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1adae7fdf09e69f7e9fe5019be506e846a" prot="public" static="no" mutable="no">
+        <type><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></type>
+        <definition>FAULTY_ACCESS_TYPE EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT::m_type</definition>
+        <argsstring></argsstring>
+        <name>m_type</name>
+        <briefdescription>
+<para>The type of the faulty memory access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="384" column="32" bodyfile="Source/pin/base/exception.PH" bodystart="384" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1a1b590ae04b5cba2675698b8eec880c6b" prot="public" static="no" mutable="no">
+        <type><ref refid="structOPTIONAL__VALUE" kindref="compound">OPTIONAL_VALUE</ref>&lt; ADDRINT &gt;</type>
+        <definition>OPTIONAL_VALUE&lt; ADDRINT &gt; EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT::m_address</definition>
+        <argsstring></argsstring>
+        <name>m_address</name>
+        <briefdescription>
+<para>Address of the faulty memory access (optional) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="385" column="28" bodyfile="Source/pin/base/exception.PH" bodystart="385" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>&lt; EXCEPTCLASS_ACCESS_FAULT additional information </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</label>
+        <link refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_address</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>OPTIONAL_VALUE&lt; ADDRINT &gt;</label>
+        <link refid="structOPTIONAL__VALUE"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/exception.PH" line="383" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="382" bodyend="386"/>
+    <listofallmembers>
+      <member refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1a1b590ae04b5cba2675698b8eec880c6b" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</scope><name>m_address</name></member>
+      <member refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1adae7fdf09e69f7e9fe5019be506e846a" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</scope><name>m_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

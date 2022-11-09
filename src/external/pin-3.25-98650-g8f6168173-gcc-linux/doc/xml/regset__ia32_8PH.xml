@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="regset__ia32_8PH" kind="file" language="C++">
+    <compoundname>regset_ia32.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="regset__ia32_8PH_1a2ed5299cc593500b57ec48b89bdde9d7" prot="public" static="no">
+        <name>PIN_G_REGSET_IA32_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="9" column="10" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" prot="public" static="no">
+        <type>class <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref>&lt; <ref refid="group__REG_1gad31f09a57200512724bc45892b0d21c5" kindref="member">REG_FirstInRegset</ref>, <ref refid="group__REG_1gae59d801e869df24c4321204c807df1a2" kindref="member">REG_LastInRegset</ref> &gt;</type>
+        <definition>typedef class REGISTER_SET&lt; REG_FirstInRegset, REG_LastInRegset &gt; REGSET</definition>
+        <argsstring></argsstring>
+        <name>REGSET</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A regset type that contains all registers </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="24" column="11" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__REG_1gad31f09a57200512724bc45892b0d21c5" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>const REG REG_FirstInRegset</definition>
+        <argsstring></argsstring>
+        <name>REG_FirstInRegset</name>
+        <initializer>= REG_RBASE</initializer>
+        <briefdescription>
+<para>REG represented by the first bit in the regset vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>x </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="16" column="11" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1gae59d801e869df24c4321204c807df1a2" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>const REG REG_LastInRegset</definition>
+        <argsstring></argsstring>
+        <name>REG_LastInRegset</name>
+        <initializer>= <ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref>(REG_LAST - 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>REG represented by the last bit in the regset vector. Most of the code assumes that REG_LAST is not an actual register, so we should not include it in the set. We use REG_LAST-1 for the last registers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="24" column="11" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__REG_1gabb3254cab0dfed10866883311e3aa40f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL REGSET_Contains</definition>
+        <argsstring>(const REGSET &amp;regset, REG reg)</argsstring>
+        <name>REGSET_Contains</name>
+        <param>
+          <type>const <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if the specified reg is contained in the specified regset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="34" column="13" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1gac3002bde7356752b5953b2c140efa600" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGSET_Insert</definition>
+        <argsstring>(REGSET &amp;regset, REG reg)</argsstring>
+        <name>REGSET_Insert</name>
+        <param>
+          <type><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert the specified reg into the specified regset </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="39" column="13" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1gaf482a1965fa3be4c307336ba0b4d1e54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGSET_Remove</definition>
+        <argsstring>(REGSET &amp;regset, REG reg)</argsstring>
+        <name>REGSET_Remove</name>
+        <param>
+          <type><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove the specified reg from the specified regset </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="44" column="13" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1ga3ea9754341453dedb9e106f61235309f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGSET_Clear</definition>
+        <argsstring>(REGSET &amp;regset)</argsstring>
+        <name>REGSET_Clear</name>
+        <param>
+          <type><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove all registers from the specified regset </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="49" column="13" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1ga0d287d13f9dc3f2fbffe24f217e12674" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGSET_AddAll</definition>
+        <argsstring>(REGSET &amp;regset)</argsstring>
+        <name>REGSET_AddAll</name>
+        <param>
+          <type><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert all registers into the specified regset </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="54" column="13" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1ga32a772c1f6417ffc7267f3b1ac4b0047" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGSET_PopNext</definition>
+        <argsstring>(REGSET &amp;regset)</argsstring>
+        <name>REGSET_PopNext</name>
+        <param>
+          <type><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pop the next register from the specified regset <simplesect kind="return"><para>the popped register </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="60" column="12" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1ga00f8d8090cf07f01758aa830f99d810f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 REGSET_PopCount</definition>
+        <argsstring>(const REGSET &amp;regset)</argsstring>
+        <name>REGSET_PopCount</name>
+        <param>
+          <type>const <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the number of registers in the specified regset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="65" column="15" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1ga44658f073c44408d669817cd73ba8339" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL REGSET_PopCountIsZero</definition>
+        <argsstring>(const REGSET &amp;regset)</argsstring>
+        <name>REGSET_PopCountIsZero</name>
+        <param>
+          <type>const <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if the number of registers in the specified regset is zero </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="70" column="13" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REG_1gad21bf7e4d141d873d3a5c7aee0a6edde" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string REGSET_StringShort</definition>
+        <argsstring>(const REGSET &amp;regset)</argsstring>
+        <name>REGSET_StringShort</name>
+        <param>
+          <type>const <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> &amp;</type>
+          <declname>regset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a string with the names of all registers is the specified regset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/regset_ia32.PH" line="75" column="20" bodyfile="Source/pin/core_ia32/regset_ia32.PH" bodystart="75" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_REGSET_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>regset_ia32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_REGSET_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__REG_1gad31f09a57200512724bc45892b0d21c5" kindref="member">REG_FirstInRegset</ref><sp/>=<sp/>REG_RBASE;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__REG_1gae59d801e869df24c4321204c807df1a2" kindref="member">REG_LastInRegset</ref><sp/>=<sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref>(REG_LAST<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref>&lt;<sp/><ref refid="group__REG_1gad31f09a57200512724bc45892b0d21c5" kindref="member">REG_FirstInRegset</ref>,<sp/><ref refid="group__REG_1gae59d801e869df24c4321204c807df1a2" kindref="member">REG_LastInRegset</ref><sp/>&gt;<sp/><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__REG_1gabb3254cab0dfed10866883311e3aa40f" kindref="member">REGSET_Contains</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset,<sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/>reg)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>regset.Contains(reg);<sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__REG_1gac3002bde7356752b5953b2c140efa600" kindref="member">REGSET_Insert</ref>(<ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset,<sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/>reg)<sp/>{<sp/>regset.Insert(reg);<sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__REG_1gaf482a1965fa3be4c307336ba0b4d1e54" kindref="member">REGSET_Remove</ref>(<ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset,<sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/>reg)<sp/>{<sp/>regset.Remove(reg);<sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__REG_1ga3ea9754341453dedb9e106f61235309f" kindref="member">REGSET_Clear</ref>(<ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset)<sp/>{<sp/>regset.Clear();<sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__REG_1ga0d287d13f9dc3f2fbffe24f217e12674" kindref="member">REGSET_AddAll</ref>(<ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset)<sp/>{<sp/>regset.InsertAll();<sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__REG_1ga32a772c1f6417ffc7267f3b1ac4b0047" kindref="member">REGSET_PopNext</ref>(<ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>regset.PopNext();<sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__REG_1ga00f8d8090cf07f01758aa830f99d810f" kindref="member">REGSET_PopCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>regset.PopCount();<sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__REG_1ga44658f073c44408d669817cd73ba8339" kindref="member">REGSET_PopCountIsZero</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>regset.PopCountIsZero();<sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__REG_1gad21bf7e4d141d873d3a5c7aee0a6edde" kindref="member">REGSET_StringShort</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>&amp;<sp/>regset)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>regset.String();<sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_REGSET_IA32_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/core_ia32/regset_ia32.PH"/>
+  </compounddef>
+</doxygen>

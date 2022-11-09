@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="pin-tls_8h" kind="file" language="C++">
+    <compoundname>pin-tls.h</compoundname>
+    <includes refid="types_8h" local="yes">types.h</includes>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="pin-tls_8h_1a7a006b0982c6bee773fd3b44b64c667d" prot="public" static="no">
+        <name>OS_APIS_INVALID_PIN_TLS_INDEX</name>
+        <initializer>((<ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref>)-1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="30" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__OS__APIS__PIN__TLS_1ga104d9da3707327696915b45866e0ad19" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* TLS_DESTRUCTOR) (VOID *)</definition>
+        <argsstring>)(VOID *)</argsstring>
+        <name>TLS_DESTRUCTOR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prototype for TLS value destructor function. The only argument for this function is the value stored in TLS. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="23" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT PIN_TLS_INDEX</definition>
+        <argsstring></argsstring>
+        <name>PIN_TLS_INDEX</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type for index inside the dynamic TLS. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="28" column="17" bodyfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1gadad938be8a50c78d373e6e8f3d17f995" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* OS_TlsGetBaseAddress</definition>
+        <argsstring>()</argsstring>
+        <name>OS_TlsGetBaseAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the base address for the application-wide TLS data structure. The TLS data structure is used to implement a TLS which is not based on segment registers.</para>
+<para><simplesect kind="return"><para>Pointer to the base address of the TLS data structure.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="43" column="6" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="43" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1gae9eea41e2ccdc1ad177d30932deb1be5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref></type>
+        <definition>PIN_TLS_INDEX OS_TlsAlloc</definition>
+        <argsstring>(TLS_DESTRUCTOR dest)</argsstring>
+        <name>OS_TlsAlloc</name>
+        <param>
+          <type><ref refid="group__OS__APIS__PIN__TLS_1ga104d9da3707327696915b45866e0ad19" kindref="member">TLS_DESTRUCTOR</ref></type>
+          <declname>dest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allocates a new slot in the dynamic TLS.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional destructor function that will be called on each value stores in TLS when its corresponding thread dies.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Index for the newly allocated slot or OS_APIS_INVALID_PIN_TLS_INDEX on error.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="57" column="15" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="57" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1ga7c1fb452934baf5ed40089373f894689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_TlsFree</definition>
+        <argsstring>(PIN_TLS_INDEX idx)</argsstring>
+        <name>OS_TlsFree</name>
+        <param>
+          <type><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref></type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free a previously allocated slot in the dynamic TLS.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index to free.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True on success.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="70" column="8" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="70" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1gac6c456f5bfe02c549b1b1224c4db7644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* OS_TlsGetValue</definition>
+        <argsstring>(PIN_TLS_INDEX idx)</argsstring>
+        <name>OS_TlsGetValue</name>
+        <param>
+          <type><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref></type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value associated with a particular index from the current thread&apos;s dynamic TLS.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the value to get.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to the value, or NULL otherwise.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="84" column="6" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="84" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1gaccb9f3e0a0cbe9acefe341850f13ebd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* OS_TlsGetValueForThread</definition>
+        <argsstring>(PIN_TLS_INDEX idx, NATIVE_TID ntid)</argsstring>
+        <name>OS_TlsGetValueForThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref></type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>ntid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value associated with a particular index of a particular thread&apos;s dynamic TLS.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the value to get. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ntid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID for which the TLS value will be retrieved.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to the value, or NULL otherwise.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="99" column="6" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="99" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1ga3d0c8f8e6b8146dee4aba4b0aa97d790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID **</type>
+        <definition>VOID** OS_TlsGetArrayAddress</definition>
+        <argsstring>(void)</argsstring>
+        <name>OS_TlsGetArrayAddress</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the address of the static TLS for the current thread</para>
+<para><simplesect kind="return"><para>Address of the static TLS for the current threads (which is a VOID* array).</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="110" column="6" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="110" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1ga32b1151316dc38c3adf607c9b2de786e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID **</type>
+        <definition>VOID** OS_TlsGetArrayAddressForThread</definition>
+        <argsstring>(NATIVE_TID ntid)</argsstring>
+        <name>OS_TlsGetArrayAddressForThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>ntid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the address of the static TLS for a particular thread</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ntid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID for which the static TLS will be retrieved.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Address of the static TLS for the specified threads (which is a VOID* array).</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="123" column="6" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="123" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1gae2ec9d0e6db3072f25960f4475948244" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_TlsSetValue</definition>
+        <argsstring>(PIN_TLS_INDEX idx, VOID *val)</argsstring>
+        <name>OS_TlsSetValue</name>
+        <param>
+          <type><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref></type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the value associated with a particular index in the current thread&apos;s dynamic TLS.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the value to set. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value to set.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True on success.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="138" column="8" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="138" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1ga2afe56e095f96a389f960b79bb842bed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_TlsSetValueForThread</definition>
+        <argsstring>(PIN_TLS_INDEX idx, NATIVE_TID ntid, VOID *val)</argsstring>
+        <name>OS_TlsSetValueForThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref></type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>ntid</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the value associated with a particular index in of a particular thread&apos;s dynamic TLS.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the value to set. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ntid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID for which the value will be set in its TLS. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value to set.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True on success.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="154" column="8" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="154" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1ga102aa3118b484d950429d1062748ed89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OS_TlsFreeThreadTls</definition>
+        <argsstring>(NATIVE_TID ntid)</argsstring>
+        <name>OS_TlsFreeThreadTls</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>ntid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free all resources that are used for a particular thread&apos;s TLS. This function is usually called when a thread is about to exit.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ntid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread ID for which the TLS need to be freed.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="166" column="6" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="166" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PIN__TLS_1gaa4e3ad1fa5e3c3286e9ca4a233a84b0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_TlsAddStaticTlsDestructor</definition>
+        <argsstring>(TLS_DESTRUCTOR destructor)</argsstring>
+        <name>OS_TlsAddStaticTlsDestructor</name>
+        <param>
+          <type><ref refid="group__OS__APIS__PIN__TLS_1ga104d9da3707327696915b45866e0ad19" kindref="member">TLS_DESTRUCTOR</ref></type>
+          <declname>destructor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a destructor for all threads&apos; static TLS. The destructor for static TLS is called on each thread termination, provided that the thread had an allocated static TLS.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">destructor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destructor function that will be called with the pointer to the fixed TLS when a thread terminates.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h" line="180" column="8" declfile="Source/os-apis/00-export-include/os-apis/pin-tls.h" declline="180" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2018<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OS_APIS_PIN_TLS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_PIN_TLS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>VOID<sp/>(*<ref refid="group__OS__APIS__PIN__TLS_1ga104d9da3707327696915b45866e0ad19" kindref="member">TLS_DESTRUCTOR</ref>)(VOID*);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_INVALID_PIN_TLS_INDEX<sp/>((PIN_TLS_INDEX)-1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">VOID*<sp/><ref refid="group__OS__APIS__PIN__TLS_1gadad938be8a50c78d373e6e8f3d17f995" kindref="member">OS_TlsGetBaseAddress</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref><sp/><ref refid="group__OS__APIS__PIN__TLS_1gae9eea41e2ccdc1ad177d30932deb1be5" kindref="member">OS_TlsAlloc</ref>(<ref refid="group__OS__APIS__PIN__TLS_1ga104d9da3707327696915b45866e0ad19" kindref="member">TLS_DESTRUCTOR</ref><sp/>dest);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__PIN__TLS_1ga7c1fb452934baf5ed40089373f894689" kindref="member">OS_TlsFree</ref>(<ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref><sp/>idx);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">VOID*<sp/><ref refid="group__OS__APIS__PIN__TLS_1gac6c456f5bfe02c549b1b1224c4db7644" kindref="member">OS_TlsGetValue</ref>(<ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref><sp/>idx);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal">VOID*<sp/><ref refid="group__OS__APIS__PIN__TLS_1gaccb9f3e0a0cbe9acefe341850f13ebd9" kindref="member">OS_TlsGetValueForThread</ref>(<ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref><sp/>idx,<sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>ntid);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">VOID**<sp/><ref refid="group__OS__APIS__PIN__TLS_1ga3d0c8f8e6b8146dee4aba4b0aa97d790" kindref="member">OS_TlsGetArrayAddress</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal">VOID**<sp/><ref refid="group__OS__APIS__PIN__TLS_1ga32b1151316dc38c3adf607c9b2de786e" kindref="member">OS_TlsGetArrayAddressForThread</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>ntid);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__PIN__TLS_1gae2ec9d0e6db3072f25960f4475948244" kindref="member">OS_TlsSetValue</ref>(<ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref><sp/>idx,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__PIN__TLS_1ga2afe56e095f96a389f960b79bb842bed" kindref="member">OS_TlsSetValueForThread</ref>(<ref refid="group__OS__APIS__PIN__TLS_1ga0987db84fd6e93b83d2e89e436c37ad1" kindref="member">PIN_TLS_INDEX</ref><sp/>idx,<sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>ntid,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal">VOID<sp/><ref refid="group__OS__APIS__PIN__TLS_1ga102aa3118b484d950429d1062748ed89" kindref="member">OS_TlsFreeThreadTls</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>ntid);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref><sp/><ref refid="group__OS__APIS__PIN__TLS_1gaa4e3ad1fa5e3c3286e9ca4a233a84b0b" kindref="member">OS_TlsAddStaticTlsDestructor</ref>(<ref refid="group__OS__APIS__PIN__TLS_1ga104d9da3707327696915b45866e0ad19" kindref="member">TLS_DESTRUCTOR</ref><sp/>destructor);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>file<sp/>guard</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/pin-tls.h"/>
+  </compounddef>
+</doxygen>

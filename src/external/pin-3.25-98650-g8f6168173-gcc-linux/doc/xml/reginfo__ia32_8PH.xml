@@ -1,0 +1,1062 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="reginfo__ia32_8PH" kind="file" language="C++">
+    <compoundname>reginfo_ia32.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="reginfo__ia32_8PH_1a89003795393539843aa02ca2cf9bfcc1" prot="public" static="no">
+        <name>PIN_G_REGINFO_IA32_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="9" column="10" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="reginfo__ia32_8PH_1a2a72395fc69008ac99666ee530f47b89" prot="public" static="no">
+        <name>_REGCBIT</name>
+        <param><defname>regClass</defname></param>
+        <initializer>(<ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref>(1) &lt;&lt; (regClass))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="94" column="9" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__REG_1gaec0c649ef5462f4191f265d607fff05d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>REGWIDTH</name>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05da132acfae9fe07e07b67c89a5a2ed1a68" prot="public">
+          <name>REGWIDTH_8</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05dab10adfc324c71bbe7beb8bf2506fd014" prot="public">
+          <name>REGWIDTH_16</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05da9a0093426b33e8abe26688f0b9dbdc2d" prot="public">
+          <name>REGWIDTH_32</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05da18edc9ce65de5d0c5a0d1a138c08e861" prot="public">
+          <name>REGWIDTH_64</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05da414ddced486d62a40517a7d597c168ab" prot="public">
+          <name>REGWIDTH_80</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05daec01947134e56896e2ca0f95cb6c8d31" prot="public">
+          <name>REGWIDTH_128</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05dac98cfc4cd0abbdb2db6ef11bd807e6c0" prot="public">
+          <name>REGWIDTH_256</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05daa91df428b1ec7a9e50c688cc617d2141" prot="public">
+          <name>REGWIDTH_512</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05da6fb9ffc6890d51ba20450d483a691305" prot="public">
+          <name>REGWIDTH_TILE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05da9fe7b320cc8dc7e3990c05e25d0395c8" prot="public">
+          <name>REGWIDTH_REG_X87</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05dadae486e09a5dc6b5e6ecf2349b56c6a1" prot="public">
+          <name>REGWIDTH_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggaec0c649ef5462f4191f265d607fff05da9d5335d640facfffc935ac07ef3430f5" prot="public">
+          <name>REGWIDTH_NATIVE</name>
+          <initializer>= REGWIDTH_64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains REG primitives</para>
+<para>register widths </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="17" column="1" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="16" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__REG_1ga822a327bf83e9a238322cccc9b2ada63" prot="public" static="no" strong="no">
+        <type></type>
+        <name>REG_CLASS</name>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a09bb0d02871b181229e15b99a68f4f64" prot="public">
+          <name>REG_CLASS_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a429a2559b0f7a4e280f13b613585e993" prot="public">
+          <name>REG_CLASS_PSEUDO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a732ff0cc2ed79865c556ea4aec07b8ca" prot="public">
+          <name>REG_CLASS_GR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a827cecade367a0cbc222377dc24ecd51" prot="public">
+          <name>REG_CLASS_GRU8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a8e25af88912fba6476c123172a536ba5" prot="public">
+          <name>REG_CLASS_GRL8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63abf43e8534b37d034b16c4c4fa024b8ec" prot="public">
+          <name>REG_CLASS_GRH16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a73a9738287f615644c68cefe0c886f3a" prot="public">
+          <name>REG_CLASS_GRH32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a9cf4561a44c655bd7ad2201436962ed3" prot="public">
+          <name>REG_CLASS_SEG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a463f91ed2117e2236f70cd923882787c" prot="public">
+          <name>REG_CLASS_MM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ad0ec7e0727f0a52eb150efbb31590923" prot="public">
+          <name>REG_CLASS_XMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a0d1cb88dce807827508ec95ebd7daf5a" prot="public">
+          <name>REG_CLASS_YMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a7eadb8dc34ea5f3508a7d32262486a08" prot="public">
+          <name>REG_CLASS_ZMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63aae08687547ca62ca24f96420c0f731cc" prot="public">
+          <name>REG_CLASS_K</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a1e8ecb0875e0648b1d2a2b09a38428fd" prot="public">
+          <name>REG_CLASS_TMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a6fe85a59634d864a87948f57ca16d6e5" prot="public">
+          <name>REG_CLASS_FPST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ae8332b166fd9b92ddd5e8c12b1b2ebad" prot="public">
+          <name>REG_CLASS_ST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ad094a10e468e35989bc0495336c1eaac" prot="public">
+          <name>REG_CLASS_CR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63adbd36ac411af4e9d57a6a30a147cbdc0" prot="public">
+          <name>REG_CLASS_DR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ab4e9f949fd682cd824941756b99b7c53" prot="public">
+          <name>REG_CLASS_TR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a0dd5417bdd472ead517fe1538f6ebee6" prot="public">
+          <name>REG_CLASS_FLAGS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a92a70aa38a67423d8e90e71985f1601c" prot="public">
+          <name>REG_CLASS_FLAGS16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a952331b45e766527cb4c86e299013457" prot="public">
+          <name>REG_CLASS_FLAGS32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a84ce0ea264a2317198f932199edab566" prot="public">
+          <name>REG_CLASS_STATUS_FLAGS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a7c3917f1d07fae8a73a7b3073aff4c9c" prot="public">
+          <name>REG_CLASS_DFLAG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ad53d213ef43ee4d4efd32fabee8c39b1" prot="public">
+          <name>REG_CLASS_X87</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a12e233295ffe15badf44f39df4f3ed22" prot="public">
+          <name>REG_CLASS_MXCSR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63afd8f3c144730421ef7096efacb7e9467" prot="public">
+          <name>REG_CLASS_MXCSRMASK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ab20e5b1f9dedd78fc5431297801e98c6" prot="public">
+          <name>REG_CLASS_IP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a31adcddffde619571bacb7de26aaf29b" prot="public">
+          <name>REG_CLASS_IP16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ad80984c276e7824bf5faee470ec1c8d9" prot="public">
+          <name>REG_CLASS_IP32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ad8d0d5405c93839827f754a557ecf9c2" prot="public">
+          <name>REG_CLASS_ARCH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a443d55893e1cb5b5bba1580ea7008072" prot="public">
+          <name>REG_CLASS_PIN_GR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ab1742b43d3201b5713922ffd7e73c1ba" prot="public">
+          <name>REG_CLASS_PIN_GRU8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63ab6fbf6fb2fdb5d6a674d7b79006e7e04" prot="public">
+          <name>REG_CLASS_PIN_GRL8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a2c4bcf66604a82ec315eee79f1a8ac64" prot="public">
+          <name>REG_CLASS_PIN_GRH16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a9304484863c2c61c21cc3c76632a37d2" prot="public">
+          <name>REG_CLASS_PIN_GRH32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a430602ae5cf546525551caeb57046d9e" prot="public">
+          <name>REG_CLASS_PIN_XMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a12aaf93b253d272f313c911dc462b7c8" prot="public">
+          <name>REG_CLASS_PIN_YMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a6c7c9cafcba7623df375621cee806da2" prot="public">
+          <name>REG_CLASS_PIN_ZMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a3c657ba226ae4c08a8f624adb5e8e4d5" prot="public">
+          <name>REG_CLASS_PIN_K</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a9e1305d087ed81631d8f25aa50f3fd6a" prot="public">
+          <name>REG_CLASS_PIN_TMM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a898e4d6638eb7cf80b7556d2298d8540" prot="public">
+          <name>REG_CLASS_PIN_X87</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a9baea56a3e652fa42c2e90940b3b0604" prot="public">
+          <name>REG_CLASS_PIN_MXCSR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a8881116c5550cde966e90dfbac914759" prot="public">
+          <name>REG_CLASS_PIN_FLAGS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a04f1016a4705696e0fc02208af425421" prot="public">
+          <name>REG_CLASS_PIN_STATUS_FLAGS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga822a327bf83e9a238322cccc9b2ada63a8914a86ab707b0b4ddd3983f4f4ac208" prot="public">
+          <name>REG_CLASS_PIN_DFLAG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enumeration of register classes. Each register belongs to one and only one class. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="40" column="1" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="39" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__REG_1ga357cf331cb9bb6022e3872c0eeb04d65" prot="public" static="no" strong="no">
+        <type></type>
+        <name>REG_SUBCLASS</name>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65ac0f27c390fa521f6dcf6b23386cfd33c" prot="public">
+          <name>REG_SUBCLASS_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65a9976b0ca35527b53dac13115660a48c1" prot="public">
+          <name>REG_SUBCLASS_REX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65af6f14c29adf34a410c0d8d8f2d9f5fb6" prot="public">
+          <name>REG_SUBCLASS_FULL_STACKPTR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65afda025c33bfde12915adf557bfb8d854" prot="public">
+          <name>REG_SUBCLASS_PIN_FULL_STACKPTR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65a479329e742ff95d39697bfb3c53ad07a" prot="public">
+          <name>REG_SUBCLASS_PIN_TMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65abfe8e1d1e572f837282db5e38d00f0a6" prot="public">
+          <name>REG_SUBCLASS_PIN_INST_GR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65aeac5bd41b2590da8789a773be8d68b38" prot="public">
+          <name>REG_SUBCLASS_PIN_INST_GR_H32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65a07725b35e09c3f2b06c4145cf5be4684" prot="public">
+          <name>REG_SUBCLASS_PIN_INST_BUF</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1gga357cf331cb9bb6022e3872c0eeb04d65a33bfd797bdc9f68d588c267b730c32d6" prot="public">
+          <name>REG_SUBCLASS_PIN_INST_COND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Additional classification of register. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="150" column="1" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="149" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__REG_1gae2f85c31c5c9443be2feeef93d23960e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>REG_ALLOC_TYPE</name>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea81a04381b4a6bdb7bde04a6f91c2f29d" prot="public">
+          <name>REG_ALLOC_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea5aed151b5d852f31d659f684923c6fd8" prot="public">
+          <name>REG_ALLOC_PART</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eab0d4044f15ea82b68434075db96fe8e1" prot="public">
+          <name>REG_ALLOC_ANY_GR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eabc4a6a62e765fe7adcd08d9d9988b927" prot="public">
+          <name>REG_ALLOC_IDENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea1b58fe769129825ae7a37c0aad6c8da5" prot="public">
+          <name>REG_ALLOC_CR</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ead059c7999bc8a8417bd3064d59067916" prot="public">
+          <name>REG_ALLOC_DR</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eae35e9996fd2a4c3741b8c45c5ef204c2" prot="public">
+          <name>REG_ALLOC_TR</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eae67592d302d0041dae5a3c1d4058de3e" prot="public">
+          <name>REG_ALLOC_ST</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea37bdf42431fb594e4661b4ed689e5932" prot="public">
+          <name>REG_ALLOC_MM</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eaab723a9c29d5614675310e1cdff492d5" prot="public">
+          <name>REG_ALLOC_XMM</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea8e52f10d5b2479e52dcecab6afd36f98" prot="public">
+          <name>REG_ALLOC_YMM</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eaebdef373e6e18a3ed4ceed8edd4df30d" prot="public">
+          <name>REG_ALLOC_ZMM</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eaddc3497f18f9dddaefd1f2bf5ee138f5" prot="public">
+          <name>REG_ALLOC_K</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea5540af168e7544ba68c9cacb1ffc90dc" prot="public">
+          <name>REG_ALLOC_TMM</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eabab5f953837209f80286df946e896f37" prot="public">
+          <name>REG_ALLOC_SEG</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea80f13d0f4e9e4d0dda63ad76154160aa" prot="public">
+          <name>REG_ALLOC_STACK_PTR</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea299d09176db4acad181a1e24ee4d3e21" prot="public">
+          <name>REG_ALLOC_X87</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ea95b4f438f30a4eb712f290e6b39df7c6" prot="public">
+          <name>REG_ALLOC_FLAGS</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960eaa802df72ae473eea18a70b2107d1e7ed" prot="public">
+          <name>REG_ALLOC_STATUS_FLAGS</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__REG_1ggae2f85c31c5c9443be2feeef93d23960ead630e04b1cbf44e70a44a5d3b05abfa4" prot="public">
+          <name>REG_ALLOC_DFLAG</name>
+          <initializer>= REG_ALLOC_IDENT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Classification of registers under register allocation. Registers of the same allocation type can replace each other during register re-allocation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="184" column="1" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="183" bodyend="206"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" prot="public" static="no">
+        <type>UINT64</type>
+        <definition>typedef UINT64 REG_CLASS_BITS</definition>
+        <argsstring></argsstring>
+        <name>REG_CLASS_BITS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bit flag that represents a REG_CLASS value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="92" column="16" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__REG_1ga90981434f5267e80e07b833668cab9d5" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref></type>
+        <definition>const REG_CLASS_BITS REGCBIT_APP_ALL</definition>
+        <argsstring></argsstring>
+        <name>REGCBIT_APP_ALL</name>
+        <initializer>=
+    _REGCBIT(REG_CLASS_PSEUDO) | (_REGCBIT(REG_CLASS_GR)) | (_REGCBIT(REG_CLASS_GRU8)) | (_REGCBIT(REG_CLASS_GRL8)) |
+    (_REGCBIT(REG_CLASS_GRH16)) | (_REGCBIT(REG_CLASS_GRH32)) | (_REGCBIT(REG_CLASS_SEG)) | (_REGCBIT(REG_CLASS_MM)) |
+    (_REGCBIT(REG_CLASS_XMM)) | (_REGCBIT(REG_CLASS_YMM)) | (_REGCBIT(REG_CLASS_ZMM)) | (_REGCBIT(REG_CLASS_K)) |
+    (_REGCBIT(REG_CLASS_TMM)) | (_REGCBIT(REG_CLASS_FPST)) | (_REGCBIT(REG_CLASS_ST)) | (_REGCBIT(REG_CLASS_CR)) |
+    (_REGCBIT(REG_CLASS_DR)) | (_REGCBIT(REG_CLASS_TR)) | (_REGCBIT(REG_CLASS_FLAGS)) | (_REGCBIT(REG_CLASS_FLAGS16)) |
+    (_REGCBIT(REG_CLASS_FLAGS32)) | (_REGCBIT(REG_CLASS_STATUS_FLAGS)) | (_REGCBIT(REG_CLASS_DFLAG)) | (_REGCBIT(REG_CLASS_X87)) |
+    (_REGCBIT(REG_CLASS_MXCSR)) | (_REGCBIT(REG_CLASS_MXCSRMASK)) | (_REGCBIT(REG_CLASS_IP)) | (_REGCBIT(REG_CLASS_IP16)) |
+    (_REGCBIT(REG_CLASS_IP32)) | (_REGCBIT(REG_CLASS_ARCH))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mask of REG_CLASS_BITS values for all application registers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="98" column="22" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1gaa7c4b14c94d8686018ae59fead6e3120" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref></type>
+        <definition>const REG_CLASS_BITS REGCBIT_PIN_ALL</definition>
+        <argsstring></argsstring>
+        <name>REGCBIT_PIN_ALL</name>
+        <initializer>=
+
+    (_REGCBIT(REG_CLASS_PIN_GR)) | (_REGCBIT(REG_CLASS_PIN_GRU8)) | (_REGCBIT(REG_CLASS_PIN_GRL8)) |
+    (_REGCBIT(REG_CLASS_PIN_GRH16)) | (_REGCBIT(REG_CLASS_PIN_GRH32)) | (_REGCBIT(REG_CLASS_PIN_XMM)) |
+    (_REGCBIT(REG_CLASS_PIN_YMM)) | (_REGCBIT(REG_CLASS_PIN_ZMM)) | (_REGCBIT(REG_CLASS_PIN_TMM)) | (_REGCBIT(REG_CLASS_PIN_K)) |
+    (_REGCBIT(REG_CLASS_PIN_X87)) | (_REGCBIT(REG_CLASS_PIN_MXCSR)) | (_REGCBIT(REG_CLASS_PIN_FLAGS)) |
+    (_REGCBIT(REG_CLASS_PIN_STATUS_FLAGS)) | (_REGCBIT(REG_CLASS_PIN_DFLAG))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><linebreak/>
+ Mask of REG_CLASS_BITS values for all Pin registers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="111" column="22" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1gaa1d4309b05ffbfaf9305c937e6e16b2a" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref></type>
+        <definition>const REG_CLASS_BITS REGCBIT_ALL_REGS</definition>
+        <argsstring></argsstring>
+        <name>REGCBIT_ALL_REGS</name>
+        <initializer>= <ref refid="group__REG_1ga90981434f5267e80e07b833668cab9d5" kindref="member">REGCBIT_APP_ALL</ref> | <ref refid="group__REG_1gaa7c4b14c94d8686018ae59fead6e3120" kindref="member">REGCBIT_PIN_ALL</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mask of REG_CLASS_BITS values for all valid registers.xx </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="122" column="22" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1ga1e7d78a97e59bb57ac0d9663ae5d7e81" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref></type>
+        <definition>const REG_CLASS_BITS REGCBIT_APP_FLAGS</definition>
+        <argsstring></argsstring>
+        <name>REGCBIT_APP_FLAGS</name>
+        <initializer>=
+
+    (_REGCBIT(REG_CLASS_FLAGS)) | (_REGCBIT(REG_CLASS_STATUS_FLAGS)) | (_REGCBIT(REG_CLASS_DFLAG))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mask of REG_CLASS_BITS values for all application flag registers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="127" column="22" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1gaaae6cac12a410edc70ffc867f6d5bb1d" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref></type>
+        <definition>const REG_CLASS_BITS REGCBIT_PIN_FLAGS</definition>
+        <argsstring></argsstring>
+        <name>REGCBIT_PIN_FLAGS</name>
+        <initializer>=
+    (_REGCBIT(REG_CLASS_PIN_FLAGS)) | (_REGCBIT(REG_CLASS_PIN_STATUS_FLAGS)) | (_REGCBIT(REG_CLASS_PIN_DFLAG))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mask of REG_CLASS_BITS values for all Pin flag registers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="134" column="22" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1ga5820ddf5b10f097e5f24e94a2927777f" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref></type>
+        <definition>const REG_CLASS_BITS REGCBIT_PARTIAL</definition>
+        <argsstring></argsstring>
+        <name>REGCBIT_PARTIAL</name>
+        <initializer>= (_REGCBIT(REG_CLASS_GRU8)) | (_REGCBIT(REG_CLASS_GRL8)) | (_REGCBIT(REG_CLASS_GRH16)) |
+                                       (_REGCBIT(REG_CLASS_GRH32)) | (_REGCBIT(REG_CLASS_FLAGS16)) |
+                                       (_REGCBIT(REG_CLASS_FLAGS32)) | (_REGCBIT(REG_CLASS_IP16)) | (_REGCBIT(REG_CLASS_IP32)) |
+                                       (_REGCBIT(REG_CLASS_PIN_GRU8)) | (_REGCBIT(REG_CLASS_PIN_GRL8)) |
+                                       (_REGCBIT(REG_CLASS_PIN_GRH16)) | (_REGCBIT(REG_CLASS_PIN_GRH32))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mask of REG_CLASS_BITS values for partial registers (excluding XMM, even if AVX is present). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="140" column="22" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1ga88990cbf9cd6cbc208bacdd808b0b889" prot="public" static="no" mutable="no">
+        <type>const REG_SUBCLASS_BITS</type>
+        <definition>const REG_SUBCLASS_BITS REGSBIT_PIN_INST_ALL</definition>
+        <argsstring></argsstring>
+        <name>REGSBIT_PIN_INST_ALL</name>
+        <initializer>= (_REGCBIT(REG_SUBCLASS_PIN_INST_GR)) | (_REGCBIT(REG_SUBCLASS_PIN_INST_GR_H32)) |
+                                               (_REGCBIT(REG_SUBCLASS_PIN_INST_BUF)) | (_REGCBIT(REG_SUBCLASS_PIN_INST_COND))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Combination of REG_SUBCLASS_BITS flags of all instrumentation registers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="165" column="25" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1ga58e2fe9ac92370d83fbf4950536023bd" prot="public" static="no" mutable="no">
+        <type>const REG_SUBCLASS_BITS</type>
+        <definition>const REG_SUBCLASS_BITS REGSBIT_PIN_SCRATCH_ALL</definition>
+        <argsstring></argsstring>
+        <name>REGSBIT_PIN_SCRATCH_ALL</name>
+        <initializer>= (_REGCBIT(REG_SUBCLASS_PIN_INST_GR)) | (_REGCBIT(REG_SUBCLASS_PIN_INST_BUF))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Combination of REG_SUBCLASS_BITS flags of all instrumentation scratch registers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="171" column="25" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__REG_1gac45ce2281987113938de83fb885595be" prot="public" static="no" mutable="no">
+        <type>const REG_SUBCLASS_BITS</type>
+        <definition>const REG_SUBCLASS_BITS REGSBIT_STACKPTR_ALL</definition>
+        <argsstring></argsstring>
+        <name>REGSBIT_STACKPTR_ALL</name>
+        <initializer>=
+    (_REGCBIT(REG_SUBCLASS_FULL_STACKPTR)) | (_REGCBIT(REG_SUBCLASS_PIN_FULL_STACKPTR))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Combination of REG_SUBCLASS_BITS flags of stack registers (both app and pin). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reginfo_ia32.PH" line="176" column="25" bodyfile="Source/pin/base_ia32/reginfo_ia32.PH" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2013-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_REGINFO_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>reginfo_ia32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_REGINFO_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gaec0c649ef5462f4191f265d607fff05d" kindref="member">REGWIDTH</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_8<sp/><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_16<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_32<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_64<sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_80,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_128,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_256,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_512,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_TILE,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_REG_X87,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_INVALID,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_IA32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_NATIVE<sp/>=<sp/>REGWIDTH_32</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>REGWIDTH_NATIVE<sp/>=<sp/>REGWIDTH_64</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga822a327bf83e9a238322cccc9b2ada63" kindref="member">REG_CLASS</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_NONE<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PSEUDO,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_GR,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_GRU8,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_GRL8,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_GRH16,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_GRH32,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_SEG,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_MM,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_XMM,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_YMM,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_ZMM,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_K,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_TMM,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_FPST,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_ST,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_CR,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_DR,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_TR,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_FLAGS,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_FLAGS16,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_FLAGS32,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_STATUS_FLAGS,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_DFLAG,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_X87,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_MXCSR,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_MXCSRMASK,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_IP,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_IP16,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_IP32,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_ARCH,<sp/></highlight><highlight class="comment">//<sp/>Architectural<sp/>register,<sp/>that<sp/>does<sp/>not<sp/>belong<sp/>to<sp/>any<sp/>specific<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_GR,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_GRU8,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_GRL8,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_GRH16,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_GRH32,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_XMM,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_YMM,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_ZMM,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_K,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_TMM,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_X87,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_MXCSR,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_FLAGS,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_STATUS_FLAGS,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_CLASS_PIN_DFLAG</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/><ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_REGCBIT(regClass)<sp/>(REG_CLASS_BITS(1)<sp/>&lt;&lt;<sp/>(regClass))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref><sp/><ref refid="group__REG_1ga90981434f5267e80e07b833668cab9d5" kindref="member">REGCBIT_APP_ALL</ref><sp/>=</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>_REGCBIT(REG_CLASS_PSEUDO)<sp/>|<sp/>(_REGCBIT(REG_CLASS_GR))<sp/>|<sp/>(_REGCBIT(REG_CLASS_GRU8))<sp/>|<sp/>(_REGCBIT(REG_CLASS_GRL8))<sp/>|</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_GRH16))<sp/>|<sp/>(_REGCBIT(REG_CLASS_GRH32))<sp/>|<sp/>(_REGCBIT(REG_CLASS_SEG))<sp/>|<sp/>(_REGCBIT(REG_CLASS_MM))<sp/>|</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_XMM))<sp/>|<sp/>(_REGCBIT(REG_CLASS_YMM))<sp/>|<sp/>(_REGCBIT(REG_CLASS_ZMM))<sp/>|<sp/>(_REGCBIT(REG_CLASS_K))<sp/>|</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_TMM))<sp/>|<sp/>(_REGCBIT(REG_CLASS_FPST))<sp/>|<sp/>(_REGCBIT(REG_CLASS_ST))<sp/>|<sp/>(_REGCBIT(REG_CLASS_CR))<sp/>|</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_DR))<sp/>|<sp/>(_REGCBIT(REG_CLASS_TR))<sp/>|<sp/>(_REGCBIT(REG_CLASS_FLAGS))<sp/>|<sp/>(_REGCBIT(REG_CLASS_FLAGS16))<sp/>|</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_FLAGS32))<sp/>|<sp/>(_REGCBIT(REG_CLASS_STATUS_FLAGS))<sp/>|<sp/>(_REGCBIT(REG_CLASS_DFLAG))<sp/>|<sp/>(_REGCBIT(REG_CLASS_X87))<sp/>|</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_MXCSR))<sp/>|<sp/>(_REGCBIT(REG_CLASS_MXCSRMASK))<sp/>|<sp/>(_REGCBIT(REG_CLASS_IP))<sp/>|<sp/>(_REGCBIT(REG_CLASS_IP16))<sp/>|</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_IP32))<sp/>|<sp/>(_REGCBIT(REG_CLASS_ARCH));</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref><sp/><ref refid="group__REG_1gaa7c4b14c94d8686018ae59fead6e3120" kindref="member">REGCBIT_PIN_ALL</ref><sp/>=</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_GR))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_GRU8))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_GRL8))<sp/>|</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_GRH16))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_GRH32))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_XMM))<sp/>|</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_YMM))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_ZMM))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_TMM))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_K))<sp/>|</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_X87))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_MXCSR))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_FLAGS))<sp/>|</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_STATUS_FLAGS))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_DFLAG));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref><sp/><ref refid="group__REG_1gaa1d4309b05ffbfaf9305c937e6e16b2a" kindref="member">REGCBIT_ALL_REGS</ref><sp/>=<sp/><ref refid="group__REG_1ga90981434f5267e80e07b833668cab9d5" kindref="member">REGCBIT_APP_ALL</ref><sp/>|<sp/><ref refid="group__REG_1gaa7c4b14c94d8686018ae59fead6e3120" kindref="member">REGCBIT_PIN_ALL</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref><sp/><ref refid="group__REG_1ga1e7d78a97e59bb57ac0d9663ae5d7e81" kindref="member">REGCBIT_APP_FLAGS</ref><sp/>=</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_FLAGS))<sp/>|<sp/>(_REGCBIT(REG_CLASS_STATUS_FLAGS))<sp/>|<sp/>(_REGCBIT(REG_CLASS_DFLAG));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref><sp/><ref refid="group__REG_1gaaae6cac12a410edc70ffc867f6d5bb1d" kindref="member">REGCBIT_PIN_FLAGS</ref><sp/>=</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_FLAGS))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_STATUS_FLAGS))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_DFLAG));</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gacc9b609b842ce486cfbb57e95853fdae" kindref="member">REG_CLASS_BITS</ref><sp/><ref refid="group__REG_1ga5820ddf5b10f097e5f24e94a2927777f" kindref="member">REGCBIT_PARTIAL</ref><sp/>=<sp/>(_REGCBIT(REG_CLASS_GRU8))<sp/>|<sp/>(_REGCBIT(REG_CLASS_GRL8))<sp/>|<sp/>(_REGCBIT(REG_CLASS_GRH16))<sp/>|</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_GRH32))<sp/>|<sp/>(_REGCBIT(REG_CLASS_FLAGS16))<sp/>|</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_FLAGS32))<sp/>|<sp/>(_REGCBIT(REG_CLASS_IP16))<sp/>|<sp/>(_REGCBIT(REG_CLASS_IP32))<sp/>|</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_GRU8))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_GRL8))<sp/>|</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(_REGCBIT(REG_CLASS_PIN_GRH16))<sp/>|<sp/>(_REGCBIT(REG_CLASS_PIN_GRH32));</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga357cf331cb9bb6022e3872c0eeb04d65" kindref="member">REG_SUBCLASS</ref></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_NONE<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_REX,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_FULL_STACKPTR,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_PIN_FULL_STACKPTR,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_PIN_TMP,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_PIN_INST_GR,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_PIN_INST_GR_H32,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_PIN_INST_BUF,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_SUBCLASS_PIN_INST_COND</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="keyword">const</highlight><highlight class="normal"><sp/>REG_SUBCLASS_BITS<sp/><ref refid="group__REG_1ga88990cbf9cd6cbc208bacdd808b0b889" kindref="member">REGSBIT_PIN_INST_ALL</ref><sp/>=<sp/>(_REGCBIT(REG_SUBCLASS_PIN_INST_GR))<sp/>|<sp/>(_REGCBIT(REG_SUBCLASS_PIN_INST_GR_H32))<sp/>|</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(_REGCBIT(REG_SUBCLASS_PIN_INST_BUF))<sp/>|<sp/>(_REGCBIT(REG_SUBCLASS_PIN_INST_COND));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="keyword">const</highlight><highlight class="normal"><sp/>REG_SUBCLASS_BITS<sp/><ref refid="group__REG_1ga58e2fe9ac92370d83fbf4950536023bd" kindref="member">REGSBIT_PIN_SCRATCH_ALL</ref><sp/>=<sp/>(_REGCBIT(REG_SUBCLASS_PIN_INST_GR))<sp/>|<sp/>(_REGCBIT(REG_SUBCLASS_PIN_INST_BUF));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="keyword">const</highlight><highlight class="normal"><sp/>REG_SUBCLASS_BITS<sp/><ref refid="group__REG_1gac45ce2281987113938de83fb885595be" kindref="member">REGSBIT_STACKPTR_ALL</ref><sp/>=</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>(_REGCBIT(REG_SUBCLASS_FULL_STACKPTR))<sp/>|<sp/>(_REGCBIT(REG_SUBCLASS_PIN_FULL_STACKPTR));</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__REG_1gae2f85c31c5c9443be2feeef93d23960e" kindref="member">REG_ALLOC_TYPE</ref></highlight></codeline>
+<codeline lineno="184"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_NONE<sp/>=<sp/>0,<sp/></highlight><highlight class="comment">//<sp/>Non-allocatable<sp/>register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_PART,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>should<sp/>be<sp/>assigned<sp/>to<sp/>the<sp/>corresponding<sp/>part<sp/>of<sp/>the<sp/>full<sp/>register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_ANY_GR,<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>can<sp/>be<sp/>assigned<sp/>to<sp/>any<sp/>GR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_IDENT,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>should<sp/>be<sp/>assigned<sp/>to<sp/>the<sp/>corresponding<sp/>machine<sp/>register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_CR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_DR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_TR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_ST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_MM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_XMM<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_YMM<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_ZMM<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_K<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_TMM<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,<sp/></highlight><highlight class="comment">//<sp/>I<sp/>don&apos;t<sp/>see<sp/>why<sp/>we<sp/>need<sp/>specific<sp/>enum<sp/>instead<sp/>of<sp/>just<sp/>using<sp/>REG_ALLOC_IDENT(CHECK)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_SEG<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_STACK_PTR<sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_X87<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_FLAGS<sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_STATUS_FLAGS<sp/>=<sp/>REG_ALLOC_IDENT,</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_ALLOC_DFLAG<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>REG_ALLOC_IDENT</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_REGINFO_IA32_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/base_ia32/reginfo_ia32.PH"/>
+  </compounddef>
+</doxygen>

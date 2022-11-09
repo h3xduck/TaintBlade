@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceLEVEL__BASE" kind="namespace" language="C++">
+    <compoundname>LEVEL_BASE</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="namespaceLEVEL__BASE" kindref="compound">LEVEL_BASE</ref> definitions </para>
+    </detaileddescription>
+    <location file="Source/pin/include/level_base.H" line="55" column="1"/>
+  </compounddef>
+</doxygen>

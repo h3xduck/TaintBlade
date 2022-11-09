@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_21e20cf0cf232fff582d602bb26a8701" kind="dir">
+    <compoundname>pin_u</compoundname>
+    <innerfile refid="backtrace__u_8PH">backtrace_u.PH</innerfile>
+    <innerfile refid="probe__instrument_8PH">probe_instrument.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/pin_u/"/>
+  </compounddef>
+</doxygen>

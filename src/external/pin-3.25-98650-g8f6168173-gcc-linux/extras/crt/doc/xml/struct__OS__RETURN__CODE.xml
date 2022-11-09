@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="struct__OS__RETURN__CODE" kind="struct" language="C++" prot="public">
+    <compoundname>_OS_RETURN_CODE</compoundname>
+    <includes local="no">os_return_codes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__OS__RETURN__CODE_1a45784e2e0ca326e8575095f5c21ebd84" prot="public" static="no" mutable="no">
+        <type><ref refid="group__OS__APIS__DEF_1ga00cc35ef61ed25e2c8815c3d8d49f7ca" kindref="member">OS_RETURN_CODE_GENERIC</ref></type>
+        <definition>OS_RETURN_CODE_GENERIC _OS_RETURN_CODE::generic_err</definition>
+        <argsstring></argsstring>
+        <name>generic_err</name>
+        <briefdescription>
+<para>Generic OS-APIs error. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="67" column="28" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__OS__RETURN__CODE_1acba8ab3ec82ed89c8f28ed2933c804fa" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int _OS_RETURN_CODE::os_specific_err</definition>
+        <argsstring></argsstring>
+        <name>os_specific_err</name>
+        <briefdescription>
+<para>OS specific error code as returned from the system call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="68" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Full error code returned from OS-APIs functions </para>
+    </detaileddescription>
+    <location file="Source/os-apis/00-export-include/os-apis/os_return_codes.h" line="66" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/os_return_codes.h" bodystart="65" bodyend="69"/>
+    <listofallmembers>
+      <member refid="struct__OS__RETURN__CODE_1a45784e2e0ca326e8575095f5c21ebd84" prot="public" virt="non-virtual"><scope>_OS_RETURN_CODE</scope><name>generic_err</name></member>
+      <member refid="struct__OS__RETURN__CODE_1acba8ab3ec82ed89c8f28ed2933c804fa" prot="public" virt="non-virtual"><scope>_OS_RETURN_CODE</scope><name>os_specific_err</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

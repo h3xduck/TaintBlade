@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_848ca3725398554a1ab885848a4889e8" kind="dir">
+    <compoundname>os-apis</compoundname>
+    <innerfile refid="file_8h">file.h</innerfile>
+    <innerfile refid="host_8h">host.h</innerfile>
+    <innerfile refid="ipc-pipe_8h">ipc-pipe.h</innerfile>
+    <innerfile refid="ipc_8h">ipc.h</innerfile>
+    <innerfile refid="memory_8h">memory.h</innerfile>
+    <innerfile refid="mutex_8h">mutex.h</innerfile>
+    <innerfile refid="os__return__codes_8h">os_return_codes.h</innerfile>
+    <innerfile refid="pin-tls_8h">pin-tls.h</innerfile>
+    <innerfile refid="process-core_8h">process-core.h</innerfile>
+    <innerfile refid="process_8h">process.h</innerfile>
+    <innerfile refid="rw-lock_8h">rw-lock.h</innerfile>
+    <innerfile refid="sigaction__kernel_8h">sigaction_kernel.h</innerfile>
+    <innerfile refid="signals-core_8h">signals-core.h</innerfile>
+    <innerfile refid="signals_8h">signals.h</innerfile>
+    <innerfile refid="threads-management_8h">threads-management.h</innerfile>
+    <innerfile refid="threads_8h">threads.h</innerfile>
+    <innerfile refid="time_8h">time.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/os-apis/00-export-include/os-apis/"/>
+  </compounddef>
+</doxygen>

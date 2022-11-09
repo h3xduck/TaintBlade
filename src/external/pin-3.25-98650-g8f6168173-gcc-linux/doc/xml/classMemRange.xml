@@ -1,0 +1,512 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classMemRange" kind="class" language="C++" prot="public">
+    <compoundname>MemRange</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMemRange_1a3398afde810af65c67d5d839bd9a4985" prot="private" static="no" mutable="no">
+        <type>VOID *</type>
+        <definition>VOID* MemRange::m_base</definition>
+        <argsstring></argsstring>
+        <name>m_base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="684" column="10" bodyfile="Source/pin/base/util.PH" bodystart="684" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMemRange_1a2ce1c4a3c1a0d13385c6a7aaba134b4b" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t MemRange::m_size</definition>
+        <argsstring></argsstring>
+        <name>m_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="685" column="12" bodyfile="Source/pin/base/util.PH" bodystart="685" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMemRange_1a57001d5776335698cea14c7717235beb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MemRange::MemRange</definition>
+        <argsstring>()</argsstring>
+        <name>MemRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="422" column="5" bodyfile="Source/pin/base/util.PH" bodystart="422" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a70d9dad4c59e03e6b6e565b2fee39178" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MemRange::MemRange</definition>
+        <argsstring>(VOID *base, size_t size)</argsstring>
+        <name>MemRange</name>
+        <param>
+          <type>VOID *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="424" column="5" bodyfile="Source/pin/base/util.PH" bodystart="424" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a5ab155d1e1cbb6092bb838cf61697c96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MemRange::MemRange</definition>
+        <argsstring>(ADDRINT base, size_t size)</argsstring>
+        <name>MemRange</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="425" column="5" bodyfile="Source/pin/base/util.PH" bodystart="425" bodyend="425"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a49d65004d9315457d604a6948fe87d18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MemRange::MemRange</definition>
+        <argsstring>(VOID *base, VOID *end)</argsstring>
+        <name>MemRange</name>
+        <param>
+          <type>VOID *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="428" column="5" bodyfile="Source/pin/base/util.PH" bodystart="428" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1ad9427c27c209e9b1399944cc231ec68f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::operator==</definition>
+        <argsstring>(const MemRange &amp;range) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="433" column="10" bodyfile="Source/pin/base/util.PH" bodystart="433" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a776adf0f89e44ee86dbc06f28b171b8e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::operator!=</definition>
+        <argsstring>(const MemRange &amp;range) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="434" column="10" bodyfile="Source/pin/base/util.PH" bodystart="434" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1ae01b4d02e09ed1da426e878f0d342f03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* MemRange::Base</definition>
+        <argsstring>() const</argsstring>
+        <name>Base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="439" column="10" bodyfile="Source/pin/base/util.PH" bodystart="439" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a3934c3d8b3656ab21957e46714d9ac4a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::Base</definition>
+        <argsstring>(VOID *base)</argsstring>
+        <name>Base</name>
+        <param>
+          <type>VOID *</type>
+          <declname>base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="440" column="14" bodyfile="Source/pin/base/util.PH" bodystart="440" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a1d7c14d8d3e64d6db58668a1fb5449ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t MemRange::Size</definition>
+        <argsstring>() const</argsstring>
+        <name>Size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="447" column="12" bodyfile="Source/pin/base/util.PH" bodystart="447" bodyend="447"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a272bc18377cf4dea92bda527247f1d62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::Size</definition>
+        <argsstring>(size_t size)</argsstring>
+        <name>Size</name>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="448" column="14" bodyfile="Source/pin/base/util.PH" bodystart="448" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a45fd19da70c982aa3280147c90ce00e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* MemRange::End</definition>
+        <argsstring>() const</argsstring>
+        <name>End</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="455" column="10" bodyfile="Source/pin/base/util.PH" bodystart="455" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1afcf213a0bfab07729b221e1ce3166cdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* MemRange::Last</definition>
+        <argsstring>() const</argsstring>
+        <name>Last</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="458" column="10" bodyfile="Source/pin/base/util.PH" bodystart="458" bodyend="458"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a589439249ec564ef063ebfcd3f0781ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::IsEmpty</definition>
+        <argsstring>() const</argsstring>
+        <name>IsEmpty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="465" column="10" bodyfile="Source/pin/base/util.PH" bodystart="465" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a204e9db3f638a492f9ad7729b2e999c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::Contains</definition>
+        <argsstring>(const VOID *addr) const</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>const VOID *</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="475" column="10" bodyfile="Source/pin/base/util.PH" bodystart="475" bodyend="475"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a4355d508b5694cea77e261f614b4882a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::Contains</definition>
+        <argsstring>(const MemRange &amp;range) const</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>const <ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="485" column="10" bodyfile="Source/pin/base/util.PH" bodystart="485" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1ae55c9b2e792bd72837f32e45f05152d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::Intersects</definition>
+        <argsstring>(const MemRange &amp;range) const</argsstring>
+        <name>Intersects</name>
+        <param>
+          <type>const <ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="494" column="10" bodyfile="Source/pin/base/util.PH" bodystart="494" bodyend="494"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1abc90d722bb40cc36a01a96de33f2616c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::AdjacentTo</definition>
+        <argsstring>(const MemRange &amp;range) const</argsstring>
+        <name>AdjacentTo</name>
+        <param>
+          <type>const <ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="503" column="10" bodyfile="Source/pin/base/util.PH" bodystart="503" bodyend="506"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a2b022bbc2e0bffd1a4333f7c26a39847" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL MemRange::IsCurrentStack</definition>
+        <argsstring>() const</argsstring>
+        <name>IsCurrentStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="513" column="10" bodyfile="Source/pin/base/util.PH" bodystart="513" bodyend="513"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a3f09bc8ae8aa3535246f6c640e4f8146" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::Align</definition>
+        <argsstring>(UINT32 alignment)</argsstring>
+        <name>Align</name>
+        <param>
+          <type>UINT32</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="522" column="14" bodyfile="Source/pin/base/util.PH" bodystart="522" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1aeee4de314274011eb158c7fb414d4b17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::AlignUp</definition>
+        <argsstring>(UINT32 alignment)</argsstring>
+        <name>AlignUp</name>
+        <param>
+          <type>UINT32</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="536" column="14" bodyfile="Source/pin/base/util.PH" bodystart="536" bodyend="541"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a978fd2b5bdf915d5bef9478892037c69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::AlignDown</definition>
+        <argsstring>(UINT32 alignment)</argsstring>
+        <name>AlignDown</name>
+        <param>
+          <type>UINT32</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="549" column="14" bodyfile="Source/pin/base/util.PH" bodystart="549" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1ac22c4c04ccd6d8167866b70460901ea0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::Shift</definition>
+        <argsstring>(size_t offset)</argsstring>
+        <name>Shift</name>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="562" column="14" bodyfile="Source/pin/base/util.PH" bodystart="562" bodyend="566"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a0547beef0c50903fbe1375f3cf07e71f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::ShiftBase</definition>
+        <argsstring>(size_t offset)</argsstring>
+        <name>ShiftBase</name>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="575" column="14" bodyfile="Source/pin/base/util.PH" bodystart="575" bodyend="588"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a9017d51836b2a6ca9dd87a7152847160" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::ShiftEnd</definition>
+        <argsstring>(size_t offset)</argsstring>
+        <name>ShiftEnd</name>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="595" column="14" bodyfile="Source/pin/base/util.PH" bodystart="595" bodyend="599"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1a8c1c3903268c69c78b14d98c533539ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+        <definition>MemRange&amp; MemRange::Combine</definition>
+        <argsstring>(const MemRange &amp;range)</argsstring>
+        <name>Combine</name>
+        <param>
+          <type>const <ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="607" column="14" bodyfile="Source/pin/base/util.PH" bodystart="607" bodyend="624"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemRange_1ac8ee8671ac6fa6b70e6f0255f4909a3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID MemRange::Decompose</definition>
+        <argsstring>(const MemRange &amp;range, MemRange *pIntersection, MemRange *pLowDiff, MemRange *pHighDiff) const</argsstring>
+        <name>Decompose</name>
+        <param>
+          <type>const <ref refid="classMemRange" kindref="compound">MemRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <param>
+          <type><ref refid="classMemRange" kindref="compound">MemRange</ref> *</type>
+          <declname>pIntersection</declname>
+        </param>
+        <param>
+          <type><ref refid="classMemRange" kindref="compound">MemRange</ref> *</type>
+          <declname>pLowDiff</declname>
+        </param>
+        <param>
+          <type><ref refid="classMemRange" kindref="compound">MemRange</ref> *</type>
+          <declname>pHighDiff</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="638" column="10" bodyfile="Source/pin/base/util.PH" bodystart="638" bodyend="681"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class that represents a memory range - interval of addresses in the virtual address space. <simplesect kind="note"><para>The range that spans the entire address space can not be represented by this class. Whenever a function of this class should construct such range (logically), an empty range is returned instead. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="Source/pin/base/util.PH" line="417" column="1" bodyfile="Source/pin/base/util.PH" bodystart="416" bodyend="686"/>
+    <listofallmembers>
+      <member refid="classMemRange_1abc90d722bb40cc36a01a96de33f2616c" prot="public" virt="non-virtual"><scope>MemRange</scope><name>AdjacentTo</name></member>
+      <member refid="classMemRange_1a3f09bc8ae8aa3535246f6c640e4f8146" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Align</name></member>
+      <member refid="classMemRange_1a978fd2b5bdf915d5bef9478892037c69" prot="public" virt="non-virtual"><scope>MemRange</scope><name>AlignDown</name></member>
+      <member refid="classMemRange_1aeee4de314274011eb158c7fb414d4b17" prot="public" virt="non-virtual"><scope>MemRange</scope><name>AlignUp</name></member>
+      <member refid="classMemRange_1ae01b4d02e09ed1da426e878f0d342f03" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Base</name></member>
+      <member refid="classMemRange_1a3934c3d8b3656ab21957e46714d9ac4a" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Base</name></member>
+      <member refid="classMemRange_1a8c1c3903268c69c78b14d98c533539ed" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Combine</name></member>
+      <member refid="classMemRange_1a204e9db3f638a492f9ad7729b2e999c3" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Contains</name></member>
+      <member refid="classMemRange_1a4355d508b5694cea77e261f614b4882a" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Contains</name></member>
+      <member refid="classMemRange_1ac8ee8671ac6fa6b70e6f0255f4909a3d" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Decompose</name></member>
+      <member refid="classMemRange_1a45fd19da70c982aa3280147c90ce00e0" prot="public" virt="non-virtual"><scope>MemRange</scope><name>End</name></member>
+      <member refid="classMemRange_1ae55c9b2e792bd72837f32e45f05152d2" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Intersects</name></member>
+      <member refid="classMemRange_1a2b022bbc2e0bffd1a4333f7c26a39847" prot="public" virt="non-virtual"><scope>MemRange</scope><name>IsCurrentStack</name></member>
+      <member refid="classMemRange_1a589439249ec564ef063ebfcd3f0781ed" prot="public" virt="non-virtual"><scope>MemRange</scope><name>IsEmpty</name></member>
+      <member refid="classMemRange_1afcf213a0bfab07729b221e1ce3166cdb" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Last</name></member>
+      <member refid="classMemRange_1a3398afde810af65c67d5d839bd9a4985" prot="private" virt="non-virtual"><scope>MemRange</scope><name>m_base</name></member>
+      <member refid="classMemRange_1a2ce1c4a3c1a0d13385c6a7aaba134b4b" prot="private" virt="non-virtual"><scope>MemRange</scope><name>m_size</name></member>
+      <member refid="classMemRange_1a57001d5776335698cea14c7717235beb" prot="public" virt="non-virtual"><scope>MemRange</scope><name>MemRange</name></member>
+      <member refid="classMemRange_1a70d9dad4c59e03e6b6e565b2fee39178" prot="public" virt="non-virtual"><scope>MemRange</scope><name>MemRange</name></member>
+      <member refid="classMemRange_1a5ab155d1e1cbb6092bb838cf61697c96" prot="public" virt="non-virtual"><scope>MemRange</scope><name>MemRange</name></member>
+      <member refid="classMemRange_1a49d65004d9315457d604a6948fe87d18" prot="public" virt="non-virtual"><scope>MemRange</scope><name>MemRange</name></member>
+      <member refid="classMemRange_1a776adf0f89e44ee86dbc06f28b171b8e" prot="public" virt="non-virtual"><scope>MemRange</scope><name>operator!=</name></member>
+      <member refid="classMemRange_1ad9427c27c209e9b1399944cc231ec68f" prot="public" virt="non-virtual"><scope>MemRange</scope><name>operator==</name></member>
+      <member refid="classMemRange_1ac22c4c04ccd6d8167866b70460901ea0" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Shift</name></member>
+      <member refid="classMemRange_1a0547beef0c50903fbe1375f3cf07e71f" prot="public" virt="non-virtual"><scope>MemRange</scope><name>ShiftBase</name></member>
+      <member refid="classMemRange_1a9017d51836b2a6ca9dd87a7152847160" prot="public" virt="non-virtual"><scope>MemRange</scope><name>ShiftEnd</name></member>
+      <member refid="classMemRange_1a1d7c14d8d3e64d6db58668a1fb5449ad" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Size</name></member>
+      <member refid="classMemRange_1a272bc18377cf4dea92bda527247f1d62" prot="public" virt="non-virtual"><scope>MemRange</scope><name>Size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_52eed0bee20581757b41ac6936c7828d" kind="dir">
+    <compoundname>core</compoundname>
+    <innerfile refid="bbl_8PH">bbl.PH</innerfile>
+    <innerfile refid="edg_8PH">edg.PH</innerfile>
+    <innerfile refid="img_8PH">img.PH</innerfile>
+    <innerfile refid="ins_8PH">ins.PH</innerfile>
+    <innerfile refid="regset_8PH">regset.PH</innerfile>
+    <innerfile refid="sec_8PH">sec.PH</innerfile>
+    <innerfile refid="val_8PH">val.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/core/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_368bd17e59d3f53e38509afcc28cad43" kind="dir">
+    <compoundname>pin_include</compoundname>
+    <innerfile refid="execinfo_8h">execinfo.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/bionic/libunwind/pin_include/"/>
+  </compounddef>
+</doxygen>

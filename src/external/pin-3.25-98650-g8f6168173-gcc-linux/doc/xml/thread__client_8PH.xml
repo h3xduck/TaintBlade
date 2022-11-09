@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="thread__client_8PH" kind="file" language="C++">
+    <compoundname>thread_client.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="thread__client_8PH_1af33789e18c576204d76f6c0afecaf22a" prot="public" static="no">
+        <name>PIN_G_THREAD_CLIENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="9" column="10" bodyfile="Source/pin/pin/thread_client.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__THREADS_1ga7957bec5714228e311e6f707fe3e18ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga1c9cdcd6c1baf15e17c2eb305a16e25e" kindref="member">OS_THREAD_ID</ref></type>
+        <definition>OS_THREAD_ID PIN_GetTid</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_GetTid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Threading API for clients</para>
+<para>Get system identifier of the current thread. <simplesect kind="return"><para>system ID of the current thread.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="23" column="21" declfile="Source/pin/pin/thread_client.PH" declline="23" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1gabe759ff297488936fd2ad6d37eb60670" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+        <definition>THREADID PIN_ThreadId</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_ThreadId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get identifier of the current thread in Pin. <simplesect kind="return"><para>ID of the current thread in Pin or INVALID_THREADID upon failure. Usually, the failure means that the function is called in a private tool&apos;s thread which is created by a direct call to a system service and not via the <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread()</ref> function.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="37" column="17" declfile="Source/pin/pin/thread_client.PH" declline="37" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga5307c663b86d8ba41b564e8de4a8bab8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga057233f26b54f23b1ddb0c0c5e31dba9" kindref="member">PIN_THREAD_UID</ref></type>
+        <definition>PIN_THREAD_UID PIN_ThreadUid</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_ThreadUid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get unique identifier of the current thread in Pin. <simplesect kind="return"><para>Unique ID of the current thread in Pin or INVALID_PIN_THREAD_UID upon failure. Usually, the failure means that the function is called in a private tool&apos;s thread which is created by a direct call to a system service and not via the <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread()</ref> function.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="51" column="23" declfile="Source/pin/pin/thread_client.PH" declline="51" declcolumn="23"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga78ea27e2df9c1d42ec9d256577ecfb7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga1c9cdcd6c1baf15e17c2eb305a16e25e" kindref="member">OS_THREAD_ID</ref></type>
+        <definition>OS_THREAD_ID PIN_GetParentTid</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_GetParentTid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get system identifier of the parent thread, if known. <simplesect kind="return"><para>system ID of the parent thread or INVALID_OS_THREAD_ID if the parent thread is unknown. On Windows the result is always INVALID_OS_THREAD_ID, since there is, in general, no well defined parent child relationship between threads.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="65" column="21" declfile="Source/pin/pin/thread_client.PH" declline="65" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga48b46689c5449e5256e2157107f30fa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_Sleep</definition>
+        <argsstring>(UINT32 milliseconds)</argsstring>
+        <name>PIN_Sleep</name>
+        <param>
+          <type>UINT32</type>
+          <declname>milliseconds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Delay execution of the current thread for the specified time interval. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">milliseconds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time interval, in milliseconds.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="76" column="13" declfile="Source/pin/pin/thread_client.PH" declline="76" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga8dfa7f2e5da6935d8bb0b369d76a3681" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_Yield</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_Yield</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Yield the processor to another thread.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="86" column="13" declfile="Source/pin/pin/thread_client.PH" declline="86" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+        <definition>THREADID PIN_SpawnInternalThread</definition>
+        <argsstring>(ROOT_THREAD_FUNC *pThreadFunc, VOID *arg, size_t stackSize, PIN_THREAD_UID *pThreadUid)</argsstring>
+        <name>PIN_SpawnInternalThread</name>
+        <param>
+          <type><ref refid="group__THREADS_1gaf7d4b7206749ac3075b941a513d876c5" kindref="member">ROOT_THREAD_FUNC</ref> *</type>
+          <declname>pThreadFunc</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>stackSize</declname>
+        </param>
+        <param>
+          <type><ref refid="group__THREADS_1ga057233f26b54f23b1ddb0c0c5e31dba9" kindref="member">PIN_THREAD_UID</ref> *</type>
+          <declname>pThreadUid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new tool internal thread in the current process.</para>
+<para>It is safe to create internal threads in the tool&apos;s main procedure and spawn new internal threads from existing ones. However new internal threads cannot be created in any other places, like Pin callbacks and analysis routines in application threads.<linebreak/>
+ In order to ensure graceful termination of internal threads on the application&apos;s exit, the tool can use the following recommended method:<itemizedlist>
+<listitem><para>The tool uses the <ref refid="group__PIN__CONTROL_1gacd670ecd04074a3962968de22aab247c" kindref="member">PIN_AddPrepareForFiniFunction()</ref> function to register a <ref refid="group__PIN__CONTROL_1ga47618aec52f2e6918ca0ffce8fefabde" kindref="member">PREPARE_FOR_FINI_CALLBACK</ref> callback. When the registered function is called in an &quot;unlocked&quot; thread, the tool requests each other internal thread to exit and waits until the <ref refid="group__THREADS_1gaddd0dc2709292f807cb233e5ec0f809a" kindref="member">PIN_WaitForThreadTermination()</ref> function returns. @Note: Pin doesn&apos;t wait for internal threads termination after the callbacks.</para>
+</listitem></itemizedlist>
+</para>
+<para>Many of Pin&apos;s APIs, that are primarily intended for application threads, are also available in internal threads. Look at the API&apos;s description ( <bold>Availability</bold> paragraph) or the description of the corresponding group of APIs to check whether a specific API is available in internal threads.<linebreak/>
+ <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pThreadFunc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>main (starting) function of the thread </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">arg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>argument of the main thread function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">stackSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the thread&apos;s stack, in bytes. The function rounds this value up to the page size. If this parameter is zero, DEFAULT_THREAD_STACK_SIZE bytes will be allocated for the stack. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pThreadUid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to a variable that receives the unique identifier of the new thread in Pin. This identifier can be used in the <ref refid="group__THREADS_1gaddd0dc2709292f807cb233e5ec0f809a" kindref="member">PIN_WaitForThreadTermination()</ref> function to monitor the thread&apos;s state. If the caller specifies NULL for this parameter, the unique thread ID is not returned.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ID of the new thread in Pin or INVALID_THREADID if the thread creation failed.</para>
+</simplesect>
+<simplesect kind="note"><para>The <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread()</ref> API is the only way for tools to create a private thread in the Pin-controlled process. System services, like CreateThread() in Windows or clone() in Linux should not be used for this purpose. </para>
+</simplesect>
+<simplesect kind="par"><title></title><para>Pin makes an effort to hide internal threads from the application so, usually, a tool&apos;s threads do not interfere with the application. However, the complete transparency of internal threads is not guaranteed, so tools should only use them when their instrumentation tasks cannot be done (effectively) by analysis routines within application threads. For example, a need to execute Windows services (Win32 APIs) may be a reason for creating a private thread in the tool. All Win32 APIs that do not modify the application&apos;s resources can be freely used in internal threads. In application threads, on the contrary, using Win32 APIs in analysis routines and Pin callbacks is not supported due to possible reentrancy and isolation problems. </para>
+</simplesect>
+<simplesect kind="par"><title></title><para>Internal threads remain blocked inside Pin until <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref> is called and Pin completes some initialization. On Linux, internal threads start running <emphasis>pThreadFunc</emphasis> before Pin executes the first application instruction. On Windows all threads, including Pin internal threads, start executing from the system runtime before they execute the <emphasis>pThreadFunc</emphasis> function. However, the system runtime blocks threads until the application has finished initializing its DLL&apos;s (i.e. until the application releases the internal &quot;loader lock&quot;). As a result, Pin internal threads on Windows do not execute <emphasis>pThreadFunc</emphasis> until after the application finishes executing the DLL initialization code. On macOS* in launch mode internal threads start running <emphasis>pThreadFun</emphasis> only after the application loader initialize the main executable. Hence don&apos;t expect the internal thread to start running after calling this function from the tool main() function in launch mode.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows, macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="151" column="17" declfile="Source/pin/pin/thread_client.PH" declline="151" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1gaec484eccc13fd52c6c41ff663c6afbcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ExitThread</definition>
+        <argsstring>(INT32 exitCode)</argsstring>
+        <name>PIN_ExitThread</name>
+        <param>
+          <type>INT32</type>
+          <declname>exitCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Terminate the current thread.</para>
+<para>This function is intended for threads created by the tool (see <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread()</ref>) and is not normally used for threads created by the application, since application threads exit automatically when Pin executes a thread termination system call on their behalf.</para>
+<para>If this call is made on an application thread, Pin will make any callbacks registered for thread exit before the thread is terminated.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">exitCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exit code of the thread to be returned by the <ref refid="group__THREADS_1gaddd0dc2709292f807cb233e5ec0f809a" kindref="member">PIN_WaitForThreadTermination()</ref> function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the function never returns.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="174" column="13" declfile="Source/pin/pin/thread_client.PH" declline="174" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1ga2b23785020a1f4666f9980805abc7aa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_IsApplicationThread</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_IsApplicationThread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check to see if the current thread is created by the application or it is an internal thread spawned by the tool or Pin itself (see <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread()</ref>).</para>
+<para><simplesect kind="return"><para>TRUE, if this function is called in a thread created by the application; FALSE, if this function is called in an internal thread spawned by the tool or Pin.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="188" column="13" declfile="Source/pin/pin/thread_client.PH" declline="188" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__THREADS_1gaddd0dc2709292f807cb233e5ec0f809a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_WaitForThreadTermination</definition>
+        <argsstring>(const PIN_THREAD_UID &amp;threadUid, UINT32 milliseconds, INT32 *pExitCode)</argsstring>
+        <name>PIN_WaitForThreadTermination</name>
+        <param>
+          <type>const <ref refid="group__THREADS_1ga057233f26b54f23b1ddb0c0c5e31dba9" kindref="member">PIN_THREAD_UID</ref> &amp;</type>
+          <declname>threadUid</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>milliseconds</declname>
+        </param>
+        <param>
+          <type>INT32 *</type>
+          <declname>pExitCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Delay the current thread until the specified thread is terminated or the time-out interval elapses.</para>
+<para>To avoid deadlocks, the caller should not hold any lock that the target thread may try to acquire. For example, this function can be safely used in the <ref refid="group__PIN__CONTROL_1ga47618aec52f2e6918ca0ffce8fefabde" kindref="member">PREPARE_FOR_FINI_CALLBACK</ref> callback if it is registered by the <ref refid="group__PIN__CONTROL_1gacd670ecd04074a3962968de22aab247c" kindref="member">PIN_AddPrepareForFiniFunction()</ref>. However, it is not recommended to use this function in other Pin callbacks if the target thread is an application thread or an internal thread that uses Pin APIs. This is because most of Pin APIs and callbacks are serialized by the same internal lock.<linebreak/>
+ This function can not be used to wait for the termination of the calling thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">threadUid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unique identifier of the thread to be waited for termination, provided by <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread()</ref> or <ref refid="group__THREADS_1ga5307c663b86d8ba41b564e8de4a8bab8" kindref="member">PIN_ThreadUid()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">milliseconds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time-out interval, in milliseconds. If this parameter is zero, the function tests the thread&apos;s state and returns immediately. If this parameter is PIN_INFINITE_TIMEOUT, the time-out interval never elapses. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pExitCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional pointer to a variable that receives exit code of the thread. If this pointer is NULL or the thread has not terminated, the exit code is not returned. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE - the thread has terminated, FALSE - the specified time-out interval elapsed or threadUid is not valid or corresponds to current thread or specified thread is not yet started when application shutdown begins.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/thread_client.PH" line="222" column="13" declfile="Source/pin/pin/thread_client.PH" declline="222" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2010-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_THREAD_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>thread_client</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_THREAD_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga1c9cdcd6c1baf15e17c2eb305a16e25e" kindref="member">OS_THREAD_ID</ref><sp/><ref refid="group__THREADS_1ga7957bec5714228e311e6f707fe3e18ff" kindref="member">PIN_GetTid</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/><ref refid="group__THREADS_1gabe759ff297488936fd2ad6d37eb60670" kindref="member">PIN_ThreadId</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga057233f26b54f23b1ddb0c0c5e31dba9" kindref="member">PIN_THREAD_UID</ref><sp/><ref refid="group__THREADS_1ga5307c663b86d8ba41b564e8de4a8bab8" kindref="member">PIN_ThreadUid</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga1c9cdcd6c1baf15e17c2eb305a16e25e" kindref="member">OS_THREAD_ID</ref><sp/><ref refid="group__THREADS_1ga78ea27e2df9c1d42ec9d256577ecfb7f" kindref="member">PIN_GetParentTid</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__THREADS_1ga48b46689c5449e5256e2157107f30fa5" kindref="member">PIN_Sleep</ref>(UINT32<sp/>milliseconds);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__THREADS_1ga8dfa7f2e5da6935d8bb0b369d76a3681" kindref="member">PIN_Yield</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/><ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread</ref>(<ref refid="group__THREADS_1gaf7d4b7206749ac3075b941a513d876c5" kindref="member">ROOT_THREAD_FUNC</ref>*<sp/>pThreadFunc,<sp/>VOID*<sp/>arg,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>stackSize,<sp/><ref refid="group__THREADS_1ga057233f26b54f23b1ddb0c0c5e31dba9" kindref="member">PIN_THREAD_UID</ref>*<sp/>pThreadUid);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__THREADS_1gaec484eccc13fd52c6c41ff663c6afbcc" kindref="member">PIN_ExitThread</ref>(INT32<sp/>exitCode);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__THREADS_1ga2b23785020a1f4666f9980805abc7aa4" kindref="member">PIN_IsApplicationThread</ref>();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__THREADS_1gaddd0dc2709292f807cb233e5ec0f809a" kindref="member">PIN_WaitForThreadTermination</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga057233f26b54f23b1ddb0c0c5e31dba9" kindref="member">PIN_THREAD_UID</ref>&amp;<sp/>threadUid,<sp/>UINT32<sp/>milliseconds,<sp/>INT32*<sp/>pExitCode);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_THREAD_CLIENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/thread_client.PH"/>
+  </compounddef>
+</doxygen>

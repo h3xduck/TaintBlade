@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="internal__exception__client_8PH" kind="file" language="C++">
+    <compoundname>internal_exception_client.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="internal__exception__client_8PH_1a33f692ce259b8e7334f065baf79b63bb" prot="public" static="no">
+        <name>PIN_G_INTERNAL_EXCEPTION_CLIENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/internal_exception_client.PH" line="9" column="10" bodyfile="Source/pin/pin/internal_exception_client.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__PIN__CONTROL_1ga48e4c80589225d40efe177a9d399225c" prot="public" static="no">
+        <type><ref refid="group__PIN__CONTROL_1ga8c5c16fb133375efa3a27d3a3900c603" kindref="member">EXCEPT_HANDLING_RESULT</ref>(*</type>
+        <definition>typedef EXCEPT_HANDLING_RESULT(* INTERNAL_EXCEPTION_CALLBACK) (THREADID tid, EXCEPTION_INFO *pExceptInfo, PHYSICAL_CONTEXT *pPhysCtxt, VOID *v)</definition>
+        <argsstring>)(THREADID tid, EXCEPTION_INFO *pExceptInfo, PHYSICAL_CONTEXT *pPhysCtxt, VOID *v)</argsstring>
+        <name>INTERNAL_EXCEPTION_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin client interface and implementation for internal exception handling</para>
+<para>Handler (call-back) function when pin/tool generates internal exception. This function can be registered via <ref refid="group__PIN__CONTROL_1ga497983e81c1cfaf15866667e31eee791" kindref="member">PIN_AddInternalExceptionHandler()</ref> or <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart()</ref>. This function becomes active only after APPLICATION_START_CALLBACK notification is delivered. Any internal exception prior to this event can&apos;t be handled.</para>
+<para>If the exception occurred while analysis routine is executed, it is legal to modify the execution control path using functions such as <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref> or <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt()</ref>. In this case, any per-thread INTERNAL_EXCEPTION_CALLBACK function registered via <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart()</ref> will be unregistered automatically (similar semantics to <ref refid="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" kindref="member">PIN_TryEnd()</ref> for all registered notifications)</para>
+<para><simplesect kind="note"><para>It is unsupported to call <ref refid="group__PIN__CONTROL_1ga38f5a396edc14c80c3bd2c0b91084153" kindref="member">PIN_CallApplicationFunction()</ref> in the scope of this callback</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID of the thread that generated the exception. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure that describes the exception. If the exception should be raised in the context of the application (using <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>), The tool should update the exception info to match the OS logic (e.g. update exception address using <ref refid="group__EXCEPTION_1ga397741c75f32043c9fcf6525f668678a" kindref="member">PIN_SetExceptionAddress()</ref>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">pPhysCtxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Physical register state when the exception was generated. The tool can change <emphasis>pPhysCtxt</emphasis> (make sure that if <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart()</ref> was called, matching <ref refid="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" kindref="member">PIN_TryEnd()</ref> will be called) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an <emphasis>EXCEPT_HANDLING_RESULT</emphasis> value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/internal_exception_client.PH" line="38" column="9" bodyfile="Source/pin/pin/internal_exception_client.PH" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PIN__CONTROL_1ga497983e81c1cfaf15866667e31eee791" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK PIN_AddInternalExceptionHandler</definition>
+        <argsstring>(INTERNAL_EXCEPTION_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_AddInternalExceptionHandler</name>
+        <param>
+          <type><ref refid="group__PIN__CONTROL_1ga48e4c80589225d40efe177a9d399225c" kindref="member">INTERNAL_EXCEPTION_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a global (not per-thread) notification handler function that is called upon receipt of any unhandled internal exception in Pin or the tool. This handler does not catch exceptions that are generated by the application, nor does it catch exceptions that are handled by <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart()</ref> / <ref refid="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" kindref="member">PIN_TryEnd()</ref>. The handler is active for all the application&apos;s threads, it should be called in tool&apos;s main() before <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref>. If it is called after <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref> is called, it will be ignored. The user can register up to MAX_IEH_CALLBACKS global notification functions.</para>
+<para><simplesect kind="note"><para>This function should be used for permanent global call-back registration (as opposed to <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart()</ref> / <ref refid="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" kindref="member">PIN_TryEnd()</ref> pair which should be used for function scope registration).</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Handler function to execute upon receipt of internal exception in pin/tool. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/internal_exception_client.PH" line="66" column="21" declfile="Source/pin/pin/internal_exception_client.PH" declline="66" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_TryStart</definition>
+        <argsstring>(THREADID tid, INTERNAL_EXCEPTION_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_TryStart</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type><ref refid="group__PIN__CONTROL_1ga48e4c80589225d40efe177a9d399225c" kindref="member">INTERNAL_EXCEPTION_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a per-thread notification handler function that is called upon receipt of an internal exception in pin or the tool in the context of the calling thread. Use <ref refid="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" kindref="member">PIN_TryEnd()</ref> in order to remove the registered handler from the context of the calling thread (do it in the same function scope). The user can register up to MAX_IEH_CALLBACKS per-thread notification functions.<linebreak/>
+This function can be used in any thread, including any internal thread spawned by the tool.</para>
+<para><simplesect kind="note"><para>It is unsupported to call <ref refid="group__PIN__CONTROL_1ga38f5a396edc14c80c3bd2c0b91084153" kindref="member">PIN_CallApplicationFunction()</ref> in the scope of <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart()</ref> / <ref refid="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" kindref="member">PIN_TryEnd()</ref> pair.<linebreak/>
+</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the calling thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Handler function to execute upon receipt of internal exception in pin/tool. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the handler function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Windows, Linux<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/internal_exception_client.PH" line="89" column="13" declfile="Source/pin/pin/internal_exception_client.PH" declline="89" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_TryEnd</definition>
+        <argsstring>(THREADID tid)</argsstring>
+        <name>PIN_TryEnd</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unregister the last registered notification function (registered via <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart()</ref>) from the context of the calling thread. This function should be called in the same function scope as the previously registered <ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">.\n</ref> This function can be used in any thread, including any internal thread spawned by the tool.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the calling thread.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Windows, Linux<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/internal_exception_client.PH" line="104" column="13" declfile="Source/pin/pin/internal_exception_client.PH" declline="104" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_INTERNAL_EXCEPTION_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>internal_exception_client</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_INTERNAL_EXCEPTION_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="group__PIN__CONTROL_1ga8c5c16fb133375efa3a27d3a3900c603" kindref="member">EXCEPT_HANDLING_RESULT</ref><sp/>(*<ref refid="group__PIN__CONTROL_1ga48e4c80589225d40efe177a9d399225c" kindref="member">INTERNAL_EXCEPTION_CALLBACK</ref>)(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPHYSICAL__CONTEXT" kindref="compound">PHYSICAL_CONTEXT</ref>*<sp/>pPhysCtxt,<sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref><sp/><ref refid="group__PIN__CONTROL_1ga497983e81c1cfaf15866667e31eee791" kindref="member">PIN_AddInternalExceptionHandler</ref>(<ref refid="group__PIN__CONTROL_1ga48e4c80589225d40efe177a9d399225c" kindref="member">INTERNAL_EXCEPTION_CALLBACK</ref><sp/>fun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__PIN__CONTROL_1ga745439a3c54413e886db6676ff6a8bae" kindref="member">PIN_TryStart</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/><ref refid="group__PIN__CONTROL_1ga48e4c80589225d40efe177a9d399225c" kindref="member">INTERNAL_EXCEPTION_CALLBACK</ref><sp/>fun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__PIN__CONTROL_1gab6d4fa955364407511e161e7ed81d65d" kindref="member">PIN_TryEnd</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_INTERNAL_EXCEPTION_CLIENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/internal_exception_client.PH"/>
+  </compounddef>
+</doxygen>

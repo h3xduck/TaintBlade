@@ -1,0 +1,1456 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="exception_8PH" kind="file" language="C++">
+    <compoundname>exception.PH</compoundname>
+    <innerclass refid="structEXCEPTION__INFO" prot="public">EXCEPTION_INFO</innerclass>
+    <innerclass refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC</innerclass>
+    <innerclass refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</innerclass>
+    <innerclass refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC::WINDOWS_SYS</innerclass>
+    <innerclass refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="exception_8PH_1ab11d03df2d24089598d2948028a6e8cb" prot="public" static="no">
+        <name>PIN_G_EXCEPTION_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="9" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EXCEPTION_CLASS</name>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a639673e89694803faff1f8c307481c9b" prot="public">
+          <name>EXCEPTCLASS_NONE</name>
+          <briefdescription>
+<para>Reserved. No real exception belongs to this class. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91adefa9617e68382ce54806db7ce8bd151" prot="public">
+          <name>EXCEPTCLASS_UNKNOWN</name>
+          <briefdescription>
+<para>Unknown exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" prot="public">
+          <name>EXCEPTCLASS_ACCESS_FAULT</name>
+          <briefdescription>
+<para>Memory access fault. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a4481541f81b978a68904d3e91836c238" prot="public">
+          <name>EXCEPTCLASS_INVALID_INS</name>
+          <briefdescription>
+<para>Invalid instruction. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91af6ede82243aaa3c24cbf1c20746195d8" prot="public">
+          <name>EXCEPTCLASS_INT_ERROR</name>
+          <briefdescription>
+<para>Erroneous integer operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91addab45cb135ea816a61e9b13e1f350fd" prot="public">
+          <name>EXCEPTCLASS_FP_ERROR</name>
+          <briefdescription>
+<para>Erroneous floating point operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a38a2cf5644947f6458e058a31d1abb8f" prot="public">
+          <name>EXCEPTCLASS_MULTIPLE_FP_ERROR</name>
+          <briefdescription>
+<para>Received an ambiguous floating point exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91aace9a9908b5c804aa9709d5421a411d9" prot="public">
+          <name>EXCEPTCLASS_DEBUG</name>
+          <briefdescription>
+<para>Debugging trap. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a5fd37a2c9b7fe263eb3af2858a24ed41" prot="public">
+          <name>EXCEPTCLASS_OS</name>
+          <briefdescription>
+<para>O/S specific exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Basic definitions pertaining to hardware and software exceptions.</para>
+<para>Identifiers of exception classes. Exception class indicates the type of information (set of attributes) that accompanies exceptions of this class. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="18" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="17" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EXCEPTION_CODE</name>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6e0c48d8f8cefacf3c417258c8e77180" prot="public">
+          <name>EXCEPTCODE_NONE</name>
+          <briefdescription>
+<para>Reserved. No real exception has this code. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaf3ed3d9fb17ec13a0fcdfca6e5e8ec73" prot="public">
+          <name>EXCEPTCODE_ACCESS_INVALID_ADDRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Virtual address not mapped (the #PF exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eab91fcfead8bd10edcc566370d2319a26" prot="public">
+          <name>EXCEPTCODE_ACCESS_DENIED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Access not permitted due to protection violation (the #PF exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea3c61f9032470d57b697b17f4573ff003" prot="public">
+          <name>EXCEPTCODE_ACCESS_INVALID_PAGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A #PF exception for some reason other than the cases above. Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea20e4e696b5e9e25c3f860fb0b72c4312" prot="public">
+          <name>EXCEPTCODE_ACCESS_MISALIGNED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Misaligned memory reference (the #AC exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaa9beec42f8b5b43f7ef9a9a408edbbf7" prot="public">
+          <name>EXCEPTCODE_ILLEGAL_INS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Illegal instruction (the #UD exception). Belongs to EXCEPTCLASS_INVALID_INS. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea168ef33a71e50e0ea8b7b1d68e383891" prot="public">
+          <name>EXCEPTCODE_PRIVILEGED_INS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Privileged instruction (the #GP exception). Belongs to EXCEPTCLASS_INVALID_INS. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6fc9a03a06dda53cf8abb6fe890ee387" prot="public">
+          <name>EXCEPTCODE_INT_DIVIDE_BY_ZERO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Integer divide by zero (the #DE exception). Belongs to EXCEPTCLASS_INT_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea215d5ff8bc42c323530b351e426d5073" prot="public">
+          <name>EXCEPTCODE_INT_OVERFLOW_TRAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Integer overflow trap (the #OF trap). Belongs to EXCEPTCLASS_INT_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eac1a482267c713eead488d01ea55e3363" prot="public">
+          <name>EXCEPTCODE_INT_BOUNDS_EXCEEDED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Array index is out of bounds (#BR exception). Belongs to EXCEPTCLASS_INT_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1ec78aaa98ab1003fec7f96146565f5d" prot="public">
+          <name>EXCEPTCODE_X87_DIVIDE_BY_ZERO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU divide by zero (the #MF/#Z exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9d525f1400a6cc337bb9f3e40cb444b5" prot="public">
+          <name>EXCEPTCODE_X87_OVERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU overflow (the #MF/#O exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eadf36003910884456bc148c9c800a9f4c" prot="public">
+          <name>EXCEPTCODE_X87_UNDERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU underflow (the #MF/#U exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaf64991c77b1ee98345ebd3cc0c4cfd54" prot="public">
+          <name>EXCEPTCODE_X87_INEXACT_RESULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU inexact result (the #MF/#P exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9cc75d4c57fdf4145c9dfb18a39f3d2f" prot="public">
+          <name>EXCEPTCODE_X87_INVALID_OPERATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU invalid operation (the #MF/#IA exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ead9e982000e28ac51d6aeb5927315d937" prot="public">
+          <name>EXCEPTCODE_X87_DENORMAL_OPERAND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU denormal operand (the #MF/#D exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1f081e3266fc8d185cfe6097324e172d" prot="public">
+          <name>EXCEPTCODE_X87_STACK_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU stack overflowed or underflowed (the #MF/#IS exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2cae5bc9154e16a4f95eab20393e6629" prot="public">
+          <name>EXCEPTCODE_SIMD_DIVIDE_BY_ZERO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point divide by zero (the #XM/#Z exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea7b10547579951b72fe7291f7af5f5fa7" prot="public">
+          <name>EXCEPTCODE_SIMD_OVERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point overflow (the #XM/#O exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6adfdc608e333eb3d12761a17858f79a" prot="public">
+          <name>EXCEPTCODE_SIMD_UNDERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point underflow (the #XM/#U exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eabb7d9caa28fdf250c0525ba3a4b79df4" prot="public">
+          <name>EXCEPTCODE_SIMD_INEXACT_RESULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point inexact result (the #XM/#P exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea4b72ecb5070819b2c32c02b4abed927e" prot="public">
+          <name>EXCEPTCODE_SIMD_INVALID_OPERATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD invalid floating point operation (the #XM/#I exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea628c9b194f6b52daa2a9e31f84124950" prot="public">
+          <name>EXCEPTCODE_SIMD_DENORMAL_OPERAND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD denormal floating point operand (the #XM/#D exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9512ed0163683bc703f12cbb1fcbc154" prot="public">
+          <name>EXCEPTCODE_DBG_BREAKPOINT_TRAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Breakpoint trap (the #BP trap). Belongs to EXCEPTCLASS_DEBUG. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea36232f2a58e81ac730eda3cd2d67866a" prot="public">
+          <name>EXCEPTCODE_DBG_SINGLE_STEP_TRAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Trace trap (the #DB trap). Belongs to EXCEPTCLASS_DEBUG. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6f1cd3dafab23ac1326597e27f3273da" prot="public">
+          <name>EXCEPTCODE_ACCESS_WINDOWS_GUARD_PAGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Guard page access (the Windows STATUS_GUARD_PAGE_VIOLATION exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaabc89192492add706392f3b72a17cefc" prot="public">
+          <name>EXCEPTCODE_ACCESS_WINDOWS_STACK_OVERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Thread stack overflowed (the Windows STATUS_STACK_OVERFLOW exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" prot="public">
+          <name>EXCEPTCODE_WINDOWS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Generic Windows exception. Belongs to EXCEPTCLASS_OS. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eae29a06f4eba0d956c1b369d338133fb9" prot="public">
+          <name>EXCEPTCODE_RECEIVED_UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Unknown exception, cannot be re-raised. Belongs to EXCEPTCLASS_UNKNOWN. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1de1a46ab34c71b86634e54266aa10b1" prot="public">
+          <name>EXCEPTCODE_RECEIVED_ACCESS_FAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>General memory access fault. Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaeb6d5bcdb1002d9e236e97fe47e1bd01" prot="public">
+          <name>EXCEPTCODE_RECEIVED_AMBIGUOUS_X87</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ambiguous x87 FPU exception. <ref refid="group__EXCEPTION_1gab6b8c9b966b1ec4e93966f5535377b84" kindref="member">PIN_GetFpErrorSet()</ref> tell which are possible. Belongs to EXCEPTCLASS_MULTIPLE_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eafff1d7259a62a402cfd84be28642c165" prot="public">
+          <name>EXCEPTCODE_RECEIVED_AMBIGUOUS_SIMD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ambiguous SIMD FPU exception. <ref refid="group__EXCEPTION_1gab6b8c9b966b1ec4e93966f5535377b84" kindref="member">PIN_GetFpErrorSet()</ref> tell which are possible. Belongs to EXCEPTCLASS_MULTIPLE_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Identifiers for all possible exception codes. The codes below are divided into two groups. The first group list all the exceptions that can be raised by <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>. Tools that want to be portable across operating systems should use codes from this first group when raising exceptions via <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>.</para>
+<para>When Pin receives an exception and reports it to the tool, it may report an exception in either the first or second group. This can happen, for example, when using the <ref refid="group__PIN__CONTROL_1ga9ca9a29ec02d848dd7b95717f400098c" kindref="member">PIN_SafeCopyEx()</ref> function. When Pin can identify a specific exception, it reports a code from the first group. Sometimes, though, the host operating system does not provide enough information for Pin to determine the exact exception. In these cases, Pin reports a code from the second group (one of the EXCEPTCODE_RECEIVED_ codes). A tool can always re-raise one of these exceptions by passing it to <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>. However, portable tools should avoid creating new exceptions using codes from the second group, because these codes are not supported on all operating systems. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="47" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="46" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" prot="public" static="no" strong="no">
+        <type></type>
+        <name>FAULTY_ACCESS_TYPE</name>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" prot="public">
+          <name>FAULTY_ACCESS_TYPE_UNKNOWN</name>
+          <briefdescription>
+<para>Unknown access violation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332a9017d042de552352d34631f1005ec41f" prot="public">
+          <name>FAULTY_ACCESS_READ</name>
+          <briefdescription>
+<para>Read access. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332a97a52d7e5d16b3b0a639f4afb8dcfb3a" prot="public">
+          <name>FAULTY_ACCESS_WRITE</name>
+          <briefdescription>
+<para>Write access. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ad3b3b74b39502a7dd812f575b6d02564" prot="public">
+          <name>FAULTY_ACCESS_EXECUTE</name>
+          <briefdescription>
+<para>Execute access. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Types of faulty memory accesses that may cause an EXCEPTCLASS_ACCESS_FAULT exception </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="132" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="131" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__EXCEPTION_1ga6a79e2fb2b098be0140b886c1bf455e7" prot="public" static="no" strong="no">
+        <type></type>
+        <name>FPERROR</name>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a09c3bc4e58050530f5e4d0344d61007f" prot="public">
+          <name>FPERROR_DIVIDE_BY_ZERO</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+<para>The #DE exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a2789dbaf7402c19c707464c6e661c5e6" prot="public">
+          <name>FPERROR_OVERFLOW</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+<para>The #O exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7aa378c327ca7bee274cfccb28ae22da4d" prot="public">
+          <name>FPERROR_UNDERFLOW</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+<para>The #U exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7ad6f4b619134d0fbace48a4f9ef3620e4" prot="public">
+          <name>FPERROR_INEXACT_RESULT</name>
+          <initializer>= (1 &lt;&lt; 3)</initializer>
+          <briefdescription>
+<para>The #P exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a52efd791986a45c1f57b4694886b8ef0" prot="public">
+          <name>FPERROR_INVALID_OPERATION</name>
+          <initializer>= (1 &lt;&lt; 4)</initializer>
+          <briefdescription>
+<para>The #IA exception on x87 or #I exception on SIMD. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a4d8037fb36e5a201c22df00ddb4b5c7d" prot="public">
+          <name>FPERROR_DENORMAL_OPERAND</name>
+          <initializer>= (1 &lt;&lt; 5)</initializer>
+          <briefdescription>
+<para>The #D exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7af983f6a4225301a637f9dca4617310da" prot="public">
+          <name>FPERROR_X87_STACK_ERROR</name>
+          <initializer>= (1 &lt;&lt; 6)</initializer>
+          <briefdescription>
+<para>The #IS exception on x87. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Possible types of FPU exceptions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="143" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="142" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__EXCEPTION_1ga95d87b1df51db38b0c1ed311a1fff5a5" prot="public" static="no">
+        <type>struct <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref></type>
+        <definition>typedef struct EXCEPTION_INFO EXCEPTION_INFO</definition>
+        <argsstring></argsstring>
+        <name>EXCEPTION_INFO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Structure that describes an exception.<linebreak/>
+The tool should not read or modify data members of this structure directly, but must treat the structure as logically opaque and use the <ref refid="group__EXCEPTION" kindref="compound">Exception API</ref> functions to manage it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="156" column="14" bodyfile="Source/pin/base/exception.PH" bodystart="408" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__EXCEPTION_1ga6c8da298c4aaa3f1d55b8b864eeb309a" prot="public" static="no" mutable="no">
+        <type>const UINT32</type>
+        <definition>const UINT32 MAX_WINDOWS_EXCEPTION_ARGS</definition>
+        <argsstring></argsstring>
+        <name>MAX_WINDOWS_EXCEPTION_ARGS</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maximum number of arguments that can be associated with an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="156" column="14" bodyfile="Source/pin/base/exception.PH" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__EXCEPTION_1gaf9b33bc295381eb82635cf7051e4cc55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitExceptionInfo</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, EXCEPTION_CODE exceptCode, ADDRINT exceptAddress)</argsstring>
+        <name>PIN_InitExceptionInfo</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure with the given generic exception&apos;s attributes. Set &quot;unknown&quot; state for all exception-specific attributes.<linebreak/>
+ <simplesect kind="note"><para>This function is useful when the specified exception code does not require any additional exception information or such information is not available. The function can not be used to initialize <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception information.<linebreak/>
+Use exception-specific initialization functions if an additional exception information is available/required.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be initialized </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code. It could specify any exception other than <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="430" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="430" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gaba04dfb97e6580fdd8e45c0c830e4204" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitAccessFaultInfo</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, EXCEPTION_CODE exceptCode, ADDRINT exceptAddress, ADDRINT accessAddress, FAULTY_ACCESS_TYPE accessType=FAULTY_ACCESS_TYPE_UNKNOWN)</argsstring>
+        <name>PIN_InitAccessFaultInfo</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>accessAddress</declname>
+        </param>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></type>
+          <declname>accessType</declname>
+          <defval><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" kindref="member">FAULTY_ACCESS_TYPE_UNKNOWN</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure with the given attributes of an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be initialized </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code that specifies an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">accessAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the faulty memory access </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">accessType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the faulty memory access</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="451" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="451" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga23bea4733196d44795c76caea7817492" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitWindowsExceptionInfo</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, UINT32 sysExceptCode, ADDRINT exceptAddress, UINT32 numArgs=0, const ADDRINT *pArgs=0)</argsstring>
+        <name>PIN_InitWindowsExceptionInfo</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>sysExceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>numArgs</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const ADDRINT *</type>
+          <declname>pArgs</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure with the given attributes of an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be initialized </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">sysExceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the system exception code </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">numArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of arguments associated with the system exception. This is the number of elements in the &lt;pArgs&gt; array; it should not exceed the <ref refid="group__EXCEPTION_1ga6c8da298c4aaa3f1d55b8b864eeb309a" kindref="member">MAX_WINDOWS_EXCEPTION_ARGS</ref> value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">pArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an array of arguments associated with the system exception or NULL if the number of arguments is zero</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="475" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="475" bodyend="479"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gabf5f400860ff82575ba16fed79e12572" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+        <definition>EXCEPTION_CODE PIN_GetExceptionCode</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetExceptionCode</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the exception code from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The code of the exception</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="491" column="23" bodyfile="Source/pin/base/exception.PH" bodystart="491" bodyend="491"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga81f5a9ad25e0b675db61780c17d03b77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref></type>
+        <definition>EXCEPTION_CLASS PIN_GetExceptionClass</definition>
+        <argsstring>(EXCEPTION_CODE exceptCode)</argsstring>
+        <name>PIN_GetExceptionClass</name>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Given an exception code, return the corresponding exception class. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The class of the exception</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="503" column="24" bodyfile="Source/pin/base/exception.PH" bodystart="503" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga18b2b29a40bd311e81a339548c8682e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetExceptionAddress</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetExceptionAddress</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the address of the instruction that caused the specified exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The address of the instruction that caused the exception</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="515" column="16" bodyfile="Source/pin/base/exception.PH" bodystart="515" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga397741c75f32043c9fcf6525f668678a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetExceptionAddress</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, ADDRINT exceptAddress)</argsstring>
+        <name>PIN_SetExceptionAddress</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the address of the instruction that caused the specified exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure that receives the new exception address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="523" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="523" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gaab2ef535bc632b453f0bff4a77fe1413" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></type>
+        <definition>FAULTY_ACCESS_TYPE PIN_GetFaultyAccessType</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetFaultyAccessType</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the type of the faulty memory access from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The type of the faulty memory access that caused the exception </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="541" column="27" bodyfile="Source/pin/base/exception.PH" bodystart="541" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga296ce96f07f6377fbcd70e1a613de1c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_GetFaultyAccessAddress</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo, ADDRINT *pAccessAddress)</argsstring>
+        <name>PIN_GetFaultyAccessAddress</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>ADDRINT *</type>
+          <declname>pAccessAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the address of the faulty memory access from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pAccessAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to variable that receives the address of the faulty memory access, if known. If this pointer is NULL, the function only checks if the requested address is known but does not return its value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE, if the address of the faulty memory access is known </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="562" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="562" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gab6b8c9b966b1ec4e93966f5535377b84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_GetFpErrorSet</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetFpErrorSet</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the set of floating point exception codes from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. For EXCEPTCODE_RECEIVED_AMBIGUOUS_X87 and EXCEPTCODE_RECEIVED_AMBIGUOUS_SIMD exceptions, this is the set of possible causes for the exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A bitmask of FPERROR values. </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a38a2cf5644947f6458e058a31d1abb8f" kindref="member">EXCEPTCLASS_MULTIPLE_FP_ERROR</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="581" column="15" bodyfile="Source/pin/base/exception.PH" bodystart="581" bodyend="581"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga5141065a1607862d80f77743f9dbb886" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_GetWindowsExceptionCode</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetWindowsExceptionCode</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the Windows system exception code from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The system exception code </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="595" column="15" bodyfile="Source/pin/base/exception.PH" bodystart="595" bodyend="595"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga363db287b0515c669518d94e448e9185" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_CountWindowsExceptionArguments</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_CountWindowsExceptionArguments</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the number of Windows system exception&apos;s arguments from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of arguments associated with the system exception </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="610" column="15" bodyfile="Source/pin/base/exception.PH" bodystart="610" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga3ed8c2177083689ddde3065f06422a47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetWindowsExceptionArgument</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo, UINT32 argNum)</argsstring>
+        <name>PIN_GetWindowsExceptionArgument</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>argNum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the specified Windows system exception&apos;s argument from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argNum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ordinal number of the argument to be retrieved, starting from zero. The value of this parameter should not exceed the value returned by the <ref refid="group__EXCEPTION_1ga363db287b0515c669518d94e448e9185" kindref="member">PIN_CountWindowsExceptionArguments</ref> function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the specified system exception&apos;s argument </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="632" column="16" bodyfile="Source/pin/base/exception.PH" bodystart="632" bodyend="635"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga62d407978423fdee9742f902ff7a0692" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PIN_ExceptionToString</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_ExceptionToString</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a string representation of the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be stringized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The string representation of this structure.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="647" column="20" bodyfile="Source/pin/base/exception.PH" bodystart="647" bodyend="647"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2009-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_EXCEPTION_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>exception</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_EXCEPTION_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a639673e89694803faff1f8c307481c9b" kindref="member">EXCEPTCLASS_NONE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91adefa9617e68382ce54806db7ce8bd151" kindref="member">EXCEPTCLASS_UNKNOWN</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a4481541f81b978a68904d3e91836c238" kindref="member">EXCEPTCLASS_INVALID_INS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91af6ede82243aaa3c24cbf1c20746195d8" kindref="member">EXCEPTCLASS_INT_ERROR</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91addab45cb135ea816a61e9b13e1f350fd" kindref="member">EXCEPTCLASS_FP_ERROR</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a38a2cf5644947f6458e058a31d1abb8f" kindref="member">EXCEPTCLASS_MULTIPLE_FP_ERROR</ref>,<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91aace9a9908b5c804aa9709d5421a411d9" kindref="member">EXCEPTCLASS_DEBUG</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a5fd37a2c9b7fe263eb3af2858a24ed41" kindref="member">EXCEPTCLASS_OS</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6e0c48d8f8cefacf3c417258c8e77180" kindref="member">EXCEPTCODE_NONE</ref>,<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>exception<sp/>codes<sp/>are<sp/>supported<sp/>on<sp/>all<sp/>operating<sp/>systems.<sp/><sp/>Portable<sp/>tools<sp/>should</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>these<sp/>codes<sp/>when<sp/>creating<sp/>exceptions<sp/>that<sp/>wil<sp/>be<sp/>passed<sp/>to<sp/>PIN_RaiseException().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaf3ed3d9fb17ec13a0fcdfca6e5e8ec73" kindref="member">EXCEPTCODE_ACCESS_INVALID_ADDRESS</ref>,<sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eab91fcfead8bd10edcc566370d2319a26" kindref="member">EXCEPTCODE_ACCESS_DENIED</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea3c61f9032470d57b697b17f4573ff003" kindref="member">EXCEPTCODE_ACCESS_INVALID_PAGE</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea20e4e696b5e9e25c3f860fb0b72c4312" kindref="member">EXCEPTCODE_ACCESS_MISALIGNED</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaa9beec42f8b5b43f7ef9a9a408edbbf7" kindref="member">EXCEPTCODE_ILLEGAL_INS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea168ef33a71e50e0ea8b7b1d68e383891" kindref="member">EXCEPTCODE_PRIVILEGED_INS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6fc9a03a06dda53cf8abb6fe890ee387" kindref="member">EXCEPTCODE_INT_DIVIDE_BY_ZERO</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea215d5ff8bc42c323530b351e426d5073" kindref="member">EXCEPTCODE_INT_OVERFLOW_TRAP</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eac1a482267c713eead488d01ea55e3363" kindref="member">EXCEPTCODE_INT_BOUNDS_EXCEEDED</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1ec78aaa98ab1003fec7f96146565f5d" kindref="member">EXCEPTCODE_X87_DIVIDE_BY_ZERO</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9d525f1400a6cc337bb9f3e40cb444b5" kindref="member">EXCEPTCODE_X87_OVERFLOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eadf36003910884456bc148c9c800a9f4c" kindref="member">EXCEPTCODE_X87_UNDERFLOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaf64991c77b1ee98345ebd3cc0c4cfd54" kindref="member">EXCEPTCODE_X87_INEXACT_RESULT</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9cc75d4c57fdf4145c9dfb18a39f3d2f" kindref="member">EXCEPTCODE_X87_INVALID_OPERATION</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ead9e982000e28ac51d6aeb5927315d937" kindref="member">EXCEPTCODE_X87_DENORMAL_OPERAND</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1f081e3266fc8d185cfe6097324e172d" kindref="member">EXCEPTCODE_X87_STACK_ERROR</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2cae5bc9154e16a4f95eab20393e6629" kindref="member">EXCEPTCODE_SIMD_DIVIDE_BY_ZERO</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea7b10547579951b72fe7291f7af5f5fa7" kindref="member">EXCEPTCODE_SIMD_OVERFLOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6adfdc608e333eb3d12761a17858f79a" kindref="member">EXCEPTCODE_SIMD_UNDERFLOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eabb7d9caa28fdf250c0525ba3a4b79df4" kindref="member">EXCEPTCODE_SIMD_INEXACT_RESULT</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea4b72ecb5070819b2c32c02b4abed927e" kindref="member">EXCEPTCODE_SIMD_INVALID_OPERATION</ref>,<sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea628c9b194f6b52daa2a9e31f84124950" kindref="member">EXCEPTCODE_SIMD_DENORMAL_OPERAND</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9512ed0163683bc703f12cbb1fcbc154" kindref="member">EXCEPTCODE_DBG_BREAKPOINT_TRAP</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea36232f2a58e81ac730eda3cd2d67866a" kindref="member">EXCEPTCODE_DBG_SINGLE_STEP_TRAP</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>exception<sp/>codes<sp/>can<sp/>be<sp/>used<sp/>to<sp/>raise<sp/>Windows-specific<sp/>exceptions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6f1cd3dafab23ac1326597e27f3273da" kindref="member">EXCEPTCODE_ACCESS_WINDOWS_GUARD_PAGE</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaabc89192492add706392f3b72a17cefc" kindref="member">EXCEPTCODE_ACCESS_WINDOWS_STACK_OVERFLOW</ref>,<sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>When<sp/>Pin<sp/>receives<sp/>an<sp/>exception,<sp/>it<sp/>may<sp/>report<sp/>the<sp/>exception<sp/>using<sp/>one<sp/>of<sp/>the<sp/>codes<sp/>above<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>one<sp/>of<sp/>the<sp/>codes<sp/>in<sp/>the<sp/>group<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eae29a06f4eba0d956c1b369d338133fb9" kindref="member">EXCEPTCODE_RECEIVED_UNKNOWN</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1de1a46ab34c71b86634e54266aa10b1" kindref="member">EXCEPTCODE_RECEIVED_ACCESS_FAULT</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaeb6d5bcdb1002d9e236e97fe47e1bd01" kindref="member">EXCEPTCODE_RECEIVED_AMBIGUOUS_X87</ref>,<sp/></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eafff1d7259a62a402cfd84be28642c165" kindref="member">EXCEPTCODE_RECEIVED_AMBIGUOUS_SIMD</ref><sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></highlight></codeline>
+<codeline lineno="132"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" kindref="member">FAULTY_ACCESS_TYPE_UNKNOWN</ref>,<sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332a9017d042de552352d34631f1005ec41f" kindref="member">FAULTY_ACCESS_READ</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332a97a52d7e5d16b3b0a639f4afb8dcfb3a" kindref="member">FAULTY_ACCESS_WRITE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ad3b3b74b39502a7dd812f575b6d02564" kindref="member">FAULTY_ACCESS_EXECUTE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1ga6a79e2fb2b098be0140b886c1bf455e7" kindref="member">FPERROR</ref></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a09c3bc4e58050530f5e4d0344d61007f" kindref="member">FPERROR_DIVIDE_BY_ZERO</ref><sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>0),<sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a2789dbaf7402c19c707464c6e661c5e6" kindref="member">FPERROR_OVERFLOW</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>1),<sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7aa378c327ca7bee274cfccb28ae22da4d" kindref="member">FPERROR_UNDERFLOW</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>2),<sp/></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7ad6f4b619134d0fbace48a4f9ef3620e4" kindref="member">FPERROR_INEXACT_RESULT</ref><sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>3),<sp/></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a52efd791986a45c1f57b4694886b8ef0" kindref="member">FPERROR_INVALID_OPERATION</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>4),<sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a4d8037fb36e5a201c22df00ddb4b5c7d" kindref="member">FPERROR_DENORMAL_OPERAND</ref><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>5),<sp/></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7af983f6a4225301a637f9dca4617310da" kindref="member">FPERROR_X87_STACK_ERROR</ref><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>6)<sp/><sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__EXCEPTION_1ga6c8da298c4aaa3f1d55b8b864eeb309a" kindref="member">MAX_WINDOWS_EXCEPTION_ARGS</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="structEXCEPTION__INFO" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref></highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>exception<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>&amp;<sp/><ref refid="structEXCEPTION__INFO_1a4fb6bf3f8ea8229baa273e032f9189b4" kindref="member">Init</ref>(<ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode,<sp/>ADDRINT<sp/>exceptAddress);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/><ref refid="structEXCEPTION__INFO_1a7112da340c116d867ced906a462c111d" kindref="member">GetExceptCode</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" kindref="member">m_exceptCode</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref><sp/><ref refid="structEXCEPTION__INFO_1aa4b023cc1d11ff1e1bc46a63efb434bb" kindref="member">GetExceptClass</ref>(<ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref><sp/>GetExceptClass()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>GetExceptClass(<ref refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" kindref="member">m_exceptCode</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>ADDRINT<sp/><ref refid="structEXCEPTION__INFO_1ada9c451b449df35e664978423dc24d9e" kindref="member">GetExceptAddress</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO_1a47387b0466f5484c7a1ad07455101ce5" kindref="member">m_exceptAddress</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/><ref refid="structEXCEPTION__INFO_1a9c4fe1253941020fb71d25e4142e8b08" kindref="member">SetExceptAddress</ref>(ADDRINT<sp/>exceptAddress)<sp/>{<sp/><ref refid="structEXCEPTION__INFO_1a47387b0466f5484c7a1ad07455101ce5" kindref="member">m_exceptAddress</ref><sp/>=<sp/>exceptAddress;<sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="structEXCEPTION__INFO_1a4ee10f26486e14ff0b93dfbc785cc8d3" kindref="member">IsTrap</ref>(<ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/>IsTrap()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>IsTrap(<ref refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" kindref="member">m_exceptCode</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID<sp/><ref refid="structEXCEPTION__INFO_1ae6535f5fb7abc23493d21bae10dc76e3" kindref="member">Reset</ref>()</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" kindref="member">m_exceptCode</ref><sp/><sp/><sp/><sp/>=<sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6e0c48d8f8cefacf3c417258c8e77180" kindref="member">EXCEPTCODE_NONE</ref>;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structEXCEPTION__INFO_1a47387b0466f5484c7a1ad07455101ce5" kindref="member">m_exceptAddress</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/><ref refid="structEXCEPTION__INFO_1ad1b2a3697f708b96b364adcf8b53eaf1" kindref="member">IsEmpty</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" kindref="member">m_exceptCode</ref><sp/>==<sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6e0c48d8f8cefacf3c417258c8e77180" kindref="member">EXCEPTCODE_NONE</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structEXCEPTION__INFO_1a4ffee372f31729a3dbd7397387c1e065" kindref="member">ToString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structEXCEPTION__INFO_1a9d52fee2a695eba0ae8b28ac017e05f2" kindref="member">GetCodeAsString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>EXCEPTCLASS_ACCESS_FAULT<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>&amp;<sp/><ref refid="structEXCEPTION__INFO_1a38805e75e4e010221d53bfaaeb7f1d21" kindref="member">InitAccessFault</ref>(<ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode,<sp/>ADDRINT<sp/>exceptAddress,<sp/>ADDRINT<sp/>accessAddress,</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref><sp/>accessType<sp/>=<sp/><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" kindref="member">FAULTY_ACCESS_TYPE_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/><ref refid="structEXCEPTION__INFO_1ae45e5395edf678fb9a5a41a1d5d716b5" kindref="member">IsAccessFault</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>GetExceptClass()<sp/>==<sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref><sp/><ref refid="structEXCEPTION__INFO_1a528a40f4a85cf843d5cd26917b241c29" kindref="member">GetFaultyAccessType</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="262"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERTX(<ref refid="structEXCEPTION__INFO_1ae45e5395edf678fb9a5a41a1d5d716b5" kindref="member">IsAccessFault</ref>());</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_specific.m_access.<ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1adae7fdf09e69f7e9fe5019be506e846a" kindref="member">m_type</ref>;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/><ref refid="structEXCEPTION__INFO_1ab11437acdf248440905bd0df51790b1f" kindref="member">GetFaultyAccessAddress</ref>(ADDRINT*<sp/>pAccessAddress)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="275"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERTX(<ref refid="structEXCEPTION__INFO_1ae45e5395edf678fb9a5a41a1d5d716b5" kindref="member">IsAccessFault</ref>());</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_specific.m_access.<ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1a1b590ae04b5cba2675698b8eec880c6b" kindref="member">m_address</ref>.<ref refid="structOPTIONAL__VALUE_1ac64b01d6a8f836b3d93988d11d7fc937" kindref="member">Get</ref>(pAccessAddress);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>EXCEPTCLASS_MULTIPLE_FP_ERROR<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>&amp;<sp/><ref refid="structEXCEPTION__INFO_1afbd475c28638e7f4c9f79e8d2a0af02d" kindref="member">InitMultipleFpError</ref>(<ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode,<sp/>ADDRINT<sp/>exceptAddress,<sp/>UINT32<sp/>fpErrors);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/><ref refid="structEXCEPTION__INFO_1a44b7910ae3dd9c08c682631026fcf282" kindref="member">IsMultipleFpException</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>GetExceptClass()<sp/>==<sp/><ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a38a2cf5644947f6458e058a31d1abb8f" kindref="member">EXCEPTCLASS_MULTIPLE_FP_ERROR</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/><ref refid="structEXCEPTION__INFO_1ac0bd73e9df35745a389be48f5487fb17" kindref="member">GetFpErrors</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="306"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERTX(<ref refid="structEXCEPTION__INFO_1a44b7910ae3dd9c08c682631026fcf282" kindref="member">IsMultipleFpException</ref>());</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_specific.m_multipleFp.<ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP_1adbf8a3620f96a7b64ac5e74095a27c12" kindref="member">m_fpErrors</ref>;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>EXCEPTCODE_WINDOWS<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>&amp;<sp/><ref refid="structEXCEPTION__INFO_1ad487eb0b376e3e4fe8a7d0919f7aa367" kindref="member">InitWindowsSysException</ref>(UINT32<sp/>sysExceptCode,<sp/>ADDRINT<sp/>exceptAddress,<sp/>UINT32<sp/>numArgs<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ADDRINT*<sp/>pArgs<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOL<sp/><ref refid="structEXCEPTION__INFO_1ac6f9438e48e55111ed6165d34b1eb313" kindref="member">IsWindowsSysException</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" kindref="member">m_exceptCode</ref><sp/>==<sp/><ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/><ref refid="structEXCEPTION__INFO_1abaecaeadee779f7d1334621e99a84bb4" kindref="member">GetWindowsSysExceptionCode</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="340"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERTX(<ref refid="structEXCEPTION__INFO_1ac6f9438e48e55111ed6165d34b1eb313" kindref="member">IsWindowsSysException</ref>());</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_specific.m_winsys.<ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS_1a66ce2b184dd7c4b62302913eb06a41f2" kindref="member">m_exceptCode</ref>;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/><ref refid="structEXCEPTION__INFO_1a090824e5eb2652c3b7e7bf94adc473c6" kindref="member">CountWindowsSysArguments</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="350"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERTX(<ref refid="structEXCEPTION__INFO_1ac6f9438e48e55111ed6165d34b1eb313" kindref="member">IsWindowsSysException</ref>());</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_specific.m_winsys.<ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS_1ac570b517ec96d952bc3b8815bff9bcbd" kindref="member">m_numArgs</ref>;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>ADDRINT<sp/><ref refid="structEXCEPTION__INFO_1afd8273665be270fb1aa651b7bebda4d1" kindref="member">GetWindowsSysArgument</ref>(UINT32<sp/>argNum)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="364"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERTX(<ref refid="structEXCEPTION__INFO_1ac6f9438e48e55111ed6165d34b1eb313" kindref="member">IsWindowsSysException</ref>());</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERTX(argNum<sp/>&lt;<sp/>m_specific.m_winsys.<ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS_1ac570b517ec96d952bc3b8815bff9bcbd" kindref="member">m_numArgs</ref>);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>m_specific.m_winsys.<ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS_1a5446effff08237efa0297563f4f52c20" kindref="member">m_args</ref>[argNum];</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>==================================================================================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/><ref refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" kindref="member">m_exceptCode</ref>;<sp/></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/>ADDRINT<sp/><ref refid="structEXCEPTION__INFO_1a47387b0466f5484c7a1ad07455101ce5" kindref="member">m_exceptAddress</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380" refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC" kindref="compound">EXCEPTION_SPECIFIC</ref></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="382" refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT" kindref="compound">ACCESS_FAULT</ref><sp/></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref><sp/><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1adae7fdf09e69f7e9fe5019be506e846a" kindref="member">m_type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structOPTIONAL__VALUE" kindref="compound">OPTIONAL_VALUE&lt; ADDRINT &gt;</ref><sp/><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT_1a1b590ae04b5cba2675698b8eec880c6b" kindref="member">m_address</ref>;<sp/></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>m_access;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388" refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS" kindref="compound">WINDOWS_SYS</ref><sp/></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT32<sp/><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS_1a66ce2b184dd7c4b62302913eb06a41f2" kindref="member">m_exceptCode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT32<sp/><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS_1ac570b517ec96d952bc3b8815bff9bcbd" kindref="member">m_numArgs</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADDRINT<sp/><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS_1a5446effff08237efa0297563f4f52c20" kindref="member">m_args</ref>[<ref refid="group__EXCEPTION_1ga6c8da298c4aaa3f1d55b8b864eeb309a" kindref="member">MAX_WINDOWS_EXCEPTION_ARGS</ref>];<sp/></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>m_winsys;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395" refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP" kindref="compound">MULTIPLE_FP</ref><sp/></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT32<sp/><ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP_1adbf8a3620f96a7b64ac5e74095a27c12" kindref="member">m_fpErrors</ref>;<sp/></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>m_multipleFp;</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>m_specific;</highlight></codeline>
+<codeline lineno="400"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__EXCEPTION_1gaf9b33bc295381eb82635cf7051e4cc55" kindref="member">PIN_InitExceptionInfo</ref>(<ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo,<sp/><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode,<sp/>ADDRINT<sp/>exceptAddress)</highlight></codeline>
+<codeline lineno="431"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1a4fb6bf3f8ea8229baa273e032f9189b4" kindref="member">Init</ref>(exceptCode,<sp/>exceptAddress);</highlight></codeline>
+<codeline lineno="433"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__EXCEPTION_1gaba04dfb97e6580fdd8e45c0c830e4204" kindref="member">PIN_InitAccessFaultInfo</ref>(<ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo,<sp/><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode,<sp/>ADDRINT<sp/>exceptAddress,</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADDRINT<sp/>accessAddress,<sp/><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref><sp/>accessType<sp/>=<sp/><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" kindref="member">FAULTY_ACCESS_TYPE_UNKNOWN</ref>)</highlight></codeline>
+<codeline lineno="453"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1a38805e75e4e010221d53bfaaeb7f1d21" kindref="member">InitAccessFault</ref>(exceptCode,<sp/>exceptAddress,<sp/>accessAddress,<sp/>accessType);</highlight></codeline>
+<codeline lineno="455"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__EXCEPTION_1ga23bea4733196d44795c76caea7817492" kindref="member">PIN_InitWindowsExceptionInfo</ref>(<ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo,<sp/>UINT32<sp/>sysExceptCode,<sp/>ADDRINT<sp/>exceptAddress,</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT32<sp/>numArgs<sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ADDRINT*<sp/>pArgs<sp/>=<sp/>0)</highlight></codeline>
+<codeline lineno="477"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1ad487eb0b376e3e4fe8a7d0919f7aa367" kindref="member">InitWindowsSysException</ref>(sysExceptCode,<sp/>exceptAddress,<sp/>numArgs,<sp/>pArgs);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight></codeline>
+<codeline lineno="491"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/><ref refid="group__EXCEPTION_1gabf5f400860ff82575ba16fed79e12572" kindref="member">PIN_GetExceptionCode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1a7112da340c116d867ced906a462c111d" kindref="member">GetExceptCode</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref><sp/><ref refid="group__EXCEPTION_1ga81f5a9ad25e0b675db61780c17d03b77" kindref="member">PIN_GetExceptionClass</ref>(<ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref><sp/>exceptCode)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO_1aa4b023cc1d11ff1e1bc46a63efb434bb" kindref="member">EXCEPTION_INFO::GetExceptClass</ref>(exceptCode);<sp/>}</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="515"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>ADDRINT<sp/><ref refid="group__EXCEPTION_1ga18b2b29a40bd311e81a339548c8682e1" kindref="member">PIN_GetExceptionAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1ada9c451b449df35e664978423dc24d9e" kindref="member">GetExceptAddress</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"></highlight></codeline>
+<codeline lineno="523"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__EXCEPTION_1ga397741c75f32043c9fcf6525f668678a" kindref="member">PIN_SetExceptionAddress</ref>(<ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo,<sp/>ADDRINT<sp/>exceptAddress)</highlight></codeline>
+<codeline lineno="524"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1a9c4fe1253941020fb71d25e4142e8b08" kindref="member">SetExceptAddress</ref>(exceptAddress);</highlight></codeline>
+<codeline lineno="526"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref><sp/><ref refid="group__EXCEPTION_1gaab2ef535bc632b453f0bff4a77fe1413" kindref="member">PIN_GetFaultyAccessType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo)</highlight></codeline>
+<codeline lineno="542"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1a528a40f4a85cf843d5cd26917b241c29" kindref="member">GetFaultyAccessType</ref>();</highlight></codeline>
+<codeline lineno="544"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__EXCEPTION_1ga296ce96f07f6377fbcd70e1a613de1c2" kindref="member">PIN_GetFaultyAccessAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo,<sp/>ADDRINT*<sp/>pAccessAddress)</highlight></codeline>
+<codeline lineno="563"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="564"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1ab11437acdf248440905bd0df51790b1f" kindref="member">GetFaultyAccessAddress</ref>(pAccessAddress);</highlight></codeline>
+<codeline lineno="565"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"></highlight></codeline>
+<codeline lineno="581"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__EXCEPTION_1gab6b8c9b966b1ec4e93966f5535377b84" kindref="member">PIN_GetFpErrorSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1ac0bd73e9df35745a389be48f5487fb17" kindref="member">GetFpErrors</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"></highlight></codeline>
+<codeline lineno="595"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__EXCEPTION_1ga5141065a1607862d80f77743f9dbb886" kindref="member">PIN_GetWindowsExceptionCode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1abaecaeadee779f7d1334621e99a84bb4" kindref="member">GetWindowsSysExceptionCode</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"></highlight></codeline>
+<codeline lineno="610"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__EXCEPTION_1ga363db287b0515c669518d94e448e9185" kindref="member">PIN_CountWindowsExceptionArguments</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo)</highlight></codeline>
+<codeline lineno="611"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="612"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1a090824e5eb2652c3b7e7bf94adc473c6" kindref="member">CountWindowsSysArguments</ref>();</highlight></codeline>
+<codeline lineno="613"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="614"><highlight class="normal"></highlight></codeline>
+<codeline lineno="632"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>ADDRINT<sp/><ref refid="group__EXCEPTION_1ga3ed8c2177083689ddde3065f06422a47" kindref="member">PIN_GetWindowsExceptionArgument</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo,<sp/>UINT32<sp/>argNum)</highlight></codeline>
+<codeline lineno="633"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1afd8273665be270fb1aa651b7bebda4d1" kindref="member">GetWindowsSysArgument</ref>(argNum);</highlight></codeline>
+<codeline lineno="635"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="636"><highlight class="normal"></highlight></codeline>
+<codeline lineno="647"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__EXCEPTION_1ga62d407978423fdee9742f902ff7a0692" kindref="member">PIN_ExceptionToString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref>*<sp/>pExceptInfo)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pExceptInfo-&gt;<ref refid="structEXCEPTION__INFO_1a4ffee372f31729a3dbd7397387c1e065" kindref="member">ToString</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="648"><highlight class="normal"></highlight></codeline>
+<codeline lineno="649"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_EXCEPTION_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/base/exception.PH"/>
+  </compounddef>
+</doxygen>

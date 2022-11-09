@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structPIN__LOCK" kind="struct" language="C++" prot="public">
+    <compoundname>PIN_LOCK</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPIN__LOCK_1a36a645e83d1c3101e74dc5db31593adb" prot="public" static="no" mutable="no">
+        <type>PINVM::PINSYNC_SAFEPOD_LOCK</type>
+        <definition>PINVM::PINSYNC_SAFEPOD_LOCK PIN_LOCK::_lock</definition>
+        <argsstring></argsstring>
+        <name>_lock</name>
+        <briefdescription>
+<para>Implements the lock. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="18" column="33" bodyfile="Source/pin/base/lock.PH" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__LOCK_1a9d933003df0ef4710d163d461fd9a5b1" prot="public" static="no" mutable="no">
+        <type>INT32</type>
+        <definition>INT32 PIN_LOCK::_owner</definition>
+        <argsstring></argsstring>
+        <name>_owner</name>
+        <briefdescription>
+<para>Used for debugging, typically the ID of the lock owner. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="19" column="11" bodyfile="Source/pin/base/lock.PH" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains lock primitives</para>
+<para>A simple non-recursive lock. </para>
+    </detaileddescription>
+    <location file="Source/pin/base/lock.PH" line="17" column="1" bodyfile="Source/pin/base/lock.PH" bodystart="16" bodyend="20"/>
+    <listofallmembers>
+      <member refid="structPIN__LOCK_1a36a645e83d1c3101e74dc5db31593adb" prot="public" virt="non-virtual"><scope>PIN_LOCK</scope><name>_lock</name></member>
+      <member refid="structPIN__LOCK_1a9d933003df0ef4710d163d461fd9a5b1" prot="public" virt="non-virtual"><scope>PIN_LOCK</scope><name>_owner</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

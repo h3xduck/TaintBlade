@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__API__OVERVIEW" kind="group">
+    <compoundname>API_OVERVIEW</compoundname>
+    <title>Pin API Overview</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para><ref refid="group__PIN__CONTROL" kindref="compound">CONTROL</ref> Program control and initialization</para>
+</listitem><listitem><para><ref refid="group__IMG" kindref="compound">IMG</ref> Image: an image (executable or library)</para>
+</listitem><listitem><para><ref refid="group__SEC" kindref="compound">SEC</ref> Section: a section within an Image</para>
+</listitem><listitem><para><ref refid="group__RTN" kindref="compound">RTN</ref> Routine: a routine/function/procedure within a section</para>
+</listitem><listitem><para><ref refid="group__BBL" kindref="compound">BBL</ref> Basic block: a single entrace, single exit sequence of instructions</para>
+</listitem><listitem><para><ref refid="group__INS__REF" kindref="compound">INS</ref> Instruction: an instruction (syllable) within a routine</para>
+</listitem><listitem><para><ref refid="group__TRACE" kindref="compound">TRACE</ref> Trace: a single entrance, multiple exit sequence of instructions</para>
+</listitem><listitem><para><ref refid="index_1SYMBOLS" kindref="member">SYM</ref> Symbol: n symbol (regular or dynamic) within an image</para>
+</listitem><listitem><para><ref refid="group__REG" kindref="compound">REG</ref> Register</para>
+</listitem><listitem><para><ref refid="group__INST__ARGS" kindref="compound">ARG</ref> Arguments to instrumentation routines</para>
+</listitem><listitem><para><ref refid="group__TRACE__VERSION" kindref="compound">TRACE_VERSION</ref> Used to implement, and switch between, multiple instrumentations on a trace</para>
+</listitem><listitem><para><ref refid="group__BUFFER" kindref="compound">BUFFER</ref> Fast buffering support</para>
+</listitem><listitem><para><ref refid="group__PROTO" kindref="compound">PROTO</ref> Prototype: description of an application routine and the related data structures</para>
+</listitem><listitem><para><ref refid="group__THREADS" kindref="compound">THREAD</ref> Thread support: stop, examine and resume</para>
+</listitem><listitem><para><ref refid="group__PIN__PROCESS" kindref="compound">PROCESS</ref> Process support</para>
+</listitem><listitem><para><ref refid="group__SYSCALL" kindref="compound">SYSCALL</ref> System call support</para>
+</listitem><listitem><para><ref refid="group__DEBUG__INFO" kindref="compound">DBG</ref> Access debug information from a Pintool</para>
+</listitem><listitem><para><ref refid="group__ERROR__FILE" kindref="compound">ERROR_FILE</ref> Error file support</para>
+</listitem><listitem><para><ref refid="group__CONTEXT" kindref="compound">CONTEXT</ref> Context: application&apos;s architectural state of the processor</para>
+</listitem><listitem><para><ref refid="group__PHYSICAL__CONTEXT" kindref="compound">PHYSICAL_CONTEXT</ref> Physical context: Pin/tool architectural state of the processor</para>
+</listitem><listitem><para><ref refid="group__PIN__CALLBACKS" kindref="compound">CALLBACKS</ref> Manipulations of PIN&apos;s callback routines</para>
+</listitem><listitem><para><ref refid="group__EXCEPTION" kindref="compound">EXCEPTION</ref> Hardware and software exceptions</para>
+</listitem><listitem><para><ref refid="index_1APPDEBUG" kindref="member">APPDEBUG</ref> Application level debugging</para>
+</listitem><listitem><para><ref refid="group__REPLAY" kindref="compound">REPLAY</ref> <linebreak/>
+</para>
+</listitem><listitem><para><ref refid="group__VERSION" kindref="compound">VERSION</ref> Pin version information</para>
+</listitem></itemizedlist>
+</para>
+<para>This section contains utilities that are not directly related to instrumentation, but are useful for writing tools.</para>
+<para><itemizedlist>
+<listitem><para><ref refid="group__LOCK" kindref="compound">LOCKS</ref> Utilities for locking</para>
+</listitem><listitem><para><ref refid="group__KNOBS" kindref="compound">KNOB</ref> Command line switches</para>
+</listitem><listitem><para><ref refid="group__UTILS" kindref="compound">UTILS</ref> Utilities for tokenizing and formatting strings and general functions</para>
+</listitem><listitem><para><ref refid="group__DEPRECATED" kindref="compound">DEPRECATED</ref> Deprecated API functions </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

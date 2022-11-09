@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__OS__APIS__RW__LOCK" kind="group">
+    <compoundname>OS_APIS_RW_LOCK</compoundname>
+    <title>Readers writers lock</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga3bc96921c120dafc2ce6da960c87caf6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockInitialize</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockInitialize</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes a reader-writer lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to initialize</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="78" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="78" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga923da6354d93bb4e0dd8d5bb6de3ba61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockDestroy</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockDestroy</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a reader-writer lock, freeing all exhausted resources associated with the lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to destroy</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="89" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="89" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga4d1e017034dd744a890fdc41dc4fc4ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockAcquireWrite</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockAcquireWrite</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Acquires the lock for writer. Blocks until the writer lock is acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="101" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="101" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga3526da4bff453fbbbc6127efc822c52d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockReleaseWrite</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockReleaseWrite</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases the lock for writer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to release</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="112" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="112" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga8918bcd26d70ff27ef88361714db80e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockAcquireRead</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockAcquireRead</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Acquires the lock for reader. Blocks until the reader lock is acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="124" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="124" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1gab7d5fc7eab89461cdd378727d6ca4e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_RWLockReleaseRead</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *lock)</argsstring>
+        <name>OS_RWLockReleaseRead</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases the lock for reader.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to release</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="135" column="6" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="135" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga52f5e476c184ba6a7e19e9e19865423f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_RWLockRelease</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockRelease</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases the lock that was acquired. The lock kind that was acquired (whether its read or write) is determined by this function.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to release</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the lock was taken (for either read or write) and as a result of this call is unlocked, FALSE otherwise. If the reader lock was released, and a waiting writer was woken up and acquired the lock, the function will return TRUE.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="151" column="8" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="151" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga283bb2cfbc87c890ef694c7412cd370b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_RWLockTryAcquireWrite</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockTryAcquireWrite</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to Acquire the lock for writer. This function returns immediately if the lock can&apos;t be acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE If the writer lock was acquired.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="165" column="8" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="165" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__RW__LOCK_1ga8cb8d435497794feef67f36a6d40841d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref></type>
+        <definition>BOOL_T OS_RWLockTryAcquireRead</definition>
+        <argsstring>(volatile OS_APIS_RW_LOCK_T *l)</argsstring>
+        <name>OS_RWLockTryAcquireRead</name>
+        <param>
+          <type>volatile OS_APIS_RW_LOCK_T *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to Acquire the lock for reader. This function returns immediately if the lock can&apos;t be acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock to acquire</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE If the reader lock was acquired.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/rw-lock.h" line="179" column="8" declfile="Source/os-apis/00-export-include/os-apis/rw-lock.h" declline="179" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Implementation of readers writers lock. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

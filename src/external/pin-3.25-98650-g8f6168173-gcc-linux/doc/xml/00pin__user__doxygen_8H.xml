@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="00pin__user__doxygen_8H" kind="file" language="C++">
+    <compoundname>00pin_user_doxygen.H</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2004-2022<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>software<sp/>and<sp/>the<sp/>related<sp/>documents<sp/>are<sp/>Intel<sp/>copyrighted<sp/>materials,<sp/>and<sp/>your</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>use<sp/>of<sp/>them<sp/>is<sp/>governed<sp/>by<sp/>the<sp/>express<sp/>license<sp/>under<sp/>which<sp/>they<sp/>were<sp/>provided<sp/>to</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>you<sp/>(&quot;License&quot;).<sp/>Unless<sp/>the<sp/>License<sp/>provides<sp/>otherwise,<sp/>you<sp/>may<sp/>not<sp/>use,<sp/>modify,</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>copy,<sp/>publish,<sp/>distribute,<sp/>disclose<sp/>or<sp/>transmit<sp/>this<sp/>software<sp/>or<sp/>the<sp/>related</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>documents<sp/>without<sp/>Intel&apos;s<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>This<sp/>software<sp/>and<sp/>the<sp/>related<sp/>documents<sp/>are<sp/>provided<sp/>as<sp/>is,<sp/>with<sp/>no<sp/>express<sp/>or</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>implied<sp/>warranties,<sp/>other<sp/>than<sp/>those<sp/>that<sp/>are<sp/>expressly<sp/>stated<sp/>in<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>file<sp/>does<sp/>not<sp/>contain<sp/>any<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>just<sp/>contains<sp/>additional<sp/>information<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>inclusion<sp/>with<sp/>doxygen</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4087"><highlight class="comment"></highlight><highlight class="comment">/*<sp/>Java<sp/>trademark<sp/>info<sp/>from<sp/><sp/>http://www.oracle.com/html/3party.html<sp/>(see<sp/>the</highlight></codeline>
+<codeline lineno="4088"><highlight class="comment"><sp/>*<sp/>bottom<sp/>of<sp/>the<sp/>section<sp/>on<sp/>&quot;Credit<sp/>Lines&quot;</highlight></codeline>
+<codeline lineno="4089"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4090"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4133"><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4512"><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4513"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4514"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4538"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4539"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4540"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4584"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4585"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4586"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4613"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4636"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4637"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4638"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4639"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4673"><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4674"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4675"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4700"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4701"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4702"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4711"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4712"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4713"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4736"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4737"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4738"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4745"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4746"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4747"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4783"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4784"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4785"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4795"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4796"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4797"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4804"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4810"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4819"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4826"><highlight class="comment"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="4827"><highlight class="comment">UNDOCUMENTED<sp/>@defgroup<sp/>WINDOWS_SYSCALL_API_UNDOC<sp/>Windows<sp/>specific<sp/>system<sp/>call<sp/>information</highlight></codeline>
+<codeline lineno="4828"><highlight class="comment"><sp/><sp/>@ingroup<sp/>SYSCALL</highlight></codeline>
+<codeline lineno="4829"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4830"><highlight class="comment"><sp/><sp/>Export<sp/>information<sp/>about<sp/>specific<sp/>mapping<sp/>of<sp/>some<sp/>Nt<sp/>functions<sp/>to<sp/>the<sp/>corresponding</highlight></codeline>
+<codeline lineno="4831"><highlight class="comment"><sp/><sp/>system<sp/>calls.<sp/>Too<sp/>Windows<sp/>specific<sp/>for<sp/>user<sp/>documentation,<sp/>but<sp/>useful<sp/>to<sp/>PinPlay.</highlight></codeline>
+<codeline lineno="4832"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4833"><highlight class="comment"><sp/><sp/>@par<sp/>Availability:</highlight></codeline>
+<codeline lineno="4834"><highlight class="comment"><sp/><sp/>\b<sp/>Mode:<sp/><sp/>JIT\n</highlight></codeline>
+<codeline lineno="4835"><highlight class="comment"><sp/><sp/>\b<sp/>O/S:<sp/><sp/><sp/>Windows\n</highlight></codeline>
+<codeline lineno="4836"><highlight class="comment"><sp/><sp/>\b<sp/>CPU:<sp/><sp/><sp/>IA-32<sp/>and<sp/>Intel(R)<sp/>64<sp/>architectures\n</highlight></codeline>
+<codeline lineno="4837"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4838"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4839"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4840"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4846"><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4859"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4860"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4861"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4862"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4917"><highlight class="comment">//<sp/>========================================================================================</highlight></codeline>
+<codeline lineno="4971"><highlight class="comment"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4972"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4973"><highlight class="normal"></highlight><highlight class="comment">//<sp/>========================================================================================</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/include/00pin_user_doxygen.H"/>
+  </compounddef>
+</doxygen>

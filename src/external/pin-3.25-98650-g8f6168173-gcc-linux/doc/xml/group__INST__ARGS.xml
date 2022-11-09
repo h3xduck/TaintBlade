@@ -1,0 +1,855 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__INST__ARGS" kind="group">
+    <compoundname>INST_ARGS</compoundname>
+    <title>Instrumentation arguments</title>
+    <innerclass refid="structPIN__MEM__ACCESS__INFO" prot="public">PIN_MEM_ACCESS_INFO</innerclass>
+    <innerclass refid="structPIN__MULTI__MEM__ACCESS__INFO" prot="public">PIN_MULTI_MEM_ACCESS_INFO</innerclass>
+    <innerclass refid="classIMULTI__ELEMENT__OPERAND" prot="public">IMULTI_ELEMENT_OPERAND</innerclass>
+    <innerclass refid="unionPIN__MEM__TRANS__FLAGS" prot="public">PIN_MEM_TRANS_FLAGS</innerclass>
+    <innerclass refid="classISCATTERED__MEMORY__REWRITE" prot="public">ISCATTERED_MEMORY_REWRITE</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" prot="public" static="no" strong="no">
+        <type></type>
+        <name>IPOINT</name>
+        <enumvalue id="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a9e98e21add6d20bba6fe87eff87b8649" prot="public">
+          <name>IPOINT_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a7c7cbebb7a62a40e9f803b1db2e6ce20" prot="public">
+          <name>IPOINT_BEFORE</name>
+          <briefdescription>
+<para>Insert a call before the first instruction of the instrumented object. Always valid. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a42eff26179c6d87348abe492301c12ec" prot="public">
+          <name>IPOINT_AFTER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insert a call on the fall-through path of the last instruction of the instrumented object (if such fall-through exists).<linebreak/>
+ In case of a routine (RTN), instruments all return paths. Always valid.<linebreak/>
+ In case of an instruction (INS), valid only if <ref refid="group__INS__INSPECTION_1gaef208009ec86a213f7574b65fe2603c0" kindref="member">INS_IsValidForIpointAfter()</ref> is true.<linebreak/>
+ In case of a BBL, valid only if <ref refid="group__BBL_1ga49b398eb9c10ff80019315d6c2eee84a" kindref="member">BBL_HasFallThrough()</ref> is true.<linebreak/>
+ In case of a TRACE, valid only if <ref refid="group__TRACE_1ga2134ee647c01b25e4ad20cbbddce5ef1" kindref="member">TRACE_HasFallThrough()</ref> is true.<linebreak/>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7acf7dee2063098dd79907d19f9c7df65d" prot="public">
+          <name>IPOINT_ANYWHERE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insert a call anywhere inside the instrumented object.<linebreak/>
+ Valid on all instrumentation functions except <ref refid="group__INS__INSTRUMENTATION_1ga3b589b45d857832458ca84ac5b6f04be" kindref="member">INS_InsertIfCall()</ref>, <ref refid="group__INS__INSTRUMENTATION_1gaf88934525048d52d54a76f02d1ec3cf0" kindref="member">INS_InsertThenCall()</ref>. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a5ef5b45901a8447e5173f50746ab029d" prot="public">
+          <name>IPOINT_TAKEN_BRANCH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insert a call on the taken edge of control-flow instructions of the instrumented object.<linebreak/>
+ In case of an instruction, Valid only if <ref refid="group__INS__INSPECTION_1gab13f78210172b7647bf5979b4e7f764f" kindref="member">INS_IsValidForIpointTakenBranch()</ref> is true. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determines where the analysis call is inserted relative to the instrumented object. Instrumented object can be: INS, BBL, TRACE, RTN. This is used in instrumentation functions, for example see <ref refid="group__TRACE_1gae5340cd88a962aac271e3547cdaa024e" kindref="member">TRACE_InsertCall()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="132" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="131" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" prot="public" static="no" strong="no">
+        <type></type>
+        <name>CALL_ORDER</name>
+        <enumvalue id="group__INST__ARGS_1gga3d1d5f6805cb16d00bce441290ca2212a3f53c3878be5c2859b82b540561b72b3" prot="public">
+          <name>CALL_ORDER_FIRST</name>
+          <initializer>= 100</initializer>
+          <briefdescription>
+<para>Execute this call first. Value is 100. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga3d1d5f6805cb16d00bce441290ca2212a43af3c7aa24c81dddf629b2828b8354c" prot="public">
+          <name>CALL_ORDER_DEFAULT</name>
+          <initializer>= 200</initializer>
+          <briefdescription>
+<para>Default when IARG_CALL_ORDER is not specified. Value is 200. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga3d1d5f6805cb16d00bce441290ca2212a0b197a15a2399e6443ce6be187ccf6c6" prot="public">
+          <name>CALL_ORDER_LAST</name>
+          <initializer>= 300</initializer>
+          <briefdescription>
+<para>Execute this call last. Value is 300. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Predefined values for <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref>. Controls the order of analysis call invocations when an instruction has multiple analysis calls. CALL_ORDER_DEFAULT is the default call order when <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" kindref="member">IARG_CALL_ORDER</ref> is not specified. You can use integral values relative to the predefined values to have a fine-grained control over the instrumentation order (e.g., CALL_ORDER_DEFAULT + 5, CALL_ORDER_LAST - 10, etc).</para>
+<para>Pin guarantees that multiple analysis calls with the same CALL_ORDER on the same instruction, added in the context of the same instrumentation callback (e.g,. <ref refid="group__INS__INSTRUMENTATION_1INS_INSTRUMENT_CALLBACK" kindref="member">INS_INSTRUMENT_CALLBACK</ref>), will be invoked according to their insertion order. For all other cases, the invocation order for analysis calls with the same CALL_ORDER on the same instruction depends on the implementation and may change without notice. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="201" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="200" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>IARG_TYPE</name>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da7e62cf3af3dec2a10cdff81b0b1894f8" prot="public">
+          <name>IARG_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da34126f334d65afac69784351a03615ad" prot="public">
+          <name>IARG_ADDRINT</name>
+          <briefdescription>
+<para>Type: ADDRINT. Constant value (additional arg required) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da7a11763427dff3afb81caab97b02881b" prot="public">
+          <name>IARG_PTR</name>
+          <briefdescription>
+<para>Type: &quot;VOID *&quot;. Constant value (additional pointer arg required) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dacac3cb99011b351eeb3f675bc8c62b83" prot="public">
+          <name>IARG_BOOL</name>
+          <briefdescription>
+<para>Type: BOOL. Constant (additional BOOL arg required) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dabd19b79248899659441e56e4738d5bfd" prot="public">
+          <name>IARG_UINT32</name>
+          <briefdescription>
+<para>Type: UINT32. Constant (additional integer arg required) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dab2d3f91c48319ea5e824fdc678ae4a5c" prot="public">
+          <name>IARG_UINT64</name>
+          <briefdescription>
+<para>Type: UINT64. Constant (additional UINT64 arg required) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da623ad95758bce14fcb9427beef53736a" prot="public">
+          <name>IARG_INST_PTR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: ADDRINT. The address of the instrumented instruction. This value does not change at IPOINT_AFTER. This is simply shorthand for <computeroutput>IARG_ADDRINT, INS_Address(ins)</computeroutput>. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dabe70796bf61230dac3ea1deaf4983c46" prot="public">
+          <name>IARG_REG_VALUE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: ADDRINT for integer registers. Value of a register (additional register arg required) <ref refid="group__REG" kindref="compound">REG: Register Object</ref> Basically, this cannot be used to retrieve the value of registers whose size is larger than ADDRINT (e.g. x87 FPU/XMM/YMM/ZMM/opmask) or registers which are not architectural (REG_PIN_*), but there are some exceptions to this rule. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da0337fbb99845733a3d35a9a3dbcfbf93" prot="public">
+          <name>IARG_REG_REFERENCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: UINT8*. Pointer to buffer holding the content of the requested register. buffer size is the size of the requested register. Register is specified in additional argument. Register is updated back to the relevant application register (Meaning if you change values in the mentioned pointer they will be propagated to the relevant application register). If you&apos;re not interested in modifying the register value, but only read its value use IARG_REG_CONST_REFERENCE instead.</para>
+<para>Not supported in Probe mode or with the Buffering APIs.</para>
+<para><simplesect kind="note"><para>additional REG arg required!!! </para>
+</simplesect>
+<simplesect kind="note"><para>PIN_REGISTER is now deprecated. </para>
+</simplesect>
+<simplesect kind="note"><para>If the requested register is a tile register and AMX is in init state (i.e., not active) - a NULL pointer will be passed to the analysis routine as the reference argument. </para>
+</simplesect>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da817f3f2fe8c0c536daa86deb55126c25" prot="public">
+          <name>IARG_REG_CONST_REFERENCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: UINT8*. Pointer to buffer holding the content of the requested register. buffer size is the size of the requested register. Register is specified in additional argument. Registers are not updated back to the relevant application register (Meaning if you change values in the mentioned pointer they will not be propagated to the relevant application register). If you&apos;re interested in modifying the register value, use IARG_REG_REFERENCE instead. Not supported with the Buffering APIs.</para>
+<para><simplesect kind="note"><para>additional REG arg required!!! </para>
+</simplesect>
+<simplesect kind="note"><para>PIN_REGISTER is now deprecated. </para>
+</simplesect>
+<simplesect kind="note"><para>If the requested register is a tile register and AMX is in init state (i.e., not active) - a NULL pointer will be passed to the analysis routine as the reference argument. </para>
+</simplesect>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da2138787daf04a57e6684eb0b368e120e" prot="public">
+          <name>IARG_MEMORYREAD_EA</name>
+          <briefdescription>
+<para>Type: ADDRINT. Effective address of a memory read, only valid if INS_IsMemoryRead is true and at IPOINT_BEFORE. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da2931627e96b437dc55e06966d31ad962" prot="public">
+          <name>IARG_MEMORYREAD2_EA</name>
+          <briefdescription>
+<para>Type: ADDRINT. Effective address of a 2nd memory read (e.g. 2nd operand in cmps on ia32), only valid at IPOINT_BEFORE. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da92be352ec619bbd3be69fed773c011a2" prot="public">
+          <name>IARG_MEMORYWRITE_EA</name>
+          <briefdescription>
+<para>Type: ADDRINT. Effective address of a memory write, only valid at IPOINT_BEFORE. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad2e2d24103d1a0286b57412f66b909d7" prot="public">
+          <name>IARG_MEMORYREAD_SIZE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: UINT32. Size in bytes of memory read. This IARG is applicable for all instructions for which INS_hasKnownMemorySize returns TRUE. For other instructions e.g. vgather/vscatter see <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da581b5886a7e69629a45607ac34adbf2c" kindref="member">IARG_MULTI_ELEMENT_OPERAND</ref>. For the varying memory size read instruction, XRSTOR, the size is based on the XSAVE area header. If the header indicates compact mode it will provide the compact size. Otherwise it will provide the standard size. The minimum size for the XRSTOR instruction (not including FXRSTOR) is 576 (i.e the XSAVE area size up to and including the header). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da365d8eed26ac239b013a01ab6a7cf375" prot="public">
+          <name>IARG_MEMORYWRITE_SIZE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: UINT32. Size in bytes of memory write. This IARG is applicable for all instructions for which INS_hasKnownMemorySize returns TRUE. For other instructions e.g. vgather/vscatter see <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da581b5886a7e69629a45607ac34adbf2c" kindref="member">IARG_MULTI_ELEMENT_OPERAND</ref>. For varying size memory write instructions, the supported instructions are the XSAVE family of instructions. For XSAVE, the size of the XSAVE area used is based on user request and supported features in the machine. This will provide the exact size used. For XSAVEOPT, the size is calculated the same as if XSAVE was used. This may provide in some cases an upper bound to the actual used memory. For XSAVEC, in IPOINT_BEFORE the size is calculated based on user request only. This may provide in some cases an upper bound to the actual size. If used in IPOINT_AFTER it will provide the exact compact size as defined in the XSAVE area header. The minimum size for the XSAVE family write instructions (not including FXSAVE) is 576 (i.e the XSAVE area size up to and including the header). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da4b127f5e8c89aabe67abb6d04ee8ecce" prot="public">
+          <name>IARG_MEMORYREAD_PTR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Actual address of the memory access; same as <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da2138787daf04a57e6684eb0b368e120e" kindref="member">IARG_MEMORYREAD_EA</ref>, unless the memory address is translated by <ref refid="group__PIN__CONTROL_1ga3a5f26e35e32bc5e99d101995339bd73" kindref="member">MEMORY_ADDR_TRANS_CALLBACK</ref>, or the memory operand is rewritten by <ref refid="group__INS__MODIFICATION_1gaad5f037e311aa30dbc53e602e6ff672b" kindref="member">INS_RewriteMemoryOperand</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da96d283a176b568500d63a7b8ad2558ed" prot="public">
+          <name>IARG_MEMORYREAD2_PTR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Actual address of the memory access; same as <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da2931627e96b437dc55e06966d31ad962" kindref="member">IARG_MEMORYREAD2_EA</ref>, unless the memory address is translated by <ref refid="group__PIN__CONTROL_1ga3a5f26e35e32bc5e99d101995339bd73" kindref="member">MEMORY_ADDR_TRANS_CALLBACK</ref>, or the memory operand is rewritten by <ref refid="group__INS__MODIFICATION_1gaad5f037e311aa30dbc53e602e6ff672b" kindref="member">INS_RewriteMemoryOperand</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da9fead51aa9d72879eadd61ae5cb00e98" prot="public">
+          <name>IARG_MEMORYWRITE_PTR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Actual address of the memory access. Same as <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da92be352ec619bbd3be69fed773c011a2" kindref="member">IARG_MEMORYWRITE_EA</ref>, unless the memory address is translated by <ref refid="group__PIN__CONTROL_1ga3a5f26e35e32bc5e99d101995339bd73" kindref="member">MEMORY_ADDR_TRANS_CALLBACK</ref>, or the memory operand is rewritten by <ref refid="group__INS__MODIFICATION_1gaad5f037e311aa30dbc53e602e6ff672b" kindref="member">INS_RewriteMemoryOperand</ref> </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da52ab7563efadafe484b53421e42ec8b1" prot="public">
+          <name>IARG_MEMORYOP_PTR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Actual address of the memory access. Same as <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da985747a3c70e3a4283fc8a2f16399e63" kindref="member">IARG_MEMORYOP_EA</ref>, unless the memory address is translated by <ref refid="group__PIN__CONTROL_1ga3a5f26e35e32bc5e99d101995339bd73" kindref="member">MEMORY_ADDR_TRANS_CALLBACK</ref>, or the memory operand is rewritten by <ref refid="group__INS__MODIFICATION_1gaad5f037e311aa30dbc53e602e6ff672b" kindref="member">INS_RewriteMemoryOperand</ref>. <linebreak/>
+When using <ref refid="group__INS__MODIFICATION_1gaad5f037e311aa30dbc53e602e6ff672b" kindref="member">INS_RewriteMemoryOperand</ref> the value is valid only with IPOINT_AFTER. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451daa60ade75a81b448320631155e84829a6" prot="public">
+          <name>IARG_MULTI_MEMORYACCESS_EA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: PIN_MULTI_MEM_ACCESS_INFO* the addresses read by the various vgather* instructions, Also available for regular memory instructions </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da581b5886a7e69629a45607ac34adbf2c" prot="public">
+          <name>IARG_MULTI_ELEMENT_OPERAND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: <ref refid="classIMULTI__ELEMENT__OPERAND" kindref="compound">IMULTI_ELEMENT_OPERAND</ref> * . Information about a multi element operand (implemented for IPOINT_BEFORE). The operand index is required as the next argument. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451daf366ff3d1e14bc23162ad18c47b63c1f" prot="public">
+          <name>IARG_REWRITE_SCATTERED_MEMOP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: <ref refid="classISCATTERED__MEMORY__REWRITE" kindref="compound">ISCATTERED_MEMORY_REWRITE</ref> * . Interface that allows rewriting elemenets addresses for instructions with scattered memory access (implemented for IPOINT_BEFORE). Only valid for instructions where <ref refid="group__INS__INSPECTION_1gacd61a39496ab833613206747e16d3fa7" kindref="member">INS_IsValidForIarg</ref> for this IARG returns TRUE. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da87c9a713268fea1c9ddb157aa0a475eb" prot="public">
+          <name>IARG_EXPLICIT_MEMORY_EA</name>
+          <briefdescription>
+<para>Type: ADDRINT. Effective address of the explicit memory operand. Useful for instrumenting LEA instructions. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da28140354d575f6b6404a6833552fed47" prot="public">
+          <name>IARG_BRANCH_TAKEN</name>
+          <briefdescription>
+<para>Type: BOOL. Non zero if a branch is taken. Argument is invalid for XBEGIN and XEND instructions. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451daa1b650f4229df434f3ac5ef61f14d0ed" prot="public">
+          <name>IARG_BRANCH_TARGET_ADDR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: ADDRINT. Target address of branch instruction.<linebreak/>
+ In case of INS instrumentation, valid when <ref refid="group__INS__INSPECTION_1ga308d89e7d9f39b8a0daf908778513457" kindref="member">INS_IsControlFlow()</ref> is true.<linebreak/>
+ However, this argument is invalid if the instruction is XBEGIN or XEND. In Linux, for the case of branching into the vsyscall area (in kernel 5.3 or above), the target address that will be received in the analysis routine would be that of the vsyscall area. Note that this address is not readable (e.g. via <ref refid="group__PIN__CONTROL_1ga1225706d213f4bd1d81ed1fb32e792d7" kindref="member">PIN_SafeCopy()</ref> and <ref refid="group__PIN__CONTROL_1gabd8df83bbd040dfaf019bf18ec072b92" kindref="member">PIN_FetchCode()</ref>) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da0faf9829bd4f46cc1873c943978b21d7" prot="public">
+          <name>IARG_FALLTHROUGH_ADDR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: ADDRINT. Fall through address of the instrumented object.<linebreak/>
+ In case of INS instrumentation, valid only if <ref refid="group__INS__INSPECTION_1ga7602edb17e52e209492bab2c65fc1612" kindref="member">INS_HasFallThrough()</ref> is true. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da5f291cb55a7d61a40fa3ab98e191394e" prot="public">
+          <name>IARG_EXECUTING</name>
+          <briefdescription>
+<para>Type: BOOL. False if the instruction will not be executed because of predication, otherwise true. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da4e8c634973d6966dba21ff70455c1f5b" prot="public">
+          <name>IARG_FIRST_REP_ITERATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: BOOL. True if INS_HasRealRep(ins) and this the first iteration of the REP sequence, otherwise false.<linebreak/>
+ <simplesect kind="note"><para>In case count register is 0 when calling analysis routine, the value of IARG_FIRST_REP_ITERATION is false. </para>
+</simplesect>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da8cbb1c02c9e1bad259570179580adb50" prot="public">
+          <name>IARG_PREDICATE</name>
+          <briefdescription>
+<para>Reserved. Do not use. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dacd300aa37115a80c4ce30e11e7a37846" prot="public">
+          <name>IARG_STACK_VALUE</name>
+          <briefdescription>
+<para>Reserved. Do not use. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da0ea57a2ba5c26fe0b0e7d75a8de06fee" prot="public">
+          <name>IARG_STACK_REFERENCE</name>
+          <briefdescription>
+<para>Reserved. Do not use. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da2b71d3e92a6b768857bd60cd1ffb67bb" prot="public">
+          <name>IARG_MEMORY_VALUE</name>
+          <briefdescription>
+<para>Reserved. IA32(e) only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad99d33d82bec02d9dc8c1639c90920a2" prot="public">
+          <name>IARG_MEMORY_REFERENCE</name>
+          <briefdescription>
+<para>Reserved. IA32(e) only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da6e903286d783f6ee402e146b8dff871f" prot="public">
+          <name>IARG_SYSCALL_NUMBER</name>
+          <briefdescription>
+<para>Type: ADDRINT. System call number. Valid for IPOINT_BEFORE at the system call instruction. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dacf2d3d2c61544c89918563331a73b2f4" prot="public">
+          <name>IARG_SYSARG_REFERENCE</name>
+          <briefdescription>
+<para>Type: &quot;ADDRINT *&quot;. Pointer to system call argument n. Valid for IPOINT_BEFORE at the system call instruction. (First argument number is 0.) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da53b9c85f47960f7b805dc0bb8b6a1a2e" prot="public">
+          <name>IARG_SYSARG_VALUE</name>
+          <briefdescription>
+<para>Type: ADDRINT. System call argument n. Valid for IPOINT_BEFORE at the system call instruction. (First argument number is 0.) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da0480757dd8ff829a67621df1e9e5396d" prot="public">
+          <name>IARG_SYSRET_VALUE</name>
+          <briefdescription>
+<para>Type: ADDRINT. System call return value. On Linux and macOS* the value is -1 if the system call failed. (IPOINT_AFTER only) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da969a0228ddab7219f20426504991b676" prot="public">
+          <name>IARG_SYSRET_ERRNO</name>
+          <briefdescription>
+<para>Type: INT32. System call errno (IPOINT_AFTER_only). </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da4babc2672f5a58d94f8fb8f5234c14d4" prot="public">
+          <name>IARG_FUNCARG_CALLSITE_REFERENCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: &quot;ADDRINT *&quot;. Pointer to integer argument n. Valid only at the call site. (First argument number is 0.) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da8766561ec59dfb16a94edb3624f53ab8" prot="public">
+          <name>IARG_FUNCARG_CALLSITE_VALUE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: ADDRINT. Integer argument n. Valid only at the call site. (First argument number is 0.) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dab23dff2bab780c074d4998d14f4ecb16" prot="public">
+          <name>IARG_FUNCARG_ENTRYPOINT_REFERENCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: &quot;ADDRINT *&quot;. Pointer to integer argument n. Valid only at the entry point of a routine. (First argument number is 0.) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dab418d242314ea7c67b1febf7667e93a1" prot="public">
+          <name>IARG_FUNCARG_ENTRYPOINT_VALUE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: ADDRINT. Integer argument n. Valid only at the entry point of a routine. (First argument number is 0.) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da78065c99b8462ff353115dc9f6419931" prot="public">
+          <name>IARG_FUNCRET_EXITPOINT_REFERENCE</name>
+          <briefdescription>
+<para>Type: &quot;ADDRINT *&quot;. Pointer to function result. Valid only at return instruction. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da19dc8d3703330b7b1e1064336dd235cf" prot="public">
+          <name>IARG_FUNCRET_EXITPOINT_VALUE</name>
+          <briefdescription>
+<para>Type: ADDRINT. Function result. Valid only at return instruction. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da2c4a6ff4e8a076e0f39d24ab73ec7092" prot="public">
+          <name>IARG_RETURN_IP</name>
+          <briefdescription>
+<para>Type: ADDRINT. Return address for function call, valid only at the function entry point. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da0425900c8991df5d840dd6d9f9b03295" prot="public">
+          <name>IARG_ORIG_FUNCPTR</name>
+          <briefdescription>
+<para>Type: AFUNPTR. Function pointer to the relocated entry of the original uninstrumented function. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad12677dad18848be51b49ea0f48e07cb" prot="public">
+          <name>IARG_PROTOTYPE</name>
+          <briefdescription>
+<para>Type: PROTO. The function prototype of the application function. See <ref refid="group__PROTO" kindref="compound">PROTO API</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451daadb6e5681193cc8435b9e57d13acf5d4" prot="public">
+          <name>IARG_THREAD_ID</name>
+          <briefdescription>
+<para>Type: THREADID. Application thread id. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" prot="public">
+          <name>IARG_CONTEXT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> *. Handle to access a context (architectural state). When passed at <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a42eff26179c6d87348abe492301c12ec" kindref="member">IPOINT_AFTER</ref> or <ref refid="group__INST__ARGS_1gga707ea08e31f44f4a81e2a7766123bad7a5ef5b45901a8447e5173f50746ab029d" kindref="member">IPOINT_TAKEN_BRANCH</ref>, PC points to the next instruction. Upon return from the analysis routine, Pin ignores any changes you&apos;ve made to the <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref>. If you want to change register values, use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da0337fbb99845733a3d35a9a3dbcfbf93" kindref="member">IARG_REG_REFERENCE</ref>, <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da6c8569ef37241134ffc6e24593275981" kindref="member">IARG_RETURN_REGS</ref>, or <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref>. See <ref refid="group__INST__ARGS_1PROBE_IARGS" kindref="member">Probe Mode Considerations</ref> for probe mode restrictions. Not supported with the Buffering APIs. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" prot="public">
+          <name>IARG_CONST_CONTEXT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> *. Like <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref>, but tool receives a read-only <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref>*. <ref refid="group__CONTEXT_1ga83c0549f92440cf717c08689c47127cd" kindref="member">PIN_SetContextReg</ref>, <ref refid="group__CONTEXT_1gae96c2fa413d6009f9775cfebab49912f" kindref="member">PIN_SetContextRegval</ref> and <ref refid="group__CONTEXT_1ga147e92f2d15f95bd43cb6c8ea19057f4" kindref="member">PIN_SetContextFPState</ref> will not work with <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref>. The overhead of <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref> is considerably lower than that of <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref>. Tools that need a <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref>* and only read from it should use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref>. Tools that need a <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref>* and only occasionally write into it should also use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref>. One example of a tool that needs a <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> * and only occasionally writes into it, would be an emulator that would need to write into the <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> * only when an exception occurs, and then raise an exception with the <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> *. <ref refid="group__CONTEXT_1gabd0a55669ab303520f82e4f512e084f9" kindref="member">PIN_SaveContext</ref> can be used by the tool to get a writable copy of the <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> *. <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref> is available only in Jit mode. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" prot="public">
+          <name>IARG_PARTIAL_CONTEXT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> *. Additional two <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> * arguments are needed &apos;inSet&apos; and &apos;outSet&apos;. Like <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref>, but tool needs to define also which registers set it needs to read (inSet) and which registers set it may write (outSet). <ref refid="group__CONTEXT_1ga83c0549f92440cf717c08689c47127cd" kindref="member">PIN_SetContextReg</ref>, <ref refid="group__CONTEXT_1gae96c2fa413d6009f9775cfebab49912f" kindref="member">PIN_SetContextRegval</ref> and <ref refid="group__CONTEXT_1ga147e92f2d15f95bd43cb6c8ea19057f4" kindref="member">PIN_SetContextFPState</ref> will work only on registers that are in the outSet. These functions will change the actual application registers so there is no need to perform <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref> as need to be done with <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref>. <ref refid="group__CONTEXT_1ga5b5aea73f92ac62e0767cb32bf8de4ed" kindref="member">PIN_GetContextReg</ref>, <ref refid="group__CONTEXT_1ga44f8eeba2b8b874087441df1c3a530e2" kindref="member">PIN_GetContextRegval</ref> and <ref refid="group__CONTEXT_1ga628d9e2f229dc5101142c94a5411d073" kindref="member">PIN_GetContextFPState</ref> will return unexpected values for registers not defined in the &apos;inSet&apos;. The overhead of <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> may lower than that of <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref> as there is no need to perform <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref> to update registers. Tools that know which application registers are needed to be read should use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> instead of <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref>. Thus may reduce the overhead as not fully updated context for read need to be provided. Tools that know which application registers are needed to be written other than REG_INST_PTR should use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> instead of combination of <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref> and the use of <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref> for registers update. If REG_INST_PTR needs to be updated <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref> still needs to be used. Any updates to a register from the outSet of an <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> will be propagated to the application upon return from the analysis routine. Tools that want to update <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> registers without affecting application registers should use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref>. <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> is available only in Jit mode. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da9289568da718031f0b70921f9ca4d0c8" prot="public">
+          <name>IARG_PRESERVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type: <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> *. Used to specify registers whose values will be the same upon return from the analysis routine. Should be used to specify caller-saved registers which are preserved by the analysis routine. When a non-inlinable analysis routine preserves caller-saved registers, Pin can avoid generating code to preserve these registers, across the analysis call, if they are specified in the IARG_PRESERVE. e.g. if a non-inlinable analysis routine preserves the values in the x87 registers, then Pin can avoid generating code to preserve these registers, across the analysis call, if REG_X87 is specified in the <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da9289568da718031f0b70921f9ca4d0c8" kindref="member">IARG_PRESERVE</ref> e.g. if a non-inlinable analysis routine preserves the values in XMM caller saved registers, then Pin can avoid generating code to preserve these registers, across the analysis call, if those preserved XMM registers are specified in the <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da9289568da718031f0b70921f9ca4d0c8" kindref="member">IARG_PRESERVE</ref> <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da9289568da718031f0b70921f9ca4d0c8" kindref="member">IARG_PRESERVE</ref> must be followed by a <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref>* that points to the <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> containing the registers preserved. See the <ref refid="group__REG_1ga0d287d13f9dc3f2fbffe24f217e12674" kindref="member">(REGSET_*)</ref> functions defined under <ref refid="group__REG" kindref="compound">REG: Register Object</ref> for <ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref> construction and manipulation. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da6c8569ef37241134ffc6e24593275981" prot="public">
+          <name>IARG_RETURN_REGS</name>
+          <briefdescription>
+<para>Register to write analysis function return value (additional register arg required). Not supported in Probe mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da45b6bfd69845ada4a0875967995ad7c6" prot="public">
+          <name>IARG_CALL_ORDER</name>
+          <briefdescription>
+<para>Type: CALL_ORDER. Determine order of analysis calls. See <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dae11c26daf8993e626359a566d35d46d0" prot="public">
+          <name>IARG_IARGLIST</name>
+          <briefdescription>
+<para>Type: IARGLIST. List of IARGS which can be constructed one IARG at a time. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da892dbdf11883df94c327bb31fd0d5fcd" prot="public">
+          <name>IARG_FAST_ANALYSIS_CALL</name>
+          <briefdescription>
+<para>No type: Use a fast linkage to call the analysis function. See <ref refid="group__INST__ARGS_1ga5d3025eb005b7ea4745799f0ee1b86a6" kindref="member">PIN_FAST_ANALYSIS_CALL</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da985747a3c70e3a4283fc8a2f16399e63" prot="public">
+          <name>IARG_MEMORYOP_EA</name>
+          <briefdescription>
+<para>Type: ADDRINT. Effective address of a memory op (memory op index is next arg); only valid at IPOINT_BEFORE. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451daa5b738f4179d2b6313ac517be1f5221d" prot="public">
+          <name>IARG_MEMORYOP_SIZE</name>
+          <briefdescription>
+<para>Type: UINT32. Size of a memory op (memory op index is next arg) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da821b74fed6ac3d8740d73245b4f26a06" prot="public">
+          <name>IARG_MEMORYOP_MASKED_ON</name>
+          <briefdescription>
+<para>Type: BOOL. TRUE if the this memory op (memory op index is next arg) is masked on; only valid at IPOINT_BEFORE. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da30acbbeded5e7e293324f81cc796ef7d" prot="public">
+          <name>IARG_TSC</name>
+          <briefdescription>
+<para>Type: UINT64. Time Stamp Counter value at the point of entering the analysis call. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da2d2d4502ddc8de6d717c6878101c73df" prot="public">
+          <name>IARG_FILE_NAME</name>
+          <briefdescription>
+<para>Reserved for internal use only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da5a86209c9f24bebb204f1c435eb18d1c" prot="public">
+          <name>IARG_LINE_NO</name>
+          <briefdescription>
+<para>Reserved for internal use only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad1fd7d0ac8f175d5340787ff3f3a2093" prot="public">
+          <name>IARG_LAST</name>
+          <briefdescription>
+<para>Reserved for internal use only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determines the arguments that are passed to the analysis call. All argument lists must end with IARG_END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="213" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="212" bodyend="487"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__INST__ARGS_1ga624ddd00f45938da5eb525afc5b43195" prot="public" static="no" strong="no">
+        <type></type>
+        <name>PIN_MEMOP_ENUM</name>
+        <enumvalue id="group__INST__ARGS_1gga624ddd00f45938da5eb525afc5b43195a92b81dc0e38fb070c4a6f59fe87f527e" prot="public">
+          <name>PIN_MEMOP_LOAD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga624ddd00f45938da5eb525afc5b43195a7593d3ed019ad6ead358ed6301257606" prot="public">
+          <name>PIN_MEMOP_STORE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>used in the Type whose address is passed to analysis routine when IARG_MULTI_MEMORYACCESS_EA is requested </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="826" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="825" bodyend="829"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__INST__ARGS_1ga16b7ac266c4c1323b18396be70279eb0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>PIN_OP_ELEMENT_ACCESS</name>
+        <enumvalue id="group__INST__ARGS_1gga16b7ac266c4c1323b18396be70279eb0a0175fce8dbd0864dc8c60c0cf1d215d2" prot="public">
+          <name>PIN_OP_ELEMENT_ACCESS_READ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga16b7ac266c4c1323b18396be70279eb0a687e8f4b92e5b26d4ed1c464e7a21363" prot="public">
+          <name>PIN_OP_ELEMENT_ACCESS_WRITE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INST__ARGS_1gga16b7ac266c4c1323b18396be70279eb0afffaf538a90fa5ed31ffd95ded173717" prot="public">
+          <name>PIN_OP_ELEMENT_ACCESS_READWRITE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Element Access type used in <ref refid="classIMULTI__ELEMENT__OPERAND" kindref="compound">IMULTI_ELEMENT_OPERAND</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="864" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="863" bodyend="868"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__INST__ARGS_1gafbeb707dc23c7c09e1e8c932649107d5" prot="public" static="no">
+        <type>IARGLIST_CLASS *</type>
+        <definition>typedef IARGLIST_CLASS* IARGLIST</definition>
+        <argsstring></argsstring>
+        <name>IARGLIST</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>List of IARG_TYPE elements. See <ref refid="group__INST__ARGS_1ga3d3e1e48b6fe3d71cb9f04a202ac55d7" kindref="member">IARGLIST_Alloc()</ref> for its use. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="787" column="24" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="781" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__INST__ARGS_1ga2a86c3c95b207c7c02b7b5c64311dd09" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MAX_MULTI_MEMOPS</definition>
+        <argsstring></argsstring>
+        <name>MAX_MULTI_MEMOPS</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="846" column="11" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="846" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__INST__ARGS_1ga85838e12fe04880ed61c5c60378c0147" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID IARGLIST_AddArguments</definition>
+        <argsstring>(IARGLIST args,...)</argsstring>
+        <name>IARGLIST_AddArguments</name>
+        <param>
+          <type><ref refid="group__INST__ARGS_1gafbeb707dc23c7c09e1e8c932649107d5" kindref="member">IARGLIST</ref></type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add an argument to an IARGLIST.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2850" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2850" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INST__ARGS_1ga3d3e1e48b6fe3d71cb9f04a202ac55d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__INST__ARGS_1gafbeb707dc23c7c09e1e8c932649107d5" kindref="member">IARGLIST</ref></type>
+        <definition>IARGLIST IARGLIST_Alloc</definition>
+        <argsstring>()</argsstring>
+        <name>IARGLIST_Alloc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allocate a container to hold instrumentation arguments. Pass to *_InsertCall by using IARG_LIST</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2860" column="17" declfile="Source/pin/pin/pin_client.PH" declline="2860" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INST__ARGS_1ga30472edf4c557377c7f6bc73601d0a90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID IARGLIST_Free</definition>
+        <argsstring>(IARGLIST args)</argsstring>
+        <name>IARGLIST_Free</name>
+        <param>
+          <type><ref refid="group__INST__ARGS_1gafbeb707dc23c7c09e1e8c932649107d5" kindref="member">IARGLIST</ref></type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free a container to hold instrumentation arguments. Pass to *_InsertCall by using IARG_LIST</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2870" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2870" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__INST__ARGS_1ga5d3025eb005b7ea4745799f0ee1b86a6" prot="public" static="no">
+        <name>PIN_FAST_ANALYSIS_CALL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Use a faster linkage for calls to analysis functions. Add PIN_FAST_ANALYSIS_CALL to the declaration between the return type and the function name. You must also add <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da892dbdf11883df94c327bb31fd0d5fcd" kindref="member">IARG_FAST_ANALYSIS_CALL</ref> to the InsertCall. For example:</para>
+<para>@begincode VOID PIN_FAST_ANALYSIS_CALL docount(int j);</para>
+<para>INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(docount), IARG_FAST_ANALYSIS_CALL, IARG_UINT32, 3, IARG_END); </para>
+<para>You will gain the most benefit from using PIN_FAST_ANALYSIS_CALL if<itemizedlist>
+<listitem><para>you are instrumenting a 32 bit process (the 64 bit calling conventions already pass arguments in registers)</para>
+</listitem><listitem><para>your analysis routine is not inlined (if it is inlined there is no call to optimize)</para>
+</listitem><listitem><para>your analysis routine is relatively small (if it is large the extra overhead imposed by the poor calling convention won&apos;t be significant anyway) </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="818" column="10" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="818" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>See <ref refid="group__INS__INSTRUMENTATION_1gaea02f152d3515f4758b8f979a380da09" kindref="member">INS_InsertCall</ref>.</para>
+<sect1 id="group__INST__ARGS_1SEC_IARG_END">
+<title>IARG_END</title>
+<para>All argument lists must end with IARG_END. Please see the <ref refid="index_1EXAMPLES" kindref="member">Examples</ref> for further information.</para>
+</sect1>
+<sect1 id="group__INST__ARGS_1PROBE_IARGS">
+<title>Probe Mode Considerations</title>
+<para>When IARG_CONTEXT is used in probe mode, it is impossible to get certain register values correct. The values in these registers are meaningless when IARG_CONTEXT is used in probe mode:</para>
+<para>REG_SEG_GS_BASE <linebreak/>
+ REG_SEG_FS_BASE <linebreak/>
+ REG_INST_G0 - REG_INST_G19 <linebreak/>
+ Using <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da6c8569ef37241134ffc6e24593275981" kindref="member">IARG_RETURN_REGS</ref>, <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da0337fbb99845733a3d35a9a3dbcfbf93" kindref="member">IARG_REG_REFERENCE</ref>, <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref> and <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> is not supported in Probe mode.</para>
+</sect1>
+<sect1 id="group__INST__ARGS_1NO_INLINE_IARGS">
+<title>Inlining Considerations</title>
+<para>The <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da25577a47a3c3945080ce1429959f3f1d" kindref="member">IARG_CONTEXT</ref>, <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dad3e65d643a63acb09d12b8538434ca45" kindref="member">IARG_CONST_CONTEXT</ref> and <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> IARG_TYPE cannot be inlined. Using these <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> IARG_TYPE will prevent the analysis routine from being inlined. </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

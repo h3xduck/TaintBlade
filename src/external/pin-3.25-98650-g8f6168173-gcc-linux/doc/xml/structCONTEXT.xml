@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structCONTEXT" kind="struct" language="C++" prot="public">
+    <compoundname>CONTEXT</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structCONTEXT_1a2936c81df3cb8e0a4eee037827489346" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT CONTEXT::_impl</definition>
+        <argsstring></argsstring>
+        <name>_impl</name>
+        <briefdescription>
+<para>implementation-specific data </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="66" column="13" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCONTEXT_1a6f0b057949eba820fe0d0f6a0814ff91" prot="public" static="no" mutable="no">
+        <type>CHAR</type>
+        <definition>CHAR CONTEXT::_state[ARCH_STATE_SIZE]</definition>
+        <argsstring>[ARCH_STATE_SIZE]</argsstring>
+        <name>_state</name>
+        <briefdescription>
+<para>architectural state </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="67" column="10" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structCONTEXT_1a84cc77c0c694de74a7c02ed4a5c6fe49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CONTEXT::CONTEXT</definition>
+        <argsstring>()</argsstring>
+        <name>CONTEXT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct the <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> object with the default (canonical) implementation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="64" column="5" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="64" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A structure that keeps architectural state of the processor. </para>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="60" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="59" bodyend="68"/>
+    <listofallmembers>
+      <member refid="structCONTEXT_1a2936c81df3cb8e0a4eee037827489346" prot="public" virt="non-virtual"><scope>CONTEXT</scope><name>_impl</name></member>
+      <member refid="structCONTEXT_1a6f0b057949eba820fe0d0f6a0814ff91" prot="public" virt="non-virtual"><scope>CONTEXT</scope><name>_state</name></member>
+      <member refid="structCONTEXT_1a84cc77c0c694de74a7c02ed4a5c6fe49" prot="public" virt="non-virtual"><scope>CONTEXT</scope><name>CONTEXT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

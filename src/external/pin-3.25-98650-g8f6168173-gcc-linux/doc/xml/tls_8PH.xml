@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="tls_8PH" kind="file" language="C++">
+    <compoundname>tls.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tls_8PH_1a92c9d8be3469ff0df1b2319b3c233d28" prot="public" static="no">
+        <name>PIN_G_TLS_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/tls.PH" line="9" column="10" bodyfile="Source/pin/base/tls.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__THREADS_1ga08319cb7eb56ee92a74dd9a97476c1eb" prot="public" static="no">
+        <type>INT32</type>
+        <definition>typedef INT32 TLS_KEY</definition>
+        <argsstring></argsstring>
+        <name>TLS_KEY</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type that represents TLS key - a unique identifier of a slot in the thread local storage. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/tls.PH" line="16" column="15" bodyfile="Source/pin/base/tls.PH" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__THREADS_1gac20e94689fb8467e0309ed7bc0410654" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__THREADS_1ga08319cb7eb56ee92a74dd9a97476c1eb" kindref="member">TLS_KEY</ref></type>
+        <definition>const TLS_KEY INVALID_TLS_KEY</definition>
+        <argsstring></argsstring>
+        <name>INVALID_TLS_KEY</name>
+        <initializer>= (-1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Invalid value of the TLS_KEY type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/tls.PH" line="21" column="15" bodyfile="Source/pin/base/tls.PH" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_TLS_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>tls</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_TLS_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>INT32<sp/><ref refid="group__THREADS_1ga08319cb7eb56ee92a74dd9a97476c1eb" kindref="member">TLS_KEY</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__THREADS_1ga08319cb7eb56ee92a74dd9a97476c1eb" kindref="member">TLS_KEY</ref><sp/><ref refid="group__THREADS_1gac20e94689fb8467e0309ed7bc0410654" kindref="member">INVALID_TLS_KEY</ref><sp/>=<sp/>(-1);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_TLS_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/base/tls.PH"/>
+  </compounddef>
+</doxygen>

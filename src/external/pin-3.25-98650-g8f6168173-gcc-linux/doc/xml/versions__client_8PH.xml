@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="versions__client_8PH" kind="file" language="C++">
+    <compoundname>versions_client.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="versions__client_8PH_1a240f6f78cd32a75618a78ee34fa5bfe8" prot="public" static="no">
+        <name>PIN_G_VERSIONS_CLIENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/versions_client.PH" line="9" column="10" bodyfile="Source/pin/pin/versions_client.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__TRACE__VERSION_1ga5fe8277b551bc9a3e6d9b516f39729bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID BBL_SetTargetVersion</definition>
+        <argsstring>(BBL bbl, ADDRINT version)</argsstring>
+        <name>BBL_SetTargetVersion</name>
+        <param>
+          <type>BBL</type>
+          <declname>bbl</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin client interfaces for trace versioning</para>
+<para>Set the versioning for traces that can be reached from this basic block. Overrides the versioning from previous basic blocks. It is an error to set the versioning for the same basic block more than once.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bbl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BBL to mark for versioning </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">version</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>make BBL have this version</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/versions_client.PH" line="30" column="13" declfile="Source/pin/pin/versions_client.PH" declline="30" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE__VERSION_1ga6ff779779ba60c3afb34f701b82a00f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT TRACE_Version</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_Version</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the version for this trace. See <ref refid="group__TRACE__VERSION_1ga5fe8277b551bc9a3e6d9b516f39729bd" kindref="member">BBL_SetTargetVersion</ref></para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/versions_client.PH" line="42" column="16" declfile="Source/pin/pin/versions_client.PH" declline="42" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE__VERSION_1ga6beede470576f50fe68ddc192616b552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_InsertVersionCase</definition>
+        <argsstring>(INS ins, REG reg, INT32 case_value, ADDRINT version,...)</argsstring>
+        <name>INS_InsertVersionCase</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>INT32</type>
+          <declname>case_value</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>version</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a dynamic test to switch between versions before <emphasis>ins</emphasis>. If the value in <emphasis>reg</emphasis> matches <emphasis>case_value</emphasis>, then continue execution at <emphasis>ins</emphasis> with version <emphasis>version</emphasis>. Switching to a new version will cause execution to continue at a new trace starting with <emphasis>ins</emphasis>. This API can be called multiple times for the same instruction, creating a switch/case construct to select the version.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Insert case test before this instruction </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Virtual register used to select case. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">case_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Go to new version if reg contains case_value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">version</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New version to use </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of additional arguments (see <ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>), terminated with IARG_END. Currently, only IARG_CALL_ORDER is supported. For more information, see <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/versions_client.PH" line="66" column="13" declfile="Source/pin/pin/versions_client.PH" declline="66" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_VERSIONS_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>versions_client</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_VERSIONS_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__TRACE__VERSION_1ga5fe8277b551bc9a3e6d9b516f39729bd" kindref="member">BBL_SetTargetVersion</ref>(BBL<sp/>bbl,<sp/>ADDRINT<sp/>version);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>ADDRINT<sp/><ref refid="group__TRACE__VERSION_1ga6ff779779ba60c3afb34f701b82a00f5" kindref="member">TRACE_Version</ref>(<ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref><sp/>trace);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__TRACE__VERSION_1ga6beede470576f50fe68ddc192616b552" kindref="member">INS_InsertVersionCase</ref>(INS<sp/>ins,<sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/>reg,<sp/>INT32<sp/>case_value,<sp/>ADDRINT<sp/>version,<sp/>...);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_VERSIONS_CLIENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/versions_client.PH"/>
+  </compounddef>
+</doxygen>

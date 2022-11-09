@@ -1,0 +1,792 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__SYSCALL" kind="group">
+    <compoundname>SYSCALL</compoundname>
+    <title>Pin System Call API</title>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__SYSCALL_1gab34ef13ce96444da49a29c28f2893b21" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* SYSCALL_ENTRY_CALLBACK) (THREADID threadIndex, CONTEXT *ctxt, SYSCALL_STANDARD std, VOID *v)</definition>
+        <argsstring>)(THREADID threadIndex, CONTEXT *ctxt, SYSCALL_STANDARD std, VOID *v)</argsstring>
+        <name>SYSCALL_ENTRY_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-back function before execution of a system call.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">threadIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID of the thread that executes the system call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Application&apos;s register state immediately before execution of the system call. The tool may change this and affect the new register state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The system calling standard. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="310" column="9" bodyfile="Source/pin/pin/pin_client.PH" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__SYSCALL_1ga47febb06d8fd5728e7ccba121b8ab56f" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* SYSCALL_EXIT_CALLBACK) (THREADID threadIndex, CONTEXT *ctxt, SYSCALL_STANDARD std, VOID *v)</definition>
+        <argsstring>)(THREADID threadIndex, CONTEXT *ctxt, SYSCALL_STANDARD std, VOID *v)</argsstring>
+        <name>SYSCALL_EXIT_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-back function after execution of a system call.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">threadIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID of the thread that executed the system call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Application&apos;s register state immediately after execution of the system call.The tool may change this and affect the new register state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The system calling standard. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="322" column="9" bodyfile="Source/pin/pin/pin_client.PH" bodystart="322" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__SYSCALL_1ga8dc6b426fa6483242eb9ce5699671bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK PIN_AddSyscallEntryFunction</definition>
+        <argsstring>(SYSCALL_ENTRY_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_AddSyscallEntryFunction</name>
+        <param>
+          <type><ref refid="group__SYSCALL_1gab34ef13ce96444da49a29c28f2893b21" kindref="member">SYSCALL_ENTRY_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a notification function that is called immediately before execution of a system call.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function to be called immediately before execution of a system call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.. </para>
+</simplesect>
+<simplesect kind="note"><para>In Linux systems with kernel 5.3 and above, callbacks will be called also when branching to vsyscall area.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1228" column="21" declfile="Source/pin/pin/pin_client.PH" declline="1228" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1ga86cd4ab2afd3af8435cdea496616d96c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK PIN_AddSyscallExitFunction</definition>
+        <argsstring>(SYSCALL_EXIT_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_AddSyscallExitFunction</name>
+        <param>
+          <type><ref refid="group__SYSCALL_1ga47febb06d8fd5728e7ccba121b8ab56f" kindref="member">SYSCALL_EXIT_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a notification function that is called immediately after execution of a system call. <linebreak/>
+The notification is called for each system call when it returns to the application, even if the system call changes control flow and does not fall through to the next instruction. <linebreak/>
+ <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function to be called immediately after execution of a system call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>In order to monitor all possible control transfers from the operating system to the user mode application, the tool has to register both a SYSCALL_EXIT_CALLBACK and a CONTEXT_CHANGE_CALLBACK callback functions. This can be done using the corresponding registration functions: <ref refid="group__SYSCALL_1ga86cd4ab2afd3af8435cdea496616d96c" kindref="member">PIN_AddSyscallExitFunction()</ref> and <ref refid="group__PIN__CONTROL_1ga1cc0f28140cb83a035ebabdddf81861f" kindref="member">PIN_AddContextChangeFunction()</ref>.<linebreak/>
+When a system call returns to the application, the tool receives the SYSCALL_EXIT_CALLBACK notification. Usually, this callback immediately follows the corresponding SYSCALL_ENTRY_CALLBACK notification and there is no application code executed between these two events. However, some (Windows) system calls can be interrupted by a system event (APC, Windows callback, exception) before they return to the application. If this happens, the tool receives the corresponding CONTEXT_CHANGE_CALLBACK notification just before the (user mode) handler of the system event gets executed. Eventually, when the event handler and the interrupted system call are completed, the SYSCALL_EXIT_CALLBACK notification is delivered to the tool.</para>
+</simplesect>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API. </para>
+</simplesect>
+<simplesect kind="note"><para>In Linux systems with kernel 5.3 and above, callbacks will be called also when branching to vsyscall area.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1264" column="21" declfile="Source/pin/pin/pin_client.PH" declline="1264" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1gad9d546e07b4243cd28f5c3cbcfafc4eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetSyscallArgument</definition>
+        <argsstring>(CONTEXT *ctxt, SYSCALL_STANDARD std, UINT32 argNum, ADDRINT val)</argsstring>
+        <name>PIN_SetSyscallArgument</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>argNum</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the given value for the argument of the system call to be executed in the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context and the current memory content represent the state of a system call before execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1gab34ef13ce96444da49a29c28f2893b21" kindref="member">SYSCALL_ENTRY_CALLBACK</ref>. Applying this function to an inappropriate context results in undefined behavior and even may cause crash on systems in which system call arguments are located in memory.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context before the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argNum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ordinal number of the argument whose value is to be set. Ordinal numbers start from zero for the first argument </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new value of the argument</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2337" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2337" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1ga9f3bad50c8987db46b687193fe900fa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetSyscallArgument</definition>
+        <argsstring>(const CONTEXT *ctxt, SYSCALL_STANDARD std, UINT32 argNum)</argsstring>
+        <name>PIN_GetSyscallArgument</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>argNum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value of the argument of the system call to be executed in the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context and the current memory content represent the state of a system call before execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1gab34ef13ce96444da49a29c28f2893b21" kindref="member">SYSCALL_ENTRY_CALLBACK</ref>. Applying this function to an inappropriate context results in undefined behavior and even may cause crash on systems in which system call arguments are located in memory.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context before the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argNum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ordinal number of the argument whose value is requested. Ordinal numbers start from zero for the first argument </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>value of the argument</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2359" column="16" declfile="Source/pin/pin/pin_client.PH" declline="2359" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1gab045c7dedca9b8b63a9a339e9889cdc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetSyscallNumber</definition>
+        <argsstring>(CONTEXT *ctxt, SYSCALL_STANDARD std, ADDRINT val)</argsstring>
+        <name>PIN_SetSyscallNumber</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the number (ID) of the system call to be executed in the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context represents the state of a system call before execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1gab34ef13ce96444da49a29c28f2893b21" kindref="member">SYSCALL_ENTRY_CALLBACK</ref>. Applying this function to an inappropriate context results in undefined behavior.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context before the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new system call number</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2377" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2377" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1gab5648a015d935b4df7395c2b9f16707b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetSyscallNumber</definition>
+        <argsstring>(const CONTEXT *ctxt, SYSCALL_STANDARD std)</argsstring>
+        <name>PIN_GetSyscallNumber</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the number (ID) of the system call to be executed in the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context represents the state of a system call before execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1gab34ef13ce96444da49a29c28f2893b21" kindref="member">SYSCALL_ENTRY_CALLBACK</ref>, but not in a SYSCALL_EXIT_CALLBACK. Applying this function to an inappropriate context results in undefined behavior.</para>
+<para>If you need the system call number in a SYSCALL_EXIT_CALLBACK, you should use a SYSCALL_ENTRY_CALLBACK to save the system call number into thread local storage so that you can get it from there in your SYSCALL_EXIT_CALLBACK. Beware, though of interruptable system calls, to handle those you will need to worry about other context changes (see the discussion in <ref refid="group__SYSCALL_1ga86cd4ab2afd3af8435cdea496616d96c" kindref="member">PIN_AddSyscallExitFunction</ref> ).</para>
+<para>In Linux systems with kernel 5.3 and above, calling this API while jumping to vsyscall area will return special number - VSYSCALL_NR.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context before the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>system call number</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2406" column="16" declfile="Source/pin/pin/pin_client.PH" declline="2406" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1gaee394d106296c67ebe55c2a76736e1e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetSyscallReturn</definition>
+        <argsstring>(const CONTEXT *ctxt, SYSCALL_STANDARD std)</argsstring>
+        <name>PIN_GetSyscallReturn</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the return value of the system call which has just returned with the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context represents the state of a system call after execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1ga47febb06d8fd5728e7ccba121b8ab56f" kindref="member">SYSCALL_EXIT_CALLBACK</ref>. Applying this function to an inappropriate context results in undefined behavior.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context after the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>return value of the system call. <linebreak/>
+ On Linux and macOS* the function returns -1 if the system call failed</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2426" column="16" declfile="Source/pin/pin/pin_client.PH" declline="2426" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1ga196c129374709623b01eb3b676bb4f6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetSyscallReturn</definition>
+        <argsstring>(CONTEXT *ctxt, SYSCALL_STANDARD std, ADDRINT val)</argsstring>
+        <name>PIN_SetSyscallReturn</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the return value of the system call which has just returned with the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context represents the state of a system call after execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1ga47febb06d8fd5728e7ccba121b8ab56f" kindref="member">SYSCALL_EXIT_CALLBACK</ref>. Applying this function to an inappropriate context results in undefined behavior.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context after the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the return value to set for the syscall</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2445" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2445" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1ga5e0f238ac44ece7809f4ca6f834785b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetSyscallErrno</definition>
+        <argsstring>(const CONTEXT *ctxt, SYSCALL_STANDARD std)</argsstring>
+        <name>PIN_GetSyscallErrno</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the error code of the system call which is just returned with the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context represents the state of a system call after execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1ga47febb06d8fd5728e7ccba121b8ab56f" kindref="member">SYSCALL_EXIT_CALLBACK</ref>. Applying this function to an inappropriate context results in undefined behavior.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context after the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>error code, if the system call failed;<linebreak/>
+ zero, if the system call succeeded</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2465" column="16" declfile="Source/pin/pin/pin_client.PH" declline="2465" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1ga4ba15e53ecb01c9a954abf1e60f2a07c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetSyscallErrno</definition>
+        <argsstring>(CONTEXT *ctxt, SYSCALL_STANDARD std, ADDRINT val)</argsstring>
+        <name>PIN_SetSyscallErrno</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the error code of the system call which is just returned with the specified context.<linebreak/>
+It is a user&apos;s responsibility to make sure that the specified context represents the state of a system call after execution. For example, this function can be safely used in the scope of <ref refid="group__SYSCALL_1ga47febb06d8fd5728e7ccba121b8ab56f" kindref="member">SYSCALL_EXIT_CALLBACK</ref>. Applying this function to an inappropriate context results in undefined behavior.<linebreak/>
+ The user should set in Linux a negative error value.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context after the system call execution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>system calling standard </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the error value to set for the syscall</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2486" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2486" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1gaefc2f308b1fc73ad2b1bfd1a7c41512c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ReplaySyscallEntry</definition>
+        <argsstring>(THREADID tid, CONTEXT *ctxt, SYSCALL_STANDARD std)</argsstring>
+        <name>PIN_ReplaySyscallEntry</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Additional client side interface to pin vm containing the interfaces useful for a replay tool. These mainly allow a PinTool to request that Pin execute callbacks associated with specific events.</para>
+<para>This API is intended for use by tools that replay the execution of an application and need to behave as if a system call has been made, calling all callbacks registered with PIN_AddSysCallEntry function. However, no system call is actually performed.</para>
+<para>This API can be called from an analysis routine or a replacement routine, but not from a call-back.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the thread in which the system call appears to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register state at the point when the system call appears to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The calling standard of the system call.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux,Windows,BSD<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="40" column="13" declfile="Source/pin/pin/pin_client_replay.PH" declline="40" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1ga62ed9a93aa5739f576ec49b39c8e699c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ReplaySyscallExit</definition>
+        <argsstring>(THREADID tid, CONTEXT *ctxt, SYSCALL_STANDARD std)</argsstring>
+        <name>PIN_ReplaySyscallExit</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This API is intended for use by tools that replay the execution of an application and need to behave as if a system call has been made, calling all callbacks registered with PIN_AddSysCallExit function. However, no system call is actually performed.</para>
+<para>This API can be called from an analysis routine or a replacement routine, but not from a call-back.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the thread in which the system call appears to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register state at the point after the system call has executed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The calling standard of the system call.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux,Windows,BSD<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="64" column="13" declfile="Source/pin/pin/pin_client_replay.PH" declline="64" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>These APIs provide Pin support for extracting information about, or modifying, system calls made by the pinned program. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

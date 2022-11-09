@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="symbol__linux_8PH" kind="file" language="C++">
+    <compoundname>symbol_linux.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="symbol__linux_8PH_1ab6e53017677e892dd4ad30871481a347" prot="public" static="no">
+        <name>PIN_G_SYMBOL_LINUX_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_l/symbol_linux.PH" line="9" column="10" bodyfile="Source/pin/pin_l/symbol_linux.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PIN__CONTROL_1ga5a74f4530db5d94bede1391c59e39939" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitSymbols</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_InitSymbols</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize symbol table code. Pin does not read symbols unless this is called. Must be called before <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram</ref></para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_l/symbol_linux.PH" line="22" column="13" declfile="Source/pin/pin_l/symbol_linux.PH" declline="22" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CONTROL_1gadeaa38396564e0afbd701fce28131937" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_InitSymbolsAlt</definition>
+        <argsstring>(SYMBOL_INFO_MODE mode)</argsstring>
+        <name>PIN_InitSymbolsAlt</name>
+        <param>
+          <type><ref refid="group__PIN__CONTROL_1ga32ad8725a818ddded04963a3b35a317c" kindref="member">SYMBOL_INFO_MODE</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize symbol table code with an explicitly specified mode of symbol support. <linebreak/>
+Pin does not read symbols unless this is called. <linebreak/>
+Must be called before <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram</ref>. <linebreak/>
+Alternative to <ref refid="group__PIN__CONTROL_1ga5a74f4530db5d94bede1391c59e39939" kindref="member">PIN_InitSymbols()</ref> on Windows &amp; Linux. <linebreak/>
+On macOS* it is implemented as <ref refid="group__PIN__CONTROL_1ga5a74f4530db5d94bede1391c59e39939" kindref="member">PIN_InitSymbols()</ref> <linebreak/>
+ <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Explicit mode of symbol support. Valid values: <linebreak/>
+ EXPORT_SYMBOLS Only symbols taken from export table are provided. Line information is not available (Windows only). <linebreak/>
+ DEBUG_SYMBOLS Currently treated the same as DEBUG_OR_EXPORT_SYMBOLS (Windows only). <linebreak/>
+ IFUNC_SYMBOLS IFUNC symbols (Linux only). <linebreak/>
+ DEBUG_OR_EXPORT_SYMBOLS First debug symbols if available, otherwise export symbols. This mode is set by <ref refid="group__PIN__CONTROL_1ga5a74f4530db5d94bede1391c59e39939" kindref="member">PIN_InitSymbols()</ref> (Windows only) <linebreak/>
+ This parameter is ignored on operating systems other than Windows &amp; Linux. <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the operation succeeded <linebreak/>
+ </para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_l/symbol_linux.PH" line="48" column="13" declfile="Source/pin/pin_l/symbol_linux.PH" declline="48" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_SYMBOL_LINUX_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>symbol_linux</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_SYMBOL_LINUX_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor">#if<sp/>defined<sp/>(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__PIN__CONTROL_1ga5a74f4530db5d94bede1391c59e39939" kindref="member">PIN_InitSymbols</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__PIN__CONTROL_1gadeaa38396564e0afbd701fce28131937" kindref="member">PIN_InitSymbolsAlt</ref>(<ref refid="group__PIN__CONTROL_1ga32ad8725a818ddded04963a3b35a317c" kindref="member">SYMBOL_INFO_MODE</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>defined<sp/>(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_SYMBOL_LINUX_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin_l/symbol_linux.PH"/>
+  </compounddef>
+</doxygen>

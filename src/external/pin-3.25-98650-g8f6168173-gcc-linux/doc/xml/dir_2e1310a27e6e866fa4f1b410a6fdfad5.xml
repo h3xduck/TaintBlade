@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_2e1310a27e6e866fa4f1b410a6fdfad5" kind="dir">
+    <compoundname>core_ia32</compoundname>
+    <innerfile refid="ins__api__xed__ia32_8PH">ins_api_xed_ia32.PH</innerfile>
+    <innerfile refid="ins__ia32_8PH">ins_ia32.PH</innerfile>
+    <innerfile refid="ins__xed__ia32_8PH">ins_xed_ia32.PH</innerfile>
+    <innerfile refid="operand__ia32_8PH">operand_ia32.PH</innerfile>
+    <innerfile refid="regset__ia32_8PH">regset_ia32.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/core_ia32/"/>
+  </compounddef>
+</doxygen>

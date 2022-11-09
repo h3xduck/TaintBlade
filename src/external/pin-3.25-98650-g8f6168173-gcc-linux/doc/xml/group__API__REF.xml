@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__API__REF" kind="group">
+    <compoundname>API_REF</compoundname>
+    <title>Instrumentation API Reference</title>
+    <innergroup refid="group__IMG">IMG: Image Object</innergroup>
+    <innergroup refid="group__INS__REF">INS: Instruction Object</innergroup>
+    <innergroup refid="group__SEC">SEC: Section Object</innergroup>
+    <innergroup refid="group__RTN">RTN: Routine Object</innergroup>
+    <innergroup refid="group__REG">REG: Register Object</innergroup>
+    <innergroup refid="group__TRACE">TRACE: Single entrance, multiple exit sequence of instructions</innergroup>
+    <innergroup refid="group__BBL">BBL: Single entrance, single exit sequence of instructions</innergroup>
+    <innergroup refid="group__SYMBOLS">SYM: Symbol Object</innergroup>
+    <innergroup refid="group__PIN__CONTROL">Controlling and Initializing</innergroup>
+    <innergroup refid="group__TRACE__VERSION">Trace version APIs</innergroup>
+    <innergroup refid="group__BUFFER">Fast Buffering APIs</innergroup>
+    <innergroup refid="group__PROTO">PROTO API</innergroup>
+    <innergroup refid="group__PIN__PROCESS">Pin Process API</innergroup>
+    <innergroup refid="group__THREADS">Pin Thread API</innergroup>
+    <innergroup refid="group__SYSCALL">Pin System Call API</innergroup>
+    <innergroup refid="group__DEBUG__INFO">DBG: Debugging using Pin</innergroup>
+    <innergroup refid="group__ERROR__FILE">Pin Error Reporting Support</innergroup>
+    <innergroup refid="group__CONTEXT">Context manipulation API</innergroup>
+    <innergroup refid="group__PHYSICAL__CONTEXT">Physical context manipulation API</innergroup>
+    <innergroup refid="group__PIN__CALLBACKS">PIN callbacks manipulation API</innergroup>
+    <innergroup refid="group__EXCEPTION">Exception API</innergroup>
+    <innergroup refid="group__APPDEBUG">Application Level Debugging API</innergroup>
+    <innergroup refid="group__INST__ARGS">Instrumentation arguments</innergroup>
+    <innergroup refid="group__VERSION">Pin version information</innergroup>
+    <innergroup refid="group__REPLAY">REPLAY</innergroup>
+    <innergroup refid="group__MESSAGE">MESSAGE</innergroup>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

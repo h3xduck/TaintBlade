@@ -1,0 +1,1875 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="ins__api__xed__ia32_8PH" kind="file" language="C++">
+    <compoundname>ins_api_xed_ia32.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ins__api__xed__ia32_8PH_1add01e21a9927b2a79a32facf4926a4f9" prot="public" static="no">
+        <name>PIN_G_INS_API_XED_IA32_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="9" column="10" bodyfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__PIN__CONTROL_1ga4583560de9d18cb8f1b138e7a91f0666" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* XED_DECODE_CALLBACK) (xed_decoded_inst_t *xedd)</definition>
+        <argsstring>)(xed_decoded_inst_t *xedd)</argsstring>
+        <name>XED_DECODE_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call back function for setting XED specific operands required for decoding instructions. For example, this can programmatically be used to control decoding of CLDEMOTE or CET. This function can be registered via <ref refid="group__PIN__CONTROL_1ga26d9b2a04d10dfe7ed7d58b7e4a25f8d" kindref="member">PIN_AddXedDecodeCallbackFunction()</ref>. This function is called before calling to xed decode.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">xedd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>XED decoded structure to set the decoding operands </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="531" column="9" bodyfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" bodystart="531" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaec452037ed224616326f47e68456cf74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_HasRealRep</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_HasRealRep</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>this file contains functions visible in level_core it uses primitives from level_core_with_ia32_ins but does not leak out any IA32 stuff!</para>
+<para><simplesect kind="return"><para>whether the instruction has a real REP/REPZ/REPNZ prefix (i.e. one which is not just part of the opcode encoding but does cause the instruction to repeat). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="19" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="19" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gae682a5640e4fc234895c16dbc45d3266" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsStandardMemop</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsStandardMemop</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>false if this instruction has a memory operand which has unconventional meaning (e.g. vectorized memory reference of the GATHER/SCATTER instructions or some of the XSAVE instructions). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="26" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="26" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gafd61789fb5b6cc5f6bc5b92f73834529" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsCacheLineFlush</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsCacheLineFlush</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if instruction causes cache line flush </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="31" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="31" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga3d71d53c5043092d5dbc7c96a2c30b5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT32</type>
+        <definition>INT32 INS_Category</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_Category</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The category of an instruction is a higher level semantic description of an instruction than its opcode (<ref refid="group__INS__INSPECTION_1ga016c475100a4665f5f8e8dfdbf518da5" kindref="member">INS_Opcode</ref>). So, for instance, you can test for a conditional branch by using INS_Category(ins) == XED_CATEGORY_COND_BR, whereas using INS_Opcode(ins) would require that you enumerate all twenty conditional branch opcodes.</para>
+<para>The full mapping of opcodes to categories can be found in the idata.txt file in the Intel(R) X86 Encoder Decoder distribution (which is distributed as part of the Pin kit). The category enumeration can be found in the file &quot;xed-category-enum.h&quot;.</para>
+<para>A category can be converted into a string by using <ref refid="group__INS__INSPECTION_1ga9aff372b50f9c5710ee2127d5f2cc90c" kindref="member">CATEGORY_StringShort</ref>.</para>
+<para><simplesect kind="return"><para>Instruction category </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="47" column="14" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="47" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga263a91b2234b8650b858675450a72085" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT32</type>
+        <definition>INT32 INS_Extension</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_Extension</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Instruction extension, Use EXTENSION_StringShort to make it a string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="52" column="14" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="52" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga4757e2b80c1f7d07cf2d3b12a71e4c0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 INS_EffectiveAddressWidth</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_EffectiveAddressWidth</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the width of the effective address in bits </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="58" column="15" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="58" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gad66ba6f0f0822848ddbf287e84f87df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API USIZE</type>
+        <definition>PIN_DEPRECATED_API USIZE INS_MemoryWriteSize</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_MemoryWriteSize</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the size of the memory write in bytes (for REP prefixed instructions this is the size of the operand written on each iteration of the REP, so 1,2,4 or 8). </para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: see <ref refid="group__INS__INSPECTION_1gaa905931fcdcac481c789192e0bd30014" kindref="member">INS_MemoryOperandSize()</ref> instead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="65" column="33" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="65" declcolumn="33"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaeb34a54f477c20bcd3006e44d0798c0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API USIZE</type>
+        <definition>PIN_DEPRECATED_API USIZE INS_MemoryReadSize</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_MemoryReadSize</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the size of the memory read in bytes (for REP prefixed instructions this is the size of the operand read on each iteration of the REP, so 1,2,4 or 8). </para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: see <ref refid="group__INS__INSPECTION_1gaa905931fcdcac481c789192e0bd30014" kindref="member">INS_MemoryOperandSize()</ref> instead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="72" column="33" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="72" declcolumn="33"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gabc091ecbe538934b9ea83ce7882d1c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__INS__INSPECTION_1gaa0f5cf48b3b01ce2e18a76312cf5ebbd" kindref="member">PREDICATE</ref></type>
+        <definition>PREDICATE INS_GetPredicate</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_GetPredicate</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>predicate for instruction (see <ref refid="group__INS__INSPECTION_1gaa0f5cf48b3b01ce2e18a76312cf5ebbd" kindref="member">PREDICATE</ref>)</para>
+</simplesect>
+CMOVcc and FMOVcc instructions are treated as predicated. Rep string ops are treated as predicated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="80" column="18" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="80" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gab1170badee8568aebff586fa7d131b37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsMemoryRead</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsMemoryRead</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this instruction reads memory</para>
+</simplesect>
+<simplesect kind="note"><para>Segment prefix operands (i.e. gs:0x14 ) are memory operands. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="87" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="87" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga88783aed583f78262e7bbcbcaeb5fe09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsMemoryWrite</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsMemoryWrite</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this instruction writes memory</para>
+</simplesect>
+<simplesect kind="note"><para>Segment prefix operands (i.e. gs:0x14 ) are memory operands. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="94" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="94" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga6d0d259ec5db15fba1ee77f073ac6e33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_HasMemoryRead2</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_HasMemoryRead2</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this instruction has 2 memory read operands </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="99" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="99" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga7602edb17e52e209492bab2c65fc1612" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_HasFallThrough</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_HasFallThrough</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="group__INS__INSPECTION_1ga7602edb17e52e209492bab2c65fc1612" kindref="member">INS_HasFallThrough(INS)</ref> is TRUE, then the instruction may execute the &quot;natural&quot; next instruction (i.e. the one which starts immediately after this one), if it is FALSE, then the instruction following the one tested will not (normally) be executed next. So HasFallThrough is TRUE for instructions which don&apos;t change the control flow (most instructions), or for conditional branches (which might change the control flow, but might not), and FALSE for unconditional branches and calls (where the next instruction to be executed is always explicitly specified).</para>
+<para>Note that an unconditional branch or call to the next instruction still doesn&apos;t have a fall-through, since a fall through is the implicitly following instruction, and an unconditional branch never uses that.</para>
+<para><simplesect kind="return"><para>true if the instruction type has a fallthrough path based on the opcode </para>
+</simplesect>
+<simplesect kind="note"><para>for system calls function returns false. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="121" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="121" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa769aebdca13544d020bf2a8ce12457e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsSysenter</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsSysenter</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction is a SysEnter </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="126" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="126" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gadc9313292e087d5a37871013bbf4455d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsXbegin</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsXbegin</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction is a Xbegin </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="131" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="131" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga5ea902b08b21cd0b9a25d6b497b71ecc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsXend</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsXend</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction is a Xend </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="136" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="136" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga72a8648d1c8afbcb00081cf6767aa5e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsLea</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsLea</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if the instruction is Lea. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="141" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="141" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga8c2a537d225974e306deac478094e207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsNop</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsNop</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if the instruction is a nop. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="146" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="146" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaf5f24968bc08823284ca34b5b05e02ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string OPCODE_StringShort</definition>
+        <argsstring>(UINT32 opcode)</argsstring>
+        <name>OPCODE_StringShort</name>
+        <param>
+          <type>UINT32</type>
+          <declname>opcode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>String with the opcode of the instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="151" column="20" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="151" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gafcdc1ff2798f1bd76628c2de1487a284" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string INS_Mnemonic</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_Mnemonic</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Only use this function if you really want a printable version of the instruction&apos;s opcode.</para>
+<para>If you are trying to test what the opcode of an instruction is, use <ref refid="group__INS__INSPECTION_1ga016c475100a4665f5f8e8dfdbf518da5" kindref="member">INS_Opcode</ref> and compare it with one of the XED_ICLASS values, or use one of the INS_Is... calls such as <ref refid="group__INS__INSPECTION_1gab6f52ff1102a22d51990f0122c108759" kindref="member">INS_IsMov</ref>, rather than using this function and comparing a string. Generating and comparing strings is much slower than comparing small integer values!</para>
+<para><simplesect kind="return"><para>String form of mnemonic </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="163" column="20" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="163" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga7b9e0d9a23e7e7734ba7a7fbc7438e50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsBranch</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsBranch</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a branch instruction. A branch can be conditional or unconditional. </para>
+</simplesect>
+<simplesect kind="note"><para>In some cases branch instructions are actually system calls. In case ins is in practice a system call, the function returns false. For example, JMP_FAR in Windows IA-32 can be a system call under certain conditions. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="172" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="172" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga1211486a7015b74165c5f49c56e786b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsDirectBranch</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsDirectBranch</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>These are supposed to be near relative branches. <simplesect kind="return"><para>true if the target address is an offset from the instruction pointer or is an immediate. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="179" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="179" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaf9585dfe3e965a348cd8f2bec5b33cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsDirectCall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsDirectCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>These are supposed to be near relative branches. <simplesect kind="return"><para>true if the target address is an offset from the instruction pointer or is an immediate. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="186" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="186" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga9645bebf4e0f7b32a7d7985a49a3a3f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API BOOL</type>
+        <definition>PIN_DEPRECATED_API BOOL INS_IsDirectBranchOrCall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsDirectBranchOrCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>These are supposed to be near relative branches. <simplesect kind="return"><para>true if the target address is an offset from the instruction pointer or is an immediate. </para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: see <ref refid="group__INS__INSPECTION_1gaac6f6422ce76cfbaad86c7f432f818ab" kindref="member">INS_IsDirectControlFlow()</ref> instead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="194" column="32" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="194" declcolumn="32"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaac6f6422ce76cfbaad86c7f432f818ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsDirectControlFlow</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsDirectControlFlow</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if ins is a control-flow instruction, and its target address is an offset from the instruction pointer or is an immediate. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="200" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="200" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga8f770f9a1da3b0a924fb582ab92f4be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsHalt</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsHalt</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the ins is a halt or reserved undefined (UD2) instruction. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="205" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="205" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga17175054ff9f2ac0a213c4ab7bf023a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API BOOL</type>
+        <definition>PIN_DEPRECATED_API BOOL INS_IsBranchOrCall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsBranchOrCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if ins is a Branch or Call instruction, includes both direct and indirect instruction types.<linebreak/>
+</para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: Use <ref refid="group__INS__INSPECTION_1gab13f78210172b7647bf5979b4e7f764f" kindref="member">INS_IsValidForIpointTakenBranch()</ref> instead to check if you can use IPOINT_TAKEN_BRANCH. Or use <ref refid="group__INS__INSPECTION_1ga308d89e7d9f39b8a0daf908778513457" kindref="member">INS_IsControlFlow()</ref> to check if instruction is a control flow. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="213" column="32" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="213" declcolumn="32"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga80ad206699f655a22e9a7cf46592dca5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_Stutters</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_Stutters</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins &quot;stutters&quot;, so re-executes even though it is not a branch or call. REP prefixed string ops do this. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="219" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="219" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga54c2afb6ee9de26b18b8581d4d578f0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsPcMaterialization</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsPcMaterialization</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this is a call to the next instruction, which is an idiom for materializing the instruction pointer </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="225" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="225" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gabc3f11f960e327ff50cd4c0899fa42d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsCall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a Call instruction. Note: In case ins is in practice a system call, the function returns false. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="231" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="231" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga308d89e7d9f39b8a0daf908778513457" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsControlFlow</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsControlFlow</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a Control Flow instruction. </para>
+</simplesect>
+<simplesect kind="note"><para>In general, any Branch, Call or Ret is a control flow instruction. However, we exclude any instruction which in practice is a system call (e.g. FAR_JMP in Windows with IA32 is sometimes a syscall).<linebreak/>
+In addition, note that it returns true for Xbegin and Xend instructions. Use this function to verify that an instruction is valid for instrumentation with <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451daa1b650f4229df434f3ac5ef61f14d0ed" kindref="member">IARG_BRANCH_TARGET_ADDR</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="240" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="240" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga3f681d101030540ee15712d23e89c5ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsFarCall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsFarCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a Far Call instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="245" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="245" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gabe125bae2f10dc5a82bafb1cbd99ec03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsFarJump</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsFarJump</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a Far Jump instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="250" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="250" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga8b2917c493864644cd85597e4d85e79a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsDirectFarJump</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsDirectFarJump</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the target address is a direct far jump </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="255" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="255" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaef208009ec86a213f7574b65fe2603c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsValidForIpointAfter</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsValidForIpointAfter</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if ins can be instrumented at location IPOINT_AFTER. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="260" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="260" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gab13f78210172b7647bf5979b4e7f764f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsValidForIpointTakenBranch</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsValidForIpointTakenBranch</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if ins can be instrumented at location IPOINT_TAKEN_BRANCH. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="265" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="265" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga98f086d31ad53876afa5d3e98b0d0b52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsVgather</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsVgather</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE iff the ins is a VGATHER* instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="270" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="270" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa361d3578e67bf041170c9580a4912ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsVscatter</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsVscatter</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE iff the ins is a VSCATTER* instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="275" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="275" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaac7bf03b0bd4f696a57f6beed7815896" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_HasMemoryVector</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_HasMemoryVector</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE iff the ins has a memory vector, i.e. the memory is accessed using a base address and an index vector with a scale. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="281" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="281" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gad1ade5b21d590fd2a53b6e98a835c553" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_HasScatteredMemoryAccess</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_HasScatteredMemoryAccess</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE iff the ins has scattered memory access. Scattered memory access means that the instruction does not access the memory as a single sequential block, but rather is scattered into multiple memory blocks. For exmaple, with the vscatter/vgather instructions, the index vector register is broken down to multiple index values that are used together with the base address, scale and displacement to access multiple blocks. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="292" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="292" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gac5503a690bc11074480b303c2ba5d04a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsAmx</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsAmx</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return TRUE iff the ins is an AMX instruction </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="297" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="297" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gad8f09aca94ec4149d51312f28bb15bb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID INS_GetFarPointer</definition>
+        <argsstring>(INS ins, UINT16 &amp;segment_selector, UINT32 &amp;displacement)</argsstring>
+        <name>INS_GetFarPointer</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type>UINT16 &amp;</type>
+          <declname>segment_selector</declname>
+        </param>
+        <param>
+          <type>UINT32 &amp;</type>
+          <declname>displacement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the segment selector and displacement from a direct far jump. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="302" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="302" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga06ee153ecc802fb954da9a9afe39d868" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsProcedureCall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsProcedureCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a procedure call. This filters out call instructions that are (ab)used for other purposes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="308" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="308" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa13314e8a43b158f580047ead78b72cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsInterrupt</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsInterrupt</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return TRUE if the INS is an interrupt category instruction </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="313" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="313" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gae1bf4fca7d6060e4d6f2b12a3b5d06a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsRet</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsRet</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the given ins is a ret instruction. <simplesect kind="note"><para>This function will return true for iret instructions as well. </para>
+</simplesect>
+<simplesect kind="note"><para>See also <ref refid="group__INS__INSPECTION_1ga4ca6657c4f2a1dd2aec83c7bea228f3d" kindref="member">INS_IsIRet</ref>. </para>
+</simplesect>
+<simplesect kind="return"><para>true if the instruction is ret or iret. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="321" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="321" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaeafeb11038db885475c9acd01d28fe85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsSysret</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsSysret</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a System Return instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="326" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="326" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga096d2054bf6155352c96ffdb685a93d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsFarRet</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsFarRet</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a far ret instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="331" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="331" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga8f601e4e60712eb4bf2df0ee58c8afd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsPrefetch</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsPrefetch</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this instruction is a prefetch </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="336" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="336" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gac2a95e056295b1da4cdb9964aa591112" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsSub</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_IsSub</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns true if this instruction is a subtract. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="341" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="341" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gab6f52ff1102a22d51990f0122c108759" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsMov</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_IsMov</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns true if this instruction is a move. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="346" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="346" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaafabdd0df85dd9b153c7ff98a6762a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsMovdir64b</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_IsMovdir64b</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns true if this instruction is movdir64. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="351" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="351" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga15e022f900d0831f350aa65928e27ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsMovFullRegRegSame</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_IsMovFullRegRegSame</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns true if this instruction is a mov reg1, reg1. And reg1 is a full reg </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="356" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="356" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa517ca64b89debd7e4e1f39132edd0af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsAtomicUpdate</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_IsAtomicUpdate</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this instruction performs an atomic update of memory. </para>
+</simplesect>
+<simplesect kind="note"><para>An XCHG instruction accessing memory is atomic with or without a LOCK prefix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="362" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="362" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga527fcdaa01b21e9def864cc83d4648ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsRDTSC</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_IsRDTSC</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this instruction is an rdtsc or rdtscp. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="367" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="367" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gac5aca7e74c0603e20a742f0980b7cda3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsMaskMov</definition>
+        <argsstring>(const INS ins)</argsstring>
+        <name>INS_IsMaskMov</name>
+        <param>
+          <type>const INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this instruction is a maskmovq or maskmovdqu. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="372" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="372" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga32d37a0dcd2f199ed5165f5ff90edf25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG INS_RepCountRegister</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_RepCountRegister</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>register used as the repeat counter by this REP prefixed instruction, or <ref refid="group__REG_1gadc4695959b1508fbcf668927ab92ef18" kindref="member">REG_INVALID()</ref> if the instruction does not have a real REP prefix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="378" column="12" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="378" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gad02da07511bf7980f121828324c93a52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PIN_DEPRECATED_API BOOL</type>
+        <definition>PIN_DEPRECATED_API BOOL INS_IsIndirectBranchOrCall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsIndirectBranchOrCall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the branch target comes from a register or memory. result is valid only if <ref refid="group__INS__INSPECTION_1ga308d89e7d9f39b8a0daf908778513457" kindref="member">INS_IsControlFlow()</ref> is true. </para>
+</simplesect>
+<simplesect kind="note"><para>DEPRECATED: see <ref refid="group__INS__INSPECTION_1ga13dea1531859ee5759d376a9e5617918" kindref="member">INS_IsIndirectControlFlow()</ref> instead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="385" column="32" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="385" declcolumn="32"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga13dea1531859ee5759d376a9e5617918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsIndirectControlFlow</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsIndirectControlFlow</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ins is a control-flow instruction, and its target address is provided through memory or through a register. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="391" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="391" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gae044036c57a49ff5c29d6994445bade8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG INS_SegmentRegPrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_SegmentRegPrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Segment overide prefix used by INS </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="396" column="12" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="396" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa682a21a59a07397feac5a7107b7c7e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_HasExplicitMemoryReference</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_HasExplicitMemoryReference</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Test if this instruction has an explict memory operand. We include the memory operand in lea.</para>
+<para><simplesect kind="return"><para>TRUE if the instruction is has an explicit memory operand </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="404" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="404" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaf25e644f3d8ee4907ea96e60b759b828" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetSyntaxIntel</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_SetSyntaxIntel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the disassembly syntax to Intel format. (Destination on the left) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="409" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="409" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gacb29bf88df0b86e5bed6f7f1c6d4219d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetSyntaxATT</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_SetSyntaxATT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the disassembly syntax to ATT SYSV format. (Destination on the right) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="414" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="414" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga568a93b99e9e70be947fb428cc0c6f9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetSyntaxXED</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_SetSyntaxXED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the disassembly syntax to Intel(R) X86 Encoder Decoder detailed format which lists all resources read and written. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="419" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="419" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga484023161d148e5b68a0efb19346421d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG INS_RegR</definition>
+        <argsstring>(INS x, UINT32 k)</argsstring>
+        <name>INS_RegR</name>
+        <param>
+          <type>INS</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>kth read register of instruction x, including implicit reads (e.g. stack pointer is read by push on IA-32 architectures) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="425" column="12" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="425" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gacd975d0a7a75984d4f32349ef0ed7747" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG INS_RegW</definition>
+        <argsstring>(INS x, UINT32 k)</argsstring>
+        <name>INS_RegW</name>
+        <param>
+          <type>INS</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>kth write register of instruction x, including implicit writes (e.g. stack pointer is written by push on IA-32 architectures) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="431" column="12" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="431" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga016c475100a4665f5f8e8dfdbf518da5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>OPCODE</type>
+        <definition>OPCODE INS_Opcode</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_Opcode</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>On ia-32 and Intel64 the opcodes are constants of the form XED_ICLASS_name. The full list of valid opcodes can be found in the idata.txt file in the Intel(R) X86 Encoder Decoder distribution (which is distributed as part of the Pin kit), and the enum definitions are in the file &quot;xed-iclass-enum.h&quot;.</para>
+<para>Use <ref refid="group__INS__INSPECTION_1gafcdc1ff2798f1bd76628c2de1487a284" kindref="member">INS_Mnemonic</ref> if you want a string.</para>
+<para><simplesect kind="return"><para>Opcode of instruction </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="443" column="15" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="443" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga9aff372b50f9c5710ee2127d5f2cc90c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CATEGORY_StringShort</definition>
+        <argsstring>(UINT32 num)</argsstring>
+        <name>CATEGORY_StringShort</name>
+        <param>
+          <type>UINT32</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>String form of category </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="448" column="20" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="448" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa4bb9e749f4a4c80215f29c116a7e279" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EXTENSION_StringShort</definition>
+        <argsstring>(UINT32 num)</argsstring>
+        <name>EXTENSION_StringShort</name>
+        <param>
+          <type>UINT32</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>String form of ISA extension </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="453" column="20" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="453" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa06399e42f72b6906c94df623a23fa0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_SegPrefixIsMemoryRead</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_SegPrefixIsMemoryRead</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this Seg prefixed instruction reads memory </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="458" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="458" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga700b74c8ab57f909f1e2c2d1094fc6b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_SegPrefixIsMemoryWrite</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_SegPrefixIsMemoryWrite</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this Seg prefixed instruction writes to memory </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="463" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="463" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga08c8427ca46f8776050a64ce28544725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_AddressSizePrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_AddressSizePrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has an address size prefix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="468" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="468" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga6a95871422336f9f56751ae8f9d502f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_BranchNotTakenPrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_BranchNotTakenPrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has an branch not taken hint prefix </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="473" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="473" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga2e4e0575a9639c8ca07e447038c00cbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_BranchTakenPrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_BranchTakenPrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has an branch taken hint prefix </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="478" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="478" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaedec63f23d754647667cd714c8001af3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_LockPrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_LockPrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has a lock prefix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="483" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="483" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga0e4cbbd8fe8eb79b6629f8150a16571a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_OperandSizePrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_OperandSizePrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has an operand size prefix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="488" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="488" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gacd76a6f0a537b66f5fb08d871561c180" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_RepPrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_RepPrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has an REP (0xF3) prefix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="493" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="493" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gad3b2ca2ecd0f47029a3dbd5767e698f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_RepnePrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_RepnePrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has an REPNE (0xF2) prefix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="498" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="498" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga0c255e9311ec629c0fd4f0aa53e2a166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_SegmentPrefix</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_SegmentPrefix</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction has a segment prefix; Call <ref refid="group__INS__INSPECTION_1gae044036c57a49ff5c29d6994445bade8" kindref="member">INS_SegmentRegPrefix()</ref> to get the actual prefix register name. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="504" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="504" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga6da2eb08991e003c2bf7344100278ffd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsXchg</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsXchg</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction is an &quot;xchg&quot; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="509" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="509" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga5d5c26ac8a093cb3ea326ce1f91e21c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsStringop</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsStringop</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the instruction is a string op (can be REP prefixed). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="514" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="514" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga4ca6657c4f2a1dd2aec83c7bea228f3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsIRet</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsIRet</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true iff the given ins is an iret instruction. <simplesect kind="note"><para>See also <ref refid="group__INS__INSPECTION_1gae1bf4fca7d6060e4d6f2b12a3b5d06a4" kindref="member">INS_IsRet</ref>. </para>
+</simplesect>
+<simplesect kind="return"><para>true if the instruction is an iret. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH" line="521" column="13" declfile="Source/pin/core_ia32/ins_api_xed_ia32.PH" declline="521" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2022<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_INS_API_XED_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>ins_api_xed_ia32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_INS_API_XED_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaec452037ed224616326f47e68456cf74" kindref="member">INS_HasRealRep</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gae682a5640e4fc234895c16dbc45d3266" kindref="member">INS_IsStandardMemop</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gafd61789fb5b6cc5f6bc5b92f73834529" kindref="member">INS_IsCacheLineFlush</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>INT32<sp/><ref refid="group__INS__INSPECTION_1ga3d71d53c5043092d5dbc7c96a2c30b5b" kindref="member">INS_Category</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>INT32<sp/><ref refid="group__INS__INSPECTION_1ga263a91b2234b8650b858675450a72085" kindref="member">INS_Extension</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__INS__INSPECTION_1ga4757e2b80c1f7d07cf2d3b12a71e4c0a" kindref="member">INS_EffectiveAddressWidth</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>PIN_DEPRECATED_API<sp/>USIZE<sp/><ref refid="group__INS__INSPECTION_1gad66ba6f0f0822848ddbf287e84f87df8" kindref="member">INS_MemoryWriteSize</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>PIN_DEPRECATED_API<sp/>USIZE<sp/><ref refid="group__INS__INSPECTION_1gaeb34a54f477c20bcd3006e44d0798c0d" kindref="member">INS_MemoryReadSize</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__INS__INSPECTION_1gaa0f5cf48b3b01ce2e18a76312cf5ebbd" kindref="member">PREDICATE</ref><sp/><ref refid="group__INS__INSPECTION_1gabc091ecbe538934b9ea83ce7882d1c31" kindref="member">INS_GetPredicate</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gab1170badee8568aebff586fa7d131b37" kindref="member">INS_IsMemoryRead</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga88783aed583f78262e7bbcbcaeb5fe09" kindref="member">INS_IsMemoryWrite</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga6d0d259ec5db15fba1ee77f073ac6e33" kindref="member">INS_HasMemoryRead2</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga7602edb17e52e209492bab2c65fc1612" kindref="member">INS_HasFallThrough</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaa769aebdca13544d020bf2a8ce12457e" kindref="member">INS_IsSysenter</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gadc9313292e087d5a37871013bbf4455d" kindref="member">INS_IsXbegin</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga5ea902b08b21cd0b9a25d6b497b71ecc" kindref="member">INS_IsXend</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga72a8648d1c8afbcb00081cf6767aa5e7" kindref="member">INS_IsLea</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga8c2a537d225974e306deac478094e207" kindref="member">INS_IsNop</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__INS__INSPECTION_1gaf5f24968bc08823284ca34b5b05e02ac" kindref="member">OPCODE_StringShort</ref>(UINT32<sp/>opcode);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__INS__INSPECTION_1gafcdc1ff2798f1bd76628c2de1487a284" kindref="member">INS_Mnemonic</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga7b9e0d9a23e7e7734ba7a7fbc7438e50" kindref="member">INS_IsBranch</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga1211486a7015b74165c5f49c56e786b7" kindref="member">INS_IsDirectBranch</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaf9585dfe3e965a348cd8f2bec5b33cd8" kindref="member">INS_IsDirectCall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>PIN_DEPRECATED_API<sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga9645bebf4e0f7b32a7d7985a49a3a3f4" kindref="member">INS_IsDirectBranchOrCall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaac6f6422ce76cfbaad86c7f432f818ab" kindref="member">INS_IsDirectControlFlow</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga8f770f9a1da3b0a924fb582ab92f4be7" kindref="member">INS_IsHalt</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>PIN_DEPRECATED_API<sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga17175054ff9f2ac0a213c4ab7bf023a1" kindref="member">INS_IsBranchOrCall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga80ad206699f655a22e9a7cf46592dca5" kindref="member">INS_Stutters</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga54c2afb6ee9de26b18b8581d4d578f0c" kindref="member">INS_IsPcMaterialization</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gabc3f11f960e327ff50cd4c0899fa42d6" kindref="member">INS_IsCall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga308d89e7d9f39b8a0daf908778513457" kindref="member">INS_IsControlFlow</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga3f681d101030540ee15712d23e89c5ea" kindref="member">INS_IsFarCall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gabe125bae2f10dc5a82bafb1cbd99ec03" kindref="member">INS_IsFarJump</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga8b2917c493864644cd85597e4d85e79a" kindref="member">INS_IsDirectFarJump</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaef208009ec86a213f7574b65fe2603c0" kindref="member">INS_IsValidForIpointAfter</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gab13f78210172b7647bf5979b4e7f764f" kindref="member">INS_IsValidForIpointTakenBranch</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga98f086d31ad53876afa5d3e98b0d0b52" kindref="member">INS_IsVgather</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaa361d3578e67bf041170c9580a4912ae" kindref="member">INS_IsVscatter</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaac7bf03b0bd4f696a57f6beed7815896" kindref="member">INS_HasMemoryVector</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gad1ade5b21d590fd2a53b6e98a835c553" kindref="member">INS_HasScatteredMemoryAccess</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gac5503a690bc11074480b303c2ba5d04a" kindref="member">INS_IsAmx</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__INS__INSPECTION_1gad8f09aca94ec4149d51312f28bb15bb4" kindref="member">INS_GetFarPointer</ref>(INS<sp/>ins,<sp/>UINT16&amp;<sp/>segment_selector,<sp/>UINT32&amp;<sp/>displacement);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga06ee153ecc802fb954da9a9afe39d868" kindref="member">INS_IsProcedureCall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaa13314e8a43b158f580047ead78b72cd" kindref="member">INS_IsInterrupt</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gae1bf4fca7d6060e4d6f2b12a3b5d06a4" kindref="member">INS_IsRet</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaeafeb11038db885475c9acd01d28fe85" kindref="member">INS_IsSysret</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga096d2054bf6155352c96ffdb685a93d3" kindref="member">INS_IsFarRet</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga8f601e4e60712eb4bf2df0ee58c8afd0" kindref="member">INS_IsPrefetch</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gac2a95e056295b1da4cdb9964aa591112" kindref="member">INS_IsSub</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gab6f52ff1102a22d51990f0122c108759" kindref="member">INS_IsMov</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaafabdd0df85dd9b153c7ff98a6762a4d" kindref="member">INS_IsMovdir64b</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga15e022f900d0831f350aa65928e27ea1" kindref="member">INS_IsMovFullRegRegSame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaa517ca64b89debd7e4e1f39132edd0af" kindref="member">INS_IsAtomicUpdate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga527fcdaa01b21e9def864cc83d4648ac" kindref="member">INS_IsRDTSC</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gac5aca7e74c0603e20a742f0980b7cda3" kindref="member">INS_IsMaskMov</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>INS<sp/>ins);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__INS__INSPECTION_1ga32d37a0dcd2f199ed5165f5ff90edf25" kindref="member">INS_RepCountRegister</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>PIN_DEPRECATED_API<sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gad02da07511bf7980f121828324c93a52" kindref="member">INS_IsIndirectBranchOrCall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga13dea1531859ee5759d376a9e5617918" kindref="member">INS_IsIndirectControlFlow</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__INS__INSPECTION_1gae044036c57a49ff5c29d6994445bade8" kindref="member">INS_SegmentRegPrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaa682a21a59a07397feac5a7107b7c7e7" kindref="member">INS_HasExplicitMemoryReference</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__INS__INSPECTION_1gaf25e644f3d8ee4907ea96e60b759b828" kindref="member">PIN_SetSyntaxIntel</ref>();</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__INS__INSPECTION_1gacb29bf88df0b86e5bed6f7f1c6d4219d" kindref="member">PIN_SetSyntaxATT</ref>();</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__INS__INSPECTION_1ga568a93b99e9e70be947fb428cc0c6f9f" kindref="member">PIN_SetSyntaxXED</ref>();</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__INS__INSPECTION_1ga484023161d148e5b68a0efb19346421d" kindref="member">INS_RegR</ref>(INS<sp/>x,<sp/>UINT32<sp/>k);</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref><sp/><ref refid="group__INS__INSPECTION_1gacd975d0a7a75984d4f32349ef0ed7747" kindref="member">INS_RegW</ref>(INS<sp/>x,<sp/>UINT32<sp/>k);</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>OPCODE<sp/><ref refid="group__INS__INSPECTION_1ga016c475100a4665f5f8e8dfdbf518da5" kindref="member">INS_Opcode</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__INS__INSPECTION_1ga9aff372b50f9c5710ee2127d5f2cc90c" kindref="member">CATEGORY_StringShort</ref>(UINT32<sp/>num);</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__INS__INSPECTION_1gaa4bb9e749f4a4c80215f29c116a7e279" kindref="member">EXTENSION_StringShort</ref>(UINT32<sp/>num);</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaa06399e42f72b6906c94df623a23fa0f" kindref="member">INS_SegPrefixIsMemoryRead</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga700b74c8ab57f909f1e2c2d1094fc6b5" kindref="member">INS_SegPrefixIsMemoryWrite</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga08c8427ca46f8776050a64ce28544725" kindref="member">INS_AddressSizePrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga6a95871422336f9f56751ae8f9d502f6" kindref="member">INS_BranchNotTakenPrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga2e4e0575a9639c8ca07e447038c00cbe" kindref="member">INS_BranchTakenPrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gaedec63f23d754647667cd714c8001af3" kindref="member">INS_LockPrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="488"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga0e4cbbd8fe8eb79b6629f8150a16571a" kindref="member">INS_OperandSizePrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"></highlight></codeline>
+<codeline lineno="493"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gacd76a6f0a537b66f5fb08d871561c180" kindref="member">INS_RepPrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gad3b2ca2ecd0f47029a3dbd5767e698f7" kindref="member">INS_RepnePrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight></codeline>
+<codeline lineno="504"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga0c255e9311ec629c0fd4f0aa53e2a166" kindref="member">INS_SegmentPrefix</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="509"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga6da2eb08991e003c2bf7344100278ffd" kindref="member">INS_IsXchg</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"></highlight></codeline>
+<codeline lineno="514"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga5d5c26ac8a093cb3ea326ce1f91e21c5" kindref="member">INS_IsStringop</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga4ca6657c4f2a1dd2aec83c7bea228f3d" kindref="member">INS_IsIRet</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="522"><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>VOID(*<ref refid="group__PIN__CONTROL_1ga4583560de9d18cb8f1b138e7a91f0666" kindref="member">XED_DECODE_CALLBACK</ref>)(xed_decoded_inst_t*<sp/>xedd);</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_INS_API_XED_IA32_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/core_ia32/ins_api_xed_ia32.PH"/>
+  </compounddef>
+</doxygen>

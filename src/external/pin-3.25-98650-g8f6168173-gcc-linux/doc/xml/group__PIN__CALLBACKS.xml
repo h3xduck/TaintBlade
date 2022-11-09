@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__PIN__CALLBACKS" kind="group">
+    <compoundname>PIN_CALLBACKS</compoundname>
+    <title>PIN callbacks manipulation API</title>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" prot="public" static="no">
+        <type>COMPLEX_CALLBACKVAL_BASE *</type>
+        <definition>typedef COMPLEX_CALLBACKVAL_BASE* PIN_CALLBACK</definition>
+        <argsstring></argsstring>
+        <name>PIN_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Container for a PIN callback </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="73" column="34" bodyfile="Source/pin/pin/pin_client.PH" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PIN__CALLBACKS_1ga273251e9bfaf2ee66ee9abf2e48934d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>const PIN_CALLBACK PIN_CALLBACK_INVALID</definition>
+        <argsstring>(0)</argsstring>
+        <name>PIN_CALLBACK_INVALID</name>
+        <param>
+          <type>0</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Invalid value for PIN callback </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="78" column="20" declfile="Source/pin/pin/pin_client.PH" declline="78" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CALLBACKS_1ga01647022e018d420c8269e90d213c3c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID CALLBACK_SetExecutionOrder</definition>
+        <argsstring>(PIN_CALLBACK callback, CALL_ORDER order)</argsstring>
+        <name>CALLBACK_SetExecutionOrder</name>
+        <param>
+          <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref></type>
+          <declname>order</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the execution order of a registered callback function. See <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>. The the lower the order, the sooner it will be called relative to other similar callbacks. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registered Callback function returned from *_Add*Function() </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>order</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New order to assign to the callback (relative to the other callbacks). See <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> for usage details.<linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="728" column="13" declfile="Source/pin/pin/pin_client.PH" declline="728" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__CALLBACKS_1ga371fbd344e119bf24f330fb322ae6b00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref></type>
+        <definition>CALL_ORDER CALLBACK_GetExecutionOrder</definition>
+        <argsstring>(PIN_CALLBACK callback)</argsstring>
+        <name>CALLBACK_GetExecutionOrder</name>
+        <param>
+          <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the execution order of a registered callback function. See <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref>. The the lower the order, the sooner it will be called relative to other similar callbacks <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registered Callback function returned from *_Add*Function()</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>CALL_ORDER The current order value of the callback</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="743" column="19" declfile="Source/pin/pin/pin_client.PH" declline="743" declcolumn="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This API allows the user to retrieve and modify properties of the registered callback functions that were registered in Pin.</para>
+<para>To identify the callback on which the manipulation is done, the user has to provide the API function with a <ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref> object. This PIN_CALLBACK object is returned from any of the callback registering functions (e.g. <ref refid="group__PIN__CONTROL_1gaa78c7b560975a6feffa420fadedc0627" kindref="member">PIN_AddFiniFunction</ref> ()) as a return value. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structDEBUGGER__REG__DESCRIPTION" kind="struct" language="C++" prot="public">
+    <compoundname>DEBUGGER_REG_DESCRIPTION</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structDEBUGGER__REG__DESCRIPTION_1ad31b616fd23aeea229a56202a0d0d654" prot="public" static="no" mutable="no">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG DEBUGGER_REG_DESCRIPTION::_pinReg</definition>
+        <argsstring></argsstring>
+        <name>_pinReg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The Pin register ID, if this is a native Pin register. REG_NONE if the tool will emulate this register. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="42" column="9" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUGGER__REG__DESCRIPTION_1ac9885a7c9d680b3668ccc06b25e92ab6" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned DEBUGGER_REG_DESCRIPTION::_toolRegId</definition>
+        <argsstring></argsstring>
+        <name>_toolRegId</name>
+        <briefdescription>
+<para>Only used if _pinReg is REG_NONE. Gives an ID for this emulated register. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="44" column="14" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUGGER__REG__DESCRIPTION_1a6539b5c392359a401f6d8372c1595bac" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned DEBUGGER_REG_DESCRIPTION::_widthInBits</definition>
+        <argsstring></argsstring>
+        <name>_widthInBits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Width (bits) of the register, as seen by the debugger. Currently, this must be a multiple of 8 bits. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="45" column="14" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUGGER__REG__DESCRIPTION_1a2ebf3a3953800df85e849d1c0ead9a80" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* DEBUGGER_REG_DESCRIPTION::_name</definition>
+        <argsstring></argsstring>
+        <name>_name</name>
+        <briefdescription>
+<para>The name of the register. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="47" column="16" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUGGER__REG__DESCRIPTION_1aeed9c19677c11949e5db2467901ac955" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int DEBUGGER_REG_DESCRIPTION::_gccId</definition>
+        <argsstring></argsstring>
+        <name>_gccId</name>
+        <briefdescription>
+<para>The GCC/Dwarf equivalent register id. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="48" column="9" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Describes a register that is exposed to an application-level debugger. </para>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="41" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="40" bodyend="49"/>
+    <listofallmembers>
+      <member refid="structDEBUGGER__REG__DESCRIPTION_1aeed9c19677c11949e5db2467901ac955" prot="public" virt="non-virtual"><scope>DEBUGGER_REG_DESCRIPTION</scope><name>_gccId</name></member>
+      <member refid="structDEBUGGER__REG__DESCRIPTION_1a2ebf3a3953800df85e849d1c0ead9a80" prot="public" virt="non-virtual"><scope>DEBUGGER_REG_DESCRIPTION</scope><name>_name</name></member>
+      <member refid="structDEBUGGER__REG__DESCRIPTION_1ad31b616fd23aeea229a56202a0d0d654" prot="public" virt="non-virtual"><scope>DEBUGGER_REG_DESCRIPTION</scope><name>_pinReg</name></member>
+      <member refid="structDEBUGGER__REG__DESCRIPTION_1ac9885a7c9d680b3668ccc06b25e92ab6" prot="public" virt="non-virtual"><scope>DEBUGGER_REG_DESCRIPTION</scope><name>_toolRegId</name></member>
+      <member refid="structDEBUGGER__REG__DESCRIPTION_1a6539b5c392359a401f6d8372c1595bac" prot="public" virt="non-virtual"><scope>DEBUGGER_REG_DESCRIPTION</scope><name>_widthInBits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

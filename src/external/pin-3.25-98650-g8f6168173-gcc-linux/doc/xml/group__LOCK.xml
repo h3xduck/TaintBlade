@@ -1,0 +1,735 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__LOCK" kind="group">
+    <compoundname>LOCK</compoundname>
+    <title>LOCK: Locking Primitives</title>
+    <innerclass refid="structPIN__LOCK" prot="public">PIN_LOCK</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__LOCK_1ga217cbb364b3339e20d2d3f3fbe0bb712" prot="public" static="no">
+        <type>PINVM::PINSYNC_POD_LOCK</type>
+        <definition>typedef PINVM::PINSYNC_POD_LOCK PIN_MUTEX</definition>
+        <argsstring></argsstring>
+        <name>PIN_MUTEX</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A simple non-recursive lock. PIN_MUTEX is different from <ref refid="structPIN__LOCK" kindref="compound">PIN_LOCK</ref> because it provides just mutex locking without an extra &quot;lock owner&quot; parameter.</para>
+<para><simplesect kind="note"><para>For performance reasons this type request through compiler attributes to be aligned to a memory cache line (64 bytes). For statically allocated objects of this type it is enough. However, when allocating it dynamically it is advised to use allocation operation that enforces this alignment (e.g., memalign) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="31" column="33" bodyfile="Source/pin/base/lock.PH" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" prot="public" static="no">
+        <type>PINVM::PINSYNC_POD_RWLOCK</type>
+        <definition>typedef PINVM::PINSYNC_POD_RWLOCK PIN_RWMUTEX</definition>
+        <argsstring></argsstring>
+        <name>PIN_RWMUTEX</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A non-recursive multiple-reader / single-writer lock. Use this lock when multiple &quot;reader&quot; threads can simultaneously access a shared resource, but &quot;writer&quot; threads need to have exclusive access. This is a write-biased lock: if a writer thread blocks on the lock because there are active readers, new readers are prevented from acquiring the lock until the writer gets access. This prevents starvation of writer threads.</para>
+<para><simplesect kind="note"><para>For performance reasons this type request through compiler attributes to be aligned to a memory cache line (64 bytes). For statically allocated objects of this type it is enough. However, when allocating it dynamically it is advised to use allocation operation that enforces this alignment (e.g., memalign) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="47" column="35" bodyfile="Source/pin/base/lock.PH" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__LOCK_1ga483703255c7ea848f92a84df4768495e" prot="public" static="no">
+        <type>PINVM::PINSYNC_POD_SEMAPHORE</type>
+        <definition>typedef PINVM::PINSYNC_POD_SEMAPHORE PIN_SEMAPHORE</definition>
+        <argsstring></argsstring>
+        <name>PIN_SEMAPHORE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A binary semaphore synchronization object. You can use this synchronization when one thread needs to wait for some condition to become true. A binary semaphore has exactly two states: &quot;set&quot; and &quot;clear&quot;. It is possible for one or more threads to wait for the semaphore to become &quot;set&quot;. Those threads resume when some other thread changes the state to &quot;set&quot;.</para>
+<para>Note that it is generally not safe to wait on a PIN_SEMAPHORE from an analysis routine or from a call-back function. Most Pin call-back functions are called while Pin holds an internal lock (the VM lock). Therefore, if you wait on a PIN_SEMAPHORE from a call-back, you will prevent any other thread from entering any call-back function (because the waiting thread also holds the VM lock). There is also a danger when waiting on a PIN_SEMAPHORE from an analysis routine. If a thread waits on a semaphore from an analysis routine, the application may also hold some locks of its own. Thus, you can cause a deadlock in the application if you wait on a semaphore while the application holds its own lock.</para>
+<para>The dangers listed above do not exist if you wait on a PIN_SEMAPHORE from a Pin internal thread (see <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread()</ref>). Also, it is safe to set, clear, or test a semaphore from any thread, even when executing an analysis routine or call-back function.</para>
+<para><simplesect kind="note"><para>For performance reasons this type request through compiler attributes to be aligned to a memory cache line (64 bytes). For statically allocated objects of this type it is enough. However, when allocating it dynamically it is advised to use allocation operation that enforces this alignment (e.g., memalign) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="77" column="38" bodyfile="Source/pin/base/lock.PH" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__LOCK_1ga2d70a3db262121f240e8b91f7f9a3af7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitLock</definition>
+        <argsstring>(PIN_LOCK *lock)</argsstring>
+        <name>PIN_InitLock</name>
+        <param>
+          <type><ref refid="structPIN__LOCK" kindref="compound">PIN_LOCK</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the lock as free</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable to initialize. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="84" column="13" declfile="Source/pin/base/lock.PH" declline="84" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1gae2608acfad1d1790a6d0d31e1d95f050" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_GetLock</definition>
+        <argsstring>(PIN_LOCK *lock, INT32 val)</argsstring>
+        <name>PIN_GetLock</name>
+        <param>
+          <type><ref refid="structPIN__LOCK" kindref="compound">PIN_LOCK</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <param>
+          <type>INT32</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Acquire the lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used for debugging. Typically, this is the ID of the calling thread. See the <emphasis>_owner</emphasis> field of <ref refid="structPIN__LOCK" kindref="compound">PIN_LOCK</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="93" column="13" declfile="Source/pin/base/lock.PH" declline="93" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga35d97edadbd43507e71fa7fe85904ed6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT32</type>
+        <definition>INT32 PIN_ReleaseLock</definition>
+        <argsstring>(PIN_LOCK *lock)</argsstring>
+        <name>PIN_ReleaseLock</name>
+        <param>
+          <type><ref refid="structPIN__LOCK" kindref="compound">PIN_LOCK</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Release the lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <emphasis>val</emphasis> parameter that was passed to <ref refid="group__LOCK_1gae2608acfad1d1790a6d0d31e1d95f050" kindref="member">PIN_GetLock()</ref> when the lock was acquired. Typically, this is the ID of the thread that owned the lock. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="103" column="14" declfile="Source/pin/base/lock.PH" declline="103" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1gab2ccb8ea978654f4c0d9cadba96ee9ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_MutexInit</definition>
+        <argsstring>(PIN_MUTEX *lock)</argsstring>
+        <name>PIN_MutexInit</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga217cbb364b3339e20d2d3f3fbe0bb712" kindref="member">PIN_MUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function must be called to initialize a PIN_MUTEX before it is used.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE on successful initialization. If FALSE is returned, initialization failed, and the PIN_MUTEX may not be used. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="113" column="13" declfile="Source/pin/base/lock.PH" declline="113" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga05f3629492c36f7aed88c2a3a17f48ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_MutexFini</definition>
+        <argsstring>(PIN_MUTEX *lock)</argsstring>
+        <name>PIN_MutexFini</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga217cbb364b3339e20d2d3f3fbe0bb712" kindref="member">PIN_MUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy the PIN_MUTEX and deallocate resources. If you want to use the lock object again later, you must call <ref refid="group__LOCK_1gab2ccb8ea978654f4c0d9cadba96ee9ed" kindref="member">PIN_MutexInit()</ref> again.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="121" column="13" declfile="Source/pin/base/lock.PH" declline="121" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga5234870e9082eac1e51dda77e7fb3b93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_MutexLock</definition>
+        <argsstring>(PIN_MUTEX *lock)</argsstring>
+        <name>PIN_MutexLock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga217cbb364b3339e20d2d3f3fbe0bb712" kindref="member">PIN_MUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Block the caller until the lock can be acquired.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="128" column="13" declfile="Source/pin/base/lock.PH" declline="128" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1gaf75d66d693aa94f61e04d718e3db1e24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_MutexUnlock</definition>
+        <argsstring>(PIN_MUTEX *lock)</argsstring>
+        <name>PIN_MutexUnlock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga217cbb364b3339e20d2d3f3fbe0bb712" kindref="member">PIN_MUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Release the lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="135" column="13" declfile="Source/pin/base/lock.PH" declline="135" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1gacb556c313cc4366e17e94fe927319453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_MutexTryLock</definition>
+        <argsstring>(PIN_MUTEX *lock)</argsstring>
+        <name>PIN_MutexTryLock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga217cbb364b3339e20d2d3f3fbe0bb712" kindref="member">PIN_MUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Try to acquire the lock, but do not block the caller.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the lock is acquired, FALSE if not. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="144" column="13" declfile="Source/pin/base/lock.PH" declline="144" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1gaa62d889dd0a931856fa569af553d1ca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_RWMutexInit</definition>
+        <argsstring>(PIN_RWMUTEX *lock)</argsstring>
+        <name>PIN_RWMutexInit</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" kindref="member">PIN_RWMUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function must be called to initialize a PIN_RWMUTEX before it is used.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE on successful initialization. If FALSE is returned, initialization failed, and the PIN_RWMUTEX may not be used. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="154" column="13" declfile="Source/pin/base/lock.PH" declline="154" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga4f05eb08f60536ca79af4e81291abd1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_RWMutexFini</definition>
+        <argsstring>(PIN_RWMUTEX *lock)</argsstring>
+        <name>PIN_RWMutexFini</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" kindref="member">PIN_RWMUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy the PIN_RWMUTEX and deallocate resources. If you want to use the lock object again later, you must call <ref refid="group__LOCK_1gaa62d889dd0a931856fa569af553d1ca0" kindref="member">PIN_RWMutexInit()</ref> again.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="162" column="13" declfile="Source/pin/base/lock.PH" declline="162" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga4aba2f3d4b6801946dee277391801d24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_RWMutexReadLock</definition>
+        <argsstring>(PIN_RWMUTEX *lock)</argsstring>
+        <name>PIN_RWMutexReadLock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" kindref="member">PIN_RWMUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Acquire the lock for &quot;read&quot; access, blocking if necessary. Multiple readers may simultaneously hold the same lock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="170" column="13" declfile="Source/pin/base/lock.PH" declline="170" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1gae0f81460ebb750ee6f953bf30d06f453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_RWMutexWriteLock</definition>
+        <argsstring>(PIN_RWMUTEX *lock)</argsstring>
+        <name>PIN_RWMutexWriteLock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" kindref="member">PIN_RWMUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Acquire the lock for &quot;write&quot; access, blocking if necessary. A writer has exclusive ownership of the lock, not shared with any other readers or writers.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="179" column="13" declfile="Source/pin/base/lock.PH" declline="179" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga951173ca76976ea8f4d1ed58165f4cca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_RWMutexUnlock</definition>
+        <argsstring>(PIN_RWMUTEX *lock)</argsstring>
+        <name>PIN_RWMutexUnlock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" kindref="member">PIN_RWMUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Release the lock. Used for both &quot;readers&quot; and &quot;writers&quot;.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="186" column="13" declfile="Source/pin/base/lock.PH" declline="186" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga6688c2a2fecc786e9f9ea77a5f2829ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_RWMutexTryReadLock</definition>
+        <argsstring>(PIN_RWMUTEX *lock)</argsstring>
+        <name>PIN_RWMutexTryReadLock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" kindref="member">PIN_RWMUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attempts to acquire the lock as a reader, but does not block the caller.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the lock is acquired, FALSE if not. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="195" column="13" declfile="Source/pin/base/lock.PH" declline="195" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga8d5910392c3f1d29b57695cd5ce47a66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_RWMutexTryWriteLock</definition>
+        <argsstring>(PIN_RWMUTEX *lock)</argsstring>
+        <name>PIN_RWMutexTryWriteLock</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga34b6e9367817716d0b85f804fba4ffea" kindref="member">PIN_RWMUTEX</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attempts to acquire the lock as a writer, but does not block the caller.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">lock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The lock variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the lock is acquired, FALSE if not. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="204" column="13" declfile="Source/pin/base/lock.PH" declline="204" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga957147cc7332eea7e8225915f8c8f3ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_SemaphoreInit</definition>
+        <argsstring>(PIN_SEMAPHORE *sem)</argsstring>
+        <name>PIN_SemaphoreInit</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga483703255c7ea848f92a84df4768495e" kindref="member">PIN_SEMAPHORE</ref> *</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function must be called to initialize a PIN_SEMAPHORE before it is used.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The semaphore variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE on successful initialization. If FALSE is returned, initialization failed, and the PIN_SEMAPHORE may not be used. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="214" column="13" declfile="Source/pin/base/lock.PH" declline="214" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga637f352cc6bea9ac2183db0b8c0b93ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SemaphoreFini</definition>
+        <argsstring>(PIN_SEMAPHORE *sem)</argsstring>
+        <name>PIN_SemaphoreFini</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga483703255c7ea848f92a84df4768495e" kindref="member">PIN_SEMAPHORE</ref> *</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy the PIN_SEMAPHORE and deallocate resources. If you want to use the lock object again later, you must call <ref refid="group__LOCK_1ga957147cc7332eea7e8225915f8c8f3ec" kindref="member">PIN_SemaphoreInit()</ref> again.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The semaphore variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="222" column="13" declfile="Source/pin/base/lock.PH" declline="222" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1gaf3aeec45644bc5b29b12288dd9dcbcfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SemaphoreSet</definition>
+        <argsstring>(PIN_SEMAPHORE *sem)</argsstring>
+        <name>PIN_SemaphoreSet</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga483703255c7ea848f92a84df4768495e" kindref="member">PIN_SEMAPHORE</ref> *</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change the semaphore&apos;s state to &quot;set&quot; and tell any threads waiting on the semaphore to wake up. Note that threads waiting on the semaphore may not resume running right away, and they are guaranteed to resume only if the semaphore&apos;s state is still &quot;set&quot; when they actually do resume.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The semaphore variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="232" column="13" declfile="Source/pin/base/lock.PH" declline="232" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga8e0ac679404eb3cac378852cdb4364c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SemaphoreClear</definition>
+        <argsstring>(PIN_SEMAPHORE *sem)</argsstring>
+        <name>PIN_SemaphoreClear</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga483703255c7ea848f92a84df4768495e" kindref="member">PIN_SEMAPHORE</ref> *</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change the semaphore&apos;s state to &quot;clear&quot;. This has no effect on any threads waiting on the semaphore.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The semaphore variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="240" column="13" declfile="Source/pin/base/lock.PH" declline="240" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga6f2b50096f0e12315b7e3aedc958cbce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_SemaphoreIsSet</definition>
+        <argsstring>(PIN_SEMAPHORE *sem)</argsstring>
+        <name>PIN_SemaphoreIsSet</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga483703255c7ea848f92a84df4768495e" kindref="member">PIN_SEMAPHORE</ref> *</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether the semaphore&apos;s state is &quot;set&quot;, but do not block.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The semaphore variable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the semaphore&apos;s state is &quot;set&quot;. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="249" column="13" declfile="Source/pin/base/lock.PH" declline="249" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga7cde56fb65209574e72bbabc2ee45d40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SemaphoreWait</definition>
+        <argsstring>(PIN_SEMAPHORE *sem)</argsstring>
+        <name>PIN_SemaphoreWait</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga483703255c7ea848f92a84df4768495e" kindref="member">PIN_SEMAPHORE</ref> *</type>
+          <declname>sem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Block the calling thread until the semaphore&apos;s state is &quot;set&quot;. The calling thread resumes immediately if the state is already &quot;set&quot;.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The semaphore variable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="257" column="13" declfile="Source/pin/base/lock.PH" declline="257" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__LOCK_1ga0ffd3cd1e212cb6a17bf1dba50c76d8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_SemaphoreTimedWait</definition>
+        <argsstring>(PIN_SEMAPHORE *sem, unsigned timeout)</argsstring>
+        <name>PIN_SemaphoreTimedWait</name>
+        <param>
+          <type><ref refid="group__LOCK_1ga483703255c7ea848f92a84df4768495e" kindref="member">PIN_SEMAPHORE</ref> *</type>
+          <declname>sem</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Block the calling thread until the semaphore&apos;s state is &quot;set&quot; or until a timeout expires. The calling thread resumes immediately if the state is already &quot;set&quot;.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The semaphore variable. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The timeout period (milliseconds).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the semaphore&apos;s state is &quot;set&quot;, FALSE if this method returns due to the timeout. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/lock.PH" line="270" column="13" declfile="Source/pin/base/lock.PH" declline="270" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Primitives for locking.<linebreak/>
+APIs from this group are available in any thread, including any internal thread spawned by the tool.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

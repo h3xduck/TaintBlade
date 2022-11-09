@@ -1,0 +1,477 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="host_8h" kind="file" language="C++">
+    <compoundname>host.h</compoundname>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__OS__APIS__HOST_1ga0df31212789b90ca6b23a8c008b5c120" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_HOST_CPU_ARCH_TYPE</name>
+        <enumvalue id="group__OS__APIS__HOST_1gga0df31212789b90ca6b23a8c008b5c120a79aed0996f857695dc9379b8a9c620f3" prot="public">
+          <name>OS_HOST_CPU_ARCH_TYPE_INVALID</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__HOST_1gga0df31212789b90ca6b23a8c008b5c120a73980e65844f30c054a94ebdce18c73a" prot="public">
+          <name>OS_HOST_CPU_ARCH_TYPE_IA32</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__HOST_1gga0df31212789b90ca6b23a8c008b5c120a8fb64297f999e79dc2fc19405c0cb2ec" prot="public">
+          <name>OS_HOST_CPU_ARCH_TYPE_INTEL64</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>CPU Architecture </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="22" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/host.h" bodystart="21" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__HOST_1gaa5eea5ebfb007d1e0f818444680f6d2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetHostName</definition>
+        <argsstring>(CHAR *buf, USIZE buflen)</argsstring>
+        <name>OS_GetHostName</name>
+        <param>
+          <type>CHAR *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>buflen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves the host name of the current host - as known by this host</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to receive the host name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">buflen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of buffer <bold>buf</bold> in bytes</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_BUFFER_TOO_SHORT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the buffer <bold>buf</bold> is too short </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="42" column="16" declfile="Source/os-apis/00-export-include/os-apis/host.h" declline="42" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__HOST_1ga78c280fd813beaea5d9347a6d06836fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetHostCPUArch</definition>
+        <argsstring>(OS_HOST_CPU_ARCH_TYPE *arch)</argsstring>
+        <name>OS_GetHostCPUArch</name>
+        <param>
+          <type><ref refid="group__OS__APIS__HOST_1ga0df31212789b90ca6b23a8c008b5c120" kindref="member">OS_HOST_CPU_ARCH_TYPE</ref> *</type>
+          <declname>arch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Query CPU architecture.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">arch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The architecture of this system&apos;s CPU</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="56" column="16" declfile="Source/os-apis/00-export-include/os-apis/host.h" declline="56" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__HOST_1gaa37ee915c47839ad6003f3af61062065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* OS_CPUArchToString</definition>
+        <argsstring>(OS_HOST_CPU_ARCH_TYPE arch)</argsstring>
+        <name>OS_CPUArchToString</name>
+        <param>
+          <type><ref refid="group__OS__APIS__HOST_1ga0df31212789b90ca6b23a8c008b5c120" kindref="member">OS_HOST_CPU_ARCH_TYPE</ref></type>
+          <declname>arch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a string representing a certain CPU arch.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">arch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The architecture to get a string for it</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>read-only</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string representing the CPU arch</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="69" column="12" declfile="Source/os-apis/00-export-include/os-apis/host.h" declline="69" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__HOST_1ga63f243fccfef0a8b6f810c9bbe1af66c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetKernelRelease</definition>
+        <argsstring>(CHAR *buf, USIZE bufsize)</argsstring>
+        <name>OS_GetKernelRelease</name>
+        <param>
+          <type>CHAR *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>bufsize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get kernel release description string.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to receive the release string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bufsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of buffer <bold>buf</bold> in bytes</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="84" column="16" declfile="Source/os-apis/00-export-include/os-apis/host.h" declline="84" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__HOST_1ga0a4d2b855c06ef3c0a12f5c34f858650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetOSName</definition>
+        <argsstring>(CHAR *buf, USIZE bufsize)</argsstring>
+        <name>OS_GetOSName</name>
+        <param>
+          <type>CHAR *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>bufsize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the name of the operating system we&apos;re running on.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to receive the OS name string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bufsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of buffer <bold>buf</bold> in bytes</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="99" column="16" declfile="Source/os-apis/00-export-include/os-apis/host.h" declline="99" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__HOST_1ga2fdf5c40bd8366f41ccddc7a89943a15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetOSVersion</definition>
+        <argsstring>(CHAR *buf, USIZE bufsize)</argsstring>
+        <name>OS_GetOSVersion</name>
+        <param>
+          <type>CHAR *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>bufsize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the version of the operating system we&apos;re running on.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to receive the OS version string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bufsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of buffer <bold>buf</bold> in bytes</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="114" column="16" declfile="Source/os-apis/00-export-include/os-apis/host.h" declline="114" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__HOST_1ga4eab96999f13590e408bd245a23c3f83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_ReadProcessorFrequency</definition>
+        <argsstring>(UINT32 *freq)</argsstring>
+        <name>OS_ReadProcessorFrequency</name>
+        <param>
+          <type>UINT32 *</type>
+          <declname>freq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get CPU processor frequency in MHz.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">freq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency of the CPU</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/host.h" line="128" column="16" declfile="Source/os-apis/00-export-include/os-apis/host.h" declline="128" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_HOST_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_HOST_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_HOST_CPU_ARCH_TYPE_INVALID<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_HOST_CPU_ARCH_TYPE_IA32<sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_HOST_CPU_ARCH_TYPE_INTEL64<sp/>=<sp/>2</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/><ref refid="group__OS__APIS__HOST_1ga0df31212789b90ca6b23a8c008b5c120" kindref="member">OS_HOST_CPU_ARCH_TYPE</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__HOST_1gaa5eea5ebfb007d1e0f818444680f6d2a" kindref="member">OS_GetHostName</ref>(CHAR*<sp/>buf,<sp/>USIZE<sp/>buflen);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__HOST_1ga78c280fd813beaea5d9347a6d06836fb" kindref="member">OS_GetHostCPUArch</ref>(<ref refid="group__OS__APIS__HOST_1ga0df31212789b90ca6b23a8c008b5c120" kindref="member">OS_HOST_CPU_ARCH_TYPE</ref>*<sp/>arch);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="group__OS__APIS__HOST_1gaa37ee915c47839ad6003f3af61062065" kindref="member">OS_CPUArchToString</ref>(<ref refid="group__OS__APIS__HOST_1ga0df31212789b90ca6b23a8c008b5c120" kindref="member">OS_HOST_CPU_ARCH_TYPE</ref><sp/>arch);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__HOST_1ga63f243fccfef0a8b6f810c9bbe1af66c" kindref="member">OS_GetKernelRelease</ref>(CHAR*<sp/>buf,<sp/>USIZE<sp/>bufsize);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__HOST_1ga0a4d2b855c06ef3c0a12f5c34f858650" kindref="member">OS_GetOSName</ref>(CHAR*<sp/>buf,<sp/>USIZE<sp/>bufsize);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__HOST_1ga2fdf5c40bd8366f41ccddc7a89943a15" kindref="member">OS_GetOSVersion</ref>(CHAR*<sp/>buf,<sp/>USIZE<sp/>bufsize);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__HOST_1ga4eab96999f13590e408bd245a23c3f83" kindref="member">OS_ReadProcessorFrequency</ref>(UINT32*<sp/>freq);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>OS_APIS_HOST_H</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/host.h"/>
+  </compounddef>
+</doxygen>

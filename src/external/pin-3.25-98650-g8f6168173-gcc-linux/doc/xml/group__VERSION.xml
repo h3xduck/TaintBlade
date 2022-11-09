@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__VERSION" kind="group">
+    <compoundname>VERSION</compoundname>
+    <title>Pin version information</title>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__VERSION_1gabaed5bda1a4bd5a18e0d8e5d1a6859fb" prot="public" static="no">
+        <name>PIN_PRODUCT_VERSION_MAJOR</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The Pin major version number. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/pin_version.h" line="17" column="9" bodyfile="Source/pin/include/pin_version.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__VERSION_1ga414bdb82b541ba74c8842da87ea45378" prot="public" static="no">
+        <name>PIN_PRODUCT_VERSION_MINOR</name>
+        <initializer>25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The Pin minor version number. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/pin_version.h" line="22" column="9" bodyfile="Source/pin/include/pin_version.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__VERSION_1ga87f2f6a5045fb277848a98dba6496ef7" prot="public" static="no">
+        <name>PIN_BUILD_NUMBER</name>
+        <initializer>98650</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The Pin kit build number. This is unique for every Pin kit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/pin_version.h" line="27" column="9" bodyfile="Source/pin/include/pin_version.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__VERSION_1gad374a8e20ef4a72c7f358bfad00283e5" prot="public" static="no">
+        <name>PIN_COMMIT_HASH</name>
+        <initializer>&quot;8f6168173&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The git hash for this Pin build. This is unique for every Pin kit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/pin_version.h" line="32" column="9" bodyfile="Source/pin/include/pin_version.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="process-core_8h" kind="file" language="C++">
+    <compoundname>process-core.h</compoundname>
+    <includedby refid="process_8h" local="yes">process.h</includedby>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga0b17ba1327ccfea88254c4f756fef977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetPid</definition>
+        <argsstring>(NATIVE_PID *pid)</argsstring>
+        <name>OS_GetPid</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref> *</type>
+          <declname>pid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves the process ID of the current process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process descriptor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process-core.h" line="30" column="16" declfile="Source/os-apis/00-export-include/os-apis/process-core.h" declline="30" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2016-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_PROCESS_CORE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_PROCESS_CORE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__PROCESS_1ga0b17ba1327ccfea88254c4f756fef977" kindref="member">OS_GetPid</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref>*<sp/>pid);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>file<sp/>guard</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/process-core.h"/>
+  </compounddef>
+</doxygen>

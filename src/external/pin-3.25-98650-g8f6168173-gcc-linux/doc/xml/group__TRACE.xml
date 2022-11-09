@@ -1,0 +1,613 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__TRACE" kind="group">
+    <compoundname>TRACE</compoundname>
+    <title>TRACE: Single entrance, multiple exit sequence of instructions</title>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" prot="public" static="no">
+        <type>TRACE_CLASS *</type>
+        <definition>typedef TRACE_CLASS* TRACE</definition>
+        <argsstring></argsstring>
+        <name>TRACE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Container for a trace </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="48" column="21" bodyfile="Source/pin/pin/pin_client.PH" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__TRACE_1gad80d434b4df6285334079c19df32a2e8" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* SMC_CALLBACK) (ADDRINT traceStartAddress, ADDRINT traceEndAddress, VOID *v)</definition>
+        <argsstring>)(ADDRINT traceStartAddress, ADDRINT traceEndAddress, VOID *v)</argsstring>
+        <name>SMC_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call back function when SMC is detected. This function can be registered via TRACE_AddSmcDetectedFunction. The callback delivers the start and end addresses of the TRACE containing the SMC. Using this function can potentially cause Pin to use unlimited memory due to SMC tracking.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">traceStartAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The start address of the trace in which SMC is detected </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">traceEndAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The end address of the trace in which SMC is detected </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="207" column="9" bodyfile="Source/pin/pin/pin_client.PH" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__TRACE_1ga07cee21d7d56284f183d218ef0c7ebfe" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* TRACE_INSTRUMENT_CALLBACK) (TRACE trace, VOID *v)</definition>
+        <argsstring>)(TRACE trace, VOID *v)</argsstring>
+        <name>TRACE_INSTRUMENT_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call back function used to instrument traces </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="375" column="9" bodyfile="Source/pin/pin/pin_client.PH" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__TRACE_1gab2f19ff0a9198c83715eea79ada22503" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK TRACE_AddInstrumentFunction</definition>
+        <argsstring>(TRACE_INSTRUMENT_CALLBACK fun, VOID *val)</argsstring>
+        <name>TRACE_AddInstrumentFunction</name>
+        <param>
+          <type><ref refid="group__TRACE_1ga07cee21d7d56284f183d218ef0c7ebfe" kindref="member">TRACE_INSTRUMENT_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a function used to instrument at trace granularity <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instrumentation function for traces </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>passed as the second argument to the instrumentation function</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="759" column="21" declfile="Source/pin/pin/pin_client.PH" declline="759" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga2b5767a4ce4604d36829a1befa497223" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID TRACE_AddSmcDetectedFunction</definition>
+        <argsstring>(SMC_CALLBACK fun, VOID *val)</argsstring>
+        <name>TRACE_AddSmcDetectedFunction</name>
+        <param>
+          <type><ref refid="group__TRACE_1gad80d434b4df6285334079c19df32a2e8" kindref="member">SMC_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a call back to be called when Pin detects a self modification of code in the application. See <ref refid="group__TRACE_1gad80d434b4df6285334079c19df32a2e8" kindref="member">SMC_CALLBACK</ref> for usage details. <linebreak/>
+ <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The call back function that is to be called </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to be passed to fun when it is called</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT <linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="938" column="13" declfile="Source/pin/pin/pin_client.PH" declline="938" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1gae5340cd88a962aac271e3547cdaa024e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID TRACE_InsertCall</definition>
+        <argsstring>(TRACE trace, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>TRACE_InsertCall</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert one or more analysis calls in a trace.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">trace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The trace to instrument. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies when the analysis call executes: <itemizedlist>
+<listitem><para><computeroutput>IPOINT_BEFORE</computeroutput> inserts the call before the first instruction in the trace. </para>
+</listitem>
+<listitem><para><computeroutput>IPOINT_AFTER</computeroutput> inserts the call after the last instruction in the trace. This call will only execute if execution falls-through (i.e. does not branch). You may only use IPOINT_AFTER if the last instruction in the trace has a fall-through path, which you can find out by using <ref refid="group__TRACE_1ga2134ee647c01b25e4ad20cbbddce5ef1" kindref="member">TRACE_HasFallThrough()</ref>. </para>
+</listitem>
+<listitem><para><computeroutput>IPOINT_ANYWHERE</computeroutput> is like IPOINT_BEFORE, but may put the call on a different instruction for better performance. </para>
+</listitem>
+<listitem><para><computeroutput>IPOINT_TAKEN_BRANCH</computeroutput> inserts a call after each branch in the trace. The call only executes if the trace exits with a taken branch.</para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The analysis function to call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Arguments to pass to <emphasis>funptr</emphasis>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1921" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1921" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga3ce47adf064c67f7289836aa5eabe680" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID TRACE_InsertIfCall</definition>
+        <argsstring>(TRACE trace, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>TRACE_InsertIfCall</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert one or more analysis calls in a trace. If <emphasis>funptr</emphasis> returns a non-zero ADDRINT, then the immediately following &quot;then&quot; analysis call is executed. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">trace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The trace to instrument. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies when the analysis call executes. See the documentation in <ref refid="group__TRACE_1gae5340cd88a962aac271e3547cdaa024e" kindref="member">TRACE_InsertCall()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The analysis function to call. Its return type must be ADDRINT. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Arguments to pass to <emphasis>funptr</emphasis>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1943" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1943" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga88d6254df161fa4aa236e092d8532278" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID TRACE_InsertThenCall</definition>
+        <argsstring>(TRACE trace, IPOINT action, AFUNPTR funptr,...)</argsstring>
+        <name>TRACE_InsertThenCall</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga707ea08e31f44f4a81e2a7766123bad7" kindref="member">IPOINT</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>AFUNPTR</type>
+          <declname>funptr</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert one or more analysis calls in a trace. The functions are called only if the immediately preceding &quot;if&quot; analysis call returns a non-zero value. Note that if <ref refid="group__INST__ARGS_1ga3d1d5f6805cb16d00bce441290ca2212" kindref="member">CALL_ORDER</ref> is used, Both &quot;if&quot; and &quot;then&quot; analysis calls must have the same order.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">trace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The trace to instrument. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies when the analysis call executes. See the documentation in <ref refid="group__TRACE_1gae5340cd88a962aac271e3547cdaa024e" kindref="member">TRACE_InsertCall()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">funptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The analysis function to call. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref>. Arguments to pass to <emphasis>funptr</emphasis>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1965" column="13" declfile="Source/pin/pin/pin_client.PH" declline="1965" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga025844ffbef1e892eed7d7ce46f98138" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BBL</type>
+        <definition>BBL TRACE_BblHead</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_BblHead</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>first bbl of trace</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1975" column="12" declfile="Source/pin/pin/pin_client.PH" declline="1975" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga2466f702bf17676b4d37f728caa0692f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BBL</type>
+        <definition>BBL TRACE_BblTail</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_BblTail</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>last bbl of trace</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1985" column="12" declfile="Source/pin/pin/pin_client.PH" declline="1985" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga35b565f6deabbcd077790219f57daeee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT TRACE_Address</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_Address</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Application address of a trace</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="1995" column="16" declfile="Source/pin/pin/pin_client.PH" declline="1995" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga7c9e933da081232793b8fa60c41c29fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>USIZE</type>
+        <definition>USIZE TRACE_Size</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_Size</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Traces represent contiguous segments of the original code. This function returns the original source footprint of the given trace (not the corresponding post-instrumentation footprint in the code cache). <simplesect kind="return"><para>Original application code size of a trace</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2008" column="14" declfile="Source/pin/pin/pin_client.PH" declline="2008" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga6cfff844c7e29933289b72c06eb92e76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>RTN</type>
+        <definition>RTN TRACE_Rtn</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_Rtn</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>RTN that contains first instruction of trace</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2018" column="12" declfile="Source/pin/pin/pin_client.PH" declline="2018" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga2134ee647c01b25e4ad20cbbddce5ef1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL TRACE_HasFallThrough</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_HasFallThrough</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells if the last instructon in the trace has a fall-through path.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">trace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The trace. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the last instruction in the trace has a fall-through path. see <ref refid="group__INS__INSPECTION_1ga7602edb17e52e209492bab2c65fc1612" kindref="member">INS_HasFallThrough</ref> for more details.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2032" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2032" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga5a531d7dafb583cd686778bcd48a829a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 TRACE_NumBbl</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_NumBbl</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of BBLs in trace</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2042" column="15" declfile="Source/pin/pin/pin_client.PH" declline="2042" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__TRACE_1ga3dd96087b6ca0031aad3cc4989d888ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 TRACE_NumIns</definition>
+        <argsstring>(TRACE trace)</argsstring>
+        <name>TRACE_NumIns</name>
+        <param>
+          <type><ref refid="group__TRACE_1gafbca42a46e490ff446dd4c8e54ea182a" kindref="member">TRACE</ref></type>
+          <declname>trace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of instructions in trace</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2052" column="15" declfile="Source/pin/pin/pin_client.PH" declline="2052" declcolumn="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Sequence of instructions that is always entered at the top and may have multiple exits. If Pin detects a jump to an instruction in the middle of a trace, it will create a new trace beginning at the target. See <ref refid="index_1GRAN" kindref="member">Instrumentation Granularity</ref>.</para>
+<para>Iteration idioms:</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Forward<sp/>pass<sp/>over<sp/>all<sp/>bbls<sp/>in<sp/>a<sp/>trace</highlight></codeline>
+<codeline><highlight class="normal">for(<sp/>BBL<sp/>bbl<sp/>=<sp/>TRACE_BblHead(trace);<sp/>BBL_Valid(bbl);<sp/>bbl<sp/>=<sp/>BBL_Next(bbl)<sp/>)</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

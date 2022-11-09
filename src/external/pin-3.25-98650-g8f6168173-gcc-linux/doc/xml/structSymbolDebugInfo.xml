@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structSymbolDebugInfo" kind="struct" language="C++" prot="public">
+    <compoundname>SymbolDebugInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structSymbolDebugInfo_1adeb7abe9ee10f00dca00b880177f4984" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SymbolDebugInfo::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="926" column="17" bodyfile="Source/pin/pin/image.PH" bodystart="926" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSymbolDebugInfo_1a4cee757c7900af0888e21f0923b156a7" prot="public" static="no" mutable="no">
+        <type><ref refid="classSymbolAddressRange" kindref="compound">SymbolAddressRange</ref></type>
+        <definition>SymbolAddressRange SymbolDebugInfo::range</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="927" column="24" bodyfile="Source/pin/pin/image.PH" bodystart="927" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structSymbolDebugInfo_1af430293b8a0f39563021590c042ebdc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SymbolDebugInfo::SymbolDebugInfo</definition>
+        <argsstring>(std::string sym_name, ADDRINT sym_base, size_t sym_size)</argsstring>
+        <name>SymbolDebugInfo</name>
+        <param>
+          <type>std::string</type>
+          <declname>sym_name</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>sym_base</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>sym_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="924" column="5" bodyfile="Source/pin/pin/image.PH" bodystart="924" bodyend="925"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents debug info for a symbol: symbol name and address range </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>SymbolDebugInfo</label>
+        <link refid="structSymbolDebugInfo"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>range</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>SymbolAddressRange</label>
+        <link refid="classSymbolAddressRange"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/pin/image.PH" line="923" column="1" bodyfile="Source/pin/pin/image.PH" bodystart="922" bodyend="928"/>
+    <listofallmembers>
+      <member refid="structSymbolDebugInfo_1adeb7abe9ee10f00dca00b880177f4984" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>name</name></member>
+      <member refid="structSymbolDebugInfo_1a4cee757c7900af0888e21f0923b156a7" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>range</name></member>
+      <member refid="structSymbolDebugInfo_1af430293b8a0f39563021590c042ebdc7" prot="public" virt="non-virtual"><scope>SymbolDebugInfo</scope><name>SymbolDebugInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

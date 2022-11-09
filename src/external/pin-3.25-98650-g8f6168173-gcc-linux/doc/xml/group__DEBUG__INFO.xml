@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__DEBUG__INFO" kind="group">
+    <compoundname>DEBUG_INFO</compoundname>
+    <title>DBG: Debugging using Pin</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__DEBUG__INFO_1ga93af3d3077f131cb1e997c0a1436c433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PIN_GetSourceLocation</definition>
+        <argsstring>(ADDRINT address, INT32 *column, INT32 *line, std::string *fileName)</argsstring>
+        <name>PIN_GetSourceLocation</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>INT32 *</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>INT32 *</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>fileName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>PIN support for debugging information</para>
+<para>Find the line number, file, and column number corresponding to a memory address.</para>
+<para><bold>Linux:</bold> Compile your program with -g to include line number information. Pin can only read dwarf4 information. If you using compiler which generates more advanced format, please use -gdwarf-4 flag to generate dwarf4 debugging information.</para>
+<para><bold>macOS*</bold>: Compile your program with -g to include line number information. Pin can only read dwarf4 information. If you using compiler which generates more advanced format, please use -gdwarf-4 flag to generate dwarf4 debugging information.</para>
+<para><bold>Windows:</bold> Executable/dll has to have program data base (.pdb) file in order to support this API.</para>
+<para>This function can be used in any thread, including any internal thread spawned by the tool.</para>
+<para><simplesect kind="note"><para>In analysis routines, Client Lock should be obtained before calling this function<linebreak/>
+ </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The code address to lookup. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">column</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If column is non-zero, *column is set to the column number. Column number 0 indicates that there is no valid column information. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If line is non-zero, *line is set to the line number. Line number 0 indicates that there is no valid line information. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If fileName is non-zero, *fileName is set to the file name. Empty string (&quot;&quot;) indicates that there is no valid file name information. File names are encoded in UTF8 (a superset of ASCII), this is supported for Linux (only for locales encoded in UTF8) and Windows</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debug.PH" line="48" column="13" declfile="Source/pin/pin/debug.PH" declline="48" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Access the debug information contained in an elf binary. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

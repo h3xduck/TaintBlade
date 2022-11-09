@@ -1,0 +1,717 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structEXCEPTION__INFO" kind="struct" language="C++" prot="public">
+    <compoundname>EXCEPTION_INFO</compoundname>
+    <innerclass refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+        <definition>EXCEPTION_CODE EXCEPTION_INFO::m_exceptCode</definition>
+        <argsstring></argsstring>
+        <name>m_exceptCode</name>
+        <briefdescription>
+<para>Exception code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="374" column="20" bodyfile="Source/pin/base/exception.PH" bodystart="374" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEXCEPTION__INFO_1a47387b0466f5484c7a1ad07455101ce5" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT EXCEPTION_INFO::m_exceptAddress</definition>
+        <argsstring></argsstring>
+        <name>m_exceptAddress</name>
+        <briefdescription>
+<para>Address of the faulty instruction. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="375" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEXCEPTION__INFO_1a2b83373f170bfdc14a5e49c63dceee02" prot="public" static="no" mutable="no">
+        <type>union <ref refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC" kindref="compound">EXCEPTION_INFO::EXCEPTION_SPECIFIC</ref></type>
+        <definition>union EXCEPTION_INFO::EXCEPTION_SPECIFIC EXCEPTION_INFO::m_specific</definition>
+        <argsstring></argsstring>
+        <name>m_specific</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="399" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a4fb6bf3f8ea8229baa273e032f9189b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> &amp;</type>
+        <definition>EXCEPTION_INFO&amp; EXCEPTION_INFO::Init</definition>
+        <argsstring>(EXCEPTION_CODE exceptCode, ADDRINT exceptAddress)</argsstring>
+        <name>Init</name>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize this structure with the given generic exception&apos;s attributes. Set &quot;unknown&quot; state for all exception-specific attributes. This function is useful when the specified exception code does not require any additional exception information or such information is not available. The function can not be used to initialize EXCEPTCODE_WINDOWS exception information. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to this structure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="177" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a7112da340c116d867ced906a462c111d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+        <definition>EXCEPTION_CODE EXCEPTION_INFO::GetExceptCode</definition>
+        <argsstring>() const</argsstring>
+        <name>GetExceptCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The code of the exception </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="182" column="20" bodyfile="Source/pin/base/exception.PH" bodystart="182" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1aae3221bcff018059b529a8661d48e0ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref></type>
+        <definition>EXCEPTION_CLASS EXCEPTION_INFO::GetExceptClass</definition>
+        <argsstring>() const</argsstring>
+        <name>GetExceptClass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="188" column="21" bodyfile="Source/pin/base/exception.PH" bodystart="188" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ada9c451b449df35e664978423dc24d9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT EXCEPTION_INFO::GetExceptAddress</definition>
+        <argsstring>() const</argsstring>
+        <name>GetExceptAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The address of the instruction that caused the exception </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="193" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="193" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a9c4fe1253941020fb71d25e4142e8b08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID EXCEPTION_INFO::SetExceptAddress</definition>
+        <argsstring>(ADDRINT exceptAddress)</argsstring>
+        <name>SetExceptAddress</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the address of the instruction that caused the exception </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="198" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="198" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1aa9b29e1688e91d306f3a227efb3c760d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL EXCEPTION_INFO::IsTrap</definition>
+        <argsstring>() const</argsstring>
+        <name>IsTrap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="207" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="207" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ae6535f5fb7abc23493d21bae10dc76e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID EXCEPTION_INFO::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove the exception information and initialize this structure as empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="212" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="212" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ad1b2a3697f708b96b364adcf8b53eaf1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL EXCEPTION_INFO::IsEmpty</definition>
+        <argsstring>() const</argsstring>
+        <name>IsEmpty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE, if this structure has been reset and does not contain a valid exception information. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="222" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="222" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a4ffee372f31729a3dbd7397387c1e065" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EXCEPTION_INFO::ToString</definition>
+        <argsstring>() const</argsstring>
+        <name>ToString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The string representation of this structure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="227" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a9d52fee2a695eba0ae8b28ac017e05f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EXCEPTION_INFO::GetCodeAsString</definition>
+        <argsstring>() const</argsstring>
+        <name>GetCodeAsString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The name of the exception&apos;s code. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="232" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a38805e75e4e010221d53bfaaeb7f1d21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> &amp;</type>
+        <definition>EXCEPTION_INFO&amp; EXCEPTION_INFO::InitAccessFault</definition>
+        <argsstring>(EXCEPTION_CODE exceptCode, ADDRINT exceptAddress, ADDRINT accessAddress, FAULTY_ACCESS_TYPE accessType=FAULTY_ACCESS_TYPE_UNKNOWN)</argsstring>
+        <name>InitAccessFault</name>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>accessAddress</declname>
+        </param>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></type>
+          <declname>accessType</declname>
+          <defval><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" kindref="member">FAULTY_ACCESS_TYPE_UNKNOWN</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize this structure with the given attributes of an EXCEPTCLASS_ACCESS_FAULT exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code that specifies an EXCEPTCLASS_ACCESS_FAULT exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">accessAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the faulty memory access </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">accessType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the faulty memory access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to this structure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="249" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ae45e5395edf678fb9a5a41a1d5d716b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL EXCEPTION_INFO::IsAccessFault</definition>
+        <argsstring>() const</argsstring>
+        <name>IsAccessFault</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if this structure describes an EXCEPTCLASS_ACCESS_FAULT exception </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="255" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="255" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a528a40f4a85cf843d5cd26917b241c29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></type>
+        <definition>FAULTY_ACCESS_TYPE EXCEPTION_INFO::GetFaultyAccessType</definition>
+        <argsstring>() const</argsstring>
+        <name>GetFaultyAccessType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The type of the faulty memory access. </para>
+</simplesect>
+<simplesect kind="pre"><para>This structure should describe an EXCEPTCLASS_ACCESS_FAULT exception. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="261" column="24" bodyfile="Source/pin/base/exception.PH" bodystart="261" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ab11437acdf248440905bd0df51790b1f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL EXCEPTION_INFO::GetFaultyAccessAddress</definition>
+        <argsstring>(ADDRINT *pAccessAddress) const</argsstring>
+        <name>GetFaultyAccessAddress</name>
+        <param>
+          <type>ADDRINT *</type>
+          <declname>pAccessAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the address of the faulty memory access, if known. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pAccessAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional pointer to variable that receives the address of the faulty memory access, if known. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE, if the address of the faulty memory access is known </para>
+</simplesect>
+<simplesect kind="pre"><para>This structure should describe an EXCEPTCLASS_ACCESS_FAULT exception. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="274" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="274" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1afbd475c28638e7f4c9f79e8d2a0af02d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> &amp;</type>
+        <definition>EXCEPTION_INFO&amp; EXCEPTION_INFO::InitMultipleFpError</definition>
+        <argsstring>(EXCEPTION_CODE exceptCode, ADDRINT exceptAddress, UINT32 fpErrors)</argsstring>
+        <name>InitMultipleFpError</name>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>fpErrors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize this structure with the given attributes of an EXCEPTCLASS_MULTIPLE_FP_ERROR exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code that specifies an EXCEPTCLASS_MULTIPLE_FP_ERROR exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fpErrors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>bit mask of FP exception codes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to this structure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="294" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a44b7910ae3dd9c08c682631026fcf282" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL EXCEPTION_INFO::IsMultipleFpException</definition>
+        <argsstring>() const</argsstring>
+        <name>IsMultipleFpException</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if this structure describes an EXCEPTCLASS_MULTIPLE_FP_ERROR exception </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="299" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="299" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ac0bd73e9df35745a389be48f5487fb17" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 EXCEPTION_INFO::GetFpErrors</definition>
+        <argsstring>() const</argsstring>
+        <name>GetFpErrors</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The exception&apos;s bit mask of FP exception codes. </para>
+</simplesect>
+<simplesect kind="pre"><para>This structure should describe an EXCEPTCLASS_MULTIPLE_FP_ERROR exception. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="305" column="12" bodyfile="Source/pin/base/exception.PH" bodystart="305" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ad487eb0b376e3e4fe8a7d0919f7aa367" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> &amp;</type>
+        <definition>EXCEPTION_INFO&amp; EXCEPTION_INFO::InitWindowsSysException</definition>
+        <argsstring>(UINT32 sysExceptCode, ADDRINT exceptAddress, UINT32 numArgs=0, const ADDRINT *pArgs=0)</argsstring>
+        <name>InitWindowsSysException</name>
+        <param>
+          <type>UINT32</type>
+          <declname>sysExceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>numArgs</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const ADDRINT *</type>
+          <declname>pArgs</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize this structure with the given attributes of an EXCEPTCODE_WINDOWS exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">sysExceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the system exception code </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">numArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of arguments in the [pArgs] array. The number should not exceed the MAX_WINDOWS_EXCEPTION_ARGS value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">pArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an array of arguments associated with the exception or NULL if the number of arguments is zero </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reference to this structure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="327" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1ac6f9438e48e55111ed6165d34b1eb313" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL EXCEPTION_INFO::IsWindowsSysException</definition>
+        <argsstring>() const</argsstring>
+        <name>IsWindowsSysException</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if this structure describes an EXCEPTCODE_WINDOWS exception </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="333" column="10" bodyfile="Source/pin/base/exception.PH" bodystart="333" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1abaecaeadee779f7d1334621e99a84bb4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 EXCEPTION_INFO::GetWindowsSysExceptionCode</definition>
+        <argsstring>() const</argsstring>
+        <name>GetWindowsSysExceptionCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The Windows system exception code </para>
+</simplesect>
+<simplesect kind="pre"><para>This structure should describe an EXCEPTCODE_WINDOWS exception. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="339" column="12" bodyfile="Source/pin/base/exception.PH" bodystart="339" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a090824e5eb2652c3b7e7bf94adc473c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 EXCEPTION_INFO::CountWindowsSysArguments</definition>
+        <argsstring>() const</argsstring>
+        <name>CountWindowsSysArguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The number of arguments associated with the Windows system exception </para>
+</simplesect>
+<simplesect kind="pre"><para>This structure should describe an EXCEPTCODE_WINDOWS exception. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="349" column="12" bodyfile="Source/pin/base/exception.PH" bodystart="349" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1afd8273665be270fb1aa651b7bebda4d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT EXCEPTION_INFO::GetWindowsSysArgument</definition>
+        <argsstring>(UINT32 argNum) const</argsstring>
+        <name>GetWindowsSysArgument</name>
+        <param>
+          <type>UINT32</type>
+          <declname>argNum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the specified Windows system exception&apos;s argument. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">argNum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ordinal number of the argument to be retrieved, starting from zero. The value of this parameter should not exceed the value returned by the <ref refid="structEXCEPTION__INFO_1a090824e5eb2652c3b7e7bf94adc473c6" kindref="member">CountWindowsSysArguments()</ref> function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the specified system exception&apos;s argument </para>
+</simplesect>
+<simplesect kind="pre"><para>This structure should describe an EXCEPTCODE_WINDOWS exception. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="363" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="363" bodyend="368"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structEXCEPTION__INFO_1aa4b023cc1d11ff1e1bc46a63efb434bb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref></type>
+        <definition>static EXCEPTION_CLASS EXCEPTION_INFO::GetExceptClass</definition>
+        <argsstring>(EXCEPTION_CODE exceptCode)</argsstring>
+        <name>GetExceptClass</name>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The class of the exception </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="187" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="structEXCEPTION__INFO_1a4ee10f26486e14ff0b93dfbc785cc8d3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>static BOOL EXCEPTION_INFO::IsTrap</definition>
+        <argsstring>(EXCEPTION_CODE exceptCode)</argsstring>
+        <name>IsTrap</name>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if the specified exception is a trap. Traps are reported in the context that represents state of registers after executing the instruction that caused the trap. The exception address and the value of the PC register in the trap context are different. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="206" column="17"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Structure (POD) that describes an exception </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="6">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC::WINDOWS_SYS</label>
+        <link refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS"/>
+      </node>
+      <node id="4">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</label>
+        <link refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>m_address</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>OPTIONAL_VALUE&lt; ADDRINT &gt;</label>
+        <link refid="structOPTIONAL__VALUE"/>
+      </node>
+      <node id="3">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP</label>
+        <link refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP"/>
+      </node>
+      <node id="2">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC</label>
+        <link refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_multipleFp</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_access</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>m_winsys</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EXCEPTION_INFO</label>
+        <link refid="structEXCEPTION__INFO"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_specific</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/exception.PH" line="162" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="161" bodyend="400"/>
+    <listofallmembers>
+      <member refid="structEXCEPTION__INFO_1a090824e5eb2652c3b7e7bf94adc473c6" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>CountWindowsSysArguments</name></member>
+      <member refid="structEXCEPTION__INFO_1a9d52fee2a695eba0ae8b28ac017e05f2" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetCodeAsString</name></member>
+      <member refid="structEXCEPTION__INFO_1ada9c451b449df35e664978423dc24d9e" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetExceptAddress</name></member>
+      <member refid="structEXCEPTION__INFO_1aa4b023cc1d11ff1e1bc46a63efb434bb" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetExceptClass</name></member>
+      <member refid="structEXCEPTION__INFO_1aae3221bcff018059b529a8661d48e0ac" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetExceptClass</name></member>
+      <member refid="structEXCEPTION__INFO_1a7112da340c116d867ced906a462c111d" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetExceptCode</name></member>
+      <member refid="structEXCEPTION__INFO_1ab11437acdf248440905bd0df51790b1f" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetFaultyAccessAddress</name></member>
+      <member refid="structEXCEPTION__INFO_1a528a40f4a85cf843d5cd26917b241c29" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetFaultyAccessType</name></member>
+      <member refid="structEXCEPTION__INFO_1ac0bd73e9df35745a389be48f5487fb17" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetFpErrors</name></member>
+      <member refid="structEXCEPTION__INFO_1afd8273665be270fb1aa651b7bebda4d1" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetWindowsSysArgument</name></member>
+      <member refid="structEXCEPTION__INFO_1abaecaeadee779f7d1334621e99a84bb4" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>GetWindowsSysExceptionCode</name></member>
+      <member refid="structEXCEPTION__INFO_1a4fb6bf3f8ea8229baa273e032f9189b4" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>Init</name></member>
+      <member refid="structEXCEPTION__INFO_1a38805e75e4e010221d53bfaaeb7f1d21" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>InitAccessFault</name></member>
+      <member refid="structEXCEPTION__INFO_1afbd475c28638e7f4c9f79e8d2a0af02d" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>InitMultipleFpError</name></member>
+      <member refid="structEXCEPTION__INFO_1ad487eb0b376e3e4fe8a7d0919f7aa367" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>InitWindowsSysException</name></member>
+      <member refid="structEXCEPTION__INFO_1ae45e5395edf678fb9a5a41a1d5d716b5" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>IsAccessFault</name></member>
+      <member refid="structEXCEPTION__INFO_1ad1b2a3697f708b96b364adcf8b53eaf1" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>IsEmpty</name></member>
+      <member refid="structEXCEPTION__INFO_1a44b7910ae3dd9c08c682631026fcf282" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>IsMultipleFpException</name></member>
+      <member refid="structEXCEPTION__INFO_1a4ee10f26486e14ff0b93dfbc785cc8d3" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>IsTrap</name></member>
+      <member refid="structEXCEPTION__INFO_1aa9b29e1688e91d306f3a227efb3c760d" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>IsTrap</name></member>
+      <member refid="structEXCEPTION__INFO_1ac6f9438e48e55111ed6165d34b1eb313" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>IsWindowsSysException</name></member>
+      <member refid="structEXCEPTION__INFO_1a47387b0466f5484c7a1ad07455101ce5" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>m_exceptAddress</name></member>
+      <member refid="structEXCEPTION__INFO_1a49e056b659b28d0700a6ea5c8a80592c" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>m_exceptCode</name></member>
+      <member refid="structEXCEPTION__INFO_1a2b83373f170bfdc14a5e49c63dceee02" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>m_specific</name></member>
+      <member refid="structEXCEPTION__INFO_1ae6535f5fb7abc23493d21bae10dc76e3" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>Reset</name></member>
+      <member refid="structEXCEPTION__INFO_1a9c4fe1253941020fb71d25e4142e8b08" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>SetExceptAddress</name></member>
+      <member refid="structEXCEPTION__INFO_1a4ffee372f31729a3dbd7397387c1e065" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO</scope><name>ToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

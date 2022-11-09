@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structPARG__T" kind="struct" language="C++" prot="public">
+    <compoundname>PARG_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPARG__T_1a2546235b6ad4e76be7cf23291d319642" prot="public" static="no" mutable="no">
+        <type><ref refid="group__PROTO_1ga59e26fa7c51d677aaac419e05bfb1305" kindref="member">PARG_TYPE</ref></type>
+        <definition>PARG_TYPE PARG_T::_parg</definition>
+        <argsstring></argsstring>
+        <name>_parg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="553" column="15" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="553" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPARG__T_1a1c12a0d9a4427098b169c63bada3c5cc" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t PARG_T::_size</definition>
+        <argsstring></argsstring>
+        <name>_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="554" column="12" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="554" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="552" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="551" bodyend="555"/>
+    <listofallmembers>
+      <member refid="structPARG__T_1a2546235b6ad4e76be7cf23291d319642" prot="public" virt="non-virtual"><scope>PARG_T</scope><name>_parg</name></member>
+      <member refid="structPARG__T_1a1c12a0d9a4427098b169c63bada3c5cc" prot="public" virt="non-virtual"><scope>PARG_T</scope><name>_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

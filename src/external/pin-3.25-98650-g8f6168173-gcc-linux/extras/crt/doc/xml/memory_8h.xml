@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="memory_8h" kind="file" language="C++">
+    <compoundname>memory.h</compoundname>
+    <innerclass refid="structOS__MEMORY__AT__ADDR__INFORMATION" prot="public">OS_MEMORY_AT_ADDR_INFORMATION</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__OS__APIS__MEMORY_1ga8b1f83ef2e6ff5fd685c9beb6249fbec" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_PAGE_PROTECTION_TYPE</name>
+        <enumvalue id="group__OS__APIS__MEMORY_1gga8b1f83ef2e6ff5fd685c9beb6249fbeca4663112109b22d45b26ac974f0d8a967" prot="public">
+          <name>OS_PAGE_PROTECTION_TYPE_NOACCESS</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__MEMORY_1gga8b1f83ef2e6ff5fd685c9beb6249fbeca88cc7782d00d6d7d0ab9e1e0f50fb9f1" prot="public">
+          <name>OS_PAGE_PROTECTION_TYPE_READ</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__MEMORY_1gga8b1f83ef2e6ff5fd685c9beb6249fbeca3e847d46cb38b764c4119e29fb2c1c02" prot="public">
+          <name>OS_PAGE_PROTECTION_TYPE_WRITE</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__MEMORY_1gga8b1f83ef2e6ff5fd685c9beb6249fbeca719986f343b696fb720b10b27f95c51c" prot="public">
+          <name>OS_PAGE_PROTECTION_TYPE_EXECUTE</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__MEMORY_1gga8b1f83ef2e6ff5fd685c9beb6249fbeca0ac48b1df58b3b28c9125e5eee56f14f" prot="public">
+          <name>OS_PAGE_PROTECTION_TYPE_GUARD</name>
+          <initializer>= (1 &lt;&lt; 3)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Page protection types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="21" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="20" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__OS__APIS__MEMORY_1gac040a9da8f2a5ffbefe23e96a14b97f3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>OS_MEMORY_FLAGS</name>
+        <enumvalue id="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3ae03e654a5ec0b7b46ce676a877ae9a58" prot="public">
+          <name>OS_MEMORY_FLAGS_PRIVATE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>The memory should be private to the process. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3ae650122f14758006ab0d3566e3b50eb6" prot="public">
+          <name>OS_MEMORY_FLAGS_FIXED_ADDRESS</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+<para>The memory should be mapped exactly at the specified address. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3a911ef878523ce89b1ff21f883b66a251" prot="public">
+          <name>OS_MEMORY_FLAGS_STACK</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+<para>The memory should be mapped as stack (grows down). </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3a94c6b592e34b15103e0b48f4563d89c7" prot="public">
+          <name>OS_MEMORY_FLAGS_SHARED</name>
+          <initializer>= (1 &lt;&lt; 3)</initializer>
+          <briefdescription>
+<para>The memory might be shared among processes. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flags for memory mapping. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="45" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="44" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__MEMORY_1ga292fe0be7839ed9cc970254d288bb199" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_AllocateMemory</definition>
+        <argsstring>(NATIVE_PID processId, UINT protectionType, USIZE size, OS_MEMORY_FLAGS flags, VOID **base)</argsstring>
+        <name>OS_AllocateMemory</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>processId</declname>
+        </param>
+        <param>
+          <type>UINT</type>
+          <declname>protectionType</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__MEMORY_1gac040a9da8f2a5ffbefe23e96a14b97f3" kindref="member">OS_MEMORY_FLAGS</ref></type>
+          <declname>flags</declname>
+        </param>
+        <param>
+          <type>VOID **</type>
+          <declname>base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allocates <bold>size</bold> bytes of memory in the process identified by <bold>processId</bold> with <ref refid="group__OS__APIS__MEMORY_1ga8b1f83ef2e6ff5fd685c9beb6249fbec" kindref="member"><bold>protectionType</bold> protection</ref>.</para>
+<para><simplesect kind="warning"><para>If <bold>base</bold> is not null, will try to allocate at that address, otherwise will fail!</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">processId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PID of the target process </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">protectionType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>or&apos;ed <ref refid="group__OS__APIS__MEMORY_1ga8b1f83ef2e6ff5fd685c9beb6249fbec" kindref="member">protection options</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of memory to allocate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Properties of the region to allocate. This is a bitwise OR of the enum values in OS_MEMORY_FLAGS. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>in: Target memory address<linebreak/>
+ out: Where the memory was allocated</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_MEMORY_MAP_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="remark"><para><bold>Unix:</bold> <linebreak/>
+ The processId is irrelevant as it is only applicable on the current process.<linebreak/>
+ On Unix system, memory can only be allocated for the calling process.<linebreak/>
+ The given pid is expected to be that of the current process. Hence the behavior of this function in case &apos;processId&apos; is not of the current process is not defined. <bold>Windows:</bold> <linebreak/>
+ Windows supports memory allocation on a different process on a single syscall.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="84" column="16" declfile="Source/os-apis/00-export-include/os-apis/memory.h" declline="84" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MEMORY_1ga8e79ecf1778b1d8e8488f15a28b1caea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_MapFileToMemory</definition>
+        <argsstring>(NATIVE_PID processId, UINT protectionType, USIZE size, OS_MEMORY_FLAGS flags, NATIVE_FD fd, UINT64 offset, VOID **base)</argsstring>
+        <name>OS_MapFileToMemory</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>processId</declname>
+        </param>
+        <param>
+          <type>UINT</type>
+          <declname>protectionType</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__MEMORY_1gac040a9da8f2a5ffbefe23e96a14b97f3" kindref="member">OS_MEMORY_FLAGS</ref></type>
+          <declname>flags</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref></type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>UINT64</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type>VOID **</type>
+          <declname>base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps a file into memory, similar to mmap (see man page of mmap(2)).</para>
+<para><simplesect kind="warning"><para>If <bold>base</bold> is not null, will try to allocate at that address, otherwise will fail!</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">processId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PID of the target process </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">protectionType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>or&apos;ed <ref refid="group__OS__APIS__MEMORY_1ga8b1f83ef2e6ff5fd685c9beb6249fbec" kindref="member">protection options</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bytes of memory to allocate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Properties of the region to allocate. This is a bitwise OR of the enum values in OS_MEMORY_FLAGS. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File descriptor of the file that we want to map to memory. This argument can be INVALID_NATIVE_FD if one wants to map an anonymous file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bytes offset in the file to start mapping from. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>in: Target memory address<linebreak/>
+ out: Where the memory was allocated</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_MEMORY_MAP_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="remark"><para><bold>Unix:</bold> <linebreak/>
+ The processId is irrelevant as it is only applicable on the current process.<linebreak/>
+ On Unix system, files can be mapped only in the calling process memory space.<linebreak/>
+ The given pid is expected to be that of the current process.<linebreak/>
+ Hence the behavior of this function in case &apos;processId&apos; is not of the current process is not defined. <bold>Windows:</bold> <linebreak/>
+ Windows supports file mapping on a different process memory space.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="121" column="16" declfile="Source/os-apis/00-export-include/os-apis/memory.h" declline="121" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MEMORY_1gaa54a94130bdeef23bf5e9b4666e6c430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_FreeMemory</definition>
+        <argsstring>(NATIVE_PID processId, VOID *base, USIZE size)</argsstring>
+        <name>OS_FreeMemory</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>processId</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free&apos;s <bold>size</bold> bytes of memory at <bold>base</bold> address in the process identified by <bold>processId</bold>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">processId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PID of the target process </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target memory address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bytes of memory to free</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_MEMORY_FREE_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="remark"><para><bold>Unix:</bold> <linebreak/>
+ The processId is irrelevant as it is only applicable on the current process. <linebreak/>
+ On Unix system, memory can only be released in the current process.<linebreak/>
+ The given pid is expected to be that of the current process. Hence the behavior of this function in case &apos;processId&apos; is not of the current process is not defined. <bold>Windows:</bold> <linebreak/>
+ Windows supports memory deallocation on a different process.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="148" column="16" declfile="Source/os-apis/00-export-include/os-apis/memory.h" declline="148" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MEMORY_1gaa76c49aabf3c8fdbfca2bf7a1d52a15e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetPageSize</definition>
+        <argsstring>(USIZE *size)</argsstring>
+        <name>OS_GetPageSize</name>
+        <param>
+          <type>USIZE *</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Query the system page size.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>System page size</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="162" column="16" declfile="Source/os-apis/00-export-include/os-apis/memory.h" declline="162" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MEMORY_1ga66948315f215e7db3099719f7c81df3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_QueryMemory</definition>
+        <argsstring>(NATIVE_PID processId, VOID *memoryAddr, OS_MEMORY_AT_ADDR_INFORMATION *info)</argsstring>
+        <name>OS_QueryMemory</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>processId</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>memoryAddr</declname>
+        </param>
+        <param>
+          <type><ref refid="structOS__MEMORY__AT__ADDR__INFORMATION" kindref="compound">OS_MEMORY_AT_ADDR_INFORMATION</ref> *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves the information on the memory block containing <bold>memoryAddr</bold>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">processId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PID of the target process </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">memoryAddr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target memory address. This memory address can reside inside the page. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address information On Unix, if there is no mapped memory block that contains <bold>memoryAddr</bold> the next mapped memory block will be returned. If no such mapped memory block exists, an empty memory block will be returned On Windows, we return the containing memory block regardless if it is mapped or not.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="remark"><para><bold>Unix:</bold> <linebreak/>
+ The processId is irrelevant as it is only applicable on the current process. <linebreak/>
+ On Unix system, memory can only be queried for the current process.<linebreak/>
+ The given pid is expected to be that of the current process. Hence the behavior of this function in case &apos;processId&apos; is not of the current process is not defined.<linebreak/>
+ <bold>Windows:</bold> <linebreak/>
+ Windows supports memory query on a different process memory space.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS* <linebreak/>
+ <bold>CPU:</bold> All <linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="193" column="16" declfile="Source/os-apis/00-export-include/os-apis/memory.h" declline="193" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__MEMORY_1ga735acbcf7139e9d3a45988005a98854d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_ProtectMemory</definition>
+        <argsstring>(NATIVE_PID processId, VOID *base, USIZE size, UINT newProtectionType)</argsstring>
+        <name>OS_ProtectMemory</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>processId</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>UINT</type>
+          <declname>newProtectionType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes protection for the target process&apos;s memory page(s) containing any part of the address range in the interval [base, base+size-1]. base must be aligned to a page boundary.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">processId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PID of the target process </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the starting page - must be page aligned. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bytes of the region to change protection - must be multiple of page size. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">newProtectionType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new protection mode</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_MEMORY_PROTECT_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Unix:</bold> <linebreak/>
+ The processId is irrelevant as it is only applicable on the current process. <linebreak/>
+ On Unix system, memory protection can only be changed for the current process&apos; memory space.<linebreak/>
+ The given pid is expected to be that of the current process. Hence the behavior of this function in case &apos;processId&apos; is not of the current process is not defined. <bold>Windows:</bold> <linebreak/>
+ Windows supports memory protection change on a different process memory space.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="221" column="16" declfile="Source/os-apis/00-export-include/os-apis/memory.h" declline="221" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2013-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_MEMORY_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_MEMORY_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PAGE_PROTECTION_TYPE_NOACCESS<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PAGE_PROTECTION_TYPE_READ<sp/><sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>0),</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PAGE_PROTECTION_TYPE_WRITE<sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>1),</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PAGE_PROTECTION_TYPE_EXECUTE<sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>2),</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_PAGE_PROTECTION_TYPE_GUARD<sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>3)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}<sp/><ref refid="group__OS__APIS__MEMORY_1ga8b1f83ef2e6ff5fd685c9beb6249fbec" kindref="member">OS_PAGE_PROTECTION_TYPE</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="structOS__MEMORY__AT__ADDR__INFORMATION" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>VOID*<sp/>BaseAddress;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>USIZE<sp/>MapSize;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT<sp/>Shared;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__OS__APIS__MEMORY_1ga8b1f83ef2e6ff5fd685c9beb6249fbec" kindref="member">OS_PAGE_PROTECTION_TYPE</ref><sp/>Protection;<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT<sp/>Type;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}<sp/><ref refid="structOS__MEMORY__AT__ADDR__INFORMATION" kindref="compound">OS_MEMORY_AT_ADDR_INFORMATION</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3ae03e654a5ec0b7b46ce676a877ae9a58" kindref="member">OS_MEMORY_FLAGS_PRIVATE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3ae650122f14758006ab0d3566e3b50eb6" kindref="member">OS_MEMORY_FLAGS_FIXED_ADDRESS</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>0),<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3a911ef878523ce89b1ff21f883b66a251" kindref="member">OS_MEMORY_FLAGS_STACK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>1),<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__OS__APIS__MEMORY_1ggac040a9da8f2a5ffbefe23e96a14b97f3a94c6b592e34b15103e0b48f4563d89c7" kindref="member">OS_MEMORY_FLAGS_SHARED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>3)<sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="group__OS__APIS__MEMORY_1gac040a9da8f2a5ffbefe23e96a14b97f3" kindref="member">OS_MEMORY_FLAGS</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__MEMORY_1ga292fe0be7839ed9cc970254d288bb199" kindref="member">OS_AllocateMemory</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref><sp/>processId,<sp/>UINT<sp/>protectionType,<sp/>USIZE<sp/>size,<sp/><ref refid="group__OS__APIS__MEMORY_1gac040a9da8f2a5ffbefe23e96a14b97f3" kindref="member">OS_MEMORY_FLAGS</ref><sp/>flags,<sp/>VOID**<sp/>base);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__MEMORY_1ga8e79ecf1778b1d8e8488f15a28b1caea" kindref="member">OS_MapFileToMemory</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref><sp/>processId,<sp/>UINT<sp/>protectionType,<sp/>USIZE<sp/>size,<sp/><ref refid="group__OS__APIS__MEMORY_1gac040a9da8f2a5ffbefe23e96a14b97f3" kindref="member">OS_MEMORY_FLAGS</ref><sp/>flags,<sp/><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref><sp/>fd,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT64<sp/>offset,<sp/>VOID**<sp/>base);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__MEMORY_1gaa54a94130bdeef23bf5e9b4666e6c430" kindref="member">OS_FreeMemory</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref><sp/>processId,<sp/>VOID*<sp/>base,<sp/>USIZE<sp/>size);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__MEMORY_1gaa76c49aabf3c8fdbfca2bf7a1d52a15e" kindref="member">OS_GetPageSize</ref>(USIZE*<sp/>size);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__MEMORY_1ga66948315f215e7db3099719f7c81df3d" kindref="member">OS_QueryMemory</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref><sp/>processId,<sp/>VOID*<sp/>memoryAddr,<sp/><ref refid="structOS__MEMORY__AT__ADDR__INFORMATION" kindref="compound">OS_MEMORY_AT_ADDR_INFORMATION</ref>*<sp/>info);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__MEMORY_1ga735acbcf7139e9d3a45988005a98854d" kindref="member">OS_ProtectMemory</ref>(<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref><sp/>processId,<sp/>VOID*<sp/>base,<sp/>USIZE<sp/>size,<sp/>UINT<sp/>newProtectionType);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>file<sp/>guard</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/memory.h"/>
+  </compounddef>
+</doxygen>

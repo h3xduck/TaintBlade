@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_06ee81fe34f2a11272bc81e4e56bbf9a" kind="dir">
+    <compoundname>include</compoundname>
+    <innerfile refid="00pin__user__doxygen_8H">00pin_user_doxygen.H</innerfile>
+    <innerfile refid="level__base_8H">level_base.H</innerfile>
+    <innerfile refid="pin-errtype_8h">pin-errtype.h</innerfile>
+    <innerfile refid="pin__version_8h">pin_version.h</innerfile>
+    <innerfile refid="types__vmapi_8PH">types_vmapi.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/include/"/>
+  </compounddef>
+</doxygen>

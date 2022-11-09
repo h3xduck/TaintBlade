@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__OS__APIS__TIME" kind="group">
+    <compoundname>OS_APIS_TIME</compoundname>
+    <title>Time</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__TIME_1gacec6776bbde1899ac0c0d56745b0a0d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Time</definition>
+        <argsstring>(UINT64 *CurrentTime)</argsstring>
+        <name>OS_Time</name>
+        <param>
+          <type>UINT64 *</type>
+          <declname>CurrentTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves current time in 1us ticks since 1970.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">CurrentTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current time</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_TIME_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/time.h" line="30" column="16" declfile="Source/os-apis/00-export-include/os-apis/time.h" declline="30" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__TIME_1ga0a709ee29910801cc7e212b7486cde15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetDefaultTimeZone</definition>
+        <argsstring>(CHAR *tzname, USIZE buflen)</argsstring>
+        <name>OS_GetDefaultTimeZone</name>
+        <param>
+          <type>CHAR *</type>
+          <declname>tzname</declname>
+        </param>
+        <param>
+          <type>USIZE</type>
+          <declname>buflen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves a string containing the default timezone for the current host.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">tzname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to a buffer that will be filled with the timezone string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">buflen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bytes of the buffer provided for the &apos;tzname&apos; argument.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_TIME_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/time.h" line="46" column="16" declfile="Source/os-apis/00-export-include/os-apis/time.h" declline="46" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains time related os apis. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

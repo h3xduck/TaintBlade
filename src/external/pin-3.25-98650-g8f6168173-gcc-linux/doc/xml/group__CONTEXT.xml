@@ -1,0 +1,1015 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__CONTEXT" kind="group">
+    <compoundname>CONTEXT</compoundname>
+    <title>Context manipulation API</title>
+    <innerclass refid="structXSAVE__HEADER" prot="public">XSAVE_HEADER</innerclass>
+    <innerclass refid="structFPSTATE" prot="public">FPSTATE</innerclass>
+    <innerclass refid="structCONTEXT" prot="public">CONTEXT</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__CONTEXT_1ga479f2b92361e3794145bb90a1ea7e027" prot="public" static="no" strong="no">
+        <type></type>
+        <name>PROCESSOR_STATE</name>
+        <enumvalue id="group__CONTEXT_1gga479f2b92361e3794145bb90a1ea7e027a940f194773d13bfe7b71a589b3d6a29a" prot="public">
+          <name>PROCESSOR_STATE_X87</name>
+          <briefdescription>
+<para>is the X87 (fp stack) supported </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__CONTEXT_1gga479f2b92361e3794145bb90a1ea7e027ada893eda0a2fdd23742fb5d9f4ba25a7" prot="public">
+          <name>PROCESSOR_STATE_XMM</name>
+          <briefdescription>
+<para>are the xmm registers supported (AVX) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__CONTEXT_1gga479f2b92361e3794145bb90a1ea7e027a15481af1dfee3eb0845669e533b2d5e6" prot="public">
+          <name>PROCESSOR_STATE_YMM</name>
+          <briefdescription>
+<para>are the ymm registers supported (AVX2) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__CONTEXT_1gga479f2b92361e3794145bb90a1ea7e027a32f9fcc0e7c055726930ee8d563ea248" prot="public">
+          <name>PROCESSOR_STATE_ZMM</name>
+          <briefdescription>
+<para>are the zmm registers supported (AVX512) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__CONTEXT_1gga479f2b92361e3794145bb90a1ea7e027a6e4756c74bb9d4ac33e6162e3352a988" prot="public">
+          <name>PROCESSOR_STATE_TMM</name>
+          <briefdescription>
+<para>are the tmm registers supported (AMX) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enums for queries on the supported state: PIN_SupportsProcessorState and PIN_ContextContainsState </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="101" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="100" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__CONTEXT_1ga4ca557f14f098e2c733785a3a9a78f50" prot="public" static="no">
+        <type>UTIL::FXSAVE_IA32</type>
+        <definition>typedef UTIL::FXSAVE_IA32 FXSAVE</definition>
+        <argsstring></argsstring>
+        <name>FXSAVE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains declarations of types related to the fp state on ia-32</para>
+<para>The memory layout written by FXSAVE and read by FXRSTOR. It is the legacy part of the FP state </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="18" column="27" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__CONTEXT_1ga85506bdff3706d86277715a6542fd5a7" prot="public" static="no">
+        <type>UTIL::FXSAVE_INTEL64_DEFAULT</type>
+        <definition>typedef UTIL::FXSAVE_INTEL64_DEFAULT FXSAVE</definition>
+        <argsstring></argsstring>
+        <name>FXSAVE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains declarations of types related to the fp state on Intel64</para>
+<para>The memory layout written by FXSAVE and read by FXRSTOR. It is the legacy part of the FP state </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32e.PH" line="18" column="38" bodyfile="Source/pin/base/fpstate_ia32e.PH" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__CONTEXT_1ga73f8f88949aaecf53a6d23f56399c676" prot="public" static="no">
+        <type>struct <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref></type>
+        <definition>typedef struct CONTEXT CONTEXT</definition>
+        <argsstring></argsstring>
+        <name>CONTEXT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Architectural state of the processor.<linebreak/>
+The tool should not read or modify data members of this structure directly, but must treat the structure as logically opaque and use the <ref refid="group__CONTEXT" kindref="compound">Context manipulation API</ref> functions to manage it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="95" column="16" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__CONTEXT_1gad1b665d43ed8655d42cf86e474ceb5ea" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t VSTATE_PADDING</definition>
+        <argsstring></argsstring>
+        <name>VSTATE_PADDING</name>
+        <initializer>= 128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of the reserved bytes between the XSTATE and the VSTATE parts of the FP state area, as defined by the xsave layout in the SDM. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="34" column="14" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gaaf302a6d2cb4e89c0355540b1b0951d7" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t FPSTATE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>FPSTATE_SIZE</name>
+        <initializer>= sizeof(<ref refid="structFPSTATE" kindref="compound">FPSTATE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of Pin&apos;s (full) FP state structure. It is larger than the size of the structure used by the fxsave instruction (see FXSAVE). It may be larger than the size of the structure used by the xsave instruction, depending on the features enabled in the xstate_bv field in the extended header. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="83" column="14" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga0f5ad5017cf79566f740ff72e37dfeec" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t FPSTATE_ALIGNMENT</definition>
+        <argsstring></argsstring>
+        <name>FPSTATE_ALIGNMENT</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the alignment that the structure used to save the <ref refid="structFPSTATE" kindref="compound">FPSTATE</ref> The alignment required by xsave is 64, the alignment required by fxsave is 16 - so we use the larger </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="90" column="14" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gad1b665d43ed8655d42cf86e474ceb5ea" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t VSTATE_PADDING</definition>
+        <argsstring></argsstring>
+        <name>VSTATE_PADDING</name>
+        <initializer>= 128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of the reserved bytes between the XSTATE and the VSTATE parts of the FP state area, as defined by the xsave layout in the SDM. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32e.PH" line="34" column="14" bodyfile="Source/pin/base/fpstate_ia32e.PH" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gaaf302a6d2cb4e89c0355540b1b0951d7" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t FPSTATE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>FPSTATE_SIZE</name>
+        <initializer>= sizeof(<ref refid="structFPSTATE" kindref="compound">FPSTATE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of Pin&apos;s (full) FP state structure. It is larger than the size of the structure used by the fxsave instruction (see FXSAVE). It may be larger than the size of the structure used by the xsave instruction, depending on the features enabled in the xstate_bv field in the extended header. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32e.PH" line="81" column="14" bodyfile="Source/pin/base/fpstate_ia32e.PH" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga0f5ad5017cf79566f740ff72e37dfeec" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t FPSTATE_ALIGNMENT</definition>
+        <argsstring></argsstring>
+        <name>FPSTATE_ALIGNMENT</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the alignment that the structure used to save the <ref refid="structFPSTATE" kindref="compound">FPSTATE</ref> The alignment required by xsave is 64, the alignment required by fxsave is 16 - so we use the larger </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32e.PH" line="88" column="14" bodyfile="Source/pin/base/fpstate_ia32e.PH" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga9eaa55c6615cdb2cc79394b9090c8024" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT NUM_PHYSICAL_REGS</definition>
+        <argsstring></argsstring>
+        <name>NUM_PHYSICAL_REGS</name>
+        <initializer>= REG_PHYSICAL_INTEGER_END - REG_PHYSICAL_INTEGER_BASE + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1095" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1095" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gaba6f76da4746595feeff8523343242ca" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT NUM_SCRATCH_REGS</definition>
+        <argsstring></argsstring>
+        <name>NUM_SCRATCH_REGS</name>
+        <initializer>= REG_INST_SCRATCH_LAST - <ref refid="group__REG_1gga8f899d7ad1af070aae505a85cc998fa5ad593e48273d23890fe59832257fad44d" kindref="member">REG_INST_SCRATCH_BASE</ref> + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1098" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1098" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gaead9b5f2f3655bbaf2776ad99e2ad279" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT NUM_SPECIAL_REGS</definition>
+        <argsstring></argsstring>
+        <name>NUM_SPECIAL_REGS</name>
+        <initializer>= 2 + NUM_SCRATCH_REGS</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>REG_SEG_FS_BASE and REG_SEG_GS_BASE are represented as special IA-32/Intel(R) 64 architecture registers </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1103" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gab6031aa9d9115234b9c49c6d5ab6d9fa" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT NUM_CONTEXT_INT_REGS</definition>
+        <argsstring></argsstring>
+        <name>NUM_CONTEXT_INT_REGS</name>
+        <initializer>= NUM_PHYSICAL_REGS + <ref refid="group__CONTEXT_1gaead9b5f2f3655bbaf2776ad99e2ad279" kindref="member">NUM_SPECIAL_REGS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Total number of integer registers in <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1108" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga565196a3eaf9539660ef24845ca8c967" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT NUM_CONTEXT_REGS</definition>
+        <argsstring></argsstring>
+        <name>NUM_CONTEXT_REGS</name>
+        <initializer>= REG_LAST_CONTEXT_REG + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Total number of registers in <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> (app registers + tool registers + special) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1113" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1gacfbdf1b39ed0b4164bd9321b830861c9" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT TILE_SIZE_BYTES</definition>
+        <argsstring></argsstring>
+        <name>TILE_SIZE_BYTES</name>
+        <initializer>= 1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tile size in bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1120" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga3657dd0da615cb4afd7682f365979373" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT TILECFG_SIZE_BYTES</definition>
+        <argsstring></argsstring>
+        <name>TILECFG_SIZE_BYTES</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tile configuration virtual register size in bytes (this is not a real CPU register) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1125" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga47e2bd8a7244f986c5a007bd7070f851" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT NUM_TILE_REGS</definition>
+        <argsstring></argsstring>
+        <name>NUM_TILE_REGS</name>
+        <initializer>= REG_TMM_LAST - REG_TMM_FIRST + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of tile register (AMX) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1130" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga67017a2889bb2234e34bd3a943c94bfe" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT NUM_TILE_AND_CFG_REGS</definition>
+        <argsstring></argsstring>
+        <name>NUM_TILE_AND_CFG_REGS</name>
+        <initializer>= <ref refid="group__CONTEXT_1ga47e2bd8a7244f986c5a007bd7070f851" kindref="member">NUM_TILE_REGS</ref> + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of tile register + tile configuration &quot;register&quot; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1135" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga0b20fa4bfec9777b1e6f0a43e886c712" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT TILE_STATE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>TILE_STATE_SIZE</name>
+        <initializer>= (<ref refid="group__CONTEXT_1ga47e2bd8a7244f986c5a007bd7070f851" kindref="member">NUM_TILE_REGS</ref>) * <ref refid="group__CONTEXT_1gacfbdf1b39ed0b4164bd9321b830861c9" kindref="member">TILE_SIZE_BYTES</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of Tile state buffer inside <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> in bytes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1140" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga15b5de856336b8d0452a63a746bb9c61" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT ARCH_STATE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>ARCH_STATE_SIZE</name>
+        <initializer>=
+    (NUM_PHYSICAL_REGS + <ref refid="group__CONTEXT_1gaead9b5f2f3655bbaf2776ad99e2ad279" kindref="member">NUM_SPECIAL_REGS</ref>) * sizeof(ADDRINT) + (<ref refid="group__CONTEXT_1gaaf302a6d2cb4e89c0355540b1b0951d7" kindref="member">FPSTATE_SIZE</ref> 
+                                                                             
+                                                                             
+                                                                             
+                                                                + <ref refid="group__CONTEXT_1ga0f5ad5017cf79566f740ff72e37dfeec" kindref="member">FPSTATE_ALIGNMENT</ref>
+
+                                                                
+                                                                
+                                                                + <ref refid="group__CONTEXT_1ga0b20fa4bfec9777b1e6f0a43e886c712" kindref="member">TILE_STATE_SIZE</ref> + <ref refid="group__CONTEXT_1ga3657dd0da615cb4afd7682f365979373" kindref="member">TILECFG_SIZE_BYTES</ref> + <ref refid="group__CONTEXT_1ga67017a2889bb2234e34bd3a943c94bfe" kindref="member">NUM_TILE_AND_CFG_REGS</ref>
+
+                                                                )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Size of the <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>&apos;s architectural state in bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/reg_ia32.PH" line="1147" column="15" bodyfile="Source/pin/base_ia32/reg_ia32.PH" bodystart="1147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__CONTEXT_1ga63af62bca2c39be3fd6edd57ad2ac5c3" prot="public" static="no" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT DEFAULT_CONTEXT_IMPL</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_CONTEXT_IMPL</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A constant that designates default (canonical) <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> implementation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="54" column="15" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__CONTEXT_1ga112f3ad5960ae4c2273c20abb6479b7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_SupportsProcessorState</definition>
+        <argsstring>(PROCESSOR_STATE state)</argsstring>
+        <name>PIN_SupportsProcessorState</name>
+        <param>
+          <type><ref refid="group__CONTEXT_1ga479f2b92361e3794145bb90a1ea7e027" kindref="member">PROCESSOR_STATE</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Query if Pin (and CPU) supports the specified PROCESSOR_STATE.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the PROCESSOR_STATE being queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the PROCESSOR_STATE specified by state is supported by Pin</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2133" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2133" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1gabd227ecb35493c392d80173180acd7c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_ContextContainsState</definition>
+        <argsstring>(CONTEXT *ctxt, PROCESSOR_STATE state)</argsstring>
+        <name>PIN_ContextContainsState</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__CONTEXT_1ga479f2b92361e3794145bb90a1ea7e027" kindref="member">PROCESSOR_STATE</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Query if the specified <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> contains the specified PROCESSOR_STATE.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context to be examined </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the PROCESSOR_STATE being queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the PROCESSOR_STATE specified by state is contained in the ctxt</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2147" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2147" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1gae96c2fa413d6009f9775cfebab49912f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetContextRegval</definition>
+        <argsstring>(CONTEXT *ctxt, REG reg, const UINT8 *val)</argsstring>
+        <name>PIN_SetContextRegval</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>const UINT8 *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the given value for the requested register in the context. This function is applicable for all context registers (integer, fp etc.). When this function is used from within a callback, e.g. THREAD_START_CALLBACK, the new context will take effect when the application continues. If this function is called from within an analysis routine, in order for the new context to take effect when the application continues one must do one of the following: Either use <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> and specify the registers which should be modified in the &quot;out&quot; REGSET. Or, use the IARG_CONTEXT and call <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref> (don&apos;t forget to set REG_INST_PTR appropriately).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context whose register value is to be set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>register whose value is to be set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer holding the new value of the register, see note below</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>It is the user&apos;s responsibility to allocate and free the val buffer. The buffer size should be at least as wide as the register. The register size can be obtained using REG_Size.<linebreak/>
+ </para>
+</simplesect>
+<simplesect kind="note"><para>Trying to set a value inside a tile register (REG_TMM0-REG_TMM7) when AMX is not active (<ref refid="group__PIN__PROCESS_1gaa6127aeb954da01691382a96ae2ab729" kindref="member">PIN_IsAmxActive()</ref>) or when tile is not valid (rows and bytes per row are both zeroes) leaves the specified <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> unmodified. </para>
+</simplesect>
+<simplesect kind="note"><para>Setting tile config meta data register (REG_TILECONFIG) inside <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> initialize all tile registers to zero inside context. This mimics CPU behavior.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2175" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2175" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1ga44f8eeba2b8b874087441df1c3a530e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_GetContextRegval</definition>
+        <argsstring>(const CONTEXT *ctxt, REG reg, UINT8 *val)</argsstring>
+        <name>PIN_GetContextRegval</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>UINT8 *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value of the requested register from the context. This function is applicable for all context registers (integer, fp etc).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context whose register value is requested </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>register whose value is requested </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an empty buffer which will hold the register value, see note below</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>It is the user&apos;s responsibility to allocate and free the val buffer. The buffer size should be at least as wide as the register. The register size can be obtained using REG_Size.<linebreak/>
+ </para>
+</simplesect>
+<simplesect kind="note"><para>Trying to read a tile register (REG_TMM0-REG_TMM7) when AMX is not active (<ref refid="group__PIN__PROCESS_1gaa6127aeb954da01691382a96ae2ab729" kindref="member">PIN_IsAmxActive()</ref>) or when tile is not valid (rows and bytes per row are both zeroes) leaves the specified val buffer unmodified.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2195" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2195" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1ga83c0549f92440cf717c08689c47127cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetContextReg</definition>
+        <argsstring>(CONTEXT *ctxt, REG reg, ADDRINT val)</argsstring>
+        <name>PIN_SetContextReg</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the given value for the integer register or fp status/control register in the specified context. Note that fp registers such as fp-stack regs, xmm regs, ymm regs (when running with Intel(R) AVX support), can only be set using <ref refid="group__CONTEXT_1gae96c2fa413d6009f9775cfebab49912f" kindref="member">PIN_SetContextRegval</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context whose register value is to be set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>register whose value is to be set. This could be an integer register or a floating point register with integer values, like FP status/control register. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new value of the register</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2212" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2212" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1ga5b5aea73f92ac62e0767cb32bf8de4ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetContextReg</definition>
+        <argsstring>(const CONTEXT *ctxt, REG reg)</argsstring>
+        <name>PIN_GetContextReg</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value of the integer register or fp status/control register in the specified context. Note that fp registers such as fp-stack regs, xmm regs, ymm regs (when running with Intel(R) AVX support), can only be read using <ref refid="group__CONTEXT_1ga44f8eeba2b8b874087441df1c3a530e2" kindref="member">PIN_GetContextRegval</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context whose register value is requested </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>register whose value is requested. This could be an integer register or a floating point register with integer values, like FP status/control register. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>value of the register in the specified context</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2229" column="16" declfile="Source/pin/pin/pin_client.PH" declline="2229" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1ga147e92f2d15f95bd43cb6c8ea19057f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetContextFPState</definition>
+        <argsstring>(CONTEXT *ctxt, const FPSTATE *fpstate)</argsstring>
+        <name>PIN_SetContextFPState</name>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structFPSTATE" kindref="compound">FPSTATE</ref> *</type>
+          <declname>fpstate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the given floating point state in the specified context.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context whose floating point state is to be set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fpstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new floating point state of the context. the <ref refid="structFPSTATE" kindref="compound">FPSTATE</ref> type is exposed by Pin. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2242" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2242" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1ga628d9e2f229dc5101142c94a5411d073" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_GetContextFPState</definition>
+        <argsstring>(const CONTEXT *ctxt, FPSTATE *fpstate)</argsstring>
+        <name>PIN_GetContextFPState</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="structFPSTATE" kindref="compound">FPSTATE</ref> *</type>
+          <declname>fpstate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the floating point state of the specified context.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context whose floating point state is retrieved </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fpstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the buffer that receives floating point state of the context. the <ref refid="structFPSTATE" kindref="compound">FPSTATE</ref> type is exposed by Pin.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2257" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2257" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1gacbaac112366f778eedeb4b258a40558f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8a33ca031ce83cf24d58dca8adf19f6c" kindref="member">REGSET</ref></type>
+        <definition>REGSET PIN_GetFullContextRegsSet</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_GetFullContextRegsSet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get full REGSET.<linebreak/>
+When using IARG_PARTIAL_CONTEXT such a regset for both in and out REGSET will provide access to all registers including the ability to update them. Such a usage will provide better performance than using IARG_CONTEXT combined with <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt()</ref>.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2271" column="15" declfile="Source/pin/pin/pin_client.PH" declline="2271" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1gabd0a55669ab303520f82e4f512e084f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SaveContext</definition>
+        <argsstring>(const CONTEXT *ctxtFrom, CONTEXT *ctxtTo)</argsstring>
+        <name>PIN_SaveContext</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxtFrom</declname>
+        </param>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxtTo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy the <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> structure.<linebreak/>
+<ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> structures supplied by Pin to the instrumentation callbacks are not &quot;byte-copyable&quot;. The tool should use this function to copy the context provided by Pin and must not attempt to move it as raw memory bytes.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxtFrom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> structure to copy from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">ctxtTo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> structure to copy into</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2287" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2287" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ExecuteAt</definition>
+        <argsstring>(const CONTEXT *ctxt)</argsstring>
+        <name>PIN_ExecuteAt</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A tool can call this API to abandon the current analysis function and resume execution of the calling thread at a new application register state. Note that this API does not return back to the caller&apos;s analysis function.</para>
+<para>This API can be called from an analysis function or a replacement routine, but not from a callback.</para>
+<para>When this API is called from an analysis function or replacement function, and if they execute the current routine or instruction being analyzed, then execution will resume at the instrumented routine or instruction and the analysis function will be called again. It is the pintool&apos;s responsibility to avoid going into an infinite loop of calls to the analysis function.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New application register state for the calling thread.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This API never returns.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2315" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2315" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1ga992f6073d146d7c5a61476f3a1ce474a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int PIN_GetInitialContextForUnwind</definition>
+        <argsstring>(const CONTEXT *ctxt, void *cursor)</argsstring>
+        <name>PIN_GetInitialContextForUnwind</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>cursor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>libbacktrace equivalent implementation</para>
+<para>This function is the equivalent Pin version of unw_getcontext(): While unw_getcontext() generates a context for libunwind based on the native context, <ref refid="group__CONTEXT_1ga992f6073d146d7c5a61476f3a1ce474a" kindref="member">PIN_GetInitialContextForUnwind()</ref> generates a context for libunwind based on Pin <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin context to convert to libunwind&apos;s context </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">cursor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to valid object of type unw_cursor_t which was initialized using unw_init_local(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UNW_ESUCCESS in case of success.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_u/backtrace_u.PH" line="27" column="12" declfile="Source/pin/pin_u/backtrace_u.PH" declline="27" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__CONTEXT_1ga9e0232d7642468e8bfbd4eca00983ecf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int PIN_Backtrace</definition>
+        <argsstring>(const CONTEXT *ctxt, void **buffer, int size)</argsstring>
+        <name>PIN_Backtrace</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type>void **</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is the equivalent Pin version of backtrace(): While backtrace() generates a backtrace for the Pin (and Pin tool) call stack, <ref refid="group__CONTEXT_1ga9e0232d7642468e8bfbd4eca00983ecf" kindref="member">PIN_Backtrace()</ref> generates a backtrace for the application that Pin is instrumenting.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context of the application - the backtrace will be generated based upon it. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to an array on which the backtrace will be stored. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the maximum number of addresses that can be stored in buffer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of addresses returned in buffer, which is not greater than <bold>size</bold>.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_u/backtrace_u.PH" line="44" column="12" declfile="Source/pin/pin_u/backtrace_u.PH" declline="44" declcolumn="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This API allows the user to read and modify the architectural register state of the processor, as seen in the application that runs under Pin.</para>
+<para>Usually, the tool receives context in the instrumentation callback like THREAD_START_CALLBACK, CONTEXT_CHANGE_CALLBACK, or when it specifies explicitly to pass <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> to the instrumentation routine via IARG_CONTEXT, IARG_CONST_CONTEXT or IARG_PARTIAL_CONTEXT. At this time, the tool can read the individual register value via <ref refid="group__CONTEXT_1ga5b5aea73f92ac62e0767cb32bf8de4ed" kindref="member">PIN_GetContextReg</ref> and @PIN_GetContextRegval, or save the entire context using the <ref refid="group__CONTEXT_1gabd0a55669ab303520f82e4f512e084f9" kindref="member">PIN_SaveContext</ref>. The <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref> function can be called from an analysis routine to change the control flow of the thread and start execution from the specified context. The <ref refid="group__CONTEXT_1ga83c0549f92440cf717c08689c47127cd" kindref="member">PIN_SetContextReg</ref> and <ref refid="group__CONTEXT_1gae96c2fa413d6009f9775cfebab49912f" kindref="member">PIN_SetContextRegval</ref> functions can be used from callbacks to change the thread&apos;s given register state. In case where <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451dafbbb614d534693b8997f4a7db8fb7e29" kindref="member">IARG_PARTIAL_CONTEXT</ref> was used the behaviour of the threads can be changed by changing registers values without using the <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt</ref>. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

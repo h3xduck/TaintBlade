@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structOPTIONAL__VALUE" kind="struct" language="C++" prot="public">
+    <compoundname>OPTIONAL_VALUE</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structOPTIONAL__VALUE_1a3baf179116ef07e0fbc2c919aee6bd02" prot="public" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL OPTIONAL_VALUE&lt; T &gt;::m_hasValue</definition>
+        <argsstring></argsstring>
+        <name>m_hasValue</name>
+        <briefdescription>
+<para>TRUE, if a value has been assigned to this object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="708" column="10" bodyfile="Source/pin/base/util.PH" bodystart="708" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOPTIONAL__VALUE_1aece54c999c1476c8ec6ed5d1f3b7841c" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T OPTIONAL_VALUE&lt; T &gt;::m_value</definition>
+        <argsstring></argsstring>
+        <name>m_value</name>
+        <briefdescription>
+<para>The value assigned to this object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="709" column="7" bodyfile="Source/pin/base/util.PH" bodystart="709" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1a251359029b6a8b845bf28beb6e4a9077" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OPTIONAL_VALUE&lt; T &gt;::Set</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>Set</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assign the specified value to this object. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new value to be assigned to this object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="715" column="10" bodyfile="Source/pin/base/util.PH" bodystart="715" bodyend="719"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1a78cd62f851dd8f4f3c8cab55b48cdb39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OPTIONAL_VALUE&lt; T &gt;::Set</definition>
+        <argsstring>(const T *pValue)</argsstring>
+        <name>Set</name>
+        <param>
+          <type>const T *</type>
+          <declname>pValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assign a value to this object or remove the previous assignment. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the new value to be assigned to this object or NULL to remove the previous assignment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="726" column="10" bodyfile="Source/pin/base/util.PH" bodystart="726" bodyend="736"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1a62bca6274297aea8deb117d84e07005e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OPTIONAL_VALUE&lt; T &gt;::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove the previous value assignment, if any. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="741" column="10" bodyfile="Source/pin/base/util.PH" bodystart="741" bodyend="741"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1ac64b01d6a8f836b3d93988d11d7fc937" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL OPTIONAL_VALUE&lt; T &gt;::Get</definition>
+        <argsstring>(T *pValue) const</argsstring>
+        <name>Get</name>
+        <param>
+          <type>T *</type>
+          <declname>pValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value of this object, if previously assigned. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional pointer to variable that receives the value assigned to this object, if any </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if a value has been assigned to this object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="749" column="10" bodyfile="Source/pin/base/util.PH" bodystart="749" bodyend="756"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1a1e35eff825d6f2106dc12518ecee99be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL OPTIONAL_VALUE&lt; T &gt;::HasValue</definition>
+        <argsstring>() const</argsstring>
+        <name>HasValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if a value has been assigned to this object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="761" column="10" bodyfile="Source/pin/base/util.PH" bodystart="761" bodyend="761"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1a132bb9f5252ea6ea862d8834427ee241" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T&amp; OPTIONAL_VALUE&lt; T &gt;::Value</definition>
+        <argsstring>()</argsstring>
+        <name>Value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>reference to the value assigned to this object. The caller must ensure that a value has already been assigned to this object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="767" column="7" bodyfile="Source/pin/base/util.PH" bodystart="767" bodyend="767"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1ad6a2f9d03c12156e6d8b4731a933992b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T&amp; OPTIONAL_VALUE&lt; T &gt;::Value</definition>
+        <argsstring>() const</argsstring>
+        <name>Value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="768" column="13" bodyfile="Source/pin/base/util.PH" bodystart="768" bodyend="768"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1a9eb3e17f5130070d6283519bcc9f9a50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T* OPTIONAL_VALUE&lt; T &gt;::ValuePtr</definition>
+        <argsstring>()</argsstring>
+        <name>ValuePtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a pointer to the value of this object, if the value has been assigned. <simplesect kind="return"><para>pointer to the value kept in this object or NULL if no value has been assigned to this object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="775" column="7" bodyfile="Source/pin/base/util.PH" bodystart="775" bodyend="775"/>
+      </memberdef>
+      <memberdef kind="function" id="structOPTIONAL__VALUE_1a836e1440448d5d4b1dc635f638abd651" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T *</type>
+        <definition>const T* OPTIONAL_VALUE&lt; T &gt;::ValuePtr</definition>
+        <argsstring>() const</argsstring>
+        <name>ValuePtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="776" column="13" bodyfile="Source/pin/base/util.PH" bodystart="776" bodyend="776"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Template POD structure that optionally keeps a value of type &lt;T&gt;. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="Source/pin/base/util.PH" line="707" column="1" bodyfile="Source/pin/base/util.PH" bodystart="706" bodyend="777"/>
+    <listofallmembers>
+      <member refid="structOPTIONAL__VALUE_1ac64b01d6a8f836b3d93988d11d7fc937" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>Get</name></member>
+      <member refid="structOPTIONAL__VALUE_1a1e35eff825d6f2106dc12518ecee99be" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>HasValue</name></member>
+      <member refid="structOPTIONAL__VALUE_1a3baf179116ef07e0fbc2c919aee6bd02" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>m_hasValue</name></member>
+      <member refid="structOPTIONAL__VALUE_1aece54c999c1476c8ec6ed5d1f3b7841c" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>m_value</name></member>
+      <member refid="structOPTIONAL__VALUE_1a62bca6274297aea8deb117d84e07005e" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>Reset</name></member>
+      <member refid="structOPTIONAL__VALUE_1a251359029b6a8b845bf28beb6e4a9077" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>Set</name></member>
+      <member refid="structOPTIONAL__VALUE_1a78cd62f851dd8f4f3c8cab55b48cdb39" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>Set</name></member>
+      <member refid="structOPTIONAL__VALUE_1a132bb9f5252ea6ea862d8834427ee241" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>Value</name></member>
+      <member refid="structOPTIONAL__VALUE_1ad6a2f9d03c12156e6d8b4731a933992b" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>Value</name></member>
+      <member refid="structOPTIONAL__VALUE_1a9eb3e17f5130070d6283519bcc9f9a50" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>ValuePtr</name></member>
+      <member refid="structOPTIONAL__VALUE_1a836e1440448d5d4b1dc635f638abd651" prot="public" virt="non-virtual"><scope>OPTIONAL_VALUE</scope><name>ValuePtr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

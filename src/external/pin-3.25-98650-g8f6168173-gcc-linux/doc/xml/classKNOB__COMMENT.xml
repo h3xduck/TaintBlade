@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classKNOB__COMMENT" kind="class" language="C++" prot="public">
+    <compoundname>KNOB_COMMENT</compoundname>
+    <basecompoundref refid="classKNOB" prot="public" virt="non-virtual">KNOB&lt; BOOL &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classKNOB__COMMENT_1a2dce8352bd36109390f9fb2f8e6f350c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>KNOB_COMMENT::KNOB_COMMENT</definition>
+        <argsstring>(const std::string &amp;family, const std::string &amp;purpose)</argsstring>
+        <name>KNOB_COMMENT</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>family</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>purpose</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="471" column="5" bodyfile="Source/pin/base/knob.PH" bodystart="471" bodyend="472"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Family/comment knob </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KNOB_COMMENT</label>
+        <link refid="classKNOB__COMMENT"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KNOB&lt; BOOL &gt;</label>
+        <link refid="classKNOB"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>KNOB_BASE</label>
+        <link refid="classKNOB__BASE"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KNOB_COMMENT</label>
+        <link refid="classKNOB__COMMENT"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KNOB&lt; BOOL &gt;</label>
+        <link refid="classKNOB"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>KNOB_BASE</label>
+        <link refid="classKNOB__BASE"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_next</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/knob.PH" line="469" column="1" bodyfile="Source/pin/base/knob.PH" bodystart="468" bodyend="473"/>
+    <listofallmembers>
+      <member refid="classKNOB__BASE_1a3aa8741ff7349577d5d4d3dc4ee951c3" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_default_value</name></member>
+      <member refid="classKNOB__BASE_1a16a631a814441d1094c56c117e91b3b8" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_disabled</name></member>
+      <member refid="classKNOB__BASE_1abd71830217069e7d01a498bd88eac450" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_family</name></member>
+      <member refid="classKNOB__BASE_1a453060fcf7f19f31bd00f201df201a2b" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_mode</name></member>
+      <member refid="classKNOB__BASE_1a63e1212ef5e3cd46ba4e748ce28f250d" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_name</name></member>
+      <member refid="classKNOB__BASE_1acbe8d1c3db91a7d098a88bac420fddce" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_next</name></member>
+      <member refid="classKNOB__BASE_1a324cb1dd60291ed01734c6724e4b2709" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_nreads</name></member>
+      <member refid="classKNOB__BASE_1a95a0b3f678a49ccefd63ee654e575caa" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_nwrites</name></member>
+      <member refid="classKNOB__BASE_1a54897f08cb427864b97c8079c43b08ac" prot="protected" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>_purpose</name></member>
+      <member refid="classKNOB_1a5b1506d2cde193face6f23e41d248d5e" prot="public" virt="virtual"><scope>KNOB_COMMENT</scope><name>AddValue</name></member>
+      <member refid="group__KNOBS_1ga2fcfca47402cd938d252057d069f8d5f" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>CheckAllKnobs</name></member>
+      <member refid="classKNOB__BASE_1a067327bbee071d5ede24029fa08ceb29" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Cmd</name></member>
+      <member refid="group__KNOBS_1gacd9de79dcbf4f1a1c81b49b855946f21" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Compare</name></member>
+      <member refid="group__KNOBS_1ga7c9e1403f7c8a6fba37c3ac996d6be95" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>DisableKnob</name></member>
+      <member refid="group__KNOBS_1gad656bbb39020e93d3473e1b487f10454" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>DisableKnobFamily</name></member>
+      <member refid="classKNOB__BASE_1aa1c71e42c318d33bae571cb84faf5ac0" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Enabled</name></member>
+      <member refid="group__KNOBS_1ga7f643695d61e52c3661520856d833227" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>EnableKnob</name></member>
+      <member refid="group__KNOBS_1ga425fd0c8dcca5474e370996bdf8d7e4f" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>EnableKnobFamily</name></member>
+      <member refid="classKNOB__BASE_1a092ea50d9f86ab2d127abe9b509b44ab" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Family</name></member>
+      <member refid="group__KNOBS_1ga774759bc7958969faaf7c0ab2b54140e" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>FindEnabledKnob</name></member>
+      <member refid="group__KNOBS_1gafdae42294d965667722be42650912e40" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>FindFamily</name></member>
+      <member refid="group__KNOBS_1gacd1f4eb7e9c4b3aa933cf62d3612e31c" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>FindKnob</name></member>
+      <member refid="classKNOB_1a4ef7d9d77ffe6e79cbd976d0e8f546a1" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>KNOB</name></member>
+      <member refid="group__KNOBS_1gae687bfe5eaee90493c5ebb582da31f74" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>KNOB_BASE</name></member>
+      <member refid="classKNOB__COMMENT_1a2dce8352bd36109390f9fb2f8e6f350c" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>KNOB_COMMENT</name></member>
+      <member refid="classKNOB__BASE_1a928543cb1c64970cdac9ba16e4f3cc20" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Mode</name></member>
+      <member refid="classKNOB__BASE_1ae937861c9dff616fa951a044c6553e3a" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Name</name></member>
+      <member refid="group__KNOBS_1ga6ea4921d7034f43bb963f4f90b6399dc" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>NumberOfKnobs</name></member>
+      <member refid="classKNOB_1a7a0c24ca138358cc87c2ebad31f95ea7" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>NumberOfValues</name></member>
+      <member refid="classKNOB__BASE_1ab2b8d83f06c44e5eeba257f50f98d255" prot="public" virt="pure-virtual" ambiguityscope="KNOB_BASE::"><scope>KNOB_COMMENT</scope><name>NumberOfValues</name></member>
+      <member refid="classKNOB_1a30ee940fe3d2250e1607eb99a6fe0ab6" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>operator BOOL</name></member>
+      <member refid="group__KNOBS_1ga39dcece2c6dd3d8c4662af611da7d9d5" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>SetByUser</name></member>
+      <member refid="classKNOB__BASE_1a318fe2cdddf688d46be75afc22520b84" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>SetDeveloperFlagsEnabled</name></member>
+      <member refid="classKNOB__BASE_1a9547b1c608d981c6554bb417de415268" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>SetParsingDone</name></member>
+      <member refid="group__KNOBS_1ga6fbe7181260cd701b0fa884c2958074e" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>StringKnobSummary</name></member>
+      <member refid="group__KNOBS_1gaddac5ec80d3b48ee9a0ee09a561129e5" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>StringLongAll</name></member>
+      <member refid="group__KNOBS_1ga705f2dbe45c3440e13b67e7921ad1625" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>TurnOnSetByUser</name></member>
+      <member refid="classKNOB_1a049ca670539463b316c553e0c2a61d28" prot="public" virt="virtual"><scope>KNOB_COMMENT</scope><name>Type</name></member>
+      <member refid="classKNOB_1a92fec9fc1279aa8b819b0eedfe75d4b2" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Value</name></member>
+      <member refid="classKNOB_1af06a1d06ec0a4097db11c718eaa72a9d" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>Value</name></member>
+      <member refid="classKNOB_1a6d0d41e70f1b2750610704f57e32515a" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>ValueString</name></member>
+      <member refid="classKNOB_1abb04428a81cd9fefcfc0431512df0caa" prot="public" virt="virtual"><scope>KNOB_COMMENT</scope><name>ValueString</name></member>
+      <member refid="classKNOB__BASE_1a02443a1218e7b8a39fb29db95d95f194" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>WasDeveloperFlagsEnabled</name></member>
+      <member refid="classKNOB__BASE_1a0a80b438ec43bb40ac54ee98c6613614" prot="public" virt="non-virtual"><scope>KNOB_COMMENT</scope><name>WasParsingDone</name></member>
+      <member refid="classKNOB__BASE_1acf930ad940595b3813002386ed32bb5c" prot="public" virt="virtual"><scope>KNOB_COMMENT</scope><name>~KNOB_BASE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

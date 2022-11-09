@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__UTIL__REF" kind="group">
+    <compoundname>UTIL_REF</compoundname>
+    <title>Utilities API Reference</title>
+    <innergroup refid="group__UTILS">Utilities for tokenizing strings and general functions</innergroup>
+    <innergroup refid="group__KNOBS">KNOB: Commandline Option Handling</innergroup>
+    <innergroup refid="group__LOCK">LOCK: Locking Primitives</innergroup>
+    <innergroup refid="group__DEPRECATED">Pin Deprecated API</innergroup>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

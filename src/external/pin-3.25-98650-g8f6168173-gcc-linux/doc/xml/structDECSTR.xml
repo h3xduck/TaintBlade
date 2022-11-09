@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structDECSTR" kind="struct" language="C++" prot="public">
+    <compoundname>DECSTR</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structDECSTR_1a5415a3561cfef3b9b096d1a1aa0b158f" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 DECSTR::_w</definition>
+        <argsstring></argsstring>
+        <name>_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="248" column="12" bodyfile="Source/pin/base/util.PH" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structDECSTR_1afce9afb295844247ecc53874914560ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DECSTR::DECSTR</definition>
+        <argsstring>(UINT32 width=0)</argsstring>
+        <name>DECSTR</name>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="246" column="5" bodyfile="Source/pin/base/util.PH" bodystart="246" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="structDECSTR_1aab58852105007ef851f2aa925a785f58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>std::string DECSTR::operator()</definition>
+        <argsstring>(const T &amp;t) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="247" column="30" bodyfile="Source/pin/base/util.PH" bodystart="247" bodyend="247"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Decimal-to-string conversion object. </para>
+    </detaileddescription>
+    <location file="Source/pin/base/util.PH" line="245" column="1" bodyfile="Source/pin/base/util.PH" bodystart="244" bodyend="249"/>
+    <listofallmembers>
+      <member refid="structDECSTR_1a5415a3561cfef3b9b096d1a1aa0b158f" prot="public" virt="non-virtual"><scope>DECSTR</scope><name>_w</name></member>
+      <member refid="structDECSTR_1afce9afb295844247ecc53874914560ca" prot="public" virt="non-virtual"><scope>DECSTR</scope><name>DECSTR</name></member>
+      <member refid="structDECSTR_1aab58852105007ef851f2aa925a785f58" prot="public" virt="non-virtual"><scope>DECSTR</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

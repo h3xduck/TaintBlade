@@ -1,0 +1,395 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__MESSAGE" kind="group">
+    <compoundname>MESSAGE</compoundname>
+    <title>MESSAGE</title>
+    <innerclass refid="classLOGFILE" prot="public">LOGFILE</innerclass>
+    <innerclass refid="classMESSAGE__TYPE" prot="public">MESSAGE_TYPE</innerclass>
+    <innerclass refid="classMESSAGE__TYPE__ALWAYS__ON" prot="public">MESSAGE_TYPE_ALWAYS_ON</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__MESSAGE_1ga9ca6006a59fa53a5cd728fa1efcd4b61" prot="public" static="no" strong="no">
+        <type></type>
+        <name>LOGTYPE</name>
+        <enumvalue id="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a439c8fd120012113aa39dfece22ed55f" prot="public">
+          <name>LOGTYPE_CONSOLE</name>
+          <briefdescription>
+<para>log only to the console </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a55c459bc261afda3e99e7c126491fa55" prot="public">
+          <name>LOGTYPE_LOGFILE</name>
+          <briefdescription>
+<para>log only to the log file </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__MESSAGE_1gga9ca6006a59fa53a5cd728fa1efcd4b61a064310dc6c50c3aead74122ab8aa290f" prot="public">
+          <name>LOGTYPE_CONSOLE_AND_LOGFILE</name>
+          <briefdescription>
+<para>log to both the log file and console </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type that represents where to put the log. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="50" column="1" bodyfile="Source/pin/base/message.PH" bodystart="49" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__MESSAGE_1gaddbdb603ecc23c5f2c1aed799c413280" prot="public" static="no">
+        <type>BOOL(*</type>
+        <definition>typedef BOOL(* MESSAGE_CALLBACK) (const std::string &amp;message, PIN_ERRTYPE type, INT32 userType, INT32 severity, INT32 numArgs, va_list ap)</definition>
+        <argsstring>)(const std::string &amp;message, PIN_ERRTYPE type, INT32 userType, INT32 severity, INT32 numArgs, va_list ap)</argsstring>
+        <name>MESSAGE_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A call-back function that is called whenever a <ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref> object prints a message.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">messageName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the <ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref> object. This is empty for messages printed via PrintMessageAndExit(). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text of the message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A variable list of additional arguments for the message.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>When TRUE is returned, the message is also printed to the console if the <ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref> would normally do this. When FALSE is returned, the message is not printed to the console. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="71" column="9" bodyfile="Source/pin/base/message.PH" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__MESSAGE_1ga62d237731d8259c9ebc826ae2296f86a" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeNonFatalError</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeNonFatalError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Error message object for non-fatal error. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="160" column="21" declfile="Source/pin/base/message.PH" declline="160" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga0ef434f9ab911df7a7bc1beec0d36dd2" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref></type>
+        <definition>MESSAGE_TYPE_ALWAYS_ON MessageTypeError</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Error message object (terminates) (Always on message, using mesgoff from command line has no effect) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="165" column="31" declfile="Source/pin/base/message.PH" declline="165" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga7cd443734d0d2991536de0ee711e5e13" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeCriticalError</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeCriticalError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Error message object for fatal errors that require post-logging handling. These errors do not cause the process termination in the MESSAGE_TYPE::Message() function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="172" column="21" declfile="Source/pin/base/message.PH" declline="172" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gaad69a758279fd9bfd3489b97f1169b88" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeWarning</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeWarning</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Warning message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="177" column="21" declfile="Source/pin/base/message.PH" declline="177" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga48d5bb4413580e66c0cbe0c62a7157c0" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeConsole</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeConsole</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Console message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="182" column="21" declfile="Source/pin/base/message.PH" declline="182" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gaf0725dd234d0d258e9d3cac4555066f9" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeConsoleNoPrefix</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeConsoleNoPrefix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Console message object - No prefix </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="187" column="21" declfile="Source/pin/base/message.PH" declline="187" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gac4bd4afaaa16f2d150fef4befb2dd284" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE__ALWAYS__ON" kindref="compound">MESSAGE_TYPE_ALWAYS_ON</ref></type>
+        <definition>MESSAGE_TYPE_ALWAYS_ON MessageTypeAssert</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeAssert</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assert message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="192" column="31" declfile="Source/pin/base/message.PH" declline="192" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga4f821bef0c718d3309a37eae9df638a9" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypePhase</definition>
+        <argsstring></argsstring>
+        <name>MessageTypePhase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Phase message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="197" column="21" declfile="Source/pin/base/message.PH" declline="197" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga7875e83d858f698af2bf5fc3a1733f82" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeKnown</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeKnown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Known-warning message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="202" column="21" declfile="Source/pin/base/message.PH" declline="202" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gad0b79d44d5878cd72506894a299e5a6a" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeInfo</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Info message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="207" column="21" declfile="Source/pin/base/message.PH" declline="207" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gaadaf9f0e417d7e40546cbc7c5ca13e2f" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeDebug</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeDebug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Debug message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="212" column="21" declfile="Source/pin/base/message.PH" declline="212" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1gab8b17cf639f16e31b614fee5dd322d66" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeOpportunity</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeOpportunity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Optimization opportunity message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="217" column="21" declfile="Source/pin/base/message.PH" declline="217" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga1d1cf353a9422a3f9029188bda3a9fde" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeStats</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeStats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Statistcis message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="222" column="21" declfile="Source/pin/base/message.PH" declline="222" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__MESSAGE_1ga5cb439b2add5adeb1e52878778fc6a7c" prot="public" static="no" mutable="no">
+        <type><ref refid="classMESSAGE__TYPE" kindref="compound">MESSAGE_TYPE</ref></type>
+        <definition>MESSAGE_TYPE MessageTypeLog</definition>
+        <argsstring></argsstring>
+        <name>MessageTypeLog</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Log message object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="227" column="21" declfile="Source/pin/base/message.PH" declline="227" declcolumn="21"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__MESSAGE_1ga994bf9ba5c7e36f35ee4ce8e40cc4600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT64</type>
+        <definition>UINT64 MilliSecondsElapsed</definition>
+        <argsstring>()</argsstring>
+        <name>MilliSecondsElapsed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MilliSeconds elapsed since last invocation of this function </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="232" column="15" declfile="Source/pin/base/message.PH" declline="232" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__MESSAGE_1gaf62129cb4ae95fcde2fa1c7d86cf3310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string AssertString</definition>
+        <argsstring>(const char *fileName, const char *functionName, unsigned line, const std::string &amp;message)</argsstring>
+        <name>AssertString</name>
+        <param>
+          <type>const char *</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string for an assertion failure.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the file containing the assertion failure or the empty string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">functionName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the function containing the assertion failure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Line number of the assertion failure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message describing the failure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="242" column="20" declfile="Source/pin/base/message.PH" declline="242" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__MESSAGE_1ga67817cdea2d7ae08bae1f24ec0640142" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID BreakMe</definition>
+        <argsstring>()</argsstring>
+        <name>BreakMe</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/message.PH" line="247" column="13" declfile="Source/pin/base/message.PH" declline="247" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

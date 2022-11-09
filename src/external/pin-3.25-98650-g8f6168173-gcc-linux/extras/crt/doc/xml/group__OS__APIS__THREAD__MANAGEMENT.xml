@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__OS__APIS__THREAD__MANAGEMENT" kind="group">
+    <compoundname>OS_APIS_THREAD_MANAGEMENT</compoundname>
+    <title>Threads database</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__THREAD__MANAGEMENT_1gafa9993546b8b34061133c4414a06109c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OS_DeregisterThread</definition>
+        <argsstring>(NATIVE_TID ntid)</argsstring>
+        <name>OS_DeregisterThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>ntid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deregister a thread from the threads database and release all the resources used to track this thread (including TLS).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ntid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OS thread ID of the thread to deregister.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads-management.h" line="29" column="6" declfile="Source/os-apis/00-export-include/os-apis/threads-management.h" declline="29" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD__MANAGEMENT_1ga497b966fb405ae40b38ee9fa51748462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OS_DeregisterCurrentThread</definition>
+        <argsstring>(void)</argsstring>
+        <name>OS_DeregisterCurrentThread</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deregister the current thread from the threads database and release all the resources used to track this thread (including TLS).</para>
+<para><simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads-management.h" line="39" column="6" declfile="Source/os-apis/00-export-include/os-apis/threads-management.h" declline="39" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains API for thread tracking. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

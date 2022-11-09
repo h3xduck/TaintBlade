@@ -1,0 +1,1249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__UTILS" kind="group">
+    <compoundname>UTILS</compoundname>
+    <title>Utilities for tokenizing strings and general functions</title>
+    <innerclass refid="structDECSTR" prot="public">DECSTR</innerclass>
+    <innerclass refid="structHEXSTR" prot="public">HEXSTR</innerclass>
+    <innerclass refid="classMemRange" prot="public">MemRange</innerclass>
+    <innerclass refid="structOPTIONAL__VALUE" prot="public">OPTIONAL_VALUE</innerclass>
+    <innerclass refid="structFLTSTR" prot="public">FLTSTR</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__UTILS_1ga4682f13f8a93766bd52e694b95825ec2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL CharIsSpace</definition>
+        <argsstring>(CHAR c)</argsstring>
+        <name>CharIsSpace</name>
+        <param>
+          <type>CHAR</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This module contains useful utility functions.</para>
+<para>ctype::isspace alternative (avoids complications from including ctype.h). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="17" column="13" declfile="Source/pin/base/util.PH" declline="17" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga0b49f8a5b5b5de5c6843214fda60ffdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CHAR</type>
+        <definition>CHAR CharToUpper</definition>
+        <argsstring>(CHAR c)</argsstring>
+        <name>CharToUpper</name>
+        <param>
+          <type>CHAR</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ctype::toupper alternative (avoids complications from including ctype.h). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="22" column="13" declfile="Source/pin/base/util.PH" declline="22" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga60816d2ac9b77301243bbfbd3830a5d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ptrstr</definition>
+        <argsstring>(const VOID *val)</argsstring>
+        <name>ptrstr</name>
+        <param>
+          <type>const VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Print pointer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="27" column="20" declfile="Source/pin/base/util.PH" declline="27" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gaeed79991299633d2cb198557a9769c4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringFromAddrint</definition>
+        <argsstring>(ADDRINT l)</argsstring>
+        <name>StringFromAddrint</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a ADDRINT into a string using the hex address format. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="32" column="20" declfile="Source/pin/base/util.PH" declline="32" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga828a6d0e1c14329ae0f8ab51f6713903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringFromUint64</definition>
+        <argsstring>(UINT64 l)</argsstring>
+        <name>StringFromUint64</name>
+        <param>
+          <type>UINT64</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a UINT64 into a string using the hex address format. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="37" column="20" declfile="Source/pin/base/util.PH" declline="37" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga5c613340bc2e3ad31186bcac25117ffa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringDec</definition>
+        <argsstring>(UINT64 l, UINT32 digits, CHAR padding)</argsstring>
+        <name>StringDec</name>
+        <param>
+          <type>UINT64</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>digits</declname>
+        </param>
+        <param>
+          <type>CHAR</type>
+          <declname>padding</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a UINT64 into a dec string. Padding can be specified as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="42" column="20" declfile="Source/pin/base/util.PH" declline="42" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga31683c4ddc9ce54c36827e9df7848e54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringDecSigned</definition>
+        <argsstring>(INT64 l, UINT32 digits, CHAR padding)</argsstring>
+        <name>StringDecSigned</name>
+        <param>
+          <type>INT64</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>digits</declname>
+        </param>
+        <param>
+          <type>CHAR</type>
+          <declname>padding</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a INT64 into a dec string. Padding can be specified as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="47" column="20" declfile="Source/pin/base/util.PH" declline="47" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga0b51548b2aa5d0e9a5be4572c7fc0ec3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringBignum</definition>
+        <argsstring>(INT64 l, UINT32 digits, CHAR padding)</argsstring>
+        <name>StringBignum</name>
+        <param>
+          <type>INT64</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>digits</declname>
+        </param>
+        <param>
+          <type>CHAR</type>
+          <declname>padding</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a INT64 into a dec string with 1000 separation . Padding can be specified as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="52" column="20" declfile="Source/pin/base/util.PH" declline="52" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga7f09374b37aa9186986a5132752a31cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Reformat</definition>
+        <argsstring>(const std::string &amp;s, const std::string &amp;prefix, UINT32 min_line, UINT32 max_line)</argsstring>
+        <name>Reformat</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>min_line</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>max_line</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add new lines to string to make it fit given line width restrictions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="57" column="20" declfile="Source/pin/base/util.PH" declline="57" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga7ee04870bf535864650979835d6d7c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringHex32</definition>
+        <argsstring>(UINT32 l, UINT32 digits, BOOL prefix_0x)</argsstring>
+        <name>StringHex32</name>
+        <param>
+          <type>UINT32</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>digits</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>prefix_0x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a UINT32 into a hex string. Padding can be specified as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="62" column="20" declfile="Source/pin/base/util.PH" declline="62" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga8ef1d05a3b03f71dbf301d13d19ee28c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringBool</definition>
+        <argsstring>(BOOL b)</argsstring>
+        <name>StringBool</name>
+        <param>
+          <type>BOOL</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a BOOL into a string. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="67" column="20" declfile="Source/pin/base/util.PH" declline="67" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga9bacf4444828f2376d73ddb6cac2c3f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringTri</definition>
+        <argsstring>(TRI t)</argsstring>
+        <name>StringTri</name>
+        <param>
+          <type>TRI</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a TRI into a string. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="72" column="20" declfile="Source/pin/base/util.PH" declline="72" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga790558b337ca10655c2614f200c2fb6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT32</type>
+        <definition>INT32 Int32FromString</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>Int32FromString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string to an INT32. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="77" column="14" declfile="Source/pin/base/util.PH" declline="77" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gab2856d7532e0813c569ab7307ccb14e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 Uint32FromString</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>Uint32FromString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string to a UINT32. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="82" column="15" declfile="Source/pin/base/util.PH" declline="82" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga6c4d3d94e50be72ed9ee506cf12211da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT64</type>
+        <definition>INT64 Int64FromString</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>Int64FromString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string to an INT64. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="87" column="14" declfile="Source/pin/base/util.PH" declline="87" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gadec549147c67d792cf1ae8f833d7be7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT64</type>
+        <definition>UINT64 Uint64FromString</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>Uint64FromString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string to a UINT64. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="92" column="15" declfile="Source/pin/base/util.PH" declline="92" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga961ab035375229b676e5ab17e0f37571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FLT64</type>
+        <definition>FLT64 FLT64FromString</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>FLT64FromString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string to a FLT64. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="97" column="14" declfile="Source/pin/base/util.PH" declline="97" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga8707502cdf0b68d4bb276adf6c3fb4b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>INT</type>
+        <definition>INT CharToHexDigit</definition>
+        <argsstring>(CHAR c)</argsstring>
+        <name>CharToHexDigit</name>
+        <param>
+          <type>CHAR</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert specified character to the corresponding hexadecimal digit. <simplesect kind="return"><para>integer in the interval [0, 15] or -1 upon failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="103" column="12" declfile="Source/pin/base/util.PH" declline="103" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga39c002b80c42b3744e1d58fef2010e96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT AddrintFromString</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>AddrintFromString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string to an ADDRINT. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="108" column="16" declfile="Source/pin/base/util.PH" declline="108" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga6ece12d7af8b9c8cd11d3b014003bb7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ReadLine</definition>
+        <argsstring>(std::istream &amp;inputFile, UINT32 *lineNum)</argsstring>
+        <name>ReadLine</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>inputFile</declname>
+        </param>
+        <param>
+          <type>UINT32 *</type>
+          <declname>lineNum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read a line from file while maintaining a current line count skipping over blank and comment lines. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="114" column="20" declfile="Source/pin/base/util.PH" declline="114" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga8b3eadb8d5b8535191799399467abf39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringHex</definition>
+        <argsstring>(UINT32 l, UINT32 digits, BOOL prefix_0x=TRUE)</argsstring>
+        <name>StringHex</name>
+        <param>
+          <type>UINT32</type>
+          <declname>l</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>digits</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>prefix_0x</declname>
+          <defval>TRUE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="119" column="20" bodyfile="Source/pin/base/util.PH" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga4204d9cd0f5e6ef308062e174dd36fd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string decstr</definition>
+        <argsstring>(INT64 val, UINT32 width=0)</argsstring>
+        <name>decstr</name>
+        <param>
+          <type>INT64</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string containing the given decimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="124" column="20" bodyfile="Source/pin/base/util.PH" bodystart="124" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gadfe96e42e0786ead85ab2b58e7b5e42c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string decstr</definition>
+        <argsstring>(INT32 val, UINT32 width=0)</argsstring>
+        <name>decstr</name>
+        <param>
+          <type>INT32</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string containing the given decimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="129" column="20" bodyfile="Source/pin/base/util.PH" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gaf92b4e2293547a20c087d06353fe42be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string decstr</definition>
+        <argsstring>(INT16 val, UINT32 width=0)</argsstring>
+        <name>decstr</name>
+        <param>
+          <type>INT16</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string containing the given decimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="134" column="20" bodyfile="Source/pin/base/util.PH" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga3f2e29bac5e745b6dfb88a4a04121333" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string decstr</definition>
+        <argsstring>(UINT64 val, UINT32 width=0)</argsstring>
+        <name>decstr</name>
+        <param>
+          <type>UINT64</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string containing the given decimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="139" column="20" bodyfile="Source/pin/base/util.PH" bodystart="139" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga39ff051c368dd620de88eb62ec55160e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string decstr</definition>
+        <argsstring>(UINT32 val, UINT32 width=0)</argsstring>
+        <name>decstr</name>
+        <param>
+          <type>UINT32</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string containing the given decimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="144" column="20" bodyfile="Source/pin/base/util.PH" bodystart="144" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gac29a8efc31ecf4b72e7860fc546e3705" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string decstr</definition>
+        <argsstring>(UINT16 val, UINT32 width=0)</argsstring>
+        <name>decstr</name>
+        <param>
+          <type>UINT16</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string containing the given decimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="149" column="20" bodyfile="Source/pin/base/util.PH" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gacbaf096d893eddf2e6f7fec56ce0c1d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(INT64 val, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>INT64</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="154" column="20" bodyfile="Source/pin/base/util.PH" bodystart="154" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga58e7cd71856f4e8353879a05c7a23046" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(INT32 val, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>INT32</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="170" column="20" bodyfile="Source/pin/base/util.PH" bodystart="170" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga3da3bb397a9d5944376ba08043900b50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(INT16 val, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>INT16</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="175" column="20" bodyfile="Source/pin/base/util.PH" bodystart="175" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga603e1bfd22d58a23b054709eeb13a261" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(UINT64 val, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>UINT64</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="180" column="20" bodyfile="Source/pin/base/util.PH" bodystart="180" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gadddd6ac0e40dd4e3cc44238d70c8e3eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(VOID *p, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>VOID *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="196" column="20" bodyfile="Source/pin/base/util.PH" bodystart="196" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gac76b9d98dcb00109c58bdc20c72d8bf0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(const VOID *p, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>const VOID *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="210" column="20" bodyfile="Source/pin/base/util.PH" bodystart="210" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga07328d3ee55a71f3785825ccc3670a14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(UINT32 val, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>UINT32</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="224" column="20" bodyfile="Source/pin/base/util.PH" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gaa7ff655531379b888cd598c28e400c88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string hexstr</definition>
+        <argsstring>(UINT16 val, UINT32 width=0)</argsstring>
+        <name>hexstr</name>
+        <param>
+          <type>UINT16</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string with a hexadecimal prefix containing the given hexadecimal integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="229" column="20" bodyfile="Source/pin/base/util.PH" bodystart="229" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga8cd88392fb817531913541e1bef16d50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ljstr</definition>
+        <argsstring>(const std::string &amp;s, UINT32 width, CHAR padding=&apos; &apos;)</argsstring>
+        <name>ljstr</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>CHAR</type>
+          <declname>padding</declname>
+          <defval>&apos; &apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Left justify string. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="234" column="20" bodyfile="Source/pin/base/util.PH" bodystart="234" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gabc67f68f3113fe069626ec8c8441aad7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 BitCount</definition>
+        <argsstring>(ADDRINT val)</argsstring>
+        <name>BitCount</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>popcount/bitcount code using the usual trick </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="264" column="15" declfile="Source/pin/base/util.PH" declline="264" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga5a61893ebf73cdece2e1b4931bdac543" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* Addrint2VoidStar</definition>
+        <argsstring>(ADDRINT addr)</argsstring>
+        <name>Addrint2VoidStar</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert ADDRINT to &quot;void *&quot; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="269" column="13" bodyfile="Source/pin/base/util.PH" bodystart="269" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga39df8e1146f66f7b89d5d96a7b96e7ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT VoidStar2Addrint</definition>
+        <argsstring>(const VOID *addr)</argsstring>
+        <name>VoidStar2Addrint</name>
+        <param>
+          <type>const VOID *</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert &quot;void *&quot; to ADDRINT. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="282" column="16" bodyfile="Source/pin/base/util.PH" bodystart="282" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gad3aea086a8987032563854094f2b44d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT VoidStar2Addrint</definition>
+        <argsstring>(VOID *addr)</argsstring>
+        <name>VoidStar2Addrint</name>
+        <param>
+          <type>VOID *</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert &quot;void *&quot; to ADDRINT </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="295" column="16" bodyfile="Source/pin/base/util.PH" bodystart="295" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga0af7e4dd2db90cccd96b4e8d0e09f5b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T RoundUp</definition>
+        <argsstring>(T value, size_t alignment)</argsstring>
+        <name>RoundUp</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Round integer of type &lt;T&gt; up to given alignment. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="308" column="16" bodyfile="Source/pin/base/util.PH" bodystart="308" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga88f2324606808588ad4a6ca175eed223" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T* RoundUp</definition>
+        <argsstring>(T *ptr, size_t alignment)</argsstring>
+        <name>RoundUp</name>
+        <param>
+          <type>T *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specialization of the RoundUp function for pointer type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="325" column="16" bodyfile="Source/pin/base/util.PH" bodystart="325" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gaa345c03355605bf791c3819b67a16508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T RoundDown</definition>
+        <argsstring>(T value, size_t alignment)</argsstring>
+        <name>RoundDown</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Round integer of type &lt;T&gt; down to given alignment. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="333" column="16" bodyfile="Source/pin/base/util.PH" bodystart="333" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gacd83e51e0357516e0791152a12c766a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T *</type>
+        <definition>T* RoundDown</definition>
+        <argsstring>(T *ptr, size_t alignment)</argsstring>
+        <name>RoundDown</name>
+        <param>
+          <type>T *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specialization of the RoundDown function for pointer type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="349" column="16" bodyfile="Source/pin/base/util.PH" bodystart="349" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gabdddd07b25db1f4fcb2ac87a80ab1bad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT GetPageOfAddr</definition>
+        <argsstring>(ADDRINT addr)</argsstring>
+        <name>GetPageOfAddr</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the address of the page that addr is in </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="357" column="16" declfile="Source/pin/base/util.PH" declline="357" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gabfcc9213e80a9f93b75c80dde7a5525d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Joinpath</definition>
+        <argsstring>(std::string s1, std::string s2)</argsstring>
+        <name>Joinpath</name>
+        <param>
+          <type>std::string</type>
+          <declname>s1</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>s2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Concatenate two strings with a path delimiter </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="364" column="20" declfile="Source/pin/base/util.PH" declline="364" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gaa49186942d59b32ae2cd72f5a0e4b6e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CHAR *</type>
+        <definition>CHAR* CreateTmpFileName</definition>
+        <argsstring>(const CHAR *fnameTemplate, const UINT32 fnameTemplateSize)</argsstring>
+        <name>CreateTmpFileName</name>
+        <param>
+          <type>const CHAR *</type>
+          <declname>fnameTemplate</declname>
+        </param>
+        <param>
+          <type>const UINT32</type>
+          <declname>fnameTemplateSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a temporary file name </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="369" column="13" declfile="Source/pin/base/util.PH" declline="369" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga0a266e7b8d2f62c59f17bf2660416f4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const VOID *</type>
+        <definition>const VOID* GetSp</definition>
+        <argsstring>()</argsstring>
+        <name>GetSp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>current stack pointer </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="376" column="19" declfile="Source/pin/base/util.PH" declline="376" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga57104f3a8331bc9daf9bd5352af06099" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t PtrDiff</definition>
+        <argsstring>(const VOID *ptr1, const VOID *ptr2)</argsstring>
+        <name>PtrDiff</name>
+        <param>
+          <type>const VOID *</type>
+          <declname>ptr1</declname>
+        </param>
+        <param>
+          <type>const VOID *</type>
+          <declname>ptr2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return offset, in bytes, of &lt;ptr1&gt; from &lt;ptr2&gt; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="381" column="15" bodyfile="Source/pin/base/util.PH" bodystart="381" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1gac5218ef508e70b3f9b6a89fdd708b83c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID *</type>
+        <definition>VOID* PtrAtOffset</definition>
+        <argsstring>(VOID *ptr, size_t offset)</argsstring>
+        <name>PtrAtOffset</name>
+        <param>
+          <type>VOID *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return pointer whose offset, in bytes, from &lt;ptr&gt; is &lt;offset&gt;</para>
+<para>Return pointer of type &lt;T&gt; whose offset, in bytes, from &lt;ptr&gt; is &lt;offset&gt; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="389" column="13" bodyfile="Source/pin/base/util.PH" bodystart="389" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga427bc88e8cdc06351d551233ae4430f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const VOID *</type>
+        <definition>const VOID* PtrAtOffset</definition>
+        <argsstring>(const VOID *ptr, size_t offset)</argsstring>
+        <name>PtrAtOffset</name>
+        <param>
+          <type>const VOID *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return const pointer whose offset, in bytes, from &lt;ptr&gt; is &lt;offset&gt;</para>
+<para>Return const pointer of type &lt;T&gt; whose offset, in bytes, from &lt;ptr&gt; is &lt;offset&gt; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="394" column="19" bodyfile="Source/pin/base/util.PH" bodystart="394" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga32ea4729b05d586fdf8650c86b9e6f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref></type>
+        <definition>MemRange MemPageRange</definition>
+        <argsstring>(ADDRINT addr)</argsstring>
+        <name>MemPageRange</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the page that contains the specified address <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address inside the requested page </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>one-page range that contains the specified address </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="693" column="17" declfile="Source/pin/base/util.PH" declline="693" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga46c286bba3dd8e4048b20e322ed9eccc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMemRange" kindref="compound">MemRange</ref></type>
+        <definition>MemRange MemPageRange</definition>
+        <argsstring>(const VOID *addr)</argsstring>
+        <name>MemPageRange</name>
+        <param>
+          <type>const VOID *</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the page that contains the specified address <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address inside the requested page </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>one-page range that contains the specified address </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="700" column="17" declfile="Source/pin/base/util.PH" declline="700" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga5849af3ee7e34eef1c79758da39b12e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string StringFlt</definition>
+        <argsstring>(FLT64 val, UINT32 precision, UINT32 width)</argsstring>
+        <name>StringFlt</name>
+        <param>
+          <type>FLT64</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>precision</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a FLT64 into a string. Padding can be specified as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="782" column="20" declfile="Source/pin/base/util.PH" declline="782" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__UTILS_1ga42318f684ee16d7bdf0a8f657fec61f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string fltstr</definition>
+        <argsstring>(FLT64 val, UINT32 prec=0, UINT32 width=0)</argsstring>
+        <name>fltstr</name>
+        <param>
+          <type>FLT64</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>prec</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a string containing the given floating point number. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/util.PH" line="787" column="20" bodyfile="Source/pin/base/util.PH" bodystart="787" bodyend="787"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

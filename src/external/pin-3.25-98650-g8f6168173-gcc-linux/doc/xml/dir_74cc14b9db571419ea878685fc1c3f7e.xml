@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_74cc14b9db571419ea878685fc1c3f7e" kind="dir">
+    <compoundname>base</compoundname>
+    <innerfile refid="child__process_8PH">child_process.PH</innerfile>
+    <innerfile refid="exception_8PH">exception.PH</innerfile>
+    <innerfile refid="fpstate__ia32_8PH">fpstate_ia32.PH</innerfile>
+    <innerfile refid="fpstate__ia32e_8PH">fpstate_ia32e.PH</innerfile>
+    <innerfile refid="knob_8PH">knob.PH</innerfile>
+    <innerfile refid="lock_8PH">lock.PH</innerfile>
+    <innerfile refid="message_8PH">message.PH</innerfile>
+    <innerfile refid="tls_8PH">tls.PH</innerfile>
+    <innerfile refid="util_8PH">util.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__EXCEPTION" kind="group">
+    <compoundname>EXCEPTION</compoundname>
+    <title>Exception API</title>
+    <innerclass refid="structEXCEPTION__INFO" prot="public">EXCEPTION_INFO</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EXCEPTION_CLASS</name>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a639673e89694803faff1f8c307481c9b" prot="public">
+          <name>EXCEPTCLASS_NONE</name>
+          <briefdescription>
+<para>Reserved. No real exception belongs to this class. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91adefa9617e68382ce54806db7ce8bd151" prot="public">
+          <name>EXCEPTCLASS_UNKNOWN</name>
+          <briefdescription>
+<para>Unknown exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" prot="public">
+          <name>EXCEPTCLASS_ACCESS_FAULT</name>
+          <briefdescription>
+<para>Memory access fault. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a4481541f81b978a68904d3e91836c238" prot="public">
+          <name>EXCEPTCLASS_INVALID_INS</name>
+          <briefdescription>
+<para>Invalid instruction. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91af6ede82243aaa3c24cbf1c20746195d8" prot="public">
+          <name>EXCEPTCLASS_INT_ERROR</name>
+          <briefdescription>
+<para>Erroneous integer operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91addab45cb135ea816a61e9b13e1f350fd" prot="public">
+          <name>EXCEPTCLASS_FP_ERROR</name>
+          <briefdescription>
+<para>Erroneous floating point operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a38a2cf5644947f6458e058a31d1abb8f" prot="public">
+          <name>EXCEPTCLASS_MULTIPLE_FP_ERROR</name>
+          <briefdescription>
+<para>Received an ambiguous floating point exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91aace9a9908b5c804aa9709d5421a411d9" prot="public">
+          <name>EXCEPTCLASS_DEBUG</name>
+          <briefdescription>
+<para>Debugging trap. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a5fd37a2c9b7fe263eb3af2858a24ed41" prot="public">
+          <name>EXCEPTCLASS_OS</name>
+          <briefdescription>
+<para>O/S specific exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Basic definitions pertaining to hardware and software exceptions.</para>
+<para>Identifiers of exception classes. Exception class indicates the type of information (set of attributes) that accompanies exceptions of this class. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="18" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="17" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>EXCEPTION_CODE</name>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6e0c48d8f8cefacf3c417258c8e77180" prot="public">
+          <name>EXCEPTCODE_NONE</name>
+          <briefdescription>
+<para>Reserved. No real exception has this code. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaf3ed3d9fb17ec13a0fcdfca6e5e8ec73" prot="public">
+          <name>EXCEPTCODE_ACCESS_INVALID_ADDRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Virtual address not mapped (the #PF exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eab91fcfead8bd10edcc566370d2319a26" prot="public">
+          <name>EXCEPTCODE_ACCESS_DENIED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Access not permitted due to protection violation (the #PF exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea3c61f9032470d57b697b17f4573ff003" prot="public">
+          <name>EXCEPTCODE_ACCESS_INVALID_PAGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A #PF exception for some reason other than the cases above. Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea20e4e696b5e9e25c3f860fb0b72c4312" prot="public">
+          <name>EXCEPTCODE_ACCESS_MISALIGNED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Misaligned memory reference (the #AC exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaa9beec42f8b5b43f7ef9a9a408edbbf7" prot="public">
+          <name>EXCEPTCODE_ILLEGAL_INS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Illegal instruction (the #UD exception). Belongs to EXCEPTCLASS_INVALID_INS. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea168ef33a71e50e0ea8b7b1d68e383891" prot="public">
+          <name>EXCEPTCODE_PRIVILEGED_INS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Privileged instruction (the #GP exception). Belongs to EXCEPTCLASS_INVALID_INS. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6fc9a03a06dda53cf8abb6fe890ee387" prot="public">
+          <name>EXCEPTCODE_INT_DIVIDE_BY_ZERO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Integer divide by zero (the #DE exception). Belongs to EXCEPTCLASS_INT_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea215d5ff8bc42c323530b351e426d5073" prot="public">
+          <name>EXCEPTCODE_INT_OVERFLOW_TRAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Integer overflow trap (the #OF trap). Belongs to EXCEPTCLASS_INT_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eac1a482267c713eead488d01ea55e3363" prot="public">
+          <name>EXCEPTCODE_INT_BOUNDS_EXCEEDED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Array index is out of bounds (#BR exception). Belongs to EXCEPTCLASS_INT_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1ec78aaa98ab1003fec7f96146565f5d" prot="public">
+          <name>EXCEPTCODE_X87_DIVIDE_BY_ZERO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU divide by zero (the #MF/#Z exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9d525f1400a6cc337bb9f3e40cb444b5" prot="public">
+          <name>EXCEPTCODE_X87_OVERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU overflow (the #MF/#O exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eadf36003910884456bc148c9c800a9f4c" prot="public">
+          <name>EXCEPTCODE_X87_UNDERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU underflow (the #MF/#U exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaf64991c77b1ee98345ebd3cc0c4cfd54" prot="public">
+          <name>EXCEPTCODE_X87_INEXACT_RESULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU inexact result (the #MF/#P exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9cc75d4c57fdf4145c9dfb18a39f3d2f" prot="public">
+          <name>EXCEPTCODE_X87_INVALID_OPERATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU invalid operation (the #MF/#IA exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ead9e982000e28ac51d6aeb5927315d937" prot="public">
+          <name>EXCEPTCODE_X87_DENORMAL_OPERAND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU denormal operand (the #MF/#D exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1f081e3266fc8d185cfe6097324e172d" prot="public">
+          <name>EXCEPTCODE_X87_STACK_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>x87 FPU stack overflowed or underflowed (the #MF/#IS exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2cae5bc9154e16a4f95eab20393e6629" prot="public">
+          <name>EXCEPTCODE_SIMD_DIVIDE_BY_ZERO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point divide by zero (the #XM/#Z exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea7b10547579951b72fe7291f7af5f5fa7" prot="public">
+          <name>EXCEPTCODE_SIMD_OVERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point overflow (the #XM/#O exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6adfdc608e333eb3d12761a17858f79a" prot="public">
+          <name>EXCEPTCODE_SIMD_UNDERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point underflow (the #XM/#U exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eabb7d9caa28fdf250c0525ba3a4b79df4" prot="public">
+          <name>EXCEPTCODE_SIMD_INEXACT_RESULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD floating point inexact result (the #XM/#P exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea4b72ecb5070819b2c32c02b4abed927e" prot="public">
+          <name>EXCEPTCODE_SIMD_INVALID_OPERATION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD invalid floating point operation (the #XM/#I exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea628c9b194f6b52daa2a9e31f84124950" prot="public">
+          <name>EXCEPTCODE_SIMD_DENORMAL_OPERAND</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SIMD denormal floating point operand (the #XM/#D exception). Belongs to EXCEPTCLASS_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea9512ed0163683bc703f12cbb1fcbc154" prot="public">
+          <name>EXCEPTCODE_DBG_BREAKPOINT_TRAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Breakpoint trap (the #BP trap). Belongs to EXCEPTCLASS_DEBUG. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea36232f2a58e81ac730eda3cd2d67866a" prot="public">
+          <name>EXCEPTCODE_DBG_SINGLE_STEP_TRAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Trace trap (the #DB trap). Belongs to EXCEPTCLASS_DEBUG. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea6f1cd3dafab23ac1326597e27f3273da" prot="public">
+          <name>EXCEPTCODE_ACCESS_WINDOWS_GUARD_PAGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Guard page access (the Windows STATUS_GUARD_PAGE_VIOLATION exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaabc89192492add706392f3b72a17cefc" prot="public">
+          <name>EXCEPTCODE_ACCESS_WINDOWS_STACK_OVERFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Thread stack overflowed (the Windows STATUS_STACK_OVERFLOW exception). Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" prot="public">
+          <name>EXCEPTCODE_WINDOWS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Generic Windows exception. Belongs to EXCEPTCLASS_OS. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eae29a06f4eba0d956c1b369d338133fb9" prot="public">
+          <name>EXCEPTCODE_RECEIVED_UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Unknown exception, cannot be re-raised. Belongs to EXCEPTCLASS_UNKNOWN. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea1de1a46ab34c71b86634e54266aa10b1" prot="public">
+          <name>EXCEPTCODE_RECEIVED_ACCESS_FAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>General memory access fault. Belongs to EXCEPTCLASS_ACCESS_FAULT. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eaeb6d5bcdb1002d9e236e97fe47e1bd01" prot="public">
+          <name>EXCEPTCODE_RECEIVED_AMBIGUOUS_X87</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ambiguous x87 FPU exception. <ref refid="group__EXCEPTION_1gab6b8c9b966b1ec4e93966f5535377b84" kindref="member">PIN_GetFpErrorSet()</ref> tell which are possible. Belongs to EXCEPTCLASS_MULTIPLE_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1eafff1d7259a62a402cfd84be28642c165" prot="public">
+          <name>EXCEPTCODE_RECEIVED_AMBIGUOUS_SIMD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ambiguous SIMD FPU exception. <ref refid="group__EXCEPTION_1gab6b8c9b966b1ec4e93966f5535377b84" kindref="member">PIN_GetFpErrorSet()</ref> tell which are possible. Belongs to EXCEPTCLASS_MULTIPLE_FP_ERROR. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Identifiers for all possible exception codes. The codes below are divided into two groups. The first group list all the exceptions that can be raised by <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>. Tools that want to be portable across operating systems should use codes from this first group when raising exceptions via <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>.</para>
+<para>When Pin receives an exception and reports it to the tool, it may report an exception in either the first or second group. This can happen, for example, when using the <ref refid="group__PIN__CONTROL_1ga9ca9a29ec02d848dd7b95717f400098c" kindref="member">PIN_SafeCopyEx()</ref> function. When Pin can identify a specific exception, it reports a code from the first group. Sometimes, though, the host operating system does not provide enough information for Pin to determine the exact exception. In these cases, Pin reports a code from the second group (one of the EXCEPTCODE_RECEIVED_ codes). A tool can always re-raise one of these exceptions by passing it to <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>. However, portable tools should avoid creating new exceptions using codes from the second group, because these codes are not supported on all operating systems. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="47" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="46" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" prot="public" static="no" strong="no">
+        <type></type>
+        <name>FAULTY_ACCESS_TYPE</name>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" prot="public">
+          <name>FAULTY_ACCESS_TYPE_UNKNOWN</name>
+          <briefdescription>
+<para>Unknown access violation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332a9017d042de552352d34631f1005ec41f" prot="public">
+          <name>FAULTY_ACCESS_READ</name>
+          <briefdescription>
+<para>Read access. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332a97a52d7e5d16b3b0a639f4afb8dcfb3a" prot="public">
+          <name>FAULTY_ACCESS_WRITE</name>
+          <briefdescription>
+<para>Write access. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ad3b3b74b39502a7dd812f575b6d02564" prot="public">
+          <name>FAULTY_ACCESS_EXECUTE</name>
+          <briefdescription>
+<para>Execute access. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Types of faulty memory accesses that may cause an EXCEPTCLASS_ACCESS_FAULT exception </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="132" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="131" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__EXCEPTION_1ga6a79e2fb2b098be0140b886c1bf455e7" prot="public" static="no" strong="no">
+        <type></type>
+        <name>FPERROR</name>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a09c3bc4e58050530f5e4d0344d61007f" prot="public">
+          <name>FPERROR_DIVIDE_BY_ZERO</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+<para>The #DE exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a2789dbaf7402c19c707464c6e661c5e6" prot="public">
+          <name>FPERROR_OVERFLOW</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+<para>The #O exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7aa378c327ca7bee274cfccb28ae22da4d" prot="public">
+          <name>FPERROR_UNDERFLOW</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+<para>The #U exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7ad6f4b619134d0fbace48a4f9ef3620e4" prot="public">
+          <name>FPERROR_INEXACT_RESULT</name>
+          <initializer>= (1 &lt;&lt; 3)</initializer>
+          <briefdescription>
+<para>The #P exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a52efd791986a45c1f57b4694886b8ef0" prot="public">
+          <name>FPERROR_INVALID_OPERATION</name>
+          <initializer>= (1 &lt;&lt; 4)</initializer>
+          <briefdescription>
+<para>The #IA exception on x87 or #I exception on SIMD. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7a4d8037fb36e5a201c22df00ddb4b5c7d" prot="public">
+          <name>FPERROR_DENORMAL_OPERAND</name>
+          <initializer>= (1 &lt;&lt; 5)</initializer>
+          <briefdescription>
+<para>The #D exception. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__EXCEPTION_1gga6a79e2fb2b098be0140b886c1bf455e7af983f6a4225301a637f9dca4617310da" prot="public">
+          <name>FPERROR_X87_STACK_ERROR</name>
+          <initializer>= (1 &lt;&lt; 6)</initializer>
+          <briefdescription>
+<para>The #IS exception on x87. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Possible types of FPU exceptions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="143" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="142" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__EXCEPTION_1ga95d87b1df51db38b0c1ed311a1fff5a5" prot="public" static="no">
+        <type>struct <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref></type>
+        <definition>typedef struct EXCEPTION_INFO EXCEPTION_INFO</definition>
+        <argsstring></argsstring>
+        <name>EXCEPTION_INFO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Structure that describes an exception.<linebreak/>
+The tool should not read or modify data members of this structure directly, but must treat the structure as logically opaque and use the <ref refid="group__EXCEPTION" kindref="compound">Exception API</ref> functions to manage it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="156" column="14" bodyfile="Source/pin/base/exception.PH" bodystart="408" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__EXCEPTION_1ga6c8da298c4aaa3f1d55b8b864eeb309a" prot="public" static="no" mutable="no">
+        <type>const UINT32</type>
+        <definition>const UINT32 MAX_WINDOWS_EXCEPTION_ARGS</definition>
+        <argsstring></argsstring>
+        <name>MAX_WINDOWS_EXCEPTION_ARGS</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maximum number of arguments that can be associated with an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="156" column="14" bodyfile="Source/pin/base/exception.PH" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__EXCEPTION_1gaf9b33bc295381eb82635cf7051e4cc55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitExceptionInfo</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, EXCEPTION_CODE exceptCode, ADDRINT exceptAddress)</argsstring>
+        <name>PIN_InitExceptionInfo</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure with the given generic exception&apos;s attributes. Set &quot;unknown&quot; state for all exception-specific attributes.<linebreak/>
+ <simplesect kind="note"><para>This function is useful when the specified exception code does not require any additional exception information or such information is not available. The function can not be used to initialize <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception information.<linebreak/>
+Use exception-specific initialization functions if an additional exception information is available/required.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be initialized </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code. It could specify any exception other than <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="430" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="430" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gaba04dfb97e6580fdd8e45c0c830e4204" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitAccessFaultInfo</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, EXCEPTION_CODE exceptCode, ADDRINT exceptAddress, ADDRINT accessAddress, FAULTY_ACCESS_TYPE accessType=FAULTY_ACCESS_TYPE_UNKNOWN)</argsstring>
+        <name>PIN_InitAccessFaultInfo</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>accessAddress</declname>
+        </param>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></type>
+          <declname>accessType</declname>
+          <defval><ref refid="group__EXCEPTION_1ggaac933421583f1cc06fe1b5d6e14ba332ab3feb58b1035c56b5af0a8697fd508ae" kindref="member">FAULTY_ACCESS_TYPE_UNKNOWN</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure with the given attributes of an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be initialized </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code that specifies an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">accessAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the faulty memory access </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">accessType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the faulty memory access</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="451" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="451" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga23bea4733196d44795c76caea7817492" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InitWindowsExceptionInfo</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, UINT32 sysExceptCode, ADDRINT exceptAddress, UINT32 numArgs=0, const ADDRINT *pArgs=0)</argsstring>
+        <name>PIN_InitWindowsExceptionInfo</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>sysExceptCode</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>numArgs</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const ADDRINT *</type>
+          <declname>pArgs</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure with the given attributes of an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be initialized </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">sysExceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the system exception code </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">numArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of arguments associated with the system exception. This is the number of elements in the &lt;pArgs&gt; array; it should not exceed the <ref refid="group__EXCEPTION_1ga6c8da298c4aaa3f1d55b8b864eeb309a" kindref="member">MAX_WINDOWS_EXCEPTION_ARGS</ref> value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">pArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an array of arguments associated with the system exception or NULL if the number of arguments is zero</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="475" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="475" bodyend="479"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gabf5f400860ff82575ba16fed79e12572" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+        <definition>EXCEPTION_CODE PIN_GetExceptionCode</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetExceptionCode</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the exception code from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The code of the exception</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="491" column="23" bodyfile="Source/pin/base/exception.PH" bodystart="491" bodyend="491"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga81f5a9ad25e0b675db61780c17d03b77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1ga5df924df3b9302a6ace8043c7b640b91" kindref="member">EXCEPTION_CLASS</ref></type>
+        <definition>EXCEPTION_CLASS PIN_GetExceptionClass</definition>
+        <argsstring>(EXCEPTION_CODE exceptCode)</argsstring>
+        <name>PIN_GetExceptionClass</name>
+        <param>
+          <type><ref refid="group__EXCEPTION_1gaf0466590c8a28e50202536adfed9ff1e" kindref="member">EXCEPTION_CODE</ref></type>
+          <declname>exceptCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Given an exception code, return the corresponding exception class. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>exception code </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The class of the exception</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="503" column="24" bodyfile="Source/pin/base/exception.PH" bodystart="503" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga18b2b29a40bd311e81a339548c8682e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetExceptionAddress</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetExceptionAddress</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the address of the instruction that caused the specified exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The address of the instruction that caused the exception</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="515" column="16" bodyfile="Source/pin/base/exception.PH" bodystart="515" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga397741c75f32043c9fcf6525f668678a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_SetExceptionAddress</definition>
+        <argsstring>(EXCEPTION_INFO *pExceptInfo, ADDRINT exceptAddress)</argsstring>
+        <name>PIN_SetExceptionAddress</name>
+        <param>
+          <type><ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>exceptAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the address of the instruction that caused the specified exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure that receives the new exception address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">exceptAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address of the instruction that caused the exception </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="523" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="523" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gaab2ef535bc632b453f0bff4a77fe1413" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__EXCEPTION_1gaac933421583f1cc06fe1b5d6e14ba332" kindref="member">FAULTY_ACCESS_TYPE</ref></type>
+        <definition>FAULTY_ACCESS_TYPE PIN_GetFaultyAccessType</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetFaultyAccessType</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the type of the faulty memory access from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The type of the faulty memory access that caused the exception </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="541" column="27" bodyfile="Source/pin/base/exception.PH" bodystart="541" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga296ce96f07f6377fbcd70e1a613de1c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_GetFaultyAccessAddress</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo, ADDRINT *pAccessAddress)</argsstring>
+        <name>PIN_GetFaultyAccessAddress</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>ADDRINT *</type>
+          <declname>pAccessAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the address of the faulty memory access from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">pAccessAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to variable that receives the address of the faulty memory access, if known. If this pointer is NULL, the function only checks if the requested address is known but does not return its value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE, if the address of the faulty memory access is known </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a32176596319790fc0271e52d04d33066" kindref="member">EXCEPTCLASS_ACCESS_FAULT</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="562" column="13" bodyfile="Source/pin/base/exception.PH" bodystart="562" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1gab6b8c9b966b1ec4e93966f5535377b84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_GetFpErrorSet</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetFpErrorSet</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the set of floating point exception codes from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. For EXCEPTCODE_RECEIVED_AMBIGUOUS_X87 and EXCEPTCODE_RECEIVED_AMBIGUOUS_SIMD exceptions, this is the set of possible causes for the exception. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A bitmask of FPERROR values. </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1gga5df924df3b9302a6ace8043c7b640b91a38a2cf5644947f6458e058a31d1abb8f" kindref="member">EXCEPTCLASS_MULTIPLE_FP_ERROR</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="581" column="15" bodyfile="Source/pin/base/exception.PH" bodystart="581" bodyend="581"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga5141065a1607862d80f77743f9dbb886" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_GetWindowsExceptionCode</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_GetWindowsExceptionCode</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the Windows system exception code from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The system exception code </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="595" column="15" bodyfile="Source/pin/base/exception.PH" bodystart="595" bodyend="595"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga363db287b0515c669518d94e448e9185" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 PIN_CountWindowsExceptionArguments</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_CountWindowsExceptionArguments</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the number of Windows system exception&apos;s arguments from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of arguments associated with the system exception </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="610" column="15" bodyfile="Source/pin/base/exception.PH" bodystart="610" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga3ed8c2177083689ddde3065f06422a47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_GetWindowsExceptionArgument</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo, UINT32 argNum)</argsstring>
+        <name>PIN_GetWindowsExceptionArgument</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>argNum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the specified Windows system exception&apos;s argument from the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be queried </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argNum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ordinal number of the argument to be retrieved, starting from zero. The value of this parameter should not exceed the value returned by the <ref refid="group__EXCEPTION_1ga363db287b0515c669518d94e448e9185" kindref="member">PIN_CountWindowsExceptionArguments</ref> function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the specified system exception&apos;s argument </para>
+</simplesect>
+<simplesect kind="pre"><para>The specified exception information should describe an <ref refid="group__EXCEPTION_1ggaf0466590c8a28e50202536adfed9ff1ea2caa77b1b0f7702c76920f8683b6c2b0" kindref="member">EXCEPTCODE_WINDOWS</ref> exception.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="632" column="16" bodyfile="Source/pin/base/exception.PH" bodystart="632" bodyend="635"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga62d407978423fdee9742f902ff7a0692" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PIN_ExceptionToString</definition>
+        <argsstring>(const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_ExceptionToString</name>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a string representation of the specified <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the exception information structure to be stringized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The string representation of this structure.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> All<linebreak/>
+<bold>O/S</bold>: All<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="647" column="20" bodyfile="Source/pin/base/exception.PH" bodystart="647" bodyend="647"/>
+      </memberdef>
+      <memberdef kind="function" id="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_RaiseException</definition>
+        <argsstring>(const CONTEXT *ctxt, THREADID tid, const EXCEPTION_INFO *pExceptInfo)</argsstring>
+        <name>PIN_RaiseException</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> *</type>
+          <declname>pExceptInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A tool can call this API to raise an emulated exception in the application&apos;s calling thread. Calling this API abandons the current analysis function and immediately starts executing at the application&apos;s exception handler (if there is one) or terminates the application (if there is no handler). This API does not return back to the calling analysis function.</para>
+<para>When raising a floating point exception, this method merely raises the exception. It does not set any bits in the floating point status register, nor does it check that the exception is enabled via the exception mask. If the tool wishes to examine or change the floating point status register bits, it may do so via the <emphasis>ctxt</emphasis> parameter.</para>
+<para>This function can be called from an analysis function or a replacement routine, but not from an instrumentation callback.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register state to be reported as the application&apos;s context at the exception point. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the calling thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">pExceptInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the <ref refid="structEXCEPTION__INFO" kindref="compound">EXCEPTION_INFO</ref> structure that describes the exception. The exception information should be properly initialized.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This API never returns. </para>
+</simplesect>
+<simplesect kind="pre"><para>All locks must be released before calling to this function.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client.PH" line="2579" column="13" declfile="Source/pin/pin/pin_client.PH" declline="2579" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This API allows the user to raise exceptions on behalf of the application and also analyze information associated with exceptions. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

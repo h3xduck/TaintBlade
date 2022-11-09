@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="ins__syscall__ia32__unix_8PH" kind="file" language="C++">
+    <compoundname>ins_syscall_ia32_unix.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ins__syscall__ia32__unix_8PH_1a4d16fe03436c7be66ba4e56914c8eee8" prot="public" static="no">
+        <name>PIN_G_INS_SYSCALL_IA32_UNIX_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32_u/ins_syscall_ia32_unix.PH" line="9" column="10" bodyfile="Source/pin/core_ia32_u/ins_syscall_ia32_unix.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__INS__INSPECTION_1ga25e16efec6fbac076c3997797b320344" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsSyscall</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_IsSyscall</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Syscall information for Unix/x86 systems</para>
+<para><simplesect kind="return"><para>true if the instruction is a system call </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32_u/ins_syscall_ia32_unix.PH" line="17" column="13" declfile="Source/pin/core_ia32_u/ins_syscall_ia32_unix.PH" declline="17" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__INS__INSPECTION_1gaa1c865a7582fea271d50c67710349d06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+        <definition>SYSCALL_STANDARD INS_SyscallStd</definition>
+        <argsstring>(INS ins)</argsstring>
+        <name>INS_SyscallStd</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check to see if the given instruction is a system call and return corresponding calling standard. <simplesect kind="return"><para>calling standard of the system call instruction or SYSCALL_STANDARD_INVALID if the instruction is not a system call. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core_ia32_u/ins_syscall_ia32_unix.PH" line="25" column="25" declfile="Source/pin/core_ia32_u/ins_syscall_ia32_unix.PH" declline="25" declcolumn="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_INS_SYSCALL_IA32_UNIX_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>ins_syscall_ia32_unix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_INS_SYSCALL_IA32_UNIX_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1ga25e16efec6fbac076c3997797b320344" kindref="member">INS_IsSyscall</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref><sp/><ref refid="group__INS__INSPECTION_1gaa1c865a7582fea271d50c67710349d06" kindref="member">INS_SyscallStd</ref>(INS<sp/>ins);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_INS_SYSCALL_IA32_UNIX_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/core_ia32_u/ins_syscall_ia32_unix.PH"/>
+  </compounddef>
+</doxygen>

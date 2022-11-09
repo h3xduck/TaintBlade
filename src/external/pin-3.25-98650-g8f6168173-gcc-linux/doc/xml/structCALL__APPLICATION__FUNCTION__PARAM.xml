@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structCALL__APPLICATION__FUNCTION__PARAM" kind="struct" language="C++" prot="public">
+    <compoundname>CALL_APPLICATION_FUNCTION_PARAM</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structCALL__APPLICATION__FUNCTION__PARAM_1acc98ab4c8cf0f5ae1b671aa3a610de34" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 CALL_APPLICATION_FUNCTION_PARAM::native</definition>
+        <argsstring></argsstring>
+        <name>native</name>
+        <bitfield> 1</bitfield>
+        <briefdescription>
+<para>When set, PIN executes the function without instrumenting it (default: FALSE) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1176" column="12" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Additional parameters to define how exactly to perform <ref refid="group__PIN__CONTROL_1ga38f5a396edc14c80c3bd2c0b91084153" kindref="member">PIN_CallApplicationFunction</ref> () </para>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="1175" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1174" bodyend="1177"/>
+    <listofallmembers>
+      <member refid="structCALL__APPLICATION__FUNCTION__PARAM_1acc98ab4c8cf0f5ae1b671aa3a610de34" prot="public" virt="non-virtual"><scope>CALL_APPLICATION_FUNCTION_PARAM</scope><name>native</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

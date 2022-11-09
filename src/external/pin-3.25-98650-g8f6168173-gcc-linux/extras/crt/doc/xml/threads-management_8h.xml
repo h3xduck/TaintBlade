@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="threads-management_8h" kind="file" language="C++">
+    <compoundname>threads-management.h</compoundname>
+    <includes local="yes">os-apis.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>threads-management.h</label>
+        <link refid="threads-management_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>os-apis.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__THREAD__MANAGEMENT_1gafa9993546b8b34061133c4414a06109c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OS_DeregisterThread</definition>
+        <argsstring>(NATIVE_TID ntid)</argsstring>
+        <name>OS_DeregisterThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>ntid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deregister a thread from the threads database and release all the resources used to track this thread (including TLS).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ntid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OS thread ID of the thread to deregister.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads-management.h" line="29" column="6" declfile="Source/os-apis/00-export-include/os-apis/threads-management.h" declline="29" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD__MANAGEMENT_1ga497b966fb405ae40b38ee9fa51748462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OS_DeregisterCurrentThread</definition>
+        <argsstring>(void)</argsstring>
+        <name>OS_DeregisterCurrentThread</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deregister the current thread from the threads database and release all the resources used to track this thread (including TLS).</para>
+<para><simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Windows, Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads-management.h" line="39" column="6" declfile="Source/os-apis/00-export-include/os-apis/threads-management.h" declline="39" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2016-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OS_APIS_THREAD_MANAGEMENT_H_INCLUDED__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_THREAD_MANAGEMENT_H_INCLUDED__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;os-apis.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">VOID<sp/><ref refid="group__OS__APIS__THREAD__MANAGEMENT_1gafa9993546b8b34061133c4414a06109c" kindref="member">OS_DeregisterThread</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>ntid);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">VOID<sp/><ref refid="group__OS__APIS__THREAD__MANAGEMENT_1ga497b966fb405ae40b38ee9fa51748462" kindref="member">OS_DeregisterCurrentThread</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>OS_APIS_THREAD_MANAGEMENT_H_INCLUDED__</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/threads-management.h"/>
+  </compounddef>
+</doxygen>

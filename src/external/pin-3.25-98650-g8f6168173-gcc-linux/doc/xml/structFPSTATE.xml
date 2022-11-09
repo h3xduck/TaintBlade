@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structFPSTATE" kind="struct" language="C++" prot="public">
+    <compoundname>FPSTATE</compoundname>
+    <innerclass refid="structFPSTATE_1_1VSTATE" prot="public">FPSTATE::VSTATE</innerclass>
+    <innerclass refid="structFPSTATE_1_1XSTATE" prot="public">FPSTATE::XSTATE</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structFPSTATE_1ade4d5f99027d6048642b563f57abeac5" prot="public" static="no" mutable="no">
+        <type><ref refid="group__CONTEXT_1ga4ca557f14f098e2c733785a3a9a78f50" kindref="member">FXSAVE</ref></type>
+        <definition>FXSAVE FPSTATE::fxsave_legacy</definition>
+        <argsstring></argsstring>
+        <name>fxsave_legacy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="44" column="12" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1ad9928bac2baf626ee9247d8341fcdf4d" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structFPSTATE_1_1XSTATE" kindref="compound">FPSTATE::XSTATE</ref></type>
+        <definition>struct FPSTATE::XSTATE FPSTATE::_xstate</definition>
+        <argsstring></argsstring>
+        <name>_xstate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="52" column="13"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1a7214b4289db66dcecc79184adcd0f4b8" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 FPSTATE::_reserved</definition>
+        <argsstring>[VSTATE_PADDING]</argsstring>
+        <name>_reserved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="56" column="11" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structFPSTATE_1acd9c5e7585e6093327fb2a67595a21e6" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structFPSTATE_1_1VSTATE" kindref="compound">FPSTATE::VSTATE</ref></type>
+        <definition>struct FPSTATE::VSTATE FPSTATE::_vstate</definition>
+        <argsstring></argsstring>
+        <name>_vstate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/fpstate_ia32.PH" line="72" column="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The memory layout written by XSAVE and read by XRSTOR, and used to hold the floating point part of the context within the <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> structure. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>FPSTATE</label>
+        <link refid="structFPSTATE"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_xstate</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_vstate</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>FPSTATE::VSTATE</label>
+        <link refid="structFPSTATE_1_1VSTATE"/>
+      </node>
+      <node id="3">
+        <label>XSAVE_HEADER</label>
+        <link refid="structXSAVE__HEADER"/>
+      </node>
+      <node id="2">
+        <label>FPSTATE::XSTATE</label>
+        <link refid="structFPSTATE_1_1XSTATE"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_extendedHeader</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/fpstate_ia32.PH" line="42" column="1" bodyfile="Source/pin/base/fpstate_ia32.PH" bodystart="41" bodyend="75"/>
+    <listofallmembers>
+      <member refid="structFPSTATE_1a7214b4289db66dcecc79184adcd0f4b8" prot="public" virt="non-virtual"><scope>FPSTATE</scope><name>_reserved</name></member>
+      <member refid="structFPSTATE_1acd9c5e7585e6093327fb2a67595a21e6" prot="public" virt="non-virtual"><scope>FPSTATE</scope><name>_vstate</name></member>
+      <member refid="structFPSTATE_1ad9928bac2baf626ee9247d8341fcdf4d" prot="public" virt="non-virtual"><scope>FPSTATE</scope><name>_xstate</name></member>
+      <member refid="structFPSTATE_1ade4d5f99027d6048642b563f57abeac5" prot="public" virt="non-virtual"><scope>FPSTATE</scope><name>fxsave_legacy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

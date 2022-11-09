@@ -1,0 +1,501 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__KNOBS" kind="group">
+    <compoundname>KNOBS</compoundname>
+    <title>KNOB: Commandline Option Handling</title>
+    <innerclass refid="classKNOBVALUE" prot="public">KNOBVALUE</innerclass>
+    <innerclass refid="classKNOBVALUE__LIST" prot="public">KNOBVALUE_LIST</innerclass>
+    <innerclass refid="classKNOB__BASE" prot="public">KNOB_BASE</innerclass>
+    <innerclass refid="classKNOB" prot="public">KNOB</innerclass>
+    <innerclass refid="classKNOB__COMMENT" prot="public">KNOB_COMMENT</innerclass>
+    <innerclass refid="classADDRESS__RANGE" prot="public">ADDRESS_RANGE</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__KNOBS_1ga01b1a33077e2fdfab743da94c406dce3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>KNOB_MODE</name>
+        <enumvalue id="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3a4a3516f8f83b982568bb70be74ae5a14" prot="public">
+          <name>KNOB_MODE_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3a0e000b764855535c8a3e1e760eb6b1b0" prot="public">
+          <name>KNOB_MODE_COMMENT</name>
+          <briefdescription>
+<para>comment for knob family </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3a481b1b4bfea2ef7e5d78a540baf2ccab" prot="public">
+          <name>KNOB_MODE_WRITEONCE</name>
+          <briefdescription>
+<para>single value, single write </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3a8333cb5099c6389724243859d29e2152" prot="public">
+          <name>KNOB_MODE_OVERWRITE</name>
+          <briefdescription>
+<para>single value, overwrite, unless the user set the knob from command line. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3a562eddcaa2e28898581fa32c0fbe80c7" prot="public">
+          <name>KNOB_MODE_ACCUMULATE</name>
+          <briefdescription>
+<para>single value, update </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3accb9cc7e7df2e0b3eb0b89cd1eabede4" prot="public">
+          <name>KNOB_MODE_APPEND</name>
+          <briefdescription>
+<para>list of values, append </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3abec597157e068a8266a86d28951adbc6" prot="public">
+          <name>KNOB_MODE_LAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This module contains routines and classes for the processing of command line arguments.</para>
+<para>Per knob mode - indicates how multiple appearances of the mode on the command line are handled </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="18" column="1" bodyfile="Source/pin/base/knob.PH" bodystart="17" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__KNOBS_1ga5cc9d51c1b4a85ad8c61e6861989f4e4" prot="public" static="no" mutable="no">
+        <type><ref refid="classKNOB" kindref="compound">KNOB</ref>&lt; BOOL &gt;</type>
+        <definition>KNOB&lt; BOOL &gt; KnobSlowAsserts</definition>
+        <argsstring></argsstring>
+        <name>KnobSlowAsserts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Knob for deciding whether using expensive sanity checks. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="508" column="13" declfile="Source/pin/base/knob.PH" declline="508" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__KNOBS_1gae687bfe5eaee90493c5ebb582da31f74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KNOB_BASE::KNOB_BASE</definition>
+        <argsstring>(const std::string &amp;myprefix, const std::string &amp;myname, const std::string &amp;myfamily, const std::string &amp;mydefault, const std::string &amp;mypurpose, KNOB_MODE mymode=KNOB_MODE_WRITEONCE)</argsstring>
+        <name>KNOB_BASE</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>myprefix</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>myname</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>myfamily</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mydefault</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mypurpose</declname>
+        </param>
+        <param>
+          <type><ref refid="group__KNOBS_1ga01b1a33077e2fdfab743da94c406dce3" kindref="member">KNOB_MODE</ref></type>
+          <declname>mymode</declname>
+          <defval><ref refid="group__KNOBS_1gga01b1a33077e2fdfab743da94c406dce3a481b1b4bfea2ef7e5d78a540baf2ccab" kindref="member">KNOB_MODE_WRITEONCE</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new knob <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>myname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the knob </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>myfamily</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Family to which the knob belongs to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mydefault</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The default value to which the knob is initialized with </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mypurpose</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string that explains the purpose of the knob </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mymode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group__KNOBS_1ga01b1a33077e2fdfab743da94c406dce3" kindref="member">KNOB_MODE</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="228" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga2fcfca47402cd938d252057d069f8d5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC VOID</type>
+        <definition>STATIC VOID KNOB_BASE::CheckAllKnobs</definition>
+        <argsstring>(BOOL allowDashes=FALSE)</argsstring>
+        <name>CheckAllKnobs</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allowDashes</declname>
+          <defval>FALSE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check for duplicates amongst the declared knobs </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="252" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga6ea4921d7034f43bb963f4f90b6399dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC UINT32</type>
+        <definition>STATIC UINT32 KNOB_BASE::NumberOfKnobs</definition>
+        <argsstring>()</argsstring>
+        <name>NumberOfKnobs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The total number of knobs that have been declared </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="257" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1gad656bbb39020e93d3473e1b487f10454" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC VOID</type>
+        <definition>STATIC VOID KNOB_BASE::DisableKnobFamily</definition>
+        <argsstring>(const std::string &amp;myfamily)</argsstring>
+        <name>DisableKnobFamily</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>myfamily</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disable all options within a given family of knobs <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>myfamily</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The family to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="263" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga425fd0c8dcca5474e370996bdf8d7e4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC VOID</type>
+        <definition>STATIC VOID KNOB_BASE::EnableKnobFamily</definition>
+        <argsstring>(const std::string &amp;myfamily)</argsstring>
+        <name>EnableKnobFamily</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>myfamily</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable all options within a given family of knobs <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>myfamily</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The family to enable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="269" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga7c9e1403f7c8a6fba37c3ac996d6be95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC VOID</type>
+        <definition>STATIC VOID KNOB_BASE::DisableKnob</definition>
+        <argsstring>(const std::string &amp;myname)</argsstring>
+        <name>DisableKnob</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>myname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disable a particular knob <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>myname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The particular knob to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="281" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga7f643695d61e52c3661520856d833227" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC VOID</type>
+        <definition>STATIC VOID KNOB_BASE::EnableKnob</definition>
+        <argsstring>(const std::string &amp;myname)</argsstring>
+        <name>EnableKnob</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>myname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable a particular knob <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>myname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The knob to enable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="287" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga6fbe7181260cd701b0fa884c2958074e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC std::string</type>
+        <definition>STATIC std::string KNOB_BASE::StringKnobSummary</definition>
+        <argsstring>()</argsstring>
+        <name>StringKnobSummary</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Print out a summary of all the knobs declared:<linebreak/>
+<itemizedlist>
+<listitem><para>The maximum line length in the print is 116<linebreak/>
+</para>
+</listitem><listitem><para>If the line exceeds the maximum length of the line, the line will be cut at the last space before the 116th character<linebreak/>
+</para>
+</listitem><listitem><para>If no space is found the line will be cut at the maximum length, which is 110 </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="297" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1gaddac5ec80d3b48ee9a0ee09a561129e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC std::string</type>
+        <definition>STATIC std::string KNOB_BASE::StringLongAll</definition>
+        <argsstring>()</argsstring>
+        <name>StringLongAll</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>x </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="302" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1gacd1f4eb7e9c4b3aa933cf62d3612e31c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC <ref refid="classKNOB__BASE" kindref="compound">KNOB_BASE</ref> *</type>
+        <definition>STATIC KNOB_BASE* KNOB_BASE::FindKnob</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>FindKnob</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Locate a knob from the list of declared knobs <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>myname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the knob to locate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="308" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1gafdae42294d965667722be42650912e40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC <ref refid="classKNOB__BASE" kindref="compound">KNOB_BASE</ref> *</type>
+        <definition>STATIC KNOB_BASE* KNOB_BASE::FindFamily</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>FindFamily</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Search for a knob family <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>family</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The family of knobs to locate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="314" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga774759bc7958969faaf7c0ab2b54140e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC <ref refid="classKNOB__BASE" kindref="compound">KNOB_BASE</ref> *</type>
+        <definition>STATIC KNOB_BASE* KNOB_BASE::FindEnabledKnob</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>FindEnabledKnob</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Search for a knob that is currently not disabled <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>myname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the knob to search which is currently enabled </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="320" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1gacd9de79dcbf4f1a1c81b49b855946f21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int KNOB_BASE::Compare</definition>
+        <argsstring>(const KNOB_BASE &amp;k2) const</argsstring>
+        <name>Compare</name>
+        <param>
+          <type>const <ref refid="classKNOB__BASE" kindref="compound">KNOB_BASE</ref> &amp;</type>
+          <declname>k2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if two knobs are identical. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="333" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga705f2dbe45c3440e13b67e7921ad1625" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID KNOB_BASE::TurnOnSetByUser</definition>
+        <argsstring>()</argsstring>
+        <name>TurnOnSetByUser</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mark that this knob was set from command line. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="358" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__KNOBS_1ga39dcece2c6dd3d8c4662af611da7d9d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL KNOB_BASE::SetByUser</definition>
+        <argsstring>() const</argsstring>
+        <name>SetByUser</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TRUE if the user set the knob from command line, FALSE otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="363" column="10"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Knobs automate the parsing and management of command line switches. A command line contains switches for Pin, the tool, and the application. The knobs parsing code understands how to separate them.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

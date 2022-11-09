@@ -1,0 +1,755 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="types_8h" kind="file" language="C++">
+    <compoundname>types.h</compoundname>
+    <includedby refid="pin-tls_8h" local="yes">pin-tls.h</includedby>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="types_8h_1aa8cecfc5c5c054d2875c03e77b7be15d" prot="public" static="no">
+        <name>TRUE</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="37" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1aa93f0eb578d23995850d61f7d61c55c1" prot="public" static="no">
+        <name>FALSE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="40" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4" prot="public" static="no">
+        <name>NULL</name>
+        <initializer>((void*)0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="48" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1ab3db63ab668bce951221e08394a65fc2" prot="public" static="no">
+        <name>ADDRINT_SIZE_IN_BITS</name>
+        <initializer>64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="115" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1a17e4b2ddaa9e818290d61d7c871fec45" prot="public" static="no">
+        <name>STACK_WORD_SIZE</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="116" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1ab4ccf2477227ee2f32aacd279e060f74" prot="public" static="no">
+        <name>PTRINT_SIZE</name>
+        <initializer>ADDRINT_SIZE_IN_BITS</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="135" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1a75777d9e53883479a185f34e660021ea" prot="public" static="no">
+        <name>ALIGNMENT_OF</name>
+        <param><defname>t</defname></param>
+        <initializer>__alignof__(t)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="148" column="10" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1a644aa64c461cb4aae684bdec80335d25" prot="public" static="no">
+        <name>INVALID_NATIVE_FD</name>
+        <initializer>((<ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref>)-1LL)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="178" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1a7979ca130ef3e887f8b10a83bf21ad75" prot="public" static="no">
+        <name>INVALID_NATIVE_TID</name>
+        <initializer>((<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref>)0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="182" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1a3fb740c0369fb3f5aaf19a70716a5bbc" prot="public" static="no">
+        <name>INVALID_NATIVE_PID</name>
+        <initializer>((<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref>)0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="183" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1aa2d6ae7bae584d1eb7006f1a38f1b7aa" prot="public" static="no">
+        <name>NATIVE_PID_CURRENT</name>
+        <initializer>((<ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref>)-1LL)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="184" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1ae39111a86290950d539638ab8a015d01" prot="public" static="no">
+        <name>NATIVE_TID_CURRENT</name>
+        <initializer>((<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref>)-1LL)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="185" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="types_8h_1ac8a736e99df6fb89c0c6b175ab85bd69" prot="public" static="no">
+        <name>OS_EVENT_INITIALIZER</name>
+        <initializer>((OS_EVENT)0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="186" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__OS__APIS__TYPES_1ga381a32123b296d5bddc48f76b3a6e4ea" prot="public" static="no">
+        <name>CPU_MEMORY_CACHELINE_SIZE</name>
+        <initializer>64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the memory cache line in a single core. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="191" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__OS__APIS__TYPES_1gaba24282e553fe81db10c5299f9995746" prot="public" static="no">
+        <name>FILENAME_BUF_SIZE</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the file name buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="196" column="9" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__OS__APIS__TYPES_1ga9e15fd2d422b99da6f35cd2fb3f2fe8e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>TRI</name>
+        <enumvalue id="group__OS__APIS__TYPES_1gga9e15fd2d422b99da6f35cd2fb3f2fe8ea64a89fe35f6ec4bc99667feb92b0a25a" prot="public">
+          <name>TRI_YES</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__TYPES_1gga9e15fd2d422b99da6f35cd2fb3f2fe8ea9b8a57235847d34cb5759d5399fe3f04" prot="public">
+          <name>TRI_NO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__OS__APIS__TYPES_1gga9e15fd2d422b99da6f35cd2fb3f2fe8eaa6bfaad0435f6422c2777235c5f6d3d5" prot="public">
+          <name>TRI_MAYBE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generic type for three-state logic. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="60" column="1" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="59" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char BOOL_T</definition>
+        <argsstring></argsstring>
+        <name>BOOL_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data type for boolean </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="33" column="23" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a7927e087749615dae3114cc27b91c86d" prot="public" static="no">
+        <type>void</type>
+        <definition>typedef void VOID</definition>
+        <argsstring></argsstring>
+        <name>VOID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="44" column="14" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1aebb9e13210d88d43e32e735ada43a425" prot="public" static="no">
+        <type>char</type>
+        <definition>typedef char CHAR</definition>
+        <argsstring></argsstring>
+        <name>CHAR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="51" column="14" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a36cb3b01d81ffd844bbbfb54003e06ec" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>typedef unsigned int UINT</definition>
+        <argsstring></argsstring>
+        <name>UINT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="52" column="22" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a392e62da233ed3e2f7c3fd4f487a3896" prot="public" static="no">
+        <type>int</type>
+        <definition>typedef int INT</definition>
+        <argsstring></argsstring>
+        <name>INT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="53" column="13" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1ae1de62325a5a0e2293f06262af433fca" prot="public" static="no">
+        <type>double</type>
+        <definition>typedef double FLT64</definition>
+        <argsstring></argsstring>
+        <name>FLT64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="54" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a01a6761f08700e4bed9005051bcbe0d0" prot="public" static="no">
+        <type>float</type>
+        <definition>typedef float FLT32</definition>
+        <argsstring></argsstring>
+        <name>FLT32</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="55" column="15" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1af3037cbae2cdbc45fb75983c08b87935" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t UINT8</definition>
+        <argsstring></argsstring>
+        <name>UINT8</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="83" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1acbc04026a2008f7c2fccf01718291c20" prot="public" static="no">
+        <type>uint16_t</type>
+        <definition>typedef uint16_t UINT16</definition>
+        <argsstring></argsstring>
+        <name>UINT16</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="84" column="18" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1adfe04a44baaebba6143c3a23507ff85b" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t UINT32</definition>
+        <argsstring></argsstring>
+        <name>UINT32</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="85" column="18" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a95df6cdb32afc350ff070f2fe8a54a67" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>typedef uint64_t UINT64</definition>
+        <argsstring></argsstring>
+        <name>UINT64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="86" column="18" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a0e16e07c1525c9688ca6fbd34f334ec8" prot="public" static="no">
+        <type>int8_t</type>
+        <definition>typedef int8_t INT8</definition>
+        <argsstring></argsstring>
+        <name>INT8</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="87" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1aca6c48234f001fdbd6597515a4cc088d" prot="public" static="no">
+        <type>int16_t</type>
+        <definition>typedef int16_t INT16</definition>
+        <argsstring></argsstring>
+        <name>INT16</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="88" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a2c951cf9402cd61f04b43789471dbe7c" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>typedef int32_t INT32</definition>
+        <argsstring></argsstring>
+        <name>INT32</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="89" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a296e89aa9d3de65d9ba04e7060118260" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>typedef int64_t INT64</definition>
+        <argsstring></argsstring>
+        <name>INT64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="90" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a88dced99ba31b1b227224e1c4befe456" prot="public" static="no">
+        <type>UINT64</type>
+        <definition>typedef UINT64 ANYADDR</definition>
+        <argsstring></argsstring>
+        <name>ANYADDR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="92" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a2a6e09cfc2e3838e96853fc783fc819f" prot="public" static="no">
+        <type>UINT64</type>
+        <definition>typedef UINT64 ADDRINT</definition>
+        <argsstring></argsstring>
+        <name>ADDRINT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="113" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1ac264a01cb33ebc24ada116bc9f658894" prot="public" static="no">
+        <type>INT64</type>
+        <definition>typedef INT64 ADDRDELTA</definition>
+        <argsstring></argsstring>
+        <name>ADDRDELTA</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="114" column="15" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a0c0ef477f11159346c4c03a340b3cf4f" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT USIZE</definition>
+        <argsstring></argsstring>
+        <name>USIZE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="122" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a857d8cb2f34f16f78bb3e665fdc5d8ac" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT VOIDINT</definition>
+        <argsstring></argsstring>
+        <name>VOIDINT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="133" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a93045448f0e893b4acecf702474d20ee" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT PTRINT</definition>
+        <argsstring></argsstring>
+        <name>PTRINT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="134" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1acc9b609b842ce486cfbb57e95853fdae" prot="public" static="no">
+        <type>UINT64</type>
+        <definition>typedef UINT64 REG_CLASS_BITS</definition>
+        <argsstring></argsstring>
+        <name>REG_CLASS_BITS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="138" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a38384d8c24e105019bdc3883485cedc7" prot="public" static="no">
+        <type>UINT32</type>
+        <definition>typedef UINT32 REG_SUBCLASS_BITS</definition>
+        <argsstring></argsstring>
+        <name>REG_SUBCLASS_BITS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="139" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT NATIVE_FD</definition>
+        <argsstring></argsstring>
+        <name>NATIVE_FD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generic data type to refer to a kernel file object. This is actually an HANDLE in Windows, and a file descriptor (int) on Unix systems. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="156" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" prot="public" static="no">
+        <type>UINT32</type>
+        <definition>typedef UINT32 NATIVE_PID</definition>
+        <argsstring></argsstring>
+        <name>NATIVE_PID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data type that can hold a process ID. On OS-APIs all processes can be refered to by their PIDs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="162" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" prot="public" static="no">
+        <type>UINT32</type>
+        <definition>typedef UINT32 NATIVE_TID</definition>
+        <argsstring></argsstring>
+        <name>NATIVE_TID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data type that can hold a thread ID. On OS-APIs all threads can be refered to by their TIDs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="168" column="16" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1aac9ecdb46771a1d20784d1b444f93847" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT NATIVE_UID</definition>
+        <argsstring></argsstring>
+        <name>NATIVE_UID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="170" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="types_8h_1a8d4e7781205397b38486228e86a08328" prot="public" static="no">
+        <type>ADDRINT</type>
+        <definition>typedef ADDRINT OS_EVENT</definition>
+        <argsstring></argsstring>
+        <name>OS_EVENT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/types.h" line="175" column="17" bodyfile="Source/os-apis/00-export-include/types.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2006-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>private<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor">#ifndef<sp/>OS_TYPES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_TYPES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>ASM_ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUC__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(TRUE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRUE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(FALSE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FALSE<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(VOID)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>VOID;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(NULL)<sp/>&amp;&amp;<sp/>!defined(__ICL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NULL<sp/>((void*)0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>CHAR;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>UINT;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>INT;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>FLT64;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>FLT32;</highlight></codeline>
+<codeline lineno="59"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group__OS__APIS__TYPES_1ga9e15fd2d422b99da6f35cd2fb3f2fe8e" kindref="member">TRI</ref></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>TRI_YES,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>TRI_NO,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>TRI_MAYBE</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_MSC_VER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>__int8<sp/>UINT8;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>__int16<sp/>UINT16;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>__int32<sp/>UINT32;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>__int64<sp/>UINT64;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/>__int8<sp/>INT8;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/>__int16<sp/>INT16;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/>__int32<sp/>INT32;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/>__int64<sp/>INT64;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TARGET_WINDOWS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int8<sp/>INT8;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int16<sp/>INT16;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int64<sp/>INT64;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int32<sp/>INT32;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint8_t<sp/>UINT8;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint16_t<sp/>UINT16;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint32_t<sp/>UINT32;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint64_t<sp/>UINT64;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int8_t<sp/>INT8;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int16_t<sp/>INT16;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int32_t<sp/>INT32;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int64_t<sp/>INT64;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/>ANYADDR;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>Unsigned<sp/>integer<sp/>of<sp/>the<sp/>same<sp/>size<sp/>as<sp/>a<sp/>pointer<sp/>on<sp/>the<sp/>TARGET<sp/>architecture.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>This<sp/>quantity<sp/>can<sp/>be<sp/>converted<sp/>to<sp/>and<sp/>from<sp/>an<sp/>OADDR/IADDR</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>There<sp/>is<sp/>an<sp/>option<sp/>of<sp/>overflow<sp/>and<sp/>underflow<sp/>when<sp/>using<sp/>ADDRDELTA.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>For<sp/>example,<sp/>let&apos;s<sp/>look<sp/>at<sp/>a<sp/>32<sp/>bit<sp/>address.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>32<sp/>bit<sp/>address<sp/>is<sp/>32<sp/>bit<sp/>unsigned<sp/>int<sp/>number.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>This<sp/>means<sp/>that<sp/>the<sp/>maximum<sp/>delta<sp/>between<sp/>two<sp/>addresses<sp/>is<sp/>(2^32<sp/>-<sp/>1),</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*<sp/>which<sp/>means<sp/>that<sp/>the<sp/>ADDRDELTA<sp/>which<sp/>is<sp/>signed<sp/>may<sp/>overflow.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_IA32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT32<sp/>ADDRINT;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>INT32<sp/>ADDRDELTA;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADDRINT_SIZE_IN_BITS<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STACK_WORD_SIZE<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(TARGET_IA32E)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/>ADDRINT;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>INT64<sp/>ADDRDELTA;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADDRINT_SIZE_IN_BITS<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STACK_WORD_SIZE<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;Unsupported<sp/>target<sp/>architecture&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/>USIZE;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HOST_IA32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT32<sp/>VOIDINT;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT32<sp/>PTRINT;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PTRINT_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HOST_IA32E)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/>VOIDINT;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/>PTRINT;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PTRINT_SIZE<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/>VOIDINT;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/>PTRINT;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PTRINT_SIZE<sp/>ADDRINT_SIZE_IN_BITS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/>REG_CLASS_BITS;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT32<sp/>REG_SUBCLASS_BITS;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>Generic<sp/>macro<sp/>definitions</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_MSC_VER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ALIGNMENT_OF(t)<sp/>__alignof(t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ALIGNMENT_OF(t)<sp/>__alignof__(t)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref>;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref>;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/>NATIVE_UID;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>TARGET_MAC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>UINT64<sp/>OS_EVENT;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADDRINT<sp/>OS_EVENT;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INVALID_NATIVE_FD<sp/>((NATIVE_FD)-1LL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>use<sp/>a<sp/>thread<sp/>ID<sp/>inside<sp/>a<sp/>reentrant<sp/>lock<sp/>to<sp/>mark<sp/>the<sp/>thread<sp/>that<sp/>owns<sp/>the<sp/>lock.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>owner<sp/>is<sp/>0,<sp/>the<sp/>implementation<sp/>treats<sp/>the<sp/>lock<sp/>as<sp/>unlocked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Here<sp/>we<sp/>want<sp/>to<sp/>align<sp/>to<sp/>that<sp/>implementation<sp/>and<sp/>use<sp/>0<sp/>as<sp/>INVALID_NATIVE_TID.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INVALID_NATIVE_TID<sp/>((NATIVE_TID)0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INVALID_NATIVE_PID<sp/>((NATIVE_PID)0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NATIVE_PID_CURRENT<sp/>((NATIVE_PID)-1LL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NATIVE_TID_CURRENT<sp/>((NATIVE_TID)-1LL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_EVENT_INITIALIZER<sp/>((OS_EVENT)0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="preprocessor">#define<sp/>CPU_MEMORY_CACHELINE_SIZE<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="preprocessor">#define<sp/>FILENAME_BUF_SIZE<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>ASM_ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/types.h"/>
+  </compounddef>
+</doxygen>

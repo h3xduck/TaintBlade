@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="debug_8PH" kind="file" language="C++">
+    <compoundname>debug.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="debug_8PH_1ae88ec7258e65caa920e5a55c83280623" prot="public" static="no">
+        <name>PIN_G_DEBUG_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debug.PH" line="9" column="10" bodyfile="Source/pin/pin/debug.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__DEBUG__INFO_1ga93af3d3077f131cb1e997c0a1436c433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PIN_GetSourceLocation</definition>
+        <argsstring>(ADDRINT address, INT32 *column, INT32 *line, std::string *fileName)</argsstring>
+        <name>PIN_GetSourceLocation</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>INT32 *</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>INT32 *</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>fileName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>PIN support for debugging information</para>
+<para>Find the line number, file, and column number corresponding to a memory address.</para>
+<para><bold>Linux:</bold> Compile your program with -g to include line number information. Pin can only read dwarf4 information. If you using compiler which generates more advanced format, please use -gdwarf-4 flag to generate dwarf4 debugging information.</para>
+<para><bold>macOS*</bold>: Compile your program with -g to include line number information. Pin can only read dwarf4 information. If you using compiler which generates more advanced format, please use -gdwarf-4 flag to generate dwarf4 debugging information.</para>
+<para><bold>Windows:</bold> Executable/dll has to have program data base (.pdb) file in order to support this API.</para>
+<para>This function can be used in any thread, including any internal thread spawned by the tool.</para>
+<para><simplesect kind="note"><para>In analysis routines, Client Lock should be obtained before calling this function<linebreak/>
+ </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The code address to lookup. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">column</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If column is non-zero, *column is set to the column number. Column number 0 indicates that there is no valid column information. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If line is non-zero, *line is set to the line number. Line number 0 indicates that there is no valid line information. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If fileName is non-zero, *fileName is set to the file name. Empty string (&quot;&quot;) indicates that there is no valid file name information. File names are encoded in UTF8 (a superset of ASCII), this is supported for Linux (only for locales encoded in UTF8) and Windows</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux, Windows &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debug.PH" line="48" column="13" declfile="Source/pin/pin/debug.PH" declline="48" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2007-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_DEBUG_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>debug</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_DEBUG_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__DEBUG__INFO_1ga93af3d3077f131cb1e997c0a1436c433" kindref="member">PIN_GetSourceLocation</ref>(ADDRINT<sp/>address,<sp/>INT32*<sp/>column,<sp/>INT32*<sp/>line,<sp/>std::string*<sp/>fileName);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_DEBUG_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/debug.PH"/>
+  </compounddef>
+</doxygen>

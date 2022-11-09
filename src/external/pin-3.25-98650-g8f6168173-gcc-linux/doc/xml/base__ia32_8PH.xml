@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="base__ia32_8PH" kind="file" language="C++">
+    <compoundname>base_ia32.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="base__ia32_8PH_1af60a725c2683d9d86e3ecc4b9e86aefe" prot="public" static="no">
+        <name>PIN_G_BASE_IA32_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/base_ia32.PH" line="9" column="10" bodyfile="Source/pin/base_ia32/base_ia32.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__INS__INSPECTION_1gaa0f5cf48b3b01ce2e18a76312cf5ebbd" prot="public" static="no" strong="no">
+        <type></type>
+        <name>PREDICATE</name>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda7e1481ea9f8640824c67debe5da81253" prot="public">
+          <name>PREDICATE_ALWAYS_TRUE</name>
+          <briefdescription>
+<para>Default predication on IA-32 and Intel(R) 64 architectures. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda66af83fcb6f5fab6abe26a5b04d83203" prot="public">
+          <name>PREDICATE_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdae481604bc682f660cd96d45c95fbf541" prot="public">
+          <name>PREDICATE_BELOW</name>
+          <briefdescription>
+<para>Below (CF==1) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda1cd755066bf408356fb8fc32d61e8028" prot="public">
+          <name>PREDICATE_BELOW_OR_EQUAL</name>
+          <briefdescription>
+<para>Below or Equal (CF==1 or ZF==1) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda2b6e7cdf781ec2170815815dff531edd" prot="public">
+          <name>PREDICATE_LESS</name>
+          <briefdescription>
+<para>Less (SF!=OF) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdaf90b5f1b923d7cd99479059e4ef44add" prot="public">
+          <name>PREDICATE_LESS_OR_EQUAL</name>
+          <briefdescription>
+<para>Less or Equal (ZF==1 or SF!=OF) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdacbcad233874b6109daa00b55d85171fa" prot="public">
+          <name>PREDICATE_NOT_BELOW</name>
+          <briefdescription>
+<para>Not Below (CF==0) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda23b2d827875950b7040425fb0a305715" prot="public">
+          <name>PREDICATE_NOT_BELOW_OR_EQUAL</name>
+          <briefdescription>
+<para>Above (CF==0 and ZF==0) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdacb6e8e25dc96a0f93d59c23d8b5ac1dc" prot="public">
+          <name>PREDICATE_NOT_LESS</name>
+          <briefdescription>
+<para>Greater or Equal (SF==OF) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda752dda94b045552647b706d6a96b1eb1" prot="public">
+          <name>PREDICATE_NOT_LESS_OR_EQUAL</name>
+          <briefdescription>
+<para>Greater (ZF==0 and SF==OF) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdada1eedda919626c9b51b268619a329f2" prot="public">
+          <name>PREDICATE_NOT_OVERFLOW</name>
+          <briefdescription>
+<para>Not Overflow (OF==0) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdac0a8c6561a8983e0e2178c009330e2a2" prot="public">
+          <name>PREDICATE_NOT_PARITY</name>
+          <briefdescription>
+<para>Not Parity (PF==0) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda706783e8f9e34d7083d7aa84c0dbfccf" prot="public">
+          <name>PREDICATE_NOT_SIGN</name>
+          <briefdescription>
+<para>Not Sign (SF==0) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdad49e0b746316ca0be5408872c30020d1" prot="public">
+          <name>PREDICATE_NOT_ZERO</name>
+          <briefdescription>
+<para>Not Zero (ZF==0) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda06b3bd17f023d86b9725e02620c86372" prot="public">
+          <name>PREDICATE_OVERFLOW</name>
+          <briefdescription>
+<para>Overflow (OF==1) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda258c8b6217af698176f5c9404dca93bd" prot="public">
+          <name>PREDICATE_PARITY</name>
+          <briefdescription>
+<para>Parity (PF==1) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda1af450bb6f4d982568b26851b4fc7160" prot="public">
+          <name>PREDICATE_SIGN</name>
+          <briefdescription>
+<para>Sign (SF==1) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda3fbef07e5130ea58b82281b1790b00da" prot="public">
+          <name>PREDICATE_ZERO</name>
+          <briefdescription>
+<para>Zero (ZF==1) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdab01725a848b042ffec91e289aba07eed" prot="public">
+          <name>PREDICATE_CX_NON_ZERO</name>
+          <briefdescription>
+<para>CX != 0. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdaf819f6469d1f5df95a3986ada62aafd3" prot="public">
+          <name>PREDICATE_ECX_NON_ZERO</name>
+          <briefdescription>
+<para>ECX != 0. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda4600380331061ce93c1230ba8f1e8605" prot="public">
+          <name>PREDICATE_RCX_NON_ZERO</name>
+          <briefdescription>
+<para>RCX != 0. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda49026823fba6b564052314d23c62380b" prot="public">
+          <name>PREDICATE_SAVED_GCX_NON_ZERO</name>
+          <briefdescription>
+<para>(Internal) Use the saved value of one of the previous three tests </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda645537727f3c2cda148c56a8c385d243" prot="public">
+          <name>PREDICATE_LAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Predicate abstraction for IA-32 and Intel(R) 64 instructions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains basic abstractions for IA32 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base_ia32/base_ia32.PH" line="17" column="1" bodyfile="Source/pin/base_ia32/base_ia32.PH" bodystart="16" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2004-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_BASE_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>base_ia32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_BASE_IA32_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>***</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>N.B.<sp/>Do<sp/>not<sp/>change<sp/>the<sp/>order<sp/>here.<sp/>We<sp/>have<sp/>a<sp/>static<sp/>table<sp/>which<sp/>is<sp/>indexed<sp/>by<sp/>these</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>values<sp/>(in<sp/>ins_api_xed_ia32.cpp).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>***</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda7e1481ea9f8640824c67debe5da81253" kindref="member">PREDICATE_ALWAYS_TRUE</ref>,<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>PREDICATE_INVALID,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Predicates<sp/>for<sp/>CMOV<sp/>instructions,<sp/>names<sp/>chosen<sp/>to<sp/>align<sp/>with<sp/>XED<sp/>names<sp/>for<sp/>the<sp/>CMOVs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdae481604bc682f660cd96d45c95fbf541" kindref="member">PREDICATE_BELOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda1cd755066bf408356fb8fc32d61e8028" kindref="member">PREDICATE_BELOW_OR_EQUAL</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda2b6e7cdf781ec2170815815dff531edd" kindref="member">PREDICATE_LESS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdaf90b5f1b923d7cd99479059e4ef44add" kindref="member">PREDICATE_LESS_OR_EQUAL</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdacbcad233874b6109daa00b55d85171fa" kindref="member">PREDICATE_NOT_BELOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda23b2d827875950b7040425fb0a305715" kindref="member">PREDICATE_NOT_BELOW_OR_EQUAL</ref>,<sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdacb6e8e25dc96a0f93d59c23d8b5ac1dc" kindref="member">PREDICATE_NOT_LESS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda752dda94b045552647b706d6a96b1eb1" kindref="member">PREDICATE_NOT_LESS_OR_EQUAL</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdada1eedda919626c9b51b268619a329f2" kindref="member">PREDICATE_NOT_OVERFLOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdac0a8c6561a8983e0e2178c009330e2a2" kindref="member">PREDICATE_NOT_PARITY</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda706783e8f9e34d7083d7aa84c0dbfccf" kindref="member">PREDICATE_NOT_SIGN</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdad49e0b746316ca0be5408872c30020d1" kindref="member">PREDICATE_NOT_ZERO</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda06b3bd17f023d86b9725e02620c86372" kindref="member">PREDICATE_OVERFLOW</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda258c8b6217af698176f5c9404dca93bd" kindref="member">PREDICATE_PARITY</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda1af450bb6f4d982568b26851b4fc7160" kindref="member">PREDICATE_SIGN</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda3fbef07e5130ea58b82281b1790b00da" kindref="member">PREDICATE_ZERO</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Predicates<sp/>for<sp/>REP<sp/>string<sp/>ops</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdab01725a848b042ffec91e289aba07eed" kindref="member">PREDICATE_CX_NON_ZERO</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbdaf819f6469d1f5df95a3986ada62aafd3" kindref="member">PREDICATE_ECX_NON_ZERO</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda4600380331061ce93c1230ba8f1e8605" kindref="member">PREDICATE_RCX_NON_ZERO</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaa0f5cf48b3b01ce2e18a76312cf5ebbda49026823fba6b564052314d23c62380b" kindref="member">PREDICATE_SAVED_GCX_NON_ZERO</ref>,<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>PREDICATE_LAST</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}<sp/><ref refid="group__INS__INSPECTION_1gaa0f5cf48b3b01ce2e18a76312cf5ebbd" kindref="member">PREDICATE</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_BASE_IA32_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/base_ia32/base_ia32.PH"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="debugger__client_8PH" kind="file" language="C++">
+    <compoundname>debugger_client.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="debugger__client_8PH_1a08f25e09766d7867b73533c5d632db7d" prot="public" static="no">
+        <name>PIN_G_DEBUGGER_CLIENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="9" column="10" bodyfile="Source/pin/pin/debugger_client.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__APPDEBUG_1ga3d6a74972d3450e7fb487103f5fe8147" prot="public" static="no">
+        <type>BOOL(*</type>
+        <definition>typedef BOOL(* DEBUG_INTERPRETER_CALLBACK) (THREADID threadIndex, CONTEXT *ctxt, const std::string &amp;cmd, std::string *reply, VOID *v)</definition>
+        <argsstring>)(THREADID threadIndex, CONTEXT *ctxt, const std::string &amp;cmd, std::string *reply, VOID *v)</argsstring>
+        <name>DEBUG_INTERPRETER_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin client functions for the application-level debugger.</para>
+<para>Call-back function to handle commands from a debugger.</para>
+<para>The format of the <emphasis>cmd</emphasis> and <emphasis>reply</emphasis> strings may vary depending on which debugger is connected to Pin. Tools can call <ref refid="group__APPDEBUG_1gadbe2a0980528561c214a4b8bfdca1251" kindref="member">PIN_GetDebuggerType()</ref> to tell which debugger is connected.</para>
+<para>When the debugger is GDB, <emphasis>cmd</emphasis> is the text string that the user types after the &quot;monitor&quot; command and <emphasis>reply</emphasis> is displayed verbatim as a response to the command.</para>
+<para>Pin reserves all command strings that start with the prefix &quot;pin &quot; or &quot;pin:&quot;. Pin interprets these commands itself and does not pass them on to the tool.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">threadIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID of the debugger&apos;s &quot;focus&quot; thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Application register state of the debugger&apos;s &quot;focus&quot; thread. The interpreter can change this state if it handles <emphasis>cmd</emphasis>. When the debugger resumes this thread, it will use the new register state in <emphasis>ctxt</emphasis>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cmd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The debugger command. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">reply</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the reply to the command, if the interpreter understands <emphasis>cmd</emphasis>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if this interpreter function understands <emphasis>cmd</emphasis>. FALSE if it does not. If FALSE is returned, Pin will call the next registered interpreter to see if it understands <emphasis>cmd</emphasis>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="38" column="9" bodyfile="Source/pin/pin/debugger_client.PH" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__APPDEBUG_1gaee4c44a7173aa62cd5121253d2966b52" prot="public" static="no">
+        <type>BOOL(*</type>
+        <definition>typedef BOOL(* DEBUG_BREAKPOINT_CALLBACK) (ADDRINT addr, UINT size, BOOL insert, VOID *v)</definition>
+        <argsstring>)(ADDRINT addr, UINT size, BOOL insert, VOID *v)</argsstring>
+        <name>DEBUG_BREAKPOINT_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-back function to handle breakpoint set requests from a debugger.</para>
+<para>Once a callback accepted control over a breakpoint at the given address, Pin and PinADX will not stop at that address. The stop responsibility is handled solely by the tool.</para>
+<para>However, PinADX does keep track of the breakpoint, in case the tool wants to &quot;reset&quot; the breakpoint and give the control back to PinADX.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the requested breakpoint. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the breakpoint (HW/SW) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">insert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether if this is a breakpoint insertion or deletion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if this callback function takes control over the breakpoint. FALSE if it does not. If FALSE is returned, Pin will call the next registered interpreter to see if it understands <emphasis>cmd</emphasis>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="59" column="9" bodyfile="Source/pin/pin/debugger_client.PH" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__APPDEBUG_1ga3e5a10fa61485e7bce314a1c3fe51216" prot="public" static="no">
+        <type>BOOL(*</type>
+        <definition>typedef BOOL(* INTERCEPT_DEBUGGING_EVENT_CALLBACK) (THREADID tid, DEBUGGING_EVENT eventType, CONTEXT *ctxt, VOID *arg)</definition>
+        <argsstring>)(THREADID tid, DEBUGGING_EVENT eventType, CONTEXT *ctxt, VOID *arg)</argsstring>
+        <name>INTERCEPT_DEBUGGING_EVENT_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-back function when the tool intercepts a debugging event with <ref refid="group__APPDEBUG_1ga4f727b422499f5d312204ba42b23fda0" kindref="member">PIN_InterceptDebuggingEvent()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Pin thread ID of the thread that received the debugging event. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">eventType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells the debugging event. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On input, gives the register state at the point the thread received the event. The tool may change <emphasis>ctxt</emphasis>. If the event is passed on to the debugger, the debugger sees the modified register state. If the event is not passed on to the debugger, the thread resumes execution at the new register state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">arg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returning TRUE tells Pin to pass the debugging event on to the debugger. Returning FALSE tells Pin to squash the event and the thread resumes without stopping in the debugger.</para>
+</simplesect>
+The following scenarios are not allowed:</para>
+<para><itemizedlist>
+<listitem><para>The call-back may not return FALSE for DEBUGGING_EVENT_ASYNC_BREAK.</para>
+</listitem><listitem><para>If the call-back returns TRUE for DEBUGGING_EVENT_BREAKPOINT or DEBUGGING_EVENT_SINGLE_STEP, it may not change the value of REG_INST_PC in <emphasis>ctxt</emphasis>. This restriction exists because debuggers typically make assumptions on the PC value when these events trigger. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="84" column="9" bodyfile="Source/pin/pin/debugger_client.PH" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__APPDEBUG_1ga9d7745cc697db791f72d06cd149daa72" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* GET_EMULATED_REGISTER_CALLBACK) (unsigned toolRegId, THREADID tid, CONTEXT *ctxt, VOID *data, VOID *v)</definition>
+        <argsstring>)(unsigned toolRegId, THREADID tid, CONTEXT *ctxt, VOID *data, VOID *v)</argsstring>
+        <name>GET_EMULATED_REGISTER_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-back function that Pin calls to get the value of a register emulated by the tool.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">toolRegId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifies the emulated register (from the <emphasis>registerDescriptions</emphasis> parameter to <ref refid="group__APPDEBUG_1ga227aa5052c499e58c77a376048478647" kindref="member">PIN_AddDebuggerRegisterEmulator()</ref>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifies the thread whose register is read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Architected register state for the thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to a buffer that receives the value of the register. The value must be stored in little-endian format (least significant bytes first). If the register size is not an even multiple of bytes, the upper bits of the last byte (most significant byte) are unused. If the register size is 2, 4, or 8 bytes, <emphasis>data</emphasis> is naturally aligned, so it may be cast to a pointer of the appropriate type. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="102" column="9" bodyfile="Source/pin/pin/debugger_client.PH" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__APPDEBUG_1gacb569f5ec458c0cdacfbc511e8d7a24b" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* SET_EMULATED_REGISTER_CALLBACK) (unsigned toolRegId, THREADID tid, CONTEXT *ctxt, const VOID *data, VOID *v)</definition>
+        <argsstring>)(unsigned toolRegId, THREADID tid, CONTEXT *ctxt, const VOID *data, VOID *v)</argsstring>
+        <name>SET_EMULATED_REGISTER_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-back function that Pin calls to set the value of a register emulated by the tool.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">toolRegId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifies the emulated register (from the <emphasis>registerDescriptions</emphasis> parameter to <ref refid="group__APPDEBUG_1ga227aa5052c499e58c77a376048478647" kindref="member">PIN_AddDebuggerRegisterEmulator()</ref>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifies the thread whose register is written. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Architected register state for the thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to the new value for the register. The value is stored in the same format as described in GET_EMULATED_REGISTER_CALLBACK. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="116" column="9" bodyfile="Source/pin/pin/debugger_client.PH" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__APPDEBUG_1gaf5bdf55a090a9e22c7fdc2efbfac8cb6" prot="public" static="no">
+        <type>USIZE(*</type>
+        <definition>typedef USIZE(* GET_TARGET_DESCRIPTION_CALLBACK) (const std::string &amp;name, USIZE size, VOID *buf, VOID *v)</definition>
+        <argsstring>)(const std::string &amp;name, USIZE size, VOID *buf, VOID *v)</argsstring>
+        <name>GET_TARGET_DESCRIPTION_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-back function that Pin calls to get the content of a document that describes an emulated target processor to an application-level debugger. This is useful, for example, when a Pin tool emulates additional registers beyond those defined by the native CPU. A debugger can use this document to understand the emulated registers and how to display them.</para>
+<para>The format of the returned document varies depending on the debugger that is connected to Pin. Tools can use <ref refid="group__APPDEBUG_1gadbe2a0980528561c214a4b8bfdca1251" kindref="member">PIN_GetDebuggerType()</ref> to tell which debugger is connected.</para>
+<para>When used with GDB, the description should be an XML &quot;target feature&quot; document, as described in the GDB user manual, &quot;Debugging With GDB&quot;. See the appendix titled &quot;Target Descriptions&quot; for details of the XML document format. GDB starts by asking for a document titled &quot;target.xml&quot;. However, this document may reference other documents via &quot;include&quot; statements. If so, GDB will ask for those additional documents by their names.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the requested document. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size (bytes) of the <emphasis>buf</emphasis> buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to a buffer that receives the content of the document. If the document requires more than <emphasis>size</emphasis> bytes, the tool need not write anything into <emphasis>buf</emphasis>. Instead, the tool should return the required size. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>If the tool knows how to provide the document named <emphasis>name</emphasis>, it returns the size (bytes) of that document. If that size is less than or equal to <emphasis>size</emphasis>, the tool should also write the content of the document to <emphasis>buf</emphasis>. If the tool does not know how to provide this document, it should return zero. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="145" column="9" bodyfile="Source/pin/pin/debugger_client.PH" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__APPDEBUG_1ga4f727b422499f5d312204ba42b23fda0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_InterceptDebuggingEvent</definition>
+        <argsstring>(DEBUGGING_EVENT eventType, INTERCEPT_DEBUGGING_EVENT_CALLBACK fun, VOID *arg)</argsstring>
+        <name>PIN_InterceptDebuggingEvent</name>
+        <param>
+          <type><ref refid="group__APPDEBUG_1gad6ae164e2005bda040921f234730cb5a" kindref="member">DEBUGGING_EVENT</ref></type>
+          <declname>eventType</declname>
+        </param>
+        <param>
+          <type><ref refid="group__APPDEBUG_1ga3e5a10fa61485e7bce314a1c3fe51216" kindref="member">INTERCEPT_DEBUGGING_EVENT_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Establish an interceptor function for debugging events that Pin sends to an external debugger. This API allows a tool to filter these events before they are visible to the debugger.</para>
+<para>A tool can set only one &quot;intercept&quot; function for a particular event, so a new function overwrites any previous one for the same event. To disable an interceptor, pass a NULL function pointer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">eventType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells the type of events to intercept. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s interceptor function, or NULL. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the interceptor function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="167" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="167" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1ga227aa5052c499e58c77a376048478647" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_AddDebuggerRegisterEmulator</definition>
+        <argsstring>(unsigned numRegisters, const DEBUGGER_REG_DESCRIPTION *registerDescriptions, GET_EMULATED_REGISTER_CALLBACK getFun, SET_EMULATED_REGISTER_CALLBACK setFun, GET_TARGET_DESCRIPTION_CALLBACK getDescriptionFun, VOID *val)</argsstring>
+        <name>PIN_AddDebuggerRegisterEmulator</name>
+        <param>
+          <type>unsigned</type>
+          <declname>numRegisters</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structDEBUGGER__REG__DESCRIPTION" kindref="compound">DEBUGGER_REG_DESCRIPTION</ref> *</type>
+          <declname>registerDescriptions</declname>
+        </param>
+        <param>
+          <type><ref refid="group__APPDEBUG_1ga9d7745cc697db791f72d06cd149daa72" kindref="member">GET_EMULATED_REGISTER_CALLBACK</ref></type>
+          <declname>getFun</declname>
+        </param>
+        <param>
+          <type><ref refid="group__APPDEBUG_1gacb569f5ec458c0cdacfbc511e8d7a24b" kindref="member">SET_EMULATED_REGISTER_CALLBACK</ref></type>
+          <declname>setFun</declname>
+        </param>
+        <param>
+          <type><ref refid="group__APPDEBUG_1gaf5bdf55a090a9e22c7fdc2efbfac8cb6" kindref="member">GET_TARGET_DESCRIPTION_CALLBACK</ref></type>
+          <declname>getDescriptionFun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This API is useful for Pin tools that emulate registers that do not exist in the host machine&apos;s ISA. If an application debugger is attached to Pin, this API informs the debugger about the extended registers, allowing users to display and manipulate the emulated registers as though they were native registers. Of course, not all debuggers have this capability. Calling this API for such a non-conforming debugger is legal, but ineffective. A non-conforming debugger will ignore the emulated registers and just display the native ones.</para>
+<para>When using this API, the set of registers presented to the debugger is specified in two redundant ways, and it is the tool&apos;s responsibility to ensure that they are consistent. One specification is a text document that the debugger reads. This document can have any format that the tool and the debugger agree upon, and could convey information about the registers, how they should be displayed in the debugger, etc. The tool provides this document via the <emphasis>getDescriptionFun</emphasis> call-back. The second register specification is through the <emphasis>registerDescriptions</emphasis> parameter, which Pin uses when communicating the register values to the debugger.</para>
+<para>If this API is called, it must be called before calling <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref>. Also, a tool can install only one debugger register emulator, so a call to <ref refid="group__APPDEBUG_1ga227aa5052c499e58c77a376048478647" kindref="member">PIN_AddDebuggerRegisterEmulator()</ref> will overwrite any previous call.</para>
+<para>When used with GDB, this API is effective only for versions of GDB that support register extensions in the XML &quot;feature document&quot;. This includes GDB versions 7.2 and later, as well as some distributions of earlier GDB versions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">numRegisters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of entries in <emphasis>registerDescriptions</emphasis>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">registerDescriptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array describing each register that the debugger will know about. This includes both native registers and emulated registers. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">getFun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Call-back function that Pin calls to get the value of an emulated register. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">setFun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Call-back function that Pin calls to set the value of an emulated register. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">getDescriptionFun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Call-back function that Pin calls to get the content of a text document that tells the debugger about the registers defined in <emphasis>registerDescriptions</emphasis>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value passed to the call-back functions.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="215" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="215" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1ga8b7429dba7db028dc095a48d026b30f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK PIN_AddDebugInterpreter</definition>
+        <argsstring>(DEBUG_INTERPRETER_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_AddDebugInterpreter</name>
+        <param>
+          <type><ref refid="group__APPDEBUG_1ga3d6a74972d3450e7fb487103f5fe8147" kindref="member">DEBUG_INTERPRETER_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a handler that can interpret commands sent from an application debugger. This API allows a tool to extend the normal set of commands understood by a debugger that is connected to Pin.</para>
+<para>A tool may install more than one interpreter function. Pin calls each one until it reaches an interpreter that understand the command.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The debug interpreter function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the interpreter function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="238" column="21" declfile="Source/pin/pin/debugger_client.PH" declline="238" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1gae16ccb04f07c4d2d7eb021e128b28f2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_RemoveDebugInterpreter</definition>
+        <argsstring>(DEBUG_INTERPRETER_CALLBACK fun)</argsstring>
+        <name>PIN_RemoveDebugInterpreter</name>
+        <param>
+          <type><ref refid="group__APPDEBUG_1ga3d6a74972d3450e7fb487103f5fe8147" kindref="member">DEBUG_INTERPRETER_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove a previously installed debug interpreter function.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The interpreter function to remove.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="252" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="252" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1ga4d6cb680fcf43fe32857fe54bfc8e2a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK PIN_AddBreakpointHandler</definition>
+        <argsstring>(DEBUG_BREAKPOINT_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_AddBreakpointHandler</name>
+        <param>
+          <type><ref refid="group__APPDEBUG_1gaee4c44a7173aa62cd5121253d2966b52" kindref="member">DEBUG_BREAKPOINT_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a handler that can intercept breakpoint set/delete commands sent from an application debugger. This API allows a tool to take control over specific breakpoints stop behavior.</para>
+<para>A tool may install more than one handler function. Pin calls each one until it reaches an handler that understand the command.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The breakpoint handler function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to pass to the handler function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows, macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="273" column="21" declfile="Source/pin/pin/debugger_client.PH" declline="273" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1gaca4da902f7ed6a9985b9ab26a6699384" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_RemoveBreakpointHandler</definition>
+        <argsstring>(DEBUG_BREAKPOINT_CALLBACK fun)</argsstring>
+        <name>PIN_RemoveBreakpointHandler</name>
+        <param>
+          <type><ref refid="group__APPDEBUG_1gaee4c44a7173aa62cd5121253d2966b52" kindref="member">DEBUG_BREAKPOINT_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove a previously installed breakpoint handler function.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The breakpoint handler to remove.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows, macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="287" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="287" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1gaa878efff68323d2a8f23b7ee2b5a912c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ResetBreakpointAt</definition>
+        <argsstring>(ADDRINT addr)</argsstring>
+        <name>PIN_ResetBreakpointAt</name>
+        <param>
+          <type>ADDRINT</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resets the breakpoint address, and returns the control back to PinADX.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The breakpoint address.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows, macOS*<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="301" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="301" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ApplicationBreakpoint</definition>
+        <argsstring>(const CONTEXT *ctxt, THREADID tid, BOOL waitIfNoDebugger, const std::string &amp;msg)</argsstring>
+        <name>PIN_ApplicationBreakpoint</name>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>waitIfNoDebugger</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A tool can call this API to stop execution in an application debugger as though a breakpoint was hit. The <emphasis>ctxt</emphasis> parameter tells the register state that the debugger sees when the application stops. If application level debugging is not enabled in this Pin session, execution does not stop, but resumes immediately at <emphasis>ctxt</emphasis>. Tools can tell if application level debugging is enabled by calling <ref refid="group__APPDEBUG_1ga92c6d18526f1f895eb9d2736c79478e4" kindref="member">PIN_GetDebugStatus()</ref>.</para>
+<para>The semantics of this API are very similar to <ref refid="group__CONTEXT_1gade2217c59d6e6b5cad08a59afe3d879a" kindref="member">PIN_ExecuteAt()</ref>. Both APIs abandon the current analysis function and resume execution at a new <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>. The only difference is that <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref> also stops at a breakpoint in the application debugger.</para>
+<para>This API can be called from an analysis function or a replacement routine, but not from a callback.</para>
+<para>When this API is called from an analysis function or replacement function, and if they execute the current routine or instruction being analyzed, then execution will resume at the instrumented routine or instruction and the analysis function will be called again. It is the pintool&apos;s responsibility to avoid going into an infinite loop of calls to the analysis function.</para>
+<para>The expected format of the <emphasis>msg</emphasis> string may depend on which debugger is connected to Pin. Tools can call <ref refid="group__APPDEBUG_1gadbe2a0980528561c214a4b8bfdca1251" kindref="member">PIN_GetDebuggerType()</ref> to find the debugger type.</para>
+<para>When used with GDB, the <emphasis>msg</emphasis> string is displayed verbatim to the user when the debugger stops. The debugger adds a newline to the end of the string before displaying it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctxt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register state that is reported to the debugger. When the debugger resumes this thread, it resumes execution at this register state (unless the debugger changes the register state). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the calling thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">waitIfNoDebugger</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <emphasis>waitIfNoDebugger</emphasis> is TRUE and the status is DEBUG_STATUS_UNCONNECTED, <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref> blocks until a debugger connects. Tools can call <ref refid="group__APPDEBUG_1ga92c6d18526f1f895eb9d2736c79478e4" kindref="member">PIN_GetDebugStatus()</ref> to get the status. If <emphasis>waitIfNoDebugger</emphasis> is FALSE or if the status is DEBUG_STATUS_DISABLED or DEBUG_STATUS_UNCONNECTABLE, <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref> resumes immediately at the new context when no debugger is connected. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells the reason why the breakpoint was triggered.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This API never returns.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="352" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="352" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1ga15e52a111880529d439946eb392dd992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_SetDebugMode</definition>
+        <argsstring>(const DEBUG_MODE *mode)</argsstring>
+        <name>PIN_SetDebugMode</name>
+        <param>
+          <type>const <ref refid="structDEBUG__MODE" kindref="compound">DEBUG_MODE</ref> *</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set whether application debugging is enabled or disabled in this Pin session and set the debugging mode if debugging is enabled. This API overrides the following knobs if they are specified on the command line:</para>
+<para><itemizedlist>
+<listitem><para><ref refid="group__CL__OPTIONS_1SWITCH_APPDEBUG" kindref="member">-appdebug</ref></para>
+</listitem><listitem><para><ref refid="group__CL__OPTIONS_1SWITCH_APPDEBUG_ENABLE" kindref="member">-appdebug_enable</ref></para>
+</listitem><listitem><para><ref refid="group__CL__OPTIONS_1SWITCH_APPDEBUG_SILENT" kindref="member">-appdebug_silent</ref></para>
+</listitem><listitem><para><ref refid="group__CL__OPTIONS_1SWITCH_APPDEBUG_ALLOW_REMOTE" kindref="member">-appdebug_allow_remote</ref></para>
+</listitem><listitem><para><ref refid="group__CL__OPTIONS_1SWITCH_APPDEBUG_CONNECTION" kindref="member">-appdebug_connection</ref></para>
+</listitem><listitem><para><ref refid="group__CL__OPTIONS_1SWITCH_APPDEBUG_EXCLUDE" kindref="member">-appdebug_exclude</ref></para>
+</listitem></itemizedlist>
+</para>
+<para>If the tool calls this API, it must be called before <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells whether application debugging is enabled and specifies the mode. If mode-&gt;_tcpClient-&gt;_ip is set, this method makes a copy of the string.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE on success, FALSE on failure or if called after <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref>.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="379" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="379" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1ga92c6d18526f1f895eb9d2736c79478e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__APPDEBUG_1ga41e814fff526e0232f2f8c3055d6e88b" kindref="member">DEBUG_STATUS</ref></type>
+        <definition>DEBUG_STATUS PIN_GetDebugStatus</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_GetDebugStatus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function tells whether application level debugging is enabled in this Pin session. If so, it tells whether an application debugger is currently connected to Pin.</para>
+<para><simplesect kind="return"><para>A code telling the status of application level debugging.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="392" column="21" declfile="Source/pin/pin/debugger_client.PH" declline="392" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1ga36087c681ff5cdf730c3d5d12723ba4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_GetDebugConnectionInfo</definition>
+        <argsstring>(DEBUG_CONNECTION_INFO *info)</argsstring>
+        <name>PIN_GetDebugConnectionInfo</name>
+        <param>
+          <type><ref refid="structDEBUG__CONNECTION__INFO" kindref="compound">DEBUG_CONNECTION_INFO</ref> *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function retrieves the information that an application level debugger will need in order to connect to this Pin session.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the connection information.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if application level debugging is enabled for this Pin session.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="407" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="407" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1gadbe2a0980528561c214a4b8bfdca1251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__APPDEBUG_1ga87ad53f06ecf9cbcd3b94a155e1c11b5" kindref="member">DEBUGGER_TYPE</ref></type>
+        <definition>DEBUGGER_TYPE PIN_GetDebuggerType</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_GetDebuggerType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function tells the type of application level debugger (if any) that is connected to Pin. If no debugger is connected, returns DEBUGGER_TYPE_UNKNOWN.</para>
+<para><simplesect kind="return"><para>The type of the application level debugger that is connected to Pin.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="420" column="22" declfile="Source/pin/pin/debugger_client.PH" declline="420" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1gacc153fff2b3f0f8542b5c5208356f0fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_WaitForDebuggerToConnect</definition>
+        <argsstring>(unsigned timeout)</argsstring>
+        <name>PIN_WaitForDebuggerToConnect</name>
+        <param>
+          <type>unsigned</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Waits for an application level debugger to connect to this Pin session. This function may only be called after <ref refid="group__PIN__CONTROL_1gab466cd00518ff315446c92f98f7ea1a0" kindref="member">PIN_StartProgram()</ref>. If the debugger status is DEBUG_STATUS_DISABLED or DEBUG_STATUS_UNCONNECTABLE, it returns FALSE immediately.</para>
+<para>After a successful return, an application level debugger is connected to Pin. The debugger will stop the application soon, but there is no guarantee that this will happen immediately after this API returns. If the tool wants to guarantee an immediate stop, it should call <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A timeout value (milliseconds). This function returns (with FALSE) if a debugger has not connected by the end of the timeout period. A <emphasis>timeout</emphasis> value of zero means wait forever.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if an application level debugger is connected.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux, Windows<linebreak/>
+<bold>CPU:</bold> IA-32 and Intel(R) 64 architectures<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="443" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="443" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1ga9c5930cc3e21cec532e4909ee3f9f165" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_GetStoppedThreadPendingToolBreakpoint</definition>
+        <argsstring>(THREADID tid, std::string *msg)</argsstring>
+        <name>PIN_GetStoppedThreadPendingToolBreakpoint</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells whether a stopped thread has called <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref>, but the breakpoint has NOT yet been reported to the debugger. For example, this can occur if two threads call <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref> simultaneously and the debugger has asked Pin to report one debugger event at a time. In this case, Pin reports one breakpoint to the debugger and leaves the other breakpoint pending.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin ID of a stopped thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If there is a pending breakpoint and if <emphasis>msg</emphasis> is not NULL, <emphasis>msg</emphasis> receives the breakpoint message.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if thread <emphasis>tid</emphasis> is stopped and has a pending breakpoint from <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="459" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="459" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__APPDEBUG_1gab651618eb1f148e0f1d0af927510c3a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_ChangePendingToolBreakpointOnStoppedThread</definition>
+        <argsstring>(THREADID tid, BOOL squash, const std::string &amp;msg)</argsstring>
+        <name>PIN_ChangePendingToolBreakpointOnStoppedThread</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type>BOOL</type>
+          <declname>squash</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If the given stopped thread has a pending tool breakpoint, this function can change the message associated with that breakpoint request or it can squash the breakpoint request entirely. The debugger will see the effect of the changed breakpoint after it resumes execution of the thread. If the tool changes the breakpoint message, the debugger will receive the breakpoint event with the new message. If the tool squashes the breakpoint request, the thread will not stop at the breakpoint at all. Instead, it continues executing at the \i ctxt parameter that was passed to <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin ID of a stopped thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">squash</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If TRUE, the breakpoint request is squashed. The <emphasis>msg</emphasis> parameter is ignored in this case. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new breakpoint message for this breakpoint request.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if thread <emphasis>tid</emphasis> is stopped and has a pending breakpoint from <ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint()</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/debugger_client.PH" line="478" column="13" declfile="Source/pin/pin/debugger_client.PH" declline="478" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2008-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_DEBUGGER_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>debugger_client</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_DEBUGGER_CLIENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>BOOL<sp/>(*<ref refid="group__APPDEBUG_1ga3d6a74972d3450e7fb487103f5fe8147" kindref="member">DEBUG_INTERPRETER_CALLBACK</ref>)(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>threadIndex,<sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>cmd,<sp/>std::string*<sp/>reply,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>BOOL<sp/>(*<ref refid="group__APPDEBUG_1gaee4c44a7173aa62cd5121253d2966b52" kindref="member">DEBUG_BREAKPOINT_CALLBACK</ref>)(ADDRINT<sp/>addr,<sp/>UINT<sp/>size,<sp/>BOOL<sp/>insert,<sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>BOOL<sp/>(*<ref refid="group__APPDEBUG_1ga3e5a10fa61485e7bce314a1c3fe51216" kindref="member">INTERCEPT_DEBUGGING_EVENT_CALLBACK</ref>)(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/><ref refid="group__APPDEBUG_1gad6ae164e2005bda040921f234730cb5a" kindref="member">DEBUGGING_EVENT</ref><sp/>eventType,<sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/>VOID*<sp/>arg);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>VOID<sp/>(*<ref refid="group__APPDEBUG_1ga9d7745cc697db791f72d06cd149daa72" kindref="member">GET_EMULATED_REGISTER_CALLBACK</ref>)(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>toolRegId,<sp/><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/>VOID*<sp/>data,<sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>VOID<sp/>(*<ref refid="group__APPDEBUG_1gacb569f5ec458c0cdacfbc511e8d7a24b" kindref="member">SET_EMULATED_REGISTER_CALLBACK</ref>)(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>toolRegId,<sp/><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>VOID*<sp/>data,<sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>USIZE<sp/>(*<ref refid="group__APPDEBUG_1gaf5bdf55a090a9e22c7fdc2efbfac8cb6" kindref="member">GET_TARGET_DESCRIPTION_CALLBACK</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name,<sp/>USIZE<sp/>size,<sp/>VOID*<sp/>buf,<sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__APPDEBUG_1ga4f727b422499f5d312204ba42b23fda0" kindref="member">PIN_InterceptDebuggingEvent</ref>(<ref refid="group__APPDEBUG_1gad6ae164e2005bda040921f234730cb5a" kindref="member">DEBUGGING_EVENT</ref><sp/>eventType,<sp/><ref refid="group__APPDEBUG_1ga3e5a10fa61485e7bce314a1c3fe51216" kindref="member">INTERCEPT_DEBUGGING_EVENT_CALLBACK</ref><sp/>fun,<sp/>VOID*<sp/>arg);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__APPDEBUG_1ga227aa5052c499e58c77a376048478647" kindref="member">PIN_AddDebuggerRegisterEmulator</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numRegisters,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structDEBUGGER__REG__DESCRIPTION" kindref="compound">DEBUGGER_REG_DESCRIPTION</ref>*<sp/>registerDescriptions,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__APPDEBUG_1ga9d7745cc697db791f72d06cd149daa72" kindref="member">GET_EMULATED_REGISTER_CALLBACK</ref><sp/>getFun,<sp/><ref refid="group__APPDEBUG_1gacb569f5ec458c0cdacfbc511e8d7a24b" kindref="member">SET_EMULATED_REGISTER_CALLBACK</ref><sp/>setFun,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__APPDEBUG_1gaf5bdf55a090a9e22c7fdc2efbfac8cb6" kindref="member">GET_TARGET_DESCRIPTION_CALLBACK</ref><sp/>getDescriptionFun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref><sp/><ref refid="group__APPDEBUG_1ga8b7429dba7db028dc095a48d026b30f3" kindref="member">PIN_AddDebugInterpreter</ref>(<ref refid="group__APPDEBUG_1ga3d6a74972d3450e7fb487103f5fe8147" kindref="member">DEBUG_INTERPRETER_CALLBACK</ref><sp/>fun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__APPDEBUG_1gae16ccb04f07c4d2d7eb021e128b28f2b" kindref="member">PIN_RemoveDebugInterpreter</ref>(<ref refid="group__APPDEBUG_1ga3d6a74972d3450e7fb487103f5fe8147" kindref="member">DEBUG_INTERPRETER_CALLBACK</ref><sp/>fun);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref><sp/><ref refid="group__APPDEBUG_1ga4d6cb680fcf43fe32857fe54bfc8e2a3" kindref="member">PIN_AddBreakpointHandler</ref>(<ref refid="group__APPDEBUG_1gaee4c44a7173aa62cd5121253d2966b52" kindref="member">DEBUG_BREAKPOINT_CALLBACK</ref><sp/>fun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__APPDEBUG_1gaca4da902f7ed6a9985b9ab26a6699384" kindref="member">PIN_RemoveBreakpointHandler</ref>(<ref refid="group__APPDEBUG_1gaee4c44a7173aa62cd5121253d2966b52" kindref="member">DEBUG_BREAKPOINT_CALLBACK</ref><sp/>fun);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__APPDEBUG_1gaa878efff68323d2a8f23b7ee2b5a912c" kindref="member">PIN_ResetBreakpointAt</ref>(ADDRINT<sp/>addr);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__APPDEBUG_1gabbd52cd5977cd9ffef8065f144137b14" kindref="member">PIN_ApplicationBreakpoint</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/>BOOL<sp/>waitIfNoDebugger,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>msg);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__APPDEBUG_1ga15e52a111880529d439946eb392dd992" kindref="member">PIN_SetDebugMode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structDEBUG__MODE" kindref="compound">DEBUG_MODE</ref>*<sp/>mode);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__APPDEBUG_1ga41e814fff526e0232f2f8c3055d6e88b" kindref="member">DEBUG_STATUS</ref><sp/><ref refid="group__APPDEBUG_1ga92c6d18526f1f895eb9d2736c79478e4" kindref="member">PIN_GetDebugStatus</ref>();</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__APPDEBUG_1ga36087c681ff5cdf730c3d5d12723ba4b" kindref="member">PIN_GetDebugConnectionInfo</ref>(<ref refid="structDEBUG__CONNECTION__INFO" kindref="compound">DEBUG_CONNECTION_INFO</ref>*<sp/>info);</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__APPDEBUG_1ga87ad53f06ecf9cbcd3b94a155e1c11b5" kindref="member">DEBUGGER_TYPE</ref><sp/><ref refid="group__APPDEBUG_1gadbe2a0980528561c214a4b8bfdca1251" kindref="member">PIN_GetDebuggerType</ref>();</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__APPDEBUG_1gacc153fff2b3f0f8542b5c5208356f0fb" kindref="member">PIN_WaitForDebuggerToConnect</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>timeout);</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__APPDEBUG_1ga9c5930cc3e21cec532e4909ee3f9f165" kindref="member">PIN_GetStoppedThreadPendingToolBreakpoint</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/>std::string*<sp/>msg);</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__APPDEBUG_1gab651618eb1f148e0f1d0af927510c3a6" kindref="member">PIN_ChangePendingToolBreakpointOnStoppedThread</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/>BOOL<sp/>squash,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>msg);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_DEBUGGER_CLIENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/debugger_client.PH"/>
+  </compounddef>
+</doxygen>

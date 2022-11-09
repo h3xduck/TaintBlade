@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="ins__iarg_8PH" kind="file" language="C++">
+    <compoundname>ins_iarg.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ins__iarg_8PH_1a4019a3d4aaf757441c23a3890ba9b54b" prot="public" static="no">
+        <name>PIN_G_INS_IARG_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/vm/ins_iarg.PH" line="9" column="10" bodyfile="Source/pin/vm/ins_iarg.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__INS__INSPECTION_1gacd61a39496ab833613206747e16d3fa7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL INS_IsValidForIarg</definition>
+        <argsstring>(INS ins, IARG_TYPE argType)</argsstring>
+        <name>INS_IsValidForIarg</name>
+        <param>
+          <type>INS</type>
+          <declname>ins</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref></type>
+          <declname>argType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains functions that inspect instructions with regard to IARGs.</para>
+<para>This function checks whether the IARG can be used with the instruction. Currently the supported IARGs are <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451da581b5886a7e69629a45607ac34adbf2c" kindref="member">IARG_MULTI_ELEMENT_OPERAND</ref> and <ref refid="group__INST__ARGS_1gga089c27ca15e9ff139dd3a3f8a6f8451daf366ff3d1e14bc23162ad18c47b63c1f" kindref="member">IARG_REWRITE_SCATTERED_MEMOP</ref>. For all other IARGs the function will return TRUE.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ins</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The instruction to inspect </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IARG_TYPE enum to use with the instruction</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+@Return true if the specified IARG type can be used in the specified instruction, false otherwise. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/vm/ins_iarg.PH" line="25" column="13" declfile="Source/pin/vm/ins_iarg.PH" declline="25" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2021-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_INS_IARG_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>ins_iarg</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_INS_IARG_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__INS__INSPECTION_1gacd61a39496ab833613206747e16d3fa7" kindref="member">INS_IsValidForIarg</ref>(INS<sp/>ins,<sp/><ref refid="group__INST__ARGS_1ga089c27ca15e9ff139dd3a3f8a6f8451d" kindref="member">IARG_TYPE</ref><sp/>argType);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_INS_IARG_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/vm/ins_iarg.PH"/>
+  </compounddef>
+</doxygen>

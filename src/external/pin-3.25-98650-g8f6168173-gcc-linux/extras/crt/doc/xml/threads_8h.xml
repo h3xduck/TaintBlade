@@ -1,0 +1,590 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="threads_8h" kind="file" language="C++">
+    <compoundname>threads.h</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="threads_8h_1ad9aa3f1efa2b167afff48449cfb3e788" prot="public" static="no">
+        <name>OS_APIS_TLS_SLOT_TLS_AND_STACK_START_ADDRESS</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="18" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/threads.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="threads_8h_1acf74f988d3443b9a016b29fdfc053b92" prot="public" static="no">
+        <name>OS_APIS_TLS_SLOT_TLS_AND_STACK_SIZE</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="19" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/threads.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1gab71e33264cb5f3aebcd8fffd2d475e50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_CreateThread</definition>
+        <argsstring>(VOID(*ThreadMainFunction)(VOID *), VOID *ThreadParam, VOID *stackBottom, ADDRINT stackSize, NATIVE_TID *td)</argsstring>
+        <name>OS_CreateThread</name>
+        <param>
+          <type>VOID(*)(VOID *)</type>
+          <declname>ThreadMainFunction</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>ThreadParam</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>stackBottom</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>stackSize</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref> *</type>
+          <declname>td</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new thread in the current process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ThreadMainFunction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thread start address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ThreadParam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thread optional parameter </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">stackBottom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base address of the thread&apos;s stack. This argument can be NULL. In that case this function will allocate the stack according to the <bold>stackSize</bold> argument. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">stackSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the thread&apos;s stack. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The descriptor of newly created thread.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_CREATE_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="40" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="40" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1ga9a9056405b34b3cd723b6e6bc1366a61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_ExitThread</definition>
+        <argsstring>(NATIVE_TID td)</argsstring>
+        <name>OS_ExitThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>td</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes a running thread to exit.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thread descriptor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_EXIT_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="56" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="56" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1ga51d3a3f045f7d12077b92f49274844b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_ThreadExitAndClear</definition>
+        <argsstring>(void *stackAddr, ADDRINT stackSize, INT32 *dwordToReset)</argsstring>
+        <name>OS_ThreadExitAndClear</name>
+        <param>
+          <type>void *</type>
+          <declname>stackAddr</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>stackSize</declname>
+        </param>
+        <param>
+          <type>INT32 *</type>
+          <declname>dwordToReset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function clears a word and then exits the calling thread. It guaranteess that it will use only register state (no memory) once <emphasis>word</emphasis> is cleared.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The thread exit code as passed from the caller </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">dwordToReset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This memory location is cleared (set to zero).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_EXIT_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="73" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="73" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1gaa87c77702ceb0356089d8478bd630c55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_SuspendThread</definition>
+        <argsstring>(NATIVE_TID td)</argsstring>
+        <name>OS_SuspendThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>td</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Suspends a running thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thread descriptor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_SUSPEND_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="88" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="88" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1ga0263cb6e9d2ed19869dd3b94d17216af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_ResumeThread</definition>
+        <argsstring>(NATIVE_TID td)</argsstring>
+        <name>OS_ResumeThread</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>td</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resumes running thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thread descriptor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_RESUME_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="103" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="103" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1gabfa997efc82ef1205a64f76a8928aa28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Sleep</definition>
+        <argsstring>(INT interval)</argsstring>
+        <name>OS_Sleep</name>
+        <param>
+          <type>INT</type>
+          <declname>interval</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends thread to sleep.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">interval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interval to sleep in milli-seconds.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_SLEEP_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="118" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="118" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1ga840329607e681a7ba8ebb941fc5745c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetTid</definition>
+        <argsstring>(NATIVE_TID *id)</argsstring>
+        <name>OS_GetTid</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref> *</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves the current thread&apos;s handle.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of handle container variable</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="133" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="133" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1ga4e1358f36d98dff7b62de2f410439787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_Yield</definition>
+        <argsstring>(void)</argsstring>
+        <name>OS_Yield</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pre-empts the thread specified by the running thread.</para>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_SLEEP_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="146" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="146" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__THREAD_1gad5802f57eff3b0b5aabcc1e0b15147d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_RaiseException</definition>
+        <argsstring>(NATIVE_TID td, UINT32 code)</argsstring>
+        <name>OS_RaiseException</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref></type>
+          <declname>td</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Raise an exception.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Thread descriptor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exception type</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_THREAD_SLEEP_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/threads.h" line="162" column="16" declfile="Source/os-apis/00-export-include/os-apis/threads.h" declline="162" declcolumn="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2015-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor">#ifndef<sp/>OS_APIS_THREAD_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_THREAD_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_TLS_SLOT_TLS_AND_STACK_START_ADDRESS<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_TLS_SLOT_TLS_AND_STACK_SIZE<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1gab71e33264cb5f3aebcd8fffd2d475e50" kindref="member">OS_CreateThread</ref>(VOID<sp/>(*ThreadMainFunction)(VOID*),<sp/>VOID*<sp/>ThreadParam,<sp/>VOID*<sp/>stackBottom,<sp/>ADDRINT<sp/>stackSize,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref>*<sp/>td);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1ga9a9056405b34b3cd723b6e6bc1366a61" kindref="member">OS_ExitThread</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>td);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1ga51d3a3f045f7d12077b92f49274844b9" kindref="member">OS_ThreadExitAndClear</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>stackAddr,<sp/>ADDRINT<sp/>stackSize,<sp/>INT32*<sp/>dwordToReset);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1gaa87c77702ceb0356089d8478bd630c55" kindref="member">OS_SuspendThread</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>td);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1ga0263cb6e9d2ed19869dd3b94d17216af" kindref="member">OS_ResumeThread</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>td);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1gabfa997efc82ef1205a64f76a8928aa28" kindref="member">OS_Sleep</ref>(INT<sp/>interval);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1ga840329607e681a7ba8ebb941fc5745c5" kindref="member">OS_GetTid</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref>*<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1ga4e1358f36d98dff7b62de2f410439787" kindref="member">OS_Yield</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><ref refid="struct__OS__RETURN__CODE" kindref="compound">OS_RETURN_CODE</ref><sp/><ref refid="group__OS__APIS__THREAD_1gad5802f57eff3b0b5aabcc1e0b15147d0" kindref="member">OS_RaiseException</ref>(<ref refid="group__OS__APIS__TYPES_1ga20167a3cedec6512ccdc030b50ee780b" kindref="member">NATIVE_TID</ref><sp/>td,<sp/>UINT32<sp/>code);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>file<sp/>guard</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/threads.h"/>
+  </compounddef>
+</doxygen>

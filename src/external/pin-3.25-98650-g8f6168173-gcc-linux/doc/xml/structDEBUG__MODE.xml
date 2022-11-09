@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structDEBUG__MODE" kind="struct" language="C++" prot="public">
+    <compoundname>DEBUG_MODE</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structDEBUG__MODE_1a28359c21886e940247c89957a95bd598" prot="public" static="no" mutable="no">
+        <type><ref refid="group__APPDEBUG_1ga25f41d731fbc522fea67abd02f9c04c6" kindref="member">DEBUG_CONNECTION_TYPE</ref></type>
+        <definition>DEBUG_CONNECTION_TYPE DEBUG_MODE::_type</definition>
+        <argsstring></argsstring>
+        <name>_type</name>
+        <briefdescription>
+<para>Tells the connection type to the application debugger. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1085" column="27" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1085" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUG__MODE_1aa5b290051c7c88df4b8a2afa217c1aa3" prot="public" static="no" mutable="no">
+        <type>DEBUG_MODE_OPTIONS</type>
+        <definition>DEBUG_MODE_OPTIONS DEBUG_MODE::_options</definition>
+        <argsstring></argsstring>
+        <name>_options</name>
+        <briefdescription>
+<para>Options which affect application debugging. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1086" column="24" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1086" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUG__MODE_1ac426b2c82705938d22657be802de1529" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="struct__tcpClientStruct" kindref="compound">_tcpClientStruct</ref></type>
+        <definition>struct _tcpClientStruct DEBUG_MODE::_tcpClient</definition>
+        <argsstring></argsstring>
+        <name>_tcpClient</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Information for DEBUG_CONNECTION_TYPE_TCP_CLIENT. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1086" column="24" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1095" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDEBUG__MODE_1a09141cfdd05ddccfbe19039942b2d6c6" prot="public" static="no" mutable="no">
+        <type>union DEBUG_MODE::@3</type>
+        <definition>union DEBUG_MODE::@3 DEBUG_MODE::@4</definition>
+        <argsstring></argsstring>
+        <name>@4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1096" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Information about the application debugging mode. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>_tcpClientStruct</label>
+        <link refid="struct__tcpClientStruct"/>
+      </node>
+      <node id="1">
+        <label>DEBUG_MODE</label>
+        <link refid="structDEBUG__MODE"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_tcpClient</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/include/types_vmapi.PH" line="1084" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1083" bodyend="1097"/>
+    <listofallmembers>
+      <member refid="structDEBUG__MODE_1aa5b290051c7c88df4b8a2afa217c1aa3" prot="public" virt="non-virtual"><scope>DEBUG_MODE</scope><name>_options</name></member>
+      <member refid="structDEBUG__MODE_1ac426b2c82705938d22657be802de1529" prot="public" virt="non-virtual"><scope>DEBUG_MODE</scope><name>_tcpClient</name></member>
+      <member refid="structDEBUG__MODE_1a28359c21886e940247c89957a95bd598" prot="public" virt="non-virtual"><scope>DEBUG_MODE</scope><name>_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

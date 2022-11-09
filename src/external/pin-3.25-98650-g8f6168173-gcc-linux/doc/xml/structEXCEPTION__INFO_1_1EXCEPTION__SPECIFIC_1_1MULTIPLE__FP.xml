@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP" kind="struct" language="C++" prot="public">
+    <compoundname>EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP_1adbf8a3620f96a7b64ac5e74095a27c12" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP::m_fpErrors</definition>
+        <argsstring></argsstring>
+        <name>m_fpErrors</name>
+        <briefdescription>
+<para>Bit mask of FPERROR values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="397" column="20" bodyfile="Source/pin/base/exception.PH" bodystart="397" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>&lt; EXCEPTCLASS_MULTIPLE_FP_ERROR additional information </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/base/exception.PH" line="396" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="395" bodyend="398"/>
+    <listofallmembers>
+      <member refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP_1adbf8a3620f96a7b64ac5e74095a27c12" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP</scope><name>m_fpErrors</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

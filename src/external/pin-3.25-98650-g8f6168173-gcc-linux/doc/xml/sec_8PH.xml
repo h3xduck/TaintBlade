@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="sec_8PH" kind="file" language="C++">
+    <compoundname>sec.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="sec_8PH_1a2262fd617b880dff6acaffeb31f8a975" prot="public" static="no">
+        <name>PIN_G_SEC_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/sec.PH" line="9" column="10" bodyfile="Source/pin/core/sec.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__SEC_1ga7fc7b3d12ebe2f3b13fe0bf7e3b1542e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>SEC_TYPE</name>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac05c2d91c8a367d4570f14de50f5486d" prot="public">
+          <name>SEC_TYPE_INVALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea3077ea419514ee9bd1fe9f2fe28bf012" prot="public">
+          <name>SEC_TYPE_UNUSED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac7b401ad28292a5bf7728af5c827d78d" prot="public">
+          <name>SEC_TYPE_REGREL</name>
+          <briefdescription>
+<para>relocations </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea47a996e48703561a7c9a5d6eb0b7ec20" prot="public">
+          <name>SEC_TYPE_DYNREL</name>
+          <briefdescription>
+<para>dynamic relocations </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae553adef7efca3121cb283c919b2eab3" prot="public">
+          <name>SEC_TYPE_EXEC</name>
+          <briefdescription>
+<para>contains code </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae7cac3976003e7709bf90c1e5e8a250e" prot="public">
+          <name>SEC_TYPE_DATA</name>
+          <briefdescription>
+<para>contains initialized data </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabcae1ce13af94497e106ef7978f57163" prot="public">
+          <name>SEC_TYPE_DYNAMIC</name>
+          <briefdescription>
+<para>Dynamic linking information (.dynamic) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eab68fd502b63888dd7b8668a0f6609405" prot="public">
+          <name>SEC_TYPE_OPD</name>
+          <briefdescription>
+<para>contains the official procedure descriptors. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea58ee2e8fec4ecbe67bbafe334f5c389b" prot="public">
+          <name>SEC_TYPE_GOT</name>
+          <briefdescription>
+<para>Global offset table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eaf1970987650dc6078cf78cc41057c9f5" prot="public">
+          <name>SEC_TYPE_STACK</name>
+          <briefdescription>
+<para>Stack segment. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea5f15f77c471eb84ac084eb8aea3364cd" prot="public">
+          <name>SEC_TYPE_PLTOFF</name>
+          <briefdescription>
+<para>The procedure linking table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae3b05fb766daef420a0ac47d763129f4" prot="public">
+          <name>SEC_TYPE_HASH</name>
+          <briefdescription>
+<para>A symbol hash table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea7fbd6c5232c7f2f26e591f963e57995a" prot="public">
+          <name>SEC_TYPE_LSDA</name>
+          <briefdescription>
+<para>old exception_info (obsolete) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea7b2513080fff4d6622a5efdb3f6bd535" prot="public">
+          <name>SEC_TYPE_UNWIND</name>
+          <briefdescription>
+<para>Stack unwind information. (exception handling) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eacecf9b4d2b2002bc9fe30c65f075215d" prot="public">
+          <name>SEC_TYPE_UNWINDINFO</name>
+          <briefdescription>
+<para>Stack unwind information. (exception handling) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabedd7362c860c2d690e99ff20115339e" prot="public">
+          <name>SEC_TYPE_REGSYM</name>
+          <briefdescription>
+<para>Static symbol table (.symtab) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabfdd6ff633a9a5a8bcc71752474efe04" prot="public">
+          <name>SEC_TYPE_DYNSYM</name>
+          <briefdescription>
+<para>Dynamic linking symbol table. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae0852da9ff9074ed89cfe220d5273e23" prot="public">
+          <name>SEC_TYPE_DEBUG</name>
+          <briefdescription>
+<para>Contains debugging information. <linebreak/>
+ </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea924ebfacf6bb87031823762cac6cabfe" prot="public">
+          <name>SEC_TYPE_BSS</name>
+          <briefdescription>
+<para>contains uninitialized data </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea037cadbcc66d20ac97098a9a3e618db3" prot="public">
+          <name>SEC_TYPE_SYMSTR</name>
+          <briefdescription>
+<para>String table section (.strtab) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eaf983da13d0ec5f8ddee5cfd923fd44ee" prot="public">
+          <name>SEC_TYPE_DYNSTR</name>
+          <briefdescription>
+<para>Dynamic linking string table (.dynstr) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae9e2e53be189b742db7edbd51aa7aba1" prot="public">
+          <name>SEC_TYPE_SECSTR</name>
+          <briefdescription>
+<para>Section header string table. (.shstrtab) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea0ac946fc7c1f35b815d3b9fcd69fc108" prot="public">
+          <name>SEC_TYPE_COMMENT</name>
+          <briefdescription>
+<para>contains version control information. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea9cb3505b9e01cc4705c4e900e1f3e5c1" prot="public">
+          <name>SEC_TYPE_LOOS</name>
+          <briefdescription>
+<para>OS specific. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac7f4657ed8fe6bf8e53a8d7b320e3959" prot="public">
+          <name>SEC_TYPE_USER</name>
+          <briefdescription>
+<para>Application specific. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea3ec46bb89ed4147f1085245d9f04350f" prot="public">
+          <name>SEC_TYPE_PROC</name>
+          <briefdescription>
+<para>Processor specific. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea272bc6d85c77672c497bf0878ea2925b" prot="public">
+          <name>SEC_TYPE_LAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains <ref refid="group__SEC" kindref="compound">SEC: Section Object</ref> and Mapping primitives</para>
+<para>SEC types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/sec.PH" line="17" column="1" bodyfile="Source/pin/core/sec.PH" bodystart="16" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_SEC_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>sec</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_SEC_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>SEC_TYPE_INVALID,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>SEC_TYPE_UNUSED,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac7b401ad28292a5bf7728af5c827d78d" kindref="member">SEC_TYPE_REGREL</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea47a996e48703561a7c9a5d6eb0b7ec20" kindref="member">SEC_TYPE_DYNREL</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae553adef7efca3121cb283c919b2eab3" kindref="member">SEC_TYPE_EXEC</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae7cac3976003e7709bf90c1e5e8a250e" kindref="member">SEC_TYPE_DATA</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabcae1ce13af94497e106ef7978f57163" kindref="member">SEC_TYPE_DYNAMIC</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eab68fd502b63888dd7b8668a0f6609405" kindref="member">SEC_TYPE_OPD</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea58ee2e8fec4ecbe67bbafe334f5c389b" kindref="member">SEC_TYPE_GOT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eaf1970987650dc6078cf78cc41057c9f5" kindref="member">SEC_TYPE_STACK</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea5f15f77c471eb84ac084eb8aea3364cd" kindref="member">SEC_TYPE_PLTOFF</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae3b05fb766daef420a0ac47d763129f4" kindref="member">SEC_TYPE_HASH</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea7fbd6c5232c7f2f26e591f963e57995a" kindref="member">SEC_TYPE_LSDA</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea7b2513080fff4d6622a5efdb3f6bd535" kindref="member">SEC_TYPE_UNWIND</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eacecf9b4d2b2002bc9fe30c65f075215d" kindref="member">SEC_TYPE_UNWINDINFO</ref>,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabedd7362c860c2d690e99ff20115339e" kindref="member">SEC_TYPE_REGSYM</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eabfdd6ff633a9a5a8bcc71752474efe04" kindref="member">SEC_TYPE_DYNSYM</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae0852da9ff9074ed89cfe220d5273e23" kindref="member">SEC_TYPE_DEBUG</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea924ebfacf6bb87031823762cac6cabfe" kindref="member">SEC_TYPE_BSS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea037cadbcc66d20ac97098a9a3e618db3" kindref="member">SEC_TYPE_SYMSTR</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eaf983da13d0ec5f8ddee5cfd923fd44ee" kindref="member">SEC_TYPE_DYNSTR</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eae9e2e53be189b742db7edbd51aa7aba1" kindref="member">SEC_TYPE_SECSTR</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea0ac946fc7c1f35b815d3b9fcd69fc108" kindref="member">SEC_TYPE_COMMENT</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea9cb3505b9e01cc4705c4e900e1f3e5c1" kindref="member">SEC_TYPE_LOOS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542eac7f4657ed8fe6bf8e53a8d7b320e3959" kindref="member">SEC_TYPE_USER</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__SEC_1gga7fc7b3d12ebe2f3b13fe0bf7e3b1542ea3ec46bb89ed4147f1085245d9f04350f" kindref="member">SEC_TYPE_PROC</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>SEC_TYPE_LAST</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/><ref refid="group__SEC_1ga7fc7b3d12ebe2f3b13fe0bf7e3b1542e" kindref="member">SEC_TYPE</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_SEC_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/core/sec.PH"/>
+  </compounddef>
+</doxygen>

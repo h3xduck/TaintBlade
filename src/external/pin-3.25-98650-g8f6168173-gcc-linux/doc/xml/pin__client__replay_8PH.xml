@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="pin__client__replay_8PH" kind="file" language="C++">
+    <compoundname>pin_client_replay.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="pin__client__replay_8PH_1a0fe1db23cde86790efe918814ddfdbbe" prot="public" static="no">
+        <name>PIN_G_PIN_CLIENT_REPLAY_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="9" column="10" bodyfile="Source/pin/pin/pin_client_replay.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__SYSCALL_1gaefc2f308b1fc73ad2b1bfd1a7c41512c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ReplaySyscallEntry</definition>
+        <argsstring>(THREADID tid, CONTEXT *ctxt, SYSCALL_STANDARD std)</argsstring>
+        <name>PIN_ReplaySyscallEntry</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Additional client side interface to pin vm containing the interfaces useful for a replay tool. These mainly allow a PinTool to request that Pin execute callbacks associated with specific events.</para>
+<para>This API is intended for use by tools that replay the execution of an application and need to behave as if a system call has been made, calling all callbacks registered with PIN_AddSysCallEntry function. However, no system call is actually performed.</para>
+<para>This API can be called from an analysis routine or a replacement routine, but not from a call-back.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the thread in which the system call appears to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register state at the point when the system call appears to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The calling standard of the system call.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux,Windows,BSD<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="40" column="13" declfile="Source/pin/pin/pin_client_replay.PH" declline="40" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYSCALL_1ga62ed9a93aa5739f576ec49b39c8e699c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ReplaySyscallExit</definition>
+        <argsstring>(THREADID tid, CONTEXT *ctxt, SYSCALL_STANDARD std)</argsstring>
+        <name>PIN_ReplaySyscallExit</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>ctxt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref></type>
+          <declname>std</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This API is intended for use by tools that replay the execution of an application and need to behave as if a system call has been made, calling all callbacks registered with PIN_AddSysCallExit function. However, no system call is actually performed.</para>
+<para>This API can be called from an analysis routine or a replacement routine, but not from a call-back.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the thread in which the system call appears to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register state at the point after the system call has executed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">std</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The calling standard of the system call.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux,Windows,BSD<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="64" column="13" declfile="Source/pin/pin/pin_client_replay.PH" declline="64" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REPLAY_1ga56cbe508bdf0333f5427112711699e9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID PIN_ReplayContextChange</definition>
+        <argsstring>(THREADID tid, const CONTEXT *from, CONTEXT *to, CONTEXT_CHANGE_REASON reason, INT32 info)</argsstring>
+        <name>PIN_ReplayContextChange</name>
+        <param>
+          <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+          <declname>tid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref> *</type>
+          <declname>to</declname>
+        </param>
+        <param>
+          <type><ref refid="group__PIN__CONTROL_1ga8e4e6511a0e09fdc5ec7d6dbf395b3a8" kindref="member">CONTEXT_CHANGE_REASON</ref></type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>INT32</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This API is intended for use by tools that replay the execution of an application and need to replay an asynchronous context change that was received by the application at record time. This API is not intended as a general way to send a forced context change (signal, exception, APC) to the application. To do that, see <ref refid="group__EXCEPTION_1ga35d13dc3ce578945eda8228b0db1c138" kindref="member">PIN_RaiseException()</ref>.</para>
+<para>Calling this API causes Pin to call back on the tool&apos;s context-changed notification function if one was set up with <ref refid="group__PIN__CONTROL_1ga1cc0f28140cb83a035ebabdddf81861f" kindref="member">PIN_AddContextChangeFunction()</ref>. Thus, the tool is notified about the context change as though the application really received it. Calling this API may also notify an external debugger if one is attached to Pin via the -appdebug switch, which gives the debugger a chance to stop execution of the application when it receives the replayed context change. (Whether this happens depends on the CONTEXT_CHANGE_REASON, and the expected behavior of the debugger on different platforms).</para>
+<para><ref refid="group__REPLAY_1ga56cbe508bdf0333f5427112711699e9c" kindref="member">PIN_ReplayContextChange()</ref> does not return to its caller. If the <emphasis>to</emphasis> parameter is not NULL, execution resumes at that context after it has been potentially modified by the tool&apos;s context-changed call-back. If <emphasis>reason</emphasis> is CONTEXT_CHANGE_REASON_FATALSIGNAL, Pin emulates a fatal signal and execution terminates gracefully after calling the tool&apos;s Fini functions.</para>
+<para>This API can be called from an analysis routine or a replacement routine, but not from a callback.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the calling thread. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">from</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register state prior to the context change (e.g. the register state at the point when the signal is received for CONTEXT_CHANGE_REASON_SIGNAL). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">to</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register state immediately after the context change. This should be NULL for CONTEXT_CHANGE_REASON_FATALSIGNAL. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">reason</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the context change. <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional information, depending on <emphasis>reason</emphasis>. (Ignored for <emphasis>reason</emphasis> codes not listed below.) <itemizedlist>
+<listitem><para>CONTEXT_CHANGE_REASON_FATALSIGNAL: The Unix signal number. </para>
+</listitem>
+<listitem><para>CONTEXT_CHANGE_REASON_SIGNAL: The Unix signal number. </para>
+</listitem>
+<listitem><para>CONTEXT_CHANGE_REASON_EXCEPTION: The Windows exception code. </para>
+</listitem>
+</itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This function does not return.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="116" column="13" declfile="Source/pin/pin/pin_client_replay.PH" declline="116" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REPLAY_1ga67068d9c22e4da2fb9522098dcf18bde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID IMG_ReplayImageUnload</definition>
+        <argsstring>(IMG img)</argsstring>
+        <name>IMG_ReplayImageUnload</name>
+        <param>
+          <type>IMG</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Ask Pin to perform all the functions it would normally do when it detects that a shared library has been unloaded. This is intended for use in a replay system, where the replay tool has recorded library unload operations, and now wants to replay them.</para>
+<para>Note that a replay system need not explicitly call this function to cause image unload callbacks at the end of process execution. Pin will generate those callbacks itself provided that images were created using the <ref refid="group__REPLAY_1ga07759b799516b378bd7f3faa0a0a8325" kindref="member">IMG_ReplayImageLoad</ref> call. However, this function is required to handle explicit image unloads (for instance those caused by <computeroutput>dlclose()</computeroutput> )</para>
+<para>IMG_ReplayImageUnload can be called from analysis or callback routines. If called from an analysis routine, the Pin client lock must be claimed before calling IMG_ReplayImageUnload (the Pin client lock is already held when in a callback routine, so there is no need to claim it again).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>img</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the IMG to be unloaded</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux (others to follow)<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="141" column="13" declfile="Source/pin/pin/pin_client_replay.PH" declline="141" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__REPLAY_1ga66fc4a31f4b1b0ac74fef23c08bf759d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL PIN_WasMemoryReservedInLoadTime</definition>
+        <argsstring>()</argsstring>
+        <name>PIN_WasMemoryReservedInLoadTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return TRUE if PIN was successfully reserved the neccessary memory at application load time (specified on the -reserve_memory knob), and was successfully restricted the memory from the loader (specified on the -restrict_memory knob). It is guaranteed this is the return value is FALSE then none the memory specified in the mentioned knobs was reserved/restricted</para>
+<para><simplesect kind="return"><para>TRUE if all the memory was reserved/restricted</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="157" column="13" declfile="Source/pin/pin/pin_client_replay.PH" declline="157" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__PIN__PROCESS_1ga5188cd2a4da0f268a47a8f74e6664a5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>NORETURN VOID</type>
+        <definition>NORETURN VOID PIN_ExitApplication</definition>
+        <argsstring>(INT32 status)</argsstring>
+        <name>PIN_ExitApplication</name>
+        <param>
+          <type>INT32</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Terminate the current process after calling the relevant thread and process exit callbacks. This call behaves &quot;as if&quot; the application process itself had executed a process termination system call. It therefore <emphasis>does</emphasis> perform all the finalization actions Pin normally takes on application process exit, including calling registered thread and process fini-functions, unlike <ref refid="group__PIN__PROCESS_1gaf5f4578464d7e16a4fdc0f95ba21c776" kindref="member">PIN_ExitProcess</ref>, which exits immediately.</para>
+<para>This API may be called from an instrumentation callback function or an analysis routine. However, it should not be called from any <ref refid="group__PIN__CONTROL_1ga8978f19f9ba6f66dcb9ab0763a32927c" kindref="member">FINI_CALLBACK</ref> or <ref refid="group__PIN__CONTROL_1ga99a915108f24a372d07d45560db7fa87" kindref="member">THREAD_FINI_CALLBACK</ref> routines. It may be called by an application thread or a tool internal thread (that was created via <ref refid="group__THREADS_1ga23fe7ae94deab5bf574ff601d3d85a6b" kindref="member">PIN_SpawnInternalThread</ref>).</para>
+<para>Be aware, that when called from an internal thread, the calling thread will not exit until after the tool&apos;s fini callbacks return. Therefore, to avoid deadlock, your fini callbacks should not wait for that internal thread to exit.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result argument to exit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This function does not return.</para>
+</simplesect>
+<simplesect kind="note"><para>The vm and pin client locks are obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT<linebreak/>
+<bold>O/S</bold>: Linux,Windows,BSD<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/pin_client_replay.PH" line="189" column="22" declfile="Source/pin/pin/pin_client_replay.PH" declline="189" declcolumn="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2010-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_PIN_CLIENT_REPLAY_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>pin_client_replay</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_PIN_CLIENT_REPLAY_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__SYSCALL_1gaefc2f308b1fc73ad2b1bfd1a7c41512c" kindref="member">PIN_ReplaySyscallEntry</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref><sp/>std);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__SYSCALL_1ga62ed9a93aa5739f576ec49b39c8e699c" kindref="member">PIN_ReplaySyscallExit</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>ctxt,<sp/><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref><sp/>std);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__REPLAY_1ga56cbe508bdf0333f5427112711699e9c" kindref="member">PIN_ReplayContextChange</ref>(<ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref><sp/>tid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>from,<sp/><ref refid="structCONTEXT" kindref="compound">CONTEXT</ref>*<sp/>to,<sp/><ref refid="group__PIN__CONTROL_1ga8e4e6511a0e09fdc5ec7d6dbf395b3a8" kindref="member">CONTEXT_CHANGE_REASON</ref><sp/>reason,<sp/>INT32<sp/>info);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>VOID<sp/><ref refid="group__REPLAY_1ga67068d9c22e4da2fb9522098dcf18bde" kindref="member">IMG_ReplayImageUnload</ref>(IMG<sp/>img);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>BOOL<sp/><ref refid="group__REPLAY_1ga66fc4a31f4b1b0ac74fef23c08bf759d" kindref="member">PIN_WasMemoryReservedInLoadTime</ref>();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>NORETURN<sp/>VOID<sp/><ref refid="group__PIN__PROCESS_1ga5188cd2a4da0f268a47a8f74e6664a5a" kindref="member">PIN_ExitApplication</ref>(INT32<sp/>status);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_PIN_CLIENT_REPLAY_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin/pin_client_replay.PH"/>
+  </compounddef>
+</doxygen>

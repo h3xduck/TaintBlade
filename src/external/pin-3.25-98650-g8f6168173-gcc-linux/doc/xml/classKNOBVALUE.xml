@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classKNOBVALUE" kind="class" language="C++" prot="public">
+    <compoundname>KNOBVALUE</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class TYPE</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classKNOBVALUE_1af08f446d6d88c228075a54fc07db3866" prot="private" static="no" mutable="no">
+        <type>TYPE</type>
+        <definition>TYPE KNOBVALUE&lt; TYPE &gt;::_value</definition>
+        <argsstring></argsstring>
+        <name>_value</name>
+        <briefdescription>
+<para>typed representation </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="47" column="10" bodyfile="Source/pin/base/knob.PH" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classKNOBVALUE_1a8e0626d6f7e3a626cac203ff2cbf8d95" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KNOBVALUE&lt; TYPE &gt;::_value_string</definition>
+        <argsstring></argsstring>
+        <name>_value_string</name>
+        <briefdescription>
+<para>string representation </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="48" column="17" bodyfile="Source/pin/base/knob.PH" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classKNOBVALUE_1a3193f688e309802cf25a8e5370af47e7" prot="private" static="no" mutable="no">
+        <type><ref refid="classKNOBVALUE" kindref="compound">KNOBVALUE</ref>&lt; TYPE &gt; *</type>
+        <definition>KNOBVALUE&lt; TYPE &gt;* KNOBVALUE&lt; TYPE &gt;::_next</definition>
+        <argsstring></argsstring>
+        <name>_next</name>
+        <briefdescription>
+<para>list pointer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="49" column="15" bodyfile="Source/pin/base/knob.PH" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classKNOBVALUE_1ab5a7bebee84f4b3ea85402b9d3bdfe9f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>KNOBVALUE&lt; TYPE &gt;::KNOBVALUE</definition>
+        <argsstring>(const KNOBVALUE &amp;)</argsstring>
+        <name>KNOBVALUE</name>
+        <param>
+          <type>const <ref refid="classKNOBVALUE" kindref="compound">KNOBVALUE</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="52" column="5" bodyfile="Source/pin/base/knob.PH" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a96b73e83e5577b765f4655d64c60b5e3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classKNOBVALUE" kindref="compound">KNOBVALUE</ref> &amp;</type>
+        <definition>KNOBVALUE&amp; KNOBVALUE&lt; TYPE &gt;::operator=</definition>
+        <argsstring>(const KNOBVALUE &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classKNOBVALUE" kindref="compound">KNOBVALUE</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="54" column="15" bodyfile="Source/pin/base/knob.PH" bodystart="54" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classKNOBVALUE_1abe2301d565abf53f74bdfe091de885d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>STATIC TYPE</type>
+        <definition>STATIC TYPE KNOBVALUE&lt; TYPE &gt;::FromString</definition>
+        <argsstring>(const std::string &amp;strvalue)</argsstring>
+        <name>FromString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strvalue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="58" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a5efa338a9f278d6b8add7d6c5b2f5fcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>STATIC std::string</type>
+        <definition>STATIC std::string KNOBVALUE&lt; TYPE &gt;::ToString</definition>
+        <argsstring>(const TYPE &amp;value, const std::string &amp;origString)</argsstring>
+        <name>ToString</name>
+        <param>
+          <type>const TYPE &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>origString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="59" column="24" bodyfile="Source/pin/base/knob.PH" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a5059f7c01d488478312a007db1278937" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>STATIC TYPE</type>
+        <definition>STATIC TYPE KNOBVALUE&lt; TYPE &gt;::Accumulate</definition>
+        <argsstring>(TYPE &amp;lVal, const TYPE &amp;rVal)</argsstring>
+        <name>Accumulate</name>
+        <param>
+          <type>TYPE &amp;</type>
+          <declname>lVal</declname>
+        </param>
+        <param>
+          <type>const TYPE &amp;</type>
+          <declname>rVal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="62" column="17" bodyfile="Source/pin/base/knob.PH" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a455f2aabe92b10883c233a8cdba3cd05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const STATIC std::string</type>
+        <definition>const STATIC std::string KNOBVALUE&lt; TYPE &gt;::Type</definition>
+        <argsstring>()</argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="65" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a1c15be394ba823a8ce7ca42f70e0a9a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>KNOBVALUE&lt; TYPE &gt;::KNOBVALUE</definition>
+        <argsstring>()</argsstring>
+        <name>KNOBVALUE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="70" column="5" bodyfile="Source/pin/base/knob.PH" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a10b561d0843fefdcfe30b3a30f721a69" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const TYPE &amp;</type>
+        <definition>const TYPE&amp; KNOBVALUE&lt; TYPE &gt;::Value</definition>
+        <argsstring>() const</argsstring>
+        <name>Value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="75" column="16" bodyfile="Source/pin/base/knob.PH" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1ae28d1c1b89a7813236d40e6d900b18a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; KNOBVALUE&lt; TYPE &gt;::ValueString</definition>
+        <argsstring>() const</argsstring>
+        <name>ValueString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="76" column="23" bodyfile="Source/pin/base/knob.PH" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a6373fe61f9844ed620c76a549003b9d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classKNOBVALUE" kindref="compound">KNOBVALUE</ref> *</type>
+        <definition>KNOBVALUE* KNOBVALUE&lt; TYPE &gt;::Next</definition>
+        <argsstring>() const</argsstring>
+        <name>Next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="78" column="15" bodyfile="Source/pin/base/knob.PH" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a288c37d6e9a2b62a7f66f02da2d26e49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID KNOBVALUE&lt; TYPE &gt;::Overwrite</definition>
+        <argsstring>(const std::string &amp;valstring)</argsstring>
+        <name>Overwrite</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>valstring</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="83" column="10" bodyfile="Source/pin/base/knob.PH" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1a052d646f608aaed79e2967e68d57fdae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID KNOBVALUE&lt; TYPE &gt;::Accumulate</definition>
+        <argsstring>(const std::string &amp;valstring)</argsstring>
+        <name>Accumulate</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>valstring</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="88" column="10" bodyfile="Source/pin/base/knob.PH" bodystart="88" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classKNOBVALUE_1aefbc7aaa9dafdf764560793d2840e28c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID KNOBVALUE&lt; TYPE &gt;::Append</definition>
+        <argsstring>(KNOBVALUE *next)</argsstring>
+        <name>Append</name>
+        <param>
+          <type><ref refid="classKNOBVALUE" kindref="compound">KNOBVALUE</ref> *</type>
+          <declname>next</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/knob.PH" line="93" column="10" bodyfile="Source/pin/base/knob.PH" bodystart="93" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>typed and string representation a value</para>
+<para>Interface requirements for TYPE:<itemizedlist>
+<listitem><para>TYPE FromString(const string &amp;) ... conversion from string to TYPE; this is always needed;</para>
+</listitem><listitem><para>string ToString(const TYPE &amp;) ..... conversion from TYPE to string default implementation uses the original string; specialization can be used to override this;</para>
+</listitem><listitem><para>TYPE Accumulate(TYPE &amp; lVal, const TYPE &amp; rVal). add rVal to lVal and return new lVal; by defult implemented as operator +=. Only used for accumulate mode </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <location file="Source/pin/base/knob.PH" line="45" column="1" bodyfile="Source/pin/base/knob.PH" bodystart="44" bodyend="98"/>
+    <listofallmembers>
+      <member refid="classKNOBVALUE_1a3193f688e309802cf25a8e5370af47e7" prot="private" virt="non-virtual"><scope>KNOBVALUE</scope><name>_next</name></member>
+      <member refid="classKNOBVALUE_1af08f446d6d88c228075a54fc07db3866" prot="private" virt="non-virtual"><scope>KNOBVALUE</scope><name>_value</name></member>
+      <member refid="classKNOBVALUE_1a8e0626d6f7e3a626cac203ff2cbf8d95" prot="private" virt="non-virtual"><scope>KNOBVALUE</scope><name>_value_string</name></member>
+      <member refid="classKNOBVALUE_1a5059f7c01d488478312a007db1278937" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>Accumulate</name></member>
+      <member refid="classKNOBVALUE_1a052d646f608aaed79e2967e68d57fdae" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>Accumulate</name></member>
+      <member refid="classKNOBVALUE_1aefbc7aaa9dafdf764560793d2840e28c" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>Append</name></member>
+      <member refid="classKNOBVALUE_1abe2301d565abf53f74bdfe091de885d3" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>FromString</name></member>
+      <member refid="classKNOBVALUE_1ab5a7bebee84f4b3ea85402b9d3bdfe9f" prot="private" virt="non-virtual"><scope>KNOBVALUE</scope><name>KNOBVALUE</name></member>
+      <member refid="classKNOBVALUE_1a1c15be394ba823a8ce7ca42f70e0a9a8" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>KNOBVALUE</name></member>
+      <member refid="classKNOBVALUE_1a6373fe61f9844ed620c76a549003b9d4" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>Next</name></member>
+      <member refid="classKNOBVALUE_1a96b73e83e5577b765f4655d64c60b5e3" prot="private" virt="non-virtual"><scope>KNOBVALUE</scope><name>operator=</name></member>
+      <member refid="classKNOBVALUE_1a288c37d6e9a2b62a7f66f02da2d26e49" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>Overwrite</name></member>
+      <member refid="classKNOBVALUE_1a5efa338a9f278d6b8add7d6c5b2f5fcc" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>ToString</name></member>
+      <member refid="classKNOBVALUE_1a455f2aabe92b10883c233a8cdba3cd05" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>Type</name></member>
+      <member refid="classKNOBVALUE_1a10b561d0843fefdcfe30b3a30f721a69" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>Value</name></member>
+      <member refid="classKNOBVALUE_1ae28d1c1b89a7813236d40e6d900b18a6" prot="public" virt="non-virtual"><scope>KNOBVALUE</scope><name>ValueString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

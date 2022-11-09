@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classSymbolAddressRange" kind="class" language="C++" prot="public">
+    <compoundname>SymbolAddressRange</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classSymbolAddressRange_1aad3dd8158cd7ebac27fad32c33a647ac" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT SymbolAddressRange::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="914" column="13" bodyfile="Source/pin/pin/image.PH" bodystart="914" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSymbolAddressRange_1a6d86603514aab44d4c87cf7b161e90e3" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t SymbolAddressRange::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="915" column="12" bodyfile="Source/pin/pin/image.PH" bodystart="915" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSymbolAddressRange_1af6840e95059ed5a6d2d53b4ea5e7edfb" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SymbolAddressRange::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="916" column="17" bodyfile="Source/pin/pin/image.PH" bodystart="916" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSymbolAddressRange_1a454a5535726edb4c67d4f4863ba69b19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SymbolAddressRange::SymbolAddressRange</definition>
+        <argsstring>()</argsstring>
+        <name>SymbolAddressRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="894" column="5" bodyfile="Source/pin/pin/image.PH" bodystart="894" bodyend="894"/>
+      </memberdef>
+      <memberdef kind="function" id="classSymbolAddressRange_1aa8918daaa14f0011639209e2e2fb873c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SymbolAddressRange::SymbolAddressRange</definition>
+        <argsstring>(std::string sym_name, ADDRINT sym_base, size_t sym_size)</argsstring>
+        <name>SymbolAddressRange</name>
+        <param>
+          <type>std::string</type>
+          <declname>sym_name</declname>
+        </param>
+        <param>
+          <type>ADDRINT</type>
+          <declname>sym_base</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>sym_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="895" column="5" bodyfile="Source/pin/pin/image.PH" bodystart="895" bodyend="896"/>
+      </memberdef>
+      <memberdef kind="function" id="classSymbolAddressRange_1a926023f115a3f6d38c2c9bd6e85ad338" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SymbolAddressRange::SymbolAddressRange</definition>
+        <argsstring>(const SymbolAddressRange &amp;obj)</argsstring>
+        <name>SymbolAddressRange</name>
+        <param>
+          <type>const <ref refid="classSymbolAddressRange" kindref="compound">SymbolAddressRange</ref> &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="897" column="5" bodyfile="Source/pin/pin/image.PH" bodystart="897" bodyend="902"/>
+      </memberdef>
+      <memberdef kind="function" id="classSymbolAddressRange_1affc86f105dfc796854ef7622610ba52e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classSymbolAddressRange" kindref="compound">SymbolAddressRange</ref> &amp;</type>
+        <definition>SymbolAddressRange&amp; SymbolAddressRange::operator=</definition>
+        <argsstring>(const SymbolAddressRange &amp;obj)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classSymbolAddressRange" kindref="compound">SymbolAddressRange</ref> &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="903" column="24" bodyfile="Source/pin/pin/image.PH" bodystart="903" bodyend="909"/>
+      </memberdef>
+      <memberdef kind="function" id="classSymbolAddressRange_1a74b2c9e133d5f0da952f54d23805d70a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SymbolAddressRange::operator&lt;</definition>
+        <argsstring>(const SymbolAddressRange &amp;range) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="classSymbolAddressRange" kindref="compound">SymbolAddressRange</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="910" column="5" bodyfile="Source/pin/pin/image.PH" bodystart="910" bodyend="910"/>
+      </memberdef>
+      <memberdef kind="function" id="classSymbolAddressRange_1a585d31faa806323d4e9bc0eee1ef77ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SymbolAddressRange::Contains</definition>
+        <argsstring>(const ADDRINT addr) const</argsstring>
+        <name>Contains</name>
+        <param>
+          <type>const ADDRINT</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="911" column="10" bodyfile="Source/pin/pin/image.PH" bodystart="911" bodyend="911"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class that represents an adddress range for a symbol </para>
+    </detaileddescription>
+    <location file="Source/pin/pin/image.PH" line="892" column="1" bodyfile="Source/pin/pin/image.PH" bodystart="891" bodyend="917"/>
+    <listofallmembers>
+      <member refid="classSymbolAddressRange_1aad3dd8158cd7ebac27fad32c33a647ac" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>base</name></member>
+      <member refid="classSymbolAddressRange_1a585d31faa806323d4e9bc0eee1ef77ab" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>Contains</name></member>
+      <member refid="classSymbolAddressRange_1af6840e95059ed5a6d2d53b4ea5e7edfb" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>name</name></member>
+      <member refid="classSymbolAddressRange_1a74b2c9e133d5f0da952f54d23805d70a" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>operator&lt;</name></member>
+      <member refid="classSymbolAddressRange_1affc86f105dfc796854ef7622610ba52e" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>operator=</name></member>
+      <member refid="classSymbolAddressRange_1a6d86603514aab44d4c87cf7b161e90e3" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>size</name></member>
+      <member refid="classSymbolAddressRange_1a454a5535726edb4c67d4f4863ba69b19" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>SymbolAddressRange</name></member>
+      <member refid="classSymbolAddressRange_1aa8918daaa14f0011639209e2e2fb873c" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>SymbolAddressRange</name></member>
+      <member refid="classSymbolAddressRange_1a926023f115a3f6d38c2c9bd6e85ad338" prot="public" virt="non-virtual"><scope>SymbolAddressRange</scope><name>SymbolAddressRange</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

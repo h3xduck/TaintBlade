@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structOS__MEMORY__AT__ADDR__INFORMATION" kind="struct" language="C++" prot="public">
+    <compoundname>OS_MEMORY_AT_ADDR_INFORMATION</compoundname>
+    <includes local="no">memory.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structOS__MEMORY__AT__ADDR__INFORMATION_1aa5d95428913abff4a7c0e5f3e46fd637" prot="public" static="no" mutable="no">
+        <type>VOID *</type>
+        <definition>VOID* OS_MEMORY_AT_ADDR_INFORMATION::BaseAddress</definition>
+        <argsstring></argsstring>
+        <name>BaseAddress</name>
+        <briefdescription>
+<para>The base address of the mapped region. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="34" column="10" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__MEMORY__AT__ADDR__INFORMATION_1aafafff2b58706a51b29d0ef7785eed55" prot="public" static="no" mutable="no">
+        <type>USIZE</type>
+        <definition>USIZE OS_MEMORY_AT_ADDR_INFORMATION::MapSize</definition>
+        <argsstring></argsstring>
+        <name>MapSize</name>
+        <briefdescription>
+<para>The size of the mapped region. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="35" column="11" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__MEMORY__AT__ADDR__INFORMATION_1a5f1b8538c7a2f0397f1568edf4bc0b79" prot="public" static="no" mutable="no">
+        <type>UINT</type>
+        <definition>UINT OS_MEMORY_AT_ADDR_INFORMATION::Shared</definition>
+        <argsstring></argsstring>
+        <name>Shared</name>
+        <briefdescription>
+<para>Shared or private region. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="36" column="10" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__MEMORY__AT__ADDR__INFORMATION_1a85e4983266a572dd9add5185534785de" prot="public" static="no" mutable="no">
+        <type><ref refid="group__OS__APIS__MEMORY_1ga8b1f83ef2e6ff5fd685c9beb6249fbec" kindref="member">OS_PAGE_PROTECTION_TYPE</ref></type>
+        <definition>OS_PAGE_PROTECTION_TYPE OS_MEMORY_AT_ADDR_INFORMATION::Protection</definition>
+        <argsstring></argsstring>
+        <name>Protection</name>
+        <briefdescription>
+<para>The protection of this region. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="37" column="29" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOS__MEMORY__AT__ADDR__INFORMATION_1aa167008201c4faee2fd13ef4a9590a32" prot="public" static="no" mutable="no">
+        <type>UINT</type>
+        <definition>UINT OS_MEMORY_AT_ADDR_INFORMATION::Type</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+<para>Unknown... </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="38" column="10" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains a memory region information </para>
+    </detaileddescription>
+    <location file="Source/os-apis/00-export-include/os-apis/memory.h" line="33" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/memory.h" bodystart="32" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structOS__MEMORY__AT__ADDR__INFORMATION_1aa5d95428913abff4a7c0e5f3e46fd637" prot="public" virt="non-virtual"><scope>OS_MEMORY_AT_ADDR_INFORMATION</scope><name>BaseAddress</name></member>
+      <member refid="structOS__MEMORY__AT__ADDR__INFORMATION_1aafafff2b58706a51b29d0ef7785eed55" prot="public" virt="non-virtual"><scope>OS_MEMORY_AT_ADDR_INFORMATION</scope><name>MapSize</name></member>
+      <member refid="structOS__MEMORY__AT__ADDR__INFORMATION_1a85e4983266a572dd9add5185534785de" prot="public" virt="non-virtual"><scope>OS_MEMORY_AT_ADDR_INFORMATION</scope><name>Protection</name></member>
+      <member refid="structOS__MEMORY__AT__ADDR__INFORMATION_1a5f1b8538c7a2f0397f1568edf4bc0b79" prot="public" virt="non-virtual"><scope>OS_MEMORY_AT_ADDR_INFORMATION</scope><name>Shared</name></member>
+      <member refid="structOS__MEMORY__AT__ADDR__INFORMATION_1aa167008201c4faee2fd13ef4a9590a32" prot="public" virt="non-virtual"><scope>OS_MEMORY_AT_ADDR_INFORMATION</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

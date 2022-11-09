@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__SYMBOLS" kind="group">
+    <compoundname>SYMBOLS</compoundname>
+    <title>SYM: Symbol Object</title>
+    <innerclass refid="classSymbolAddressRange" prot="public">SymbolAddressRange</innerclass>
+    <innerclass refid="structSymbolDebugInfo" prot="public">SymbolDebugInfo</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__SYMBOLS_1ga8b0c33dda59c8d399096714c6307f23d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>UNDECORATION</name>
+        <enumvalue id="group__SYMBOLS_1gga8b0c33dda59c8d399096714c6307f23da869b5424f40c8d015768c8b0de405d4b" prot="public">
+          <name>UNDECORATION_COMPLETE</name>
+          <briefdescription>
+<para>Undecorate to full symbol signature. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__SYMBOLS_1gga8b0c33dda59c8d399096714c6307f23da573ccc7d32ef44f469a6c0f367cbfedf" prot="public">
+          <name>UNDECORATION_NAME_ONLY</name>
+          <briefdescription>
+<para>Undecorate to [scope::]name. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Definitions for symbol undecoration</para>
+<para>List of supported symbol name undecoration styles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/sym_undecorate.PH" line="17" column="1" bodyfile="Source/pin/pin/sym_undecorate.PH" bodystart="16" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__SYMBOLS_1ga5b8694c228627870fa2a43595b8ffc86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SYM</type>
+        <definition>SYM SYM_Next</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Next</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Routine that follows x, or <ref refid="group__SYMBOLS_1ga17e013be5a1296fa67398439718d2391" kindref="member">SYM_Invalid()</ref> if x is the last in the section </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="810" column="12" declfile="Source/pin/pin/image.PH" declline="810" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1ga23bee60e01a98b84bf5620e941dd5ba6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SYM</type>
+        <definition>SYM SYM_Prev</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Prev</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Routine that precedes x, or <ref refid="group__SYMBOLS_1ga17e013be5a1296fa67398439718d2391" kindref="member">SYM_Invalid()</ref> if x is the first in the section </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="815" column="12" declfile="Source/pin/pin/image.PH" declline="815" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1gaef5c779a90d7eb566bb2c940dcbf1efd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; SYM_Name</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Name</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Name of symbol </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="820" column="26" declfile="Source/pin/pin/image.PH" declline="820" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1ga17e013be5a1296fa67398439718d2391" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SYM</type>
+        <definition>SYM SYM_Invalid</definition>
+        <argsstring>()</argsstring>
+        <name>SYM_Invalid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Used to indicate no symbol </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="825" column="12" declfile="Source/pin/pin/image.PH" declline="825" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1ga22feb0e88290967f67e25ffc8a520dc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SYM_Valid</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Valid</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is not <ref refid="group__SYMBOLS_1ga17e013be5a1296fa67398439718d2391" kindref="member">SYM_Invalid()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="830" column="13" declfile="Source/pin/pin/image.PH" declline="830" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1gad6c2b77869913517813f1e000778f6ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SYM_Dynamic</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Dynamic</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is a dynamic symbol </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="835" column="13" declfile="Source/pin/pin/image.PH" declline="835" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1gade3b1d3f6321f6ce86f6b51d5eebb030" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SYM_GeneratedByPin</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_GeneratedByPin</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is a symbol which did not appear in the image&apos;s original symbol table and was added by Pin (for example when resolving an ifunc). False if the symbol existed in the image&apos;s symbol table </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="842" column="13" declfile="Source/pin/pin/image.PH" declline="842" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1ga2f78e9f7400e375397964fd28bb92983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SYM_IFuncImplementation</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_IFuncImplementation</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is an IFUNC implementation symbol </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="847" column="13" declfile="Source/pin/pin/image.PH" declline="847" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1ga73d2a2d0f34a5a75318977bc1096d68b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL SYM_IFuncResolver</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_IFuncResolver</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if x is an IFUNC resolver symbol </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="852" column="13" declfile="Source/pin/pin/image.PH" declline="852" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1ga9ed3c0327b560e2dc81ef1d0c5b2df99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT SYM_Value</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Value</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Value of symbol, usually an address relative to beginning of image </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="857" column="16" declfile="Source/pin/pin/image.PH" declline="857" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1gab899cf983d7958d851b392686c66714a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 SYM_Index</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Index</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>section index of a symbol </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="862" column="15" declfile="Source/pin/pin/image.PH" declline="862" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1gabe81096b16c38fdc442bc336c707530b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ADDRINT</type>
+        <definition>ADDRINT SYM_Address</definition>
+        <argsstring>(SYM x)</argsstring>
+        <name>SYM_Address</name>
+        <param>
+          <type>SYM</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>address of the symbol in memory </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="867" column="16" declfile="Source/pin/pin/image.PH" declline="867" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__SYMBOLS_1ga5d57f95572040c8a7db5488702716b9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PIN_UndecorateSymbolName</definition>
+        <argsstring>(const std::string &amp;symbolName, UNDECORATION style)</argsstring>
+        <name>PIN_UndecorateSymbolName</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>symbolName</declname>
+        </param>
+        <param>
+          <type><ref refid="group__SYMBOLS_1ga8b0c33dda59c8d399096714c6307f23d" kindref="member">UNDECORATION</ref></type>
+          <declname>style</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Undecorate symbol name. <linebreak/>
+Provides undecoration of C++ names and decorated C names. The behavior of this function <linebreak/>
+is compiler and OS specific. <linebreak/>
+ The C++ mangled name is undecorated either to its full signature (UNDECORATION_COMPLETE style) <linebreak/>
+or to [scope::]name form (UNDECORATION_NAME_ONLY style). <linebreak/>
+ Example of undecoration of symbol generated by Microsoft compiler in Windows:<linebreak/>
+ <programlisting><codeline><highlight class="normal">Style<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Original<sp/>name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Undecorated<sp/>name</highlight></codeline>
+<codeline><highlight class="normal">=====================<sp/><sp/><sp/>==================<sp/><sp/><sp/>======================================</highlight></codeline>
+<codeline><highlight class="normal">UNDECORATION_COMPLETE<sp/><sp/><sp/>?foo@ccc@@QAEPADH@Z<sp/><sp/>public:<sp/>char<sp/>*<sp/>__thiscall<sp/>ccc::foo(int)</highlight></codeline>
+<codeline><highlight class="normal">UNDECORATION_NAME_ONLY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ccc::foo</highlight></codeline>
+</programlisting></para>
+<para>Symbol name decorated according to Windows IA32 C calling conventions is undecorated as follows: <linebreak/>
+<programlisting><codeline><highlight class="normal">_foo<sp/><sp/><sp/><sp/><sp/>-&gt;<sp/><sp/>foo<sp/><sp/><sp/><sp/>(__cdecl<sp/><sp/><sp/><sp/>convention)</highlight></codeline>
+<codeline><highlight class="normal">_foo@4<sp/><sp/><sp/>-&gt;<sp/><sp/>foo<sp/><sp/><sp/><sp/>(__stdcall<sp/><sp/>convention)</highlight></codeline>
+<codeline><highlight class="normal">@foo@12<sp/><sp/>-&gt;<sp/><sp/>foo<sp/><sp/><sp/><sp/>(__fastcall<sp/>convention)</highlight></codeline>
+</programlisting></para>
+<para>Example of undecoration of symbol generated by GCC compiler on Linux:<linebreak/>
+ <programlisting><codeline><highlight class="normal">Style<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Original<sp/>name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Undecorated<sp/>name</highlight></codeline>
+<codeline><highlight class="normal">=====================<sp/><sp/><sp/>==================<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>======================================</highlight></codeline>
+<codeline><highlight class="normal">UNDECORATION_COMPLETE<sp/><sp/><sp/>_ZN1A7method1ERKSt6vectorIiSaIiEE<sp/><sp/>A::method1(std::vector&lt;int,<sp/>std::allocator&lt;int&gt;<sp/>&gt;<sp/>const&amp;)</highlight></codeline>
+<codeline><highlight class="normal">UNDECORATION_NAME_ONLY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A::method1</highlight></codeline>
+</programlisting></para>
+<para>Undecoration of macOS* symbols is done similarly to Linux (Remove the leading &apos;_&apos; and undecorate like Linux)</para>
+<para>You should be careful if using this function, since some of the undecorated names it generates for symbols generated by the compiler may not be valid C++ symbol names. For example on Linux demangling can give names like <computeroutput>construction vtable for std::istream-in-std::iostream</computeroutput>, or <computeroutput>non-virtual thunk to std::strstream::~strstream()</computeroutput>, which are not valid C++ names.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">symbolName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Decorated name <linebreak/>
+</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Undecoration style, relevant only to C++ undecoration <linebreak/>
+ Values: <linebreak/>
+ UNDECORATION_COMPLETE undecorate to full signature <linebreak/>
+ UNDECORATION_NAME_ONLY undecorate to [scope::]name <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string containing undecorated symbol name. <linebreak/>
+ If undecoration fails or not supported, the function returns the unmodified original name. <linebreak/>
+ </para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin/image.PH" line="1447" column="20" declfile="Source/pin/pin/image.PH" declline="1447" declcolumn="20"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Symbol objects provide information about function symbols in the application. See <ref refid="index_1SYMBOLS" kindref="member">Symbols</ref> for more information.</para>
+<para>You must call <ref refid="group__PIN__CONTROL_1ga5a74f4530db5d94bede1391c59e39939" kindref="member">PIN_InitSymbols</ref> to make symbols available.</para>
+<para>Can be accessed at instrumentation time and analysis time.<linebreak/>
+APIs from this group are available in any thread, including any internal thread spawned by the tool.</para>
+<para>Iteration idioms:</para>
+<para><programlisting><codeline><highlight class="normal">//<sp/>Forward<sp/>pass<sp/>over<sp/>all<sp/>symbols<sp/>in<sp/>an<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">for(<sp/>SYM<sp/>sym=<sp/>IMG_RegsymHead(img);<sp/>SYM_Valid(sym);<sp/>sym<sp/>=<sp/>SYM_Next(sym)<sp/>)</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> JIT &amp; Probe<linebreak/>
+<bold>O/S</bold>: Linux &amp; Windows<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

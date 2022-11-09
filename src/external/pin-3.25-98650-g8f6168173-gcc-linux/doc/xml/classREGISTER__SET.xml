@@ -1,0 +1,566 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classREGISTER__SET" kind="class" language="C++" prot="public">
+    <compoundname>REGISTER_SET</compoundname>
+    <templateparamlist>
+      <param>
+        <type>UINT32</type>
+        <declname>_min</declname>
+        <defname>_min</defname>
+      </param>
+      <param>
+        <type>UINT32</type>
+        <declname>_max</declname>
+        <defname>_max</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classREGISTER__SET_1a730ad2fd4b883038c18c4d433cf0f0eb" prot="private" static="yes" mutable="no">
+        <type>const UINT32</type>
+        <definition>const UINT32 REGISTER_SET&lt; _min, _max &gt;::_SET_SIZE</definition>
+        <argsstring></argsstring>
+        <name>_SET_SIZE</name>
+        <initializer>= sizeof(ADDRINT) * 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="19" column="25" bodyfile="Source/pin/core/regset.PH" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classREGISTER__SET_1ac109c9711af5c36fdbb69f3c14f45789" prot="private" static="yes" mutable="no">
+        <type>const UINT32</type>
+        <definition>const UINT32 REGISTER_SET&lt; _min, _max &gt;::_NUM_SETS</definition>
+        <argsstring></argsstring>
+        <name>_NUM_SETS</name>
+        <initializer>= ((_max - _min) / _SET_SIZE) + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="20" column="25" bodyfile="Source/pin/core/regset.PH" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classREGISTER__SET_1a8d4a437f84f91e7a1e8f075f9eee76aa" prot="private" static="yes" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT REGISTER_SET&lt; _min, _max &gt;::_ONE</definition>
+        <argsstring></argsstring>
+        <name>_ONE</name>
+        <initializer>= ADDRINT(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="21" column="26" bodyfile="Source/pin/core/regset.PH" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classREGISTER__SET_1ac57d26bd20cec91e5c02ce95988c80c0" prot="private" static="yes" mutable="no">
+        <type>const ADDRINT</type>
+        <definition>const ADDRINT REGISTER_SET&lt; _min, _max &gt;::_ALL_ONES</definition>
+        <argsstring></argsstring>
+        <name>_ALL_ONES</name>
+        <initializer>= ~ADDRINT(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="22" column="26" bodyfile="Source/pin/core/regset.PH" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classREGISTER__SET_1a0baac8d9948190b07b766112e353c1ac" prot="private" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT REGISTER_SET&lt; _min, _max &gt;::_set[_NUM_SETS]</definition>
+        <argsstring>[_NUM_SETS]</argsstring>
+        <name>_set</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="24" column="13" bodyfile="Source/pin/core/regset.PH" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classREGISTER__SET_1a27c876bd3f8b398058b25de9b3c8cf69" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>REGISTER_SET&lt; _min, _max &gt;::REGISTER_SET</definition>
+        <argsstring>()</argsstring>
+        <name>REGISTER_SET</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="27" column="5" bodyfile="Source/pin/core/regset.PH" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a4bdc3c84fca711457b416de6df44560f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>REGISTER_SET&lt; _min, _max &gt;::REGISTER_SET</definition>
+        <argsstring>(UINT32 first, UINT32 last)</argsstring>
+        <name>REGISTER_SET</name>
+        <param>
+          <type>UINT32</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="35" column="5" bodyfile="Source/pin/core/regset.PH" bodystart="35" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ae02d41d6d7fb8eff3063a5b7270be81b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGISTER_SET&lt; _min, _max &gt;::Min</definition>
+        <argsstring>() const</argsstring>
+        <name>Min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="47" column="9" bodyfile="Source/pin/core/regset.PH" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a4f1ef0c019c6938391ed198e68fca1b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGISTER_SET&lt; _min, _max &gt;::Max</definition>
+        <argsstring>() const</argsstring>
+        <name>Max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="48" column="9" bodyfile="Source/pin/core/regset.PH" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a4acff606d579016810332a75767e5c5e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL REGISTER_SET&lt; _min, _max &gt;::Contains</definition>
+        <argsstring>(REG reg_no) const</argsstring>
+        <name>Contains</name>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg_no</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="50" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="50" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a291372cac59d1881df5fdd888b131ef5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGISTER_SET&lt; _min, _max &gt;::InsertVector</definition>
+        <argsstring>(REG reg_no, UINT32 vector)</argsstring>
+        <name>InsertVector</name>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg_no</declname>
+        </param>
+        <param>
+          <type>UINT32</type>
+          <declname>vector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="66" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="66" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a6dfa439579d7495aec707d611225a170" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGISTER_SET&lt; _min, _max &gt;::InsertAll</definition>
+        <argsstring>()</argsstring>
+        <name>InsertAll</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="82" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="82" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a3654242137604144b605a2e96e1a77ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGISTER_SET&lt; _min, _max &gt;::Insert</definition>
+        <argsstring>(REG reg_no)</argsstring>
+        <name>Insert</name>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg_no</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="90" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="90" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a1abb7ae44236bd255019180f3d79fd11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGISTER_SET&lt; _min, _max &gt;::Remove</definition>
+        <argsstring>(REG reg_no)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>reg_no</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="110" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="110" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a74a078a5141f3bb76db383021133155b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGISTER_SET&lt; _min, _max &gt;::Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="127" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="127" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1aa83559713cbbcd339120791f1298e278" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID REGISTER_SET&lt; _min, _max &gt;::Invert</definition>
+        <argsstring>()</argsstring>
+        <name>Invert</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="135" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="135" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1af10a7ba016f757d553c2c02432759c0c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGISTER_SET&lt; _min, _max &gt;::PopNext</definition>
+        <argsstring>()</argsstring>
+        <name>PopNext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="143" column="9" bodyfile="Source/pin/core/regset.PH" bodystart="143" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a3c08e03f3f2ff8e6153d2a3acc471b37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+        <definition>REG REGISTER_SET&lt; _min, _max &gt;::PopNextFast</definition>
+        <argsstring>()</argsstring>
+        <name>PopNextFast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="158" column="9" bodyfile="Source/pin/core/regset.PH" bodystart="158" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1afca76283e859a92414283f3a24514326" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 REGISTER_SET&lt; _min, _max &gt;::PopCount</definition>
+        <argsstring>() const</argsstring>
+        <name>PopCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="180" column="12" bodyfile="Source/pin/core/regset.PH" bodystart="180" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a35e8775156746c076166a3ea4a96de4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>BOOL REGISTER_SET&lt; _min, _max &gt;::PopCountIsZero</definition>
+        <argsstring>() const</argsstring>
+        <name>PopCountIsZero</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="190" column="10" bodyfile="Source/pin/core/regset.PH" bodystart="190" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a1e8aed16c4f3f94320e1694a28ca1810" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 REGISTER_SET&lt; _min, _max &gt;::HashKey</definition>
+        <argsstring>() const</argsstring>
+        <name>HashKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="199" column="12" bodyfile="Source/pin/core/regset.PH" bodystart="199" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ad0ac22908d218ded3614a60780b00d9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref></type>
+        <definition>REGISTER_SET REGISTER_SET&lt; _min, _max &gt;::operator|</definition>
+        <argsstring>(const REGISTER_SET &amp;b) const</argsstring>
+        <name>operator|</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="209" column="18" bodyfile="Source/pin/core/regset.PH" bodystart="209" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1acd20261464754987f4e6b5e9b2f5eb85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+        <definition>REGISTER_SET&amp; REGISTER_SET&lt; _min, _max &gt;::operator|=</definition>
+        <argsstring>(const REGISTER_SET &amp;b)</argsstring>
+        <name>operator|=</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="220" column="18" bodyfile="Source/pin/core/regset.PH" bodystart="220" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1aecb3f9e57cd3b6641b795cf870acf7f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int REGISTER_SET&lt; _min, _max &gt;::operator==</definition>
+        <argsstring>(const REGISTER_SET &amp;b) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="229" column="9" bodyfile="Source/pin/core/regset.PH" bodystart="229" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ab28197c043456a284480d3746439517f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int REGISTER_SET&lt; _min, _max &gt;::operator!=</definition>
+        <argsstring>(const REGISTER_SET &amp;b) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="238" column="9" bodyfile="Source/pin/core/regset.PH" bodystart="238" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ad486b25241a8a8eda42d28a830958ac3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref></type>
+        <definition>REGISTER_SET REGISTER_SET&lt; _min, _max &gt;::operator&amp;</definition>
+        <argsstring>(const REGISTER_SET &amp;b) const</argsstring>
+        <name>operator&amp;</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="247" column="18" bodyfile="Source/pin/core/regset.PH" bodystart="247" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a337bc5cb9a67bec17c6921db59010d86" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+        <definition>REGISTER_SET&amp; REGISTER_SET&lt; _min, _max &gt;::operator&amp;=</definition>
+        <argsstring>(const REGISTER_SET &amp;b)</argsstring>
+        <name>operator&amp;=</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="258" column="18" bodyfile="Source/pin/core/regset.PH" bodystart="258" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ac32b8cc01122b7cff916417fdeaff9c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref></type>
+        <definition>REGISTER_SET REGISTER_SET&lt; _min, _max &gt;::operator-</definition>
+        <argsstring>(const REGISTER_SET &amp;b) const</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="267" column="18" bodyfile="Source/pin/core/regset.PH" bodystart="267" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ae53d5a53d8286f9d47d23618bbfc3cb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+        <definition>REGISTER_SET&amp; REGISTER_SET&lt; _min, _max &gt;::operator-=</definition>
+        <argsstring>(const REGISTER_SET &amp;b)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>const <ref refid="classREGISTER__SET" kindref="compound">REGISTER_SET</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="278" column="18" bodyfile="Source/pin/core/regset.PH" bodystart="278" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ab8fca86487b210e635acf1ae648c5bb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>STATIC std::string</type>
+        <definition>STATIC std::string REGISTER_SET&lt; _min, _max &gt;::PrintRange</definition>
+        <argsstring>(REG start, REG stop)</argsstring>
+        <name>PrintRange</name>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type><ref refid="group__REG_1ga8f899d7ad1af070aae505a85cc998fa5" kindref="member">REG</ref></type>
+          <declname>stop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="287" column="31" bodyfile="Source/pin/core/regset.PH" bodystart="287" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a9646acaf5cf5c40e03f15f8896c1139f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string REGISTER_SET&lt; _min, _max &gt;::Dump</definition>
+        <argsstring>() const</argsstring>
+        <name>Dump</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="299" column="17" bodyfile="Source/pin/core/regset.PH" bodystart="299" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1ab6ed0fe0fb4587715362f3dd6dcd945b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string REGISTER_SET&lt; _min, _max &gt;::String</definition>
+        <argsstring>() const</argsstring>
+        <name>String</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="311" column="17" bodyfile="Source/pin/core/regset.PH" bodystart="311" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classREGISTER__SET_1a8f2c69be1e9e720e246fd1a6b448612f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string REGISTER_SET&lt; _min, _max &gt;::StringList</definition>
+        <argsstring>() const</argsstring>
+        <name>StringList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/regset.PH" line="336" column="17" bodyfile="Source/pin/core/regset.PH" bodystart="336" bodyend="365"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>x </para>
+    </detaileddescription>
+    <location file="Source/pin/core/regset.PH" line="17" column="1" bodyfile="Source/pin/core/regset.PH" bodystart="16" bodyend="366"/>
+    <listofallmembers>
+      <member refid="classREGISTER__SET_1ac57d26bd20cec91e5c02ce95988c80c0" prot="private" virt="non-virtual"><scope>REGISTER_SET</scope><name>_ALL_ONES</name></member>
+      <member refid="classREGISTER__SET_1ac109c9711af5c36fdbb69f3c14f45789" prot="private" virt="non-virtual"><scope>REGISTER_SET</scope><name>_NUM_SETS</name></member>
+      <member refid="classREGISTER__SET_1a8d4a437f84f91e7a1e8f075f9eee76aa" prot="private" virt="non-virtual"><scope>REGISTER_SET</scope><name>_ONE</name></member>
+      <member refid="classREGISTER__SET_1a0baac8d9948190b07b766112e353c1ac" prot="private" virt="non-virtual"><scope>REGISTER_SET</scope><name>_set</name></member>
+      <member refid="classREGISTER__SET_1a730ad2fd4b883038c18c4d433cf0f0eb" prot="private" virt="non-virtual"><scope>REGISTER_SET</scope><name>_SET_SIZE</name></member>
+      <member refid="classREGISTER__SET_1a74a078a5141f3bb76db383021133155b" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Clear</name></member>
+      <member refid="classREGISTER__SET_1a4acff606d579016810332a75767e5c5e" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Contains</name></member>
+      <member refid="classREGISTER__SET_1a9646acaf5cf5c40e03f15f8896c1139f" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Dump</name></member>
+      <member refid="classREGISTER__SET_1a1e8aed16c4f3f94320e1694a28ca1810" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>HashKey</name></member>
+      <member refid="classREGISTER__SET_1a3654242137604144b605a2e96e1a77ca" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Insert</name></member>
+      <member refid="classREGISTER__SET_1a6dfa439579d7495aec707d611225a170" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>InsertAll</name></member>
+      <member refid="classREGISTER__SET_1a291372cac59d1881df5fdd888b131ef5" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>InsertVector</name></member>
+      <member refid="classREGISTER__SET_1aa83559713cbbcd339120791f1298e278" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Invert</name></member>
+      <member refid="classREGISTER__SET_1a4f1ef0c019c6938391ed198e68fca1b0" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Max</name></member>
+      <member refid="classREGISTER__SET_1ae02d41d6d7fb8eff3063a5b7270be81b" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Min</name></member>
+      <member refid="classREGISTER__SET_1ab28197c043456a284480d3746439517f" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator!=</name></member>
+      <member refid="classREGISTER__SET_1ad486b25241a8a8eda42d28a830958ac3" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator&amp;</name></member>
+      <member refid="classREGISTER__SET_1a337bc5cb9a67bec17c6921db59010d86" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator&amp;=</name></member>
+      <member refid="classREGISTER__SET_1ac32b8cc01122b7cff916417fdeaff9c2" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator-</name></member>
+      <member refid="classREGISTER__SET_1ae53d5a53d8286f9d47d23618bbfc3cb8" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator-=</name></member>
+      <member refid="classREGISTER__SET_1aecb3f9e57cd3b6641b795cf870acf7f4" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator==</name></member>
+      <member refid="classREGISTER__SET_1ad0ac22908d218ded3614a60780b00d9d" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator|</name></member>
+      <member refid="classREGISTER__SET_1acd20261464754987f4e6b5e9b2f5eb85" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>operator|=</name></member>
+      <member refid="classREGISTER__SET_1afca76283e859a92414283f3a24514326" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>PopCount</name></member>
+      <member refid="classREGISTER__SET_1a35e8775156746c076166a3ea4a96de4a" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>PopCountIsZero</name></member>
+      <member refid="classREGISTER__SET_1af10a7ba016f757d553c2c02432759c0c" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>PopNext</name></member>
+      <member refid="classREGISTER__SET_1a3c08e03f3f2ff8e6153d2a3acc471b37" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>PopNextFast</name></member>
+      <member refid="classREGISTER__SET_1ab8fca86487b210e635acf1ae648c5bb5" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>PrintRange</name></member>
+      <member refid="classREGISTER__SET_1a27c876bd3f8b398058b25de9b3c8cf69" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>REGISTER_SET</name></member>
+      <member refid="classREGISTER__SET_1a4bdc3c84fca711457b416de6df44560f" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>REGISTER_SET</name></member>
+      <member refid="classREGISTER__SET_1a1abb7ae44236bd255019180f3d79fd11" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>Remove</name></member>
+      <member refid="classREGISTER__SET_1ab6ed0fe0fb4587715362f3dd6dcd945b" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>String</name></member>
+      <member refid="classREGISTER__SET_1a8f2c69be1e9e720e246fd1a6b448612f" prot="public" virt="non-virtual"><scope>REGISTER_SET</scope><name>StringList</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

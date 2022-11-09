@@ -1,0 +1,667 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__OS__APIS__PROCESS" kind="group">
+    <compoundname>OS_APIS_PROCESS</compoundname>
+    <title>Process</title>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__OS__APIS__PROCESS_1ga8bd862a08dc24374bb76ac7124ef0bcf" prot="public" static="no">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref>(*</type>
+        <definition>typedef OS_RETURN_CODE(* OS_FnPtrCreateProcess) (const CHAR *args, NATIVE_FD *stdFiles, NATIVE_FD *closeFiles, char **environ, OS_PROCESS_WAITABLE_PROCESS *process)</definition>
+        <argsstring>)(const CHAR *args, NATIVE_FD *stdFiles, NATIVE_FD *closeFiles, char **environ, OS_PROCESS_WAITABLE_PROCESS *process)</argsstring>
+        <name>OS_FnPtrCreateProcess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type definition of a pointer to an OS_CreateProcess function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="153" column="9" bodyfile="Source/os-apis/00-export-include/os-apis/process.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga0b17ba1327ccfea88254c4f756fef977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetPid</definition>
+        <argsstring>(NATIVE_PID *pid)</argsstring>
+        <name>OS_GetPid</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref> *</type>
+          <declname>pid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves the process ID of the current process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process descriptor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process-core.h" line="30" column="16" declfile="Source/os-apis/00-export-include/os-apis/process-core.h" declline="30" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga289a76b88b164c1cfda0742645f7e8e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetCommandLine</definition>
+        <argsstring>(NATIVE_PID pid, USIZE *argc, CHAR ***argv, USIZE *bufsize)</argsstring>
+        <name>OS_GetCommandLine</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>pid</declname>
+        </param>
+        <param>
+          <type>USIZE *</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>CHAR ***</type>
+          <declname>argv</declname>
+        </param>
+        <param>
+          <type>USIZE *</type>
+          <declname>bufsize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve the command line for a given process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process descriptor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command line&apos;s argc </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Command line&apos;s argv array, allocated by this function (with <ref refid="group__OS__APIS__MEMORY_1ga292fe0be7839ed9cc970254d288bb199" kindref="member">OS_AllocateMemory()</ref>) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">bufsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size in bytes of the buffer pointer by argv</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="40" column="16" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="40" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga99c9c3d3b11c60be66224a102d95a867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetEnvironmentBlock</definition>
+        <argsstring>(NATIVE_PID pid, CHAR ***block, USIZE *bufSize)</argsstring>
+        <name>OS_GetEnvironmentBlock</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>pid</declname>
+        </param>
+        <param>
+          <type>CHAR ***</type>
+          <declname>block</declname>
+        </param>
+        <param>
+          <type>USIZE *</type>
+          <declname>bufSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieve pointer to process environment variables block encoded in UTF8.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process descriptor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">block</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Return pointer to point to the environment block. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">bufSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes allocated for the envrionement block.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_UPDATE_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>On Linux and macOS* this function will retrieve the initial environment block that was valid when the process started. This function doesn&apos;t catch up with changes done to the environment variables while the process is running. </para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="61" column="16" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="61" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga96b1e69588603f23c605868d0c36ffc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>NORETURN void</type>
+        <definition>NORETURN void OS_ExitProcess</definition>
+        <argsstring>(INT code)</argsstring>
+        <name>OS_ExitProcess</name>
+        <param>
+          <type>INT</type>
+          <declname>code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Exits the current process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process descriptor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="72" column="15" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="72" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga34e89a8acf2f05c8c23d91a50c1a9887" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_IsDebuggerPresent</definition>
+        <argsstring>(NATIVE_PID pid, BOOL_T *isPresent)</argsstring>
+        <name>OS_IsDebuggerPresent</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gae6c37d3a178129452bbb6e591c13aeb0" kindref="member">NATIVE_PID</ref></type>
+          <declname>pid</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gad312c486942310e24394e7ea81f8f7e1" kindref="member">BOOL_T</ref> *</type>
+          <declname>isPresent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queries whether the current process is being debugged.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process descriptor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">isPresent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True if the process &apos;pid&apos; is being debugged.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="88" column="16" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="88" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1gaa1b660e1cd13879aa9319982f5cbfd47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_GetUid</definition>
+        <argsstring>(NATIVE_UID *uid)</argsstring>
+        <name>OS_GetUid</name>
+        <param>
+          <type>NATIVE_UID *</type>
+          <declname>uid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queries whether the current process is being debugged.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">uid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process descriptor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="103" column="16" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="103" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga9c868fc95617a27ed0aaf461bd23b35a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_FindStdFiles</definition>
+        <argsstring>(NATIVE_FD *files)</argsstring>
+        <name>OS_FindStdFiles</name>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>files</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queries whether the current process is being debugged.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">files</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to an array of NATIVE_FD objects with at least 3 elements. These elements will be filled with the file descriptors of STDIN, STDOUT, STDERR respectively.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="120" column="16" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="120" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1gaa9620cd977f61b2f28daeefa12328420" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_CreateProcess</definition>
+        <argsstring>(const CHAR *args, NATIVE_FD *stdFiles, NATIVE_FD *closeFiles, char **environ, OS_PROCESS_WAITABLE_PROCESS *process)</argsstring>
+        <name>OS_CreateProcess</name>
+        <param>
+          <type>const CHAR *</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>stdFiles</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__TYPES_1gaeb77513b3223d163064c7b1f5e38e8c3" kindref="member">NATIVE_FD</ref> *</type>
+          <declname>closeFiles</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>environ</declname>
+        </param>
+        <param>
+          <type><ref refid="group__OS__APIS__FILE_1ga125af12a5b69613338937bddae2383dc" kindref="member">OS_PROCESS_WAITABLE_PROCESS</ref> *</type>
+          <declname>process</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a process, possibly redirect its standard input/output/error. The process is created using the system command line interpreter or shell.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Full command line for the process. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">stdFiles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Points to an array of NATIVE_FD objects with at least 3 elements. These elements will be used to determine the file descriptors: STDIN, STDOUT, STDERR respectively of the newly created process. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">closeFiles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(Optional) Points to an array of NATIVE_FD objects that needs to be closed in the context of the created proces. The last entry of this array should be INVALID_NATIVE_FD. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">environ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the environment block to use in the new process. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">process</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An opaque object representing the created process. One can wait for the process termination by calling <ref refid="group__OS__APIS__PROCESS_1gaca3e931968023024b3d138f2c405acb7" kindref="member">OS_WaitForProcessTermination</ref></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="147" column="16" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="147" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1gaca3e931968023024b3d138f2c405acb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__OS__APIS__DEF_1ga8e6b2f5406a922a419991358caae6fc7" kindref="member">OS_RETURN_CODE</ref></type>
+        <definition>OS_RETURN_CODE OS_WaitForProcessTermination</definition>
+        <argsstring>(OS_PROCESS_WAITABLE_PROCESS process, UINT32 *exitStatus)</argsstring>
+        <name>OS_WaitForProcessTermination</name>
+        <param>
+          <type><ref refid="group__OS__APIS__FILE_1ga125af12a5b69613338937bddae2383dc" kindref="member">OS_PROCESS_WAITABLE_PROCESS</ref></type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type>UINT32 *</type>
+          <declname>exitStatus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wait for process termination.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">process</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An opaque object representing the process to wait for. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">exitStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The exit status of the terminated process.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Operation status code. </para>
+</simplesect>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_NO_ERROR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation succeeded </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>OS_RETURN_CODE_PROCESS_QUERY_FAILED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the operation Failed</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="170" column="16" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="170" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1gaa90fe0f9819e43a033184fe458395edc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VOID</type>
+        <definition>VOID OS_TriggerSoftwareBreakpoint</definition>
+        <argsstring>()</argsstring>
+        <name>OS_TriggerSoftwareBreakpoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Trigger a software breakpoint. When the current process is attached to a debugger, this function will stop the process and notify the debugger about a breakpoint that was triggered.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><bold>O/S</bold>: Windows, Linux &amp; macOS*<linebreak/>
+ <bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="181" column="6" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="181" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga2b75c43f07df97fc2a88fbe9ba93b928" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_NotifyFork</definition>
+        <argsstring>()</argsstring>
+        <name>OS_NotifyFork</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Notify the locking mechanism about a forked child.</para>
+<para><simplesect kind="note"><para>Must be called earliest as possible by the child process after it was created for functional correctness.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="193" column="6" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="193" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__OS__APIS__PROCESS_1ga5590cce183f90fe61ca6304487143a3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 OS_GetForksCount</definition>
+        <argsstring>()</argsstring>
+        <name>OS_GetForksCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current generation of forked processes. This value is increased by one every time <ref refid="group__OS__APIS__PROCESS_1ga2b75c43f07df97fc2a88fbe9ba93b928" kindref="member">OS_NotifyFork()</ref> is called.</para>
+<para><simplesect kind="par"><title>Availability:</title><para><itemizedlist>
+<listitem><para><bold>O/S</bold>: Linux &amp; macOS*</para>
+</listitem><listitem><para><bold>CPU:</bold> All </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/process.h" line="203" column="8" declfile="Source/os-apis/00-export-include/os-apis/process.h" declline="203" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains process-related os apis. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

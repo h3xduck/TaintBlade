@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classIMULTI__ELEMENT__OPERAND" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>IMULTI_ELEMENT_OPERAND</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a66716447c87485c3ab84f22f08ba22b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual IMULTI_ELEMENT_OPERAND::~IMULTI_ELEMENT_OPERAND</definition>
+        <argsstring>()</argsstring>
+        <name>~IMULTI_ELEMENT_OPERAND</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="879" column="13" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="879" bodyend="879"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a2a088a11c5f57fbfcd1643f5e3e67c64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>BOOL</type>
+        <definition>virtual BOOL IMULTI_ELEMENT_OPERAND::IsMemory</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsMemory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return whether this is a Memory operand </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="883" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a45aaae095c8d575da9a497250f269489" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>BOOL</type>
+        <definition>virtual BOOL IMULTI_ELEMENT_OPERAND::IsRegister</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsRegister</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return whether this is a Register operand </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="887" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a1a3269c2ad96bab099c908b9c8a77c50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>USIZE</type>
+        <definition>virtual USIZE IMULTI_ELEMENT_OPERAND::Size</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return full operand size. <linebreak/>
+For operands that do not have a size (where INS_HasScatteredMemoryAccess returns TRUE) - 0 is returned. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="892" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a38322afed12bae66f9760f7e12ad0386" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>ADDRINT</type>
+        <definition>virtual ADDRINT IMULTI_ELEMENT_OPERAND::Address</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Address</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return effective address of the full operand. <linebreak/>
+For memory operands that do not have an effective address(where INS_HasScatteredMemoryAccess returns TRUE) - 0 is returned. <linebreak/>
+This function should be used only for Memory operands and will result in Pin error if used for Register operands. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="898" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a9540e7ff0b5c79096a2b2dc62d7ff8e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>UINT32</type>
+        <definition>virtual UINT32 IMULTI_ELEMENT_OPERAND::NumOfElements</definition>
+        <argsstring>() const =0</argsstring>
+        <name>NumOfElements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return number of operand elements </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="902" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1ae515ed8a4383bc4539c06e2f6f6f0573" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>USIZE</type>
+        <definition>virtual USIZE IMULTI_ELEMENT_OPERAND::ElementSize</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementSize</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element size in bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="906" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a0a734eb473651efa17ffae1815af95a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>ADDRINT</type>
+        <definition>virtual ADDRINT IMULTI_ELEMENT_OPERAND::ElementAddress</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementAddress</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element effective address </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="910" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a0f3864eb7d7ac52e344baabd1b5042e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>UINT32</type>
+        <definition>virtual UINT32 IMULTI_ELEMENT_OPERAND::ElementOffset</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementOffset</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element offset in bytes from the beginning of the register to the specified element. <linebreak/>
+This function should be used only for register operands and will result in Pin error if used for memory operands. <linebreak/>
+Users may use the returned offset on buffers received IARG_REG_REFERENCE/IARG_REG_CONST_REFERENCE </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="916" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a502bd3f8a07d530e7ce8d0f5709989e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>UINT32</type>
+        <definition>virtual UINT32 IMULTI_ELEMENT_OPERAND::ElementMaskValue</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementMaskValue</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element mask value - 0 or 1. <linebreak/>
+If the instruction has no active mask - 1 is returned. <linebreak/>
+If the mask register is a KMASK then 1 is returned if the bit associated with element N in the mask is set. <linebreak/>
+If the mask register is a vector register then 1 is returned if the high bit of the mask element associated with element N (size of mask element depends on the instruction) is set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="924" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classIMULTI__ELEMENT__OPERAND_1a0f64f8d8fbdd4055a1436104fd414c2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__INST__ARGS_1ga16b7ac266c4c1323b18396be70279eb0" kindref="member">PIN_OP_ELEMENT_ACCESS</ref></type>
+        <definition>virtual PIN_OP_ELEMENT_ACCESS IMULTI_ELEMENT_OPERAND::ElementAccessType</definition>
+        <argsstring>(UINT32 element_index) const =0</argsstring>
+        <name>ElementAccessType</name>
+        <param>
+          <type>UINT32</type>
+          <declname>element_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return element access type (read/write/readwrite) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="928" column="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An object implementing this interface is passed to analysis routine when IARG_MULTI_ELEMENT_OPERAND is requested. This interface allows inspecting multi element operands (register or memory). </para>
+    </detaileddescription>
+    <location file="Source/pin/include/types_vmapi.PH" line="877" column="29" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="877" bodyend="929"/>
+    <listofallmembers>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a38322afed12bae66f9760f7e12ad0386" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>Address</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a0f64f8d8fbdd4055a1436104fd414c2d" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>ElementAccessType</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a0a734eb473651efa17ffae1815af95a1" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>ElementAddress</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a502bd3f8a07d530e7ce8d0f5709989e6" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>ElementMaskValue</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a0f3864eb7d7ac52e344baabd1b5042e8" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>ElementOffset</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1ae515ed8a4383bc4539c06e2f6f6f0573" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>ElementSize</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a2a088a11c5f57fbfcd1643f5e3e67c64" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>IsMemory</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a45aaae095c8d575da9a497250f269489" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>IsRegister</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a9540e7ff0b5c79096a2b2dc62d7ff8e9" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>NumOfElements</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a1a3269c2ad96bab099c908b9c8a77c50" prot="public" virt="pure-virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>Size</name></member>
+      <member refid="classIMULTI__ELEMENT__OPERAND_1a66716447c87485c3ab84f22f08ba22b3" prot="public" virt="virtual"><scope>IMULTI_ELEMENT_OPERAND</scope><name>~IMULTI_ELEMENT_OPERAND</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

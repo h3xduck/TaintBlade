@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="ins_8PH" kind="file" language="C++">
+    <compoundname>ins.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ins_8PH_1ad0227098d9233b3eef236b3cb64e0975" prot="public" static="no">
+        <name>PIN_G_INS_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/ins.PH" line="9" column="10" bodyfile="Source/pin/core/ins.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__INS__INSPECTION_1ga849849b78d72c1dbc699d8de0862f99f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>MEMORY_TYPE</name>
+        <enumvalue id="group__INS__INSPECTION_1gga849849b78d72c1dbc699d8de0862f99fa8fbda158d617e51ebdb970e7105e0164" prot="public">
+          <name>MEMORY_TYPE_READ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1gga849849b78d72c1dbc699d8de0862f99fab663f9ff0d8e90b7f086b594a9fe4d92" prot="public">
+          <name>MEMORY_TYPE_WRITE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1gga849849b78d72c1dbc699d8de0862f99faaafd99e1e823cd08f14271ec55e799e7" prot="public">
+          <name>MEMORY_TYPE_READ2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Memory type of argument </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/ins.PH" line="22" column="1" bodyfile="Source/pin/core/ins.PH" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>SYSCALL_STANDARD</name>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa5db970f2d14d9d57fdce5d01abf23e2f" prot="public">
+          <name>SYSCALL_STANDARD_INVALID</name>
+          <briefdescription>
+<para>Invalid value; the instruction is not a system call. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa69930e50071ec752f31c32456bff58b2" prot="public">
+          <name>SYSCALL_STANDARD_IA32_LINUX</name>
+          <briefdescription>
+<para>Linux system call on IA-32 architecture. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aaafc5144a517a838cb36d5b2ccbcd3f29" prot="public">
+          <name>SYSCALL_STANDARD_IA32_LINUX_SYSENTER</name>
+          <briefdescription>
+<para>Linux system call via &apos;sysenter&apos; on IA-32 architecture. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa05e78d10b4fd27077cf80a367dab1cd9" prot="public">
+          <name>SYSCALL_STANDARD_IA32E_LINUX</name>
+          <briefdescription>
+<para>Linux system call on Intel(R) 64 architecture. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa35a2680a0748049a4af27ff712f1ab17" prot="public">
+          <name>SYSCALL_STANDARD_IA32E_LINUX_VSYSCALL</name>
+          <briefdescription>
+<para>Linux virtual system call on Intel(R) 64 architecture. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa4563431ff4eb6c56dbd02a36eabd7ce7" prot="public">
+          <name>SYSCALL_STANDARD_IA32_MAC</name>
+          <briefdescription>
+<para>macOS* system call in IA-32 architecture </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa355377c83c5f82eccbfec209f8f0039c" prot="public">
+          <name>SYSCALL_STANDARD_IA32E_MAC</name>
+          <briefdescription>
+<para>macOS* system call in Intel(R) 64 architecture </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa5b3664fc9691e21bae092c595167400f" prot="public">
+          <name>SYSCALL_STANDARD_IA32_WINDOWS_FAST</name>
+          <briefdescription>
+<para>&quot;Fast&quot; (SYSENTER) Windows system call in IA-32 architecture </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aaafbea58d993a4a04acedcc193ad40085" prot="public">
+          <name>SYSCALL_STANDARD_IA32E_WINDOWS_FAST</name>
+          <briefdescription>
+<para>&quot;Fast&quot; (SYSCALL) Windows system call in Intel(R) 64 architecture </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa0dddcc9510d9b6baed3073a57e255aee" prot="public">
+          <name>SYSCALL_STANDARD_IA32_WINDOWS_ALT</name>
+          <briefdescription>
+<para>Alternative (INT2E) Windows system call in IA-32 architecture. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aac1f978ca25c3786a3c8b0a6b5eb85d3b" prot="public">
+          <name>SYSCALL_STANDARD_WOW64</name>
+          <briefdescription>
+<para>System call in WOW64 (32 bit process in 64-bit Windows) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aae5e8c050bc24d144b3dcd6bbb76aa3d5" prot="public">
+          <name>SYSCALL_STANDARD_WINDOWS_INT</name>
+          <briefdescription>
+<para>Software interruption (INT n) in Windows. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calling standard of the system call instruction. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/ins.PH" line="32" column="1" bodyfile="Source/pin/core/ins.PH" bodystart="31" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__INS__INSPECTION_1ga5da3b48943c5402e8abfe5876525529c" prot="public" static="no" mutable="no">
+        <type>const UINT32</type>
+        <definition>const UINT32 VSYSCALL_NR</definition>
+        <argsstring></argsstring>
+        <name>VSYSCALL_NR</name>
+        <initializer>= 0xABCDDCBA</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This file contains INS primitives</para>
+<para>system call number for function called from vsyscall </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/core/ins.PH" line="16" column="14" bodyfile="Source/pin/core/ins.PH" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_INS_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>ins</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_INS_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UINT32<sp/><ref refid="group__INS__INSPECTION_1ga5da3b48943c5402e8abfe5876525529c" kindref="member">VSYSCALL_NR</ref><sp/>=<sp/>0xABCDDCBA;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>MEMORY_TYPE_READ,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>MEMORY_TYPE_WRITE,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>MEMORY_TYPE_READ2</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/><ref refid="group__INS__INSPECTION_1ga849849b78d72c1dbc699d8de0862f99f" kindref="member">MEMORY_TYPE</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa5db970f2d14d9d57fdce5d01abf23e2f" kindref="member">SYSCALL_STANDARD_INVALID</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa69930e50071ec752f31c32456bff58b2" kindref="member">SYSCALL_STANDARD_IA32_LINUX</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aaafc5144a517a838cb36d5b2ccbcd3f29" kindref="member">SYSCALL_STANDARD_IA32_LINUX_SYSENTER</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa05e78d10b4fd27077cf80a367dab1cd9" kindref="member">SYSCALL_STANDARD_IA32E_LINUX</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa35a2680a0748049a4af27ff712f1ab17" kindref="member">SYSCALL_STANDARD_IA32E_LINUX_VSYSCALL</ref>,<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa4563431ff4eb6c56dbd02a36eabd7ce7" kindref="member">SYSCALL_STANDARD_IA32_MAC</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa355377c83c5f82eccbfec209f8f0039c" kindref="member">SYSCALL_STANDARD_IA32E_MAC</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa5b3664fc9691e21bae092c595167400f" kindref="member">SYSCALL_STANDARD_IA32_WINDOWS_FAST</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aaafbea58d993a4a04acedcc193ad40085" kindref="member">SYSCALL_STANDARD_IA32E_WINDOWS_FAST</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aa0dddcc9510d9b6baed3073a57e255aee" kindref="member">SYSCALL_STANDARD_IA32_WINDOWS_ALT</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aac1f978ca25c3786a3c8b0a6b5eb85d3b" kindref="member">SYSCALL_STANDARD_WOW64</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__INS__INSPECTION_1ggaf903f1f8ddcb9710d191943763e6474aae5e8c050bc24d144b3dcd6bbb76aa3d5" kindref="member">SYSCALL_STANDARD_WINDOWS_INT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/><ref refid="group__INS__INSPECTION_1gaf903f1f8ddcb9710d191943763e6474a" kindref="member">SYSCALL_STANDARD</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_INS_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/core/ins.PH"/>
+  </compounddef>
+</doxygen>

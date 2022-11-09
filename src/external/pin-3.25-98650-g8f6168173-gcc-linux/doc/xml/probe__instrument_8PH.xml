@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="probe__instrument_8PH" kind="file" language="C++">
+    <compoundname>probe_instrument.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="probe__instrument_8PH_1a98f7fb1893498cff927ca1c3ea9377b9" prot="public" static="no">
+        <name>PIN_G_PROBE_INSTRUMENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_u/probe_instrument.PH" line="9" column="10" bodyfile="Source/pin/pin_u/probe_instrument.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__PIN__CONTROL_1gab142a18b094055ca96bce4493a70c9ef" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* FORK_PROBE_MODE_CALLBACK) (UINT32 childPid, VOID *v)</definition>
+        <argsstring>)(UINT32 childPid, VOID *v)</argsstring>
+        <name>FORK_PROBE_MODE_CALLBACK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unix-specific instrumentation in probe mode</para>
+<para>Call-back function in probe mode for fork notification.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">childPid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Process id of the child process, available after fork in parent </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tool&apos;s call-back value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_u/probe_instrument.PH" line="20" column="9" bodyfile="Source/pin/pin_u/probe_instrument.PH" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__PIN__CONTROL_1ga9d13104ec745914b6479aa4aa105797c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref></type>
+        <definition>PIN_CALLBACK PIN_AddForkFunctionProbed</definition>
+        <argsstring>(FPOINT point, FORK_PROBE_MODE_CALLBACK fun, VOID *val)</argsstring>
+        <name>PIN_AddForkFunctionProbed</name>
+        <param>
+          <type><ref refid="group__PIN__CONTROL_1ga2114b4480d050e1b7c8ac63449610448" kindref="member">FPOINT</ref></type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type><ref refid="group__PIN__CONTROL_1gab142a18b094055ca96bce4493a70c9ef" kindref="member">FORK_PROBE_MODE_CALLBACK</ref></type>
+          <declname>fun</declname>
+        </param>
+        <param>
+          <type>VOID *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a notification handler that is called when the application forks a new process. If vfork() is called in application, Pin replaces it with fork(). This replacement is needed to keep Pin/Tool state consistent and prevent memory overlap in callbacks following the fork/vfork. The function can only be used on Linux, and macOS*.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">where</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Tells when to make the call-back and tells whether the parent or child makes the call-back. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fun</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Call-back function to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value passed as final parameter to call-back.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PIN_CALLBACK A handle to a callback that can be used to further modify this callback&apos;s properties</para>
+</simplesect>
+If the fork function fails, the FPOINT_AFTER_IN_PARENT function, if it exists, is still called.</para>
+<para><simplesect kind="note"><para>The pin client lock is obtained during the call of this API.</para>
+</simplesect>
+<simplesect kind="par"><title>Availability:</title><para><bold>Mode:</bold> Probe<linebreak/>
+<bold>O/S</bold>: Linux, and macOS*<linebreak/>
+<bold>CPU:</bold> All<linebreak/>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_u/probe_instrument.PH" line="46" column="21" declfile="Source/pin/pin_u/probe_instrument.PH" declline="46" declcolumn="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_PROBE_INSTRUMENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>probe_instrument</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_PROBE_INSTRUMENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor">#if<sp/>defined(TARGET_LINUX)<sp/>||<sp/>defined(TARGET_MAC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>VOID<sp/>(*<ref refid="group__PIN__CONTROL_1gab142a18b094055ca96bce4493a70c9ef" kindref="member">FORK_PROBE_MODE_CALLBACK</ref>)(UINT32<sp/>childPid,<sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref><sp/><ref refid="group__PIN__CONTROL_1ga9d13104ec745914b6479aa4aa105797c" kindref="member">PIN_AddForkFunctionProbed</ref>(<ref refid="group__PIN__CONTROL_1ga2114b4480d050e1b7c8ac63449610448" kindref="member">FPOINT</ref><sp/>point,<sp/><ref refid="group__PIN__CONTROL_1gab142a18b094055ca96bce4493a70c9ef" kindref="member">FORK_PROBE_MODE_CALLBACK</ref><sp/>fun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//defined(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_PROBE_INSTRUMENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin_u/probe_instrument.PH"/>
+  </compounddef>
+</doxygen>

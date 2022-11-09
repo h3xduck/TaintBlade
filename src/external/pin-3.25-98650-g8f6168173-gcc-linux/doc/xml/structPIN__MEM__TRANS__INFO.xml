@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structPIN__MEM__TRANS__INFO" kind="struct" language="C++" prot="public">
+    <compoundname>PIN_MEM_TRANS_INFO</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPIN__MEM__TRANS__INFO_1a47b3eae26ae049c95dbf8b82630b702b" prot="public" static="no" mutable="no">
+        <type>UINT8</type>
+        <definition>UINT8 PIN_MEM_TRANS_INFO::dummySpace[32]</definition>
+        <argsstring>[32]</argsstring>
+        <name>dummySpace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1121" column="11" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__TRANS__INFO_1a19628246c0732a9dae731537b6ff62f1" prot="public" static="no" mutable="no">
+        <type><ref refid="group__THREADS_1ga645289be59039349ad77ad2fa7b0e2f3" kindref="member">THREADID</ref></type>
+        <definition>THREADID PIN_MEM_TRANS_INFO::threadIndex</definition>
+        <argsstring></argsstring>
+        <name>threadIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1122" column="14" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__TRANS__INFO_1aaf363979392df391dab16bd0486aa115" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_MEM_TRANS_INFO::addr</definition>
+        <argsstring></argsstring>
+        <name>addr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1123" column="13" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__TRANS__INFO_1a7b3675554b00860dbb06e5c33be10069" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t PIN_MEM_TRANS_INFO::bytes</definition>
+        <argsstring></argsstring>
+        <name>bytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1124" column="12" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__TRANS__INFO_1ad931b62514731b183411bdb91333b14a" prot="public" static="no" mutable="no">
+        <type><ref refid="group__INST__ARGS_1ga624ddd00f45938da5eb525afc5b43195" kindref="member">PIN_MEMOP_ENUM</ref></type>
+        <definition>PIN_MEMOP_ENUM PIN_MEM_TRANS_INFO::memOpType</definition>
+        <argsstring></argsstring>
+        <name>memOpType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1125" column="20" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__TRANS__INFO_1ad39cc149626a28561418a9cad6a4ebf9" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT PIN_MEM_TRANS_INFO::ip</definition>
+        <argsstring></argsstring>
+        <name>ip</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1126" column="13" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPIN__MEM__TRANS__INFO_1a05e6cf5ec26bd84484db920b9df6d398" prot="public" static="no" mutable="no">
+        <type><ref refid="unionPIN__MEM__TRANS__FLAGS" kindref="compound">PIN_MEM_TRANS_FLAGS</ref></type>
+        <definition>PIN_MEM_TRANS_FLAGS PIN_MEM_TRANS_INFO::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_vmapi.PH" line="1127" column="25" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1127" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PIN_MEM_TRANS_INFO</label>
+        <link refid="structPIN__MEM__TRANS__INFO"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>flags</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PIN_MEM_TRANS_FLAGS</label>
+        <link refid="unionPIN__MEM__TRANS__FLAGS"/>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/include/types_vmapi.PH" line="1117" column="1" bodyfile="Source/pin/include/types_vmapi.PH" bodystart="1116" bodyend="1128"/>
+    <listofallmembers>
+      <member refid="structPIN__MEM__TRANS__INFO_1aaf363979392df391dab16bd0486aa115" prot="public" virt="non-virtual"><scope>PIN_MEM_TRANS_INFO</scope><name>addr</name></member>
+      <member refid="structPIN__MEM__TRANS__INFO_1a7b3675554b00860dbb06e5c33be10069" prot="public" virt="non-virtual"><scope>PIN_MEM_TRANS_INFO</scope><name>bytes</name></member>
+      <member refid="structPIN__MEM__TRANS__INFO_1a47b3eae26ae049c95dbf8b82630b702b" prot="public" virt="non-virtual"><scope>PIN_MEM_TRANS_INFO</scope><name>dummySpace</name></member>
+      <member refid="structPIN__MEM__TRANS__INFO_1a05e6cf5ec26bd84484db920b9df6d398" prot="public" virt="non-virtual"><scope>PIN_MEM_TRANS_INFO</scope><name>flags</name></member>
+      <member refid="structPIN__MEM__TRANS__INFO_1ad39cc149626a28561418a9cad6a4ebf9" prot="public" virt="non-virtual"><scope>PIN_MEM_TRANS_INFO</scope><name>ip</name></member>
+      <member refid="structPIN__MEM__TRANS__INFO_1ad931b62514731b183411bdb91333b14a" prot="public" virt="non-virtual"><scope>PIN_MEM_TRANS_INFO</scope><name>memOpType</name></member>
+      <member refid="structPIN__MEM__TRANS__INFO_1a19628246c0732a9dae731537b6ff62f1" prot="public" virt="non-virtual"><scope>PIN_MEM_TRANS_INFO</scope><name>threadIndex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
