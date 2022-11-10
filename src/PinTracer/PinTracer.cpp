@@ -61,11 +61,11 @@ INT32 Usage()
  * @param[in]   numInstInBbl    number of instructions in the basic block
  * @note use atomic operations for multi-threaded applications
  */
-VOID CountBbl(UINT32 numInstInBbl)
+/*VOID CountBbl(UINT32 numInstInBbl)
 {
     bblCount++;
     insCount += numInstInBbl;
-}
+}*/
 
 /* ===================================================================== */
 // Instrumentation callbacks
@@ -79,7 +79,7 @@ VOID CountBbl(UINT32 numInstInBbl)
  * @param[in]   v        value specified by the tool in the TRACE_AddInstrumentFunction
  *                       function call
  */
-VOID Trace(TRACE trace, VOID* v)
+/*VOID Trace(TRACE trace, VOID* v)
 {
     // Visit every basic block in the trace
     for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
@@ -87,6 +87,19 @@ VOID Trace(TRACE trace, VOID* v)
         // Insert a call to CountBbl() before every basic bloc, passing the number of instructions
         BBL_InsertCall(bbl, IPOINT_BEFORE, (AFUNPTR)CountBbl, IARG_UINT32, BBL_NumIns(bbl), IARG_END);
     }
+}*/
+
+void printInstructionOpcodes(uint64_t addr, std::string inst_assembly)
+{
+    std::stringstream tempstream;
+    tempstream << std::hex << addr;
+    std::string address = tempstream.str();
+    *out<<address<<"\t"<<inst_assembly<<std::endl;
+}
+
+VOID InstructionTrace(INS inst, VOID* v)
+{
+    INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT, INS_Address(inst), IARG_PTR, new string(INS_Disassemble(inst)), IARG_END);
 }
 
 /*!
@@ -99,7 +112,7 @@ VOID Trace(TRACE trace, VOID* v)
  * @param[in]   v               value specified by the tool in the 
  *                              PIN_AddThreadStartFunction function call
  */
-VOID ThreadStart(THREADID threadIndex, CONTEXT* ctxt, INT32 flags, VOID* v) { threadCount++; }
+//VOID ThreadStart(THREADID threadIndex, CONTEXT* ctxt, INT32 flags, VOID* v) { threadCount++; }
 
 /*!
  * Print out analysis results.
@@ -108,7 +121,7 @@ VOID ThreadStart(THREADID threadIndex, CONTEXT* ctxt, INT32 flags, VOID* v) { th
  * @param[in]   v               value specified by the tool in the 
  *                              PIN_AddFiniFunction function call
  */
-VOID Fini(INT32 code, VOID* v)
+/*VOID Fini(INT32 code, VOID* v)
 {
     *out << "===============================================" << endl;
     *out << "MyPinTool analysis results: " << endl;
@@ -116,7 +129,7 @@ VOID Fini(INT32 code, VOID* v)
     *out << "Number of basic blocks: " << bblCount << endl;
     *out << "Number of threads: " << threadCount << endl;
     *out << "===============================================" << endl;
-}
+}*/
 
 /*!
  * The main procedure of the tool.
@@ -144,13 +157,17 @@ int main(int argc, char* argv[])
     if (KnobCount)
     {
         // Register function to be called to instrument traces
-        TRACE_AddInstrumentFunction(Trace, 0);
+        //TRACE_AddInstrumentFunction(Trace, 0);
+
+        //Instrumenting each instruction
+        INS_AddInstrumentFunction(InstructionTrace, 0);
 
         // Register function to be called for every thread before it starts running
-        PIN_AddThreadStartFunction(ThreadStart, 0);
+        //PIN_AddThreadStartFunction(ThreadStart, 0);
 
         // Register function to be called when the application exits
-        PIN_AddFiniFunction(Fini, 0);
+        //PIN_AddFiniFunction(Fini, 0);
+
     }
 
     cerr << "===============================================" << endl;
