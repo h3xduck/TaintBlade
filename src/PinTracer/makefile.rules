@@ -83,3 +83,15 @@ SANITY_SUBSET := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
 
 # This section contains the build rules for all binaries that have special build rules.
 # See makefile.default.rules for the default build rules.
+
+# Build the intermediate object file.
+$(OBJDIR)Core$(OBJ_SUFFIX): Core.cpp
+	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
+
+# Build the intermediate object file.
+$(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX): utils/SyscallParser.cpp utils/SyscallParser.h
+	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
+
+# Build the tool as a dll (shared object).
+$(OBJDIR)PinTracer$(PINTOOL_SUFFIX): $(OBJDIR)Core$(OBJ_SUFFIX) $(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX) utils/SyscallParser.h
+	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(TOOL_LPATHS) $(TOOL_LIBS)

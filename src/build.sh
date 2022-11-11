@@ -29,8 +29,13 @@ quiet(){
     fi
 }
 
+# The intel pin makefile infraestructure is quite messed up so here we build the app with some hacks
+rm -r bin/*
 echo -e "${BLU}Building tracer tool${NC}"
 cd $DIR/$TRACERDIR
+mkdir obj-intel64 2> /dev/null
+mkdir obj-intel64/utils 2> /dev/null
 quiet make PIN_ROOT=$DIR/external/pin-3.25-98650-g8f6168173-gcc-linux obj-intel64/PinTracer.so
 mv obj-intel64/* $DIR/bin/
 rm -R obj-intel64
+echo -e "${GRN}Finished!${NC}"
