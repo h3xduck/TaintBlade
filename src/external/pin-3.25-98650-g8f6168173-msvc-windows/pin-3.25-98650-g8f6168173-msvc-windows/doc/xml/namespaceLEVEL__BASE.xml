@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="namespaceLEVEL__BASE" kind="namespace" language="C++">
+    <compoundname>LEVEL_BASE</compoundname>
+    <innerclass refid="structLEVEL__BASE_1_1ImageLoaderInfo" prot="public">LEVEL_BASE::ImageLoaderInfo</innerclass>
+    <innerclass refid="structLEVEL__BASE_1_1LINUX__LOADER__IMAGE__INFO" prot="public">LEVEL_BASE::LINUX_LOADER_IMAGE_INFO</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceLEVEL__BASE_1a6c31794b13e7e0dca17ea8f9b4a9ac50" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* LEVEL_BASE::AFUNPTR) ()</definition>
+        <argsstring>)()</argsstring>
+        <name>AFUNPTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="17" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceLEVEL__BASE_1ad5800b0433b3c0e474424d4e87485e75" prot="public" static="no">
+        <type>VOID *(*</type>
+        <definition>typedef VOID*(* LEVEL_BASE::THREAD_STARTROUTINE) (void *)</definition>
+        <argsstring>)(void *)</argsstring>
+        <name>THREAD_STARTROUTINE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="18" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceLEVEL__BASE_1ad8a487b7857f7cab5e67de0a4677b3bb" prot="public" static="no">
+        <type>VOID(*</type>
+        <definition>typedef VOID(* LEVEL_BASE::DESTRUCTFUN) (void *)</definition>
+        <argsstring>)(void *)</argsstring>
+        <name>DESTRUCTFUN</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="19" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceLEVEL__BASE_1ad0023ea6ff27f8ca852bb333e53aae8d" prot="public" static="no">
+        <type>UINT16</type>
+        <definition>typedef UINT16 LEVEL_BASE::OPCODE</definition>
+        <argsstring></argsstring>
+        <name>OPCODE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="23" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceLEVEL__BASE_1acd4bfdda8db96c83dc44830ac3fa25be" prot="public" static="no" mutable="no">
+        <type>const UINT32</type>
+        <definition>const UINT32 LEVEL_BASE::PIN_INFINITE_TIMEOUT</definition>
+        <argsstring></argsstring>
+        <name>PIN_INFINITE_TIMEOUT</name>
+        <initializer>= static_cast&lt; UINT32 &gt;(-1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Timeout interval that never elapses. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="128" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceLEVEL__BASE_1aa36119d726090072277fd0ec5ff5f684" prot="public" static="no" mutable="no">
+        <type>const UINT32</type>
+        <definition>const UINT32 LEVEL_BASE::PIN_MAX_THREADS</definition>
+        <argsstring></argsstring>
+        <name>PIN_MAX_THREADS</name>
+        <initializer>= 8192</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maximum number of threads supported by PIN. All 32-bit systems support up to 2048 threads. Only Linux and Windows 64-bit systems support up to 8192 threads. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="141" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceLEVEL__BASE_1a8bdd6327d79df5c52e6320ff139fb0b8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>USIZE</type>
+        <definition>static USIZE LEVEL_BASE::USIZE_INVALID</definition>
+        <argsstring>()</argsstring>
+        <name>USIZE_INVALID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="21" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="21" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceLEVEL__BASE_1a273f066c5338edd7d194b6e200eb641f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>OPCODE</type>
+        <definition>static OPCODE LEVEL_BASE::OPCODE_INVALID</definition>
+        <argsstring>()</argsstring>
+        <name>OPCODE_INVALID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="25" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceLEVEL__BASE_1a1b9bb412a469fdb97fd3f4657ac12cf3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>BOOL</type>
+        <definition>static BOOL LEVEL_BASE::OPCODE_valid</definition>
+        <argsstring>(OPCODE opc)</argsstring>
+        <name>OPCODE_valid</name>
+        <param>
+          <type>OPCODE</type>
+          <declname>opc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.PH" line="26" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="26" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="namespaceLEVEL__BASE" kindref="compound">LEVEL_BASE</ref> definitions </para>    </detaileddescription>
+    <location file="Source/pin/include/level_base.H" line="55" column="1"/>
+  </compounddef>
+</doxygen>

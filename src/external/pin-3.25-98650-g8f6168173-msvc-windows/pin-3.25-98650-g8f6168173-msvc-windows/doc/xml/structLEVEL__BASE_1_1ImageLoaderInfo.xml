@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structLEVEL__BASE_1_1ImageLoaderInfo" kind="struct" language="C++" prot="public">
+    <compoundname>LEVEL_BASE::ImageLoaderInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a32d71427586df3d29a99a899c22ffe58" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_brk</definition>
+        <argsstring></argsstring>
+        <name>_brk</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="80" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a3e968715efd5e38d7c5fda8c215ec586" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_phdr</definition>
+        <argsstring></argsstring>
+        <name>_phdr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="81" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a3f56f7fa7998e5707209255e78449977" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_entry</definition>
+        <argsstring></argsstring>
+        <name>_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="82" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a9c5cee99d4c6ec509c82a497063f0248" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 LEVEL_BASE::ImageLoaderInfo::_phnum</definition>
+        <argsstring></argsstring>
+        <name>_phnum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="83" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1ac7369d350620c0a941e8225586f334e0" prot="public" static="no" mutable="no">
+        <type>const CHAR *</type>
+        <definition>const CHAR* LEVEL_BASE::ImageLoaderInfo::_loaderFname</definition>
+        <argsstring></argsstring>
+        <name>_loaderFname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="84" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a2b285ccf75e98003bb897238bbed6758" prot="public" static="no" mutable="no">
+        <type>VOID *</type>
+        <definition>VOID* LEVEL_BASE::ImageLoaderInfo::_pinclientint</definition>
+        <argsstring></argsstring>
+        <name>_pinclientint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="85" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a38135b7acf2900de8e06c177b80003c2" prot="public" static="no" mutable="no">
+        <type>CHAR *</type>
+        <definition>CHAR* LEVEL_BASE::ImageLoaderInfo::_pinversion</definition>
+        <argsstring></argsstring>
+        <name>_pinversion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="86" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a9424d9996078685b74c302fc00a57722" prot="public" static="no" mutable="no">
+        <type>VOID *</type>
+        <definition>VOID* LEVEL_BASE::ImageLoaderInfo::_fpWaitForReady</definition>
+        <argsstring></argsstring>
+        <name>_fpWaitForReady</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="87" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1af35a5004765e3fe148a474f078da9ccc" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_loadOffsetIndex</definition>
+        <argsstring></argsstring>
+        <name>_loadOffsetIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="90" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1aac6708be8caa4b3032bf91fd3220dc7d" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_loadOffset</definition>
+        <argsstring></argsstring>
+        <name>_loadOffset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="94" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a3b2049b0f523b2b26372eff0ff22c890" prot="public" static="no" mutable="no">
+        <type>VOID *</type>
+        <definition>VOID* LEVEL_BASE::ImageLoaderInfo::_dlHandle</definition>
+        <argsstring></argsstring>
+        <name>_dlHandle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="97" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a41751884fb64ff558be9e557cac3f910" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_toolBaseAddress</definition>
+        <argsstring></argsstring>
+        <name>_toolBaseAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="100" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a88254029e325f61b31fe33628e75abbb" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_textAddress</definition>
+        <argsstring></argsstring>
+        <name>_textAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="103" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a2d4149e53699ba5b79572032f445ccc5" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_dataAddress</definition>
+        <argsstring></argsstring>
+        <name>_dataAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="106" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1acc8a97fd39366e0a4e22327aff101a4b" prot="public" static="no" mutable="no">
+        <type>ADDRINT</type>
+        <definition>ADDRINT LEVEL_BASE::ImageLoaderInfo::_bssAddress</definition>
+        <argsstring></argsstring>
+        <name>_bssAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="109" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLEVEL__BASE_1_1ImageLoaderInfo_1a4a016c599179638a09333f88f389f576" prot="public" static="no" mutable="no">
+        <type>CHAR *</type>
+        <definition>CHAR* LEVEL_BASE::ImageLoaderInfo::_toolFname</definition>
+        <argsstring></argsstring>
+        <name>_toolFname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/include/types_base.H" line="112" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/include/types_base.H" line="79" column="1" bodyfile="Source/pin/include/level_base.H" bodystart="78" bodyend="113"/>
+    <listofallmembers>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a32d71427586df3d29a99a899c22ffe58" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_brk</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1acc8a97fd39366e0a4e22327aff101a4b" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_bssAddress</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a2d4149e53699ba5b79572032f445ccc5" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_dataAddress</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a3b2049b0f523b2b26372eff0ff22c890" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_dlHandle</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a3f56f7fa7998e5707209255e78449977" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_entry</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a9424d9996078685b74c302fc00a57722" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_fpWaitForReady</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1ac7369d350620c0a941e8225586f334e0" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_loaderFname</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1aac6708be8caa4b3032bf91fd3220dc7d" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_loadOffset</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1af35a5004765e3fe148a474f078da9ccc" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_loadOffsetIndex</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a3e968715efd5e38d7c5fda8c215ec586" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_phdr</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a9c5cee99d4c6ec509c82a497063f0248" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_phnum</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a2b285ccf75e98003bb897238bbed6758" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_pinclientint</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a38135b7acf2900de8e06c177b80003c2" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_pinversion</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a88254029e325f61b31fe33628e75abbb" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_textAddress</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a41751884fb64ff558be9e557cac3f910" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_toolBaseAddress</name></member>
+      <member refid="structLEVEL__BASE_1_1ImageLoaderInfo_1a4a016c599179638a09333f88f389f576" prot="public" virt="non-virtual"><scope>LEVEL_BASE::ImageLoaderInfo</scope><name>_toolFname</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

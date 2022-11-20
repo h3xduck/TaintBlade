@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC" kind="union" language="C++" prot="public">
+    <compoundname>EXCEPTION_INFO::EXCEPTION_SPECIFIC</compoundname>
+    <innerclass refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</innerclass>
+    <innerclass refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP</innerclass>
+    <innerclass refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS" prot="public">EXCEPTION_INFO::EXCEPTION_SPECIFIC::WINDOWS_SYS</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1a4a3c5f9da53bf6e702bc36cf6e8d97d6" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT" kindref="compound">EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</ref></type>
+        <definition>struct EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT  EXCEPTION_INFO::EXCEPTION_SPECIFIC::m_access</definition>
+        <argsstring></argsstring>
+        <name>m_access</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="386" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1ab1944e44032e54e1d90153f2d177a538" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS" kindref="compound">EXCEPTION_INFO::EXCEPTION_SPECIFIC::WINDOWS_SYS</ref></type>
+        <definition>struct EXCEPTION_INFO::EXCEPTION_SPECIFIC::WINDOWS_SYS  EXCEPTION_INFO::EXCEPTION_SPECIFIC::m_winsys</definition>
+        <argsstring></argsstring>
+        <name>m_winsys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="393" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1a1332f0632175ff5dc444a349326b65ae" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP" kindref="compound">EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP</ref></type>
+        <definition>struct EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP  EXCEPTION_INFO::EXCEPTION_SPECIFIC::m_multipleFp</definition>
+        <argsstring></argsstring>
+        <name>m_multipleFp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/base/exception.PH" line="398" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Exception-specific data </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="71">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC::WINDOWS_SYS</label>
+        <link refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS"/>
+      </node>
+      <node id="69">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC::ACCESS_FAULT</label>
+        <link refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1ACCESS__FAULT"/>
+        <childnode refid="70" relation="usage">
+          <edgelabel>m_address</edgelabel>
+        </childnode>
+      </node>
+      <node id="70">
+        <label>OPTIONAL_VALUE&lt; ADDRINT &gt;</label>
+        <link refid="structOPTIONAL__VALUE"/>
+      </node>
+      <node id="68">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC::MULTIPLE_FP</label>
+        <link refid="structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1MULTIPLE__FP"/>
+      </node>
+      <node id="67">
+        <label>EXCEPTION_INFO::EXCEPTION_SPECIFIC</label>
+        <link refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC"/>
+        <childnode refid="68" relation="usage">
+          <edgelabel>m_multipleFp</edgelabel>
+        </childnode>
+        <childnode refid="69" relation="usage">
+          <edgelabel>m_access</edgelabel>
+        </childnode>
+        <childnode refid="71" relation="usage">
+          <edgelabel>m_winsys</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Source/pin/base/exception.PH" line="381" column="1" bodyfile="Source/pin/base/exception.PH" bodystart="380" bodyend="399"/>
+    <listofallmembers>
+      <member refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1a4a3c5f9da53bf6e702bc36cf6e8d97d6" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO::EXCEPTION_SPECIFIC</scope><name>m_access</name></member>
+      <member refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1a1332f0632175ff5dc444a349326b65ae" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO::EXCEPTION_SPECIFIC</scope><name>m_multipleFp</name></member>
+      <member refid="unionEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1ab1944e44032e54e1d90153f2d177a538" prot="public" virt="non-virtual"><scope>EXCEPTION_INFO::EXCEPTION_SPECIFIC</scope><name>m_winsys</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

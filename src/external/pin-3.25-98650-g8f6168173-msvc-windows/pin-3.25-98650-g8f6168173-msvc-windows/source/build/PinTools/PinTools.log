@@ -1,0 +1,10 @@
+﻿  
+  Utilidad de mantenimiento de programas de Microsoft (R) versi�n 14.33.31630.0
+  (C) Microsoft Corporation. Todos los derechos reservados.
+  
+makefile(13): fatal error U1033: error de sintaxis : no se esperaba '='
+  Stop.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.MakeFile.Targets(45,5): error MSB3073: El comando "set VCINSTALLDIR=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.MakeFile.Targets(45,5): error MSB3073: set VSINSTALLDIR=C:\Program Files\Microsoft Visual Studio\2022\Community\
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.MakeFile.Targets(45,5): error MSB3073: set WindowsSdkDir=C:\Program Files (x86)\Windows Kits\10\
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.MakeFile.Targets(45,5): error MSB3073: nmake DEBUG=1 TARGET=ia32e " salió con el código 2.

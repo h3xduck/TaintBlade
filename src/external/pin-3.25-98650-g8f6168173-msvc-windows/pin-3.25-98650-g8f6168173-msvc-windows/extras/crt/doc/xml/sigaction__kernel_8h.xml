@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="sigaction__kernel_8h" kind="file" language="C++">
+    <compoundname>sigaction_kernel.h</compoundname>
+    <includes local="yes">os-apis.h</includes>
+    <incdepgraph>
+      <node id="30">
+        <label>sigaction_kernel.h</label>
+        <link refid="sigaction__kernel_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>os-apis.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structkernel__sigaction" prot="public">kernel_sigaction</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="sigaction__kernel_8h_1a1bc4f62b9e2f7a9128102aa8d4b44065" prot="public" static="no">
+        <type>struct <ref refid="structkernel__sigaction" kindref="compound">kernel_sigaction</ref></type>
+        <definition>typedef struct kernel_sigaction  SIGACTION_KERNEL</definition>
+        <argsstring></argsstring>
+        <name>SIGACTION_KERNEL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="32" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2016-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;COMPONENT&gt;:<sp/>os-apis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&lt;FILE-TYPE&gt;:<sp/>component<sp/>public<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OS_APIS_SIGACTION_KERNEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OS_APIS_SIGACTION_KERNEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;os-apis.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>kernel&apos;s<sp/>sigaction<sp/>struct<sp/>is<sp/>different<sp/>than<sp/>the<sp/>struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>defined<sp/>in<sp/>signal.h.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>need<sp/>to<sp/>define<sp/>it<sp/>here<sp/>in<sp/>order<sp/>to<sp/>pass<sp/>it<sp/>correctly<sp/>to<sp/>the<sp/>kernel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="comment">/*&lt;POD&gt;*/</highlight><highlight class="normal"><sp/><ref refid="structkernel__sigaction" kindref="compound">kernel_sigaction</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*_handler)(int);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_flags;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*_restorer)(void);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64<sp/>_mask;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}<sp/><ref refid="structkernel__sigaction" kindref="compound">SIGACTION_KERNEL</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/>//<sp/>not<sp/>TARGET_LINUX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="structkernel__sigaction" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="comment">/*&lt;POD&gt;*/</highlight><highlight class="normal"><sp/><ref refid="structkernel__sigaction" kindref="compound">kernel_sigaction</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*_handler)(int);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>(*_tramp)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int,<sp/>int,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>_mask;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>_flags;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}<sp/><ref refid="structkernel__sigaction" kindref="compound">SIGACTION_KERNEL</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>not<sp/>TARGET_LINUX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>file<sp/>guard</highlight></codeline>
+    </programlisting>
+    <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h"/>
+  </compounddef>
+</doxygen>

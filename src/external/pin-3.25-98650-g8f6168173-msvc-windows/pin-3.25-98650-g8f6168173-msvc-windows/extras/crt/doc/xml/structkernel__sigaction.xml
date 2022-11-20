@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="structkernel__sigaction" kind="struct" language="C++" prot="public">
+    <compoundname>kernel_sigaction</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structkernel__sigaction_1a50a2c278d236396be4548f9b407df17a" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* kernel_sigaction::_handler) (int)</definition>
+        <argsstring>)(int)</argsstring>
+        <name>_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="28" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkernel__sigaction_1a6219b9122646c25377c4e9e22d48d7a2" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* kernel_sigaction::_tramp) (void *, unsigned int, int, void *, void *)</definition>
+        <argsstring>)(void *, unsigned int, int, void *, void *)</argsstring>
+        <name>_tramp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="29" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkernel__sigaction_1a00a1b0edcb780646c2a69e009dcce074" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 kernel_sigaction::_mask</definition>
+        <argsstring></argsstring>
+        <name>_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="30" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structkernel__sigaction_1aeaf2741b012d332bc30f473f688aa78f" prot="public" static="no" mutable="no">
+        <type>UINT32</type>
+        <definition>UINT32 kernel_sigaction::_flags</definition>
+        <argsstring></argsstring>
+        <name>_flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="31" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" line="27" column="1" bodyfile="Source/os-apis/00-export-include/os-apis/sigaction_kernel.h" bodystart="26" bodyend="32"/>
+    <listofallmembers>
+      <member refid="structkernel__sigaction_1aeaf2741b012d332bc30f473f688aa78f" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_flags</name></member>
+      <member refid="structkernel__sigaction_1a50a2c278d236396be4548f9b407df17a" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_handler</name></member>
+      <member refid="structkernel__sigaction_1a00a1b0edcb780646c2a69e009dcce074" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_mask</name></member>
+      <member refid="structkernel__sigaction_1a6219b9122646c25377c4e9e22d48d7a2" prot="public" virt="non-virtual"><scope>kernel_sigaction</scope><name>_tramp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

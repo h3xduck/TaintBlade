@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_051b455adc26a0abf35abb1265accc85" kind="dir">
+    <compoundname>pin_w</compoundname>
+    <innerfile refid="debug__win_8PH">debug_win.PH</innerfile>
+    <innerfile refid="image__win_8PH">image_win.PH</innerfile>
+    <innerfile refid="os__info__client__windows_8PH">os_info_client_windows.PH</innerfile>
+    <innerfile refid="symbol__win_8PH">symbol_win.PH</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Source/pin/pin_w/"/>
+  </compounddef>
+</doxygen>

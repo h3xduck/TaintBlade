@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="probe__instrument_8PH" kind="file" language="C++">
+    <compoundname>probe_instrument.PH</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="probe__instrument_8PH_1a98f7fb1893498cff927ca1c3ea9377b9" prot="public" static="no">
+        <name>PIN_G_PROBE_INSTRUMENT_PH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Source/pin/pin_u/probe_instrument.PH" line="9" column="10" bodyfile="Source/pin/pin_u/probe_instrument.PH" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2020-2021<sp/>Intel<sp/>Corporation.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>SPDX-License-Identifier:<sp/>MIT</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PIN_G_PROBE_INSTRUMENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>duplicate<sp/>inclusion<sp/>of<sp/>probe_instrument</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PIN_G_PROBE_INSTRUMENT_PH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor">#if<sp/>defined(TARGET_LINUX)<sp/>||<sp/>defined(TARGET_MAC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>VOID<sp/>(*FORK_PROBE_MODE_CALLBACK)(UINT32<sp/>childPid,<sp/>VOID*<sp/>v);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group__PIN__CALLBACKS_1ga80ecde10e25aa90133f29e875d21d61d" kindref="member">PIN_CALLBACK</ref><sp/>PIN_AddForkFunctionProbed(<ref refid="group__PIN__CONTROL_1ga2114b4480d050e1b7c8ac63449610448" kindref="member">FPOINT</ref><sp/>point,<sp/>FORK_PROBE_MODE_CALLBACK<sp/>fun,<sp/>VOID*<sp/>val);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//defined(TARGET_LINUX)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>PIN_G_PROBE_INSTRUMENT_PH</highlight></codeline>
+    </programlisting>
+    <location file="Source/pin/pin_u/probe_instrument.PH"/>
+  </compounddef>
+</doxygen>
