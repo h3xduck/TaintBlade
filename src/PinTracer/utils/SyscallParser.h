@@ -4,7 +4,7 @@
 
 #include "pin.H"
 #include <iostream>
-#include <syscall.h>
+//#include <syscall.h>
 
 using namespace std;
 
