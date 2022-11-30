@@ -1,0 +1,838 @@
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5918 | Addr: 4200222 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27488 | Addr: 4221792 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27546 | Addr: 4221850 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27588 | Addr: 4221892 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27593 | Addr: 4221897 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 98704 | Addr: 140724934967696 | RoutineName: GetSystemTimeAsFileTime
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27604 | Addr: 4221908 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 151184 | Addr: 140724935020176 | RoutineName: GetCurrentProcessId
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27612 | Addr: 4221916 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 88528 | Addr: 140724934957520 | RoutineName: GetCurrentThreadId
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27622 | Addr: 4221926 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 88768 | Addr: 140724934957760 | RoutineName: GetTickCount
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27637 | Addr: 4221941 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 90256 | Addr: 140724934959248 | RoutineName: QueryPerformanceCounter
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27681 | Addr: 4221985 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27712 | Addr: 4222016 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27697 | Addr: 4222001 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27558 | Addr: 4221862 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27587 | Addr: 4221891 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5923 | Addr: 4200227 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5927 | Addr: 4200231 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4528 | Addr: 4198832 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4569 | Addr: 4198873 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5282 | Addr: 4199586 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4604 | Addr: 4198908 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4660 | Addr: 4198964 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4669 | Addr: 4198973 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5220 | Addr: 4199524 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4683 | Addr: 4198987 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5296 | Addr: 4199600 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5320 | Addr: 4199624 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29728 | Addr: 4224032 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29728 | Addr: 4224032 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 238864 | Addr: 140724934452496 | RoutineName: _initterm
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4247 | Addr: 4198551 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4400 | Addr: 4198704 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4424 | Addr: 4198728 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4253 | Addr: 4198557 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4443 | Addr: 4198747 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4496 | Addr: 4198800 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4450 | Addr: 4198754 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4253 | Addr: 4198557 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4463 | Addr: 4198767 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4253 | Addr: 4198557 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4481 | Addr: 4198785 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4253 | Addr: 4198557 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4267 | Addr: 4198571 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4352 | Addr: 4198656 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4357 | Addr: 4198661 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29680 | Addr: 4223984 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29680 | Addr: 4223984 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 176432 | Addr: 140724934390064 | RoutineName: __set_app_type
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4362 | Addr: 4198666 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4279 | Addr: 4198583 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4286 | Addr: 4198590 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25152 | Addr: 4219456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25163 | Addr: 4219467 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4291 | Addr: 4198595 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4320 | Addr: 4198624 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25632 | Addr: 4219936 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25642 | Addr: 4219946 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4325 | Addr: 4198629 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4333 | Addr: 4198637 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4345 | Addr: 4198649 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4351 | Addr: 4198655 | RoutineName: .text
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 238931 | Addr: 140724934452563 | RoutineName: _initterm
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25119 | Addr: 4219423 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 176304 | Addr: 140724934389936 | RoutineName: __lconv_init
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5325 | Addr: 4199629 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4699 | Addr: 4199003 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4708 | Addr: 4199012 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5248 | Addr: 4199552 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5262 | Addr: 4199566 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29728 | Addr: 4224032 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29728 | Addr: 4224032 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 238864 | Addr: 140724934452496 | RoutineName: _initterm
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4168 | Addr: 4198472 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29672 | Addr: 4223976 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29672 | Addr: 4223976 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 31184 | Addr: 140724934244816 | RoutineName: __getmainargs
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4183 | Addr: 4198487 | RoutineName: .text
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 238931 | Addr: 140724934452563 | RoutineName: _initterm
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5277 | Addr: 4199581 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4714 | Addr: 4199018 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4716 | Addr: 4199020 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4728 | Addr: 4199032 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4738 | Addr: 4199042 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4752 | Addr: 4199056 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4750 | Addr: 4199054 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24976 | Addr: 4219280 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24989 | Addr: 4219293 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25001 | Addr: 4219305 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25004 | Addr: 4219308 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25024 | Addr: 4219328 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25041 | Addr: 4219345 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25011 | Addr: 4219315 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25022 | Addr: 4219326 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4752 | Addr: 4199056 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4752 | Addr: 4199056 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 26064 | Addr: 4220368 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 26103 | Addr: 4220407 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 26144 | Addr: 4220448 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 26178 | Addr: 4220482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 26105 | Addr: 4220409 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 26134 | Addr: 4220438 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4757 | Addr: 4199061 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4764 | Addr: 4199068 | RoutineName: .text
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 132096 | Addr: 140724935001088 | RoutineName: SetUnhandledExceptionFilter
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4777 | Addr: 4199081 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27168 | Addr: 4221472 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27202 | Addr: 4221506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29328 | Addr: 4223632 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29350 | Addr: 4223654 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29360 | Addr: 4223664 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29376 | Addr: 4223680 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29352 | Addr: 4223656 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29388 | Addr: 4223692 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29352 | Addr: 4223656 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29356 | Addr: 4223660 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27207 | Addr: 4221511 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27219 | Addr: 4221523 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27264 | Addr: 4221568 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27266 | Addr: 4221570 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27221 | Addr: 4221525 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27285 | Addr: 4221589 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29008 | Addr: 4223312 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29037 | Addr: 4223341 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29704 | Addr: 4224008 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29704 | Addr: 4224008 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 381632 | Addr: 140724934595264 | RoutineName: strlen
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29046 | Addr: 4223350 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29076 | Addr: 4223380 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29085 | Addr: 4223389 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29111 | Addr: 4223415 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29119 | Addr: 4223423 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29131 | Addr: 4223435 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29143 | Addr: 4223447 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29156 | Addr: 4223460 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29168 | Addr: 4223472 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 382496 | Addr: 140724934596128 | RoutineName: strncmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29175 | Addr: 4223479 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29186 | Addr: 4223490 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29152 | Addr: 4223456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29168 | Addr: 4223472 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 382496 | Addr: 140724934596128 | RoutineName: strncmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29175 | Addr: 4223479 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29186 | Addr: 4223490 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29152 | Addr: 4223456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29168 | Addr: 4223472 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 382496 | Addr: 140724934596128 | RoutineName: strncmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29175 | Addr: 4223479 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29186 | Addr: 4223490 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29152 | Addr: 4223456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29168 | Addr: 4223472 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 382496 | Addr: 140724934596128 | RoutineName: strncmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29175 | Addr: 4223479 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29186 | Addr: 4223490 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29152 | Addr: 4223456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29168 | Addr: 4223472 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 382496 | Addr: 140724934596128 | RoutineName: strncmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29175 | Addr: 4223479 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29186 | Addr: 4223490 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29152 | Addr: 4223456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29168 | Addr: 4223472 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 382496 | Addr: 140724934596128 | RoutineName: strncmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29175 | Addr: 4223479 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29186 | Addr: 4223490 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29152 | Addr: 4223456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29168 | Addr: 4223472 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29776 | Addr: 4224080 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 382496 | Addr: 140724934596128 | RoutineName: strncmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29175 | Addr: 4223479 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29186 | Addr: 4223490 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29152 | Addr: 4223456 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29190 | Addr: 4223494 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29048 | Addr: 4223352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29075 | Addr: 4223379 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27290 | Addr: 4221594 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27301 | Addr: 4221605 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27221 | Addr: 4221525 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27360 | Addr: 4221664 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27407 | Addr: 4221711 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27410 | Addr: 4221714 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29200 | Addr: 4223504 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29215 | Addr: 4223519 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29232 | Addr: 4223536 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29256 | Addr: 4223560 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29264 | Addr: 4223568 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29279 | Addr: 4223583 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29292 | Addr: 4223596 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29300 | Addr: 4223604 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29309 | Addr: 4223613 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29221 | Addr: 4223525 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27415 | Addr: 4221719 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27418 | Addr: 4221722 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27362 | Addr: 4221666 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27405 | Addr: 4221709 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27440 | Addr: 4221744 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27410 | Addr: 4221714 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29200 | Addr: 4223504 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29215 | Addr: 4223519 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29232 | Addr: 4223536 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29256 | Addr: 4223560 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29264 | Addr: 4223568 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29279 | Addr: 4223583 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29292 | Addr: 4223596 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29300 | Addr: 4223604 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29309 | Addr: 4223613 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29321 | Addr: 4223625 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29296 | Addr: 4223600 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29321 | Addr: 4223625 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29296 | Addr: 4223600 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29321 | Addr: 4223625 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29296 | Addr: 4223600 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29321 | Addr: 4223625 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29296 | Addr: 4223600 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29321 | Addr: 4223625 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29296 | Addr: 4223600 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29321 | Addr: 4223625 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29296 | Addr: 4223600 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29304 | Addr: 4223608 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29315 | Addr: 4223619 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29321 | Addr: 4223625 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29296 | Addr: 4223600 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29325 | Addr: 4223629 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29217 | Addr: 4223521 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29221 | Addr: 4223525 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27415 | Addr: 4221719 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27418 | Addr: 4221722 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27362 | Addr: 4221666 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27423 | Addr: 4221727 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27440 | Addr: 4221744 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27452 | Addr: 4221756 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 137632 | Addr: 140724935006624 | RoutineName: RtlAddFunctionTable
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27463 | Addr: 4221767 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27221 | Addr: 4221525 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27255 | Addr: 4221559 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4782 | Addr: 4199086 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4796 | Addr: 4199100 | RoutineName: .text
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 128688 | Addr: 140724934997680 | RoutineName: GetModuleHandleA
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4801 | Addr: 4199105 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5330 | Addr: 4199634 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5337 | Addr: 4199641 | RoutineName: .text
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 128688 | Addr: 140724934997680 | RoutineName: GetModuleHandleA
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5342 | Addr: 4199646 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4807 | Addr: 4199111 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5355 | Addr: 4199659 | RoutineName: .text
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 128688 | Addr: 140724934997680 | RoutineName: GetModuleHandleA
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5360 | Addr: 4199664 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4807 | Addr: 4199111 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4817 | Addr: 4199121 | RoutineName: .text
+++ TO ++ DLL: C:\Windows\System32\KERNEL32.DLL | BaseAddr: 111824 | Addr: 140724934980816 | RoutineName: GetProcAddress
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4826 | Addr: 4199130 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4837 | Addr: 4199141 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4837 | Addr: 4199141 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27472 | Addr: 4221776 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 27482 | Addr: 4221786 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4842 | Addr: 4199146 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4850 | Addr: 4199154 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4971 | Addr: 4199275 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 4987 | Addr: 4199291 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5006 | Addr: 4199310 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5073 | Addr: 4199377 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5019 | Addr: 4199323 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29704 | Addr: 4224008 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29704 | Addr: 4224008 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 381632 | Addr: 140724934595264 | RoutineName: strlen
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5034 | Addr: 4199338 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5057 | Addr: 4199361 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29688 | Addr: 4223992 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29688 | Addr: 4223992 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476096 | Addr: 140724934689728 | RoutineName: memmove
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5064 | Addr: 4199368 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5012 | Addr: 4199316 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5019 | Addr: 4199323 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29704 | Addr: 4224008 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29704 | Addr: 4224008 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 381632 | Addr: 140724934595264 | RoutineName: strlen
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5034 | Addr: 4199338 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5057 | Addr: 4199361 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29688 | Addr: 4223992 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29688 | Addr: 4223992 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476096 | Addr: 140724934689728 | RoutineName: memmove
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5064 | Addr: 4199368 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5012 | Addr: 4199316 | RoutineName: .text
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5121 | Addr: 4199425 | RoutineName: .text
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21122 | Addr: 4215426 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21139 | Addr: 4215443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28160 | Addr: 4222464 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28172 | Addr: 4222476 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28179 | Addr: 4222483 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28193 | Addr: 4222497 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28064 | Addr: 4222368 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28082 | Addr: 4222386 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28128 | Addr: 4222432 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28137 | Addr: 4222441 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28146 | Addr: 4222450 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28156 | Addr: 4222460 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28144 | Addr: 4222448 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28158 | Addr: 4222462 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28084 | Addr: 4222388 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28086 | Addr: 4222390 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28106 | Addr: 4222410 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28119 | Addr: 4222423 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25344 | Addr: 4219648 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25348 | Addr: 4219652 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25168 | Addr: 4219472 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25183 | Addr: 4219487 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25136 | Addr: 4219440 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25147 | Addr: 4219451 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25188 | Addr: 4219492 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25197 | Addr: 4219501 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25317 | Addr: 4219621 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25320 | Addr: 4219624 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 174480 | Addr: 140724934388112 | RoutineName: _onexit
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25337 | Addr: 4219641 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25353 | Addr: 4219657 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 25363 | Addr: 4219667 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21144 | Addr: 4215448 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21221 | Addr: 4215525 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12144 | Addr: 4206448 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12181 | Addr: 4206485 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 60176 | Addr: 140724929227536 | RoutineName: WSAStartup
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12190 | Addr: 4206494 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12230 | Addr: 4206534 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12201 | Addr: 4206505 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12218 | Addr: 4206522 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12216 | Addr: 4206520 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12231 | Addr: 4206535 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 12232 | Addr: 4206536 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21226 | Addr: 4215530 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21231 | Addr: 4215535 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14110 | Addr: 4208414 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14139 | Addr: 4208443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14153 | Addr: 4208457 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14180 | Addr: 4208484 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14173 | Addr: 4208477 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476800 | Addr: 140724934690432 | RoutineName: memset
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14178 | Addr: 4208482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14197 | Addr: 4208501 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14202 | Addr: 4208506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21236 | Addr: 4215540 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21248 | Addr: 4215552 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14110 | Addr: 4208414 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14139 | Addr: 4208443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14153 | Addr: 4208457 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14180 | Addr: 4208484 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14173 | Addr: 4208477 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476800 | Addr: 140724934690432 | RoutineName: memset
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14178 | Addr: 4208482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14197 | Addr: 4208501 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14202 | Addr: 4208506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21253 | Addr: 4215557 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21265 | Addr: 4215569 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14110 | Addr: 4208414 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14139 | Addr: 4208443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14153 | Addr: 4208457 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14180 | Addr: 4208484 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14173 | Addr: 4208477 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476800 | Addr: 140724934690432 | RoutineName: memset
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14178 | Addr: 4208482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14197 | Addr: 4208501 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14202 | Addr: 4208506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21270 | Addr: 4215574 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21282 | Addr: 4215586 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14110 | Addr: 4208414 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14139 | Addr: 4208443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14153 | Addr: 4208457 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14180 | Addr: 4208484 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14173 | Addr: 4208477 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476800 | Addr: 140724934690432 | RoutineName: memset
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14178 | Addr: 4208482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14197 | Addr: 4208501 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14202 | Addr: 4208506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21287 | Addr: 4215591 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21299 | Addr: 4215603 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14110 | Addr: 4208414 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14139 | Addr: 4208443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14153 | Addr: 4208457 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14180 | Addr: 4208484 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14173 | Addr: 4208477 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476800 | Addr: 140724934690432 | RoutineName: memset
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14178 | Addr: 4208482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14197 | Addr: 4208501 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14202 | Addr: 4208506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21304 | Addr: 4215608 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21316 | Addr: 4215620 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14110 | Addr: 4208414 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14139 | Addr: 4208443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14153 | Addr: 4208457 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14180 | Addr: 4208484 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14173 | Addr: 4208477 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476800 | Addr: 140724934690432 | RoutineName: memset
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14178 | Addr: 4208482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14197 | Addr: 4208501 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14202 | Addr: 4208506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21321 | Addr: 4215625 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21333 | Addr: 4215637 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14110 | Addr: 4208414 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14139 | Addr: 4208443 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14153 | Addr: 4208457 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14180 | Addr: 4208484 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14173 | Addr: 4208477 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29848 | Addr: 4224152 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 476800 | Addr: 140724934690432 | RoutineName: memset
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14178 | Addr: 4208482 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14197 | Addr: 4208501 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 14202 | Addr: 4208506 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21338 | Addr: 4215642 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21350 | Addr: 4215654 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29696 | Addr: 4224000 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 105680 | Addr: 140724934319312 | RoutineName: malloc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21379 | Addr: 4215683 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 32096 | Addr: 140724934245728 | RoutineName: _errno
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21397 | Addr: 4215701 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21403 | Addr: 4215707 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21407 | Addr: 4215711 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22715 | Addr: 4217019 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22732 | Addr: 4217036 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 9250 | Addr: 4203554 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 9309 | Addr: 4203613 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6570 | Addr: 4200874 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6617 | Addr: 4200921 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6635 | Addr: 4200939 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6626 | Addr: 4200930 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6398 | Addr: 4200702 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6462 | Addr: 4200766 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29760 | Addr: 4224064 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29760 | Addr: 4224064 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 194192 | Addr: 140724934407824 | RoutineName: getenv
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6483 | Addr: 4200787 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6502 | Addr: 4200806 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6511 | Addr: 4200815 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6530 | Addr: 4200834 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6540 | Addr: 4200844 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6554 | Addr: 4200858 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6569 | Addr: 4200873 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6631 | Addr: 4200935 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6645 | Addr: 4200949 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6665 | Addr: 4200969 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6674 | Addr: 4200978 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6853 | Addr: 4201157 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6694 | Addr: 4200998 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6726 | Addr: 4201030 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6740 | Addr: 4201044 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6773 | Addr: 4201077 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6783 | Addr: 4201087 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6841 | Addr: 4201145 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6809 | Addr: 4201113 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6756 | Addr: 4201060 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6839 | Addr: 4201143 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6756 | Addr: 4201060 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6862 | Addr: 4201166 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7013 | Addr: 4201317 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6897 | Addr: 4201201 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29768 | Addr: 4224072 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29768 | Addr: 4224072 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 381136 | Addr: 140724934594768 | RoutineName: strcmp
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 6904 | Addr: 4201208 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7013 | Addr: 4201317 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7022 | Addr: 4201326 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7062 | Addr: 4201366 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7086 | Addr: 4201390 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7118 | Addr: 4201422 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7116 | Addr: 4201420 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7184 | Addr: 4201488 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7208 | Addr: 4201512 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7247 | Addr: 4201551 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 7274 | Addr: 4201578 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8702 | Addr: 4203006 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8737 | Addr: 4203041 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5936 | Addr: 4200240 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5947 | Addr: 4200251 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5975 | Addr: 4200279 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5984 | Addr: 4200288 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5949 | Addr: 4200253 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5962 | Addr: 4200266 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5970 | Addr: 4200274 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5968 | Addr: 4200272 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5991 | Addr: 4200295 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 5992 | Addr: 4200296 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8742 | Addr: 4203046 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8758 | Addr: 4203062 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8775 | Addr: 4203079 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8780 | Addr: 4203084 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8792 | Addr: 4203096 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8786 | Addr: 4203090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8932 | Addr: 4203236 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 8945 | Addr: 4203249 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 9235 | Addr: 4203539 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 9249 | Addr: 4203553 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 9314 | Addr: 4203618 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 9315 | Addr: 4203619 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22737 | Addr: 4217041 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22742 | Addr: 4217046 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21811 | Addr: 4216115 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21817 | Addr: 4216121 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22682 | Addr: 4216986 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 21857 | Addr: 4216161 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22154 | Addr: 4216458 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22161 | Addr: 4216465 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 32096 | Addr: 140724934245728 | RoutineName: _errno
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 22169 | Addr: 4216473 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24416 | Addr: 4218720 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24440 | Addr: 4218744 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13547 | Addr: 4207851 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13583 | Addr: 4207887 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13779 | Addr: 4208083 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13600 | Addr: 4207904 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13659 | Addr: 4207963 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 292016 | Addr: 140724934505648 | RoutineName: fprintf
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13671 | Addr: 4207975 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 75568 | Addr: 140724929242928 | RoutineName: WSAGetLastError
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13675 | Addr: 4207979 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13732 | Addr: 4208036 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13739 | Addr: 4208043 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13753 | Addr: 4208057 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 315728 | Addr: 140724934529360 | RoutineName: fputc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13765 | Addr: 4208069 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13774 | Addr: 4208078 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 291504 | Addr: 140724934505136 | RoutineName: fflush
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13786 | Addr: 4208090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24445 | Addr: 4218749 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24452 | Addr: 4218756 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13547 | Addr: 4207851 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13583 | Addr: 4207887 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13779 | Addr: 4208083 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13600 | Addr: 4207904 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13659 | Addr: 4207963 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 292016 | Addr: 140724934505648 | RoutineName: fprintf
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13671 | Addr: 4207975 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 75568 | Addr: 140724929242928 | RoutineName: WSAGetLastError
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13675 | Addr: 4207979 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13732 | Addr: 4208036 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13739 | Addr: 4208043 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13753 | Addr: 4208057 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 315728 | Addr: 140724934529360 | RoutineName: fputc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13765 | Addr: 4208069 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13774 | Addr: 4208078 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 291504 | Addr: 140724934505136 | RoutineName: fflush
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13786 | Addr: 4208090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24457 | Addr: 4218761 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24464 | Addr: 4218768 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13547 | Addr: 4207851 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13583 | Addr: 4207887 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13779 | Addr: 4208083 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13600 | Addr: 4207904 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13659 | Addr: 4207963 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 292016 | Addr: 140724934505648 | RoutineName: fprintf
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13671 | Addr: 4207975 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 75568 | Addr: 140724929242928 | RoutineName: WSAGetLastError
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13675 | Addr: 4207979 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13732 | Addr: 4208036 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13739 | Addr: 4208043 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13753 | Addr: 4208057 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 315728 | Addr: 140724934529360 | RoutineName: fputc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13765 | Addr: 4208069 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13774 | Addr: 4208078 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 291504 | Addr: 140724934505136 | RoutineName: fflush
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13786 | Addr: 4208090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24469 | Addr: 4218773 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24476 | Addr: 4218780 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13547 | Addr: 4207851 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13583 | Addr: 4207887 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13779 | Addr: 4208083 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13600 | Addr: 4207904 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13659 | Addr: 4207963 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 292016 | Addr: 140724934505648 | RoutineName: fprintf
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13671 | Addr: 4207975 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 75568 | Addr: 140724929242928 | RoutineName: WSAGetLastError
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13675 | Addr: 4207979 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13732 | Addr: 4208036 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13739 | Addr: 4208043 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13753 | Addr: 4208057 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 315728 | Addr: 140724934529360 | RoutineName: fputc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13765 | Addr: 4208069 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13774 | Addr: 4208078 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 291504 | Addr: 140724934505136 | RoutineName: fflush
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13786 | Addr: 4208090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24481 | Addr: 4218785 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24488 | Addr: 4218792 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13547 | Addr: 4207851 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13583 | Addr: 4207887 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13779 | Addr: 4208083 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13600 | Addr: 4207904 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13659 | Addr: 4207963 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 292016 | Addr: 140724934505648 | RoutineName: fprintf
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13671 | Addr: 4207975 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 75568 | Addr: 140724929242928 | RoutineName: WSAGetLastError
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13675 | Addr: 4207979 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13732 | Addr: 4208036 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13739 | Addr: 4208043 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13753 | Addr: 4208057 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 315728 | Addr: 140724934529360 | RoutineName: fputc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13765 | Addr: 4208069 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13774 | Addr: 4208078 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 291504 | Addr: 140724934505136 | RoutineName: fflush
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13786 | Addr: 4208090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24493 | Addr: 4218797 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24500 | Addr: 4218804 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13547 | Addr: 4207851 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13583 | Addr: 4207887 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13779 | Addr: 4208083 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13600 | Addr: 4207904 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13659 | Addr: 4207963 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 292016 | Addr: 140724934505648 | RoutineName: fprintf
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13671 | Addr: 4207975 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 75568 | Addr: 140724929242928 | RoutineName: WSAGetLastError
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13675 | Addr: 4207979 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13732 | Addr: 4208036 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13739 | Addr: 4208043 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13753 | Addr: 4208057 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 315728 | Addr: 140724934529360 | RoutineName: fputc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13765 | Addr: 4208069 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13774 | Addr: 4208078 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 291504 | Addr: 140724934505136 | RoutineName: fflush
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13786 | Addr: 4208090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24505 | Addr: 4218809 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 24512 | Addr: 4218816 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13787 | Addr: 4208091 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13873 | Addr: 4208177 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13547 | Addr: 4207851 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13583 | Addr: 4207887 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13779 | Addr: 4208083 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13600 | Addr: 4207904 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13659 | Addr: 4207963 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29784 | Addr: 4224088 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 292016 | Addr: 140724934505648 | RoutineName: fprintf
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13671 | Addr: 4207975 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 75568 | Addr: 140724929242928 | RoutineName: WSAGetLastError
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13675 | Addr: 4207979 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13732 | Addr: 4208036 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13739 | Addr: 4208043 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13753 | Addr: 4208057 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29832 | Addr: 4224136 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 315728 | Addr: 140724934529360 | RoutineName: fputc
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13765 | Addr: 4208069 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 249664 | Addr: 140724934463296 | RoutineName: __iob_func
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13774 | Addr: 4208078 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29840 | Addr: 4224144 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 291504 | Addr: 140724934505136 | RoutineName: fflush
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13786 | Addr: 4208090 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13878 | Addr: 4208182 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13901 | Addr: 4208205 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 72896 | Addr: 140724929240256 | RoutineName: shutdown
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13921 | Addr: 4208225 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\WS2_32.dll | BaseAddr: 20480 | Addr: 140724929187840 | RoutineName: closesocket
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13935 | Addr: 4208239 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 27504 | Addr: 140724934241136 | RoutineName: _sleep
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 13942 | Addr: 4208246 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29736 | Addr: 4224040 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 29736 | Addr: 4224040 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 239568 | Addr: 140724934453200 | RoutineName: exit
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28017 | Addr: 4222321 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28048 | Addr: 4222352 | RoutineName: unnamedImageEntryPoint
+--FROM-- DLL: C:\Users\Marcos\source\repos\h3xduck\TFM\samples\nc64.exe | BaseAddr: 28052 | Addr: 4222356 | RoutineName: unnamedImageEntryPoint
+++ TO ++ DLL: C:\Windows\System32\msvcrt.dll | BaseAddr: 239419 | Addr: 140724934453051 | RoutineName: _initterm_e

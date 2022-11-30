@@ -162,10 +162,11 @@ VOID registerControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, uint32_t i
 	ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
 	std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
 	
-	if (dllFrom.find("ntdll") == std::string::npos)
+	//Filter by application
+	//if (dllFrom.find("nc64") != std::string::npos)
 	{
-		std::cerr << "--FROM-- DLL: " << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
-		std::cerr << "++ TO ++ DLL: " << dllTo << " | BaseAddr: " << baseAddrTo << " | Addr: " << branchTargetAddress << " | RoutineName: " << routineNameTo << std::endl;
+		*imageInfoOut << "--FROM-- DLL: " << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
+		*imageInfoOut << "++ TO ++ DLL: " << dllTo << " | BaseAddr: " << baseAddrTo << " | Addr: " << branchTargetAddress << " | RoutineName: " << routineNameTo << std::endl;
 	}
 
 	PIN_UnlockClient();
@@ -327,6 +328,8 @@ int main(int argc, char* argv[])
 	{
 		imageInfoOut = new std::ofstream(imageInfoFilename.c_str());
 	}
+
+	PIN_InitSymbols();
 
 	if (KnobCount)
 	{

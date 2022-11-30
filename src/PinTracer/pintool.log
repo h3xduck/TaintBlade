@@ -1,3 +1,3 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  Function LEVEL_PINCLIENT::IMG_FindByAddress called without holding lock. Call PIN_LockClient()/PIN_UnlockClient()
+NFE:  [tid:70200] unknown option "-I"
