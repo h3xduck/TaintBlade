@@ -89,9 +89,9 @@ $(OBJDIR)Core$(OBJ_SUFFIX): Core.cpp
 	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
 
 # Build the intermediate object file.
-$(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX): utils/SyscallParser.cpp utils/SyscallParser.h
+$(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX): utils/SyscallParser.cpp utils/SyscallParser.h utils/InstructionWorker.cpp utils/InstructionWorker.h
 	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
 
 # Build the tool as a dll (shared object).
-$(OBJDIR)PinTracer$(PINTOOL_SUFFIX): $(OBJDIR)Core$(OBJ_SUFFIX) $(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX) utils/SyscallParser.h
+$(OBJDIR)PinTracer$(PINTOOL_SUFFIX): $(OBJDIR)Core$(OBJ_SUFFIX) $(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX) utils/SyscallParser.h $(OBJDIR)utils/InstructionWorker$(OBJ_SUFFIX) utils/InstructionWorker.h
 	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(TOOL_LPATHS) $(TOOL_LIBS)

@@ -13,6 +13,7 @@
 #include <fstream>
 
 #include "utils/SyscallParser.h"
+#include "utils/InstructionWorker.h"
 
 
 using std::string;
@@ -25,8 +26,9 @@ UINT64 insCount = 0; //number of dynamically executed instructions
 UINT64 bblCount = 0; //number of dynamically executed basic blocks
 UINT64 threadCount = 0; //total number of threads, including main thread
 
-std::ostream* out = &cerr;
-std::ostream* sysinfoOut = &cerr;
+std::ostream* out = &std::cerr;
+std::ostream* sysinfoOut = &std::cerr;
+std::ostream* imageInfoOut = &std::cerr;
 
 /* ===================================================================== */
 // Command line switches
@@ -34,6 +36,8 @@ std::ostream* sysinfoOut = &cerr;
 KNOB< string > KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o", "", "specify file name for PinTracer output");
 
 KNOB< string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify file name for syscalls info output");
+
+KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
 
 KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
 	"count instructions, basic blocks and threads in the application");
@@ -47,11 +51,11 @@ KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
  */
 INT32 Usage()
 {
-	cerr << "This tool prints out the number of dynamically executed " << endl
-		<< "instructions, basic blocks and threads in the application." << endl
-		<< endl;
+	std::cerr << "This tool prints out the number of dynamically executed " << std::endl
+		<< "instructions, basic blocks and threads in the application." << std::endl
+		<< std::endl;
 
-	cerr << KNOB_BASE::StringKnobSummary() << endl;
+	std::cerr << KNOB_BASE::StringKnobSummary() << std::endl;
 
 	return -1;
 }
@@ -98,14 +102,14 @@ EXCEPT_HANDLING_RESULT ExceptionHandler(THREADID tid, EXCEPTION_INFO* pExceptInf
 {
 	EXCEPTION_CODE c = PIN_GetExceptionCode(pExceptInfo);
 	EXCEPTION_CLASS cl = PIN_GetExceptionClass(c);
-	cerr << "Exception class " << cl << "	Info: " << PIN_ExceptionToString(pExceptInfo) << std::endl;
+	std::cerr << "Exception class " << cl << "	Info: " << PIN_ExceptionToString(pExceptInfo) << std::endl;
 	return EHR_UNHANDLED;
 }
 
 
 EXCEPT_HANDLING_RESULT printInstructionOpcodesHandler(THREADID tid, EXCEPTION_INFO* pExceptInfo, PHYSICAL_CONTEXT* pPhysCtxt, VOID* appContextArg)
 {
-	cerr << "Caught an exception at the application level, code " << PIN_GetExceptionCode(pExceptInfo) << " | Info:" << PIN_ExceptionToString(pExceptInfo) << endl;
+	std::cerr << "Caught an exception at the application level, code " << PIN_GetExceptionCode(pExceptInfo) << " | Info:" << PIN_ExceptionToString(pExceptInfo) << std::endl;
 	// Get the application IP where the exception occurred from the application context
 	CONTEXT* appCtxt = (CONTEXT*)appContextArg;
 	ADDRINT faultIp = PIN_GetContextReg(appCtxt, REG_INST_PTR);
@@ -117,7 +121,7 @@ EXCEPT_HANDLING_RESULT printInstructionOpcodesHandler(THREADID tid, EXCEPTION_IN
 	return EHR_CONTINUE_SEARCH;
 }
 
-void printInstructionOpcodes(void* ip, std::string instAssembly, uint32_t instSize, CONTEXT* ctx, THREADID tid)
+VOID printInstructionOpcodes(VOID* ip, /*std::string instAssembly,*/ uint32_t instSize, CONTEXT* ctx, THREADID tid)
 {
 	PIN_LockClient();
 	PIN_TryStart(tid, printInstructionOpcodesHandler, ctx);
@@ -131,11 +135,39 @@ void printInstructionOpcodes(void* ip, std::string instAssembly, uint32_t instSi
 	{
 		*out << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(opcodes[ii]) << " ";
 	}
-	*out << "\t" << instAssembly << std::endl;
+	//*out << "\t" << instAssembly << std::endl;
 
-	//*out << std::endl;
+	*out << std::endl;
 
 	PIN_TryEnd(tid);
+	PIN_UnlockClient();
+}
+
+VOID registerControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, uint32_t instSize, CONTEXT* ctx, THREADID tid)
+{
+	PIN_LockClient();
+
+	IMG moduleFrom = IMG_FindByAddress(ip);
+	if (!IMG_Valid(moduleFrom))
+	{
+		std::cerr << "Image invalid at address " << ip << std::endl;
+		return;
+	}
+	
+	std::string dllFrom = InstructionWorker::getDllFromAddress(ip);
+	ADDRINT baseAddrFrom = InstructionWorker::getBaseAddress(ip);
+	std::string routineNameFrom = InstructionWorker::getFunctionNameFromAddress(ip);
+
+	std::string dllTo = InstructionWorker::getDllFromAddress(branchTargetAddress);
+	ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
+	std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
+	
+	if (dllFrom.find("ntdll") == std::string::npos)
+	{
+		std::cerr << "--FROM-- DLL: " << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
+		std::cerr << "++ TO ++ DLL: " << dllTo << " | BaseAddr: " << baseAddrTo << " | Addr: " << branchTargetAddress << " | RoutineName: " << routineNameTo << std::endl;
+	}
+
 	PIN_UnlockClient();
 }
 
@@ -144,15 +176,24 @@ VOID InstructionTrace(INS inst, VOID* v)
 	//cerr << "started" << std::endl;
 	std::string disassemble = INS_Disassemble(inst);
 	INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-		INS_Address(inst), IARG_PTR, new string(disassemble), IARG_UINT32, INS_Size(inst), 
+		INS_Address(inst), /*IARG_PTR, new string(disassemble),*/ IARG_UINT32, INS_Size(inst),
 		IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+
+	//If it is a call, jump, ret, etc... We will register to which function and module the execution flow is going.
+	//Note that far jumps are not covered under control flow, and sometimes appear in Windows
+	if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+	{
+		INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst, IARG_ADDRINT,
+			INS_Address(inst), IARG_BRANCH_TARGET_ADDR, IARG_UINT32, INS_Size(inst),
+			IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+	}
+	
 	//cerr << "ended" << std::endl;
 }
 
 
 VOID SyscallTrace(THREADID threadIndex, CONTEXT* ctx, SYSCALL_STANDARD std, VOID* v)
 {
-	SyscallParser sys_parser;
 	ADDRINT syscallNumber = PIN_GetSyscallNumber(ctx, std);
 	*sysinfoOut << std::dec << "SYSCALL " << (int)syscallNumber << std::endl;
 	ADDRINT syscallArgs[4];
@@ -169,20 +210,21 @@ VOID SyscallTrace(THREADID threadIndex, CONTEXT* ctx, SYSCALL_STANDARD std, VOID
 	}
 	*sysinfoOut << "\n";
 
-	sys_parser.print_syscall_attempt(sysinfoOut, syscallNumber, syscallArgs);
+	SyscallParser::printSyscallAttempt(sysinfoOut, syscallNumber, syscallArgs);
 	
 	//cerr << "Syscall" << endl;
 }
 
-void ImageTrace(IMG img, VOID* v)
+VOID ImageTrace(IMG img, VOID* v)
 {
-	std::string dll_name = IMG_Name(img);
-	cerr << "NEW IMAGE DETECTED: " << dll_name << std::endl;
+	std::string dllName = IMG_Name(img);
+	const ADDRINT entryAddr = IMG_EntryAddress(img);
+	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
 }
 
 VOID TraceTrace(TRACE trace, VOID* v)
 {
-	cerr << "started" << std::endl;
+	std::cerr << "started" << std::endl;
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
@@ -192,8 +234,32 @@ VOID TraceTrace(TRACE trace, VOID* v)
 			
 		}
 	}
-	cerr << "ended" << std::endl;
+	std::cerr << "ended" << std::endl;
 }
+
+VOID ContextChangeTrace(THREADID tid, CONTEXT_CHANGE_REASON reason, const CONTEXT* ctxFrom, CONTEXT* ctxTo, INT32 info, VOID* v)
+{
+	std::cerr << "Detected ctx change" << std::endl;
+	PIN_LockClient();
+
+	//Get RIP at both contexts
+	const ADDRINT addrFrom = PIN_GetContextReg(ctxFrom, REG_INST_PTR);
+	const ADDRINT addrTo = PIN_GetContextReg(ctxTo, REG_INST_PTR);
+
+	//Find corrresponding modules for those addresses
+	IMG moduleFrom = IMG_FindByAddress(addrFrom);
+	IMG moduleTo = IMG_FindByAddress(addrTo);
+	std::string dllFrom = IMG_Name(moduleFrom);
+	std::string dllTo = IMG_Name(moduleTo);
+
+	*imageInfoOut << "ModuleFrom: " << dllFrom << " | " << addrFrom << std::endl;
+	*imageInfoOut << "ModuleTo: " << dllTo << " | " << addrTo << "\n" << std::endl;
+
+
+	PIN_UnlockClient();
+}
+
+
 
 /*!
  * Increase counter of threads in the application.
@@ -223,7 +289,7 @@ VOID Fini(INT32 code, VOID* v)
 	*out << "Number of threads: " << threadCount << endl;
 	*out << "===============================================" << endl;*/
 
-	cerr << "Finished" << endl;
+	std::cerr << "Finished" << std::endl;
 
 }
 
@@ -244,16 +310,22 @@ int main(int argc, char* argv[])
 	}
 
 	string fileName = KnobOutputFile.Value();
-	string sysinfo_filename = KnobSyscallFile.Value();
+	string sysinfoFilename = KnobSyscallFile.Value();
+	string imageInfoFilename = KnobImageFile.Value();
 
 	if (!fileName.empty())
 	{
 		out = new std::ofstream(fileName.c_str());
 	}
 
-	if (!sysinfo_filename.empty())
+	if (!sysinfoFilename.empty())
 	{
-		sysinfoOut = new std::ofstream(sysinfo_filename.c_str());
+		sysinfoOut = new std::ofstream(sysinfoFilename.c_str());
+	}
+
+	if (!imageInfoFilename.empty())
+	{
+		imageInfoOut = new std::ofstream(imageInfoFilename.c_str());
 	}
 
 	if (KnobCount)
@@ -268,7 +340,9 @@ int main(int argc, char* argv[])
 		//PIN_AddThreadStartFunction(ThreadStart, 0);
 
 		//Instrumentation for every loaded process image (e.g. each loaded dll)
-		//IMG_AddInstrumentFunction(ImageTrace, 0);
+		IMG_AddInstrumentFunction(ImageTrace, 0);
+
+		PIN_AddContextChangeFunction(ContextChangeTrace, NULL);
 
 		//TRACE_AddInstrumentFunction(TraceTrace, 0);
 
@@ -283,17 +357,17 @@ int main(int argc, char* argv[])
 		PIN_AddFiniFunction(Fini, 0);
 	}
 
-	cerr << "===============================================" << endl;
-	cerr << "This application is instrumented by PinTracer" << endl;
+	std::cerr << "===============================================" << std::endl;
+	std::cerr << "This application is instrumented by PinTracer" << std::endl;
 	if (!KnobOutputFile.Value().empty())
 	{
-		cerr << "See file " << KnobOutputFile.Value() << " for analysis results" << endl;
+		std::cerr << "See file " << KnobOutputFile.Value() << " for analysis results" << std::endl;
 	}
 	if (!KnobSyscallFile.Value().empty())
 	{
-		cerr << "See file " << KnobSyscallFile.Value() << " for syscalls results" << endl;
+		std::cerr << "See file " << KnobSyscallFile.Value() << " for syscalls results" << std::endl;
 	}
-	cerr << "===============================================" << endl;
+	std::cerr << "===============================================" << std::endl;
 
 	// Start the program, never returns
 	PIN_StartProgram();

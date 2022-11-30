@@ -1,6 +1,6 @@
 #include "SyscallParser.h"
 
-void SyscallParser::print_syscall_attempt(std::ostream* outstream, ADDRINT syscallNumber, ADDRINT syscallArgs[])
+void SyscallParser::printSyscallAttempt(std::ostream* outstream, ADDRINT syscallNumber, ADDRINT syscallArgs[])
 {
     if(syscallNumber == 1)
     {

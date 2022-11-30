@@ -6,12 +6,10 @@
 #include <iostream>
 //#include <syscall.h>
 
-using namespace std;
-
 class SyscallParser
 {
-    public:
-        void print_syscall_attempt(std::ostream* outstream, ADDRINT syscall_number, ADDRINT syscall_args[]);
+public:
+    static void printSyscallAttempt(std::ostream* outstream, ADDRINT syscall_number, ADDRINT syscall_args[]);
 };
 
 
