@@ -3,15 +3,23 @@
 
 #include "pin.H"
 #include <iostream>
+#include <cstdio>
+#include <typeinfo>
 
-class InstructionWorker
+namespace InstructionWorker
 {
-public:
-	static ADDRINT getBaseAddress(ADDRINT addr);
+	ADDRINT getBaseAddress(ADDRINT addr);
 
-	static std::string getDllFromAddress(ADDRINT addr);
+	std::string getDllFromAddress(ADDRINT addr);
 
-	static std::string getFunctionNameFromAddress(ADDRINT addr);
-};
+	std::string getFunctionNameFromAddress(ADDRINT addr);
+
+	std::wstring printFunctionArgument(void* arg);
+
+}
+
+UINT64 getBufferStringLengthUTF8(void* buf);
+
+UINT64 getBufferStringLengthUTF16(void* buf);
 
 #endif

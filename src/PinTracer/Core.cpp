@@ -40,7 +40,7 @@ KNOB< string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify
 
 KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
 
-KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
+KNOB< string > KnobFilterlistFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
 
 KNOB< BOOL > KnobInstLevelTrace(KNOB_MODE_WRITEONCE, "pintool", "t", "0", "activate instruction level tracing, faster but more reliable");
 
@@ -69,39 +69,6 @@ INT32 Usage()
 // Analysis routines
 /* ===================================================================== */
 
-/*!
- * Increase counter of the executed basic blocks and instructions.
- * This function is called for every basic block when it is about to be executed.
- * @param[in]   numInstInBbl    number of instructions in the basic block
- * @note use atomic operations for multi-threaded applications
- */
- /*VOID CountBbl(UINT32 numInstInBbl)
- {
-	 bblCount++;
-	 insCount += numInstInBbl;
- }*/
-
- /* ===================================================================== */
- // Instrumentation callbacks
- /* ===================================================================== */
-
- /*!
-  * Insert call to the CountBbl() analysis routine before every basic block
-  * of the trace.
-  * This function is called every time a new trace is encountered.
-  * @param[in]   trace    trace to be instrumented
-  * @param[in]   v        value specified by the tool in the TRACE_AddInstrumentFunction
-  *                       function call
-  */
-  /*VOID Trace(TRACE trace, VOID* v)
-  {
-	  // Visit every basic block in the trace
-	  for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
-	  {
-		  // Insert a call to CountBbl() before every basic bloc, passing the number of instructions
-		  BBL_InsertCall(bbl, IPOINT_BEFORE, (AFUNPTR)CountBbl, IARG_UINT32, BBL_NumIns(bbl), IARG_END);
-	  }
-  }*/
 
 EXCEPT_HANDLING_RESULT ExceptionHandler(THREADID tid, EXCEPTION_INFO* pExceptInfo, PHYSICAL_CONTEXT* pPhysCtxt, VOID* v)
 {
@@ -239,7 +206,6 @@ VOID InstructionTrace(INS inst, VOID* v)
 			IARG_END);
 	}
 	
-	//cerr << "ended" << std::endl;
 }
 
 
@@ -382,6 +348,7 @@ int main(int argc, char* argv[])
 	string fileName = KnobOutputFile.Value();
 	string sysinfoFilename = KnobSyscallFile.Value();
 	string imageInfoFilename = KnobImageFile.Value();
+	string filterlistFilename = KnobFilterlistFile.Value();
 	instructionLevelTracing = KnobInstLevelTrace.Value();
 
 	if (!fileName.empty())
@@ -436,6 +403,10 @@ int main(int argc, char* argv[])
 	std::cerr << "===============================================" << std::endl;
 	std::cerr << "This application is instrumented by PinTracer" << std::endl;
 	std::cerr << "Instrumentating instructions directly: " << instructionLevelTracing << "" << std::endl;
+	if (!KnobFilterlistFile.Value().empty())
+	{
+		std::cerr << "Using file " << KnobFilterlistFile.Value() << " for filtering traced DLL jumps" << std::endl;
+	}
 	if (!KnobOutputFile.Value().empty())
 	{
 		std::cerr << "See file " << KnobOutputFile.Value() << " for analysis results" << std::endl;
