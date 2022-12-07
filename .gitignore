@@ -1,1 +1,5 @@
 .vs/
+src/PinTracer/Trace.cpp
+src/PinTracer/DoubleCore.cpp
+.gitignore
+/src/PinTracer/imgpinlog - Copy.txt

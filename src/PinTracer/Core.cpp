@@ -29,6 +29,7 @@ UINT64 threadCount = 0; //total number of threads, including main thread
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
+BOOL instructionLevelTracing = 0;
 
 /* ===================================================================== */
 // Command line switches
@@ -38,6 +39,10 @@ KNOB< string > KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o", "", "specify 
 KNOB< string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify file name for syscalls info output");
 
 KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
+
+KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
+
+KNOB< BOOL > KnobInstLevelTrace(KNOB_MODE_WRITEONCE, "pintool", "t", "0", "activate instruction level tracing, faster but more reliable");
 
 KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
 	"count instructions, basic blocks and threads in the application");
@@ -143,7 +148,8 @@ VOID printInstructionOpcodes(VOID* ip, /*std::string instAssembly,*/ uint32_t in
 	PIN_UnlockClient();
 }
 
-VOID registerControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, uint32_t instSize, CONTEXT* ctx, THREADID tid)
+VOID registerControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, UINT32 instSize, CONTEXT* ctx, THREADID tid, 
+	VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 {
 	PIN_LockClient();
 
@@ -165,17 +171,50 @@ VOID registerControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, uint32_t i
 	//Filter by application
 	//if (dllFrom.find("nc64") != std::string::npos)
 	{
-		*imageInfoOut << "--FROM-- DLL: " << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
+		*imageInfoOut << "--FROM-- DLL: " << std::hex << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
 		*imageInfoOut << "++ TO ++ DLL: " << dllTo << " | BaseAddr: " << baseAddrTo << " | Addr: " << branchTargetAddress << " | RoutineName: " << routineNameTo << std::endl;
+		std::wstring res0 = InstructionWorker::printFunctionArgument((void*)arg0);
+		std::string resW0(res0.begin(), res0.end());
+		*imageInfoOut << resW0 << std::endl;
+		std::wstring res1 = InstructionWorker::printFunctionArgument((void*)arg1);
+		std::string resW1(res1.begin(), res1.end());
+		*imageInfoOut << resW1 << std::endl;
+		std::wstring res2 = InstructionWorker::printFunctionArgument((void*)arg2);
+		std::string resW2(res2.begin(), res2.end());
+		*imageInfoOut << resW2 << std::endl;
+		std::wstring res3 = InstructionWorker::printFunctionArgument((void*)arg3);
+		std::string resW3(res3.begin(), res3.end());
+		*imageInfoOut << resW3 << std::endl;
+		std::wstring res4 = InstructionWorker::printFunctionArgument((void*)arg4);
+		std::string resW4(res4.begin(), res4.end());
+		*imageInfoOut << resW4 << std::endl;
+		std::wstring res5 = InstructionWorker::printFunctionArgument((void*)arg5);
+		std::string resW5(res5.begin(), res5.end());
+		*imageInfoOut << resW5 << std::endl;
+		/**imageInfoOut << InstructionWorker::printFunctionArgument((void*)arg1) << std::endl;
+		*imageInfoOut << InstructionWorker::printFunctionArgument((void*)arg2) << std::endl;
+		*imageInfoOut << InstructionWorker::printFunctionArgument((void*)arg3) << std::endl;
+		*imageInfoOut << InstructionWorker::printFunctionArgument((void*)arg4) << std::endl;
+		*imageInfoOut << InstructionWorker::printFunctionArgument((void*)arg5) << std::endl;*/
+
 	}
 
 	PIN_UnlockClient();
 }
 
+
+VOID registerIndirectControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, CONTEXT* ctx, THREADID tid,
+	VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
+{
+	if (branchTaken) {
+		registerControlFlowInst(ip, branchTargetAddress, instSize, ctx, tid, arg0, arg1, arg2, arg3, arg4, arg5);
+	}
+}
+
 VOID InstructionTrace(INS inst, VOID* v)
 {
 	//cerr << "started" << std::endl;
-	std::string disassemble = INS_Disassemble(inst);
+	//std::string disassemble = INS_Disassemble(inst);
 	INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
 		INS_Address(inst), /*IARG_PTR, new string(disassemble),*/ IARG_UINT32, INS_Size(inst),
 		IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
@@ -184,9 +223,20 @@ VOID InstructionTrace(INS inst, VOID* v)
 	//Note that far jumps are not covered under control flow, and sometimes appear in Windows
 	if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 	{
-		INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst, IARG_ADDRINT,
-			INS_Address(inst), IARG_BRANCH_TARGET_ADDR, IARG_UINT32, INS_Size(inst),
-			IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+		INS_InsertCall(
+			inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst, 
+			IARG_ADDRINT, INS_Address(inst), 
+			IARG_BRANCH_TARGET_ADDR,
+			IARG_UINT32, INS_Size(inst),
+			IARG_CONST_CONTEXT, 
+			IARG_THREAD_ID, 
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
+			IARG_END);
 	}
 	
 	//cerr << "ended" << std::endl;
@@ -225,17 +275,36 @@ VOID ImageTrace(IMG img, VOID* v)
 
 VOID TraceTrace(TRACE trace, VOID* v)
 {
-	std::cerr << "started" << std::endl;
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
 		{
-				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-					INS_Address(inst), /*IARG_PTR, new string(INS_Disassemble(inst)),*/ IARG_UINT32, INS_Size(inst), IARG_END);
+			INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+				INS_Address(inst), /*IARG_PTR, new string(disassemble),*/ IARG_UINT32, INS_Size(inst),
+				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+
+			//Will only happen at the end of the BBL, although if it is a branch it may not be taken
+			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			{
+				INS_InsertCall(
+					inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
+					IARG_ADDRINT, INS_Address(inst),
+					IARG_BRANCH_TARGET_ADDR,
+					IARG_BRANCH_TAKEN,
+					IARG_UINT32, INS_Size(inst),
+					IARG_CONST_CONTEXT,
+					IARG_THREAD_ID,
+					IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+					IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
+					IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
+					IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
+					IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
+					IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
+					IARG_END);
+			}
 			
 		}
 	}
-	std::cerr << "ended" << std::endl;
 }
 
 VOID ContextChangeTrace(THREADID tid, CONTEXT_CHANGE_REASON reason, const CONTEXT* ctxFrom, CONTEXT* ctxTo, INT32 info, VOID* v)
@@ -313,6 +382,7 @@ int main(int argc, char* argv[])
 	string fileName = KnobOutputFile.Value();
 	string sysinfoFilename = KnobSyscallFile.Value();
 	string imageInfoFilename = KnobImageFile.Value();
+	instructionLevelTracing = KnobInstLevelTrace.Value();
 
 	if (!fileName.empty())
 	{
@@ -333,12 +403,6 @@ int main(int argc, char* argv[])
 
 	if (KnobCount)
 	{
-		// Register function to be called to instrument traces
-		//TRACE_AddInstrumentFunction(Trace, 0);
-
-		//Instrumenting each instruction
-		INS_AddInstrumentFunction(InstructionTrace, 0);
-
 		// Register function to be called for every thread before it starts running
 		//PIN_AddThreadStartFunction(ThreadStart, 0);
 
@@ -347,7 +411,16 @@ int main(int argc, char* argv[])
 
 		PIN_AddContextChangeFunction(ContextChangeTrace, NULL);
 
-		//TRACE_AddInstrumentFunction(TraceTrace, 0);
+		if (instructionLevelTracing == 0)
+		{
+			//Instrumenting from target of branch to unconditional branch (includes calls)
+			TRACE_AddInstrumentFunction(TraceTrace, 0);
+		}
+		else if (instructionLevelTracing == 1)
+		{
+			//Instrumenting each instruction directly
+			INS_AddInstrumentFunction(InstructionTrace, 0);
+		}
 
 		#if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
 		//Exception handling, Windows exclusive according to documentation
@@ -362,6 +435,7 @@ int main(int argc, char* argv[])
 
 	std::cerr << "===============================================" << std::endl;
 	std::cerr << "This application is instrumented by PinTracer" << std::endl;
+	std::cerr << "Instrumentating instructions directly: " << instructionLevelTracing << "" << std::endl;
 	if (!KnobOutputFile.Value().empty())
 	{
 		std::cerr << "See file " << KnobOutputFile.Value() << " for analysis results" << std::endl;
