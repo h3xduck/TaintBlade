@@ -347,6 +347,9 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
+
+	TAGMAP::memTaintField;
+
 	// Initialize PIN library. Print help message if -h(elp) is specified
 	// in the command line or the command line is invalid
 	if (PIN_Init(argc, argv))

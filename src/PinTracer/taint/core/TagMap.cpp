@@ -1,7 +1,8 @@
 #include "TagMap.h"
 #include "../io/log.h"
 
-int tagmapInit()
+std::tr1::unordered_map<ADDRINT, int> memTaintField;
+int TAGMAP::tagmapInit()
 {
 	LOG("LOGGING THIS");
 	return 0;

@@ -87,11 +87,13 @@ SANITY_SUBSET := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
 
 WINDOWS_SDK_INCLUDE = C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
 WINDOWS_SDK_SHARED = C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/shared
+PINCRT_INCLUDE_WINDOWS = ..external/
 
 
 # Build the intermediate object file.
 $(OBJDIR)Core$(OBJ_SUFFIX): Core.cpp
-	$(CXX) $(TOOL_CXXFLAGS) /I"$(WINDOWS_SDK_INCLUDE)" /I"$(WINDOWS_SDK_SHARED)" $(COMP_OBJ)$@ $<
+	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
+#	$(CXX) $(TOOL_CXXFLAGS) /I"$(WINDOWS_SDK_INCLUDE)" /I"$(WINDOWS_SDK_SHARED)" $(COMP_OBJ)$@ $<
 
 # Build the intermediate object file.
 $(OBJDIR)utils/*$(OBJ_SUFFIX): utils/*.cpp
