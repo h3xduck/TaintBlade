@@ -13,7 +13,10 @@
 
 #include "pin.H"
 #include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
-
+#include "../io/log.h"
+#include "Tag.h"
+#include <iostream>
+#include <cstdio>
 
 #define PAGE_SIZE 4096
 #define COLOR_BYTES 2
@@ -37,24 +40,24 @@
 	r15: 0000 0000 ...
 */
 
-namespace TAGMAP
+class TagMap
 {
+public:
+	TagMap();
 
-
-	typedef struct MemTaintInfo
-	{
-		//2 COLOR_BYTES
-		UINT16 bytes;
-	};
-
-	extern std::tr1::unordered_map<ADDRINT, MemTaintInfo> memTaintField;
+	std::tr1::unordered_map<ADDRINT, Tag> memTaintField;
 
 	// 2 COLOR_BYTES * 8 bytes per register * 16 registers
-	//char regTaintField[256] = { 0 };
+	char regTaintField[256] = { 0 };
 
-	int tagmapInit();
+	size_t tagMapCount();
+	void taintMem(ADDRINT addr, UINT16 color);
+	void untaintMem(ADDRINT addr);
 
-}
+	/*Debug: Dumps whole map, expensive*/
+	void printTaintComplete();
+
+};
 
 
 #endif

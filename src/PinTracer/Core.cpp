@@ -348,7 +348,17 @@ VOID Fini(INT32 code, VOID* v)
 int main(int argc, char* argv[])
 {
 
-	TAGMAP::memTaintField;
+	TagMap tagMap;
+
+	size_t size = tagMap.tagMapCount();
+	std::cerr << "Size: " << size << std::endl;
+
+	tagMap.taintMem(1233, 11);
+	tagMap.taintMem(111, 11);
+	tagMap.taintMem(1, 132);
+	tagMap.untaintMem(1);
+	tagMap.taintMem(1233, 55);
+	tagMap.printTaintComplete();
 
 	// Initialize PIN library. Print help message if -h(elp) is specified
 	// in the command line or the command line is invalid
