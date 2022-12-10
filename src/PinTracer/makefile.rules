@@ -85,25 +85,23 @@ SANITY_SUBSET := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
 # See makefile.default.rules for the default build rules.
 
 
-# Build the intermediate object file.
-#$(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX): utils/SyscallParser.cpp utils/SyscallParser.h utils/InstructionWorker.cpp utils/InstructionWorker.h
-#	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
+WINDOWS_SDK_INCLUDE = C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+WINDOWS_SDK_SHARED = C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/shared
 
-# Build the tool as a dll (shared object).
-#$(OBJDIR)PinTracer$(PINTOOL_SUFFIX): $(OBJDIR)Core$(OBJ_SUFFIX) $(OBJDIR)utils/SyscallParser$(OBJ_SUFFIX) utils/SyscallParser.h $(OBJDIR)utils/InstructionWorker$(OBJ_SUFFIX) utils/InstructionWorker.h
-#	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(TOOL_LPATHS) $(TOOL_LIBS)
 
 # Build the intermediate object file.
 $(OBJDIR)Core$(OBJ_SUFFIX): Core.cpp
-	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
+	$(CXX) $(TOOL_CXXFLAGS) /I"$(WINDOWS_SDK_INCLUDE)" /I"$(WINDOWS_SDK_SHARED)" $(COMP_OBJ)$@ $<
 
 # Build the intermediate object file.
-$(OBJDIR)utils/*$(OBJ_SUFFIX): utils/%.cpp
+$(OBJDIR)utils/*$(OBJ_SUFFIX): utils/*.cpp
 	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $<
 
 UTILS_SRC = $(wildcard utils/*.cpp)
 UTILS_OBJ = $(UTILS_SRC:utils/%.cpp=$(OBJDIR)utils/%.obj)
+TAINT_SRC = $(wildcard taint/*.cpp) $(wildcard taint/core/*.cpp) $(wildcard taint/io/*.cpp)
+TAINT_OBJ = $(TAINT_SRC:taint/%.cpp=$(OBJDIR)taint/%.obj)
 
 # Build the tool as a dll (shared object).
-$(OBJDIR)PinTracer$(PINTOOL_SUFFIX): $(OBJDIR)Core$(OBJ_SUFFIX) $(UTILS_OBJ)
+$(OBJDIR)PinTracer$(PINTOOL_SUFFIX): $(OBJDIR)Core$(OBJ_SUFFIX) $(UTILS_OBJ) $(TAINT_OBJ)
 	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(TOOL_LPATHS) $(TOOL_LIBS)

@@ -14,6 +14,15 @@
 
 #include "utils/SyscallParser.h"
 #include "utils/InstructionWorker.h"
+#include "taint/core/TagMap.h"
+
+//TODO Check this is Linux without 'defined'
+
+#if _WIN32
+
+#include "utils/WinAPI.h"
+
+#endif
 
 
 using std::string;
@@ -102,14 +111,13 @@ VOID printInstructionOpcodes(VOID* ip, /*std::string instAssembly,*/ uint32_t in
 	tmpstr << std::hex << ip;
 	uint8_t opcodes[15];
 	PIN_SafeCopy(opcodes, ip, instSize);
-	*out << tmpstr.str() << "\t";
+	//*out << tmpstr.str() << "\t";
 	for (uint32_t ii = 0; ii < instSize; ii++)
 	{
-		*out << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(opcodes[ii]) << " ";
+		//*out << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(opcodes[ii]) << " ";
 	}
-	//*out << "\t" << instAssembly << std::endl;
 
-	*out << std::endl;
+	//*out << std::endl;
 
 	PIN_TryEnd(tid);
 	PIN_UnlockClient();
@@ -241,16 +249,17 @@ VOID ImageTrace(IMG img, VOID* v)
 
 VOID TraceTrace(TRACE trace, VOID* v)
 {
+
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
 		{
 			INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-				INS_Address(inst), /*IARG_PTR, new string(disassemble),*/ IARG_UINT32, INS_Size(inst),
+				INS_Address(inst), IARG_UINT32, INS_Size(inst),
 				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
 
 			//Will only happen at the end of the BBL, although if it is a branch it may not be taken
-			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 			{
 				INS_InsertCall(
 					inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
@@ -267,7 +276,7 @@ VOID TraceTrace(TRACE trace, VOID* v)
 					IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 					IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 					IARG_END);
-			}
+			}*/
 			
 		}
 	}
@@ -376,7 +385,7 @@ int main(int argc, char* argv[])
 		//Instrumentation for every loaded process image (e.g. each loaded dll)
 		IMG_AddInstrumentFunction(ImageTrace, 0);
 
-		PIN_AddContextChangeFunction(ContextChangeTrace, NULL);
+		//PIN_AddContextChangeFunction(ContextChangeTrace, NULL);
 
 		if (instructionLevelTracing == 0)
 		{
@@ -389,11 +398,13 @@ int main(int argc, char* argv[])
 			INS_AddInstrumentFunction(InstructionTrace, 0);
 		}
 
-		#if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
+		#ifdef _WIN32
 		//Exception handling, Windows exclusive according to documentation
 		PIN_AddInternalExceptionHandler(ExceptionHandler, NULL);
+		std::cerr << "Windows mode now active" << std::endl;
 		#else
 		PIN_AddSyscallEntryFunction(SyscallTrace, 0);
+		std::cerr << "Linux mode now active" << std::endl;
 		#endif
 
 		// Register function to be called when the application exits

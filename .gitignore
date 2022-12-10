@@ -16,3 +16,4 @@ src/PinTracer/imagepinlog.txt
 /src/PinTracer/syspinlog.txt
 /src/PinTracer/pinlog.txt
 /src/PinTracer/imgpinlog.txt
+*.txt
