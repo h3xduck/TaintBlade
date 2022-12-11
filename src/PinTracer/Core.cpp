@@ -83,7 +83,9 @@ EXCEPT_HANDLING_RESULT ExceptionHandler(THREADID tid, EXCEPTION_INFO* pExceptInf
 {
 	EXCEPTION_CODE c = PIN_GetExceptionCode(pExceptInfo);
 	EXCEPTION_CLASS cl = PIN_GetExceptionClass(c);
-	std::cerr << "Exception class " << cl << "	Info: " << PIN_ExceptionToString(pExceptInfo) << std::endl;
+	std::string excStr = PIN_ExceptionToString(pExceptInfo);
+	
+	std::cerr << "Exception code: " << c << " | Exception class " << cl << "	Info: " << PIN_ExceptionToString(pExceptInfo) << std::endl << "Exception info: " << excStr << std::endl;
 	return EHR_UNHANDLED;
 }
 
@@ -111,13 +113,13 @@ VOID printInstructionOpcodes(VOID* ip, /*std::string instAssembly,*/ uint32_t in
 	tmpstr << std::hex << ip;
 	uint8_t opcodes[15];
 	PIN_SafeCopy(opcodes, ip, instSize);
-	//*out << tmpstr.str() << "\t";
+	*out << tmpstr.str() << "\t";
 	for (uint32_t ii = 0; ii < instSize; ii++)
 	{
-		//*out << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(opcodes[ii]) << " ";
+		*out << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(opcodes[ii]) << " ";
 	}
 
-	//*out << std::endl;
+	*out << std::endl;
 
 	PIN_TryEnd(tid);
 	PIN_UnlockClient();
@@ -173,6 +175,45 @@ VOID registerControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, UINT32 ins
 		*imageInfoOut << InstructionWorker::printFunctionArgument((void*)arg5) << std::endl;*/
 
 	}
+
+	PIN_UnlockClient();
+}
+
+VOID recvRoutineAnalyze(ADDRINT ip, THREADID tid, VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
+{
+	/*
+		int recv(
+	  [in]  SOCKET s,
+	  [out] char   *buf,
+	  [in]  int    len,
+	  [in]  int    flags
+		);
+	*/
+	PIN_LockClient();
+
+	std::wstring bufres = InstructionWorker::printFunctionArgument((void*)arg1);
+	std::string buf(bufres.begin(), bufres.end());
+	std::wstring lenres = InstructionWorker::printFunctionArgument((void*)arg2);
+	std::string len(lenres.begin(), lenres.end());
+	std::wstring res0 = InstructionWorker::printFunctionArgument((void*)arg0);
+	std::string resW0(res0.begin(), res0.end());
+	std::cerr << resW0 << std::endl;
+	std::wstring res1 = InstructionWorker::printFunctionArgument((void*)arg1);
+	std::string resW1(res1.begin(), res1.end());
+	std::cerr << resW1 << std::endl;
+	std::wstring res2 = InstructionWorker::printFunctionArgument((void*)arg2);
+	std::string resW2(res2.begin(), res2.end());
+	std::cerr << resW2 << std::endl;
+	std::wstring res3 = InstructionWorker::printFunctionArgument((void*)arg3);
+	std::string resW3(res3.begin(), res3.end());
+	std::cerr << resW3 << std::endl;
+	std::wstring res4 = InstructionWorker::printFunctionArgument((void*)arg4);
+	std::string resW4(res4.begin(), res4.end());
+	std::cerr << resW4 << std::endl;
+	std::wstring res5 = InstructionWorker::printFunctionArgument((void*)arg5);
+	std::string resW5(res5.begin(), res5.end());
+	std::cerr << resW5 << std::endl;
+	std::cerr << "RECV::	 arg1(*buf): " << buf << " | len(arg2):" << std::endl;
 
 	PIN_UnlockClient();
 }
@@ -247,9 +288,48 @@ VOID ImageTrace(IMG img, VOID* v)
 	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
 }
 
+VOID RoutineTrace(RTN rtn, VOID* v)
+{
+	if(!RTN_Valid(rtn))
+	{
+		//std::cerr << "Null RTN" << std::endl;
+		return;
+	}
+
+	const std::string rtnName = RTN_Name(rtn);
+	RTN_Open(rtn);
+
+	ADDRINT firstAddr = RTN_Address(rtn);
+	IMG module = IMG_FindByAddress(firstAddr);
+	if(!IMG_Valid(module))
+	{
+		//std::cerr << "Null IMG" << std::endl;
+		return;
+	}
+	std::string dllName = IMG_Name(module);
+
+	//Check if it should be tainted
+	if (rtnName == "recv" && dllName.find("WSOCK32.dll") != std::string::npos)
+	{
+		std::cerr << "IMG: " << dllName << " | RTN: " << rtnName << " |ADDR: " << firstAddr << std::endl;
+		RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)recvRoutineAnalyze,
+			IARG_ADDRINT, firstAddr,
+			IARG_THREAD_ID,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
+			IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
+			IARG_END);
+	}
+	
+
+	RTN_Close(rtn);
+}
+
 VOID TraceTrace(TRACE trace, VOID* v)
 {
-
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
@@ -259,7 +339,7 @@ VOID TraceTrace(TRACE trace, VOID* v)
 				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
 
 			//Will only happen at the end of the BBL, although if it is a branch it may not be taken
-			/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 			{
 				INS_InsertCall(
 					inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
@@ -276,7 +356,7 @@ VOID TraceTrace(TRACE trace, VOID* v)
 					IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 					IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 					IARG_END);
-			}*/
+			}
 			
 		}
 	}
@@ -404,6 +484,7 @@ int main(int argc, char* argv[])
 		{
 			//Instrumenting from target of branch to unconditional branch (includes calls)
 			TRACE_AddInstrumentFunction(TraceTrace, 0);
+			RTN_AddInstrumentFunction(RoutineTrace, 0);
 		}
 		else if (instructionLevelTracing == 1)
 		{
