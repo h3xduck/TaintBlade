@@ -16,15 +16,6 @@
 #include "utils/InstructionWorker.h"
 #include "taint/core/TagMap.h"
 
-//TODO Check this is Linux without 'defined'
-
-#if _WIN32
-
-#include "utils/WinAPI.h"
-
-#endif
-
-
 using std::string;
 
 /* ================================================================== */
@@ -433,11 +424,11 @@ int main(int argc, char* argv[])
 	size_t size = tagMap.tagMapCount();
 	std::cerr << "Size: " << size << std::endl;
 
-	tagMap.taintMem(1233, 11);
+	/*tagMap.taintMem(1233, 11);
 	tagMap.taintMem(111, 11);
 	tagMap.taintMem(1, 132);
 	tagMap.untaintMem(1);
-	tagMap.taintMem(1233, 55);
+	tagMap.taintMem(1233, 55);*/
 	tagMap.printTaintComplete();
 
 	// Initialize PIN library. Print help message if -h(elp) is specified

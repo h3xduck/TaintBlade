@@ -12,4 +12,17 @@
 
 }*/
 
+namespace WINDOWS {
+#include <Windows.h>
+/*#include <winapifamily.h>
+#include <WinNT.h>
+#include <Winternl.h>
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+#include <string.h>
+#include <tchar.h>
+#include <Psapi.h>
+#include <Strsafe.h>
+#define STATUS_SUCCESS 0*/
+}
 #endif

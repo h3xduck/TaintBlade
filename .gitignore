@@ -11,9 +11,12 @@ src/PinTracer/pinlog.txt
 src/PinTracer/pintool.log
 src/PinTracer/imgpinlog.txt
 src/PinTracer/imagepinlog.txt
-/src/syslog
-/src/log
-/src/PinTracer/syspinlog.txt
-/src/PinTracer/pinlog.txt
-/src/PinTracer/imgpinlog.txt
+src/syslog
+src/log
+src/PinTracer/syspinlog.txt
+src/PinTracer/pinlog.txt
+src/PinTracer/imgpinlog.txt
 *.txt
+src/src.zip
+src/AntiDebugTest
+/src/PinTracer/imgpinlog.txt

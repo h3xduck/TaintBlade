@@ -11,6 +11,12 @@
 #include "pin.H"
 #include <iostream>
 #include <fstream>
+#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+
+namespace WINDOWS
+{
+#include <Windows.h>
+}
 using std::cerr;
 using std::endl;
 using std::string;
@@ -21,7 +27,7 @@ using std::string;
 
 UINT64 insCount    = 0; //number of dynamically executed instructions
 UINT64 bblCount    = 0; //number of dynamically executed basic blocks
-UINT64 threadCount = 0; //total number of threads, including main thread
+UINT64 threadCount = 1; //total number of threads, including main thread
 
 std::ostream* out = &cerr;
 
