@@ -261,6 +261,7 @@
     <ClCompile Include="utils\SyscallParser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="taint\core\TaintManager.h" />
     <ClInclude Include="taint\core\Tag.h" />
     <ClInclude Include="taint\core\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />

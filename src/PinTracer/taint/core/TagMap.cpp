@@ -6,7 +6,7 @@ TagMap::TagMap()
 	Tag memInfo = { 0 };
 	//this->memTaintField.insert({ 0, memInfo });
 	//this->regTaintField = { 0 };
-	LOG("LOGGING THIS");
+	//LOG("LOGGING THIS");
 }
 
 size_t TagMap::tagMapCount()

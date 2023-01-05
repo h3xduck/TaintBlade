@@ -6,7 +6,7 @@
 
 namespace WIN
 {
-#include <Windows.h>
-
+	#include <Windows.h>
+	#include <WinSock2.h>
 }
 #endif

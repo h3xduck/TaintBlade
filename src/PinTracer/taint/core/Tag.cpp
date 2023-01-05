@@ -1,8 +1,7 @@
 #include "Tag.h"
-#include "../utils/WinAPI.h"
+#include "TaintSource.h"
 
 Tag::Tag(UINT16 color)
 {
 	this->color = color;
-	WIN::HANDLE handle;
 }
