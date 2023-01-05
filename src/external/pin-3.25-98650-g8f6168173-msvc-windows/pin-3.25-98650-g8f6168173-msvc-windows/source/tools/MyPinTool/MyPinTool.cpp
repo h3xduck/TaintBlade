@@ -16,6 +16,7 @@
 namespace WINDOWS
 {
 #include <Windows.h>
+#include <WinSock2.h>
 }
 using std::cerr;
 using std::endl;
@@ -71,6 +72,7 @@ VOID CountBbl(UINT32 numInstInBbl)
 {
     bblCount++;
     insCount += numInstInBbl;
+    WINDOWS::SOCKET s;
 }
 
 /* ===================================================================== */

@@ -7,5 +7,5 @@
 #define LOG(msg, ...) fprintf(stderr, msg, __FILE__, __LINE__, ##__VA_ARGS__)
 
 
-#define LOG_ERR(M, ...) LOG("[ERROR] " msg "\n")
+#define LOG_ERR(msg, ...) LOG("[ERROR] " msg "\n")
 #endif

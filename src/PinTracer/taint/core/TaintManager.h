@@ -9,13 +9,11 @@ class TaintManager
 {
 private:
 	TagMap tagMap;
-	std::tr1::unordered_map<std::string, >
+	std::tr1::unordered_map <std::string, std::vector<TaintSource>> taintFunctionMap;
 
 
 public:
-	TaintManager();
-	~TaintManager();
-	
+
 	void registerTaintSource(const std::string& dll_name, const std::string& func_name);
 	void unregisterTaintSource(const std::string& dll_name, const std::string& func_name);
 

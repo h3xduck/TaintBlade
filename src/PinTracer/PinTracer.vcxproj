@@ -257,6 +257,7 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="taint\core\Tag.cpp" />
     <ClCompile Include="taint\core\TagMap.cpp" />
+    <ClCompile Include="taint\core\TaintSource.cpp" />
     <ClCompile Include="utils\InstructionWorker.cpp" />
     <ClCompile Include="utils\SyscallParser.cpp" />
   </ItemGroup>

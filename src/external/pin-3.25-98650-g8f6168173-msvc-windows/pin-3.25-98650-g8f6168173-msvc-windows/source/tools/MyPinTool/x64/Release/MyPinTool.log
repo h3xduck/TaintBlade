@@ -771,8 +771,8 @@
        Overriding target "ComputeMetaGenInputs" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.MetaGen.targets" with target "ComputeMetaGenInputs" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets".
        Overriding target "GetNativeManifest" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "GetNativeManifest" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets".
        Overriding target "GetTargetPathWithTargetPlatformMoniker" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "GetTargetPathWithTargetPlatformMoniker" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets".
-Build started 04-Jan-23 4:02:20 AM.
-Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" on node 2 (Build target(s)).
+Build started 05-Jan-23 3:40:35 AM.
+Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" on node 2 (Rebuild target(s)).
      1>Project file contains ToolsVersion="4.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="Current". For more information, please see http://go.microsoft.com/fwlink/?LinkId=293424.
        Target "EnableIntermediateOutputPathMismatchWarning" skipped, due to false condition; ('$(RestoreProjectStyle)' == 'PackageReference') was evaluated as ('' == 'PackageReference').
      1>Target "_CheckForInvalidConfigurationAndPlatform" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "SetTelemetryEnvironmentVariables" depends on it):
@@ -792,34 +792,68 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "Warning" skipped, due to false condition; ( '$(EnableBaseIntermediateOutputPathMismatchWarning)' == 'true' And '$(_InitialBaseIntermediateOutputPath)' != '$(BaseIntermediateOutputPath)' And '$(BaseIntermediateOutputPath)' != '$(MSBuildProjectExtensionsPath)' ) was evaluated as ( '' == 'true' And 'obj\' != 'obj\' And 'obj\' != 'C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\obj\' ).
      1>Done building target "_CheckForInvalidConfigurationAndPlatform" in project "MyPinTool.vcxproj".
        Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
-     1>Target "SetTelemetryEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Build" depends on it):
+     1>Target "SetTelemetryEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Rebuild" depends on it):
        Using "SetEnv" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
        Task "SetEnv"
-         VSTEL_SolutionSessionID={F93CBDBD-71F2-478B-AAB0-764D5B5D4318}
+         VSTEL_SolutionSessionID={5F67550C-F5F3-42F7-8EFA-D1887BF9CE69}
        Done executing task "SetEnv".
        Task "SetEnv"
-         VSTEL_CurrentSolutionBuildID=1900296713
+         VSTEL_CurrentSolutionBuildID=2508211589
        Done executing task "SetEnv".
        Task "SetEnv"
          VSTEL_ProjectID={639EF517-FCFC-408E-9500-71F0DC0458DB}
        Done executing task "SetEnv".
      1>Done building target "SetTelemetryEnvironmentVariables" in project "MyPinTool.vcxproj".
-     1>Target "_PrepareForBuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Build" depends on it):
-       Task "CreateItem" skipped, due to false condition; ('%(CustomBuild.IncludeFileToTool)'!='') was evaluated as (''!='').
-     1>Done building target "_PrepareForBuild" in project "MyPinTool.vcxproj".
-     1>Target "_PrepareForReferenceResolution" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "ResolveReferences" depends on it):
-       Task "VCMessage" skipped, due to false condition; ('$(WarnAboutIndividualManagedFiles)' == 'true') was evaluated as ('' == 'true').
-       Task "Message" skipped, due to false condition; ('$(_REFERENCE_DEBUG)'=='true') was evaluated as (''=='true').
-     1>Done building target "_PrepareForReferenceResolution" in project "MyPinTool.vcxproj".
-       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('MyPinTool.cpp'!='' and 'false'=='true' and '' != 'false').
-     1>Target "BeforeResolveReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "ResolveReferences" depends on it):
-     1>Done building target "BeforeResolveReferences" in project "MyPinTool.vcxproj".
-     1>Target "AssignProjectConfiguration" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "ResolveReferences" depends on it):
+     1>Target "_PrepareForRebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "_PrepareForRebuild" in project "MyPinTool.vcxproj".
+     1>Target "BeforeRebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "BeforeRebuild" in project "MyPinTool.vcxproj".
+     1>Target "_PrepareForClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Clean" depends on it):
+       Using "Delete" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       Task "Delete"
+         Deleting file "x64\Release\MyPinTool.tlog\MyPinTool.lastbuildstate".
+       Done executing task "Delete".
+     1>Done building target "_PrepareForClean" in project "MyPinTool.vcxproj".
+     1>Target "BeforeClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Clean" depends on it):
+     1>Done building target "BeforeClean" in project "MyPinTool.vcxproj".
+       Target "UnmanagedUnregistration" skipped, due to false condition; ((('$(_AssemblyTimestampBeforeCompile)' != '$(_AssemblyTimestampAfterCompile)' or '$(RegisterForComInterop)' != 'true' or '$(OutputType)' != 'library') or
+                           ('$(_AssemblyTimestampBeforeCompile)' == '')) and
+                          Exists('@(_UnmanagedRegistrationCache)')) was evaluated as ((('' != '' or '' != 'true' or 'library' != 'library') or
+                           ('' == '')) and
+                          Exists('obj\MyPinTool.vcxproj.UnmanagedRegistration.cache')).
+     1>Target "CoreClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Clean" depends on it):
+       Task "Delete"
+         File "x64\Release\\TempCA\MyPinTool.pdb" doesn't exist. Skipping.
+         File "x64\Release\\TempCA\MyPinTool.dll" doesn't exist. Skipping.
+       Done executing task "Delete".
+       Using "ReadLinesFromFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       Task "ReadLinesFromFile"
+       Done executing task "ReadLinesFromFile".
+       Using "FindUnderPath" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       Task "FindUnderPath"
+         Comparison path is "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\".
+       Done executing task "FindUnderPath".
+       Task "FindUnderPath"
+         Comparison path is "x64\Release\".
+       Done executing task "FindUnderPath".
+       Task "Delete"
+         Deleting file "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.dll".
+       Done executing task "Delete".
+       Using "RemoveDuplicates" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       Task "RemoveDuplicates"
+       Done executing task "RemoveDuplicates".
+       Using "MakeDir" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       Task "MakeDir"
+       Done executing task "MakeDir".
+       Using "WriteLinesToFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       Task "WriteLinesToFile"
+       Done executing task "WriteLinesToFile".
+     1>Done building target "CoreClean" in project "MyPinTool.vcxproj".
+     1>Target "AssignProjectConfiguration" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "PrepareProjectReferences" depends on it):
        Using "AssignProjectConfiguration" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "AssignProjectConfiguration"
        Done executing task "AssignProjectConfiguration".
      1>Done building target "AssignProjectConfiguration" in project "MyPinTool.vcxproj".
-       Target "AssignProjectConfiguration" skipped. Previously built successfully.
      1>Target "_SplitProjectReferencesByFileExistence" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "PrepareProjectReferences" depends on it):
        Task "ResolveNonMSBuildProjectOutput" skipped, due to false condition; ('$(BuildingInsideVisualStudio)'=='true' and '@(ProjectReferenceWithConfiguration)'!='') was evaluated as ('true'=='true' and ''!='').
      1>Done building target "_SplitProjectReferencesByFileExistence" in project "MyPinTool.vcxproj".
@@ -845,8 +879,50 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
                             and '@(_MSBuildProjectReferenceExistent)' != '') was evaluated as ('' == 'true'
                             and 'true' != 'true'
                             and '' != '').
-     1>Target "PrepareProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "ResolveProjectReferences" depends on it):
+     1>Target "PrepareProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "CleanReferencedProjects" depends on it):
      1>Done building target "PrepareProjectReferences" in project "MyPinTool.vcxproj".
+     1>Target "CleanReferencedProjects" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Clean" depends on it):
+       Task "MSBuild" skipped, due to false condition; ('$(BuildingInsideVisualStudio)' != 'true' and '$(BuildProjectReferences)' == 'true' and '@(_MSBuildProjectReferenceExistent)' != '') was evaluated as ('true' != 'true' and 'true' == 'true' and '' != '').
+     1>Done building target "CleanReferencedProjects" in project "MyPinTool.vcxproj".
+     1>Target "CleanPublishFolder" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Clean" depends on it):
+       Task "RemoveDir" skipped, due to false condition; (Exists('$(ClickOncePublishDir)')) was evaluated as (Exists('C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\app.publish\')).
+     1>Done building target "CleanPublishFolder" in project "MyPinTool.vcxproj".
+     1>Target "AfterClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Clean" depends on it):
+     1>Done building target "AfterClean" in project "MyPinTool.vcxproj".
+     1>Target "BeforeCppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "CppClean" depends on it):
+     1>Done building target "BeforeCppClean" in project "MyPinTool.vcxproj".
+     1>Target "CoreCppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "CppClean" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+       Using "CppClean" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
+       Task "CppClean"
+       Done executing task "CppClean".
+       Task "WriteLinesToFile"
+       Done executing task "WriteLinesToFile".
+     1>Done building target "CoreCppClean" in project "MyPinTool.vcxproj".
+     1>Target "AfterCppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "CppClean" depends on it):
+     1>Done building target "AfterCppClean" in project "MyPinTool.vcxproj".
+     1>Target "PGInstrumentedClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "CppClean" depends on it):
+       Task "Delete"
+       Done executing task "Delete".
+     1>Done building target "PGInstrumentedClean" in project "MyPinTool.vcxproj".
+     1>Target "CppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Clean" depends on it):
+     1>Done building target "CppClean" in project "MyPinTool.vcxproj".
+     1>Target "Clean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "Clean" in project "MyPinTool.vcxproj".
+       Target "SetTelemetryEnvironmentVariables" skipped. Previously built successfully.
+     1>Target "_PrepareForBuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Build" depends on it):
+       Task "CreateItem" skipped, due to false condition; ('%(CustomBuild.IncludeFileToTool)'!='') was evaluated as (''!='').
+     1>Done building target "_PrepareForBuild" in project "MyPinTool.vcxproj".
+     1>Target "_PrepareForReferenceResolution" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "ResolveReferences" depends on it):
+       Task "VCMessage" skipped, due to false condition; ('$(WarnAboutIndividualManagedFiles)' == 'true') was evaluated as ('' == 'true').
+       Task "Message" skipped, due to false condition; ('$(_REFERENCE_DEBUG)'=='true') was evaluated as (''=='true').
+     1>Done building target "_PrepareForReferenceResolution" in project "MyPinTool.vcxproj".
+       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('MyPinTool.cpp'!='' and 'false'=='true' and '' != 'false').
+     1>Target "BeforeResolveReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "ResolveReferences" depends on it):
+     1>Done building target "BeforeResolveReferences" in project "MyPinTool.vcxproj".
+       Target "AssignProjectConfiguration" skipped. Previously built successfully.
+       Target "PrepareProjectReferences" skipped. Previously built successfully.
        Target "_RemoveNameMetadataFromProjectReferenceItems" skipped, due to false condition; ('@(ProjectReference)'!='') was evaluated as (''!='').
      1>Target "ResolveProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "ResolveReferences" depends on it):
        Task "MSBuild" skipped, due to false condition; ('%(_MSBuildProjectReferenceExistent.BuildReference)' == 'true' and '@(ProjectReferenceWithConfiguration)' != '' and ('$(BuildingInsideVisualStudio)' == 'true' or '$(BuildProjectReferences)' != 'true') and '$(VisualStudioVersion)' != '10.0' and '@(_MSBuildProjectReferenceExistent)' != '') was evaluated as ('' == 'true' and '' != '' and ('true' == 'true' or 'true' != 'true') and '17.0' != '10.0' and '' != '').
@@ -906,7 +982,6 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "VCMessage" skipped, due to false condition; ('$(DesignTimeBuild)' != 'true' and '$(ConfigurationPlatformExists)' != 'true') was evaluated as ('' != 'true' and 'true' != 'true').
        Task "VCMessage" skipped, due to false condition; ('$(ApplicationType)' == '' and '$(DesignTimeBuild)' != 'true' and '$(_ToolsetFound)' != 'true') was evaluated as ('' == '' and '' != 'true' and 'true' != 'true').
        Task "VCMessage" skipped, due to false condition; ('$(ApplicationType)' != '' and '$(DesignTimeBuild)' != 'true' and '$(_ToolsetFound)' != 'true') was evaluated as ('' != '' and '' != 'true' and 'true' != 'true').
-       Using "MakeDir" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "MakeDir"
        Done executing task "MakeDir".
        Task "VCMessage" skipped, due to false condition; ('$(DesignTimeBuild)'!='true' and '$(WindowsAppContainer)'=='true' and '$(ConfigurationType)'!='Application' and '$(ConfigurationType)'!='DynamicLibrary' and '$(ConfigurationType)'!='StaticLibrary') was evaluated as (''!='true' and 'false'=='true' and 'DynamicLibrary'!='Application' and 'DynamicLibrary'!='DynamicLibrary' and 'DynamicLibrary'!='StaticLibrary').
@@ -965,10 +1040,8 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Target "PrepareForBuild" skipped. Previously built successfully.
        Target "PrepareForBuild" skipped. Previously built successfully.
      1>Target "InitializeBuildStatus" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Build" depends on it):
-       Using "ReadLinesFromFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "ReadLinesFromFile"
        Done executing task "ReadLinesFromFile".
-       Using "WriteLinesToFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "WriteLinesToFile"
        Done executing task "WriteLinesToFile".
        Using "Touch" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
@@ -1099,16 +1172,23 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "CL"
          All source files are not up-to-date: missing command TLog "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.tlog\CL.command.1.tlog".
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=1884
+           VS_UNICODE_OUTPUT=1816
          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\CL.exe /c /I..\..\include\pin /I..\..\include\pin\gen /I..\InstLib /I"..\..\..\extras\xed-intel64\include\xed" /I..\..\..\extras\components\include /I..\..\..\extras\stlport\include /I..\..\..\extras /I..\..\..\extras\libstdc++\include /I..\..\..\extras\crt\include /I..\..\..\extras\crt /I"..\..\..\extras\crt\include\arch-x86_64" /I..\..\..\extras\crt\include\kernel\uapi /I"..\..\..\extras\crt\include\kernel\uapi\asm-x86" /nologo /W3 /WX- /diagnostics:column /O2 /D TARGET_IA32E /D HOST_IA32E /D TARGET_WINDOWS /D PIN_CRT=1 /D __LP64__ /Gm- /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"x64\Release\\" /Fd"x64\Release\vc143.pdb" /external:W3 /Gd /TP /wd4530 /FC /errorReport:prompt /GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h MyPinTool.cpp
          Tracking command:
-         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.tlog /r C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\SOURCE\TOOLS\MYPINTOOL\MYPINTOOL.CPP /b MSBuildConsole_CancelEvente9fd9f9da70e45d09d109ef0f5bfeaae  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\CL.exe"  /c /I..\..\include\pin /I..\..\include\pin\gen /I..\InstLib /I"..\..\..\extras\xed-intel64\include\xed" /I..\..\..\extras\components\include /I..\..\..\extras\stlport\include /I..\..\..\extras /I..\..\..\extras\libstdc++\include /I..\..\..\extras\crt\include /I..\..\..\extras\crt /I"..\..\..\extras\crt\include\arch-x86_64" /I..\..\..\extras\crt\include\kernel\uapi /I"..\..\..\extras\crt\include\kernel\uapi\asm-x86" /nologo /W3 /WX- /diagnostics:column /O2 /D TARGET_IA32E /D HOST_IA32E /D TARGET_WINDOWS /D PIN_CRT=1 /D __LP64__ /Gm- /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"x64\Release\\" /Fd"x64\Release\vc143.pdb" /external:W3 /Gd /TP /wd4530 /FC /errorReport:prompt /GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h MyPinTool.cpp
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.tlog /r C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\SOURCE\TOOLS\MYPINTOOL\MYPINTOOL.CPP /b MSBuildConsole_CancelEvente294e55826d8421181601a6112d9081e  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\CL.exe"  /c /I..\..\include\pin /I..\..\include\pin\gen /I..\InstLib /I"..\..\..\extras\xed-intel64\include\xed" /I..\..\..\extras\components\include /I..\..\..\extras\stlport\include /I..\..\..\extras /I..\..\..\extras\libstdc++\include /I..\..\..\extras\crt\include /I..\..\..\extras\crt /I"..\..\..\extras\crt\include\arch-x86_64" /I..\..\..\extras\crt\include\kernel\uapi /I"..\..\..\extras\crt\include\kernel\uapi\asm-x86" /nologo /W3 /WX- /diagnostics:column /O2 /D TARGET_IA32E /D HOST_IA32E /D TARGET_WINDOWS /D PIN_CRT=1 /D __LP64__ /Gm- /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"x64\Release\\" /Fd"x64\Release\vc143.pdb" /external:W3 /Gd /TP /wd4530 /FC /errorReport:prompt /GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h MyPinTool.cpp
      1>cl : command line  warning D9002: ignoring unknown option '/FP:strict'
          MyPinTool.cpp
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
+     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
+       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(49,1): message : see previous definition of 'timerisset'
+     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
+       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(54,1): message : see previous definition of 'timercmp'
+     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
+       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(46,1): message : see previous definition of 'timerclear'
+     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.cpp(75,21): warning C4101: 's': unreferenced local variable
        Done executing task "CL".
      1>Done building target "ClCompile" in project "MyPinTool.vcxproj".
        Target "RunSelectedFileNativeCodeAnalysis" skipped, due to false condition; ('$(RunMsvcAnalysis)'=='true' and '$(SelectedFiles)'!='') was evaluated as ('false'=='true' and ''!='').
@@ -1222,10 +1302,10 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Using "Link" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
        Task "Link"
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=1892
+           VS_UNICODE_OUTPUT=1324
          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\..\..\intel64\lib /LIBPATH:"..\..\..\intel64\lib-ext" /LIBPATH:"..\..\..\extras\xed-intel64\lib" /LIBPATH:..\..\..\intel64\runtime\pincrt pin.lib xed.lib pincrt.lib kernel32.lib crtbeginS.obj /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.pdb" /OPT:REF /TLBID:1 /ENTRY:"Ptrace_DllMainCRTStartup" /BASE:"0xC5000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.lib" /MACHINE:X64 /export:main /DLL x64\Release\MyPinTool.obj
          Tracking command:
-         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.tlog /r C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\SOURCE\TOOLS\MYPINTOOL\X64\RELEASE\MYPINTOOL.OBJ /b MSBuildConsole_CancelEvent4ae48e2061a44f74905707184491c64c  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\..\..\intel64\lib /LIBPATH:"..\..\..\intel64\lib-ext" /LIBPATH:"..\..\..\extras\xed-intel64\lib" /LIBPATH:..\..\..\intel64\runtime\pincrt pin.lib xed.lib pincrt.lib kernel32.lib crtbeginS.obj /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.pdb" /OPT:REF /TLBID:1 /ENTRY:"Ptrace_DllMainCRTStartup" /BASE:"0xC5000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.lib" /MACHINE:X64 /export:main /DLL x64\Release\MyPinTool.obj
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.tlog /r C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\SOURCE\TOOLS\MYPINTOOL\X64\RELEASE\MYPINTOOL.OBJ /b MSBuildConsole_CancelEventf64bbc0b979c4ca2a033cb41b7d9acc9  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\..\..\intel64\lib /LIBPATH:"..\..\..\intel64\lib-ext" /LIBPATH:"..\..\..\extras\xed-intel64\lib" /LIBPATH:..\..\..\intel64\runtime\pincrt pin.lib xed.lib pincrt.lib kernel32.lib crtbeginS.obj /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.pdb" /OPT:REF /TLBID:1 /ENTRY:"Ptrace_DllMainCRTStartup" /BASE:"0xC5000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.lib" /MACHINE:X64 /export:main /DLL x64\Release\MyPinTool.obj
             Creating library C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.lib and object C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\x64\Release\MyPinTool.exp
      1>LINK : warning LNK4281: undesirable base address 0xC5000000 for x64 image; set base address above 4GB for best ASLR optimization
      1>crtbeginS.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
@@ -1474,7 +1554,6 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Using "ConvertToAbsolutePath" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "ConvertToAbsolutePath"
        Done executing task "ConvertToAbsolutePath".
-       Using "FindUnderPath" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "FindUnderPath"
          Comparison path is "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool".
        Done executing task "FindUnderPath".
@@ -1484,7 +1563,6 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "FindUnderPath"
          Comparison path is "x64\Release\".
        Done executing task "FindUnderPath".
-       Using "RemoveDuplicates" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "RemoveDuplicates"
        Done executing task "RemoveDuplicates".
      1>Done building target "_CleanGetCurrentAndPriorFileWrites" in project "MyPinTool.vcxproj".
@@ -1495,7 +1573,6 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "FindUnderPath"
          Comparison path is "x64\Release\".
        Done executing task "FindUnderPath".
-       Using "Delete" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "Delete"
        Done executing task "Delete".
        Task "RemoveDuplicates"
@@ -1511,24 +1588,31 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
          Touching "x64\Release\MyPinTool.tlog\MyPinTool.lastbuildstate".
        Done executing task "Touch".
      1>Done building target "FinalizeBuildStatus" in project "MyPinTool.vcxproj".
-       Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
-       Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
-     1>Target "Build" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (entry point):
+     1>Target "Build" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Rebuild" depends on it):
      1>Done building target "Build" in project "MyPinTool.vcxproj".
-     1>Done Building Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (Build target(s)).
+     1>Target "AfterRebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (target "Rebuild" depends on it):
+     1>Done building target "AfterRebuild" in project "MyPinTool.vcxproj".
+       Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
+     1>Target "Rebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (entry point):
+     1>Done building target "Rebuild" in project "MyPinTool.vcxproj".
+     1>Done Building Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (Build target) (1) ->
+       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (Rebuild target) (1) ->
        (ClCompile target) -> 
          cl : command line  warning D9002: ignoring unknown option '/FP:strict'
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
+         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
+         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.cpp(75,21): warning C4101: 's': unreferenced local variable
 
 
-       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (Build target) (1) ->
+       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\MyPinTool\MyPinTool.vcxproj" (Rebuild target) (1) ->
        (Link target) -> 
          LINK : warning LNK4281: undesirable base address 0xC5000000 for x64 image; set base address above 4GB for best ASLR optimization
          crtbeginS.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
@@ -1604,7 +1688,7 @@ Build succeeded.
          pin.lib(ins_reuse_ia32.obj) : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
          crtbeginS.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
 
-    78 Warning(s)
+    82 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.85
+Time Elapsed 00:00:01.11
