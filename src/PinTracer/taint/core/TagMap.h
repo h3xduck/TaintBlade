@@ -13,7 +13,7 @@
 
 #include "pin.H"
 #include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
-#include "../io/log.h"
+#include "../../utils/io/log.h"
 #include "Tag.h"
 #include <iostream>
 #include <cstdio>

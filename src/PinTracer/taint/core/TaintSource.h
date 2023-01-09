@@ -1,8 +1,7 @@
 #ifndef _TAINT_SOURCE_H_
 #define _TAINT_SOURCE_H_
 
-//#include "../utils/WinAPI.h"
-#include "../io/log.h"
+#include "../../utils/io/log.h"
 
 
 #define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um

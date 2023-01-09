@@ -259,8 +259,8 @@
     <ClCompile Include="taint\core\Tag.cpp" />
     <ClCompile Include="taint\core\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
-    <ClCompile Include="utils\InstructionWorker.cpp" />
-    <ClCompile Include="utils\SyscallParser.cpp" />
+    <ClCompile Include="utils\inst\InstructionWorker.cpp" />
+    <ClCompile Include="utils\inst\SyscallParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config\GlobalConfig.h" />
@@ -268,12 +268,9 @@
     <ClInclude Include="taint\core\Tag.h" />
     <ClInclude Include="taint\core\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />
-    <ClInclude Include="taint\io\log.h" />
-    <ClInclude Include="taint\TaintAPI.h" />
-    <ClInclude Include="taint\utils\WinAPI.h" />
-    <ClInclude Include="utils\InstructionWorker.h" />
-    <ClInclude Include="utils\SyscallParser.h" />
-    <ClInclude Include="utils\WinAPI.h" />
+    <ClInclude Include="utils\io\log.h" />
+    <ClInclude Include="utils\inst\InstructionWorker.h" />
+    <ClInclude Include="utils\inst\SyscallParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

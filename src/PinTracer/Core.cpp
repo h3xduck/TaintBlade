@@ -12,11 +12,10 @@
 #include <iostream>
 #include <fstream>
 
-#include "utils/SyscallParser.h"
-#include "utils/InstructionWorker.h"
+#include "utils/inst/SyscallParser.h"
+#include "utils/inst/InstructionWorker.h"
 #include "taint/core/TagMap.h"
 #include "taint/core/TaintManager.h"
-//#include "utils/WinAPI.h"
 
 using std::string;
 
