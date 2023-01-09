@@ -1,11 +1,17 @@
 #ifndef _TAINT_SOURCE_H_
 #define _TAINT_SOURCE_H_
 
-#include "../utils/WinAPI.h"
+//#include "../utils/WinAPI.h"
 #include "../io/log.h"
 
 
+#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
 
+namespace WINDOWS
+{
+#include <windows.h>
+#include <WinSock2.h>
+}
 
 
 
@@ -22,15 +28,6 @@ private:
 	}
 
 public:
-	typedef void (*callback_function)(void); // type for conciseness
-	TaintSource(std::string& dllName, std::string& funcName, VOID (*enter)(void), VOID(*exit)(), struct func_args_t args);
-
-	std::string dllName = "wsock32.dll";
-	std::string funcName = "recv";
-	int numArgs = 4;
-	VOID(*enterHandler)() = wsockRecvEnter;
-	VOID(*exitHandler)() = wsockRecvExit;
-	
 	struct func_args_t
 	{
 		union {
@@ -44,6 +41,19 @@ public:
 			} wsock_recv;
 		} ua;
 	} func_args;
+
+	typedef void (*callback_function)(void); // type for conciseness
+	
+	TaintSource(std::string& dllName, std::string& funcName, VOID(*enter)(), VOID(*exit)(), struct func_args_t args) 
+	{
+			
+	}
+
+	std::string dllName = "wsock32.dll";
+	std::string funcName = "recv";
+	int numArgs = 4;
+	VOID(*enterHandler)() = wsockRecvEnter;
+	VOID(*exitHandler)() = wsockRecvExit;
 
 };
 

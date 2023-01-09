@@ -16,7 +16,7 @@
 #include "utils/InstructionWorker.h"
 #include "taint/core/TagMap.h"
 #include "taint/core/TaintManager.h"
-#include "utils/WinAPI.h"
+//#include "utils/WinAPI.h"
 
 using std::string;
 
