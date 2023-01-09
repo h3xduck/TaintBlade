@@ -1,3 +1,3 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 93396. Interruption context: IP: 0x0755dd196 SP: 0x001bfec90. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x0755dd196. Access Type: READ. Access Address = 0x001bff000. ExceptionFlags: 0x000000000
+E:  [tid:39032] Invalid tool DLL name :  C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll

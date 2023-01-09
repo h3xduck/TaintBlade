@@ -5,6 +5,7 @@
 #include "Tag.h"
 #include "TaintSource.h"
 #include <iostream>
+#include <cstdio>
 
 class TaintManager
 {

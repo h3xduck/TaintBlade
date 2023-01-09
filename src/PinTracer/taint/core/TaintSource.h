@@ -62,7 +62,7 @@ public:
 		this->funcName = funcName;
 		this->enterHandler = enter;
 		this->exitHandler = exit;
-		LOG("TaintSource initiated");
+		LOG_DEBUG("TaintSource initiated");
 	};
 
 	void taintSourceLogAll();
