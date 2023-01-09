@@ -4,6 +4,7 @@
 #include "TagMap.h"
 #include "Tag.h"
 #include "TaintSource.h"
+#include <iostream>
 
 class TaintManager
 {
@@ -14,8 +15,8 @@ private:
 
 public:
 
-	void registerTaintSource(const std::string& dll_name, const std::string& func_name);
-	void unregisterTaintSource(const std::string& dll_name, const std::string& func_name);
+	void registerTaintSource(const std::string& dllName, const std::string& funcName);
+	void unregisterTaintSource(const std::string& dllName, const std::string& funcName);
 
 };
 

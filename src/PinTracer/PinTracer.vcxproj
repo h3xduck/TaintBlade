@@ -255,6 +255,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\core\Tag.cpp" />
     <ClCompile Include="taint\core\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
