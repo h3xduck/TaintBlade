@@ -262,6 +262,7 @@
     <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
     <ClCompile Include="utils\inst\InstructionWorker.cpp" />
+    <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
     <ClCompile Include="utils\inst\SyscallParser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +273,7 @@
     <ClInclude Include="taint\data\Tag.h" />
     <ClInclude Include="taint\data\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />
+    <ClInclude Include="utils\inst\ScopeFilterer.h" />
     <ClInclude Include="utils\io\log.h" />
     <ClInclude Include="utils\inst\InstructionWorker.h" />
     <ClInclude Include="utils\inst\SyscallParser.h" />

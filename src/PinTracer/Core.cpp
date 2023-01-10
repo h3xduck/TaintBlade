@@ -16,6 +16,7 @@
 #include "utils/inst/InstructionWorker.h"
 #include "taint/core/TaintManager.h"
 #include "engine/core/InstrumentationManager.h"
+#include "utils/inst/ScopeFilterer.h"
 
 using std::string;
 
@@ -30,7 +31,11 @@ UINT64 threadCount = 0; //total number of threads, including main thread
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
+
 BOOL instructionLevelTracing = 0;
+ScopeFilterer scopeFilterer;
+
+//ScopeFilterer scopeFilterer = NULL;
 
 /* ===================================================================== */
 // Command line switches
@@ -171,6 +176,8 @@ VOID registerControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, UINT32 ins
 	PIN_UnlockClient();
 }
 
+
+
 VOID recvRoutineAnalyze(ADDRINT ip, THREADID tid, VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 {
 	/*
@@ -222,13 +229,13 @@ VOID registerIndirectControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, BO
 VOID InstructionTrace(INS inst, VOID* v)
 {
 	
-	/*INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+	INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
 		INS_Address(inst), IARG_UINT32, INS_Size(inst),
-		IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);*/
+		IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
 
 	//If it is a call, jump, ret, etc... We will register to which function and module the execution flow is going.
 	//Note that far jumps are not covered under control flow, and sometimes appear in Windows
-	/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+	if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 	{
 		INS_InsertCall(
 			inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst, 
@@ -244,7 +251,7 @@ VOID InstructionTrace(INS inst, VOID* v)
 			IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 			IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 			IARG_END);
-	}*/
+	}
 	
 }
 
@@ -325,30 +332,33 @@ VOID TraceTrace(TRACE trace, VOID* v)
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
 		{
-			INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-				INS_Address(inst), IARG_UINT32, INS_Size(inst),
-				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+			if (scopeFilterer.isMainExecutable(inst) || (scopeFilterer.wasMainExecutableReached() &&
+				!scopeFilterer.hasMainExecutableExited())) {
+				
+				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+					INS_Address(inst), IARG_UINT32, INS_Size(inst),
+					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
 
-			//Will only happen at the end of the BBL, although if it is a branch it may not be taken
-			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
-			{
-				INS_InsertCall(
-					inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
-					IARG_ADDRINT, INS_Address(inst),
-					IARG_BRANCH_TARGET_ADDR,
-					IARG_BRANCH_TAKEN,
-					IARG_UINT32, INS_Size(inst),
-					IARG_CONST_CONTEXT,
-					IARG_THREAD_ID,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
-					IARG_END);
-			}
-			
+				//Will only happen at the end of the BBL, although if it is a branch it may not be taken
+				if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+				{
+					INS_InsertCall(
+						inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
+						IARG_ADDRINT, INS_Address(inst),
+						IARG_BRANCH_TARGET_ADDR,
+						IARG_BRANCH_TAKEN,
+						IARG_UINT32, INS_Size(inst),
+						IARG_CONST_CONTEXT,
+						IARG_THREAD_ID,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
+						IARG_END);
+				}
+			}			
 		}
 	}
 }
@@ -417,9 +427,7 @@ VOID Fini(INT32 code, VOID* v)
 	*out << "Number of basic blocks: " << bblCount << endl;
 	*out << "Number of threads: " << threadCount << endl;
 	*out << "===============================================" << endl;*/
-
 	std::cerr << "Finished" << std::endl;
-
 }
 
 /*!
@@ -434,6 +442,8 @@ int main(int argc, char* argv[])
 
 	TaintManager taintManager;
 	taintManager.registerTaintSource("wsock32.dll", "recv");
+
+	//scopeFilterer = ScopeFilterer("a");
 
 	/*tagMap.taintMem(1233, 11);
 	tagMap.taintMem(111, 11);
@@ -485,7 +495,7 @@ int main(int argc, char* argv[])
 		if (instructionLevelTracing == 0)
 		{
 			//Instrumenting from target of branch to unconditional branch (includes calls)
-			//TRACE_AddInstrumentFunction(TraceTrace, 0);
+			TRACE_AddInstrumentFunction(TraceTrace, 0);
 			//RTN_AddInstrumentFunction(RoutineTrace, 0);
 			TRACE_AddInstrumentFunction(TraceBase, 0);
 		}

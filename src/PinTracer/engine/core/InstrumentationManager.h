@@ -1,5 +1,5 @@
-#ifndef _INSTRUMENTATION_MANAGER_
-#define _INSTRUMENTATION_MANAGER_
+#ifndef _INSTRUMENTATION_MANAGER_H_
+#define _INSTRUMENTATION_MANAGER_H_
 
 #include "pin.H"
 #include <xed-category-enum.h>
