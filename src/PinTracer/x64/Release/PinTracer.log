@@ -771,8 +771,8 @@
        Overriding target "ComputeMetaGenInputs" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.MetaGen.targets" with target "ComputeMetaGenInputs" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets".
        Overriding target "GetNativeManifest" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "GetNativeManifest" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets".
        Overriding target "GetTargetPathWithTargetPlatformMoniker" in project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" with target "GetTargetPathWithTargetPlatformMoniker" from project "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets".
-Build started 10-Jan-23 12:10:41 AM.
-Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" on node 2 (Rebuild target(s)).
+Build started 10-Jan-23 11:02:09 AM.
+Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" on node 2 (Build target(s)).
      1>Project file contains ToolsVersion="4.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="Current". For more information, please see http://go.microsoft.com/fwlink/?LinkId=293424.
        Target "EnableIntermediateOutputPathMismatchWarning" skipped, due to false condition; ('$(RestoreProjectStyle)' == 'PackageReference') was evaluated as ('' == 'PackageReference').
      1>Target "_CheckForInvalidConfigurationAndPlatform" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "SetTelemetryEnvironmentVariables" depends on it):
@@ -792,68 +792,34 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "Warning" skipped, due to false condition; ( '$(EnableBaseIntermediateOutputPathMismatchWarning)' == 'true' And '$(_InitialBaseIntermediateOutputPath)' != '$(BaseIntermediateOutputPath)' And '$(BaseIntermediateOutputPath)' != '$(MSBuildProjectExtensionsPath)' ) was evaluated as ( '' == 'true' And 'obj\' != 'obj\' And 'obj\' != 'C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\obj\' ).
      1>Done building target "_CheckForInvalidConfigurationAndPlatform" in project "PinTracer.vcxproj".
        Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
-     1>Target "SetTelemetryEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Rebuild" depends on it):
+     1>Target "SetTelemetryEnvironmentVariables" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.DesignTime.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Build" depends on it):
        Using "SetEnv" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
        Task "SetEnv"
-         VSTEL_SolutionSessionID={FC776448-816B-4C1A-91F1-DDCC0EACE3BF}
+         VSTEL_SolutionSessionID={D68BDA79-CA46-4D2E-9B5D-F32257A71EE6}
        Done executing task "SetEnv".
        Task "SetEnv"
-         VSTEL_CurrentSolutionBuildID=1820511799
+         VSTEL_CurrentSolutionBuildID=1880954360
        Done executing task "SetEnv".
        Task "SetEnv"
          VSTEL_ProjectID={639EF517-FCFC-408E-9500-71F0DC0458DB}
        Done executing task "SetEnv".
      1>Done building target "SetTelemetryEnvironmentVariables" in project "PinTracer.vcxproj".
-     1>Target "_PrepareForRebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Rebuild" depends on it):
-     1>Done building target "_PrepareForRebuild" in project "PinTracer.vcxproj".
-     1>Target "BeforeRebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Rebuild" depends on it):
-     1>Done building target "BeforeRebuild" in project "PinTracer.vcxproj".
-     1>Target "_PrepareForClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Clean" depends on it):
-       Using "Delete" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-       Task "Delete"
-         Deleting file "x64\Release\PinTracer.tlog\PinTracer.lastbuildstate".
-       Done executing task "Delete".
-     1>Done building target "_PrepareForClean" in project "PinTracer.vcxproj".
-     1>Target "BeforeClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Clean" depends on it):
-     1>Done building target "BeforeClean" in project "PinTracer.vcxproj".
-       Target "UnmanagedUnregistration" skipped, due to false condition; ((('$(_AssemblyTimestampBeforeCompile)' != '$(_AssemblyTimestampAfterCompile)' or '$(RegisterForComInterop)' != 'true' or '$(OutputType)' != 'library') or
-                           ('$(_AssemblyTimestampBeforeCompile)' == '')) and
-                          Exists('@(_UnmanagedRegistrationCache)')) was evaluated as ((('' != '' or '' != 'true' or 'library' != 'library') or
-                           ('' == '')) and
-                          Exists('obj\PinTracer.vcxproj.UnmanagedRegistration.cache')).
-     1>Target "CoreClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Clean" depends on it):
-       Task "Delete"
-         File "x64\Release\\TempCA\PinTracer.pdb" doesn't exist. Skipping.
-         File "x64\Release\\TempCA\PinTracer.dll" doesn't exist. Skipping.
-       Done executing task "Delete".
-       Using "ReadLinesFromFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-       Task "ReadLinesFromFile"
-       Done executing task "ReadLinesFromFile".
-       Using "FindUnderPath" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-       Task "FindUnderPath"
-         Comparison path is "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\".
-       Done executing task "FindUnderPath".
-       Task "FindUnderPath"
-         Comparison path is "x64\Release\".
-       Done executing task "FindUnderPath".
-       Task "Delete"
-         Deleting file "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll".
-       Done executing task "Delete".
-       Using "RemoveDuplicates" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-       Task "RemoveDuplicates"
-       Done executing task "RemoveDuplicates".
-       Using "MakeDir" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-       Task "MakeDir"
-       Done executing task "MakeDir".
-       Using "WriteLinesToFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-       Task "WriteLinesToFile"
-       Done executing task "WriteLinesToFile".
-     1>Done building target "CoreClean" in project "PinTracer.vcxproj".
-     1>Target "AssignProjectConfiguration" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "PrepareProjectReferences" depends on it):
+     1>Target "_PrepareForBuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Build" depends on it):
+       Task "CreateItem" skipped, due to false condition; ('%(CustomBuild.IncludeFileToTool)'!='') was evaluated as (''!='').
+     1>Done building target "_PrepareForBuild" in project "PinTracer.vcxproj".
+     1>Target "_PrepareForReferenceResolution" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveReferences" depends on it):
+       Task "VCMessage" skipped, due to false condition; ('$(WarnAboutIndividualManagedFiles)' == 'true') was evaluated as ('' == 'true').
+       Task "Message" skipped, due to false condition; ('$(_REFERENCE_DEBUG)'=='true') was evaluated as (''=='true').
+     1>Done building target "_PrepareForReferenceResolution" in project "PinTracer.vcxproj".
+       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('Core.cpp;engine\core\InstrumentationManager.cpp;engine\xed_iclass_instrumentation\BinaryOpc.cpp;...'!='' and 'false'=='true' and '' != 'false').
+     1>Target "BeforeResolveReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveReferences" depends on it):
+     1>Done building target "BeforeResolveReferences" in project "PinTracer.vcxproj".
+     1>Target "AssignProjectConfiguration" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveReferences" depends on it):
        Using "AssignProjectConfiguration" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "AssignProjectConfiguration"
        Done executing task "AssignProjectConfiguration".
      1>Done building target "AssignProjectConfiguration" in project "PinTracer.vcxproj".
+       Target "AssignProjectConfiguration" skipped. Previously built successfully.
      1>Target "_SplitProjectReferencesByFileExistence" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "PrepareProjectReferences" depends on it):
        Task "ResolveNonMSBuildProjectOutput" skipped, due to false condition; ('$(BuildingInsideVisualStudio)'=='true' and '@(ProjectReferenceWithConfiguration)'!='') was evaluated as ('true'=='true' and ''!='').
      1>Done building target "_SplitProjectReferencesByFileExistence" in project "PinTracer.vcxproj".
@@ -879,50 +845,8 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
                             and '@(_MSBuildProjectReferenceExistent)' != '') was evaluated as ('' == 'true'
                             and 'true' != 'true'
                             and '' != '').
-     1>Target "PrepareProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "CleanReferencedProjects" depends on it):
+     1>Target "PrepareProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveProjectReferences" depends on it):
      1>Done building target "PrepareProjectReferences" in project "PinTracer.vcxproj".
-     1>Target "CleanReferencedProjects" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Clean" depends on it):
-       Task "MSBuild" skipped, due to false condition; ('$(BuildingInsideVisualStudio)' != 'true' and '$(BuildProjectReferences)' == 'true' and '@(_MSBuildProjectReferenceExistent)' != '') was evaluated as ('true' != 'true' and 'true' == 'true' and '' != '').
-     1>Done building target "CleanReferencedProjects" in project "PinTracer.vcxproj".
-     1>Target "CleanPublishFolder" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Clean" depends on it):
-       Task "RemoveDir" skipped, due to false condition; (Exists('$(ClickOncePublishDir)')) was evaluated as (Exists('C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\app.publish\')).
-     1>Done building target "CleanPublishFolder" in project "PinTracer.vcxproj".
-     1>Target "AfterClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Clean" depends on it):
-     1>Done building target "AfterClean" in project "PinTracer.vcxproj".
-     1>Target "BeforeCppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "CppClean" depends on it):
-     1>Done building target "BeforeCppClean" in project "PinTracer.vcxproj".
-     1>Target "CoreCppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "CppClean" depends on it):
-       Task "MakeDir"
-       Done executing task "MakeDir".
-       Using "CppClean" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
-       Task "CppClean"
-       Done executing task "CppClean".
-       Task "WriteLinesToFile"
-       Done executing task "WriteLinesToFile".
-     1>Done building target "CoreCppClean" in project "PinTracer.vcxproj".
-     1>Target "AfterCppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "CppClean" depends on it):
-     1>Done building target "AfterCppClean" in project "PinTracer.vcxproj".
-     1>Target "PGInstrumentedClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "CppClean" depends on it):
-       Task "Delete"
-       Done executing task "Delete".
-     1>Done building target "PGInstrumentedClean" in project "PinTracer.vcxproj".
-     1>Target "CppClean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Clean" depends on it):
-     1>Done building target "CppClean" in project "PinTracer.vcxproj".
-     1>Target "Clean" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Rebuild" depends on it):
-     1>Done building target "Clean" in project "PinTracer.vcxproj".
-       Target "SetTelemetryEnvironmentVariables" skipped. Previously built successfully.
-     1>Target "_PrepareForBuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Build" depends on it):
-       Task "CreateItem" skipped, due to false condition; ('%(CustomBuild.IncludeFileToTool)'!='') was evaluated as (''!='').
-     1>Done building target "_PrepareForBuild" in project "PinTracer.vcxproj".
-     1>Target "_PrepareForReferenceResolution" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveReferences" depends on it):
-       Task "VCMessage" skipped, due to false condition; ('$(WarnAboutIndividualManagedFiles)' == 'true') was evaluated as ('' == 'true').
-       Task "Message" skipped, due to false condition; ('$(_REFERENCE_DEBUG)'=='true') was evaluated as (''=='true').
-     1>Done building target "_PrepareForReferenceResolution" in project "PinTracer.vcxproj".
-       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('Core.cpp;taint\core\TaintManager.cpp;taint\core\Tag.cpp;...'!='' and 'false'=='true' and '' != 'false').
-     1>Target "BeforeResolveReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveReferences" depends on it):
-     1>Done building target "BeforeResolveReferences" in project "PinTracer.vcxproj".
-       Target "AssignProjectConfiguration" skipped. Previously built successfully.
-       Target "PrepareProjectReferences" skipped. Previously built successfully.
        Target "_RemoveNameMetadataFromProjectReferenceItems" skipped, due to false condition; ('@(ProjectReference)'!='') was evaluated as (''!='').
      1>Target "ResolveProjectReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveReferences" depends on it):
        Task "MSBuild" skipped, due to false condition; ('%(_MSBuildProjectReferenceExistent.BuildReference)' == 'true' and '@(ProjectReferenceWithConfiguration)' != '' and ('$(BuildingInsideVisualStudio)' == 'true' or '$(BuildProjectReferences)' != 'true') and '$(VisualStudioVersion)' != '10.0' and '@(_MSBuildProjectReferenceExistent)' != '') was evaluated as ('' == 'true' and '' != '' and ('true' == 'true' or 'true' != 'true') and '17.0' != '10.0' and '' != '').
@@ -982,6 +906,7 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "VCMessage" skipped, due to false condition; ('$(DesignTimeBuild)' != 'true' and '$(ConfigurationPlatformExists)' != 'true') was evaluated as ('' != 'true' and 'true' != 'true').
        Task "VCMessage" skipped, due to false condition; ('$(ApplicationType)' == '' and '$(DesignTimeBuild)' != 'true' and '$(_ToolsetFound)' != 'true') was evaluated as ('' == '' and '' != 'true' and 'true' != 'true').
        Task "VCMessage" skipped, due to false condition; ('$(ApplicationType)' != '' and '$(DesignTimeBuild)' != 'true' and '$(_ToolsetFound)' != 'true') was evaluated as ('' != '' and '' != 'true' and 'true' != 'true').
+       Using "MakeDir" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "MakeDir"
        Done executing task "MakeDir".
        Task "VCMessage" skipped, due to false condition; ('$(DesignTimeBuild)'!='true' and '$(WindowsAppContainer)'=='true' and '$(ConfigurationType)'!='Application' and '$(ConfigurationType)'!='DynamicLibrary' and '$(ConfigurationType)'!='StaticLibrary') was evaluated as (''!='true' and 'false'=='true' and 'DynamicLibrary'!='Application' and 'DynamicLibrary'!='DynamicLibrary' and 'DynamicLibrary'!='StaticLibrary').
@@ -1019,7 +944,7 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Done executing task "MakeDir".
      1>Done building target "PrepareForBuild" in project "PinTracer.vcxproj".
        Target "_PrepareForReferenceResolution" skipped. Previously built successfully.
-       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('Core.cpp;taint\core\TaintManager.cpp;taint\core\Tag.cpp;...'!='' and 'false'=='true' and '' != 'false').
+       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('Core.cpp;engine\core\InstrumentationManager.cpp;engine\xed_iclass_instrumentation\BinaryOpc.cpp;...'!='' and 'false'=='true' and '' != 'false').
        Target "GetInstalledSDKLocations" skipped, due to false condition; ('@(SDKReference)' != '') was evaluated as ('' != '').
      1>Target "ResolveSDKReferences" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ResolveAssemblyReferences" depends on it):
        Task "ResolveSDKReference" skipped, due to false condition; ('@(SDKReference)'!='') was evaluated as (''!='').
@@ -1043,8 +968,10 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Target "PrepareForBuild" skipped. Previously built successfully.
        Target "PrepareForBuild" skipped. Previously built successfully.
      1>Target "InitializeBuildStatus" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Build" depends on it):
+       Using "ReadLinesFromFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "ReadLinesFromFile"
        Done executing task "ReadLinesFromFile".
+       Using "WriteLinesToFile" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "WriteLinesToFile"
        Done executing task "WriteLinesToFile".
        Using "Touch" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
@@ -1146,6 +1073,8 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
      1>Done building target "ComputeReferenceCLInput" in project "PinTracer.vcxproj".
      1>Target "WarnCompileDuplicatedFilename" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "_ClCompile" depends on it):
        Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'Core.cpp' != 'Core.cpp' and 'x64\Release\' == 'x64\Release\').
+       Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'InstrumentationManager.cpp' != 'InstrumentationManager.cpp' and 'x64\Release\' == 'x64\Release\').
+       Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'BinaryOpc.cpp' != 'BinaryOpc.cpp' and 'x64\Release\' == 'x64\Release\').
        Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'TaintManager.cpp' != 'TaintManager.cpp' and 'x64\Release\' == 'x64\Release\').
        Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'Tag.cpp' != 'Tag.cpp' and 'x64\Release\' == 'x64\Release\').
        Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'TagMap.cpp' != 'TagMap.cpp' and 'x64\Release\' == 'x64\Release\').
@@ -1171,7 +1100,7 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
      1>Target "SelectClCompile" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "ClCompile" depends on it):
      1>Done building target "SelectClCompile" in project "PinTracer.vcxproj".
        Target "SelectAnalysisManifest" skipped, due to false condition; ('$(RunMsvcAnalysis)'=='true' and '$(SelectedFiles)'!='') was evaluated as ('false'=='true' and ''!='').
-       Target "ManagedIncrementalBuildPreProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('Core.cpp;taint\core\TaintManager.cpp;taint\core\Tag.cpp;...' != '' and 'false' == 'True').
+       Target "ManagedIncrementalBuildPreProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('Core.cpp;engine\core\InstrumentationManager.cpp;engine\xed_iclass_instrumentation\BinaryOpc.cpp;...' != '' and 'false' == 'True').
      1>Target "ClCompile" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "_ClCompile" depends on it):
        Task "Delete" skipped, due to false condition; ('%(ClCompile.DebugInformationFormat)' != '' and '%(ClCompile.DebugInformationFormat)' != 'None' and '%(ClCompile.DebugInformationFormat)' != 'OldStyle' and '%(ClCompile.ProgramDataBaseFileName)' != '' and !Exists(%(ClCompile.ProgramDataBaseFileName))) was evaluated as ('' != '' and '' != 'None' and '' != 'OldStyle' and 'x64\Release\vc143.pdb' != '' and !Exists(x64\Release\vc143.pdb)).
        Task "MultiToolTask" skipped, due to false condition; ('%(ClCompile.CompilerIteration)' == 'Modules') was evaluated as ('' == 'Modules').
@@ -1179,68 +1108,38 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "CL" skipped, due to false condition; ('%(ClCompile.PrecompiledHeader)' == 'Create' and '%(ClCompile.CompilerIteration)' == '' and '$(MultiProcCL)' != 'true') was evaluated as ('' == 'Create' and '' == '' and 'false' != 'true').
        Using "CL" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
        Task "CL"
-         All source files are not up-to-date: missing command TLog "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.tlog\CL.command.1.tlog".
+         Read Tracking Logs:
+         	x64\Release\PinTracer.tlog\CL.read.1.tlog
+         Outputs for C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\CORE.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\ENGINE\CORE\INSTRUMENTATIONMANAGER.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\ENGINE\XED_ICLASS_INSTRUMENTATION\BINARYOPC.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\CORE\TAINTMANAGER.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\CORE\TAINTSOURCE.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\DATA\TAG.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\DATA\TAGMAP.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\UTILS\INST\INSTRUCTIONWORKER.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\UTILS\INST\SYSCALLPARSER.CPP:
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\CORE.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUMENTATIONMANAGER.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\BINARYOPC.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTMANAGER.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAG.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAGMAP.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTSOURCE.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUCTIONWORKER.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\SYSCALLPARSER.OBJ
+         engine\xed_iclass_instrumentation\BinaryOpc.cpp will be compiled because C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\engine\xed_iclass_instrumentation\BinaryOpc.cpp was modified at 10-Jan-23 11:02:05 AM.
+         Outputs for C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\ENGINE\XED_ICLASS_INSTRUMENTATION\BINARYOPC.CPP:
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\BINARYOPC.OBJ
+         Write Tracking Logs:
+         	x64\Release\PinTracer.tlog\CL.write.1.tlog
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=1568
-         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\CL.exe /c /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\InstLib" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\include\xed" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\components\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\libstdc++\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\arch-x86_64" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi\asm-x86" /nologo /W3 /WX- /diagnostics:column /O2 /D TARGET_IA32E /D HOST_IA32E /D TARGET_WINDOWS /D PIN_CRT=1 /D __LP64__ /Gm- /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"x64\Release\\" /Fd"x64\Release\vc143.pdb" /external:W3 /Gd /TP /wd4530 /FC /errorReport:prompt /GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h Core.cpp taint\core\TaintManager.cpp taint\core\Tag.cpp taint\core\TagMap.cpp taint\core\TaintSource.cpp utils\inst\InstructionWorker.cpp utils\inst\SyscallParser.cpp
+           VS_UNICODE_OUTPUT=1916
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\CL.exe /c /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\InstLib" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\include\xed" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\components\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\libstdc++\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\arch-x86_64" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi\asm-x86" /nologo /W3 /WX- /diagnostics:column /O2 /D TARGET_IA32E /D HOST_IA32E /D TARGET_WINDOWS /D PIN_CRT=1 /D __LP64__ /Gm- /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"x64\Release\\" /Fd"x64\Release\vc143.pdb" /external:W3 /Gd /TP /wd4530 /FC /errorReport:prompt /GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h engine\xed_iclass_instrumentation\BinaryOpc.cpp
          Tracking command:
-         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.tlog /r "C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\CORE.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\CORE\TAG.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\CORE\TAGMAP.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\CORE\TAINTMANAGER.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\TAINT\CORE\TAINTSOURCE.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\UTILS\INST\INSTRUCTIONWORKER.CPP|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\UTILS\INST\SYSCALLPARSER.CPP" /b MSBuildConsole_CancelEvent4126ae418ff5467b89d78844b2763268  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\CL.exe"  /c /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\InstLib" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\include\xed" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\components\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\libstdc++\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\arch-x86_64" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi\asm-x86" /nologo /W3 /WX- /diagnostics:column /O2 /D TARGET_IA32E /D HOST_IA32E /D TARGET_WINDOWS /D PIN_CRT=1 /D __LP64__ /Gm- /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"x64\Release\\" /Fd"x64\Release\vc143.pdb" /external:W3 /Gd /TP /wd4530 /FC /errorReport:prompt /GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h Core.cpp taint\core\TaintManager.cpp taint\core\Tag.cpp taint\core\TagMap.cpp taint\core\TaintSource.cpp utils\inst\InstructionWorker.cpp utils\inst\SyscallParser.cpp
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.tlog /r C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\ENGINE\XED_ICLASS_INSTRUMENTATION\BINARYOPC.CPP /b MSBuildConsole_CancelEventff953a15622f4554a610a1ba1eac2e4a  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\CL.exe"  /c /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\InstLib" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\include\xed" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\components\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\libstdc++\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\arch-x86_64" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi" /I"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi\asm-x86" /nologo /W3 /WX- /diagnostics:column /O2 /D TARGET_IA32E /D HOST_IA32E /D TARGET_WINDOWS /D PIN_CRT=1 /D __LP64__ /Gm- /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"x64\Release\\" /Fd"x64\Release\vc143.pdb" /external:W3 /Gd /TP /wd4530 /FC /errorReport:prompt /GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h engine\xed_iclass_instrumentation\BinaryOpc.cpp
      1>cl : command line  warning D9002: ignoring unknown option '/FP:strict'
-         Core.cpp
+         BinaryOpc.cpp
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
      1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(49,1): message : see previous definition of 'timerisset'
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(54,1): message : see previous definition of 'timercmp'
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(46,1): message : see previous definition of 'timerclear'
-         TaintManager.cpp
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(49,1): message : see previous definition of 'timerisset'
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(54,1): message : see previous definition of 'timercmp'
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(46,1): message : see previous definition of 'timerclear'
-         Tag.cpp
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         TagMap.cpp
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         TaintSource.cpp
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(49,1): message : see previous definition of 'timerisset'
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(54,1): message : see previous definition of 'timercmp'
-     1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
-       C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(46,1): message : see previous definition of 'timerclear'
-         InstructionWorker.cpp
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         SyscallParser.cpp
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-     1>C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         Generating Code...
        Done executing task "CL".
      1>Done building target "ClCompile" in project "PinTracer.vcxproj".
        Target "RunSelectedFileNativeCodeAnalysis" skipped, due to false condition; ('$(RunMsvcAnalysis)'=='true' and '$(SelectedFiles)'!='') was evaluated as ('false'=='true' and ''!='').
-       Target "ManagedIncrementalBuildPostProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('Core.cpp;taint\core\TaintManager.cpp;taint\core\Tag.cpp;...' != '' and 'false' == 'True').
+       Target "ManagedIncrementalBuildPostProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('Core.cpp;engine\core\InstrumentationManager.cpp;engine\xed_iclass_instrumentation\BinaryOpc.cpp;...' != '' and 'false' == 'True').
        Target "NoAnalysisToolEnabledWarning" skipped, due to false condition; ('$(RunCppAnalysis)'=='true' AND '$(EnableMicrosoftCodeAnalysis)'=='false' AND '$(EnableClangTidyCodeAnalysis)'=='false') was evaluated as ('false'=='true' AND 'true'=='false' AND 'false'=='false').
        Target "RunSelectedFileClangTidy" skipped, due to false condition; ('$(RunClangCppAnalysis)'=='true' AND '$(SelectedFiles)'!='') was evaluated as ('false'=='true' AND ''!='').
        Target "MicrosoftAnalysisIncompatiableWithClangCl" skipped, due to false condition; ('$(RunCppAnalysis)'=='true' AND '$(EnableMicrosoftCodeAnalysis)'=='true' AND '$(UseClangCl)'=='true') was evaluated as ('false'=='true' AND 'true'=='true' AND ''=='true').
@@ -1349,9 +1248,38 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
      1>Target "Link" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "_Link" depends on it):
        Using "Link" task from assembly "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Build.CppTasks.Common.dll".
        Task "Link"
+         Write Tracking Logs:
+         	x64\Release\PinTracer.tlog\link.write.1.tlog
+         	x64\Release\PinTracer.tlog\link.write.2u.tlog
+         Read Tracking Logs:
+         	x64\Release\PinTracer.tlog\link.read.1.tlog
+         Outputs for C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\BINARYOPC.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\CORE.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUCTIONWORKER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUMENTATIONMANAGER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\SYSCALLPARSER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAG.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAGMAP.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTMANAGER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTSOURCE.OBJ:
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\PINTRACER.DLL
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\PINTRACER.PDB
+         Inputs for C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\BINARYOPC.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\CORE.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUCTIONWORKER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUMENTATIONMANAGER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\SYSCALLPARSER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAG.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAGMAP.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTMANAGER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTSOURCE.OBJ:
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\INTEL64\LIB\PIN.LIB
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\EXTRAS\XED-INTEL64\LIB\XED.LIB
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\INTEL64\RUNTIME\PINCRT\PINCRT.LIB
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\EXTRAS\XED-INTEL64\LIB\KERNEL32.LIB
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\EXTERNAL\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\PIN-3.25-98650-G8F6168173-MSVC-WINDOWS\INTEL64\RUNTIME\PINCRT\CRTBEGINS.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\CORE.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUMENTATIONMANAGER.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\BINARYOPC.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTMANAGER.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAG.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAGMAP.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTSOURCE.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUCTIONWORKER.OBJ
+         	C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\SYSCALLPARSER.OBJ
+         	C:\WINDOWS\GLOBALIZATION\SORTING\SORTDEFAULT.NLS
+         	C:\WINDOWS\SYSTEM32\TZRES.DLL
+         	C:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\ENTERPRISE\VC\TOOLS\MSVC\14.34.31933\BIN\HOSTX64\X64\1033\LINKUI.DLL
+         Source compilation required: input C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\BINARYOPC.OBJ is newer than output C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\PINTRACER.DLL.
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=828
+           VS_UNICODE_OUTPUT=1156
          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt" pin.lib xed.lib pincrt.lib kernel32.lib crtbeginS.obj /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.pdb" /OPT:REF /TLBID:1 /ENTRY:"Ptrace_DllMainCRTStartup" /BASE:"0xC5000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.lib" /MACHINE:X64 /export:main /DLL x64\Release\Core.obj
+         x64\Release\InstrumentationManager.obj
+         x64\Release\BinaryOpc.obj
          x64\Release\TaintManager.obj
          x64\Release\Tag.obj
          x64\Release\TagMap.obj
@@ -1359,7 +1287,9 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
          x64\Release\InstructionWorker.obj
          x64\Release\SyscallParser.obj
          Tracking command:
-         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.tlog /r "C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\CORE.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUCTIONWORKER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\SYSCALLPARSER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAG.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAGMAP.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTMANAGER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTSOURCE.OBJ" /b MSBuildConsole_CancelEventdbf56415ca19443092c72fd46690d651  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt" pin.lib xed.lib pincrt.lib kernel32.lib crtbeginS.obj /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.pdb" /OPT:REF /TLBID:1 /ENTRY:"Ptrace_DllMainCRTStartup" /BASE:"0xC5000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.lib" /MACHINE:X64 /export:main /DLL x64\Release\Core.obj
+         C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.tlog /r "C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\BINARYOPC.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\CORE.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUCTIONWORKER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\INSTRUMENTATIONMANAGER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\SYSCALLPARSER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAG.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAGMAP.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTMANAGER.OBJ|C:\USERS\MARCOS\SOURCE\REPOS\H3XDUCK\TFM\SRC\PINTRACER\X64\RELEASE\TAINTSOURCE.OBJ" /b MSBuildConsole_CancelEvent279ac1f713654a2985aa93e4166b2abf  /c "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib" /LIBPATH:"..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt" pin.lib xed.lib pincrt.lib kernel32.lib crtbeginS.obj /NODEFAULTLIB /MANIFEST:NO /DEBUG /PDB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.pdb" /OPT:REF /TLBID:1 /ENTRY:"Ptrace_DllMainCRTStartup" /BASE:"0xC5000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.lib" /MACHINE:X64 /export:main /DLL x64\Release\Core.obj
+         x64\Release\InstrumentationManager.obj
+         x64\Release\BinaryOpc.obj
          x64\Release\TaintManager.obj
          x64\Release\Tag.obj
          x64\Release\TagMap.obj
@@ -1614,6 +1544,7 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Using "ConvertToAbsolutePath" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "ConvertToAbsolutePath"
        Done executing task "ConvertToAbsolutePath".
+       Using "FindUnderPath" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "FindUnderPath"
          Comparison path is "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer".
        Done executing task "FindUnderPath".
@@ -1623,6 +1554,7 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "FindUnderPath"
          Comparison path is "x64\Release\".
        Done executing task "FindUnderPath".
+       Using "RemoveDuplicates" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "RemoveDuplicates"
        Done executing task "RemoveDuplicates".
      1>Done building target "_CleanGetCurrentAndPriorFileWrites" in project "PinTracer.vcxproj".
@@ -1633,12 +1565,12 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
        Task "FindUnderPath"
          Comparison path is "x64\Release\".
        Done executing task "FindUnderPath".
+       Using "Delete" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "Delete"
        Done executing task "Delete".
        Task "RemoveDuplicates"
        Done executing task "RemoveDuplicates".
-       Task "WriteLinesToFile"
-       Done executing task "WriteLinesToFile".
+       Task "WriteLinesToFile" skipped, due to false condition; ('@(_CleanUnfilteredPriorFileWrites)'!='@(_CleanUniqueRemainingFileWritesAfterIncrementalClean)') was evaluated as ('C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll'!='C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll').
      1>Done building target "IncrementalClean" in project "PinTracer.vcxproj".
      1>Target "FinalizeBuildStatus" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Build" depends on it):
        Task "Delete"
@@ -1648,62 +1580,29 @@ Logging verbosity is set to: Detailed.     1>Project "C:\Users\Marcos\source\rep
          Touching "x64\Release\PinTracer.tlog\PinTracer.lastbuildstate".
        Done executing task "Touch".
      1>Done building target "FinalizeBuildStatus" in project "PinTracer.vcxproj".
-     1>Target "Build" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Rebuild" depends on it):
-     1>Done building target "Build" in project "PinTracer.vcxproj".
-     1>Target "AfterRebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (target "Rebuild" depends on it):
-     1>Done building target "AfterRebuild" in project "PinTracer.vcxproj".
        Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
-     1>Target "Rebuild" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (entry point):
-     1>Done building target "Rebuild" in project "PinTracer.vcxproj".
-     1>Done Building Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Rebuild target(s)).
+       Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
+     1>Target "Build" in file "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.BuildSteps.Targets" from project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (entry point):
+     1>Done building target "Build" in project "PinTracer.vcxproj".
+     1>Done Building Project "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Rebuild target) (1) ->
+       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Build target) (1) ->
        (PrepareForBuild target) -> 
          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (MyPinTool.vcxproj).  This can lead to incorrect clean and rebuild behavior.
 
 
-       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Rebuild target) (1) ->
+       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Build target) (1) ->
        (ClCompile target) -> 
          cl : command line  warning D9002: ignoring unknown option '/FP:strict'
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
          C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': macro redefinition
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': macro redefinition
-         C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': macro redefinition
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversion from 'unsigned __int64' to 'unsigned long', possible loss of data
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
-         C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: unnamed class used in typedef name cannot declare members other than non-static data members, member enumerations, or member classes
 
 
-       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Rebuild target) (1) ->
+       "C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\PinTracer.vcxproj" (Build target) (1) ->
        (Link target) -> 
          LINK : warning LNK4281: undesirable base address 0xC5000000 for x64 image; set base address above 4GB for best ASLR optimization
          crtbeginS.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
@@ -1779,7 +1678,7 @@ Build succeeded.
          pin.lib(reg.obj) : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
          crtbeginS.obj : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators
 
-    109 Warning(s)
+    79 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:02.90
+Time Elapsed 00:00:00.63

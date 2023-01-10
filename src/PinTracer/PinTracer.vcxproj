@@ -255,18 +255,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="engine\core\InstrumentationManager.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\BinaryOpc.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
-    <ClCompile Include="taint\core\Tag.cpp" />
-    <ClCompile Include="taint\core\TagMap.cpp" />
+    <ClCompile Include="taint\data\Tag.cpp" />
+    <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
     <ClCompile Include="utils\inst\InstructionWorker.cpp" />
     <ClCompile Include="utils\inst\SyscallParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config\GlobalConfig.h" />
+    <ClInclude Include="engine\core\InstrumentationManager.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\BinaryOpc.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
-    <ClInclude Include="taint\core\Tag.h" />
-    <ClInclude Include="taint\core\TagMap.h" />
+    <ClInclude Include="taint\data\Tag.h" />
+    <ClInclude Include="taint\data\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />
     <ClInclude Include="utils\io\log.h" />
     <ClInclude Include="utils\inst\InstructionWorker.h" />

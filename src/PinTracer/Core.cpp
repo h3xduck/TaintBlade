@@ -14,8 +14,8 @@
 
 #include "utils/inst/SyscallParser.h"
 #include "utils/inst/InstructionWorker.h"
-#include "taint/core/TagMap.h"
 #include "taint/core/TaintManager.h"
+#include "engine/core/InstrumentationManager.h"
 
 using std::string;
 
@@ -221,15 +221,14 @@ VOID registerIndirectControlFlowInst(ADDRINT ip, ADDRINT branchTargetAddress, BO
 
 VOID InstructionTrace(INS inst, VOID* v)
 {
-	//cerr << "started" << std::endl;
-	//std::string disassemble = INS_Disassemble(inst);
-	INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-		INS_Address(inst), /*IARG_PTR, new string(disassemble),*/ IARG_UINT32, INS_Size(inst),
-		IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+	
+	/*INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+		INS_Address(inst), IARG_UINT32, INS_Size(inst),
+		IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);*/
 
 	//If it is a call, jump, ret, etc... We will register to which function and module the execution flow is going.
 	//Note that far jumps are not covered under control flow, and sometimes appear in Windows
-	if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+	/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 	{
 		INS_InsertCall(
 			inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst, 
@@ -245,7 +244,7 @@ VOID InstructionTrace(INS inst, VOID* v)
 			IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 			IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 			IARG_END);
-	}
+	}*/
 	
 }
 
@@ -377,6 +376,19 @@ VOID ContextChangeTrace(THREADID tid, CONTEXT_CHANGE_REASON reason, const CONTEX
 }
 
 
+void TraceBase(TRACE trace, VOID* v)
+{
+	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
+	{
+		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
+		{			
+			InstrumentationManager instManager;
+			instManager.instrumentInstruction(inst);
+		}
+	}
+}
+
+
 
 /*!
  * Increase counter of threads in the application.
@@ -473,8 +485,9 @@ int main(int argc, char* argv[])
 		if (instructionLevelTracing == 0)
 		{
 			//Instrumenting from target of branch to unconditional branch (includes calls)
-			TRACE_AddInstrumentFunction(TraceTrace, 0);
-			RTN_AddInstrumentFunction(RoutineTrace, 0);
+			//TRACE_AddInstrumentFunction(TraceTrace, 0);
+			//RTN_AddInstrumentFunction(RoutineTrace, 0);
+			TRACE_AddInstrumentFunction(TraceBase, 0);
 		}
 		else if (instructionLevelTracing == 1)
 		{

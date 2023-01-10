@@ -1,8 +1,8 @@
 #ifndef _TAINT_MANAGER_H_
 #define _TAINT_MANAGER_H_
 
-#include "TagMap.h"
-#include "Tag.h"
+#include "../data/TagMap.h"
+#include "../data/Tag.h"
 #include "TaintSource.h"
 #include <iostream>
 #include <cstdio>

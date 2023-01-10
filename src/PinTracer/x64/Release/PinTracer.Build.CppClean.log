@@ -4,6 +4,8 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintsource.o
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tagmap.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tag.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintmanager.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\binaryopc.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\instrumentationmanager.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\core.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.dll
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.pdb
