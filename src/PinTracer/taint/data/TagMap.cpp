@@ -35,6 +35,15 @@ void TagMap::untaintMem(ADDRINT addr)
 	this->memTaintField.erase(addr);
 }
 
+
+void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
+{
+	//Whatever the color stored before is, we still overwrite it
+	//TODO
+
+}
+
+
 void TagMap::printTaintComplete()
 {
 	std::cerr << "MEM_TAINT_FIELD PRINT START" << std::endl;

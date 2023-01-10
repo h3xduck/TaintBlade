@@ -17,6 +17,7 @@
 #include "Tag.h"
 #include <iostream>
 #include <cstdio>
+#include "Registers.h"
 
 #define PAGE_SIZE 4096
 #define COLOR_BYTES 2
@@ -53,6 +54,12 @@ public:
 	size_t tagMapCount();
 	void taintMem(ADDRINT addr, UINT16 color);
 	void untaintMem(ADDRINT addr);
+
+	void taintReg(LEVEL_BASE::REG reg, UINT16 color);
+	void untaintReg(LEVEL_BASE::REG reg);
+
+	//TODO color combination
+
 
 	/*Debug: Dumps whole map, expensive*/
 	void printTaintComplete();

@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <fstream>
 
-#include "../xed_iclass_instrumentation/BinaryOpc.h"
+#include "../xed_iclass_instrumentation/LogicalOpc.h"
 
 //Info regarding categories from INS_Category and opcodes:
 //https://software.intel.com/sites/landingpage/pintool/docs/98484/Pin/html/group__INS__INSPECTION.html#ga3d71d53c5043092d5dbc7c96a2c30b5b
@@ -29,9 +29,11 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 
 	switch (opc)
 	{
-		//Binary instructions
+		//Logical binary instructions
+	case XED_ICLASS_AND:
+		instrumentLogicalOpc(ins);
 	default:
-		instrumentBinaryOpc(ins);
+		break;
 
 	}
 }

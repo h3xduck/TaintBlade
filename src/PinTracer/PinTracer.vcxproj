@@ -256,7 +256,7 @@
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="engine\core\InstrumentationManager.cpp" />
-    <ClCompile Include="engine\xed_iclass_instrumentation\BinaryOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\LogicalOpc.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
     <ClCompile Include="taint\data\TagMap.cpp" />
@@ -268,8 +268,9 @@
   <ItemGroup>
     <ClInclude Include="config\GlobalConfig.h" />
     <ClInclude Include="engine\core\InstrumentationManager.h" />
-    <ClInclude Include="engine\xed_iclass_instrumentation\BinaryOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\LogicalOpc.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
+    <ClInclude Include="taint\data\Registers.h" />
     <ClInclude Include="taint\data\Tag.h" />
     <ClInclude Include="taint\data\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />
