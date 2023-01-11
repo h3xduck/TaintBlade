@@ -32,7 +32,10 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		//Logical binary instructions
 		//TODO
 	case XED_ICLASS_AND:
-		instrumentLogicalOpc(ins);
+	case XED_ICLASS_OR:
+		OPC_INST::instrumentLogicalOpc(ins);
+	case XED_ICLASS_XOR:
+		OPC_INST::instrumentLogicalOpcXor(ins);
 	default:
 		break;
 
