@@ -184,7 +184,32 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 
 }
 
-void TagMap::mixTaintRegC(LEVEL_BASE::REG dest, UINT32 length, std::vector<UINT16> colorV1, std::vector<UINT16> colorV2)
+void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 color1, UINT16 color2)
+{
+	const UINT32 posStart = this->tReg.getPos(dest) + byteIndex;
+	if (color1 == EMPTY_COLOR)
+	{
+		if (color2 == EMPTY_COLOR)
+		{
+			return;
+		}
+		else
+		{
+			this->regTaintField[posStart] = Tag(color2);
+		}
+	}
+	else if (color2 == EMPTY_COLOR)
+	{
+		this->regTaintField[posStart] = Tag(color1);
+	}
+	else
+	{
+		//mix
+		this->regTaintField[posStart] = Tag(color1, color2);
+	}
+}
+
+void TagMap::mixTaintRegColors(LEVEL_BASE::REG dest, UINT32 length, std::vector<UINT16> colorV1, std::vector<UINT16> colorV2)
 {
 	const UINT32 posStart = this->tReg.getPos(dest);
 	const UINT32 taintLength = this->tReg.getTaintLength(dest);

@@ -118,7 +118,7 @@ void TaintManager::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes
 }
 
 //TODO: Think about taking the byte complexity of TagMap out to this functions
-//like in the memory ones
+//like in the taintregwithmem
 void TaintManager::taintRegNewColor(const LEVEL_BASE::REG reg)
 {
 	this->tagMap.taintRegNew(reg);
@@ -127,4 +127,18 @@ void TaintManager::taintRegNewColor(const LEVEL_BASE::REG reg)
 void TaintManager::taintRegWithReg(const LEVEL_BASE::REG destReg, LEVEL_BASE::REG srcReg)
 {
 	this->tagMap.mixTaintReg(destReg, destReg, srcReg);
+}
+
+void TaintManager::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BASE::REG src1Reg, const ADDRINT src2Mem, const UINT32 src2Bytes)
+{
+	const UINT32 destRegLength = this->tagMap.tReg.getTaintLength(destReg);
+	const UINT16 colorSrc2Mem = this->tagMap.getTaintColorMem(src2Mem);
+
+	for (int ii = 0; ii < destRegLength; ii++)
+	{
+		UINT16 colorReg = this->tagMap.getTaintColorReg(src1Reg).at(0).color;
+		
+		this->tagMap.mixTaintRegByte(destReg, ii, colorReg, colorSrc2Mem);
+	}
+	
 }

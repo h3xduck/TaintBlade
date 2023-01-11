@@ -4,6 +4,7 @@
 #include "pin.H"
 #include "../../utils/io/log.h"
 #include "Common.h"
+#include "../../taint/core/TaintManager.h"
 
 namespace OPC_INST {
 	////////////////////////////////////////////////////////

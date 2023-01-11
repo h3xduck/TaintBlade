@@ -30,13 +30,15 @@ Tag::Tag(UINT16 derivate1, UINT16 derivate2)
 	Tag::lastColor++;
 	this->color = Tag::lastColor;
 
-	std::string logLine = "Generated new color [";
-	logLine += color;
+	/*std::string logLine = "Generated new color [";
+	logLine += std::to_string(color);
 	logLine += "] by mixing [";
-	logLine += derivate1;
+	logLine += std::to_string(derivate1);
 	logLine += "] and [";
-	logLine += derivate2;
-	logLine += "]";
+	logLine += std::to_string(derivate2);
+	logLine += "]";*/
+	//LOG_DEBUG(logLine.c_str());
+	std::string logLine = "New color!";
 	LOG_DEBUG(logLine);
 
 	this->derivate1 = derivate1;

@@ -1,26 +1,27 @@
 #include "LogicalOpc.h"
 
+TaintManager taintManager;
 
-void OPC_INST::logical_mem2reg(THREADID tid, ADDRINT ip, ADDRINT mem_src, INT32 mem_src_len, REG reg_dest)
+void OPC_INST::logical_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
-	
+	taintManager.taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
 }
 
-void OPC_INST::logical_reg2reg(THREADID tid, ADDRINT ip, REG reg_src, REG reg_dest)
+void OPC_INST::logical_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
-
+	taintManager.taintRegWithReg(regDest, regSrc);
 }
 
-void OPC_INST::logical_reg2mem(THREADID tid, ADDRINT ip, REG reg_src, ADDRINT mem_dest, INT32 mem_dest_len)
+void OPC_INST::logical_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {
-
+	taintManager.taintMemWithReg(memDest, memDestLen, regSrc);
 }
 
 
 void OPC_INST::instrumentLogicalOpc(INS ins)
 {
 	//Only src operand can be imm
-	const BOOL isImmSrc = INS_OperandImmediate(ins, 1);
+	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);
 	//If dest operand is mem, src cannot be mem
 	const BOOL isMemDest = INS_IsMemoryWrite(ins);
 
@@ -37,7 +38,7 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 			if (isMemSrc)
 			{
 				//reg, mem
-				INS_CALL_M2R(logical_reg2reg, ins);
+				INS_CALL_M2R(logical_mem2reg, ins);
 				return;
 			}
 			else
