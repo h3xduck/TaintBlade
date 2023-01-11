@@ -9,14 +9,9 @@ namespace OPC_INST {
 	////////////////////////////////////////////////////////
 	//Taint functions, called from instrumentation functions
 
-	void logical_mem2reg();
-	void logical_reg2reg();
-	void logical_imm2reg();
-	void logical_imm2mem();
-	void logical_reg2mem();
-
-
-
+	void logical_mem2reg(THREADID tid, ADDRINT ip, ADDRINT mem_src, INT32 mem_src_len, REG reg_dest);
+	void logical_reg2reg(THREADID tid, ADDRINT ip, REG reg_src, REG reg_dest);
+	void logical_reg2mem(THREADID tid, ADDRINT ip, REG reg_src, ADDRINT mem_dest, INT32 mem_dest_len);
 
 
 	///////////////////////////////////////////////////////////////

@@ -2,6 +2,7 @@
 #define _TAG_H_
 
 #include "pin.H"
+#define EMPTY_COLOR 0
 
 /*
 	Tags store additional info apart from color information.
@@ -16,7 +17,8 @@ public:
 	//Last color generated as a result of mixing some others
 	static UINT16 lastColor;
 
-	Tag() {};
+	//Constructor with next color to be used, increments last color (expected to register color later)
+	Tag();
 
 	//New color, directly tainted
 	Tag(UINT16 color);
@@ -28,7 +30,8 @@ public:
 	Tag(UINT16 color, UINT16 derivate1, UINT16 derivate2);
 
 	//Mixing colors, for registers, no tags. Returns mixed color
-	UINT16 simpleColorMix(UINT16 src1, UINT16 src2);
+	Tag simpleColorMix(UINT16 src1, UINT16 src2);
+
 
 	//TODO support ternary ops and other
 };

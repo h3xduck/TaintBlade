@@ -19,6 +19,27 @@ size_t TagMap::tagMapCount()
 	return count;
 }
 
+
+UINT16 TagMap::taintMemNew(ADDRINT addr)
+{
+	auto it = this->memTaintField.find(addr);
+	Tag tag = Tag();
+	if (it == this->memTaintField.end())
+	{
+		//Byte not in map yet
+		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, tag));
+
+	}
+	else
+	{
+		it->second.color = tag.color;
+		it->second.derivate1 = EMPTY_COLOR;
+		it->second.derivate2 = EMPTY_COLOR;
+	}
+
+	return tag.color;
+}
+
 void TagMap::taintMem(ADDRINT addr, UINT16 color) 
 {
 	auto it = this->memTaintField.find(addr);
@@ -39,37 +60,58 @@ void TagMap::untaintMem(ADDRINT addr)
 	this->memTaintField.erase(addr);
 }
 
-Tag TagMap::getTaintColorMem(ADDRINT addr)
+UINT16 TagMap::getTaintColorMem(ADDRINT addr)
 {
 	auto it = this->memTaintField.find(addr);
 	if (it == this->memTaintField.end())
 	{
-		return Tag(0);
+		return EMPTY_COLOR;
 	}
 	else
 	{
-		return it->second;
+		return it->second.color;
 	}
 }
 
-void TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
+Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 {
 	Tag src1MemTag = getTaintColorMem(src1);
 	Tag src2MemTag = getTaintColorMem(src2);
 
 	//TODO IMPORTANT: add search in mixed colors collection, now it's generating a new color for each mix
+	//TODO: Check if dest is empty color
 	auto it = this->memTaintField.find(dest);
+	Tag tag;
 	if (it == this->memTaintField.end())
 	{
-		//Byte not in map yet
-		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, Tag(src1MemTag.color, src2MemTag.color)));
+		//Byte not in map yet, no mix
+		tag = Tag(src2MemTag.color);
+		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, tag));
 	}
 	else
 	{
-		it->second = Tag(src1MemTag.color, src2MemTag.color);
+		tag = Tag(src1MemTag.color, src2MemTag.color);
+		it->second = tag;
 	}
+
+	return tag;
 }
 
+
+UINT16 TagMap::taintRegNew(LEVEL_BASE::REG reg)
+{
+	//Whatever the color stored before is, we still overwrite it
+	const UINT32 posStart = this->tReg.getPos(reg);
+	const UINT32 taintLength = this->tReg.getTaintLength(reg);
+	Tag tag = Tag();
+
+	for (INT ii = posStart; ii < taintLength; ii++)
+	{
+		this->regTaintField[ii] = tag;
+	}
+
+	return tag.color;
+}
 
 void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
 {
@@ -127,9 +169,65 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 
 	for (int ii = 0; ii < src1RegColorVector.size(); ii++)
 	{
-		this->regTaintField[ii] = Tag(src1RegColorVector.at(ii).color, src2RegColorVector.at(ii).color);
+		if (src1RegColorVector.at(ii).color != EMPTY_COLOR)
+		{
+			//Mix colors
+			this->regTaintField[ii] = Tag(src1RegColorVector.at(ii).color, src2RegColorVector.at(ii).color);
+		}
+		else
+		{
+			//Src was untainted, taint it now
+			this->regTaintField[ii] = Tag(src2RegColorVector.at(ii).color);
+		}
+		
 	}
 
+}
+
+void TagMap::mixTaintRegC(LEVEL_BASE::REG dest, UINT32 length, std::vector<UINT16> colorV1, std::vector<UINT16> colorV2)
+{
+	const UINT32 posStart = this->tReg.getPos(dest);
+	const UINT32 taintLength = this->tReg.getTaintLength(dest);
+
+	for (int ii = 0; ii < length; ii++)
+	{
+		UINT16 color1 = colorV1.at(ii);
+		if (color1 == EMPTY_COLOR)
+		{
+			this->regTaintField[ii] = Tag(colorV2.at(ii));
+		}
+		else
+		{
+			this->regTaintField[ii] = Tag(color1, colorV2.at(ii));
+		}
+	}
+}
+
+void TagMap::mixTaintMemReg(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2)
+{
+	//Supported only if dest and src1 are the same memory address
+	if (dest != src1)
+	{
+		return;
+	}
+
+	const ADDRINT memIt = dest;
+	std::vector<Tag> src2RegColorVector = getTaintColorReg(src2);
+	
+	for (int ii = 0; ii < length; ii++)
+	{
+		auto it = this->memTaintField.find(dest);
+		if (it == this->memTaintField.end())
+		{
+			//Byte not in map yet, no mix
+			Tag tag = src2RegColorVector.at(ii);
+			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, tag));
+		}
+		else
+		{
+			it->second = Tag(it->second.color, src2RegColorVector.at(ii).color);
+		}
+	}
 }
 
 

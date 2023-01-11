@@ -56,3 +56,75 @@ void TaintManager::unregisterTaintSource(const std::string& dllName, const std::
 		LOG_DEBUG(logLine);
 	}
 }
+
+void TaintManager::taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes)
+{
+	ADDRINT memIt = memAddr;
+	const UINT16 newColor = this->tagMap.taintMemNew(memIt);
+	for (int ii = 0; ii < bytes-1; ii++)
+	{
+		this->tagMap.taintMem(memIt, newColor);
+		memIt += 8;
+	}
+}
+
+void TaintManager::taintMemWithMem(const ADDRINT destMem, const UINT32 destBytes, const ADDRINT srcMem, const UINT32 srcBytes)
+{
+	//src and dest should be of the same size
+	//If destMem is tainted, then colors are mixed
+	ADDRINT srcMemIt = srcMem;
+	ADDRINT destMemIt = destMem;
+	std::vector<UINT16> srcMemColor;
+	for (int ii = 0; ii < destBytes; ii++)
+	{
+		const UINT16 colorSrc = this->tagMap.getTaintColorMem(srcMemIt);
+		const UINT16 colorDest = this->tagMap.getTaintColorMem(destMemIt);
+		if (colorDest == EMPTY_COLOR)
+		{
+			this->tagMap.taintMem(destMemIt, colorSrc);
+		}
+		else
+		{
+			this->tagMap.mixTaintMem(destMemIt, destMemIt, srcMemIt);
+		}
+
+		srcMemIt += 8;
+		destMemIt += 8;
+	}
+}
+
+void TaintManager::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg)
+{
+	//TODO: Check if destBytes and srcRegLength are the same
+	const UINT32 srcRegLength = this->tagMap.tReg.getTaintLength(srcReg);
+	ADDRINT destMemIt = destMem;
+	std::vector<Tag> srcRegColorVector = this->tagMap.getTaintColorReg(srcReg);
+
+	for (int ii = 0; ii < destBytes; ii++)
+	{
+		const UINT16 colorDest = this->tagMap.getTaintColorMem(destMemIt);
+		if (colorDest == EMPTY_COLOR)
+		{
+			this->tagMap.taintMem(destMemIt, srcRegColorVector.at(ii).color);
+		}
+		else
+		{
+			this->tagMap.mixTaintMemReg(destMemIt, destBytes, destMemIt, srcReg);
+		}
+
+		destMemIt += 8;
+	}
+
+}
+
+//TODO: Think about taking the byte complexity of TagMap out to this functions
+//like in the memory ones
+void TaintManager::taintRegNewColor(const LEVEL_BASE::REG reg)
+{
+	this->tagMap.taintRegNew(reg);
+}
+
+void TaintManager::taintRegWithReg(const LEVEL_BASE::REG destReg, LEVEL_BASE::REG srcReg)
+{
+	this->tagMap.mixTaintReg(destReg, destReg, srcReg);
+}

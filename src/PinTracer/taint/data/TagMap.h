@@ -44,10 +44,9 @@ const int REG_TAINT_FIELD_LEN = 128;
 
 class TagMap
 {
-private:
+public:
 	TReg tReg;
 
-public:
 	TagMap();
 
 	//Memory tainting, byte-level
@@ -61,16 +60,22 @@ public:
 	//Collection of mixed colors and results in Tags
 	//std::tr1::unordered_map< Tag> memTaintField;
 
+	//These are to be used from the Taint Manager, and not directly from instrumentation functions
 	size_t tagMapCount();
+	UINT16 taintMemNew(ADDRINT addr);
 	void taintMem(ADDRINT addr, UINT16 color);
 	void untaintMem(ADDRINT addr);
-	Tag getTaintColorMem(ADDRINT addr);
-	void mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2);
+	UINT16 getTaintColorMem(ADDRINT addr);
+	Tag mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2);
 
+	UINT16 taintRegNew(LEVEL_BASE::REG reg);
 	void taintReg(LEVEL_BASE::REG reg, UINT16 color);
 	void untaintReg(LEVEL_BASE::REG reg);
 	std::vector<Tag> getTaintColorReg(LEVEL_BASE::REG reg);
 	void mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2);
+
+	void mixTaintRegC(LEVEL_BASE::REG dest, UINT32 length, std::vector<UINT16> colorV1, std::vector<UINT16> colorV2);
+	void mixTaintMemReg(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2);
 
 
 	/*Debug: Dumps whole map, expensive*/

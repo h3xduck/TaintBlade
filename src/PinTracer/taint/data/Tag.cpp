@@ -3,6 +3,12 @@
 
 UINT16 Tag::lastColor = 0;
 
+Tag::Tag()
+{
+	Tag::lastColor++;
+	this->color = Tag::lastColor;
+}
+
 Tag::Tag(UINT16 color)
 {
 	this->color = color;
@@ -37,8 +43,10 @@ Tag::Tag(UINT16 derivate1, UINT16 derivate2)
 	this->derivate2 = derivate2;
 }
 
-UINT16 simpleColorMix(UINT16 src1, UINT16 src2)
+Tag Tag::simpleColorMix(UINT16 src1, UINT16 src2)
 {
+	//TODO: Register the mix somewhere.
 	Tag::lastColor++;
-	return Tag::lastColor;
+	Tag tag(color, src1, src2);
+	return tag;
 }
