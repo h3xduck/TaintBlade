@@ -17,7 +17,7 @@
 #include "Tag.h"
 #include <iostream>
 #include <cstdio>
-#include "Registers.h"
+#include "TRegister.h"
 
 #define PAGE_SIZE 4096
 #define COLOR_BYTES 2
@@ -31,25 +31,34 @@
 
 	regTaintField --> Taint on CPU registers.
 	Implemented as a large contiguous set of memory bytes. Tainted registers:
-	- General purpose registers: rax to r15, including rsp and rbp. All bytes tainted.
-	- Taint EFLAGS? //TODO: Decide later. Needed for CMP.
+	- General purpose registers: rax to r15, rsi and rdi, and including rsp and rbp. All bytes tainted.
+	- Taint EFLAGS or other insts? //TODO: Decide later. Needed for CMP.
 	Each byte is tainted using an array of COLOR_BYTES bytes. These bytes are put sequentially.
 	e.g.:
-	rax: 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 <-- 8 bytes in rax, 2 COLOR_BYTES
-	rbx: 0000 0000 ...
-	...
-	r15: 0000 0000 ...
+	rax: 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 <-- 8 bytes in rax, 2 COLOR_BYTES
+	rbx: 0x00 0x00 ...
+	rcx: ...
+	rdx: ...
+	rsi: ...
+	rdi: ...
+	r8: ...
+	r15: 0x00 0x00 ...
+	rsp: 0x00 0x00 ...
+	rbp: 0x00 0x00 ...
 */
 
 class TagMap
 {
+private:
+	TReg tReg;
+
 public:
 	TagMap();
 
 	std::tr1::unordered_map<ADDRINT, Tag> memTaintField;
 
 	// 2 COLOR_BYTES * 8 bytes per register * 16 registers
-	char regTaintField[256] = { 0 };
+	UINT16 regTaintField[128] = { 0 };
 
 	size_t tagMapCount();
 	void taintMem(ADDRINT addr, UINT16 color);

@@ -4,6 +4,7 @@
 TagMap::TagMap()
 {
 	Tag memInfo = { 0 };
+	this->tReg = TReg();
 	//this->memTaintField.insert({ 0, memInfo });
 	//this->regTaintField = { 0 };
 	//LOG("LOGGING THIS");
@@ -39,8 +40,12 @@ void TagMap::untaintMem(ADDRINT addr)
 void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
 {
 	//Whatever the color stored before is, we still overwrite it
-	//TODO
-
+	const UINT32 pos_start = this->tReg.getPos(reg);
+	const UINT32 taint_length = this->tReg.getTaintLength(reg);
+	for (INT ii = pos_start; ii < taint_length; ii++)
+	{
+		this->regTaintField[ii] = color;
+	}
 }
 
 

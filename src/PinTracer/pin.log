@@ -1,3 +1,5 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  [tid:39280] Invalid tool DLL name :  C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\PinTracer.dll
+E:  [tid:96456] Cannot execute file. System error: System error 5 : Access is denied.
+. File name: "..\..\samples"
+E:  Pin is exiting due to fatal error

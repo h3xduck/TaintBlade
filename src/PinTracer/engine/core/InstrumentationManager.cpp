@@ -30,6 +30,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	switch (opc)
 	{
 		//Logical binary instructions
+		//TODO
 	case XED_ICLASS_AND:
 		instrumentLogicalOpc(ins);
 	default:
