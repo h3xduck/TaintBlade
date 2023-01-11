@@ -30,22 +30,17 @@
 	Each byte is tainted using an array of COLOR_BYTES bytes.
 
 	regTaintField --> Taint on CPU registers.
-	Implemented as a large contiguous set of memory bytes. Tainted registers:
+	Implemented as an array of Tags, one for each register byte. Tainted registers:
 	- General purpose registers: rax to r15, rsi and rdi, and including rsp and rbp. All bytes tainted.
 	- Taint EFLAGS or other insts? //TODO: Decide later. Needed for CMP.
-	Each byte is tainted using an array of COLOR_BYTES bytes. These bytes are put sequentially.
-	e.g.:
-	rax: 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 <-- 8 bytes in rax, 2 COLOR_BYTES
-	rbx: 0x00 0x00 ...
-	rcx: ...
-	rdx: ...
-	rsi: ...
-	rdi: ...
-	r8: ...
-	r15: 0x00 0x00 ...
-	rsp: 0x00 0x00 ...
-	rbp: 0x00 0x00 ...
+	Order: 
+		rax, rbx, rcx, rdx,
+		rsi, rdi,
+		r8, r9, r10, r11, r12, r13, r14, r15,
+		rsp, rbp
 */
+
+const int REG_TAINT_FIELD_LEN = 128;
 
 class TagMap
 {
@@ -55,20 +50,27 @@ private:
 public:
 	TagMap();
 
+	//Memory tainting, byte-level
 	std::tr1::unordered_map<ADDRINT, Tag> memTaintField;
 
+	//Register tainting
 	// 2 COLOR_BYTES * 8 bytes per register * 16 registers
-	UINT16 regTaintField[128] = { 0 };
+	Tag regTaintField[REG_TAINT_FIELD_LEN];
+
+	//TODO -- Right now a new color is generated for each new mix
+	//Collection of mixed colors and results in Tags
+	//std::tr1::unordered_map< Tag> memTaintField;
 
 	size_t tagMapCount();
 	void taintMem(ADDRINT addr, UINT16 color);
 	void untaintMem(ADDRINT addr);
+	Tag getTaintColorMem(ADDRINT addr);
+	void mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2);
 
 	void taintReg(LEVEL_BASE::REG reg, UINT16 color);
 	void untaintReg(LEVEL_BASE::REG reg);
-	void mixTaintReg(LEVEL_BASE::REG reg1, LEVEL_BASE::REG reg2);
-
-	//TODO color combination
+	std::vector<Tag> getTaintColorReg(LEVEL_BASE::REG reg);
+	void mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2);
 
 
 	/*Debug: Dumps whole map, expensive*/
