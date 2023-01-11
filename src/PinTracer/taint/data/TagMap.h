@@ -66,6 +66,7 @@ public:
 
 	void taintReg(LEVEL_BASE::REG reg, UINT16 color);
 	void untaintReg(LEVEL_BASE::REG reg);
+	void mixTaintReg(LEVEL_BASE::REG reg1, LEVEL_BASE::REG reg2);
 
 	//TODO color combination
 

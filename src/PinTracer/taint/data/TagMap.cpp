@@ -1,9 +1,7 @@
 #include "TagMap.h"
-#include "Tag.h"
 
 TagMap::TagMap()
 {
-	Tag memInfo = { 0 };
 	this->tReg = TReg();
 	//this->memTaintField.insert({ 0, memInfo });
 	//this->regTaintField = { 0 };
@@ -46,6 +44,22 @@ void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
 	{
 		this->regTaintField[ii] = color;
 	}
+}
+
+void TagMap::untaintReg(LEVEL_BASE::REG reg)
+{
+	const UINT32 pos_start = this->tReg.getPos(reg);
+	const UINT32 taint_length = this->tReg.getTaintLength(reg);
+	for (INT ii = pos_start; ii < taint_length; ii++)
+	{
+		//0 is considered the 'untainted' color
+		this->regTaintField[ii] = 0;
+	}
+}
+
+void TagMap::mixTaintReg(LEVEL_BASE::REG reg1, LEVEL_BASE::REG reg2)
+{
+
 }
 
 
