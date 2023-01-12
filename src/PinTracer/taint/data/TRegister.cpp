@@ -36,27 +36,32 @@ UINT32 TReg::getPos(INT reg)
 	}
 }
 
-UINT32 TReg::getTaintLength(INT reg)
+UINT32 TReg::getTaintLength(LEVEL_BASE::REG reg)
 {
-	if (REG_is_gr64(static_cast<LEVEL_BASE::REG>(reg)))
+	if (!REG_valid(reg))
+	{
+		LOG_DEBUG("Invalid register found");
+		return 0;
+	}
+	if (REG_is_gr64(reg))
 	{
 		return 8;
 	}
-	else if(REG_is_gr32(static_cast<LEVEL_BASE::REG>(reg)))
+	else if(REG_is_gr32(reg))
 	{
 		return 4;
 	}
-	else if (REG_is_gr16(static_cast<LEVEL_BASE::REG>(reg)))
+	else if (REG_is_gr16(reg))
 	{
 		return 2;
 	}
-	else if (REG_is_gr8(static_cast<LEVEL_BASE::REG>(reg)))
+	else if (REG_is_gr8(reg))
 	{
 		return 1;
 	}
 	else
 	{
-		LOG_ERR("Tried to get taint length of non supported register");
-		return 256;
+		LOG_ERR("Tried to get taint length of non supported register: "<<reg);
+		return 0;
 	}
 }

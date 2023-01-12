@@ -97,6 +97,7 @@ void TaintManager::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes
 {
 	//TODO: Check if destBytes and srcRegLength are the same
 	const UINT32 srcRegLength = this->tagMap.tReg.getTaintLength(srcReg);
+	LOG_DEBUG("Length of register: "<<srcRegLength);
 	ADDRINT destMemIt = destMem;
 	std::vector<Tag> srcRegColorVector = this->tagMap.getTaintColorReg(srcReg);
 
@@ -105,10 +106,12 @@ void TaintManager::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes
 		const UINT16 colorDest = this->tagMap.getTaintColorMem(destMemIt);
 		if (colorDest == EMPTY_COLOR)
 		{
+			LOG_DEBUG("Empty color");
 			this->tagMap.taintMem(destMemIt, srcRegColorVector.at(ii).color);
 		}
 		else
 		{
+			LOG_DEBUG("Mixing colors");
 			this->tagMap.mixTaintMemReg(destMemIt, destBytes, destMemIt, srcReg);
 		}
 

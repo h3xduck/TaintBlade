@@ -334,7 +334,6 @@ VOID TraceTrace(TRACE trace, VOID* v)
 		{
 			if (scopeFilterer.isMainExecutable(inst) || (scopeFilterer.wasMainExecutableReached() &&
 				!scopeFilterer.hasMainExecutableExited())) {
-				
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
 					INS_Address(inst), IARG_UINT32, INS_Size(inst),
 					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
@@ -495,7 +494,7 @@ int main(int argc, char* argv[])
 		if (instructionLevelTracing == 0)
 		{
 			//Instrumenting from target of branch to unconditional branch (includes calls)
-			TRACE_AddInstrumentFunction(TraceTrace, 0);
+			//TRACE_AddInstrumentFunction(TraceTrace, 0);
 			//RTN_AddInstrumentFunction(RoutineTrace, 0);
 			TRACE_AddInstrumentFunction(TraceBase, 0);
 		}

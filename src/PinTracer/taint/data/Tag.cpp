@@ -38,8 +38,8 @@ Tag::Tag(UINT16 derivate1, UINT16 derivate2)
 	logLine += std::to_string(derivate2);
 	logLine += "]";*/
 	//LOG_DEBUG(logLine.c_str());
-	std::string logLine = "New color!";
-	LOG_DEBUG(logLine);
+
+	LOG_DEBUG("New color!");
 
 	this->derivate1 = derivate1;
 	this->derivate2 = derivate2;

@@ -15,7 +15,7 @@ public:
 	
 	TReg();
 	UINT32 getPos(INT reg);
-	UINT32 getTaintLength(INT reg);
+	UINT32 getTaintLength(LEVEL_BASE::REG reg);
 };
 
 
