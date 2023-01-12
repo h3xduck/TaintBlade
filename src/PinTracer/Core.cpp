@@ -34,6 +34,7 @@ std::ostream* imageInfoOut = &std::cerr;
 
 BOOL instructionLevelTracing = 0;
 ScopeFilterer scopeFilterer;
+extern TaintManager taintManager;
 
 //ScopeFilterer scopeFilterer = NULL;
 
@@ -438,8 +439,6 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
-
-	TaintManager taintManager;
 	taintManager.registerTaintSource("wsock32.dll", "recv");
 
 	//scopeFilterer = ScopeFilterer("a");

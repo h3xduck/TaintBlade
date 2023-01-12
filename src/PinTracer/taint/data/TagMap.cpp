@@ -10,7 +10,7 @@ TagMap::TagMap()
 	
 	//this->memTaintField.insert({ 0, memInfo });
 	//this->regTaintField = { 0 };
-	//LOG("LOGGING THIS");
+	LOG_DEBUG("TagMap initialized");
 }
 
 size_t TagMap::tagMapCount()
@@ -139,11 +139,13 @@ std::vector<Tag> TagMap::getTaintColorReg(LEVEL_BASE::REG reg)
 {
 	const UINT32 posStart = this->tReg.getPos(reg);
 	const UINT32 taintLength = this->tReg.getTaintLength(reg);
-	
+	LOG_DEBUG("Register length: "<<taintLength);
+
 	std::vector<Tag> colorVector;
-	for (INT ii = posStart; ii < taintLength; ii++)
+	for (UINT32 ii = posStart; ii < posStart+taintLength; ii++)
 	{
-		colorVector.push_back(Tag(this->regTaintField[ii]));
+		LOG_DEBUG("Pushed color " << this->regTaintField[ii].color);
+		colorVector.push_back(this->regTaintField[ii]);
 	}
 
 	return colorVector;

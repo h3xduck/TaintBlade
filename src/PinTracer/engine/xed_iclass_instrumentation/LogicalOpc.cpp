@@ -1,7 +1,5 @@
 #include "LogicalOpc.h"
 
-TaintManager taintManager;
-
 void OPC_INST::logical_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
 	taintManager.taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
@@ -30,6 +28,8 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 		if (isMemDest)
 		{
 			//mem, reg
+			std::string dis = INS_Disassemble(ins);
+			LOG_DEBUG("OPC: " << dis);
 			INS_CALL_R2M(logical_reg2mem, ins);
 		}
 		else
@@ -38,13 +38,13 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 			if (isMemSrc)
 			{
 				//reg, mem
-				INS_CALL_M2R(logical_mem2reg, ins);
+				//INS_CALL_M2R(logical_mem2reg, ins);
 				return;
 			}
 			else
 			{
 				//reg, reg
-				INS_CALL_R2R(logical_reg2reg, ins);
+				//INS_CALL_R2R(logical_reg2reg, ins);
 				return;
 			}
 		}

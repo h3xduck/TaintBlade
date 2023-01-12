@@ -6,6 +6,8 @@
 #include "Common.h"
 #include "../../taint/core/TaintManager.h"
 
+extern TaintManager taintManager;
+
 namespace OPC_INST {
 	////////////////////////////////////////////////////////
 	//Taint functions, called from instrumentation functions

@@ -1,5 +1,7 @@
 #include "TaintManager.h"
 
+TaintManager taintManager;
+
 void TaintManager::registerTaintSource(const std::string& dllName, const std::string& funcName)
 {
 	//Select handler depending on function
@@ -97,7 +99,8 @@ void TaintManager::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes
 {
 	//TODO: Check if destBytes and srcRegLength are the same
 	const UINT32 srcRegLength = this->tagMap.tReg.getTaintLength(srcReg);
-	LOG_DEBUG("Length of register: "<<srcRegLength);
+	LOG_DEBUG("M2R --> M:" << std::hex << destMem << "(len:" << std::dec << destBytes << ")  R:" << REG_StringShort(srcReg)<<"(code:"<<srcReg<<")");
+	LOG_DEBUG("Length of register: "<<srcRegLength << " | length of memory: "<<destBytes);
 	ADDRINT destMemIt = destMem;
 	std::vector<Tag> srcRegColorVector = this->tagMap.getTaintColorReg(srcReg);
 
@@ -106,7 +109,9 @@ void TaintManager::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes
 		const UINT16 colorDest = this->tagMap.getTaintColorMem(destMemIt);
 		if (colorDest == EMPTY_COLOR)
 		{
-			LOG_DEBUG("Empty color");
+			UINT16 color = srcRegColorVector[ii].color;
+			LOG_DEBUG("Here");
+			LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << color << " from reg " << REG_StringShort(srcReg));
 			this->tagMap.taintMem(destMemIt, srcRegColorVector.at(ii).color);
 		}
 		else
