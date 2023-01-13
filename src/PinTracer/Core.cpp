@@ -323,20 +323,7 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	LOG_INFO("Routine: " << rtnName << " | DLLname: " << dllName);
 
 	//Check if it should be tainted
-	if (rtnName == "recv" && dllName.find("WSOCK32.dll") != std::string::npos)
-	{
-		std::cerr << "IMG: " << dllName << " | RTN: " << rtnName << " |ADDR: " << firstAddr << std::endl;
-		RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)recvRoutineAnalyze,
-			IARG_ADDRINT, firstAddr,
-			IARG_THREAD_ID,
-			IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
-			IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
-			IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
-			IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
-			IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
-			IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
-			IARG_END);
-	}
+	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
 	
 
 	RTN_Close(rtn);
@@ -459,8 +446,8 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
-	taintManager.registerTaintSource("wsock32.dll", "recv");
-	taintManager.printTaint();
+	taintManager.registerTaintSource("wsock32.dll", "recv", 4);
+	taintManager.registerTaintSource("C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
 
 	//scopeFilterer = ScopeFilterer("a");
 

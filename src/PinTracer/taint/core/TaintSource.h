@@ -3,6 +3,7 @@
 
 #include "../../utils/io/log.h"
 
+#define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
 #define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
 
@@ -12,12 +13,10 @@ namespace WINDOWS
 #include <WinSock2.h>
 }
 
-
-
 class TaintSource
 {
 private:
-
+	
 public:
 	//Handlers
 	static VOID wsockRecvEnter()
@@ -28,6 +27,19 @@ public:
 	{
 		LOG_ERR("Not implemented");
 	}
+
+	static VOID mainEnter()
+	{
+		LOG_DEBUG("Called mainEnter()");
+		//Test: taint RAX
+		//TODO
+
+	};
+	static VOID mainExit()
+	{
+		LOG_ERR("Called mainExit(): Not implemented");
+	}
+
 
 	struct func_args_t
 	{
@@ -49,20 +61,13 @@ public:
 
 	std::string dllName;
 	std::string funcName;
-	int numArgs = 4;
+	int numArgs = 0;
 
 	//placeholders
 	VOID(*enterHandler)() = NULL;
 	VOID(*exitHandler)() = NULL;
 
-	TaintSource(const std::string& dllName, const std::string& funcName, VOID(*enter)(), VOID(*exit)())
-	{
-		this->dllName = dllName;
-		this->funcName = funcName;
-		this->enterHandler = enter;
-		this->exitHandler = exit;
-		LOG_DEBUG("TaintSource initiated");
-	};
+	TaintSource(const std::string& dllName, const std::string& funcName, int numArgs, VOID(*enter)(), VOID(*exit)());
 
 	void taintSourceLogAll();
 

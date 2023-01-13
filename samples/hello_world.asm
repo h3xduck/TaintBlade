@@ -13,4 +13,5 @@ extern _CRT_INIT
 main:
     xor rax, rax
     and [msg], rax
+    xor rbx, rbx
     ret

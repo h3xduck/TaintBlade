@@ -33,6 +33,7 @@
 
 #else
 #define LOG_DEBUG(msg, ...)
+#define LOG_INFO(msg, ...) LOG_INT_SHORT("[INFO] " << msg)
 #endif
 
 

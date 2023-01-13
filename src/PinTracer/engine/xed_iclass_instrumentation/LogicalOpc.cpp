@@ -2,17 +2,17 @@
 
 void OPC_INST::logical_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
-	taintManager.taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
+	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
 }
 
 void OPC_INST::logical_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
-	taintManager.taintRegWithReg(regDest, regSrc);
+	taintManager.getController().taintRegWithReg(regDest, regSrc);
 }
 
 void OPC_INST::logical_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {
-	taintManager.taintMemWithReg(memDest, memDestLen, regSrc);
+	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
 }
 
 
