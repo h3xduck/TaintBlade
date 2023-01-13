@@ -17,8 +17,11 @@ public:
 	//Last color generated as a result of mixing some others
 	static UINT16 lastColor;
 
-	//Constructor with next color to be used, increments last color (expected to register color later)
-	Tag();
+	//Empty tag
+	Tag() {};
+
+	//Tag with next color to be used, increments last color (expected to register color later)
+	static Tag tagNext();
 
 	//New color, directly tainted
 	Tag(UINT16 color);

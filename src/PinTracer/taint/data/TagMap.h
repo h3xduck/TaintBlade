@@ -76,7 +76,7 @@ public:
 
 	void mixTaintRegColors(LEVEL_BASE::REG dest, UINT32 length, std::vector<UINT16> colorV1, std::vector<UINT16> colorV2);
 	void mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colorV1, UINT16 colorV2);
-	void mixTaintMemReg(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2);
+	void mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2);
 
 
 	/*Debug: Dumps whole mem map, expensive*/

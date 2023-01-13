@@ -1,5 +1,8 @@
 #include "TaintController.h"
 
+
+TaintController taintController;
+
 TaintController::TaintController()
 {
 	LOG_INFO("TaintController initialized");
@@ -45,8 +48,7 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 {
 	//TODO: Check if destBytes and srcRegLength are the same
 	const UINT32 srcRegLength = this->tagMap.tReg.getTaintLength(srcReg);
-	LOG_DEBUG("M2R --> M:" << std::hex << destMem << "(len:" << std::dec << destBytes << ")  R:" << REG_StringShort(srcReg) << "(code:" << srcReg << ")");
-	LOG_DEBUG("Length of register: " << srcRegLength << " | length of memory: " << destBytes);
+	LOG_DEBUG("M2R --> M:" << destMem << "(len:" << destBytes << ")  R:" << REG_StringShort(srcReg) << "(code:" << srcReg << ")");
 	ADDRINT destMemIt = destMem;
 	std::vector<Tag> srcRegColorVector = this->tagMap.getTaintColorReg(srcReg);
 
@@ -56,16 +58,17 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 		if (colorDest == EMPTY_COLOR)
 		{
 			UINT16 color = srcRegColorVector[ii].color;
-			LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << color << " from reg " << REG_StringShort(srcReg));
-			this->tagMap.taintMem(destMemIt, srcRegColorVector.at(ii).color);
+			LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << unsigned(color) << " from reg " << REG_StringShort(srcReg));
+			this->tagMap.taintMem(destMemIt, color);
 		}
 		else
 		{
 			LOG_DEBUG("Mixing colors");
-			this->tagMap.mixTaintMemReg(destMemIt, destBytes, destMemIt, srcReg);
+			this->tagMap.mixTaintMemRegAllBytes(destMemIt, destBytes, destMemIt, srcReg);
+			return;
 		}
 
-		destMemIt += 8;
+		destMemIt += 1;
 	}
 
 }

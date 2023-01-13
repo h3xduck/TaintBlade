@@ -33,18 +33,17 @@
 	}	\
 	INS_CALL_RTN_TAINT_EXIT(rtn, exit_handler)
 	
+extern TaintController taintController;
 
 class TaintManager
 {
 private:
-	TaintController taintController;
 	std::tr1::unordered_map <std::string, std::vector<TaintSource>> taintFunctionMap;
-
 
 public:
 	TaintManager();
 
-	TaintController getController();
+	TaintController& getController();
 
 	void routineLoadedEvent(RTN rtn, const std::string& dllName, const std::string& funcName);
 

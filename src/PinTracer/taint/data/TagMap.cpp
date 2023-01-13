@@ -45,9 +45,10 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color)
 	auto it = this->memTaintField.find(addr);
 	if (it == this->memTaintField.end())
 	{
+		LOG_DEBUG("New memory taint--> ADDR:" << addr << " COL:" << color);
 		//Byte not in map yet
 		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, Tag(color)));
-
+		this->printMemTaintComplete();
 	}
 	else
 	{
@@ -103,9 +104,11 @@ UINT16 TagMap::taintRegNew(LEVEL_BASE::REG reg)
 	//Whatever the color stored before is, we still overwrite it
 	const UINT32 posStart = this->tReg.getPos(reg);
 	const UINT32 taintLength = this->tReg.getTaintLength(reg);
-	Tag tag = Tag();
+	Tag tag = Tag::tagNext();
 
-	for (INT ii = posStart; ii < taintLength; ii++)
+	LOG_DEBUG("Tainting new register:: POS:" << posStart << " LEN:" << taintLength << " COL:" << tag.color << " LCOL:" << tag.lastColor);
+
+	for (INT ii = posStart; ii < posStart+taintLength; ii++)
 	{
 		this->regTaintField[ii] = tag;
 	}
@@ -144,7 +147,6 @@ std::vector<Tag> TagMap::getTaintColorReg(LEVEL_BASE::REG reg)
 	std::vector<Tag> colorVector;
 	for (UINT32 ii = posStart; ii < posStart+taintLength; ii++)
 	{
-		LOG_DEBUG("Pushed color " << this->regTaintField[ii].color);
 		colorVector.push_back(this->regTaintField[ii]);
 	}
 
@@ -230,11 +232,12 @@ void TagMap::mixTaintRegColors(LEVEL_BASE::REG dest, UINT32 length, std::vector<
 	}
 }
 
-void TagMap::mixTaintMemReg(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2)
+void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2)
 {
 	//Supported only if dest and src1 are the same memory address
 	if (dest != src1)
 	{
+		LOG_ERR("Dest and src1 were not the same");
 		return;
 	}
 
@@ -243,17 +246,16 @@ void TagMap::mixTaintMemReg(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BAS
 	
 	for (int ii = 0; ii < length; ii++)
 	{
-		auto it = this->memTaintField.find(dest);
+		auto it = this->memTaintField.find(dest+ii);
+		UINT16 color = src2RegColorVector.at(ii).color;
 		if (it == this->memTaintField.end())
 		{
-			//Byte not in map yet, no mix
-			Tag tag = src2RegColorVector.at(ii);
-			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, tag));
+			taintMem(dest + ii, color);
+			continue;
 		}
-		else
-		{
-			it->second = Tag(it->second.color, src2RegColorVector.at(ii).color);
-		}
+		LOG_DEBUG("MIX R2M--> MEMCOL:" << it->second.color << " REGCOL:" << color);
+		it->second = Tag(it->second.color, color);
+		LOG_DEBUG("NEW MEMCOL:" << it->second.color);
 	}
 }
 
@@ -270,8 +272,14 @@ void TagMap::printMemTaintComplete()
 void TagMap::printRegTaintComplete()
 {
 	std::cerr << "REG_TAINT_FIELD PRINT START" << std::endl;
-	for (int ii = 0; ii < 128; ii++) {
-		std::cerr << "{" << ii << ": " << this->regTaintField->color << "}\n";
+	const int NUM_COLUMNS = 8;
+	for (int ii = 0; ii < 128; ii+=NUM_COLUMNS)
+	{
+		for (int jj = 0; jj < NUM_COLUMNS; jj++)
+		{
+			std::cerr << "{" << ii+jj << ": " << this->regTaintField[ii+jj].color << "} ";
+		}
+		std::cerr << std::endl;
 	}
 	std::cerr << std::endl << "REG_TAINT_FIELD PRINT END" << std::endl;
 }

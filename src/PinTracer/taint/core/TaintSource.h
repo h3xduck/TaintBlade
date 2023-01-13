@@ -2,6 +2,7 @@
 #define _TAINT_SOURCE_H_
 
 #include "../../utils/io/log.h"
+#include "TaintController.h"
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
@@ -12,6 +13,8 @@ namespace WINDOWS
 #include <windows.h>
 #include <WinSock2.h>
 }
+
+extern TaintController taintController;
 
 class TaintSource
 {
@@ -31,13 +34,16 @@ public:
 	static VOID mainEnter()
 	{
 		LOG_DEBUG("Called mainEnter()");
+		
 		//Test: taint RAX
-		//TODO
-
+		taintController.printTaint();
+		taintController.taintRegNewColor(REG_RAX);
+		taintController.taintRegNewColor(REG_RBX);
 	};
 	static VOID mainExit()
 	{
-		LOG_ERR("Called mainExit(): Not implemented");
+		LOG_DEBUG("Called mainExit()");
+		taintController.printTaint();
 	}
 
 

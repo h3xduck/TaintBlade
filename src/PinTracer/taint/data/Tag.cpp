@@ -3,10 +3,12 @@
 
 UINT16 Tag::lastColor = 0;
 
-Tag::Tag()
+Tag Tag::tagNext()
 {
+	Tag tag = Tag();
 	Tag::lastColor++;
-	this->color = Tag::lastColor;
+	tag.color = Tag::lastColor;
+	return tag;
 }
 
 Tag::Tag(UINT16 color)
@@ -39,7 +41,6 @@ Tag::Tag(UINT16 derivate1, UINT16 derivate2)
 	logLine += "]";*/
 	//LOG_DEBUG(logLine.c_str());
 
-	LOG_DEBUG("New color!");
 
 	this->derivate1 = derivate1;
 	this->derivate2 = derivate2;

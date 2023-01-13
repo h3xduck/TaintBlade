@@ -8,9 +8,9 @@ TaintManager::TaintManager()
 }
 
 
-TaintController TaintManager::getController()
+TaintController& TaintManager::getController()
 {
-	return this->taintController;
+	return taintController;
 }
 
 void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const std::string& funcName)

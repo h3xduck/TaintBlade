@@ -83,7 +83,7 @@ UINT32 TReg::getPos(INT reg)
 	auto it = this->regIndexMapping.find(reg);
 	if (it != this->regIndexMapping.end()) 
 	{ 
-		LOG_DEBUG("Found reg " << reg << " at position " << it->second);
+		//LOG_DEBUG("Found reg " << reg << " at position " << it->second);
 		return it->second;
 	}
 	else 
