@@ -5,12 +5,12 @@ TagMap::TagMap()
 	this->tReg = TReg();
 	for (int ii = 0; ii < REG_TAINT_FIELD_LEN; ii++)
 	{
-		this->regTaintField[ii] = Tag();
+		this->regTaintField[ii] = Tag(0);
 	}
 	
 	//this->memTaintField.insert({ 0, memInfo });
 	//this->regTaintField = { 0 };
-	LOG_DEBUG("TagMap initialized");
+	LOG_INFO("TagMap initialized");
 }
 
 size_t TagMap::tagMapCount()
@@ -258,11 +258,20 @@ void TagMap::mixTaintMemReg(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BAS
 }
 
 
-void TagMap::printTaintComplete()
+void TagMap::printMemTaintComplete()
 {
 	std::cerr << "MEM_TAINT_FIELD PRINT START" << std::endl;
 	for (auto const& pair : this->memTaintField) {
 		std::cerr << "{" << pair.first << ": " << pair.second.color << "}\n";
 	}
 	std::cerr << std::endl << "MEM_TAINT_FIELD PRINT END" << std::endl;
+}
+
+void TagMap::printRegTaintComplete()
+{
+	std::cerr << "REG_TAINT_FIELD PRINT START" << std::endl;
+	for (int ii = 0; ii < 128; ii++) {
+		std::cerr << "{" << ii << ": " << this->regTaintField->color << "}\n";
+	}
+	std::cerr << std::endl << "REG_TAINT_FIELD PRINT END" << std::endl;
 }

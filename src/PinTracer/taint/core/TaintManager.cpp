@@ -2,6 +2,11 @@
 
 TaintManager taintManager;
 
+TaintManager::TaintManager()
+{ 
+	LOG_INFO("TaintManager initialized");
+}
+
 void TaintManager::registerTaintSource(const std::string& dllName, const std::string& funcName)
 {
 	//Select handler depending on function
@@ -110,7 +115,6 @@ void TaintManager::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes
 		if (colorDest == EMPTY_COLOR)
 		{
 			UINT16 color = srcRegColorVector[ii].color;
-			LOG_DEBUG("Here");
 			LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << color << " from reg " << REG_StringShort(srcReg));
 			this->tagMap.taintMem(destMemIt, srcRegColorVector.at(ii).color);
 		}
@@ -149,4 +153,10 @@ void TaintManager::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BA
 		this->tagMap.mixTaintRegByte(destReg, ii, colorReg, colorSrc2Mem);
 	}
 	
+}
+
+void TaintManager::printTaint()
+{
+	this->tagMap.printMemTaintComplete();
+	this->tagMap.printRegTaintComplete();
 }

@@ -391,9 +391,14 @@ void TraceBase(TRACE trace, VOID* v)
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
-		{			
+		{		
 			InstrumentationManager instManager;
-			instManager.instrumentInstruction(inst);
+			if (scopeFilterer.isMainExecutable(inst)) {
+				instManager.instrumentInstruction(inst);
+				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+					INS_Address(inst), IARG_UINT32, INS_Size(inst),
+					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+			}
 		}
 	}
 }
@@ -440,6 +445,7 @@ VOID Fini(INT32 code, VOID* v)
 int main(int argc, char* argv[])
 {
 	taintManager.registerTaintSource("wsock32.dll", "recv");
+	taintManager.printTaint();
 
 	//scopeFilterer = ScopeFilterer("a");
 

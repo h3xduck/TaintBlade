@@ -79,8 +79,9 @@ public:
 	void mixTaintMemReg(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2);
 
 
-	/*Debug: Dumps whole map, expensive*/
-	void printTaintComplete();
+	/*Debug: Dumps whole mem map, expensive*/
+	void printMemTaintComplete();
+	void printRegTaintComplete();
 
 };
 

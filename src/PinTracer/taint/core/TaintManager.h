@@ -15,6 +15,8 @@ private:
 
 public:
 
+	TaintManager();
+
 	void registerTaintSource(const std::string& dllName, const std::string& funcName);
 	void unregisterTaintSource(const std::string& dllName, const std::string& funcName);
 
@@ -25,6 +27,8 @@ public:
 	void taintRegNewColor(const LEVEL_BASE::REG reg);
 	void taintRegWithReg(const LEVEL_BASE::REG destReg, LEVEL_BASE::REG srcReg);
 	void taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BASE::REG src1Reg, const ADDRINT src2Mem, const UINT32 src2Bytes);
+
+	void printTaint();
 };
 
 #endif
