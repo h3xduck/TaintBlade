@@ -299,6 +299,19 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	RTN_Open(rtn);
 
 	ADDRINT firstAddr = RTN_Address(rtn);
+
+	const INS insHead = RTN_InsHead(rtn);
+	if (!INS_Valid(insHead))
+	{
+		RTN_Close(rtn);
+		return;
+	}
+	InstrumentationManager instManager;
+	if (!scopeFilterer.isMainExecutable(insHead)) {
+		RTN_Close(rtn);
+		return;
+	}
+
 	IMG module = IMG_FindByAddress(firstAddr);
 	if(!IMG_Valid(module))
 	{
@@ -306,6 +319,8 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 		return;
 	}
 	std::string dllName = IMG_Name(module);
+
+	LOG_INFO("Routine: " << rtnName << " | DLLname: " << dllName);
 
 	//Check if it should be tainted
 	if (rtnName == "recv" && dllName.find("WSOCK32.dll") != std::string::npos)
@@ -500,7 +515,7 @@ int main(int argc, char* argv[])
 		{
 			//Instrumenting from target of branch to unconditional branch (includes calls)
 			//TRACE_AddInstrumentFunction(TraceTrace, 0);
-			//RTN_AddInstrumentFunction(RoutineTrace, 0);
+			RTN_AddInstrumentFunction(RoutineTrace, 0);
 			TRACE_AddInstrumentFunction(TraceBase, 0);
 		}
 		else if (instructionLevelTracing == 1)
