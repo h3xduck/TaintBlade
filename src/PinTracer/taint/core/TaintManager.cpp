@@ -46,8 +46,8 @@ void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const
 void TaintManager::registerTaintSource(const std::string& dllName, const std::string& funcName, int numArgs)
 {
 	//Select handler depending on function
-	VOID(*enterHandler)() = NULL;
-	VOID(*exitHandler)() = NULL;
+	VOID(*enterHandler)(int retIp, ...) = NULL;
+	VOID(*exitHandler)(int retVal, ...) = NULL;
 	if (dllName == "C:\\Windows\\System32\\WS2_32.dll" && funcName == "recv")
 	{
 		enterHandler = TaintSource::wsockRecvEnter;

@@ -11,7 +11,7 @@ void TaintSource::taintSourceLogAll()
 	LOG_INFO("TAINT_SOURCE PRINT END");
 }
 
-TaintSource::TaintSource(const std::string& dllName, const std::string& funcName, int numArgs, VOID(*enter)(), VOID(*exit)())
+TaintSource::TaintSource(const std::string& dllName, const std::string& funcName, int numArgs, VOID(*enter)(int, ...), VOID(*exit)(int, ...))
 {
 	this->dllName = dllName;
 	this->funcName = funcName;

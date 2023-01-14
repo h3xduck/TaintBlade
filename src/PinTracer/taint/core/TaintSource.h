@@ -2,6 +2,7 @@
 #define _TAINT_SOURCE_H_
 
 #include "../../utils/io/log.h"
+#include <stdarg.h>
 #include "TaintController.h"
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
@@ -22,16 +23,16 @@ private:
 	
 public:
 	//Handlers
-	static VOID wsockRecvEnter()
+	static VOID wsockRecvEnter(int retIp, ...)
 	{
-		LOG_ERR("Called wsockRecvEnter()");
+		LOG_ALERT("Called wsockRecvEnter(). retIp:"<<retIp);
 	};
-	static VOID wsockRecvExit()
+	static VOID wsockRecvExit(int retVal, ...)
 	{
-		LOG_ERR("Called wsockRecvExit()");
+		LOG_ALERT("Called wsockRecvExit(). retVal:"<<retVal);
 	}
 
-	static VOID mainEnter()
+	static VOID mainEnter(int retIp, ...)
 	{
 		LOG_DEBUG("Called mainEnter()");
 		
@@ -40,7 +41,7 @@ public:
 		taintController.taintRegNewColor(REG_RAX);
 		taintController.taintRegNewColor(REG_RBX);
 	};
-	static VOID mainExit()
+	static VOID mainExit(int retVal, ...)
 	{
 		LOG_DEBUG("Called mainExit()");
 		//taintController.printTaint();
@@ -72,10 +73,11 @@ public:
 	int numArgs = 0;
 
 	//placeholders
-	VOID(*enterHandler)() = NULL;
-	VOID(*exitHandler)() = NULL;
+	VOID(*enterHandler)(int, ...) = NULL;
+	VOID(*exitHandler)(int, ...) = NULL;
 
-	TaintSource(const std::string& dllName, const std::string& funcName, int numArgs, VOID(*enter)(), VOID(*exit)());
+	TaintSource() {};
+	TaintSource(const std::string& dllName, const std::string& funcName, int numArgs, VOID(*enter)(int, ...), VOID(*exit)(int, ...));
 
 	void taintSourceLogAll();
 
