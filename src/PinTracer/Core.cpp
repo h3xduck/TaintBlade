@@ -307,10 +307,11 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 		return;
 	}
 	InstrumentationManager instManager;
-	if (!scopeFilterer.isMainExecutable(insHead)) {
+	/*if (!scopeFilterer.isMainExecutable(insHead)) {
 		RTN_Close(rtn);
 		return;
-	}
+	}*/
+	
 
 	IMG module = IMG_FindByAddress(firstAddr);
 	if(!IMG_Valid(module))
@@ -320,7 +321,7 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	}
 	std::string dllName = IMG_Name(module);
 
-	LOG_INFO("Routine: " << rtnName << " | DLLname: " << dllName);
+	LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
 
 	//Check if it should be tainted
 	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
@@ -394,13 +395,28 @@ void TraceBase(TRACE trace, VOID* v)
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
 		{		
-			InstrumentationManager instManager;
-			if (scopeFilterer.isMainExecutable(inst)) {
-				instManager.instrumentInstruction(inst);
-				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-					INS_Address(inst), IARG_UINT32, INS_Size(inst),
-					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+			RTN rtn = INS_Rtn(inst);
+			ADDRINT addr = INS_Address(inst);
+			IMG dll = IMG_FindByAddress(addr);
+			if (!IMG_Valid(dll))
+			{
+			
+				return;
 			}
+			std::string dllName = IMG_Name(dll);
+			
+			if (RTN_Name(rtn) == "recv")
+			{
+				//LOG_ALERT("FOUND RECV, dll:"<<dllName);
+			}
+
+			InstrumentationManager instManager;
+			//if (scopeFilterer.isMainExecutable(inst)) {
+			instManager.instrumentInstruction(inst);
+			INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+				INS_Address(inst), IARG_UINT32, INS_Size(inst),
+				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+			//}
 		}
 	}
 }
@@ -446,17 +462,8 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
-	taintManager.registerTaintSource("wsock32.dll", "recv", 4);
-	taintManager.registerTaintSource("C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
-
-	//scopeFilterer = ScopeFilterer("a");
-
-	/*tagMap.taintMem(1233, 11);
-	tagMap.taintMem(111, 11);
-	tagMap.taintMem(1, 132);
-	tagMap.untaintMem(1);
-	tagMap.taintMem(1233, 55);
-	tagMap.printTaintComplete();*/
+	taintManager.registerTaintSource("C:\\Windows\\System32\\WS2_32.dll", "recv", 4);
+	//taintManager.registerTaintSource("C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\tcp_client.exe", "ANY_FUNC_IN_DLL", 0);
 
 	// Initialize PIN library. Print help message if -h(elp) is specified
 	// in the command line or the command line is invalid

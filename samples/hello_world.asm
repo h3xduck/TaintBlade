@@ -15,8 +15,7 @@ extern ExitProcess
 extern _CRT_INIT
 
 main:
-    xor rax, rax
-    and [msg], rax
-    and [msg+4], rbx
-    xor rbx, rbx
+    and rcx, rax
+    and dl, bl
+    and rbx, rcx
     ret

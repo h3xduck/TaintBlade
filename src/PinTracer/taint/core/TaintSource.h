@@ -24,11 +24,11 @@ public:
 	//Handlers
 	static VOID wsockRecvEnter()
 	{
-		LOG_ERR("Not implemented");
+		LOG_ERR("Called wsockRecvEnter()");
 	};
 	static VOID wsockRecvExit()
 	{
-		LOG_ERR("Not implemented");
+		LOG_ERR("Called wsockRecvExit()");
 	}
 
 	static VOID mainEnter()
@@ -36,15 +36,17 @@ public:
 		LOG_DEBUG("Called mainEnter()");
 		
 		//Test: taint RAX
-		taintController.printTaint();
+		//taintController.printTaint();
 		taintController.taintRegNewColor(REG_RAX);
 		taintController.taintRegNewColor(REG_RBX);
 	};
 	static VOID mainExit()
 	{
 		LOG_DEBUG("Called mainExit()");
-		taintController.printTaint();
+		//taintController.printTaint();
 	}
+
+	static VOID emptyHandler() {};
 
 
 	struct func_args_t

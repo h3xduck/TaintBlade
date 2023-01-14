@@ -48,7 +48,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color)
 		LOG_DEBUG("New memory taint--> ADDR:" << addr << " COL:" << color);
 		//Byte not in map yet
 		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, Tag(color)));
-		this->printMemTaintComplete();
+		//this->printMemTaintComplete();
 	}
 	else
 	{
@@ -142,7 +142,6 @@ std::vector<Tag> TagMap::getTaintColorReg(LEVEL_BASE::REG reg)
 {
 	const UINT32 posStart = this->tReg.getPos(reg);
 	const UINT32 taintLength = this->tReg.getTaintLength(reg);
-	LOG_DEBUG("Register length: "<<taintLength);
 
 	std::vector<Tag> colorVector;
 	for (UINT32 ii = posStart; ii < posStart+taintLength; ii++)
@@ -153,7 +152,6 @@ std::vector<Tag> TagMap::getTaintColorReg(LEVEL_BASE::REG reg)
 	return colorVector;
 }
 
-//TODO revise this works
 void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2)
 {
 	//Mandatory that the registers are of the same size
@@ -173,15 +171,21 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 
 	for (int ii = 0; ii < src1RegColorVector.size(); ii++)
 	{
-		if (src1RegColorVector.at(ii).color != EMPTY_COLOR)
+		UINT16 colorSrc1 = src1RegColorVector.at(ii).color;
+		UINT16 colorSrc2 = src2RegColorVector.at(ii).color;
+		if (colorSrc1 != EMPTY_COLOR)
 		{
 			//Mix colors
-			this->regTaintField[ii] = Tag(src1RegColorVector.at(ii).color, src2RegColorVector.at(ii).color);
+			LOG_DEBUG("MIX R2R--> SRC2COL:" << colorSrc2 << " DEST/SRC1COL:" << colorSrc1);
+			Tag tag(colorSrc1, colorSrc2);
+			this->regTaintField[posStart+ii] = tag;
+			LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
 		}
 		else
 		{
 			//Src was untainted, taint it now
-			this->regTaintField[ii] = Tag(src2RegColorVector.at(ii).color);
+			LOG_DEBUG("MIX R2R--> Dest was untainted, tainting with SRC2COL:"<<colorSrc2);
+			this->regTaintField[posStart+ii] = Tag(colorSrc2);
 		}
 		
 	}

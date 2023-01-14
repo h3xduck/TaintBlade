@@ -44,7 +44,7 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 			else
 			{
 				//reg, reg
-				//INS_CALL_R2R(logical_reg2reg, ins);
+				INS_CALL_R2R(logical_reg2reg, ins);
 				return;
 			}
 		}

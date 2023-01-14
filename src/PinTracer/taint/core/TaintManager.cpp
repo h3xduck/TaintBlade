@@ -21,14 +21,23 @@ void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const
 	{
 		//DLLname found with some taint-sourced functions
 		std::vector<TaintSource> taintVector = taintIt->second;
-		for (TaintSource taintSource : taintVector)
+		for (int ii=0; ii<taintVector.size(); ii++)
 		{
-			if (taintSource.funcName == funcName || taintSource.funcName == ANY_FUNC_IN_DLL)
+			TaintSource taintSource = taintVector[ii];
+			if (taintSource.funcName == funcName)
 			{
 				//The routine is registered as a taint source
 				INS_CALL_RTN_TAINT(rtn, taintSource.numArgs, taintSource.enterHandler, taintSource.exitHandler);
 				LOG_DEBUG("Routine taint source activated: DllName = " + dllName + " FuncName = " + funcName);
 				return;
+			}
+			//Unsure whether to keep this
+			else if(taintSource.funcName == ANY_FUNC_IN_DLL)
+			{
+				//The routine is registered as a taint source, only once
+				INS_CALL_RTN_TAINT(rtn, taintSource.numArgs, taintSource.enterHandler, taintSource.emptyHandler);
+				LOG_DEBUG("Wildcard routine taint source activated: DllName = " + dllName + " FuncName = " + funcName);
+				taintVector.erase(taintVector.begin()+ii);
 			}
 		}
 	}
@@ -39,7 +48,7 @@ void TaintManager::registerTaintSource(const std::string& dllName, const std::st
 	//Select handler depending on function
 	VOID(*enterHandler)() = NULL;
 	VOID(*exitHandler)() = NULL;
-	if (dllName == "wsock32.dll" && funcName == "recv")
+	if (dllName == "C:\\Windows\\System32\\WS2_32.dll" && funcName == "recv")
 	{
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
@@ -49,11 +58,15 @@ void TaintManager::registerTaintSource(const std::string& dllName, const std::st
 		enterHandler = TaintSource::mainEnter;
 		exitHandler = TaintSource::mainExit;
 	}
+	/*else if (dllName == "C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\tcp_client.exe" && funcName == ANY_FUNC_IN_DLL)
+	{
+		enterHandler = TaintSource::mainEnter;
+		exitHandler = TaintSource::mainExit;
+	}*/
 	else
 	{
-		std::string logLine = "Received request to register unknown taint source: ";
-		logLine += "DllName = " + dllName + " FuncName = " + funcName;
-		LOG_ERR(logLine.c_str());
+		LOG_ERR("Received request to register unknown taint source: DllName = " << dllName << " FuncName = " << funcName);
+		return;
 	}
 
 
@@ -67,16 +80,14 @@ void TaintManager::registerTaintSource(const std::string& dllName, const std::st
 		taintVector.push_back(taintSource);
 		this->taintFunctionMap.insert(std::pair<std::string, std::vector<TaintSource>>(dllName, taintVector));
 		
-		std::string logLine = "Registered a new taintSource: NEW DllName =  " + dllName + " FuncName = " + funcName;
-		LOG_DEBUG(logLine.c_str());
+		LOG_ALERT("Registered a new taintSource: NEW DllName =  " << dllName << " FuncName = " << funcName);
 	}
 	else
 	{
 		//DLLname already exists
 		taintIt->second.push_back(taintSource);
 
-		std::string logLine = "Registered a new taintSource: DllName =  " + dllName + " FuncName = " + funcName;
-		LOG_DEBUG(logLine.c_str());
+		LOG_ALERT("Registered a new taintSource: DllName =  " << dllName << " FuncName = " << funcName);
 	}
 }
 

@@ -12,13 +12,9 @@
 #define LOG_INT_SHORT(msg) \
     std::cerr << msg << std::endl;
 
-    /* { \
-    char buffer[256] = { 0 };\
-    sprintf_s(buffer, sizeof(buffer), "%s \n\t\tAT %s(%d)", msg, __FILE__, __LINE__);\
-    std::cerr << buffer <<std::endl;\
-    };*/
-
 #define LOG_ERR(msg, ...) LOG_INT("[ERROR] " << msg)
+#define LOG_ALERT(msg, ...) LOG_INT("[ALERT] " << msg)
+
 
 #if(DEBUG_LEVEL==1)
 	#define LOG_DEBUG(msg) \
