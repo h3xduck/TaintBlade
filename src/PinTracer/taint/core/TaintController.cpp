@@ -15,7 +15,7 @@ void TaintController::taintMemoryNewColor(const ADDRINT memAddr, const UINT32 by
 	{
 		//Different color for each byte
 		const UINT16 newColor = this->tagMap.getNextTagColor();
-		LOG_DEBUG("Tainting addr " << memIt << " with color " << newColor);
+		//LOG_DEBUG("Tainting addr " << memIt << " with color " << newColor);
 		this->tagMap.taintMem(memIt, newColor);
 		memIt += 1;
 	}
@@ -60,12 +60,12 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 		if (colorDest == EMPTY_COLOR)
 		{
 			UINT16 color = srcRegColorVector[ii].color;
-			LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << unsigned(color) << " from reg " << REG_StringShort(srcReg));
+			//LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << unsigned(color) << " from reg " << REG_StringShort(srcReg));
 			this->tagMap.taintMem(destMemIt, color);
 		}
 		else
 		{
-			LOG_DEBUG("Mixing colors");
+			//LOG_DEBUG("Mixing colors");
 			this->tagMap.mixTaintMemRegAllBytes(destMemIt, destBytes, destMemIt, srcReg);
 			return;
 		}

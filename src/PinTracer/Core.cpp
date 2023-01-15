@@ -291,49 +291,6 @@ VOID ImageTrace(IMG img, VOID* v)
 	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
 }
 
-VOID RoutineTrace(RTN rtn, VOID* v)
-{
-	if(!RTN_Valid(rtn))
-	{
-		//std::cerr << "Null RTN" << std::endl;
-		return;
-	}
-
-	const std::string rtnName = RTN_Name(rtn);
-	RTN_Open(rtn);
-
-	ADDRINT firstAddr = RTN_Address(rtn);
-
-	const INS insHead = RTN_InsHead(rtn);
-	if (!INS_Valid(insHead))
-	{
-		RTN_Close(rtn);
-		return;
-	}
-	InstrumentationManager instManager;
-	/*if (!scopeFilterer.isMainExecutable(insHead)) {
-		RTN_Close(rtn);
-		return;
-	}*/
-	
-
-	IMG module = IMG_FindByAddress(firstAddr);
-	if(!IMG_Valid(module))
-	{
-		//std::cerr << "Null IMG" << std::endl;
-		return;
-	}
-	std::string dllName = IMG_Name(module);
-
-	LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
-
-	//Check if it should be tainted
-	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
-	
-
-	RTN_Close(rtn);
-}
-
 VOID TraceTrace(TRACE trace, VOID* v)
 {
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
@@ -392,6 +349,48 @@ VOID ContextChangeTrace(THREADID tid, CONTEXT_CHANGE_REASON reason, const CONTEX
 	PIN_UnlockClient();
 }
 
+VOID RoutineTrace(RTN rtn, VOID* v)
+{
+	if (!RTN_Valid(rtn))
+	{
+		//std::cerr << "Null RTN" << std::endl;
+		return;
+	}
+
+	const std::string rtnName = RTN_Name(rtn);
+	RTN_Open(rtn);
+
+	ADDRINT firstAddr = RTN_Address(rtn);
+
+	const INS insHead = RTN_InsHead(rtn);
+	if (!INS_Valid(insHead))
+	{
+		RTN_Close(rtn);
+		return;
+	}
+	InstrumentationManager instManager;
+	/*if (!scopeFilterer.isMainExecutable(insHead)) {
+		RTN_Close(rtn);
+		return;
+	}*/
+
+
+	IMG module = IMG_FindByAddress(firstAddr);
+	if (!IMG_Valid(module))
+	{
+		//std::cerr << "Null IMG" << std::endl;
+		return;
+	}
+	std::string dllName = IMG_Name(module);
+
+	//LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
+
+	//Check if it should be tainted
+	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
+
+
+	RTN_Close(rtn);
+}
 
 void TraceBase(TRACE trace, VOID* v)
 {
@@ -419,10 +418,10 @@ void TraceBase(TRACE trace, VOID* v)
 			instManager.instrumentInstruction(inst);
 			/*INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
 				INS_Address(inst), IARG_UINT32, INS_Size(inst),
-				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);*/
 			//}
 
-			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 			{
 				INS_InsertCall(
 					inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
@@ -486,7 +485,7 @@ VOID Fini(INT32 code, VOID* v)
 int main(int argc, char* argv[])
 {
 	taintManager.registerTaintSource("C:\\Windows\\System32\\WS2_32.dll", "recv", 4);
-	//taintManager.registerTaintSource("C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\tcp_client.exe", "ANY_FUNC_IN_DLL", 0);
+	taintManager.registerTaintSource("C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
 
 	// Initialize PIN library. Print help message if -h(elp) is specified
 	// in the command line or the command line is invalid
