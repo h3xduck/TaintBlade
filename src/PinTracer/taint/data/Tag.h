@@ -1,7 +1,9 @@
 #ifndef _TAG_H_
 #define _TAG_H_
 
+#include "../../utils/io/log.h"
 #include "pin.H"
+
 #define EMPTY_COLOR 0
 
 /*

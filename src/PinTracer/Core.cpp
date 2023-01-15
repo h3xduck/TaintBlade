@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 
+//#include "config/GlobalConfig.h"
 #include "utils/inst/SyscallParser.h"
 #include "utils/inst/InstructionWorker.h"
 #include "taint/core/TaintManager.h"
@@ -31,6 +32,7 @@ UINT64 threadCount = 0; //total number of threads, including main thread
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
+std::ostream* debugFile = &std::cerr;
 
 BOOL instructionLevelTracing = 0;
 ScopeFilterer scopeFilterer;
@@ -48,6 +50,8 @@ KNOB< string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify
 KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
 
 KNOB< string > KnobFilterlistFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
+
+KNOB< string > KnobDebugFile(KNOB_MODE_WRITEONCE, "pintool", "d", "", "specify file name where to store debug logs");
 
 KNOB< BOOL > KnobInstLevelTrace(KNOB_MODE_WRITEONCE, "pintool", "t", "0", "activate instruction level tracing, faster but more reliable");
 
@@ -412,8 +416,8 @@ void TraceBase(TRACE trace, VOID* v)
 
 			InstrumentationManager instManager;
 			//if (scopeFilterer.isMainExecutable(inst)) {
-			/*instManager.instrumentInstruction(inst);
-			INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+			instManager.instrumentInstruction(inst);
+			/*INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
 				INS_Address(inst), IARG_UINT32, INS_Size(inst),
 				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
 			//}
@@ -495,6 +499,7 @@ int main(int argc, char* argv[])
 	string sysinfoFilename = KnobSyscallFile.Value();
 	string imageInfoFilename = KnobImageFile.Value();
 	string filterlistFilename = KnobFilterlistFile.Value();
+	string debugFileFilename = KnobDebugFile.Value();
 	instructionLevelTracing = KnobInstLevelTrace.Value();
 
 	if (!fileName.empty())
@@ -510,6 +515,11 @@ int main(int argc, char* argv[])
 	if (!imageInfoFilename.empty())
 	{
 		imageInfoOut = new std::ofstream(imageInfoFilename.c_str());
+	}
+
+	if (!debugFileFilename.empty())
+	{
+		debugFile = new std::ofstream(debugFileFilename.c_str());
 	}
 
 	PIN_InitSymbols();
@@ -564,6 +574,10 @@ int main(int argc, char* argv[])
 	if (!KnobSyscallFile.Value().empty())
 	{
 		std::cerr << "See file " << KnobSyscallFile.Value() << " for syscalls results" << std::endl;
+	}
+	if (!KnobDebugFile.Value().empty())
+	{
+		std::cerr << "See file " << KnobDebugFile.Value() << " for debug logs" << std::endl;
 	}
 	std::cerr << "===============================================" << std::endl;
 

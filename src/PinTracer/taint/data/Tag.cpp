@@ -1,5 +1,4 @@
 #include "Tag.h"
-#include "../../utils/io/log.h"
 
 UINT16 Tag::lastColor = 0;
 
