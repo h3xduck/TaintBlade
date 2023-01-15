@@ -415,29 +415,32 @@ void TraceBase(TRACE trace, VOID* v)
 
 			InstrumentationManager instManager;
 			if (scopeFilterer.isMainExecutable(inst)) {
-			instManager.instrumentInstruction(inst);
-			INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-				INS_Address(inst), IARG_UINT32, INS_Size(inst),
-				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
-			}
+				instManager.instrumentInstruction(inst);
 
-			/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
-			{
-				INS_InsertCall(
-					inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
-					IARG_ADDRINT, INS_Address(inst),
-					IARG_BRANCH_TARGET_ADDR,
-					IARG_UINT32, INS_Size(inst),
-					IARG_CONST_CONTEXT,
-					IARG_THREAD_ID,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
-					IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
-					IARG_END);
-			}*/
+			#if(CONFIG_INST_LOG_FILES==1)
+				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+					INS_Address(inst), IARG_UINT32, INS_Size(inst),
+					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+
+				/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+				{
+					INS_InsertCall(
+						inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
+						IARG_ADDRINT, INS_Address(inst),
+						IARG_BRANCH_TARGET_ADDR,
+						IARG_UINT32, INS_Size(inst),
+						IARG_CONST_CONTEXT,
+						IARG_THREAD_ID,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
+						IARG_END);
+				}*/
+			#endif
+			}
 		}
 	}
 }

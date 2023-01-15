@@ -107,7 +107,7 @@ int __cdecl main(int argc, char** argv)
     }
 
     // Receive until the peer closes the connection
-    do {
+    //do {
 
         iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
         if (iResult > 0)
@@ -117,7 +117,10 @@ int __cdecl main(int argc, char** argv)
         else
             printf("recv failed with error: %d\n", WSAGetLastError());
 
-    } while (iResult > 0);
+    //} while (iResult > 0);
+        char c = recvbuf[0] & 0x77;
+        if (c != 'f')
+        printf("%s\n", recvbuf);
 
     // cleanup
     closesocket(ConnectSocket);

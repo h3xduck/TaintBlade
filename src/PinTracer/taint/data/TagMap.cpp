@@ -266,14 +266,14 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 			//dest is empty_color, just taint it with color2
 			Tag tag(color2);
 			this->regTaintField[posStart] = tag;
-			LOG_DEBUG("Tainted reg with new color mixTaintRegByte(" << dest << ", " << byteIndex<< ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << "B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+			LOG_DEBUG("Tainted reg with new color mixTaintRegByte(" << dest << ", " << byteIndex<< ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 		}
 	}
 	else if (color2 == EMPTY_COLOR)
 	{
 		//dest is non-empty_color but color2 is, taint dest with empty_color
 		this->regTaintField[posStart] = Tag(color2);
-		LOG_DEBUG("Tainted reg with empty color mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << "B:" << byteIndex << ") with empty tag");
+		LOG_DEBUG("Tainted reg with empty color mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with empty tag");
 	}
 	else
 	{
@@ -281,7 +281,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		Tag tag(color1, color2);
 		this->regTaintField[posStart+byteIndex] = tag;
 		this->tagLog.logTag(tag);
-		LOG_DEBUG("Mixed taint reg mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << "B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+		LOG_DEBUG("Mixed taint reg mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 	}
 }
 

@@ -16,6 +16,10 @@ extern _CRT_INIT
 
 main:
     and rcx, rax
-    and dl, bl
-    and rbx, rcx
+    and rcx, rcx
+    and rcx, rcx
+    and rcx, rcx
+    and [msg], rbx
+    and rdx, [msg+1]
+
     ret

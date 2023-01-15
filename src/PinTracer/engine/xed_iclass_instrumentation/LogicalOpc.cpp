@@ -39,7 +39,7 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 			if (isMemSrc)
 			{
 				//reg, mem
-				//INS_CALL_M2R(logical_mem2reg, ins);
+				INS_CALL_M2R(logical_mem2reg, ins);
 				return;
 			}
 			else
