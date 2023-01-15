@@ -260,6 +260,7 @@
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
+    <ClCompile Include="taint\data\TagLog.cpp" />
     <ClCompile Include="taint\data\TRegister.cpp" />
     <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
@@ -275,6 +276,7 @@
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
     <ClInclude Include="taint\data\Tag.h" />
+    <ClInclude Include="taint\data\TagLog.h" />
     <ClInclude Include="taint\data\TRegister.h" />
     <ClInclude Include="taint\data\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />

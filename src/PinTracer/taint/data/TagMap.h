@@ -18,6 +18,7 @@
 #include <iostream>
 #include <cstdio>
 #include "TRegister.h"
+#include "TagLog.h"
 
 #define PAGE_SIZE 4096
 #define COLOR_BYTES 2
@@ -46,6 +47,7 @@ class TagMap
 {
 public:
 	TReg tReg;
+	TagLog tagLog;
 
 	TagMap();
 
@@ -62,22 +64,93 @@ public:
 
 	//These are to be used from the Taint Manager, and not directly from instrumentation functions
 	size_t tagMapCount();
+	
+	/**
+	Taints single memory byte with a color = Tag::lastColor,
+	then increments Tag::lastColor.
+	*/
 	UINT16 taintMemNew(ADDRINT addr);
+
+	/**
+	Taints single memory byte with color=color.
+	If memory is already tainted, it will only update Tag color in memory map.
+	*/
 	void taintMem(ADDRINT addr, UINT16 color);
+
+	/**
+	Removes single memory byte from memory map.
+	*/
 	void untaintMem(ADDRINT addr);
+
+	/**
+	Returns color of Tag corresponding to memory at memory map.
+	If not found in map, returns empty color.
+	*/
 	UINT16 getTaintColorMem(ADDRINT addr);
+
+	/**
+	Mixes colors src1 and src2 into dest.
+	src1 and dest are expected to be the same element: Binary ops only!
+	Introduces mix in taglog if generated.
+	*/
 	Tag mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2);
 
-	UINT16 taintRegNew(LEVEL_BASE::REG reg);
+	/**
+	Taints all bytes of register with a new color corresponding
+	to Tag::lastColor. Increments Tag::lastColor.
+	Colors of all bytes are all the same.
+	*/
+	void taintRegNew(LEVEL_BASE::REG reg);
+
+	/**
+	Taints all bytes of a register with the specified color.
+	If color > Tag::lastColor, then Tag::lastColor = color.
+	Colors of all bytes are all the same.
+	*/
 	void taintReg(LEVEL_BASE::REG reg, UINT16 color);
+
+	/**
+	Untaints all bytes of a register by writing the empty_color.
+	*/
 	void untaintReg(LEVEL_BASE::REG reg);
+
+	/**
+	Returns a vector of tags corresponding to each byte of the register
+	in the register field.
+	*/
 	std::vector<Tag> getTaintColorReg(LEVEL_BASE::REG reg);
+
+	/**
+	Mixes register colors of src1 and src2 into dest.
+	WARN: dest, src1 and src2 MUST be of the same size.
+	src1 and dest are expected to be the same register. Only binary opcs!
+	Introduces mix in taglog if generated.
+	*/
 	void mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2);
 
+	/**
+	DEPRECATED -- Best to leave byte complexity to taintcontroller
+	*/
 	void mixTaintRegColors(LEVEL_BASE::REG dest, UINT32 length, std::vector<UINT16> colorV1, std::vector<UINT16> colorV2);
+	
+	/**
+	Mixes two colors at register byte indicated by byteIndex. Only one byte.
+	dest's color and color1 MUST be the same --> only binary opcs supported!
+	Introduces mix in taglog if generated.
+	*/
 	void mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colorV1, UINT16 colorV2);
+	
+	/**
+	Mixes the color at memory dest=src1 and that of register src2.
+	dest = src1
+	length = bytes of reg src2
+	Introduces mix in taglog if generated
+	*/
 	void mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2);
 
+	/**
+	Returns color of Tag::lastColor, increments Tag::lastColor.
+	*/
 	UINT16 getNextTagColor();
 
 	/*Debug: Dumps whole mem map, expensive*/

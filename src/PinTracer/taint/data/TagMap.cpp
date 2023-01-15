@@ -3,6 +3,7 @@
 TagMap::TagMap()
 {
 	this->tReg = TReg();
+	this->tagLog = TagLog();
 	for (int ii = 0; ii < REG_TAINT_FIELD_LEN; ii++)
 	{
 		this->regTaintField[ii] = Tag(0);
@@ -48,18 +49,18 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color)
 		if (color != EMPTY_COLOR)
 		{
 			LOG_DEBUG("New memory taint--> ADDR:" << addr << " COL:" << color);
+			//Byte not in map yet
+			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, Tag(color)));
+			//this->printMemTaintComplete();
 		}
-		//Byte not in map yet
-		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, Tag(color)));
-		//this->printMemTaintComplete();
+		//No empty color tainting
 	}
 	else
 	{
-		if (color != EMPTY_COLOR)
-		{
-			LOG_DEBUG("Memory taint--> ADDR:" << addr << " COL:" << color);
-		}
+		LOG_DEBUG("Memory taint--> ADDR:" << addr << " COL:" << color);
 		it->second.color = color;
+		
+
 	}
 }
 
@@ -86,27 +87,41 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 	Tag src1MemTag = getTaintColorMem(src1);
 	Tag src2MemTag = getTaintColorMem(src2);
 
-	//TODO IMPORTANT: add search in mixed colors collection, now it's generating a new color for each mix
-	//TODO: Check if dest is empty color
 	auto it = this->memTaintField.find(dest);
 	Tag tag;
 	if (it == this->memTaintField.end())
 	{
-		//Byte not in map yet, no mix
-		tag = Tag(src2MemTag.color);
-		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, tag));
+		//Byte of dest not in map yet, no mix since src1=empty_color
+		if (src2MemTag.color != EMPTY_COLOR)
+		{
+			//Dest=src1 is tainted with color of src2
+			tag = Tag(src2MemTag.color);
+			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, tag));
+		}
+		//else, nothing, since src2=empty_color and dest=src1 was not tainted
 	}
 	else
 	{
-		tag = Tag(src1MemTag.color, src2MemTag.color);
-		it->second = tag;
+		//Dest=src1 != empty_color
+		if (src2MemTag.color != EMPTY_COLOR)
+		{
+			//We need to mix both colors, log the generated tag
+			tag = Tag(src1MemTag.color, src2MemTag.color);
+			it->second = tag;
+			this->tagLog.logTag(tag);
+		}
+		else
+		{
+			//src2 is an empty_color, thus we directly taint dest=src1 with empty_color
+			it->second.color = EMPTY_COLOR;
+		}
 	}
 
 	return tag;
 }
 
 
-UINT16 TagMap::taintRegNew(LEVEL_BASE::REG reg)
+void TagMap::taintRegNew(LEVEL_BASE::REG reg)
 {
 	//Whatever the color stored before is, we still overwrite it
 	const UINT32 posStart = this->tReg.getPos(reg);
@@ -119,8 +134,6 @@ UINT16 TagMap::taintRegNew(LEVEL_BASE::REG reg)
 	{
 		this->regTaintField[ii] = tag;
 	}
-
-	return tag.color;
 }
 
 void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
@@ -174,23 +187,32 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 		return;
 	}
 	
-	//TODO IMPORTANT: add search in mixed colors collection, now it's generating a new color for each mix
-
 	for (int ii = 0; ii < src1RegColorVector.size(); ii++)
 	{
 		UINT16 colorSrc1 = src1RegColorVector.at(ii).color;
 		UINT16 colorSrc2 = src2RegColorVector.at(ii).color;
 		if (colorSrc1 != EMPTY_COLOR)
 		{
-			//Mix colors
-			LOG_DEBUG("MIX R2R--> SRC2COL:" << colorSrc2 << " DEST/SRC1COL:" << colorSrc1);
-			Tag tag(colorSrc1, colorSrc2);
-			this->regTaintField[posStart+ii] = tag;
-			LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
+			//src1=dest is not empty_color
+			if (colorSrc2 == EMPTY_COLOR)
+			{
+				//src2=empty_color, thus just untaint that reg byte
+				Tag tag(0);
+				this->regTaintField[posStart + ii] = tag;
+			}
+			else
+			{
+				//src2 is not empty_color, then we need to mix the colors
+				LOG_DEBUG("MIX R2R--> SRC2COL:" << colorSrc2 << " DEST/SRC1COL:" << colorSrc1);
+				Tag tag(colorSrc1, colorSrc2);
+				this->regTaintField[posStart + ii] = tag;
+				LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
+				this->tagLog.logTag(tag);
+			}
 		}
 		else
 		{
-			//Src was untainted, taint it now
+			//dest=src1 was untainted, taint it now with whatever color is at src2
 			LOG_DEBUG("MIX R2R--> Dest was untainted, tainting with SRC2COL:"<<colorSrc2);
 			this->regTaintField[posStart+ii] = Tag(colorSrc2);
 		}
@@ -201,29 +223,44 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 
 void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 color1, UINT16 color2)
 {
+
+	UINT16 colorDest = getTaintColorReg(dest).at(byteIndex).color;
+	if (colorDest != color1)
+	{
+		//Case not supported yet
+		LOG_ERR("Tried to mix taint in a non-binary operation!");
+		return;
+	}
+
 	const UINT32 posStart = this->tReg.getPos(dest) + byteIndex;
 	if (color1 == EMPTY_COLOR)
 	{
 		if (color2 == EMPTY_COLOR)
 		{
+			//Both are empty_color, then no taint to perform
 			return;
 		}
 		else
 		{
+			//dest is empty_color, just taint it with color2
 			this->regTaintField[posStart] = Tag(color2);
 		}
 	}
 	else if (color2 == EMPTY_COLOR)
 	{
-		this->regTaintField[posStart] = Tag(color1);
+		//dest is non-empty_color but color2 is, taint dest with empty_color
+		this->regTaintField[posStart] = Tag(color2);
 	}
 	else
 	{
-		//mix
-		this->regTaintField[posStart] = Tag(color1, color2);
+		//Neither dest=color1 or color2 are empty_color. Time to mix
+		Tag tag(color1, color2);
+		this->regTaintField[posStart] = tag;
+		this->tagLog.logTag(tag);
 	}
 }
 
+//DEPRECATED
 void TagMap::mixTaintRegColors(LEVEL_BASE::REG dest, UINT32 length, std::vector<UINT16> colorV1, std::vector<UINT16> colorV2)
 {
 	const UINT32 posStart = this->tReg.getPos(dest);
@@ -258,15 +295,29 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 	for (int ii = 0; ii < length; ii++)
 	{
 		auto it = this->memTaintField.find(dest+ii);
-		UINT16 color = src2RegColorVector.at(ii).color;
+		UINT16 src2color = src2RegColorVector.at(ii).color;
 		if (it == this->memTaintField.end())
 		{
-			taintMem(dest + ii, color);
+			//mem dest is not tainted, just taint with src2 reg color
+			taintMem(dest + ii, src2color);
 			continue;
 		}
-		LOG_DEBUG("MIX R2M--> MEMCOL:" << it->second.color << " REGCOL:" << color);
-		it->second = Tag(it->second.color, color);
-		LOG_DEBUG("NEW MEMCOL:" << it->second.color);
+
+		//mem dest is already tainted with some color
+		if (src2color == EMPTY_COLOR)
+		{
+			//reg src2 has empty_color, just taint dest mem with empty_color
+			it->second = Tag(src2color);
+		}
+		else
+		{
+			//mem dest and reg src2 have non-empty_color both, mix
+			LOG_DEBUG("MIX R2M--> MEMCOL:" << it->second.color << " REGCOL:" << src2color);
+			Tag tag(it->second.color, src2color);
+			it->second = tag;
+			LOG_DEBUG("NEW MEMCOL:" << it->second.color);
+			this->tagLog.logTag(tag);
+		}
 	}
 }
 
