@@ -156,6 +156,8 @@ public:
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();
 	void printRegTaintComplete();
+	void dumpTaintLog();
+	void dumpTaintLogPrettified(UINT16 startColor);
 
 };
 

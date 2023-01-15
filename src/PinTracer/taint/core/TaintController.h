@@ -21,6 +21,8 @@ public:
 	void taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BASE::REG src1Reg, const ADDRINT src2Mem, const UINT32 src2Bytes);
 
 	void printTaint();
+	void dumpTaintLog();
+	void dumpTaintLogPrettified(UINT16 color);
 };
 
 

@@ -414,12 +414,12 @@ void TraceBase(TRACE trace, VOID* v)
 			}
 
 			InstrumentationManager instManager;
-			//if (scopeFilterer.isMainExecutable(inst)) {
+			if (scopeFilterer.isMainExecutable(inst)) {
 			instManager.instrumentInstruction(inst);
-			/*INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+			INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
 				INS_Address(inst), IARG_UINT32, INS_Size(inst),
-				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);*/
-			//}
+				IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+			}
 
 			/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 			{
@@ -473,6 +473,8 @@ VOID Fini(INT32 code, VOID* v)
 	*out << "===============================================" << endl;*/
 	std::cerr << "Finished" << std::endl;
 	taintController.printTaint();
+	taintController.dumpTaintLog();
+	taintController.dumpTaintLogPrettified(26);
 }
 
 /*!

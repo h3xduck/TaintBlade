@@ -143,7 +143,7 @@ void TagMap::taintRegNew(LEVEL_BASE::REG reg)
 		this->regTaintField[ii] = tag;
 	}
 
-	LOG_DEBUG("New reg taint taintRegNew(" << reg << ") --> modified Tags of reg(R:"<<reg<<" PI:" <<posStart<<" PF:"<<posStart+taintLength << ") with new color from " << firstColor << " to " << tag.color);
+	LOG_DEBUG("New reg taint taintRegNew(" << reg << ") --> modified Tags of reg(R:"<<reg<<" PI:" <<posStart<<" PF:"<<posStart+taintLength << ") with new color from PI:" << firstColor << " to PF:" << tag.color);
 }
 
 void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
@@ -211,7 +211,7 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 				//src2=empty_color, thus just untaint that reg byte
 				Tag tag(0);
 				this->regTaintField[posStart + ii] = tag;
-				LOG_DEBUG("(in loop) Untainted regs mixTaintReg(" << dest << ", "<<src1<<", "<< src2<<") --> modified Tag of reg(R:" << dest << " P:"<< posStart + ii << ") with full empty color");
+				LOG_DEBUG("(in loop) Untainted reg mixTaintReg(" << dest << ", "<<src1<<", "<< src2<<") --> modified Tag of reg(R:" << dest << " P:"<< posStart + ii << ") with full empty color");
 			}
 			else
 			{
@@ -228,9 +228,14 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 		{
 			//dest=src1 was untainted, taint it now with whatever color is at src2
 			//LOG_DEBUG("MIX R2R--> Dest was untainted, tainting with SRC2COL:"<<colorSrc2);
-			Tag tag(colorSrc2);
-			this->regTaintField[posStart+ii] = tag;
-			LOG_DEBUG("(in loop) Tainted reg with new color mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+			if (colorSrc2 != EMPTY_COLOR)
+			{
+				Tag tag(colorSrc2);
+				this->regTaintField[posStart + ii] = tag;
+				LOG_DEBUG("(in loop) Tainted reg with new color mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+			}
+			//else nothing, no changes in color
+			
 		}
 		
 	}
@@ -379,4 +384,14 @@ UINT16 TagMap::getNextTagColor()
 {
 	Tag tag = Tag::tagNext();
 	return tag.color;
+}
+
+void TagMap::dumpTaintLog()
+{
+	this->tagLog.dumpTagLog();
+}
+
+void TagMap::dumpTaintLogPrettified(UINT16 startColor)
+{
+	this->tagLog.dumpTagLogPrettified(startColor);
 }

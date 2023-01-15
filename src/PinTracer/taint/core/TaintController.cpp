@@ -50,7 +50,7 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 {
 	//TODO: Check if destBytes and srcRegLength are the same
 	const UINT32 srcRegLength = this->tagMap.tReg.getTaintLength(srcReg);
-	LOG_DEBUG("M2R --> M:" << destMem << "(len:" << destBytes << ")  R:" << REG_StringShort(srcReg) << "(code:" << srcReg << ")");
+	//LOG_DEBUG("M2R --> M:" << destMem << "(len:" << destBytes << ")  R:" << REG_StringShort(srcReg) << "(code:" << srcReg << ")");
 	ADDRINT destMemIt = destMem;
 	std::vector<Tag> srcRegColorVector = this->tagMap.getTaintColorReg(srcReg);
 
@@ -105,4 +105,14 @@ void TaintController::printTaint()
 {
 	this->tagMap.printMemTaintComplete();
 	this->tagMap.printRegTaintComplete();
+}
+
+void TaintController::dumpTaintLog()
+{
+	this->tagMap.dumpTaintLog();
+}
+
+void TaintController::dumpTaintLogPrettified(UINT16 color)
+{
+	this->tagMap.dumpTaintLogPrettified(color);
 }

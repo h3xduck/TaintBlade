@@ -23,13 +23,14 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 	//If dest operand is mem, src cannot be mem
 	const BOOL isMemDest = INS_IsMemoryWrite(ins);
 
+	std::string dis = INS_Disassemble(ins);
+	LOG_DEBUG("OPC: " << dis);
+
 	if (!isImmSrc)
 	{
 		if (isMemDest)
 		{
 			//mem, reg
-			std::string dis = INS_Disassemble(ins);
-			LOG_DEBUG("OPC: " << dis);
 			INS_CALL_R2M(logical_reg2mem, ins);
 		}
 		else
