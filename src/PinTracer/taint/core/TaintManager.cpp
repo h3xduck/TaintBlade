@@ -28,7 +28,7 @@ void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const
 			{
 				//The routine is registered as a taint source
 				INS_CALL_RTN_TAINT(rtn, taintSource.numArgs, taintSource.enterHandler, taintSource.exitHandler);
-				LOG_DEBUG("Routine taint source activated: DllName = " + dllName + " FuncName = " + funcName);
+				LOG_DEBUG("Routine taint source activated at IP: " << RTN_Address(rtn) <<" DllName = " <<dllName<< " FuncName = " << funcName << " NumArgs: "<<taintSource.numArgs);
 				return;
 			}
 			//Unsure whether to keep this

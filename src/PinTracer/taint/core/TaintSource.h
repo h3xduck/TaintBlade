@@ -4,6 +4,7 @@
 #include "../../utils/io/log.h"
 #include <stdarg.h>
 #include "TaintController.h"
+#include "../../utils/inst/InstructionWorker.h"
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
@@ -17,19 +18,52 @@ namespace WINDOWS
 
 extern TaintController taintController;
 
+//Function arguments
+struct wsock_recv_t
+{
+	//Args
+	WINDOWS::SOCKET s;
+	char* buf;
+	int len;
+	int flags;
+
+	// https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv
+};
+static wsock_recv_t wsockRecv;
+
 class TaintSource
 {
 private:
-	
+
 public:
 	//Handlers
 	static VOID wsockRecvEnter(int retIp, ...)
 	{
-		LOG_ALERT("Called wsockRecvEnter(). retIp:"<<retIp);
+		int NUM_ARGS = 4;
+		va_list vaList;
+		va_start(vaList, retIp);
+
+		wsockRecv.s = va_arg(vaList, WINDOWS::SOCKET);
+		wsockRecv.buf = va_arg(vaList, char*);
+		wsockRecv.len = va_arg(vaList, int);
+		wsockRecv.flags = va_arg(vaList, int);
+
+		va_end(vaList);
+
+		LOG_INFO("Called wsockRecvEnter()\n\tretIp: "<<retIp<<"\n\tbuf: " << wsockRecv.buf << "\n\tlen: "<< wsockRecv.len);
 	};
 	static VOID wsockRecvExit(int retVal, ...)
 	{
-		LOG_ALERT("Called wsockRecvExit(). retVal:"<<retVal);
+		//Firstly, we must check that we received something. Return value is # of bytes read
+		if(retVal<=0)
+		{
+			//No tainting needed
+			return;
+		}
+		//Otherwise, we taint as many bytes in buf as indicated by retVal
+		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
+
+		taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
 	}
 
 	static VOID mainEnter(int retIp, ...)
@@ -48,23 +82,6 @@ public:
 	}
 
 	static VOID emptyHandler() {};
-
-
-	struct func_args_t
-	{
-		union {
-			struct wsock_recv_t
-			{
-				//Args
-				WINDOWS::SOCKET s;
-				char* buf;
-				int len;
-				int flags;
-
-				// https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv
-			} wsock_recv;
-		} ua;
-	} func_args;
 
 	//typedef void (*callback_function)(void); // type for conciseness
 

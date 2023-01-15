@@ -45,13 +45,20 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color)
 	auto it = this->memTaintField.find(addr);
 	if (it == this->memTaintField.end())
 	{
-		LOG_DEBUG("New memory taint--> ADDR:" << addr << " COL:" << color);
+		if (color != EMPTY_COLOR)
+		{
+			LOG_DEBUG("New memory taint--> ADDR:" << addr << " COL:" << color);
+		}
 		//Byte not in map yet
 		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, Tag(color)));
 		//this->printMemTaintComplete();
 	}
 	else
 	{
+		if (color != EMPTY_COLOR)
+		{
+			LOG_DEBUG("Memory taint--> ADDR:" << addr << " COL:" << color);
+		}
 		it->second.color = color;
 	}
 }
@@ -286,4 +293,10 @@ void TagMap::printRegTaintComplete()
 		std::cerr << std::endl;
 	}
 	std::cerr << std::endl << "REG_TAINT_FIELD PRINT END" << std::endl;
+}
+
+UINT16 TagMap::getNextTagColor()
+{
+	Tag tag = Tag::tagNext();
+	return tag.color;
 }

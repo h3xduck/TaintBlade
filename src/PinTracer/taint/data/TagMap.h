@@ -78,6 +78,7 @@ public:
 	void mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colorV1, UINT16 colorV2);
 	void mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, LEVEL_BASE::REG src2);
 
+	UINT16 getNextTagColor();
 
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();

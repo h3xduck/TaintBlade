@@ -11,11 +11,13 @@ TaintController::TaintController()
 void TaintController::taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes)
 {
 	ADDRINT memIt = memAddr;
-	const UINT16 newColor = this->tagMap.taintMemNew(memIt);
 	for (int ii = 0; ii < bytes - 1; ii++)
 	{
+		//Different color for each byte
+		const UINT16 newColor = this->tagMap.getNextTagColor();
+		LOG_DEBUG("Tainting addr " << memIt << " with color " << newColor);
 		this->tagMap.taintMem(memIt, newColor);
-		memIt += 8;
+		memIt += 1;
 	}
 }
 
