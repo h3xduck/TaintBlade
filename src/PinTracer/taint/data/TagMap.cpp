@@ -171,16 +171,22 @@ void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
 	LOG_DEBUG("New reg taint taintReg(" << reg << ", "<<color<<") --> modified Tags of reg(R:" << reg << " PI:" << posStart << " PF:" << posStart + taintLength << ") with new color "<<color);
 }
 
-void TagMap::untaintReg(LEVEL_BASE::REG reg)
+void TagMap::untaintReg(LEVEL_BASE::REG reg, int byteIndex)
 {
 	const UINT32 posStart = this->tReg.getPos(reg);
 	const UINT32 taintLength = this->tReg.getTaintLength(reg);
-	for (INT ii = posStart; ii < posStart+taintLength; ii++)
+	if (byteIndex >= taintLength)
 	{
-		//0 is considered the 'untainted' color
-		this->regTaintField[ii] = Tag(0);
+		LOG_ERR("Tried to untaint an invalid position of a register--> R:"<<reg<<" ByteIndex:"<<byteIndex);
 	}
-	LOG_DEBUG("Untainted regs untaintReg(" << reg <<") --> modified Tags of reg(R:" << reg << " PI:" << posStart << " PF:" << posStart + taintLength << ") with empty color");
+
+	UINT16 taintColor = this->regTaintField[posStart + byteIndex].color;
+	if (taintColor != EMPTY_COLOR)
+	{
+		LOG_DEBUG("Untainted reg untaintReg(" << reg << ") --> modified Tag of reg(R:" << reg << " PosStart:" << posStart << "ByteIndex:" << byteIndex << ") with empty color");
+		//0 is considered the 'untainted' color
+		this->regTaintField[posStart + byteIndex] = Tag(0);
+	}
 }
 
 std::vector<Tag> TagMap::getTaintColorReg(LEVEL_BASE::REG reg)
@@ -283,6 +289,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		if (color2 == EMPTY_COLOR)
 		{
 			//Both are empty_color, then no taint to perform
+			LOG_DEBUG("IGNORED mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with colors "<<color1<<" and "<<color2);
 			return;
 		}
 		else

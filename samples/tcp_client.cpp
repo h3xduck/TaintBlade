@@ -119,7 +119,7 @@ int __cdecl main(int argc, char** argv)
 
     //} while (iResult > 0);
         int num = 0x77;
-        char c = recvbuf[0] & num;
+        char c = recvbuf & num;
         if (c != 'f')
         printf("%s\n", recvbuf);
 

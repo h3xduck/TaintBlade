@@ -11,7 +11,7 @@ TaintController::TaintController()
 void TaintController::taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes)
 {
 	ADDRINT memIt = memAddr;
-	for (int ii = 0; ii < bytes - 1; ii++)
+	for (int ii = 0; ii < bytes; ii++)
 	{
 		//Different color for each byte
 		const UINT16 newColor = this->tagMap.getNextTagColor();
@@ -75,6 +75,14 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 
 }
 
+void TaintController::untaintMem(const ADDRINT destMem, const UINT32 destBytes)
+{
+	for (int ii = 0; ii < destBytes; ii++)
+	{
+		this->tagMap.untaintMem(destMem+ii);
+	}
+}
+
 //TODO: Think about taking the byte complexity of TagMap out to this functions
 //like in the taintregwithmem
 void TaintController::taintRegNewColor(const LEVEL_BASE::REG reg)
@@ -98,6 +106,16 @@ void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL
 		this->tagMap.mixTaintRegByte(destReg, ii, colorReg, colorSrc2Mem);
 	}
 
+}
+
+void TaintController::untaintReg(const LEVEL_BASE::REG reg)
+{
+	const UINT32 taintLength = this->tagMap.tReg.getTaintLength(reg);
+
+	for (int ii=0; ii<taintLength; ii++)
+	{
+		this->tagMap.untaintReg(reg, ii);
+	}
 }
 
 void TaintController::printTaint()

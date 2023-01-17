@@ -256,6 +256,7 @@
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="engine\core\InstrumentationManager.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\Common.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\LogicalOpc.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />

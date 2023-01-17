@@ -110,9 +110,9 @@ public:
 	void taintReg(LEVEL_BASE::REG reg, UINT16 color);
 
 	/**
-	Untaints all bytes of a register by writing the empty_color.
+	Untaints a byte indicated by byteIndex of a register by writing the empty_color.
 	*/
-	void untaintReg(LEVEL_BASE::REG reg);
+	void untaintReg(LEVEL_BASE::REG reg, int byteIndex);
 
 	/**
 	Returns a vector of tags corresponding to each byte of the register

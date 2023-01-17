@@ -21,6 +21,7 @@
 	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE, IARG_UINT32, INS_OperandReg(ins, 0), IARG_END);	\
 }
 
+BOOL ins_regs_equal(INS ins);
 
 
 

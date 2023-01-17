@@ -34,8 +34,10 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_AND:
 	case XED_ICLASS_OR:
 		OPC_INST::instrumentLogicalOpc(ins);
+		break;
 	case XED_ICLASS_XOR:
 		OPC_INST::instrumentLogicalOpcXor(ins);
+		break;
 	default:
 		break;
 
