@@ -288,6 +288,8 @@ VOID ImageTrace(IMG img, VOID* v)
 {
 	std::string dllName = IMG_Name(img);
 	const ADDRINT entryAddr = IMG_EntryAddress(img);
+	//tolower
+	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
 }
 
@@ -382,6 +384,8 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 		return;
 	}
 	std::string dllName = IMG_Name(module);
+	//tolower
+	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 
 	//LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
 
@@ -403,15 +407,11 @@ void TraceBase(TRACE trace, VOID* v)
 			IMG dll = IMG_FindByAddress(addr);
 			if (!IMG_Valid(dll))
 			{
-			
 				return;
 			}
 			std::string dllName = IMG_Name(dll);
-			
-			if (RTN_Name(rtn) == "recv")
-			{
-				//LOG_ALERT("FOUND RECV, dll:"<<dllName);
-			}
+			//tolower
+			std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 
 			InstrumentationManager instManager;
 			if (scopeFilterer.isMainExecutable(inst)) {
@@ -489,8 +489,8 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
-	taintManager.registerTaintSource("C:\\Windows\\System32\\WS2_32.dll", "recv", 4);
-	taintManager.registerTaintSource("C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
+	taintManager.registerTaintSource("c:\\windows\\system32\\ws2_32.dll", "recv", 4);
+	taintManager.registerTaintSource("c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
 
 	// Initialize PIN library. Print help message if -h(elp) is specified
 	// in the command line or the command line is invalid

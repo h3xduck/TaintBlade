@@ -95,7 +95,6 @@ void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL
 	for (int ii = 0; ii < destRegLength; ii++)
 	{
 		UINT16 colorReg = this->tagMap.getTaintColorReg(src1Reg).at(ii).color;
-
 		this->tagMap.mixTaintRegByte(destReg, ii, colorReg, colorSrc2Mem);
 	}
 

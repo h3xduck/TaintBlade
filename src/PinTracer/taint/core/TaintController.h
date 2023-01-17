@@ -4,6 +4,9 @@
 #include "../data/TagMap.h"
 #include <iostream>
 #include <cstdio>
+#include <algorithm>
+#include <cctype>
+#include <string>
 
 class TaintController
 {

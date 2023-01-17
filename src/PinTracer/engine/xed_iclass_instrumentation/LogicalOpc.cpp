@@ -1,17 +1,20 @@
 #include "LogicalOpc.h"
 
-void OPC_INST::logical_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
+void OPC_INST::logical_mem2reg(THREADID tid, const std::string dis, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
+	LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
 }
 
-void OPC_INST::logical_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
+void OPC_INST::logical_reg2reg(THREADID tid, const std::string dis, ADDRINT ip, REG regSrc, REG regDest)
 {
+	LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().taintRegWithReg(regDest, regSrc);
 }
 
-void OPC_INST::logical_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
+void OPC_INST::logical_reg2mem(THREADID tid, const std::string dis, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {
+	LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
 }
 
@@ -22,9 +25,6 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);
 	//If dest operand is mem, src cannot be mem
 	const BOOL isMemDest = INS_IsMemoryWrite(ins);
-
-	std::string dis = INS_Disassemble(ins);
-	LOG_DEBUG("OPC: " << dis);
 
 	if (!isImmSrc)
 	{
