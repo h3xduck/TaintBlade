@@ -118,7 +118,8 @@ int __cdecl main(int argc, char** argv)
             printf("recv failed with error: %d\n", WSAGetLastError());
 
     //} while (iResult > 0);
-        char c = recvbuf[0] & 0x77;
+        int num = 0x77;
+        char c = recvbuf[0] & num;
         if (c != 'f')
         printf("%s\n", recvbuf);
 

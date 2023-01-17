@@ -110,11 +110,24 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 		//Dest=src1 != empty_color
 		if (src2MemTag.color != EMPTY_COLOR)
 		{
-			//We need to mix both colors, log the generated tag
-			tag = Tag(src1MemTag.color, src2MemTag.color);
-			it->second = tag;
-			this->tagLog.logTag(tag);
-			LOG_DEBUG("Mixed memory taint mixTaintMem(" << dest << ", " << src1 << ", " << src2 << ") --> modified T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
+			//Check if mix between these two colors already exists
+			UINT16 mixColor = this->tagLog.getMixColor(src1MemTag.color, src2MemTag.color);
+			if (mixColor == EMPTY_COLOR)
+			{
+				//We need to mix both colors, log the generated tag
+				tag = Tag(src1MemTag.color, src2MemTag.color);
+				it->second = tag;
+				this->tagLog.logTag(tag);
+				LOG_DEBUG("Mixed memory taint mixTaintMem(" << dest << ", " << src1 << ", " << src2 << ") --> modified T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
+			}
+			else
+			{
+				//Mix already generated before, use that color again
+				tag = Tag(mixColor);
+				it->second = tag;
+				LOG_DEBUG("Reused mix taint mixTaintMem(" << dest << ", " << src1 << ", " << src2 << ") --> reused T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
+			}
+			
 		}
 		else
 		{
@@ -216,12 +229,23 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 			else
 			{
 				//src2 is not empty_color, then we need to mix the colors
-				//LOG_DEBUG("MIX R2R--> SRC2COL:" << colorSrc2 << " DEST/SRC1COL:" << colorSrc1);
-				Tag tag(colorSrc1, colorSrc2);
-				this->regTaintField[posStart + ii] = tag;
-				//LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
-				this->tagLog.logTag(tag);
-				LOG_DEBUG("(in loop) Mixed reg taint mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T("<<tag.color<<", " <<tag.derivate1<<", " <<tag.derivate2<< ")");
+				UINT16 mixColor = this->tagLog.getMixColor(colorSrc1, colorSrc2);
+				if (mixColor == EMPTY_COLOR)
+				{
+					//No previous mixes
+					Tag tag(colorSrc1, colorSrc2);
+					this->regTaintField[posStart + ii] = tag;
+					//LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
+					this->tagLog.logTag(tag);
+					LOG_DEBUG("(in loop) Mixed reg taint mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+				}
+				else
+				{
+					//Mix already generated before, use that color again
+					Tag tag = Tag(mixColor);
+					this->regTaintField[posStart + ii] = tag;
+					LOG_DEBUG("(in loop) Reused mix taint mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> reused Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+				}
 			}
 		}
 		else
@@ -278,10 +302,22 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 	else
 	{
 		//Neither dest=color1 or color2 are empty_color. Time to mix
-		Tag tag(color1, color2);
-		this->regTaintField[posStart+byteIndex] = tag;
-		this->tagLog.logTag(tag);
-		LOG_DEBUG("Mixed taint reg mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+		UINT16 mixColor = this->tagLog.getMixColor(color1, color2);
+		if (mixColor == EMPTY_COLOR)
+		{
+			//No previous mixes
+			Tag tag(color1, color2);
+			this->regTaintField[posStart + byteIndex] = tag;
+			this->tagLog.logTag(tag);
+			LOG_DEBUG("Mixed taint reg mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+		}
+		else
+		{
+			//Mix already generated before, use that color again
+			Tag tag = Tag(mixColor);
+			this->regTaintField[posStart + byteIndex] = tag;
+			LOG_DEBUG("Reused mix taint reg mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> reused Tag for reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+		}
 	}
 }
 
@@ -345,12 +381,22 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 		else
 		{
 			//mem dest and reg src2 have non-empty_color both, mix
-			//LOG_DEBUG("MIX R2M--> MEMCOL:" << it->second.color << " REGCOL:" << src2color);
-			Tag tag(it->second.color, src2color);
-			it->second = tag;
-			//LOG_DEBUG("NEW MEMCOL:" << it->second.color);
-			this->tagLog.logTag(tag);
-			LOG_DEBUG("(in loop) Mixed taint reg mixTaintMemRegAllBytes(" << dest << ", " << length << ", " << src1 << ", " << src2 << ") --> modified mem tag at " << dest + ii << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+			UINT16 mixColor = this->tagLog.getMixColor(it->second.color, src2color);
+			if (mixColor == EMPTY_COLOR)
+			{
+				//No previous mixes
+				Tag tag(it->second.color, src2color);
+				it->second = tag;
+				this->tagLog.logTag(tag);
+				LOG_DEBUG("(in loop) Mixed taint reg mixTaintMemRegAllBytes(" << dest << ", " << length << ", " << src1 << ", " << src2 << ") --> modified mem tag at " << dest + ii << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+			}
+			else
+			{
+				//Mix already generated before, use that color again
+				Tag tag = Tag(mixColor);
+				it->second = tag;
+				LOG_DEBUG("(in loop) Reused mix taint reg mixTaintMemRegAllBytes(" << dest << ", " << length << ", " << src1 << ", " << src2 << ") --> reused mem tag for " << dest + ii << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+			}
 		}
 	}
 }
