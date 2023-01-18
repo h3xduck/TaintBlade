@@ -69,8 +69,5 @@ static std::tr1::unordered_map<ADDRINT, std::string> instMap;
 }
 
 
-BOOL ins_regs_equal(INS ins);
-
-
 
 #endif

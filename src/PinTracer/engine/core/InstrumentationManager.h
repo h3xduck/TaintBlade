@@ -4,8 +4,8 @@
 #include "../../utils/io/log.h"
 #include "pin.H"
 #include <xed-category-enum.h>
-#include "../xed_iclass_instrumentation/LogicalOpc.h"
-#include "../xed_iclass_instrumentation/MovOpc.h"
+#include "../xed_iclass_instrumentation/BinaryOpc.h"
+#include "../xed_iclass_instrumentation/OverwriteOpc.h"
 
 class InstrumentationManager
 {

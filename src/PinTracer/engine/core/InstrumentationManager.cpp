@@ -33,19 +33,23 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	switch (opc)
 	{
 		//Logical binary instructions
-		//TODO
+		//TODO: in progress
+	case XED_ICLASS_ADD:
 	case XED_ICLASS_AND:
 	case XED_ICLASS_OR:
 		OPC_INST::instrumentLogicalOpc(ins);
 		break;
+	case XED_ICLASS_SUB:
 	case XED_ICLASS_XOR:
-		OPC_INST::instrumentLogicalOpcXor(ins);
+		OPC_INST::instrumentLogicalIfEqualRegClearOpc(ins);
 		break;
 	case XED_ICLASS_MOV:
-	case XED_ICLASS_MOVSX:/*U*/
-		OPC_INST::instrumentMovOpc(ins);
+	case XED_ICLASS_MOVSX:
+	case XED_ICLASS_MOVZX:
+		OPC_INST::instrumentOverwriteOpc(ins);
 		break;
 	default:
+		LOG_DEBUG("Unsupported instruction: " << INS_Disassemble(ins));
 		break;
 
 	}
