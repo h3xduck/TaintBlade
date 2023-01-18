@@ -109,9 +109,8 @@ void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL
 }
 
 void TaintController::untaintReg(const LEVEL_BASE::REG reg)
-{
+{	
 	const UINT32 taintLength = this->tagMap.tReg.getTaintLength(reg);
-
 	for (int ii=0; ii<taintLength; ii++)
 	{
 		this->tagMap.untaintReg(reg, ii);

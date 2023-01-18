@@ -64,6 +64,7 @@ public:
 		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
 		taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
+
 	}
 
 	static VOID mainEnter(int retIp, ...)

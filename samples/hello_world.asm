@@ -15,13 +15,10 @@ extern ExitProcess
 extern _CRT_INIT
 
 main:
-    and rcx, rax ;rcx=1: 1, 1
-    and rdx, rbx ;rdx=1: 2, 2
-    and rdx, rax ;rdx=3: 2, 1
-    and rcx, rbx ;rcx=3: 1, 2
-    and rdx, rax ;rdx=4: 3, 1
-    and rcx, rbx ;rcx=5: 3, 2
-    ;and rcx, rdx ;rcx=
+    and rcx, rax
+    and [msg], rbx
+    mov qword [msg], 10
+    and rcx, rbx
     
 
     ret

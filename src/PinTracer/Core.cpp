@@ -477,7 +477,7 @@ VOID Fini(INT32 code, VOID* v)
 	std::cerr << "Finished" << std::endl;
 	taintController.printTaint();
 	taintController.dumpTaintLog();
-	taintController.dumpTaintLogPrettified(26);
+	taintController.dumpTaintLogPrettified(3);
 }
 
 /*!

@@ -4,8 +4,6 @@
 #include <iomanip>
 #include <fstream>
 
-#include "../xed_iclass_instrumentation/LogicalOpc.h"
-
 //Info regarding categories from INS_Category and opcodes:
 //https://software.intel.com/sites/landingpage/pintool/docs/98484/Pin/html/group__INS__INSPECTION.html#ga3d71d53c5043092d5dbc7c96a2c30b5b
 //Categories --> https://intelxed.github.io/ref-manual/xed-category-enum_8h.html
@@ -37,6 +35,10 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		break;
 	case XED_ICLASS_XOR:
 		OPC_INST::instrumentLogicalOpcXor(ins);
+		break;
+	case XED_ICLASS_MOV:
+	case XED_ICLASS_MOVSX:/*U*/
+		OPC_INST::instrumentMovOpc(ins);
 		break;
 	default:
 		break;

@@ -258,6 +258,7 @@
     <ClCompile Include="engine\core\InstrumentationManager.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\Common.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\LogicalOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\MovOpc.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
@@ -274,6 +275,7 @@
     <ClInclude Include="engine\core\InstrumentationManager.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\Common.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\LogicalOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\MovOpc.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
     <ClInclude Include="taint\data\Tag.h" />

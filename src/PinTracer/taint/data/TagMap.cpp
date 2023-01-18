@@ -69,7 +69,12 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color)
 
 void TagMap::untaintMem(ADDRINT addr)
 {
-	LOG_DEBUG("Untainted mem untaintMem(" << addr << ") --> mem.erase(" << addr << ")");
+	//Debug, print only if tainted
+	auto it = this->memTaintField.find(addr);
+	if (it != this->memTaintField.end())
+	{
+		LOG_DEBUG("Untainted mem untaintMem(" << addr << ") --> mem.erase(" << addr << ")");
+	}
 	this->memTaintField.erase(addr);
 }
 
@@ -214,6 +219,7 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 	if (src1RegColorVector.size() != src2RegColorVector.size() ||
 		src1RegColorVector.size() != taintLength)
 	{
+		//TODO manage different length registers
 		LOG_ERR("Tried to mix taint between registers of different lengths");
 		return;
 	}
@@ -289,7 +295,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		if (color2 == EMPTY_COLOR)
 		{
 			//Both are empty_color, then no taint to perform
-			LOG_DEBUG("IGNORED mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with colors "<<color1<<" and "<<color2);
+			//LOG_DEBUG("IGNORED mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with colors "<<color1<<" and "<<color2);
 			return;
 		}
 		else
