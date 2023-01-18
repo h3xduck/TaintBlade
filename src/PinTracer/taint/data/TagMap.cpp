@@ -278,6 +278,77 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 
 }
 
+void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2)
+{
+	std::vector<Tag> src1RegColorVector = getTaintColorReg(src1);
+	std::vector<Tag> src2RegColorVector = getTaintColorReg(src2);
+	const UINT32 taintLength = this->tReg.getTaintLength(dest);
+
+	if (! (src1RegColorVector.size() != src2RegColorVector.size() ||
+		src1RegColorVector.size() != taintLength))
+	{
+		//Register src does not need to be sign extended
+		this->mixTaintReg(dest, src1, src2);
+		return;
+	}
+
+	//Sign extension must be performed
+	const UINT32 posStart = this->tReg.getPos(dest);
+	const UINT32 src2taintLength = this->tReg.getTaintLength(src2);
+	const UINT16 colorExt = src2RegColorVector.at(src2taintLength - 1).color;
+
+	for (int ii = 0; ii < src1RegColorVector.size(); ii++)
+	{
+		UINT16 colorSrc1 = src1RegColorVector.at(ii).color;
+		if (colorSrc1 != EMPTY_COLOR)
+		{
+			//src1=dest is not empty_color
+			if (colorExt == EMPTY_COLOR)
+			{
+				//src2=empty_color, thus just untaint that reg byte
+				Tag tag(0);
+				this->regTaintField[posStart + ii] = tag;
+				LOG_DEBUG("(in loop) Untainted reg mixTaintRegWithExtension(" << dest << ", " << src1 << ", " << src2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart + ii << ") with full empty color");
+			}
+			else
+			{
+				//src2 is not empty_color, then we need to mix the colors
+				UINT16 mixColor = this->tagLog.getMixColor(colorSrc1, colorExt);
+				if (mixColor == EMPTY_COLOR)
+				{
+					//No previous mixes
+					Tag tag(colorSrc1, colorExt);
+					this->regTaintField[posStart + ii] = tag;
+					//LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
+					this->tagLog.logTag(tag);
+					LOG_DEBUG("(in loop) Mixed reg taint mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+				}
+				else
+				{
+					//Mix already generated before, use that color again
+					Tag tag = Tag(mixColor);
+					this->regTaintField[posStart + ii] = tag;
+					LOG_DEBUG("(in loop) Reused mix taint mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> reused Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+				}
+			}
+		}
+		else
+		{
+			//dest=src1 was untainted, taint it now with whatever color is at src2
+			//LOG_DEBUG("MIX R2R--> Dest was untainted, tainting with SRC2COL:"<<colorSrc2);
+			if (colorExt != EMPTY_COLOR)
+			{
+				Tag tag(colorExt);
+				this->regTaintField[posStart + ii] = tag;
+				LOG_DEBUG("(in loop) Tainted reg with new color mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> modified Tag of reg(R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+			}
+			//else nothing, no changes in color
+
+		}
+
+	}
+}
+
 void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 color1, UINT16 color2)
 {
 

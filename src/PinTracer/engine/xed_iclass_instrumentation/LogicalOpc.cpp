@@ -9,7 +9,7 @@ void OPC_INST::logical_mem2reg(THREADID tid, const std::string dis, ADDRINT ip, 
 void OPC_INST::logical_reg2reg(THREADID tid, const std::string dis, ADDRINT ip, REG regSrc, REG regDest)
 {
 	LOG_DEBUG("OPC: " << dis);
-	taintManager.getController().taintRegWithReg(regDest, regSrc);
+	taintManager.getController().taintRegWithReg(regDest, regSrc, false);
 }
 void OPC_INST::logical_reg2mem(THREADID tid, const std::string dis, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {

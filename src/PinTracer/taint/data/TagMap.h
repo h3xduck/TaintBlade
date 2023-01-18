@@ -122,11 +122,18 @@ public:
 
 	/**
 	Mixes register colors of src1 and src2 into dest.
-	WARN: dest, src1 and src2 MUST be of the same size.
+	dest, src1 and src2 MUST be of the same size.
 	src1 and dest are expected to be the same register. Only binary opcs!
 	Introduces mix in taglog if generated.
 	*/
 	void mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2);
+
+
+	/**
+	Same as mixTaintReg, but if src reg is smaller than dest, then the full dest register
+	is tainted using the LSB of the src register	
+	*/
+	void mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2);
 
 	/**
 	DEPRECATED -- Best to leave byte complexity to taintcontroller
