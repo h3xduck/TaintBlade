@@ -33,7 +33,7 @@ namespace OPC_INST {
 	*	and reg, mem
 	* 
 	*/
-	void instrumentLogicalOpc(INS ins);
+	void instrumentBinaryOpc(INS ins);
 
 	/*
 	* Template instruction:
@@ -46,7 +46,7 @@ namespace OPC_INST {
 	* 
 	* Notes: Not always spreads taint
 	*/
-	void instrumentLogicalIfEqualRegClearOpc(INS ins);
+	void instrumentBinaryIfEqualRegClearOpc(INS ins);
 };
 
 

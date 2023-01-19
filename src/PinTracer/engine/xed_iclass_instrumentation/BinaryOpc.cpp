@@ -25,7 +25,7 @@ void OPC_INST::binary_clr_reg2reg(THREADID tid, const std::string dis, ADDRINT i
 }
 
 
-void OPC_INST::instrumentLogicalOpc(INS ins)
+void OPC_INST::instrumentBinaryOpc(INS ins)
 {
 	//Only src operand can be imm
 	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);
@@ -66,7 +66,7 @@ void OPC_INST::instrumentLogicalOpc(INS ins)
 	return;
 }
 
-void OPC_INST::instrumentLogicalIfEqualRegClearOpc(INS ins)
+void OPC_INST::instrumentBinaryIfEqualRegClearOpc(INS ins)
 {
 	//Only src operand can be imm
 	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);

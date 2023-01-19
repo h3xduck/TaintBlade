@@ -12,7 +12,6 @@ namespace OPC_INST {
 	////////////////////////////////////////////////////////
 	//Taint functions, called from instrumentation functions
 
-	//mov
 	void ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest);
 	void ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest);
 	void ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen);

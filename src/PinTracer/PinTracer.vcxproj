@@ -258,6 +258,7 @@
     <ClCompile Include="engine\core\InstrumentationManager.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\BinaryOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\OverwriteOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\SpecialOpc.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
@@ -275,6 +276,7 @@
     <ClInclude Include="engine\xed_iclass_instrumentation\Common.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\BinaryOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\OverwriteOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\SpecialOpc.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
     <ClInclude Include="taint\data\Tag.h" />

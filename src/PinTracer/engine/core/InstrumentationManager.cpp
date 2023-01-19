@@ -37,11 +37,14 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_ADD:
 	case XED_ICLASS_AND:
 	case XED_ICLASS_OR:
-		OPC_INST::instrumentLogicalOpc(ins);
+		OPC_INST::instrumentBinaryOpc(ins);
 		break;
 	case XED_ICLASS_SUB:
 	case XED_ICLASS_XOR:
-		OPC_INST::instrumentLogicalIfEqualRegClearOpc(ins);
+		OPC_INST::instrumentBinaryIfEqualRegClearOpc(ins);
+		break;
+	case XED_ICLASS_LEA:
+		OPC_INST::instrumentLeaOpc(ins);
 		break;
 	case XED_ICLASS_MOV:
 	case XED_ICLASS_MOVSX:
@@ -49,6 +52,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		OPC_INST::instrumentOverwriteOpc(ins);
 		break;
 	default:
+		//Unsupported or ignored, no tainting for those
 		LOG_DEBUG("Unsupported instruction: " << INS_Disassemble(ins));
 		break;
 

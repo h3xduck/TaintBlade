@@ -13,7 +13,12 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\logicalopc.ob
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\common.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\instrumentationmanager.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\core.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\overwriteopc.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\binaryopc.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\specialopc.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.lib
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.exp
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.dll
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.pdb
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\cl.command.1.tlog
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\cl.read.1.tlog
@@ -21,3 +26,4 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlo
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\link.command.1.tlog
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\link.read.1.tlog
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\link.write.1.tlog
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\link.write.2u.tlog
