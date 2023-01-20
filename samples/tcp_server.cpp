@@ -110,6 +110,16 @@ int __cdecl main(void)
                 return 1;
             }
             printf("Bytes sent: %d\n", iSendResult);
+
+            Sleep(1000);
+            iSendResult = send(ClientSocket, recvbuf, iResult, 0);
+            if (iSendResult == SOCKET_ERROR) {
+                printf("send failed with error: %d\n", WSAGetLastError());
+                closesocket(ClientSocket);
+                WSACleanup();
+                return 1;
+            }
+            printf("Bytes sent: %d\n", iSendResult);
         }
         else if (iResult == 0)
             printf("Connection closing...\n");

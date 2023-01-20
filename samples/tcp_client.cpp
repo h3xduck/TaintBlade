@@ -27,6 +27,7 @@ int __cdecl main(int argc, char** argv)
         hints;
     const char* sendbuf = "this is a test";
     char recvbuf[DEFAULT_BUFLEN];
+    char recvbuf2[DEFAULT_BUFLEN];
     int iResult;
     int recvbuflen = DEFAULT_BUFLEN;
 
@@ -117,11 +118,26 @@ int __cdecl main(int argc, char** argv)
         else
             printf("recv failed with error: %d\n", WSAGetLastError());
 
+        Sleep(1000);
+
+        iResult = recv(ConnectSocket, recvbuf2, recvbuflen, 0);
+        if (iResult > 0)
+            printf("Bytes received: %d\n", iResult);
+        else if (iResult == 0)
+            printf("Connection closed\n");
+        else
+            printf("recv failed with error: %d\n", WSAGetLastError());
+
     //} while (iResult > 0);
-        int num = 0x77;
-        char c = recvbuf & num;
-        if (c != 'f')
-        printf("%s\n", recvbuf);
+
+    //Test
+    /*char secret[3];
+    secret[0] = recvbuf[0] & recvbuf2[1];
+    secret[1] = recvbuf[5];
+    secret[2] = recvbuf[3] + recvbuf2[0];
+    printf("Test: %s\n", secret);*/
+        char c = recvbuf[1] & recvbuf2[3];
+        printf("Test: %c\n", c);
 
     // cleanup
     closesocket(ConnectSocket);

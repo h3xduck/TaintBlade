@@ -285,6 +285,7 @@
     <ClInclude Include="taint\data\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
+    <ClInclude Include="utils\io\format.h" />
     <ClInclude Include="utils\io\log.h" />
     <ClInclude Include="utils\inst\InstructionWorker.h" />
     <ClInclude Include="utils\inst\SyscallParser.h" />

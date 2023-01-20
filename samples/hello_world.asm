@@ -15,8 +15,10 @@ extern ExitProcess
 extern _CRT_INIT
 
 main:
-    lea rcx, [rax+0x10]
-    lea rbx, [rbx+rcx]
+    add rax, 0x10
+    xor rbx, rbx
+    sub rbx, rax
+
     
 
     ret

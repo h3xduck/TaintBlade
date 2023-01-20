@@ -53,8 +53,9 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		break;
 	default:
 		//Unsupported or ignored, no tainting for those
-		LOG_DEBUG("Unsupported instruction: " << INS_Disassemble(ins));
+	#if(REPORT_UNSUPPORTED_INS==1)
+			LOG_DEBUG("Unsupported instruction: " << INS_Disassemble(ins));
+	#endif
 		break;
-
 	}
 }

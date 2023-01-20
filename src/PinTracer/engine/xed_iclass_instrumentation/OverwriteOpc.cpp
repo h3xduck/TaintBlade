@@ -31,6 +31,7 @@ void OPC_INST::ovw_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memD
 
 void OPC_INST::instrumentOverwriteOpc(INS ins)
 {
+	LOG_DEBUG("OPC: " << INS_Disassemble(ins));
 	//Only src operand can be imm
 	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);
 	//If dest operand is mem, src cannot be mem

@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
+#include "../../utils/io/format.h"
 
 class TaintController
 {

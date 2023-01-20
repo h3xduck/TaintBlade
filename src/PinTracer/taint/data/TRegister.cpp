@@ -88,9 +88,9 @@ UINT32 TReg::getPos(INT reg)
 	}
 	else 
 	{ 
-		//Shouldn't happen at any point
-		LOG_ERR("Tried to get taint position of non supported register");
-		return 256;
+		//Shouldn't happen, but RIP and RSP are not tainted yet (e.g.: lea)
+		//LOG_INFO("Tried to get taint position of non supported register");
+		return INVALID_REGISTER_POSITION;
 	}
 }
 
@@ -119,7 +119,14 @@ UINT32 TReg::getTaintLength(LEVEL_BASE::REG reg)
 	}
 	else
 	{
-		LOG_ERR("Tried to get taint length of non supported register: "<<reg);
+#if(REPORT_UNSUPPORTED_REG)
+		//LOG_INFO("Tried to get taint length of non supported register: "<<reg);
+#endif
 		return 0;
 	}
+}
+
+BOOL TReg::isSupported(REG reg)
+{
+	return this->getPos(reg) != INVALID_REGISTER_POSITION;
 }

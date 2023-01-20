@@ -5,6 +5,9 @@
 #include "pin.H"
 #include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
 
+
+#define INVALID_REGISTER_POSITION 999
+
 class TReg {
 public:
 	//Stores relation between LEVEL_BASE::REG's enum and the indexes in our register tainting structure
@@ -16,6 +19,7 @@ public:
 	TReg();
 	UINT32 getPos(INT reg);
 	UINT32 getTaintLength(LEVEL_BASE::REG reg);
+	BOOL isSupported(REG reg);
 };
 
 

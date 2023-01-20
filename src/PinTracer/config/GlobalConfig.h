@@ -6,4 +6,11 @@
 
 //0 - log RTN calls and all instructions in debug files (slows down program!)
 #define CONFIG_INST_LOG_FILES 0
+
+//0 - Do not report about unsupported instructions, 1 - Do it
+#define REPORT_UNSUPPORTED_INS 0
+
+//0 - Do not report about unsupported registers, 1 - Do it
+#define REPORT_UNSUPPORTED_REG 1
+
 #endif
