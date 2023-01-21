@@ -131,13 +131,13 @@ int __cdecl main(int argc, char** argv)
     //} while (iResult > 0);
 
     //Test
-    /*char secret[3];
+    char secret[3];
     secret[0] = recvbuf[0] & recvbuf2[1];
     secret[1] = recvbuf[5];
     secret[2] = recvbuf[3] + recvbuf2[0];
-    printf("Test: %s\n", secret);*/
-        char c = recvbuf[1] & recvbuf2[3];
-        printf("Test: %c\n", c);
+    printf("Test: %s\n", secret);
+        /*char c = recvbuf[1] & recvbuf2[3];
+        printf("Test: %c\n", c);*/
 
     // cleanup
     closesocket(ConnectSocket);

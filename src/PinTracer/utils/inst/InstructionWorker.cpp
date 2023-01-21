@@ -1,119 +1,114 @@
 #include "InstructionWorker.h"
 
-namespace InstructionWorker
+ADDRINT InstructionWorker::getBaseAddress(ADDRINT addr)
 {
-	ADDRINT getBaseAddress(ADDRINT addr)
+	IMG module = IMG_FindByAddress(addr);
+	ADDRINT base = IMG_LoadOffset(module);
+	if (base == 0)
 	{
-		IMG module = IMG_FindByAddress(addr);
-		ADDRINT base = IMG_LoadOffset(module);
+		base = IMG_LowAddress(module);
 		if (base == 0)
 		{
-			base = IMG_LowAddress(module);
-			if (base == 0)
-			{
-				base = GetPageOfAddr(addr);
-			}
+			base = GetPageOfAddr(addr);
 		}
-
-		ADDRINT baseAddr = addr - base;
-
-		return baseAddr;
 	}
 
-	std::string getDllFromAddress(ADDRINT addr)
-	{
-		IMG module = IMG_FindByAddress(addr);
-		if (!IMG_Valid(module))
-		{
-			return NULL;
-		}
-		std::string dllName = IMG_Name(module);
+	ADDRINT baseAddr = addr - base;
 
-		return dllName;
+	return baseAddr;
+}
+
+std::string InstructionWorker::getDllFromAddress(ADDRINT addr)
+{
+	IMG module = IMG_FindByAddress(addr);
+	if (!IMG_Valid(module))
+	{
+		return NULL;
+	}
+	std::string dllName = IMG_Name(module);
+
+	return dllName;
+}
+
+std::string InstructionWorker::getFunctionNameFromAddress(ADDRINT addr)
+{
+	IMG module = IMG_FindByAddress(addr);
+	if (!IMG_Valid(module))
+	{
+		return NULL;
 	}
 
-	std::string getFunctionNameFromAddress(ADDRINT addr)
+	RTN routine = RTN_FindByAddress(addr);
+
+
+	std::string routineName = RTN_FindNameByAddress(addr);
+
+	return routineName;
+}
+
+std::wstring InstructionWorker::printFunctionArgument(void* arg)
+{
+	std::wstringstream result;
+	if (arg == NULL)
 	{
-		IMG module = IMG_FindByAddress(addr);
-		if (!IMG_Valid(module))
-		{
-			return NULL;
-		}
-
-		RTN routine = RTN_FindByAddress(addr);
-
-
-		std::string routineName = RTN_FindNameByAddress(addr);
-
-		return routineName;
+		return L"0";
 	}
 
-	std::wstring printFunctionArgument(void* arg)
+	if (!PIN_CheckReadAccess(arg))
 	{
-		std::wstringstream result;
-		if (arg == NULL)
+		//Unreadable, probably just a numerical argument
+		result << std::hex << arg;
+	}
+	else
+	{
+		//Value accessible, try to read it
+		//Possible string types:
+		// Unicode string: https://www.geoffchappell.com/studies/windows/km/ntoskrnl/inc/shared/ntdef/unicode_string.htm
+		// char*
+		// wchar_t*
+
+		result << "[" << std::hex <<  arg << "] --> ";
+
+		//Try for unicode string
+		typedef struct UNICODE_STRING
 		{
-			return L"0";
-		}
+			UINT16 len;
+			UINT16 maxLen;
+			wchar_t buf;
+		} UNICODE_STRING;
 
-		if (!PIN_CheckReadAccess(arg))
+		//Check unicode string
+		UNICODE_STRING ustr = *(UNICODE_STRING*)arg;
+		if (PIN_CheckReadAccess((void*)ustr.buf))
 		{
-			//Unreadable, probably just a numerical argument
-			result << std::hex << arg;
-		}
-		else
-		{
-			//Value accessible, try to read it
-			//Possible string types:
-			// Unicode string: https://www.geoffchappell.com/studies/windows/km/ntoskrnl/inc/shared/ntdef/unicode_string.htm
-			// char*
-			// wchar_t*
-
-			result << "[" << std::hex <<  arg << "] --> ";
-
-			//Try for unicode string
-			typedef struct UNICODE_STRING
-			{
-				UINT16 len;
-				UINT16 maxLen;
-				wchar_t buf;
-			} UNICODE_STRING;
-
-			//Check unicode string
-			UNICODE_STRING ustr = *(UNICODE_STRING*)arg;
-			if (PIN_CheckReadAccess((void*)ustr.buf))
-			{
-				size_t stringLenUTF8 = getBufferStringLengthUTF8((void*)ustr.buf);
-				size_t stringLenUTF16 = getBufferStringLengthUTF16((void*)ustr.buf);
-				if (stringLenUTF8 == 1 && stringLenUTF8 < stringLenUTF16)
-				{
-					result << "Len: 0x" << stringLenUTF16;
-					result << " | Value: " << (wchar_t*)arg;
-				}
-			}
-			
-			//Char* or wchar_t*
-			UINT64 stringLenUTF8 = getBufferStringLengthUTF8(arg);
-			UINT64 stringLenUTF16 = getBufferStringLengthUTF16(arg);
+			size_t stringLenUTF8 = getBufferStringLengthUTF8((void*)ustr.buf);
+			size_t stringLenUTF16 = getBufferStringLengthUTF16((void*)ustr.buf);
 			if (stringLenUTF8 == 1 && stringLenUTF8 < stringLenUTF16)
 			{
 				result << "Len: 0x" << stringLenUTF16;
 				result << " | Value: " << (wchar_t*)arg;
 			}
-			else if (stringLenUTF8 > 0)
-			{
-				result << "Len: 0x" << stringLenUTF8;
-				result << " | Value: " << (char*)arg;
-			}
-			else
-			{
-				result << "<not string>";
-			}
 		}
-		return result.str();
+			
+		//Char* or wchar_t*
+		UINT64 stringLenUTF8 = getBufferStringLengthUTF8(arg);
+		UINT64 stringLenUTF16 = getBufferStringLengthUTF16(arg);
+		if (stringLenUTF8 == 1 && stringLenUTF8 < stringLenUTF16)
+		{
+			result << "Len: 0x" << stringLenUTF16;
+			result << " | Value: " << (wchar_t*)arg;
+		}
+		else if (stringLenUTF8 > 0)
+		{
+			result << "Len: 0x" << stringLenUTF8;
+			result << " | Value: " << (char*)arg;
+		}
+		else
+		{
+			result << "<not string>";
+		}
 	}
-
-
+	return result.str();
 }
 
 

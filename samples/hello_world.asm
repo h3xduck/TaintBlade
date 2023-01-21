@@ -15,9 +15,9 @@ extern ExitProcess
 extern _CRT_INIT
 
 main:
-    add rax, 0x10
-    xor rbx, rbx
-    sub rbx, rax
+    add rax, 0x10 ; rax=1
+    xor rbx, rbx ; rbx = 0 
+    sub rbx, rax ; rbx = 1
 
     
 

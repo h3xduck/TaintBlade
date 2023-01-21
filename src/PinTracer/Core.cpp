@@ -351,6 +351,66 @@ VOID ContextChangeTrace(THREADID tid, CONTEXT_CHANGE_REASON reason, const CONTEX
 	PIN_UnlockClient();
 }
 
+
+VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, CONTEXT* ctx, THREADID tid,
+	VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
+{
+	PIN_LockClient();
+
+	if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
+	{
+		if (branchTaken)
+		{
+			//If we are here, we are interested in logging this jump
+
+			IMG moduleFrom = IMG_FindByAddress(ip);
+			if (!IMG_Valid(moduleFrom))
+			{
+				std::cerr << "Image invalid at address " << ip << std::endl;
+				return;
+			}
+
+			std::string dllFrom = InstructionWorker::getDllFromAddress(ip);
+			ADDRINT baseAddrFrom = InstructionWorker::getBaseAddress(ip);
+			std::string routineNameFrom = InstructionWorker::getFunctionNameFromAddress(ip);
+
+			std::string dllTo = InstructionWorker::getDllFromAddress(branchTargetAddress);
+			ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
+			std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
+
+			
+			*imageInfoOut << "--FROM-- DLL: " << std::hex << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
+			*imageInfoOut << "++ TO ++ DLL: " << dllTo << " | BaseAddr: " << baseAddrTo << " | Addr: " << branchTargetAddress << " | RoutineName: " << routineNameTo << std::endl;
+			std::wstring res0 = InstructionWorker::printFunctionArgument((void*)arg0);
+			std::string resW0(res0.begin(), res0.end());
+			*imageInfoOut << resW0 << std::endl;
+			std::wstring res1 = InstructionWorker::printFunctionArgument((void*)arg1);
+			std::string resW1(res1.begin(), res1.end());
+			*imageInfoOut << resW1 << std::endl;
+			std::wstring res2 = InstructionWorker::printFunctionArgument((void*)arg2);
+			std::string resW2(res2.begin(), res2.end());
+			*imageInfoOut << resW2 << std::endl;
+			std::wstring res3 = InstructionWorker::printFunctionArgument((void*)arg3);
+			std::string resW3(res3.begin(), res3.end());
+			*imageInfoOut << resW3 << std::endl;
+			std::wstring res4 = InstructionWorker::printFunctionArgument((void*)arg4);
+			std::string resW4(res4.begin(), res4.end());
+			*imageInfoOut << resW4 << std::endl;
+			std::wstring res5 = InstructionWorker::printFunctionArgument((void*)arg5);
+			std::string resW5(res5.begin(), res5.end());
+			*imageInfoOut << resW5 << std::endl;
+
+		}
+		else
+		{
+			LOG_DEBUG("Branch not taken");
+		}
+	}
+	PIN_UnlockClient();
+
+	return;
+}
+
 VOID RoutineTrace(RTN rtn, VOID* v)
 {
 	if (!RTN_Valid(rtn))
@@ -422,10 +482,15 @@ void TraceBase(TRACE trace, VOID* v)
 					INS_Address(inst), IARG_UINT32, INS_Size(inst),
 					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
 
-				/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+				
+			#endif
+			}
+
+			//Register jumps
+			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 				{
 					INS_InsertCall(
-						inst, IPOINT_BEFORE, (AFUNPTR)registerControlFlowInst,
+						inst, IPOINT_BEFORE, (AFUNPTR)instrumentControlFlow,
 						IARG_ADDRINT, INS_Address(inst),
 						IARG_BRANCH_TARGET_ADDR,
 						IARG_UINT32, INS_Size(inst),
@@ -438,8 +503,6 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 						IARG_END);
-				}*/
-			#endif
 			}
 		}
 	}
@@ -477,7 +540,7 @@ VOID Fini(INT32 code, VOID* v)
 	std::cerr << "Finished" << std::endl;
 	taintController.printTaint();
 	taintController.dumpTaintLog();
-	taintController.dumpTaintLogPrettified(3);
+	taintController.dumpTaintLogPrettified(29);
 }
 
 /*!
@@ -489,6 +552,7 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
+	scopeFilterer = ScopeFilterer("c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\tcp_client.exe");
 	taintManager.registerTaintSource("c:\\windows\\system32\\ws2_32.dll", "recv", 4);
 	taintManager.registerTaintSource("c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
 

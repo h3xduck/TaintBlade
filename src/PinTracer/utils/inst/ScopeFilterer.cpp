@@ -1,5 +1,11 @@
 #include "ScopeFilterer.h"
 
+ScopeFilterer::ScopeFilterer(std::string name)
+{
+	this->mainExecutableName = name;
+}
+
+
 BOOL ScopeFilterer::isMainExecutable(ADDRINT ip)
 {
 	IMG img = IMG_FindByAddress(ip);

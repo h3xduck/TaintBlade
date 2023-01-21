@@ -11,6 +11,9 @@ private:
 	BOOL mainExecutableExited = FALSE;
 
 public:
+	ScopeFilterer() {};
+	ScopeFilterer(std::string name);
+
 	BOOL isMainExecutable(ADDRINT ip);
 	BOOL isMainExecutable(INS ins);
 	BOOL wasMainExecutableReached();
