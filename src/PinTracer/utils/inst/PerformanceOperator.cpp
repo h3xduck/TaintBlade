@@ -14,7 +14,7 @@ void PerformanceOperator::measureChrono()
 {
 	time(&PerformanceOperator::endChrono);
 	double dif = difftime(PerformanceOperator::endChrono, PerformanceOperator::beginChrono);
-	LOG_DEBUG("Elapsed: " << dif << " seconds.");
+	LOG_DEBUG("Milestone: " << PerformanceOperator::instructionCounter << " instructions executed" << std::endl << "\t|-> " << dif << " seconds.");
 }
 
 void PerformanceOperator::incrementInstructionCounter()
@@ -22,7 +22,6 @@ void PerformanceOperator::incrementInstructionCounter()
 	PerformanceOperator::instructionCounter++;
 	if (instructionCounter % milestone == 0)
 	{
-		LOG_DEBUG("Milestone: " << PerformanceOperator::instructionCounter << " instructions executed");
 		measureChrono();
 	}
 }

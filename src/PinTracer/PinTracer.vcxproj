@@ -273,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config\GlobalConfig.h" />
+    <ClInclude Include="config\Names.h" />
     <ClInclude Include="engine\core\InstrumentationManager.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\Common.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\BinaryOpc.h" />

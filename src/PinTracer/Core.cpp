@@ -20,6 +20,7 @@
 #include "engine/core/InstrumentationManager.h"
 #include "utils/inst/ScopeFilterer.h"
 #include "utils/inst/PerformanceOperator.h"
+#include "config/Names.h"
 
 using std::string;
 
@@ -554,9 +555,9 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
-	scopeFilterer = ScopeFilterer("c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\tcp_client.exe");
-	taintManager.registerTaintSource("c:\\windows\\system32\\ws2_32.dll", "recv", 4);
-	taintManager.registerTaintSource("c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
+	scopeFilterer = ScopeFilterer(TCP_CLIENT_PROG);
+	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
+	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
 
 	PerformanceOperator::startChrono();
 

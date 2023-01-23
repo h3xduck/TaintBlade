@@ -49,13 +49,13 @@ void TaintManager::registerTaintSource(const std::string& dllName, const std::st
 	VOID(*enterHandler)(int retIp, ...) = NULL;
 	VOID(*exitHandler)(int retVal, ...) = NULL;
 
-	if (dllName == "c:\\windows\\system32\\ws2_32.dll" && funcName == "recv")
+	if (dllName == WS2_32_DLL && funcName == RECV_FUNC)
 	{
 		LOG_DEBUG("Registered function handlers for recv");
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
 	}
-	else if (dllName == "c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\hello_world.exe" && funcName == ANY_FUNC_IN_DLL)
+	else if (dllName == HELLO_WORLD_PROG && funcName == ANY_FUNC_IN_DLL)
 	{
 		LOG_DEBUG("Registered function handlers for main");
 		enterHandler = TaintSource::mainEnter;

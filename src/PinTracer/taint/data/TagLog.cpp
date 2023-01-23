@@ -114,3 +114,8 @@ UINT16 TagLog::getMixColor(UINT16 d1, UINT16 d2)
 		return EMPTY_COLOR;
 	}
 }
+
+void TagLog::logTagOriginal(UINT16 color, std::string dllName, std::string funcName)
+{
+	this->originalColorsMap.insert(std::make_pair<UINT16, std::pair<std::string, std::string>>(color, std::make_pair<std::string, std::string>(dllName, funcName)));
+}

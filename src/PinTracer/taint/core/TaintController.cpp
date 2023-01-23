@@ -8,17 +8,20 @@ TaintController::TaintController()
 	LOG_INFO("TaintController initialized");
 }
 
-void TaintController::taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes)
+std::vector<UINT16> TaintController::taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes)
 {
 	ADDRINT memIt = memAddr;
+	std::vector<UINT16> usedColors;
 	for (int ii = 0; ii < bytes; ii++)
 	{
 		//Different color for each byte
 		const UINT16 newColor = this->tagMap.getNextTagColor();
+		usedColors.push_back(newColor);
 		//LOG_DEBUG("Tainting addr " << memIt << " with color " << newColor);
 		this->tagMap.taintMem(memIt, newColor);
 		memIt += 1;
 	}
+	return usedColors;
 }
 
 void TaintController::taintMemWithMem(const ADDRINT destMem, const UINT32 destBytes, const ADDRINT srcMem, const UINT32 srcBytes)
@@ -124,6 +127,13 @@ void TaintController::untaintReg(const LEVEL_BASE::REG reg)
 		this->tagMap.untaintReg(reg, ii);
 	}
 }
+
+void TaintController::registerOriginalColor(UINT16 color, std::string dllName, std::string funcName)
+{
+	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName);
+}
+
+
 
 void TaintController::printTaint()
 {

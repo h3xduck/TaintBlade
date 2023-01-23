@@ -4,6 +4,7 @@
 //The order of these two includes is critical, since PINCRT must come first
 #include "TaintController.h"
 #include "TaintSource.h"
+#include "../../config/Names.h"
 
 #include <iostream>
 #include <cstdio>
