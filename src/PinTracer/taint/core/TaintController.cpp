@@ -150,3 +150,8 @@ void TaintController::dumpTaintLogPrettified(UINT16 color)
 {
 	this->tagMap.dumpTaintLogPrettified(color);
 }
+
+void TaintController::dumpTagLogOriginalColors()
+{
+	this->tagMap.dumpTagLogOriginalColors();
+}

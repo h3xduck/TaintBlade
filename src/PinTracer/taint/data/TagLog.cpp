@@ -120,3 +120,13 @@ void TagLog::logTagOriginal(UINT16 color, std::string dllName, std::string funcN
 	LOG_DEBUG("Logged original color [" << color << "] for DLL " << dllName << " and FUNC " << funcName);
 	this->originalColorsMap.insert(std::make_pair<UINT16, std::pair<std::string, std::string>>(color, std::make_pair<std::string, std::string>(dllName, funcName)));
 }
+
+void TagLog::dumpTagLogOriginalColors()
+{
+	std::stringstream logLine;
+	logLine << "ORIGINAL COLORS TAG LOG: COLOR, DLL, FUNCTION" << std::endl;
+	for (auto& it : this->originalColorsMap) {
+		logLine<<"|-> COLOR:" << it.first << ":: DLL:" << it.second.first << " FUNC:" << it.second.second << std::endl;
+	}
+	LOG_INFO(logLine.str());
+}

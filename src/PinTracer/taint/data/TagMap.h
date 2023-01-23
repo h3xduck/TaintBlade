@@ -166,6 +166,7 @@ public:
 	void printRegTaintComplete();
 	void dumpTaintLog();
 	void dumpTaintLogPrettified(UINT16 startColor);
+	void dumpTagLogOriginalColors();
 
 };
 

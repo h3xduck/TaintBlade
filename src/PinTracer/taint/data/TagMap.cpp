@@ -595,3 +595,8 @@ void TagMap::dumpTaintLogPrettified(UINT16 startColor)
 {
 	this->tagLog.dumpTagLogPrettified(startColor);
 }
+
+void TagMap::dumpTagLogOriginalColors()
+{
+	this->tagLog.dumpTagLogOriginalColors();
+}

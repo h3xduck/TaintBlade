@@ -31,6 +31,7 @@ public:
 	void printTaint();
 	void dumpTaintLog();
 	void dumpTaintLogPrettified(UINT16 color);
+	void dumpTagLogOriginalColors();
 };
 
 

@@ -23,6 +23,7 @@ public:
 	void dumpTagLog();
 	void dumpTagLogPrettified(UINT16 startColor);
 	void logTagOriginal(UINT16 color, std::string dllName, std::string funcName);
+	void dumpTagLogOriginalColors();
 
 	/**
 	Checks if colors have already been mixed. If so, returns resulting color. Otherwise, empty color.
