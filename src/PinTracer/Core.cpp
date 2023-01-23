@@ -542,6 +542,7 @@ VOID Fini(INT32 code, VOID* v)
 	taintController.printTaint();
 	taintController.dumpTaintLog();
 	taintController.dumpTaintLogPrettified(29);
+	PerformanceOperator::measureChrono();
 }
 
 /*!
