@@ -9,30 +9,30 @@
 #include <iostream>
 #include <cstdio>
 
-#define INS_CALL_RTN_TAINT_ENTER_0(rtn, enter_handler)	\
-	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_END);
-#define INS_CALL_RTN_TAINT_ENTER_1(rtn, enter_handler)	\
-	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_END);
-#define INS_CALL_RTN_TAINT_ENTER_2(rtn, enter_handler)	\
-	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_FUNCARG_ENTRYPOINT_VALUE, 1, IARG_END);
-#define INS_CALL_RTN_TAINT_ENTER_3(rtn, enter_handler)	\
-	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_FUNCARG_ENTRYPOINT_VALUE, 1, IARG_FUNCARG_ENTRYPOINT_VALUE, 2, IARG_END);
-#define INS_CALL_RTN_TAINT_ENTER_4(rtn, enter_handler)	\
-	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_FUNCARG_ENTRYPOINT_VALUE, 1, IARG_FUNCARG_ENTRYPOINT_VALUE, 2, IARG_FUNCARG_ENTRYPOINT_VALUE, 3, IARG_END);
-#define INS_CALL_RTN_TAINT_EXIT(rtn, exit_handler)	\
-	RTN_InsertCall(rtn, IPOINT_AFTER, AFUNPTR(exit_handler), IARG_FUNCRET_EXITPOINT_VALUE, IARG_END);
+#define INS_CALL_RTN_TAINT_ENTER_0(rtn, dllName, funcName, enter_handler)	\
+	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_PTR, new std::string(dllName), IARG_PTR, new std::string(funcName), IARG_END);
+#define INS_CALL_RTN_TAINT_ENTER_1(rtn, dllName, funcName, enter_handler)	\
+	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_PTR, new std::string(dllName), IARG_PTR, new std::string(funcName), IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_END);
+#define INS_CALL_RTN_TAINT_ENTER_2(rtn, dllName, funcName, enter_handler)	\
+	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_PTR, new std::string(dllName), IARG_PTR, new std::string(funcName), IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_FUNCARG_ENTRYPOINT_VALUE, 1, IARG_END);
+#define INS_CALL_RTN_TAINT_ENTER_3(rtn, dllName, funcName, enter_handler)	\
+	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_PTR, new std::string(dllName), IARG_PTR, new std::string(funcName), IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_FUNCARG_ENTRYPOINT_VALUE, 1, IARG_FUNCARG_ENTRYPOINT_VALUE, 2, IARG_END);
+#define INS_CALL_RTN_TAINT_ENTER_4(rtn, dllName, funcName, enter_handler)	\
+	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_PTR, new std::string(dllName), IARG_PTR, new std::string(funcName), IARG_FUNCARG_ENTRYPOINT_VALUE, 0, IARG_FUNCARG_ENTRYPOINT_VALUE, 1, IARG_FUNCARG_ENTRYPOINT_VALUE, 2, IARG_FUNCARG_ENTRYPOINT_VALUE, 3, IARG_END);
+#define INS_CALL_RTN_TAINT_EXIT(rtn, dllName, funcName, exit_handler)	\
+	RTN_InsertCall(rtn, IPOINT_AFTER, AFUNPTR(exit_handler), IARG_FUNCRET_EXITPOINT_VALUE, IARG_PTR, new std::string(dllName), IARG_PTR, new std::string(funcName), IARG_END);
 
 
-#define INS_CALL_RTN_TAINT(rtn, numArgs, enter_handler, exit_handler)	\
+#define INS_CALL_RTN_TAINT(rtn, dllName, funcName, numArgs, enter_handler, exit_handler)	\
 	switch(numArgs)	\
 	{	\
-	case 0:	INS_CALL_RTN_TAINT_ENTER_0(rtn, enter_handler); break;	\
-	case 1:	INS_CALL_RTN_TAINT_ENTER_1(rtn, enter_handler); break;	\
-	case 2:	INS_CALL_RTN_TAINT_ENTER_2(rtn, enter_handler); break;	\
-	case 3:	INS_CALL_RTN_TAINT_ENTER_3(rtn, enter_handler); break;	\
-	case 4:	INS_CALL_RTN_TAINT_ENTER_4(rtn, enter_handler); break;	\
+	case 0:	INS_CALL_RTN_TAINT_ENTER_0(rtn, dllName, funcName, enter_handler); break;	\
+	case 1:	INS_CALL_RTN_TAINT_ENTER_1(rtn, dllName, funcName, enter_handler); break;	\
+	case 2:	INS_CALL_RTN_TAINT_ENTER_2(rtn, dllName, funcName, enter_handler); break;	\
+	case 3:	INS_CALL_RTN_TAINT_ENTER_3(rtn, dllName, funcName, enter_handler); break;	\
+	case 4:	INS_CALL_RTN_TAINT_ENTER_4(rtn, dllName, funcName, enter_handler); break;	\
 	}	\
-	INS_CALL_RTN_TAINT_EXIT(rtn, exit_handler)
+	INS_CALL_RTN_TAINT_EXIT(rtn, dllName, funcName, exit_handler)
 	
 extern TaintController taintController;
 
@@ -46,7 +46,7 @@ public:
 
 	TaintController& getController();
 
-	void routineLoadedEvent(RTN rtn, const std::string& dllName, const std::string& funcName);
+	void routineLoadedEvent(RTN rtn, std::string dllName, std::string funcName);
 
 	void registerTaintSource(const std::string& dllName, const std::string& funcName, int numArgs);
 	void unregisterTaintSource(const std::string& dllName, const std::string& funcName);

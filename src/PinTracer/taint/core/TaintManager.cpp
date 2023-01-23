@@ -13,7 +13,7 @@ TaintController& TaintManager::getController()
 	return taintController;
 }
 
-void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const std::string& funcName)
+void TaintManager::routineLoadedEvent(RTN rtn, std::string dllName, std::string funcName)
 {
 	//Check if it is registered as a taint source
 	const std::tr1::unordered_map<std::string, std::vector<TaintSource>>::const_iterator taintIt = this->taintFunctionMap.find(dllName);
@@ -27,7 +27,7 @@ void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const
 			if (taintSource.funcName == funcName)
 			{
 				//The routine is registered as a taint source
-				INS_CALL_RTN_TAINT(rtn, taintSource.numArgs, taintSource.enterHandler, taintSource.exitHandler);
+				INS_CALL_RTN_TAINT(rtn, dllName, funcName, taintSource.numArgs, taintSource.enterHandler, taintSource.exitHandler);				
 				LOG_DEBUG("Routine taint source activated at IP: " << RTN_Address(rtn) <<" DllName = " <<dllName<< " FuncName = " << funcName << " NumArgs: "<<taintSource.numArgs);
 				return;
 			}
@@ -35,7 +35,7 @@ void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const
 			else if(taintSource.funcName == ANY_FUNC_IN_DLL)
 			{
 				//The routine is registered as a taint source, only once
-				INS_CALL_RTN_TAINT(rtn, taintSource.numArgs, taintSource.enterHandler, taintSource.emptyHandler);
+				INS_CALL_RTN_TAINT(rtn, dllName, funcName, taintSource.numArgs, taintSource.enterHandler, taintSource.emptyHandler);
 				LOG_DEBUG("Wildcard routine taint source activated: DllName = " + dllName + " FuncName = " + funcName);
 				taintVector.erase(taintVector.begin()+ii);
 			}
@@ -43,11 +43,11 @@ void TaintManager::routineLoadedEvent(RTN rtn, const std::string& dllName, const
 	}
 }
 
-void TaintManager::registerTaintSource(const std::string& dllName, const std::string& funcName, int numArgs)
+void TaintManager::registerTaintSource(const std::string &dllName, const std::string &funcName, int numArgs)
 {
 	//Select handler depending on function
-	VOID(*enterHandler)(int retIp, ...) = NULL;
-	VOID(*exitHandler)(int retVal, ...) = NULL;
+	VOID(*enterHandler)(int retIp, std::string dllName, std::string funcName, ...) = NULL;
+	VOID(*exitHandler)(int retVal, std::string dllName, std::string funcName, ...) = NULL;
 
 	if (dllName == WS2_32_DLL && funcName == RECV_FUNC)
 	{

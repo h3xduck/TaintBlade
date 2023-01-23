@@ -421,7 +421,7 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 		return;
 	}
 
-	const std::string rtnName = RTN_Name(rtn);
+	std::string rtnName = RTN_Name(rtn);
 	RTN_Open(rtn);
 
 	ADDRINT firstAddr = RTN_Address(rtn);
@@ -443,6 +443,7 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	if (!IMG_Valid(module))
 	{
 		//std::cerr << "Null IMG" << std::endl;
+		RTN_Close(rtn);
 		return;
 	}
 	std::string dllName = IMG_Name(module);

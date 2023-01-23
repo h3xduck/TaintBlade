@@ -37,11 +37,11 @@ private:
 
 public:
 	//Handlers
-	static VOID wsockRecvEnter(int retIp, ...)
+	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		int NUM_ARGS = 4;
 		va_list vaList;
-		va_start(vaList, retIp);
+		va_start(vaList, funcName);
 
 		wsockRecv.s = va_arg(vaList, WINDOWS::SOCKET);
 		wsockRecv.buf = va_arg(vaList, char*);
@@ -52,7 +52,7 @@ public:
 
 		LOG_INFO("Called wsockRecvEnter()\n\tretIp: "<<retIp<<"\n\tbuf: " << wsockRecv.buf << "\n\tlen: "<< wsockRecv.len);
 	};
-	static VOID wsockRecvExit(int retVal, ...)
+	static VOID wsockRecvExit(int retVal, std::string dllName, std::string funcName, ...)
 	{
 		//Firstly, we must check that we received something. Return value is # of bytes read
 		if(retVal<=0)
@@ -64,10 +64,15 @@ public:
 		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
+		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
+		for (auto color : colorVector)
+		{
+			taintController.registerOriginalColor(color, dllName, funcName);
+		}
 		
 	}
 
-	static VOID mainEnter(int retIp, ...)
+	static VOID mainEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		LOG_DEBUG("Called mainEnter()");
 		
@@ -76,7 +81,7 @@ public:
 		taintController.taintRegNewColor(REG_RAX);
 		taintController.taintRegNewColor(REG_RBX);
 	};
-	static VOID mainExit(int retVal, ...)
+	static VOID mainExit(int retVal, std::string dllName, std::string funcName, ...)
 	{
 		LOG_DEBUG("Called mainExit()");
 		//taintController.printTaint();
@@ -91,11 +96,11 @@ public:
 	int numArgs = 0;
 
 	//placeholders
-	VOID(*enterHandler)(int, ...) = NULL;
-	VOID(*exitHandler)(int, ...) = NULL;
+	VOID(*enterHandler)(int, std::string, std::string, ...) = NULL;
+	VOID(*exitHandler)(int, std::string, std::string, ...) = NULL;
 
 	TaintSource() {};
-	TaintSource(const std::string& dllName, const std::string& funcName, int numArgs, VOID(*enter)(int, ...), VOID(*exit)(int, ...));
+	TaintSource(const std::string dllName, const std::string funcName, int numArgs, VOID(*enter)(int, std::string, std::string, ...), VOID(*exit)(int, std::string, std::string, ...));
 
 	void taintSourceLogAll();
 
