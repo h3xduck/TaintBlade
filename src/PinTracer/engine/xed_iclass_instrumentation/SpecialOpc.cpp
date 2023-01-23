@@ -34,7 +34,7 @@ void OPC_INST::lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, R
 
 void OPC_INST::instrumentLeaOpc(INS ins)
 {
-	LOG_DEBUG("OPC: " << INS_Disassemble(ins));
+	//LOG_DEBUG("OPC: " << INS_Disassemble(ins));
 	//mem =  base + (index * scale) + displacement
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)lea_mem2reg, IARG_THREAD_ID, IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 0),
 		IARG_UINT32, INS_MemoryBaseReg(ins), IARG_UINT32, INS_MemoryIndexReg(ins), IARG_UINT32, INS_MemoryScale(ins),

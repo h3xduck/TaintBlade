@@ -143,5 +143,7 @@ int __cdecl main(int argc, char** argv)
     closesocket(ConnectSocket);
     WSACleanup();
 
+    printf("COMP: %i\n",hugeComputations());
+
     return 0;
 }

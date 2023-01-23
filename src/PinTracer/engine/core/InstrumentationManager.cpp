@@ -16,6 +16,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		LOG_ERR("Tried to instrument invalid instruction");
 		return;
 	}
+	PerformanceOperator::incrementInstructionCounter();
 
 	xed_iclass_enum_t opc = (xed_iclass_enum_t) INS_Opcode(ins);
 	if (opc <= XED_ICLASS_INVALID || opc >= XED_ICLASS_LAST) {
@@ -41,15 +42,15 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		break;
 	case XED_ICLASS_SUB:
 	case XED_ICLASS_XOR:
-		OPC_INST::instrumentBinaryIfEqualRegClearOpc(ins);
+		//OPC_INST::instrumentBinaryIfEqualRegClearOpc(ins);
 		break;
 	case XED_ICLASS_LEA:
-		OPC_INST::instrumentLeaOpc(ins);
+		//OPC_INST::instrumentLeaOpc(ins);
 		break;
 	case XED_ICLASS_MOV:
 	case XED_ICLASS_MOVSX:
 	case XED_ICLASS_MOVZX:
-		OPC_INST::instrumentOverwriteOpc(ins);
+		//OPC_INST::instrumentOverwriteOpc(ins);
 		break;
 	default:
 		//Unsupported or ignored, no tainting for those

@@ -12,12 +12,14 @@
 #include <iostream>
 #include <fstream>
 
+
 //#include "config/GlobalConfig.h"
 #include "utils/inst/SyscallParser.h"
 #include "utils/inst/InstructionWorker.h"
 #include "taint/core/TaintManager.h"
 #include "engine/core/InstrumentationManager.h"
 #include "utils/inst/ScopeFilterer.h"
+#include "utils/inst/PerformanceOperator.h"
 
 using std::string;
 
@@ -260,7 +262,6 @@ VOID InstructionTrace(INS inst, VOID* v)
 	
 }
 
-
 VOID SyscallTrace(THREADID threadIndex, CONTEXT* ctx, SYSCALL_STANDARD std, VOID* v)
 {
 	ADDRINT syscallNumber = PIN_GetSyscallNumber(ctx, std);
@@ -403,7 +404,7 @@ VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchT
 		}
 		else
 		{
-			LOG_DEBUG("Branch not taken");
+			//LOG_DEBUG("Branch not taken");
 		}
 	}
 	PIN_UnlockClient();
@@ -487,7 +488,7 @@ void TraceBase(TRACE trace, VOID* v)
 			}
 
 			//Register jumps
-			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 				{
 					INS_InsertCall(
 						inst, IPOINT_BEFORE, (AFUNPTR)instrumentControlFlow,
@@ -503,7 +504,7 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 						IARG_END);
-			}
+			}*/
 		}
 	}
 }
@@ -555,6 +556,8 @@ int main(int argc, char* argv[])
 	scopeFilterer = ScopeFilterer("c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\tcp_client.exe");
 	taintManager.registerTaintSource("c:\\windows\\system32\\ws2_32.dll", "recv", 4);
 	taintManager.registerTaintSource("c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\hello_world.exe", ANY_FUNC_IN_DLL, 0);
+
+	PerformanceOperator::startChrono();
 
 	// Initialize PIN library. Print help message if -h(elp) is specified
 	// in the command line or the command line is invalid

@@ -3,4 +3,7 @@
 
 #define to_hex(mem) std::hex << mem << std::dec
 
+#define fixed_precision(file)	
+	
+
 #endif

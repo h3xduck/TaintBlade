@@ -7,6 +7,7 @@
 #include "../xed_iclass_instrumentation/BinaryOpc.h"
 #include "../xed_iclass_instrumentation/OverwriteOpc.h"
 #include "../xed_iclass_instrumentation/SpecialOpc.h"
+#include "../../utils/inst/PerformanceOperator.h"
 
 class InstrumentationManager
 {
