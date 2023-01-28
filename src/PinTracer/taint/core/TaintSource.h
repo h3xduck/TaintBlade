@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include "TaintController.h"
 #include "../../utils/inst/InstructionWorker.h"
+#include "../../utils/io/DataDumper.h"
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
@@ -33,9 +34,10 @@ static wsock_recv_t wsockRecv;
 
 class TaintSource
 {
-private:
-
 public:
+	//Map for generic routine instrumentation. Key is retIP, includes arguments addresses
+	static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_line_t> genericRoutineCalls;
+	
 	//Handlers
 	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
@@ -89,7 +91,6 @@ public:
 
 	static VOID emptyHandler() {};
 
-	//typedef void (*callback_function)(void); // type for conciseness
 
 	std::string dllName;
 	std::string funcName;
@@ -103,6 +104,51 @@ public:
 	TaintSource(const std::string dllName, const std::string funcName, int numArgs, VOID(*enter)(int, std::string, std::string, ...), VOID(*exit)(int, std::string, std::string, ...));
 
 	void taintSourceLogAll();
+
+	void genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, CONTEXT* ctx, THREADID tid,
+		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
+	{
+		struct DataDumper::func_dll_names_dump_line_t data;
+		IMG moduleFrom = IMG_FindByAddress(ip);
+		if (!IMG_Valid(moduleFrom))
+		{
+			std::cerr << "Image invalid at address " << ip << std::endl;
+			return;
+		}
+
+		std::string dllFrom = InstructionWorker::getDllFromAddress(ip);
+		ADDRINT baseAddrFrom = InstructionWorker::getBaseAddress(ip);
+		std::string routineNameFrom = InstructionWorker::getFunctionNameFromAddress(ip);
+		std::string dllTo = InstructionWorker::getDllFromAddress(branchTargetAddress);
+		ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
+		std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
+
+		data.dllFrom = dllFrom;
+		data.funcFrom = routineNameFrom;
+		data.memAddrFrom = baseAddrFrom;
+		data.dllTo = dllTo;
+		data.funcTo = routineNameTo;
+		data.memAddrTo = baseAddrTo;
+
+		TaintSource::genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(baseAddrFrom, data));
+
+		//TODO datadumper dump 
+	}
+
+	static void genericRoutineInstrumentExit(ADDRINT retVal, ADDRINT retIp)
+	{
+		auto it = TaintSource::genericRoutineCalls.find(retIp);
+		if (it == TaintSource::genericRoutineCalls.end())
+		{
+			LOG_ERR("Tried to instrument generic routine at exit, but entry not found");
+		}
+		else
+		{
+			LOG_DEBUG("Found retIP in the generic routine calls map");
+
+			TaintSource::genericRoutineCalls.erase(retIp);
+		}
+	}
 
 };
 

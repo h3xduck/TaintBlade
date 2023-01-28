@@ -21,6 +21,8 @@
 #include "utils/inst/ScopeFilterer.h"
 #include "utils/inst/PerformanceOperator.h"
 #include "config/Names.h"
+#include "utils/io/DataDumper.h"
+#include "taint/core/TaintSource.h"
 
 using std::string;
 
@@ -364,7 +366,6 @@ VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchT
 		if (branchTaken)
 		{
 			//If we are here, we are interested in logging this jump
-
 			IMG moduleFrom = IMG_FindByAddress(ip);
 			if (!IMG_Valid(moduleFrom))
 			{
@@ -380,27 +381,40 @@ VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchT
 			ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
 			std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
 
-			
-			*imageInfoOut << "--FROM-- DLL: " << std::hex << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
-			*imageInfoOut << "++ TO ++ DLL: " << dllTo << " | BaseAddr: " << baseAddrTo << " | Addr: " << branchTargetAddress << " | RoutineName: " << routineNameTo << std::endl;
-			std::wstring res0 = InstructionWorker::printFunctionArgument((void*)arg0);
-			std::string resW0(res0.begin(), res0.end());
-			*imageInfoOut << resW0 << std::endl;
-			std::wstring res1 = InstructionWorker::printFunctionArgument((void*)arg1);
-			std::string resW1(res1.begin(), res1.end());
-			*imageInfoOut << resW1 << std::endl;
-			std::wstring res2 = InstructionWorker::printFunctionArgument((void*)arg2);
-			std::string resW2(res2.begin(), res2.end());
-			*imageInfoOut << resW2 << std::endl;
-			std::wstring res3 = InstructionWorker::printFunctionArgument((void*)arg3);
-			std::string resW3(res3.begin(), res3.end());
-			*imageInfoOut << resW3 << std::endl;
-			std::wstring res4 = InstructionWorker::printFunctionArgument((void*)arg4);
-			std::string resW4(res4.begin(), res4.end());
-			*imageInfoOut << resW4 << std::endl;
-			std::wstring res5 = InstructionWorker::printFunctionArgument((void*)arg5);
-			std::string resW5(res5.begin(), res5.end());
-			*imageInfoOut << resW5 << std::endl;
+			//Only print arguments if it the target is another function. Some random dll should not be calling any function from us
+			if (scopeFilterer.isMainExecutable(ip))
+			{
+				//Logging in imageinfo logs
+				*imageInfoOut << "--FROM-- DLL: " << std::hex << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
+				*imageInfoOut << "++ TO ++ DLL: " << dllTo << " | BaseAddr: " << baseAddrTo << " | Addr: " << branchTargetAddress << " | RoutineName: " << routineNameTo << std::endl;
+				std::wstring res0 = InstructionWorker::printFunctionArgument((void*)arg0);
+				std::string resW0(res0.begin(), res0.end());
+				*imageInfoOut << resW0 << std::endl;
+				std::wstring res1 = InstructionWorker::printFunctionArgument((void*)arg1);
+				std::string resW1(res1.begin(), res1.end());
+				*imageInfoOut << resW1 << std::endl;
+				std::wstring res2 = InstructionWorker::printFunctionArgument((void*)arg2);
+				std::string resW2(res2.begin(), res2.end());
+				*imageInfoOut << resW2 << std::endl;
+				std::wstring res3 = InstructionWorker::printFunctionArgument((void*)arg3);
+				std::string resW3(res3.begin(), res3.end());
+				*imageInfoOut << resW3 << std::endl;
+				std::wstring res4 = InstructionWorker::printFunctionArgument((void*)arg4);
+				std::string resW4(res4.begin(), res4.end());
+				*imageInfoOut << resW4 << std::endl;
+				std::wstring res5 = InstructionWorker::printFunctionArgument((void*)arg5);
+				std::string resW5(res5.begin(), res5.end());
+				*imageInfoOut << resW5 << std::endl;
+			}
+
+			//Dumping routine in dumpfiles
+			DataDumper::func_dll_names_dump_line_t data;
+			data.dllFrom = dllFrom;
+			data.funcFrom = routineNameFrom;
+			data.memAddrFrom = baseAddrFrom;
+			data.dllTo = dllTo;
+			data.funcTo = routineNameTo;
+			data.memAddrTo = baseAddrTo;
 
 		}
 		else
@@ -490,12 +504,14 @@ void TraceBase(TRACE trace, VOID* v)
 			}
 
 			//Register jumps
-			/*if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 				{
+				//For debugging
 					INS_InsertCall(
 						inst, IPOINT_BEFORE, (AFUNPTR)instrumentControlFlow,
 						IARG_ADDRINT, INS_Address(inst),
 						IARG_BRANCH_TARGET_ADDR,
+						IARG_BRANCH_TAKEN,
 						IARG_UINT32, INS_Size(inst),
 						IARG_CONST_CONTEXT,
 						IARG_THREAD_ID,
@@ -506,7 +522,26 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 						IARG_END);
-			}*/
+
+				//Data dumping
+					TaintSource t();
+					/*INS_InsertCall(
+						inst, IPOINT_BEFORE, (AFUNPTR)genericRoutineInstrumentEnter,
+						IARG_ADDRINT, INS_Address(inst),
+						IARG_BRANCH_TARGET_ADDR,
+						IARG_BRANCH_TAKEN,
+						IARG_UINT32, INS_Size(inst),
+						IARG_CONST_CONTEXT,
+						IARG_THREAD_ID,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
+						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
+						IARG_END);*/
+
+			}
 		}
 	}
 }
@@ -560,6 +595,7 @@ int main(int argc, char* argv[])
 	scopeFilterer = ScopeFilterer(TCP_CLIENT_PROG);
 	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
 	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
+	taintManager.registerTaintSource(WSOCK32_DLL, RECV_FUNC, 4);
 
 	PerformanceOperator::startChrono();
 

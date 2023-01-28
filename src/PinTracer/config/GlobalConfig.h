@@ -11,6 +11,14 @@
 #define REPORT_UNSUPPORTED_INS 0
 
 //0 - Do not report about unsupported registers, 1 - Do it
-#define REPORT_UNSUPPORTED_REG 1
+#define REPORT_UNSUPPORTED_REG 0
+
+//Data dumping files
+#define EXTENDED_DATA_DUMP_FILE "datadump.edd"
+#define ORG_COLORS_DUMP_FILE "orgcolorsdump.ocd"
+#define COLOR_TRANS_DUMP_FILE "colortransdump.ctd"
+#define FUNC_DLL_NAMES_DUMP_FILE "funcdllnames.fdd"
+#define DUMP_INTER_SEPARATOR "%"
+#define DUMP_OUTER_SEPARATOR std::endl
 
 #endif

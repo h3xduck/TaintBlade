@@ -25,7 +25,7 @@ int __cdecl main(int argc, char** argv)
     struct addrinfo* result = NULL,
         * ptr = NULL,
         hints;
-    const char* sendbuf = "this is a test";
+    const char* sendbuf = "test for send!";
     char recvbuf[DEFAULT_BUFLEN];
     char recvbuf2[DEFAULT_BUFLEN];
     int iResult;
@@ -112,21 +112,12 @@ int __cdecl main(int argc, char** argv)
 
         iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
         if (iResult > 0)
-            printf("Bytes received: %d\n", iResult);
+            printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
         else if (iResult == 0)
             printf("Connection closed\n");
         else
             printf("recv failed with error: %d\n", WSAGetLastError());
 
-        Sleep(1000);
-
-        iResult = recv(ConnectSocket, recvbuf2, recvbuflen, 0);
-        if (iResult > 0)
-            printf("Bytes received: %d\n", iResult);
-        else if (iResult == 0)
-            printf("Connection closed\n");
-        else
-            printf("recv failed with error: %d\n", WSAGetLastError());
 
     //} while (iResult > 0);
 

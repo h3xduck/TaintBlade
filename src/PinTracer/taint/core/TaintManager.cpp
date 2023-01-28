@@ -1,6 +1,7 @@
 #include "TaintManager.h"
 
 TaintManager taintManager;
+extern DataDumper dataDumper;
 
 TaintManager::TaintManager()
 {
@@ -41,6 +42,7 @@ void TaintManager::routineLoadedEvent(RTN rtn, std::string dllName, std::string 
 			}
 		}
 	}
+
 }
 
 void TaintManager::registerTaintSource(const std::string &dllName, const std::string &funcName, int numArgs)
@@ -51,7 +53,13 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 
 	if (dllName == WS2_32_DLL && funcName == RECV_FUNC)
 	{
-		LOG_DEBUG("Registered function handlers for recv");
+		LOG_DEBUG("Registered function handlers for recv in ws2_32");
+		enterHandler = TaintSource::wsockRecvEnter;
+		exitHandler = TaintSource::wsockRecvExit;
+	}
+	else if(dllName == WSOCK32_DLL && funcName == RECV_FUNC)
+	{
+		LOG_DEBUG("Registered function handlers for recv in wsock32");
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
 	}

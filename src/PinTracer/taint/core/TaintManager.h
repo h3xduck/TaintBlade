@@ -5,6 +5,7 @@
 #include "TaintController.h"
 #include "TaintSource.h"
 #include "../../config/Names.h"
+#include "../../utils/io/DataDumper.h"
 
 #include <iostream>
 #include <cstdio>

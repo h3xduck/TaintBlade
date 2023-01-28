@@ -1,24 +1,24 @@
 #include "BinaryOpc.h"
 
 //and, or
-void OPC_INST::binary_mem2reg(THREADID tid, const std::string dis, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
+void OPC_INST::binary_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
 	//LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
 }
-void OPC_INST::binary_reg2reg(THREADID tid, const std::string dis, ADDRINT ip, REG regSrc, REG regDest)
+void OPC_INST::binary_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
 	//LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().taintRegWithReg(regDest, regSrc, false);
 }
-void OPC_INST::binary_reg2mem(THREADID tid, const std::string dis, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
+void OPC_INST::binary_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {
 	//LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
 }
 
 //xor
-void OPC_INST::binary_clr_reg2reg(THREADID tid, const std::string dis, ADDRINT ip, REG regSrc, REG regDest)
+void OPC_INST::binary_clr_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
 	//LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().untaintReg(regDest);
@@ -37,7 +37,7 @@ void OPC_INST::instrumentBinaryOpc(INS ins)
 		if (isMemDest)
 		{
 			//mem, reg
-			INS_CALL_R2M(binary_reg2mem, ins);
+			INS_CALL_R2M_N(binary_reg2mem, ins);
 		}
 		else
 		{
@@ -45,13 +45,13 @@ void OPC_INST::instrumentBinaryOpc(INS ins)
 			if (isMemSrc)
 			{
 				//reg, mem
-				INS_CALL_M2R(binary_mem2reg, ins);
+				INS_CALL_M2R_N(binary_mem2reg, ins);
 				return;
 			}
 			else
 			{
 				//reg, reg
-				INS_CALL_R2R(binary_reg2reg, ins);
+				INS_CALL_R2R_N(binary_reg2reg, ins);
 				return;
 			}
 		}
@@ -78,7 +78,7 @@ void OPC_INST::instrumentBinaryIfEqualRegClearOpc(INS ins)
 		if (isMemDest)
 		{
 			//mem, reg
-			INS_CALL_R2M(binary_reg2mem, ins);
+			INS_CALL_R2M_N(binary_reg2mem, ins);
 		}
 		else
 		{
@@ -86,7 +86,7 @@ void OPC_INST::instrumentBinaryIfEqualRegClearOpc(INS ins)
 			if (isMemSrc)
 			{
 				//reg, mem
-				INS_CALL_M2R(binary_mem2reg, ins);
+				INS_CALL_M2R_N(binary_mem2reg, ins);
 				return;
 			}
 			else
@@ -95,13 +95,13 @@ void OPC_INST::instrumentBinaryIfEqualRegClearOpc(INS ins)
 				if (INS_OperandReg(ins, 0) == INS_OperandReg(ins, 1))
 				{
 					//The value is reset to 0
-					INS_CALL_R2R(binary_clr_reg2reg, ins);
+					INS_CALL_R2R_N(binary_clr_reg2reg, ins);
 					return;
 				}
 				else
 				{
 					//Not equal, normal tianting
-					INS_CALL_R2R(binary_reg2reg, ins);
+					INS_CALL_R2R_N(binary_reg2reg, ins);
 				}
 			}
 		}

@@ -1,5 +1,7 @@
 #include "TaintSource.h"
 
+extern DataDumper dataDumper;
+
 void TaintSource::taintSourceLogAll()
 {
 	LOG_INFO("TAINT_SOURCE PRINT START");

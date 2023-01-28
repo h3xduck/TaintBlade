@@ -270,6 +270,7 @@
     <ClCompile Include="utils\inst\PerformanceOperator.cpp" />
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
     <ClCompile Include="utils\inst\SyscallParser.cpp" />
+    <ClCompile Include="utils\io\DataDumper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config\GlobalConfig.h" />
@@ -288,6 +289,7 @@
     <ClInclude Include="taint\core\TaintSource.h" />
     <ClInclude Include="utils\inst\PerformanceOperator.h" />
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
+    <ClInclude Include="utils\io\DataDumper.h" />
     <ClInclude Include="utils\io\format.h" />
     <ClInclude Include="utils\io\log.h" />
     <ClInclude Include="utils\inst\InstructionWorker.h" />
