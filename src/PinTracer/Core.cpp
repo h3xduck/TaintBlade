@@ -524,9 +524,8 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_END);
 
 				//Data dumping
-					TaintSource t();
-					/*INS_InsertCall(
-						inst, IPOINT_BEFORE, (AFUNPTR)genericRoutineInstrumentEnter,
+					INS_InsertCall(
+						inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentEnter,
 						IARG_ADDRINT, INS_Address(inst),
 						IARG_BRANCH_TARGET_ADDR,
 						IARG_BRANCH_TAKEN,
@@ -539,7 +538,7 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
-						IARG_END);*/
+						IARG_END);
 
 			}
 		}

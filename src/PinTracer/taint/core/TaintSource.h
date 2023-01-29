@@ -6,6 +6,7 @@
 #include "TaintController.h"
 #include "../../utils/inst/InstructionWorker.h"
 #include "../../utils/io/DataDumper.h"
+#include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
@@ -18,6 +19,7 @@ namespace WINDOWS
 }
 
 extern TaintController taintController;
+extern DataDumper dataDumper;
 
 //Function arguments
 struct wsock_recv_t
@@ -32,11 +34,12 @@ struct wsock_recv_t
 };
 static wsock_recv_t wsockRecv;
 
+static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_line_t> genericRoutineCalls;
+
 class TaintSource
 {
 public:
 	//Map for generic routine instrumentation. Key is retIP, includes arguments addresses
-	static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_line_t> genericRoutineCalls;
 	
 	//Handlers
 	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
@@ -105,9 +108,11 @@ public:
 
 	void taintSourceLogAll();
 
-	void genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, CONTEXT* ctx, THREADID tid,
+	static VOID genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, CONTEXT* ctx, THREADID tid,
 		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 	{
+		PIN_LockClient();
+
 		struct DataDumper::func_dll_names_dump_line_t data;
 		IMG moduleFrom = IMG_FindByAddress(ip);
 		if (!IMG_Valid(moduleFrom))
@@ -130,15 +135,18 @@ public:
 		data.funcTo = routineNameTo;
 		data.memAddrTo = baseAddrTo;
 
-		TaintSource::genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(baseAddrFrom, data));
+		genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(baseAddrFrom, data));
 
-		//TODO datadumper dump 
+		dataDumper.writeRoutineDumpLine(data);
+
+		PIN_UnlockClient();
+		
 	}
 
 	static void genericRoutineInstrumentExit(ADDRINT retVal, ADDRINT retIp)
 	{
-		auto it = TaintSource::genericRoutineCalls.find(retIp);
-		if (it == TaintSource::genericRoutineCalls.end())
+		auto it = genericRoutineCalls.find(retIp);
+		if (it == genericRoutineCalls.end())
 		{
 			LOG_ERR("Tried to instrument generic routine at exit, but entry not found");
 		}
@@ -146,7 +154,7 @@ public:
 		{
 			LOG_DEBUG("Found retIP in the generic routine calls map");
 
-			TaintSource::genericRoutineCalls.erase(retIp);
+			genericRoutineCalls.erase(retIp);
 		}
 	}
 
