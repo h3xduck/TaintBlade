@@ -42,7 +42,7 @@ void DataDumper::writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair
 	this->memDumpFile << ip << DUMP_INTER_SEPARATOR;
 	for (auto it : vec)
 	{
-		this->memDumpFile << it.first << DUMP_INTER_SEPARATOR << it.second;
+		this->memDumpFile << it.first << DUMP_INTER_SEPARATOR << it.second << DUMP_INTER_SEPARATOR;
 	}
 	this->memDumpFile << DUMP_OUTER_SEPARATOR;
 }

@@ -145,7 +145,6 @@ std::vector<Tag> TagLog::getColorTransVector()
 	std::vector<Tag> vec;
 	for (auto& it : this->tagLogMap)
 	{
-		LOG_DEBUG("Logged "<<it.first);
 		Tag tag(it.first, it.second.derivate1, it.second.derivate2);
 		vec.push_back(tag);
 	}

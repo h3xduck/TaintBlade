@@ -153,6 +153,12 @@ public:
 
 				//At this point, we dump the function and the arguments
 				dataDumper.writeRoutineDumpLine(data);
+				//Now we dump the current tainted memory
+				std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
+				//In the case we don't have tainted memory yet, we write nothing
+				if (!vec.empty()) {
+					dataDumper.writeCurrentTaintedMemoryDump(ip, vec);
+				}
 			}
 		}
 
@@ -175,15 +181,20 @@ public:
 				else
 				{
 					//LOG_DEBUG("Found retIP in the generic routine calls map");
-
-					genericRoutineCalls.erase(branchTargetAddress);
-
+					
+					//At this point, we dump the function and the arguments
+					struct DataDumper::func_dll_names_dump_line_t data;
+					data = it->second;
+					dataDumper.writeRoutineDumpLine(data);
 					//Now we dump the current tainted memory
 					std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
 					//In the case we don't have tainted memory yet, we write nothing
 					if (!vec.empty()) {
 						dataDumper.writeCurrentTaintedMemoryDump(branchTargetAddress, vec);
 					}
+
+
+					genericRoutineCalls.erase(branchTargetAddress);
 				}
 			}
 		}
