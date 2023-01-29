@@ -564,6 +564,11 @@ std::vector<std::pair<ADDRINT, UINT16>> TagMap::getTaintedMemoryVector()
 	return vec;
 }
 
+std::vector<UINT16> TagMap::getOriginalColorsVector()
+{
+	return this->originalColorsVector;
+}
+
 void TagMap::printMemTaintComplete()
 {
 	std::cerr << "MEM_TAINT_FIELD PRINT START" << std::endl;

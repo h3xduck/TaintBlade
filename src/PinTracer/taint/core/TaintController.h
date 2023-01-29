@@ -33,6 +33,7 @@ public:
 	void dumpTaintLogPrettified(UINT16 color);
 	void dumpTagLogOriginalColors();
 	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();
+	std::vector<UINT16> getOriginalColorsVector();
 };
 
 

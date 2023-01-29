@@ -59,9 +59,8 @@ public:
 	// 2 COLOR_BYTES * 8 bytes per register * 16 registers
 	Tag regTaintField[REG_TAINT_FIELD_LEN];
 
-	//TODO -- Right now a new color is generated for each new mix
-	//Collection of mixed colors and results in Tags
-	//std::tr1::unordered_map< Tag> memTaintField;
+	//Vector with colors originally tainted (no mix)
+	std::vector<UINT16> originalColorsVector;
 
 	//These are to be used from the Taint Manager, and not directly from instrumentation functions
 	size_t tagMapCount();
@@ -165,6 +164,11 @@ public:
 	Returns vector with tainted mem and color
 	*/
 	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();
+
+	/**
+	Returns vector with original colors
+	*/
+	std::vector<UINT16> getOriginalColorsVector();
 
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();

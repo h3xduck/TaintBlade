@@ -10,6 +10,15 @@ DataDumper::DataDumper()
 	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
 }
 
+void DataDumper::writeOriginalColorDump(std::vector<UINT16> &colorVec)
+{
+	for (auto it : colorVec)
+	{
+		this->orgColorsDumpFile << it << DUMP_INTER_SEPARATOR;
+	}
+	this->orgColorsDumpFile << DUMP_OUTER_SEPARATOR;
+}
+
 void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
 {
 	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << 

@@ -49,7 +49,7 @@ public:
 
 	DataDumper();
 
-	void writeOriginalColorDump(char* str);
+	void writeOriginalColorDump(std::vector<UINT16> &colorVec);
 	void writeColorTransformationDump(char* str);
 	void writeRoutineDumpLine(struct func_dll_names_dump_line_t data);
 	void writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>>);

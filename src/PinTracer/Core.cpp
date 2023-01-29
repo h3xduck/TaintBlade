@@ -584,18 +584,16 @@ void TraceBase(TRACE trace, VOID* v)
   */
 VOID Fini(INT32 code, VOID* v)
 {
-	/**out << "===============================================" << endl;
-	*out << "MyPinTool analysis results: " << endl;
-	*out << "Number of instructions: " << insCount << endl;
-	*out << "Number of basic blocks: " << bblCount << endl;
-	*out << "Number of threads: " << threadCount << endl;
-	*out << "===============================================" << endl;*/
 	std::cerr << "Finished" << std::endl;
 	taintController.printTaint();
 	taintController.dumpTaintLog();
 	taintController.dumpTaintLogPrettified(29);
 	taintController.dumpTagLogOriginalColors();
 	PerformanceOperator::measureChrono();
+
+	//Dump original colors vector
+	std::vector<UINT16> orgVec = taintController.getOriginalColorsVector();
+	dataDumper.writeOriginalColorDump(orgVec);
 }
 
 /*!
