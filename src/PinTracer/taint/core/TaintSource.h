@@ -110,7 +110,7 @@ public:
 
 	void taintSourceLogAll();
 
-	static VOID genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, CONTEXT* ctx, THREADID tid,
+	static VOID genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, ADDRINT nextInstAddr, CONTEXT* ctx, THREADID tid,
 		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 	{
 		PIN_LockClient();
@@ -130,18 +130,16 @@ public:
 				}
 
 				std::string dllFrom = InstructionWorker::getDllFromAddress(ip);
-				ADDRINT baseAddrFrom = InstructionWorker::getBaseAddress(ip);
 				std::string routineNameFrom = InstructionWorker::getFunctionNameFromAddress(ip);
 				std::string dllTo = InstructionWorker::getDllFromAddress(branchTargetAddress);
-				ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
 				std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
 
 				data.dllFrom = dllFrom;
 				data.funcFrom = routineNameFrom;
-				data.memAddrFrom = baseAddrFrom;
+				data.memAddrFrom = ip;
 				data.dllTo = dllTo;
 				data.funcTo = routineNameTo;
-				data.memAddrTo = baseAddrTo;
+				data.memAddrTo = branchTargetAddress;
 				data.arg0 = arg0;
 				data.arg1 = arg1;
 				data.arg2 = arg2;
@@ -149,9 +147,11 @@ public:
 				data.arg4 = arg4;
 				data.arg5 = arg5;
 
-				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(baseAddrFrom, data));
+				genericRoutineCalls.erase(nextInstAddr);
+				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(nextInstAddr, data));
+				//LOG_DEBUG("Inserted entry jump at " << to_hex(branchTargetAddress));
 
-				//At this point, we log the function and the arguments
+				//At this point, we dump the function and the arguments
 				dataDumper.writeRoutineDumpLine(data);
 			}
 		}
@@ -160,19 +160,34 @@ public:
 		
 	}
 
-	static void genericRoutineInstrumentExit(ADDRINT retVal, ADDRINT retIp)
+	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, int retVal, UINT32 instSize, CONTEXT* ctx, THREADID tid)
 	{
-		auto it = genericRoutineCalls.find(retIp);
-		if (it == genericRoutineCalls.end())
+		PIN_LockClient();
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
 		{
-			LOG_ERR("Tried to instrument generic routine at exit, but entry not found");
-		}
-		else
-		{
-			LOG_DEBUG("Found retIP in the generic routine calls map");
+			if (branchTaken)
+			{
+				auto it = genericRoutineCalls.find(branchTargetAddress);
+				if (it == genericRoutineCalls.end())
+				{
+					LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex(branchTargetAddress));
+				}
+				else
+				{
+					//LOG_DEBUG("Found retIP in the generic routine calls map");
 
-			genericRoutineCalls.erase(retIp);
+					genericRoutineCalls.erase(branchTargetAddress);
+
+					//Now we dump the current tainted memory
+					std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
+					//In the case we don't have tainted memory yet, we write nothing
+					if (!vec.empty()) {
+						dataDumper.writeCurrentTaintedMemoryDump(branchTargetAddress, vec);
+					}
+				}
+			}
 		}
+		PIN_UnlockClient();
 	}
 
 };

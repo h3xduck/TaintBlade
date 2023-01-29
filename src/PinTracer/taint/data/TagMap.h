@@ -161,6 +161,11 @@ public:
 	*/
 	UINT16 getNextTagColor();
 
+	/**
+	Returns vector with tainted mem and color
+	*/
+	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();
+
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();
 	void printRegTaintComplete();

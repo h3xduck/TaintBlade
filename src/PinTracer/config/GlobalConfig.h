@@ -14,7 +14,7 @@
 #define REPORT_UNSUPPORTED_REG 0
 
 //Data dumping files
-#define EXTENDED_DATA_DUMP_FILE "datadump.edd"
+#define CURRENT_TAINTED_MEMORY_DUMP_FILE "memdump.tmd"
 #define ORG_COLORS_DUMP_FILE "orgcolorsdump.ocd"
 #define COLOR_TRANS_DUMP_FILE "colortransdump.ctd"
 #define FUNC_DLL_NAMES_DUMP_FILE "funcdllnames.fdd"

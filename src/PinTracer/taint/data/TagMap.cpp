@@ -555,6 +555,14 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 	}
 }
 
+std::vector<std::pair<ADDRINT, UINT16>> TagMap::getTaintedMemoryVector()
+{
+	std::vector<std::pair<ADDRINT, UINT16>> vec;
+	for (auto const& pair : this->memTaintField) {
+		vec.push_back(std::make_pair<ADDRINT, UINT16>(pair.first, pair.second.color));
+	}
+	return vec;
+}
 
 void TagMap::printMemTaintComplete()
 {

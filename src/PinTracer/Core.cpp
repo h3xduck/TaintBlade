@@ -492,7 +492,7 @@ void TraceBase(TRACE trace, VOID* v)
 
 			InstrumentationManager instManager;
 			if (scopeFilterer.isMainExecutable(inst)) {
-				instManager.instrumentInstruction(inst);
+				//instManager.instrumentInstruction(inst);
 
 			#if(CONFIG_INST_LOG_FILES==1)
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
@@ -507,7 +507,7 @@ void TraceBase(TRACE trace, VOID* v)
 			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
 				{
 				//For debugging
-					INS_InsertCall(
+					/*INS_InsertCall(
 						inst, IPOINT_BEFORE, (AFUNPTR)instrumentControlFlow,
 						IARG_ADDRINT, INS_Address(inst),
 						IARG_BRANCH_TARGET_ADDR,
@@ -521,25 +521,41 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
-						IARG_END);
+						IARG_END);*/
 
 				//Data dumping
-					INS_InsertCall(
-						inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentEnter,
-						IARG_ADDRINT, INS_Address(inst),
-						IARG_BRANCH_TARGET_ADDR,
-						IARG_BRANCH_TAKEN,
-						IARG_UINT32, INS_Size(inst),
-						IARG_CONST_CONTEXT,
-						IARG_THREAD_ID,
-						IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
-						IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
-						IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
-						IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
-						IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
-						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
-						IARG_END);
-
+					if (INS_IsRet(inst))
+					{
+						INS_InsertCall(
+							inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentExit,
+							IARG_ADDRINT, INS_Address(inst),
+							IARG_BRANCH_TARGET_ADDR,
+							IARG_BRANCH_TAKEN,
+							IARG_FUNCRET_EXITPOINT_VALUE,
+							IARG_UINT32, INS_Size(inst),
+							IARG_CONST_CONTEXT,
+							IARG_THREAD_ID,
+							IARG_END);
+					}
+					else
+					{
+						INS_InsertCall(
+							inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentEnter,
+							IARG_ADDRINT, INS_Address(inst),
+							IARG_BRANCH_TARGET_ADDR,
+							IARG_BRANCH_TAKEN,
+							IARG_UINT32, INS_Size(inst),
+							IARG_ADDRINT, INS_NextAddress(inst),
+							IARG_CONST_CONTEXT,
+							IARG_THREAD_ID,
+							IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
+							IARG_FUNCARG_ENTRYPOINT_VALUE, 1,
+							IARG_FUNCARG_ENTRYPOINT_VALUE, 2,
+							IARG_FUNCARG_ENTRYPOINT_VALUE, 3,
+							IARG_FUNCARG_ENTRYPOINT_VALUE, 4,
+							IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
+							IARG_END);
+					}
 			}
 		}
 	}

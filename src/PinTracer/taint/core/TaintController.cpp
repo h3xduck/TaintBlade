@@ -155,3 +155,8 @@ void TaintController::dumpTagLogOriginalColors()
 {
 	this->tagMap.dumpTagLogOriginalColors();
 }
+
+std::vector<std::pair<ADDRINT, UINT16>> TaintController::getTaintedMemoryVector()
+{
+	return this->tagMap.getTaintedMemoryVector();
+}

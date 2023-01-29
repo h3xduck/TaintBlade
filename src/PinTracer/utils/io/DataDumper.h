@@ -10,7 +10,7 @@
 class DataDumper
 {
 private:
-	std::ofstream dumpFile;
+	std::ofstream memDumpFile;
 	std::ofstream orgColorsDumpFile;
 	std::ofstream colorTransDumpFile;
 	std::ofstream funcDllNamesDumpFile;
@@ -49,10 +49,10 @@ public:
 
 	DataDumper();
 
-	void writeDataDumpLine(char* str);
 	void writeOriginalColorDump(char* str);
 	void writeColorTransformationDump(char* str);
 	void writeRoutineDumpLine(struct func_dll_names_dump_line_t data);
+	void writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>>);
 
 	void resetDumpFiles();
 

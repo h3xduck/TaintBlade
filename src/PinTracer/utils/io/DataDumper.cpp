@@ -4,15 +4,10 @@ DataDumper dataDumper;
 
 DataDumper::DataDumper()
 {
-	this->dumpFile.open(EXTENDED_DATA_DUMP_FILE);
+	this->memDumpFile.open(CURRENT_TAINTED_MEMORY_DUMP_FILE);
 	this->orgColorsDumpFile.open(ORG_COLORS_DUMP_FILE);
 	this->colorTransDumpFile.open(COLOR_TRANS_DUMP_FILE);
 	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
-}
-
-void DataDumper::writeDataDumpLine(char* str)
-{
-	dumpFile << str;
 }
 
 void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
@@ -31,9 +26,19 @@ void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
 	this->lastRoutineDumpIndex++;
 }
 
+void DataDumper::writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>> vec)
+{
+	this->memDumpFile << ip << DUMP_INTER_SEPARATOR;
+	for (auto it : vec)
+	{
+		this->memDumpFile << it.first << DUMP_INTER_SEPARATOR << it.second;
+	}
+	this->memDumpFile << DUMP_OUTER_SEPARATOR;
+}
+
 void DataDumper::resetDumpFiles()
 {
-	if (remove(EXTENDED_DATA_DUMP_FILE) != 0)
+	if (remove(CURRENT_TAINTED_MEMORY_DUMP_FILE) != 0)
 	{
 		LOG_ERR("Error deleting data dump file");
 	}
