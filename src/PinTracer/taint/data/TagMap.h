@@ -59,9 +59,6 @@ public:
 	// 2 COLOR_BYTES * 8 bytes per register * 16 registers
 	Tag regTaintField[REG_TAINT_FIELD_LEN];
 
-	//Vector with colors originally tainted (no mix)
-	std::vector<UINT16> originalColorsVector;
-
 	//These are to be used from the Taint Manager, and not directly from instrumentation functions
 	size_t tagMapCount();
 	
@@ -168,7 +165,12 @@ public:
 	/**
 	Returns vector with original colors
 	*/
-	std::vector<UINT16> getOriginalColorsVector();
+	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> getOriginalColorsVector();
+
+	/**
+	Returns vector with color transformations
+	*/
+	std::vector<Tag> getColorTransVector();
 
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();

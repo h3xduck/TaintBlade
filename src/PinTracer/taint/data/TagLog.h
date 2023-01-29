@@ -29,6 +29,16 @@ public:
 	Checks if colors have already been mixed. If so, returns resulting color. Otherwise, empty color.
 	*/
 	UINT16 getMixColor(UINT16 d1, UINT16 d2);
+
+	/**
+	Get vector of original colors
+	*/
+	std::vector < std::pair<UINT16, std::pair<std::string, std::string>>> getOriginalColorsVector();
+
+	/**
+	Get vector of color transformations
+	*/
+	std::vector<Tag> getColorTransVector();
 };
 
 

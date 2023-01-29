@@ -10,11 +10,13 @@ DataDumper::DataDumper()
 	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
 }
 
-void DataDumper::writeOriginalColorDump(std::vector<UINT16> &colorVec)
+void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec)
 {
 	for (auto it : colorVec)
 	{
-		this->orgColorsDumpFile << it << DUMP_INTER_SEPARATOR;
+		this->orgColorsDumpFile << it.first << DUMP_INTER_SEPARATOR <<
+			it.second.first << DUMP_INTER_SEPARATOR <<
+			it.second.second << DUMP_INTER_SEPARATOR;
 	}
 	this->orgColorsDumpFile << DUMP_OUTER_SEPARATOR;
 }
@@ -43,6 +45,16 @@ void DataDumper::writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair
 		this->memDumpFile << it.first << DUMP_INTER_SEPARATOR << it.second;
 	}
 	this->memDumpFile << DUMP_OUTER_SEPARATOR;
+}
+
+void DataDumper::writeColorTransformationDump(std::vector<Tag> vec)
+{
+	for (auto& it : vec)
+	{
+		this->colorTransDumpFile << it.color << DUMP_INTER_SEPARATOR <<
+			it.derivate1 << DUMP_INTER_SEPARATOR <<
+			it.derivate2 << DUMP_OUTER_SEPARATOR;
+	}
 }
 
 void DataDumper::resetDumpFiles()

@@ -118,6 +118,14 @@ int __cdecl main(int argc, char** argv)
         else
             printf("recv failed with error: %d\n", WSAGetLastError());
 
+        iResult = recv(ConnectSocket, recvbuf2, recvbuflen, 0);
+        if (iResult > 0)
+            printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
+        else if (iResult == 0)
+            printf("Connection closed\n");
+        else
+            printf("recv failed with error: %d\n", WSAGetLastError());
+
 
     //} while (iResult > 0);
 

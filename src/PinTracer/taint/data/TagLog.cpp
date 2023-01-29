@@ -130,3 +130,25 @@ void TagLog::dumpTagLogOriginalColors()
 	}
 	LOG_INFO(logLine.str());
 }
+
+std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> TagLog::getOriginalColorsVector()
+{
+	std::vector < std::pair<UINT16, std::pair<std::string, std::string>>> colorVec;
+	for (auto& it : this->originalColorsMap) {
+		colorVec.push_back(it);
+	}
+	return colorVec;
+}
+
+std::vector<Tag> TagLog::getColorTransVector()
+{
+	std::vector<Tag> vec;
+	for (auto& it : this->tagLogMap)
+	{
+		LOG_DEBUG("Logged "<<it.first);
+		Tag tag(it.first, it.second.derivate1, it.second.derivate2);
+		vec.push_back(tag);
+	}
+
+	return vec;
+}

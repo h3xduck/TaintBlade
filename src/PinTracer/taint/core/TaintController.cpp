@@ -131,9 +131,6 @@ void TaintController::untaintReg(const LEVEL_BASE::REG reg)
 void TaintController::registerOriginalColor(UINT16 color, std::string dllName, std::string funcName)
 {
 	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName);
-
-	//Insert it into the original colors vector for later dumping
-	this->tagMap.originalColorsVector.push_back(color);
 }
 
 
@@ -164,7 +161,12 @@ std::vector<std::pair<ADDRINT, UINT16>> TaintController::getTaintedMemoryVector(
 	return this->tagMap.getTaintedMemoryVector();
 }
 
-std::vector<UINT16> TaintController::getOriginalColorsVector()
+std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> TaintController::getOriginalColorsVector()
 {
 	return this->tagMap.getOriginalColorsVector();
+}
+
+std::vector<Tag> TaintController::getColorTransVector()
+{
+	return this->tagMap.getColorTransVector();
 }

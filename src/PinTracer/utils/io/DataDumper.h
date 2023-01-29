@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>  
 #include "../inst/InstructionWorker.h"
+#include "../../taint/data/Tag.h"
 
 class DataDumper
 {
@@ -49,8 +50,8 @@ public:
 
 	DataDumper();
 
-	void writeOriginalColorDump(std::vector<UINT16> &colorVec);
-	void writeColorTransformationDump(char* str);
+	void writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec);
+	void writeColorTransformationDump(std::vector<Tag>);
 	void writeRoutineDumpLine(struct func_dll_names_dump_line_t data);
 	void writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>>);
 

@@ -492,7 +492,7 @@ void TraceBase(TRACE trace, VOID* v)
 
 			InstrumentationManager instManager;
 			if (scopeFilterer.isMainExecutable(inst)) {
-				//instManager.instrumentInstruction(inst);
+				instManager.instrumentInstruction(inst);
 
 			#if(CONFIG_INST_LOG_FILES==1)
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
@@ -592,8 +592,12 @@ VOID Fini(INT32 code, VOID* v)
 	PerformanceOperator::measureChrono();
 
 	//Dump original colors vector
-	std::vector<UINT16> orgVec = taintController.getOriginalColorsVector();
+	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> orgVec = taintController.getOriginalColorsVector();
 	dataDumper.writeOriginalColorDump(orgVec);
+
+	//Dump color transformations
+	std::vector<Tag> colorTrans  = taintController.getColorTransVector();
+	dataDumper.writeColorTransformationDump(colorTrans);
 }
 
 /*!
