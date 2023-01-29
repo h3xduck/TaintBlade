@@ -7,6 +7,7 @@
 #include "../../utils/inst/InstructionWorker.h"
 #include "../../utils/io/DataDumper.h"
 #include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
+#include "../../utils/inst/ScopeFilterer.h"
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
@@ -20,6 +21,7 @@ namespace WINDOWS
 
 extern TaintController taintController;
 extern DataDumper dataDumper;
+extern ScopeFilterer scopeFilterer;
 
 //Function arguments
 struct wsock_recv_t
@@ -113,31 +115,46 @@ public:
 	{
 		PIN_LockClient();
 
-		struct DataDumper::func_dll_names_dump_line_t data;
-		IMG moduleFrom = IMG_FindByAddress(ip);
-		if (!IMG_Valid(moduleFrom))
+		//Only if we are going from main dll to another
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
 		{
-			std::cerr << "Image invalid at address " << ip << std::endl;
-			return;
+			if (branchTaken)
+			{
+
+				struct DataDumper::func_dll_names_dump_line_t data;
+				IMG moduleFrom = IMG_FindByAddress(ip);
+				if (!IMG_Valid(moduleFrom))
+				{
+					std::cerr << "Image invalid at address " << ip << std::endl;
+					return;
+				}
+
+				std::string dllFrom = InstructionWorker::getDllFromAddress(ip);
+				ADDRINT baseAddrFrom = InstructionWorker::getBaseAddress(ip);
+				std::string routineNameFrom = InstructionWorker::getFunctionNameFromAddress(ip);
+				std::string dllTo = InstructionWorker::getDllFromAddress(branchTargetAddress);
+				ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
+				std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
+
+				data.dllFrom = dllFrom;
+				data.funcFrom = routineNameFrom;
+				data.memAddrFrom = baseAddrFrom;
+				data.dllTo = dllTo;
+				data.funcTo = routineNameTo;
+				data.memAddrTo = baseAddrTo;
+				data.arg0 = arg0;
+				data.arg1 = arg1;
+				data.arg2 = arg2;
+				data.arg3 = arg3;
+				data.arg4 = arg4;
+				data.arg5 = arg5;
+
+				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(baseAddrFrom, data));
+
+				//At this point, we log the function and the arguments
+				dataDumper.writeRoutineDumpLine(data);
+			}
 		}
-
-		std::string dllFrom = InstructionWorker::getDllFromAddress(ip);
-		ADDRINT baseAddrFrom = InstructionWorker::getBaseAddress(ip);
-		std::string routineNameFrom = InstructionWorker::getFunctionNameFromAddress(ip);
-		std::string dllTo = InstructionWorker::getDllFromAddress(branchTargetAddress);
-		ADDRINT baseAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
-		std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
-
-		data.dllFrom = dllFrom;
-		data.funcFrom = routineNameFrom;
-		data.memAddrFrom = baseAddrFrom;
-		data.dllTo = dllTo;
-		data.funcTo = routineNameTo;
-		data.memAddrTo = baseAddrTo;
-
-		genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(baseAddrFrom, data));
-
-		dataDumper.writeRoutineDumpLine(data);
 
 		PIN_UnlockClient();
 		

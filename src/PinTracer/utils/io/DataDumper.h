@@ -5,6 +5,7 @@
 #include "log.h"
 #include <iostream>
 #include <fstream>  
+#include "../inst/InstructionWorker.h"
 
 class DataDumper
 {
@@ -37,12 +38,12 @@ public:
 		std::string dllTo;
 		std::string funcTo;
 		ADDRINT memAddrTo;
-		ADDRINT arg0;
-		ADDRINT arg1;
-		ADDRINT arg2;
-		ADDRINT arg3;
-		ADDRINT arg4;
-		ADDRINT arg5;
+		void* arg0;
+		void* arg1;
+		void* arg2;
+		void* arg3;
+		void* arg4;
+		void* arg5;
 	};
 
 

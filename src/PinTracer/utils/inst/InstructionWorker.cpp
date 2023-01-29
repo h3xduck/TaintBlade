@@ -1,5 +1,13 @@
 #include "InstructionWorker.h"
 
+std::string getStringFromArg(void* arg)
+{
+	std::wstring res = InstructionWorker::printFunctionArgument((void*)arg);
+	std::string resW(res.begin(), res.end());
+	return resW;
+}
+
+
 ADDRINT InstructionWorker::getBaseAddress(ADDRINT addr)
 {
 	IMG module = IMG_FindByAddress(addr);

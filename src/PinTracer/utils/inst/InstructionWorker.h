@@ -16,6 +16,8 @@ namespace InstructionWorker
 
 	std::wstring printFunctionArgument(void* arg);
 
+	std::string getStringFromArg(void* arg);
+
 }
 
 UINT64 getBufferStringLengthUTF8(void* buf);

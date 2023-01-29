@@ -17,7 +17,18 @@ void DataDumper::writeDataDumpLine(char* str)
 
 void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
 {
-	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << data.dllFrom.c_str() << DUMP_INTER_SEPARATOR << data.funcFrom.c_str() << DUMP_INTER_SEPARATOR << data.memAddrFrom << DUMP_INTER_SEPARATOR << data.dllTo.c_str() << DUMP_INTER_SEPARATOR << data.funcTo.c_str() << DUMP_INTER_SEPARATOR << data.memAddrTo << DUMP_OUTER_SEPARATOR;
+	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << 
+		data.dllFrom.c_str() << DUMP_INTER_SEPARATOR << data.funcFrom.c_str() << 
+		DUMP_INTER_SEPARATOR << data.memAddrFrom << DUMP_INTER_SEPARATOR << 
+		data.dllTo.c_str() << DUMP_INTER_SEPARATOR << data.funcTo.c_str() <<
+		DUMP_INTER_SEPARATOR << data.memAddrTo << DUMP_INTER_SEPARATOR <<
+		(ADDRINT)data.arg0 << DUMP_INTER_SEPARATOR <<
+		(ADDRINT)data.arg1 << DUMP_INTER_SEPARATOR <<
+		(ADDRINT)data.arg2 << DUMP_INTER_SEPARATOR <<
+		(ADDRINT)data.arg3 << DUMP_INTER_SEPARATOR <<
+		(ADDRINT)data.arg4 << DUMP_INTER_SEPARATOR <<
+		(ADDRINT)data.arg5 << DUMP_OUTER_SEPARATOR;
+	this->lastRoutineDumpIndex++;
 }
 
 void DataDumper::resetDumpFiles()
