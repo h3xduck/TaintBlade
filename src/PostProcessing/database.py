@@ -44,6 +44,7 @@ def reset_database(conn):
         sql_create_memory_colors_table = """
             CREATE TABLE memory_colors (
                 inst_address INTEGER,
+                func_index   INTEGER,
                 mem_address  INTEGER,
                 color        INTEGER NOT NULL
             ); """

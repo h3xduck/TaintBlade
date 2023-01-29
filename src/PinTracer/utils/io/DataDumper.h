@@ -17,6 +17,12 @@ private:
 	std::ofstream funcDllNamesDumpFile;
 
 	int lastRoutineDumpIndex;
+
+	//Hash for last dumped vector of currently tainted memory colors
+	//We store the hash to compare it before dumping a new one
+	size_t hashLastMemDump;
+	size_t lastMemDumpVecSize;
+
 public:
 	typedef struct extended_data_dump_line_t
 	{

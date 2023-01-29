@@ -16,9 +16,8 @@ void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<
 	{
 		this->orgColorsDumpFile << it.first << DUMP_INTER_SEPARATOR <<
 			it.second.first << DUMP_INTER_SEPARATOR <<
-			it.second.second << DUMP_INTER_SEPARATOR;
+			it.second.second << DUMP_OUTER_SEPARATOR;
 	}
-	this->orgColorsDumpFile << DUMP_OUTER_SEPARATOR;
 }
 
 void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
@@ -37,14 +36,35 @@ void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
 	this->lastRoutineDumpIndex++;
 }
 
+size_t hashCalculateMemoryVector(std::vector<std::pair<ADDRINT, UINT16>> vec)
+{
+	std::size_t seed = vec.size();
+	for (auto& i : vec) {
+		seed ^= i.first + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+		seed ^= i.second + 0x1f353261 + (seed << 6) + (seed >> 2);
+	}
+	return seed;
+}
+
 void DataDumper::writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>> vec)
 {
-	this->memDumpFile << ip << DUMP_INTER_SEPARATOR;
+	//Calculate hash and compare with the last one
+	size_t hash = hashCalculateMemoryVector(vec);
+	if (vec.size() == lastMemDumpVecSize || hash == this->hashLastMemDump)
+	{
+		//Same hash, return
+		return;
+	}
+
+	this->memDumpFile << ip << DUMP_INTER_SEPARATOR << this->lastRoutineDumpIndex;
 	for (auto it : vec)
 	{
-		this->memDumpFile << it.first << DUMP_INTER_SEPARATOR << it.second << DUMP_INTER_SEPARATOR;
+		this->memDumpFile << DUMP_INTER_SEPARATOR << it.first << DUMP_INTER_SEPARATOR << it.second;
 	}
 	this->memDumpFile << DUMP_OUTER_SEPARATOR;
+
+	this->hashLastMemDump = hash;
+	this->lastMemDumpVecSize = vec.size();
 }
 
 void DataDumper::writeColorTransformationDump(std::vector<Tag> vec)
