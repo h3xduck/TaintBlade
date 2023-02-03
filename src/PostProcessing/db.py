@@ -87,7 +87,7 @@ def load_dump_files(conn):
 
 
 def main():
-    conn = create_connection(r"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PostProcessing\db\dump.db")
+    conn = create_connection(r"C:\Users\Marcos\source\repos\h3xduck\TFM\src\PostProcessing\UI\db\dump.db")
     
     database.reset_database(conn)
     
