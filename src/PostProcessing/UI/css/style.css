@@ -76,3 +76,11 @@ button.exploder {
 button.exploder span {
     font-size: 30px;
 }
+
+td.pkey {
+    display:none;
+}
+
+th.pkey {
+    display:none;
+}
