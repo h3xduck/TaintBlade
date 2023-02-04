@@ -65,3 +65,14 @@ table.results-table tr:last-of-type td:first-of-type {
 table.results-table tr:last-of-type td:last-of-type {
     border-bottom-right-radius: 10px;
 }
+
+button.exploder {
+    padding-left: 0px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+button.exploder span {
+    font-size: 30px;
+}
