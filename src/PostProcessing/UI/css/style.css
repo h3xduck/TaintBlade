@@ -1,0 +1,67 @@
+
+pre {
+    color: white;
+}
+
+table.results-table {
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    line-height: 1.5;
+    color: white;
+}
+
+table.results-table thead th {
+    position:sticky;
+    top:2px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    text-align: inherit;
+    padding: .75rem;
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    color: #fff;
+    background-color: #212529;
+    border-color: #32383e;
+}
+
+table.results-table td {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #32383e;
+    text-align: left;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    padding: .75rem;
+    vertical-align: top;
+}
+
+table.results-table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+table.results-table th:first-of-type {
+    border-top-left-radius: 10px;
+}
+
+table.results-table th:last-of-type {
+    border-top-right-radius: 10px;
+}
+
+table.results-table tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: 10px;
+}
+
+table.results-table tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: 10px;
+}

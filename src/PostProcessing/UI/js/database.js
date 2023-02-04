@@ -76,6 +76,7 @@ var tableCreate = function () {
         var open = '<' + tagName + '>', close = '</' + tagName + '>';
         return open + vals.join(close + open) + close;
     }
+
     return function (columns, values) {
         var tbl = document.createElement('table');
         tbl.className = "results-table"
