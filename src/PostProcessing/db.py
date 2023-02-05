@@ -40,8 +40,8 @@ def insert_memory_colors(conn, colors):
     return cur.lastrowid
 
 def insert_original_colors(conn, colors):
-    sql = ''' INSERT INTO original_colors(color, function, dll)
-              VALUES(?,?,?) '''
+    sql = ''' INSERT INTO original_colors(color, function, dll, func_index)
+              VALUES(?,?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, colors)
     conn.commit()

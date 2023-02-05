@@ -84,3 +84,9 @@ td.pkey {
 th.pkey {
     display:none;
 }
+
+div.divcell {
+   width: 100px; 
+   height: 80px; 
+   overflow: auto;
+}

@@ -16,7 +16,8 @@ void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<
 	{
 		this->orgColorsDumpFile << it.first << DUMP_INTER_SEPARATOR <<
 			it.second.first << DUMP_INTER_SEPARATOR <<
-			it.second.second << DUMP_OUTER_SEPARATOR;
+			it.second.second << DUMP_INTER_SEPARATOR <<
+			this->lastRoutineDumpIndex << DUMP_OUTER_SEPARATOR;
 	}
 }
 

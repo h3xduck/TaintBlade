@@ -53,7 +53,8 @@ def reset_database(conn):
             CREATE TABLE original_colors (
                 color    INTEGER PRIMARY KEY,
                 function,
-                dll
+                dll,
+                func_index INTEGER NOT NULL
             ); """
 
         
