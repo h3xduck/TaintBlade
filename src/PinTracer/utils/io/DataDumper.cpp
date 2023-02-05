@@ -8,7 +8,7 @@ DataDumper::DataDumper()
 	this->orgColorsDumpFile.open(ORG_COLORS_DUMP_FILE);
 	this->colorTransDumpFile.open(COLOR_TRANS_DUMP_FILE);
 	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
-	this->memColorEventDumpFile.open(MEMORY_COLOR_EVENT_DUMP_FILE);
+	this->memColorEventDumpFile.open(TAINT_EVENT_DUMP_FILE);
 }
 
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec)

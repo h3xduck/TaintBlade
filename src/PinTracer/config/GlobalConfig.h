@@ -18,7 +18,7 @@
 
 //Data dumping files
 #define CURRENT_TAINTED_MEMORY_DUMP_FILE "memdump.dfx"
-#define MEMORY_COLOR_EVENT_DUMP_FILE "memcoloreventdump.dfx"
+#define TAINT_EVENT_DUMP_FILE "tainteventdump.dfx"
 #define ORG_COLORS_DUMP_FILE "orgcolorsdump.dfx"
 #define COLOR_TRANS_DUMP_FILE "colortransdump.dfx"
 #define FUNC_DLL_NAMES_DUMP_FILE "funcdllnames.dfx"

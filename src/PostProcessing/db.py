@@ -23,6 +23,14 @@ def insert_function_call(conn, function_call):
     conn.commit()
     return cur.lastrowid
 
+def insert_taint_event(conn, taint_event):
+    sql = ''' INSERT INTO taint_events(type, func_index, mem_address, color)
+              VALUES(?,?,?,?) '''
+    cur = conn.cursor()
+    cur.execute(sql, taint_event)
+    conn.commit()
+    return cur.lastrowid
+
 def insert_color_transformation(conn, transformation):
     sql = ''' INSERT INTO color_transformation(derivate_color, color_mix_1, color_mix_2)
               VALUES(?,?,?) '''
@@ -56,6 +64,14 @@ def load_dump_files(conn):
             insert_function_call(conn, tokens)
     end = time.time()
     print("Finished inserting function calls dump. Elapsed time: "+str(end-start))
+
+    with open(constant.TAINT_EVENT_FILENAME) as file:
+        for line in file:
+            tokens = line.rstrip().split(constant.DUMP_FILE_INTER_SEPARATOR)
+            #print(tokens)
+            insert_taint_event(conn, tokens)
+    end = time.time()
+    print("Finished inserting taint events dump. Elapsed time: "+str(end-start))
     
     with open(constant.COLOR_TRANSFORMATION_FILENAME) as file:
         for line in file:

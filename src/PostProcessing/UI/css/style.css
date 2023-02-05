@@ -10,7 +10,8 @@ table.results-table {
     box-sizing: border-box;
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-top: 4px;
+    margin-bottom: 4px;
     background-color: transparent;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;

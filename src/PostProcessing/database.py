@@ -34,11 +34,19 @@ def reset_database(conn):
                 arg5         INTEGER
             ); """
 
+        sql_create_taint_events_table = """
+            CREATE TABLE taint_events (
+                type         INTEGER,
+                func_index   INTEGER,
+                mem_address  INTEGER,
+                color        INTEGER NOT NULL
+            ); """
+
         sql_create_color_transformation_table = """
             CREATE TABLE color_transformation (
                 derivate_color  PRIMARY KEY,
-                color_mix_1,
-                color_mix_2
+                color_mix_1     INTEGER,
+                color_mix_2     INTEGER
             ); """
 
         sql_create_memory_colors_table = """
@@ -60,13 +68,18 @@ def reset_database(conn):
         
         # Drop all tables
         cursor = conn.cursor()
-        cursor.execute("DROP TABLE function_calls")
-        cursor.execute("DROP TABLE color_transformation")
-        cursor.execute("DROP TABLE memory_colors")
-        cursor.execute("DROP TABLE original_colors")
+        try:
+            cursor.execute("DROP TABLE function_calls")
+            cursor.execute("DROP TABLE taint_events")
+            cursor.execute("DROP TABLE color_transformation")
+            cursor.execute("DROP TABLE memory_colors")
+            cursor.execute("DROP TABLE original_colors")
+        except Exception:
+            print("Could not drop some tables")
 
         # Create tables
         create_table(conn, sql_create_function_calls_table)
+        create_table(conn, sql_create_taint_events_table)
         create_table(conn, sql_create_color_transformation_table)
         create_table(conn, sql_create_memory_colors_table)
         create_table(conn, sql_create_original_colors_table)
