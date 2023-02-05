@@ -14,8 +14,7 @@ void OPC_INST::ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 
 void OPC_INST::ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {
-	taintManager.getController().untaintMem(memDest, memDestLen);
-	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
+	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc, true);
 }
 
 void OPC_INST::ovw_imm2reg(THREADID tid, ADDRINT ip, REG regDest)
@@ -36,13 +35,22 @@ void OPC_INST::instrumentOverwriteOpc(INS ins)
 	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);
 	//If dest operand is mem, src cannot be mem
 	const BOOL isMemDest = INS_IsMemoryWrite(ins);
+	const BOOL isMemSrc = INS_IsMemoryRead(ins);
 
 	if (!isImmSrc)
 	{
 		if (isMemDest)
 		{
-			//mem, reg
-			INS_CALL_R2M_N(ovw_reg2mem, ins);
+			if (isMemSrc)
+			{
+				//mem, mem
+				LOG_ALERT("Unsupported case of MOV instruction: mem2mem");
+			}
+			else
+			{
+				//mem, reg
+				INS_CALL_R2M_N(ovw_reg2mem, ins);
+			}
 		}
 		else
 		{

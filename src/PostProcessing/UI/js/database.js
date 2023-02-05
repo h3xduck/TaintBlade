@@ -101,9 +101,8 @@ function executeFormatFunctionArguments(commands, parentRow) {
         }
 
         for (var i = 0; i < results.length; i++) {
-            parentRow.after('<tr><td>');
-            parentRow.next().append(tableCreateGeneral(results[i].columns, results[i].values));
-            parentRow.next().append('</td></tr>');
+            parentRow.after('<tr><td colspan="3"></td></tr>');
+            parentRow.next().find('td').append(tableCreateGeneral(results[i].columns, results[i].values));
         }
     }
     worker.postMessage({ action: 'exec', sql: commands });
@@ -155,10 +154,10 @@ var tableCreateFormatFunctionCalls = function () {
         var tbl = document.createElement('table');
         tbl.className = "results-table";
         var html = '<thead>' +
-            '<th>Action</th>' +
+            '<th></th>' +
             valConcatWithPkey(columns, 'th') + '</thead>';
         var rows = values.map(function (v) {
-            return '<td><button type="button" class="btn btn-success exploder" onclick="exploderClick(this)">' +
+            return '<td class="centered-cell"><button type="button" class="btn btn-success exploder" onclick="exploderClick(this)">' +
                 ' <span class="fas fa-plus-square"></span>' +
                 '</button ></td >' + valConcatWithPkey(v, 'td');
         });

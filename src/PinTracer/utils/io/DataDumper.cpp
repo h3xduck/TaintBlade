@@ -8,6 +8,7 @@ DataDumper::DataDumper()
 	this->orgColorsDumpFile.open(ORG_COLORS_DUMP_FILE);
 	this->colorTransDumpFile.open(COLOR_TRANS_DUMP_FILE);
 	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
+	this->memColorEventDumpFile.open(MEMORY_COLOR_EVENT_DUMP_FILE);
 }
 
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec)
@@ -19,6 +20,14 @@ void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<
 			it.second.second << DUMP_INTER_SEPARATOR <<
 			this->lastRoutineDumpIndex << DUMP_OUTER_SEPARATOR;
 	}
+}
+
+void DataDumper::writeMemoryColorEventDump(memory_color_event_line_t event)
+{
+	this->memColorEventDumpFile << event.eventType << DUMP_INTER_SEPARATOR <<
+		this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR <<
+		event.memAddr << DUMP_INTER_SEPARATOR <<
+		event.color << DUMP_OUTER_SEPARATOR;
 }
 
 void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)

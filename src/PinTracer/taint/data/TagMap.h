@@ -20,6 +20,7 @@
 #include <cstdio>
 #include "TRegister.h"
 #include "TagLog.h"
+#include "../../utils/io/DataDumper.h"
 
 #define PAGE_SIZE 4096
 #define COLOR_BYTES 2
@@ -43,6 +44,7 @@
 */
 
 const int REG_TAINT_FIELD_LEN = 128;
+extern DataDumper dataDumper;
 
 class TagMap
 {
@@ -122,6 +124,7 @@ public:
 	dest, src1 and src2 MUST be of the same size.
 	src1 and dest are expected to be the same register. Only binary opcs!
 	Introduces mix in taglog if generated.
+	If colorOverwrite, then the dest memory color will not be mixed, but overwritten.
 	*/
 	void mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2);
 
@@ -129,6 +132,7 @@ public:
 	/**
 	Same as mixTaintReg, but if src reg is smaller than dest, then the full dest register
 	is tainted using the LSB of the src register	
+	If colorOverwrite, then the dest memory color will not be mixed, but overwritten.
 	*/
 	void mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE::REG src2);
 

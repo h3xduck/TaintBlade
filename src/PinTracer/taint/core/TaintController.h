@@ -18,7 +18,7 @@ public:
 
 	std::vector<UINT16> taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes);
 	void taintMemWithMem(const ADDRINT destMem, const UINT32 destBytes, const ADDRINT srcMem, const UINT32 srcBytes);
-	void taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg);
+	void taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg, BOOL colorOverwrite = false);
 	void untaintMem(const ADDRINT destMem, const UINT32 destBytes);
 
 	void taintRegNewColor(const LEVEL_BASE::REG reg);

@@ -49,7 +49,7 @@ void TaintController::taintMemWithMem(const ADDRINT destMem, const UINT32 destBy
 	}
 }
 
-void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg)
+void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg, BOOL colorOverwrite)
 {
 	//TODO: Check if destBytes and srcRegLength are the same
 	const UINT32 srcRegLength = this->tagMap.tReg.getTaintLength(srcReg);
@@ -60,9 +60,19 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 	for (int ii = 0; ii < destBytes; ii++)
 	{
 		const UINT16 colorDest = this->tagMap.getTaintColorMem(destMemIt);
-		if (colorDest == EMPTY_COLOR)
+
+		//No mixes to created if dest is empty or we must overwrite the color anyway
+		if (colorDest == EMPTY_COLOR || colorOverwrite == true)
 		{
 			UINT16 color = srcRegColorVector[ii].color;
+
+			//Ignore color overwrite if the color is already there
+			if (colorDest == color)
+			{
+				//LOG_DEBUG("Ignored color overwrite for " << to_hex(destMemIt) << " since it's the same one");
+				return;
+			}
+
 			//LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << unsigned(color) << " from reg " << REG_StringShort(srcReg));
 			this->tagMap.taintMem(destMemIt, color);
 		}

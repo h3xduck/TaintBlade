@@ -21,7 +21,7 @@ table.results-table {
 table.results-table thead th {
     position:sticky;
     top:2px;
-    font-size: 1rem;
+    font-size: 14px;
     line-height: 1.5;
     border-collapse: collapse;
     box-sizing: border-box;
@@ -35,15 +35,17 @@ table.results-table thead th {
 }
 
 table.results-table td {
-    font-size: 1rem;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
     color: #32383e;
     text-align: left;
     border-collapse: collapse;
     box-sizing: border-box;
-    padding: .75rem;
-    vertical-align: top;
+    padding-top: 0px;
+    padding-inline: 8px;
+    padding-bottom: 0px;
+    vertical-align: middle;
 }
 
 table.results-table tbody tr:nth-of-type(odd) {
@@ -67,14 +69,15 @@ table.results-table tr:last-of-type td:last-of-type {
 }
 
 button.exploder {
-    padding-left: 0px;
-    padding-right: 4px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    width: 25px;
+    height: 25px;
+    text-align: left;
+    border: none;
+    padding: 0;
 }
 
 button.exploder span {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 td.pkey {
@@ -89,4 +92,12 @@ div.divcell {
    width: 100px; 
    height: 80px; 
    overflow: auto;
+}
+
+table.results-table td.centered-cell {
+    text-align:center;
+}
+
+td > table.results-table th{
+    padding: 1px 8px 1px 8px;
 }
