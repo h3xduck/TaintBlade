@@ -102,7 +102,7 @@ function executeFormatFunctionArguments(commands, parentRow) {
 
         for (var i = 0; i < results.length; i++) {
             parentRow.after('<tr><td colspan="3"></td></tr>');
-            parentRow.next().find('td').append(tableCreateTaintEvents(results[i].columns, results[i].values));
+            parentRow.next().find('td').append(tableCreateGeneral(results[i].columns, results[i].values));
         }
     }
     worker.postMessage({ action: 'exec', sql: commands });
@@ -125,6 +125,28 @@ function executeFormatTaintEvents(commands) {
         outputBoxElm.empty();
         for (var i = 0; i < results.length; i++) {
             outputBoxElm.append(tableCreateTaintEvents(results[i].columns, results[i].values));
+        }
+    }
+    worker.postMessage({ action: 'exec', sql: commands });
+    console.log("Posted message with commands:" + commands);
+    outputBoxElm.textContent = "Fetching results...";
+}
+
+// Get a table with taint event details
+// For taint_events table when clicking on + button
+function executeFormatTaintDetails(commands) {
+    worker.onmessage = function (event) {
+        console.log("Received request for taint event details");
+        var results = event.data.results;
+        console.log(results);
+        if (!results) {
+            console.log("ERROR receiving worker results: " + event.data.error);
+            return;
+        }
+
+        outputBoxElm.empty();
+        for (var i = 0; i < results.length; i++) {
+            outputBoxElm.append(tableCreateGeneral(results[i].columns, results[i].values));
         }
     }
     worker.postMessage({ action: 'exec', sql: commands });
@@ -180,7 +202,7 @@ var tableCreateFormatFunctionCalls = function () {
             '<th></th>' +
             valConcatWithPkey(columns, 'th') + '</thead>';
         var rows = values.map(function (v) {
-            return '<td class="centered-cell"><button type="button" class="btn btn-success exploder" onclick="exploderClick(this)">' +
+            return '<td class="centered-cell"><button type="button" class="btn btn-success exploder" onclick="exploderClickFunctionArgs(this)">' +
                 ' <span class="fas fa-plus-square"></span>' +
                 '</button ></td >' + valConcatWithPkey(v, 'td');
         });
@@ -273,7 +295,7 @@ var tableCreateTaintEvents = function () {
         var html = '<thead>' +
             '<th></th><th>EVENT</th><th>INSTRUCTION</th>' + '</thead>';
         var rows = values.map(function (v) {
-            return '<td class="centered-cell"><button type="button" class="btn btn-success exploder" onclick="exploderClick(this)">' +
+            return '<td class="centered-cell"><button type="button" class="btn btn-success exploder" onclick="exploderClickEventDetails(this)">' +
                 ' <span class="fas fa-plus-square"></span>' +
                 '</button ></td >' + valConcatWithPkey(v, 'td');
         });
@@ -312,7 +334,7 @@ function showColorChanged(elem) {
     );
 }
 
-function exploderClick(elem) {
+function exploderClickFunctionArgs(elem) {
     //Check whether to show or hide arguments table
     var icon = $(elem).children('span').eq(0);
     if (icon.hasClass("fa-plus-square")) {
@@ -339,8 +361,36 @@ function exploderClick(elem) {
         var parentRow = $(elem).parent().parent();
         parentRow.next().remove();
     }
+}
 
-    
+function exploderClickEventDetails(elem) {
+    //Check whether to show or hide details table
+    var icon = $(elem).children('span').eq(0);
+    if (icon.hasClass("fa-plus-square")) {
+        //Change the icon to hide element
+        var icon = $(elem).children('span').eq(0);
+        icon.removeClass("fa-plus-square");
+        icon.addClass("fa-minus-square");
 
-    
+        //We generate an additional row where we will show the arguments of the function
+        var key = $(elem).parent().parent().find(".pkey").text();
+        var parentRow = $(elem).parent().parent();
+        executeFormatFunctionArguments(
+            "SELECT func_from, dll_from, func_to, dll_to FROM taint_events AS t " +
+            "LEFT JOIN function_calls AS f " +
+            "ON t.func_index = f.appearance " +
+            "WHERE appearance=" + key +
+            " LIMIT 1",
+            parentRow);
+
+    } else {
+        //Change the icon to hide element
+        var icon = $(elem).children('span').eq(0);
+        icon.removeClass("fa-minus-square");
+        icon.addClass("fa-plus-square");
+
+        //We remove the arguments table
+        var parentRow = $(elem).parent().parent();
+        parentRow.next().remove();
+    }
 }
