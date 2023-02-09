@@ -38,6 +38,7 @@ def reset_database(conn):
             CREATE TABLE taint_events (
                 type         INTEGER,
                 func_index   INTEGER,
+                inst_address INTEGER,
                 mem_address  INTEGER,
                 color        INTEGER NOT NULL
             ); """

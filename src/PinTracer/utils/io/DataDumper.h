@@ -7,6 +7,7 @@
 #include <fstream>  
 #include "../inst/InstructionWorker.h"
 #include "../../taint/data/Tag.h"
+#include "../../common/Context.h"
 
 class DataDumper
 {

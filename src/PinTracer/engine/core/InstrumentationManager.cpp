@@ -3,6 +3,9 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include "../../common/Context.h"
+
+extern Context ctx;
 
 //Info regarding categories from INS_Category and opcodes:
 //https://software.intel.com/sites/landingpage/pintool/docs/98484/Pin/html/group__INS__INSPECTION.html#ga3d71d53c5043092d5dbc7c96a2c30b5b
@@ -39,18 +42,22 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_AND:
 	case XED_ICLASS_OR:
 		OPC_INST::instrumentBinaryOpc(ins);
+		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	case XED_ICLASS_SUB:
 	case XED_ICLASS_XOR:
 		OPC_INST::instrumentBinaryIfEqualRegClearOpc(ins);
+		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	case XED_ICLASS_LEA:
 		OPC_INST::instrumentLeaOpc(ins);
+		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	case XED_ICLASS_MOV:
 	case XED_ICLASS_MOVSX:
 	case XED_ICLASS_MOVZX:
 		OPC_INST::instrumentOverwriteOpc(ins);
+		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	default:
 		//Unsupported or ignored, no tainting for those

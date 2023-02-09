@@ -254,6 +254,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="common\Context.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="engine\core\InstrumentationManager.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\BinaryOpc.cpp" />
@@ -273,6 +274,7 @@
     <ClCompile Include="utils\io\DataDumper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common\Context.h" />
     <ClInclude Include="config\GlobalConfig.h" />
     <ClInclude Include="config\Names.h" />
     <ClInclude Include="engine\core\InstrumentationManager.h" />

@@ -102,13 +102,36 @@ function executeFormatFunctionArguments(commands, parentRow) {
 
         for (var i = 0; i < results.length; i++) {
             parentRow.after('<tr><td colspan="3"></td></tr>');
-            parentRow.next().find('td').append(tableCreateGeneral(results[i].columns, results[i].values));
+            parentRow.next().find('td').append(tableCreateTaintEvents(results[i].columns, results[i].values));
         }
     }
     worker.postMessage({ action: 'exec', sql: commands });
     console.log("Posted message with commands:" + commands);
     outputBoxElm.textContent = "Fetching results...";
 }
+
+// Get a table with taint events
+// For taint_events table
+function executeFormatTaintEvents(commands) {
+    worker.onmessage = function (event) {
+        console.log("Received request for taint events");
+        var results = event.data.results;
+        console.log(results);
+        if (!results) {
+            console.log("ERROR receiving worker results: " + event.data.error);
+            return;
+        }
+
+        outputBoxElm.empty();
+        for (var i = 0; i < results.length; i++) {
+            outputBoxElm.append(tableCreateTaintEvents(results[i].columns, results[i].values));
+        }
+    }
+    worker.postMessage({ action: 'exec', sql: commands });
+    console.log("Posted message with commands:" + commands);
+    outputBoxElm.textContent = "Fetching results...";
+}
+
 
 ///////////////////// UI STUFF /////////////////////
 
@@ -167,6 +190,99 @@ var tableCreateFormatFunctionCalls = function () {
     }
 }();
 
+var tableCreateTaintEvents = function () {
+    function getColorFormat(color) {
+        switch (color) {
+            case "UNDEFINED": //UNDEFINED
+                return "undefined-event";
+            case "UNTAINT": //UNTAINT
+                return "untaint-taint-event";
+            case "TAINT": //TAINT
+                return "taint-taint-event";
+            case "CHANGE": //CHANGE
+                return "change-taint-event";
+            case "MIX": //MIX
+                return "mix-taint-event";
+            default:
+                return "";
+        }
+    }
+
+    function getEventFormat(color) {
+        switch (color) {
+            case 0: //UNDEFINED
+                return "UNDEFINED";
+            case 1: //UNTAINT
+                return "UNTAINT";
+            case 2: //TAINT
+                return "TAINT";
+            case 3: //CHANGE
+                return "CHANGE";
+            case 4: //MIX
+                return "MIX";
+            default:
+                return "";
+        }
+    }
+
+    function valconcat(vals, tagName) {
+        if (vals.length === 0) return '';
+        var close = '</' + tagName + '>';
+
+        var html = '';
+        for (var i = 0; i < vals.length; i++) {
+            var open = '<' + tagName + ' class="' + getColorFormat($(vals[i])[1].textContent.split(" ")[0]) + '">'; 
+            console.log(open);
+            html += open + vals[i] + close;
+        }
+
+        return html;
+    }
+
+    function valConcatWithPkey(vals, tagName) {
+        if (vals.length === 0) return '';
+        var open = '<' + tagName + '>', close = '</' + tagName + '>';
+
+        //The one with appearance is hidden
+        //If memAddress==0, means the event is related to a register, only mixes included
+        console.log(vals);
+        var res;
+        var mixColors = "";
+        var eventString = getEventFormat(vals[0]);
+        var colorMix1 = vals[5];
+        var colorMix2 = vals[6];
+        if (eventString == "MIX") {
+            mixColors = " using {" + colorMix1 + "} and {" + colorMix2 + "}";
+        }
+        if (vals[3] != 0) {
+            res = '<' + tagName + '>' + eventString + " MEM [" + vals[3] + "] with color {" + vals[4] + "}" + mixColors + close +
+                '<' + tagName + ' class="pkey">' + vals[1] + close +
+                open + vals[2] + close;
+        } else {
+            var res = '<' + tagName + '>' + eventString + " register byte with color {" + vals[4] + "}" + mixColors + close +
+                '<' + tagName + ' class="pkey">' + vals[1] + close +
+                open + vals[2] + close;
+        }
+        
+        return res;
+    }
+
+    return function (columns, values) {
+        var tbl = document.createElement('table');
+        tbl.className = "results-table";
+        var html = '<thead>' +
+            '<th></th><th>EVENT</th><th>INSTRUCTION</th>' + '</thead>';
+        var rows = values.map(function (v) {
+            return '<td class="centered-cell"><button type="button" class="btn btn-success exploder" onclick="exploderClick(this)">' +
+                ' <span class="fas fa-plus-square"></span>' +
+                '</button ></td >' + valConcatWithPkey(v, 'td');
+        });
+        html += '<tbody>' + valconcat(rows, 'tr') + '</tbody>';
+        tbl.innerHTML = html;
+        return tbl;
+    }
+}();
+
 
 
 ///////////////////// ELEMENT EVENTS /////////////////////
@@ -174,6 +290,15 @@ function showAllFunctions(elem) {
     executeFormatFunctionCalls(
         "SELECT appearance, dll_from, func_from, memaddr_from, dll_to, func_to, memaddr_to " +
         "FROM function_calls"
+    );
+}
+
+function showTaintEvents(elem) {
+    executeFormatTaintEvents(
+        "SELECT type, func_index, inst_address, mem_address, color, color_mix_1, color_mix_2 FROM taint_events AS t " +
+        "LEFT JOIN color_transformation AS c ON t.color = c.derivate_color " +
+        "LEFT JOIN function_calls AS f ON t.func_index = f.appearance " +
+        "ORDER BY func_index "
     );
 }
 

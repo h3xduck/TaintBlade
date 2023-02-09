@@ -9,6 +9,7 @@
 #include "../xed_iclass_instrumentation/SpecialOpc.h"
 #include "../../utils/inst/PerformanceOperator.h"
 
+
 class InstrumentationManager
 {
 public:

@@ -49,9 +49,10 @@ table.results-table td {
     vertical-align: middle;
 }
 
+/*
 table.results-table tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, .05);
-}
+}*/
 
 table.results-table th:first-of-type {
     border-top-left-radius: 10px;
@@ -70,8 +71,8 @@ table.results-table tr:last-of-type td:last-of-type {
 }
 
 button.exploder {
-    width: 25px;
-    height: 25px;
+    width: 27px;
+    height: 27px;
     text-align: left;
     border: none;
     padding: 0;
@@ -101,4 +102,21 @@ table.results-table td.centered-cell {
 
 td > table.results-table th{
     padding: 1px 8px 1px 8px;
+}
+
+/*Colors for taint event rows*/
+tr.undefined-taint-event {
+    background-color: white !important;
+}
+tr.untaint-taint-event {
+    background-color: darkgray !important;
+}
+tr.taint-taint-event {
+    background-color: lightsalmon !important;
+}
+tr.change-taint-event {
+    background-color: paleturquoise !important;
+}
+tr.mix-taint-event {
+    background-color: greenyellow !important;
 }
