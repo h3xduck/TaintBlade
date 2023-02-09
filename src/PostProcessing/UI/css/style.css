@@ -120,3 +120,30 @@ tr.change-taint-event {
 tr.mix-taint-event {
     background-color: greenyellow !important;
 }
+
+/*Colored buttons for function call events*/
+button.undefined-event-indicator span {
+    border: 10px solid white;
+    background: white;
+    display: block;
+}
+button.untaint-event-indicator span {
+    border: 10px solid darkgray;
+    background: darkgray;
+    display: block;
+}
+button.taint-event-indicator span {
+    border: 10px solid lightsalmon;
+    background: lightsalmon;
+    display: block;
+}
+button.change-event-indicator span {
+    border: 10px solid paleturquoise;
+    background: paleturquoise;
+    display: block;
+}
+button.mix-event-indicator span {
+    border: 10px solid greenyellow;
+    background: greenyellow;
+    display: block;
+}

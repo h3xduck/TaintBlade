@@ -154,6 +154,64 @@ function executeFormatTaintDetails(commands) {
     outputBoxElm.textContent = "Fetching results...";
 }
 
+// Get a table function calls and all taint events
+// For the function calls events button
+function executeFormatEventsFunctionCalls(commands) {
+    worker.onmessage = function (event) {
+        console.log("Received request for function calls with events");
+        var results = event.data.results;
+        console.log(results);
+        if (!results) {
+            console.log("ERROR receiving worker results: " + event.data.error);
+            return;
+        }
+
+        outputBoxElm.empty();
+        for (var i = 0; i < results.length; i++) {
+            outputBoxElm.append(tableCreateFormatEventsFunctionCalls(results[i].columns, results[i].values));
+        }
+    }
+    worker.postMessage({ action: 'exec', sql: commands });
+    console.log("Posted message with commands:" + commands);
+    outputBoxElm.textContent = "Fetching results...";
+}
+
+///////////////////// UTILS ////////////////////////
+function getColorFormat(color) {
+    switch (color) {
+        case "UNDEFINED": //UNDEFINED
+            return "undefined-event";
+        case "UNTAINT": //UNTAINT
+            return "untaint-taint-event";
+        case "TAINT": //TAINT
+            return "taint-taint-event";
+        case "CHANGE": //CHANGE
+            return "change-taint-event";
+        case "MIX": //MIX
+            return "mix-taint-event";
+        default:
+            return "";
+    }
+}
+
+function getEventFormat(color) {
+    switch (color) {
+        case 0: //UNDEFINED
+            return "UNDEFINED";
+        case 1: //UNTAINT
+            return "UNTAINT";
+        case 2: //TAINT
+            return "TAINT";
+        case 3: //CHANGE
+            return "CHANGE";
+        case 4: //MIX
+            return "MIX";
+        default:
+            return "";
+    }
+}
+
+
 
 ///////////////////// UI STUFF /////////////////////
 
@@ -213,40 +271,6 @@ var tableCreateFormatFunctionCalls = function () {
 }();
 
 var tableCreateTaintEvents = function () {
-    function getColorFormat(color) {
-        switch (color) {
-            case "UNDEFINED": //UNDEFINED
-                return "undefined-event";
-            case "UNTAINT": //UNTAINT
-                return "untaint-taint-event";
-            case "TAINT": //TAINT
-                return "taint-taint-event";
-            case "CHANGE": //CHANGE
-                return "change-taint-event";
-            case "MIX": //MIX
-                return "mix-taint-event";
-            default:
-                return "";
-        }
-    }
-
-    function getEventFormat(color) {
-        switch (color) {
-            case 0: //UNDEFINED
-                return "UNDEFINED";
-            case 1: //UNTAINT
-                return "UNTAINT";
-            case 2: //TAINT
-                return "TAINT";
-            case 3: //CHANGE
-                return "CHANGE";
-            case 4: //MIX
-                return "MIX";
-            default:
-                return "";
-        }
-    }
-
     function valconcat(vals, tagName) {
         if (vals.length === 0) return '';
         var close = '</' + tagName + '>';
@@ -254,7 +278,6 @@ var tableCreateTaintEvents = function () {
         var html = '';
         for (var i = 0; i < vals.length; i++) {
             var open = '<' + tagName + ' class="' + getColorFormat($(vals[i])[1].textContent.split(" ")[0]) + '">'; 
-            console.log(open);
             html += open + vals[i] + close;
         }
 
@@ -305,6 +328,61 @@ var tableCreateTaintEvents = function () {
     }
 }();
 
+var tableCreateFormatEventsFunctionCalls = function () {
+    function eventButtonArray(event_types) {
+        var types_list = event_types.split(',');
+        types_list.sort();
+        var button_array = "";
+        for (const type_elem of types_list) {
+            switch (parseInt(type_elem)) {
+                case 0: //UNDEFINED
+                    button_array += "<button class=\"undefined-event-indicator\"><span></span></button>";
+                    break;
+                case 1: //UNTAINT
+                    button_array += "<button class=\"untaint-event-indicator\"><span></span></button>";
+                    break;
+                case 2: //TAINT
+                    button_array += "<button class=\"taint-event-indicator\"><span></span></button>";
+                    break;
+                case 3: //CHANGE
+                    button_array += "<button class=\"change-event-indicator\"><span></span></button>";
+                    break;
+                case 4: //MIX
+                    button_array += "<button class=\"mix-event-indicator\"><span></span></button>";
+                    break;
+            }
+        }
+        return button_array;
+    }
+
+    return function (columns, values) {
+        var tbl = document.createElement('table');
+        tbl.className = "results-table";
+        var html = '<thead>' +
+            '<th>LOCATION</th><th>EVENTS</th>' + '</thead>';
+        /*var rows = values.map(function (v) {
+            return valConcatWithPkey(v, 'td');
+        });*/
+
+        var rows = "";
+        for (var i = 0; i < values.length; i++) {
+            var open = '<td>', close = '</td>';
+            var index = values[i][0];
+            var func_to = values[i][5];
+            var dll_to = values[i][6];
+            var inst_address = values[i][8];
+            var event_types = values[i][7];
+            rows += '<tr><td class="pkey">' + index + close +
+                open + "[" + inst_address + "] (" + func_to + " : " + dll_to + ")" + close +
+                open + eventButtonArray(event_types) + close + '</tr>';
+        }
+
+        html += '<tbody>' + rows + '</tbody>';
+        console.log(html);
+        tbl.innerHTML = html;
+        return tbl;
+    }
+}();
 
 
 ///////////////////// ELEMENT EVENTS /////////////////////
@@ -393,4 +471,12 @@ function exploderClickEventDetails(elem) {
         var parentRow = $(elem).parent().parent();
         parentRow.next().remove();
     }
+}
+
+function showEventsFunctionCalls(elem) {
+    executeFormatEventsFunctionCalls(
+        "SELECT func_index, memaddr_from, func_from, dll_from, memaddr_to, func_to, dll_to, group_concat(distinct type) AS types, inst_address, mem_address FROM function_calls AS f " +
+        "INNER JOIN taint_events AS t ON f.appearance = t.func_index " +
+        "GROUP BY f.appearance"
+    );
 }
