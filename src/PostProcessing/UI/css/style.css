@@ -120,30 +120,48 @@ tr.change-taint-event {
 tr.mix-taint-event {
     background-color: greenyellow !important;
 }
+tr.taintgen-taint-event {
+    background-color: red !important;
+}
+
+tr.changegen-taint-event {
+    background-color: yellow !important;
+}
 
 /*Colored buttons for function call events*/
 button.undefined-event-indicator span {
-    border: 10px solid white;
+    border: 2px solid white;
     background: white;
     display: block;
 }
 button.untaint-event-indicator span {
-    border: 10px solid darkgray;
+    border: 2px solid darkgray;
     background: darkgray;
     display: block;
 }
 button.taint-event-indicator span {
-    border: 10px solid lightsalmon;
+    border: 2px solid lightsalmon;
     background: lightsalmon;
     display: block;
 }
 button.change-event-indicator span {
-    border: 10px solid paleturquoise;
+    border: 2px solid paleturquoise;
     background: paleturquoise;
     display: block;
 }
 button.mix-event-indicator span {
-    border: 10px solid greenyellow;
+    border: 2px solid greenyellow;
     background: greenyellow;
+    display: block;
+}
+button.taintgen-event-indicator span {
+    border: 2px solid red;
+    background: red;
+    display: block;
+}
+
+button.changegen-event-indicator span {
+    border: 2px solid yellow;
+    background: yellow;
     display: block;
 }

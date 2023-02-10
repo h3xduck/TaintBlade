@@ -63,7 +63,7 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 	return tag.color;
 }
 
-void TagMap::taintMem(ADDRINT addr, UINT16 color) 
+void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint) 
 {
 	auto it = this->memTaintField.find(addr);
 	if (it == this->memTaintField.end())
@@ -81,7 +81,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color)
 			struct DataDumper::memory_color_event_line_t event;
 			event.color = tag.color;
 			event.memAddr = addr;
-			event.eventType = DataDumper::TAINT;
+			event.eventType = manualTaint==true ? DataDumper::TAINTGEN : DataDumper::TAINT;
 			dataDumper.writeMemoryColorEventDump(event);
 		}
 		//No empty color tainting
@@ -96,7 +96,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color)
 		struct DataDumper::memory_color_event_line_t event;
 		event.color = color;
 		event.memAddr = addr;
-		event.eventType = DataDumper::CHANGE;
+		event.eventType = manualTaint == true ? DataDumper::CHANGEGEN : DataDumper::CHANGE;
 		dataDumper.writeMemoryColorEventDump(event);
 
 	}

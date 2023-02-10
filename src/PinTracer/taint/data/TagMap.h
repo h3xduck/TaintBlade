@@ -73,8 +73,9 @@ public:
 	/**
 	Taints single memory byte with color=color.
 	If memory is already tainted, it will only update Tag color in memory map.
+	If manualTaint, means we explictely generated this taint by a rule, instead of happening in the program
 	*/
-	void taintMem(ADDRINT addr, UINT16 color);
+	void taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint = false);
 
 	/**
 	Removes single memory byte from memory map.

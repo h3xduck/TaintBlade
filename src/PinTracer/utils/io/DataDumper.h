@@ -59,9 +59,11 @@ public:
 	{
 		UNDEFINED,  //Undefined
 		UNTAINT,	//Untainted memory location
-		TAINT,		//Tainted new memory location
+		TAINT,		//Tainted new memory location (happens naturally at the program, not manual by a rule)
 		CHANGE,		//Changed the color of an already tainted memrory location, no mix
-		MIX			//
+		MIX,		//Mixed two colors into a new one, or reutilized a previous mix
+		TAINTGEN,	//Explicitely tainted a memory location because of a rule specified at a function
+		CHANGEGEN,  //Explicitely changed the taint of a memory location because of a rule specified at a function
 	};
 
 	typedef struct memory_color_event_line_t

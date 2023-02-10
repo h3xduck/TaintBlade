@@ -16,6 +16,7 @@ private:
 public:
 	TaintController();
 
+	//To be used only by the taintSource, this marks the taint event as TAINTGEN (not a natural taint at the program)
 	std::vector<UINT16> taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes);
 	void taintMemWithMem(const ADDRINT destMem, const UINT32 destBytes, const ADDRINT srcMem, const UINT32 srcBytes);
 	void taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg, BOOL colorOverwrite = false);

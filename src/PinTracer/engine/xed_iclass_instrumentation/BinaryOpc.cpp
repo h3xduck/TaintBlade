@@ -5,6 +5,7 @@ void OPC_INST::binary_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 me
 {
 	//LOG_DEBUG("OPC: " << dis);
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
+	ctx.updateCurrentInstruction(ip);
 }
 void OPC_INST::binary_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {

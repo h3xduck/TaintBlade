@@ -42,22 +42,18 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_AND:
 	case XED_ICLASS_OR:
 		OPC_INST::instrumentBinaryOpc(ins);
-		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	case XED_ICLASS_SUB:
 	case XED_ICLASS_XOR:
 		OPC_INST::instrumentBinaryIfEqualRegClearOpc(ins);
-		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	case XED_ICLASS_LEA:
 		OPC_INST::instrumentLeaOpc(ins);
-		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	case XED_ICLASS_MOV:
 	case XED_ICLASS_MOVSX:
 	case XED_ICLASS_MOVZX:
 		OPC_INST::instrumentOverwriteOpc(ins);
-		ctx.updateCurrentInstruction(INS_Address(ins));
 		break;
 	default:
 		//Unsupported or ignored, no tainting for those
