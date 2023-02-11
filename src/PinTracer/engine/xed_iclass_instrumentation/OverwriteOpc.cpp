@@ -1,29 +1,46 @@
 #include "OverwriteOpc.h"
 
+extern Context ctx;
+
 void OPC_INST::ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
 }
 
 void OPC_INST::ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithReg(regDest, regSrc, true);
 }
 
 void OPC_INST::ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc, true);
 }
 
 void OPC_INST::ovw_imm2reg(THREADID tid, ADDRINT ip, REG regDest)
 {
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 }
 
 void OPC_INST::ovw_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memDestLen)
 {
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().untaintMem(memDest, memDestLen);
 }
 

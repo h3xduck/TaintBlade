@@ -136,10 +136,10 @@ public:
 
 				data.dllFrom = dllFrom;
 				data.funcFrom = routineNameFrom;
-				data.memAddrFrom = ip;
+				data.memAddrFrom = InstructionWorker::getBaseAddress(ip);
 				data.dllTo = dllTo;
 				data.funcTo = routineNameTo;
-				data.memAddrTo = branchTargetAddress;
+				data.memAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
 				data.arg0 = arg0;
 				data.arg1 = arg1;
 				data.arg2 = arg2;

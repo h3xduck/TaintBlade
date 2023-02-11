@@ -5,6 +5,7 @@
 #include "../../utils/io/log.h"
 #include "Common.h"
 #include "../../taint/core/TaintManager.h"
+#include "../../utils/inst/InstructionWorker.h"
 
 extern TaintManager taintManager;
 

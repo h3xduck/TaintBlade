@@ -3,9 +3,6 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include "../../common/Context.h"
-
-extern Context ctx;
 
 //Info regarding categories from INS_Category and opcodes:
 //https://software.intel.com/sites/landingpage/pintool/docs/98484/Pin/html/group__INS__INSPECTION.html#ga3d71d53c5043092d5dbc7c96a2c30b5b

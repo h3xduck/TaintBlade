@@ -1,27 +1,36 @@
 #include "BinaryOpc.h"
 
+extern Context ctx;
+
 //and, or
 void OPC_INST::binary_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
-	//LOG_DEBUG("OPC: " << dis);
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
-	ctx.updateCurrentInstruction(ip);
 }
 void OPC_INST::binary_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
-	//LOG_DEBUG("OPC: " << dis);
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().taintRegWithReg(regDest, regSrc, false);
 }
 void OPC_INST::binary_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
 {
-	//LOG_DEBUG("OPC: " << dis);
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
 }
 
 //xor
 void OPC_INST::binary_clr_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
-	//LOG_DEBUG("OPC: " << dis);
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 }
 

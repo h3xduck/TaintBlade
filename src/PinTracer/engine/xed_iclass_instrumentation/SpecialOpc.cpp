@@ -1,5 +1,7 @@
 #include "SpecialOpc.h"
 
+extern Context ctx;
+
 void OPC_INST::lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, UINT32 leaScale, UINT32 leaDis)
 {
 	//LOG_DEBUG("LEA:: destreg:" << destReg << std::hex << " leabase:0x" << leaBase << " leaindex:0x" << leaIndex << " leascale:0x" << leaScale << " leadis:0x" << leaDis << std::dec);
@@ -10,6 +12,9 @@ void OPC_INST::lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, R
 	//leaBase invalid, leaIndex invalid --> error
 
 	//Taint value is always overwritten
+	PIN_LockClient();
+	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	PIN_UnlockClient();
 	taintManager.getController().untaintReg(destReg);
 
 	if (leaBase != REG_INVALID() && leaIndex != REG_INVALID())
