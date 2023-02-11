@@ -112,7 +112,7 @@ function executeFormatFunctionArguments(commands, parentRow) {
 
 // Get a table with taint events
 // For taint_events table
-function executeFormatTaintEvents(commands) {
+function executeFormatTaintEvents(commands, parentRow) {
     worker.onmessage = function (event) {
         console.log("Received request for taint events");
         var results = event.data.results;
@@ -122,9 +122,18 @@ function executeFormatTaintEvents(commands) {
             return;
         }
 
-        outputBoxElm.empty();
-        for (var i = 0; i < results.length; i++) {
-            outputBoxElm.append(tableCreateTaintEvents(results[i].columns, results[i].values));
+        if (parentRow == undefined) {
+            //Events displayed in main window, no filter
+            outputBoxElm.empty();
+            for (var i = 0; i < results.length; i++) {
+                outputBoxElm.append(tableCreateTaintEvents(results[i].columns, results[i].values));
+            }
+        } else {
+            //Events to display inside one function call details
+            for (var i = 0; i < results.length; i++) {
+                parentRow.after('<tr><td colspan="3"></td></tr>');
+                parentRow.next().find('td').append(tableCreateTaintEvents(results[i].columns, results[i].values));
+            }
         }
     }
     worker.postMessage({ action: 'exec', sql: commands });
@@ -156,7 +165,7 @@ function executeFormatTaintDetails(commands) {
 
 // Get a table function calls and all taint events
 // For the function calls events button
-function executeFormatFunctionCallsEvents(commands) {
+function executeFormatFunctionCallsEvents(commands, parentRow) {
     worker.onmessage = function (event) {
         console.log("Received request for function calls with events");
         var results = event.data.results;
@@ -166,10 +175,12 @@ function executeFormatFunctionCallsEvents(commands) {
             return;
         }
 
+        //Events called from main windows
         outputBoxElm.empty();
         for (var i = 0; i < results.length; i++) {
             outputBoxElm.append(tableCreateFormatFunctionCallsEvents(results[i].columns, results[i].values));
         }
+        
     }
     worker.postMessage({ action: 'exec', sql: commands });
     console.log("Posted message with commands:" + commands);
@@ -339,7 +350,7 @@ var tableCreateFormatFunctionCallsEvents = function () {
     function eventButtonArray(event_types) {
         var types_list = event_types.split(',');
         types_list.sort();
-        var button_array = '<button type="button" class="btn exploder" onclick="exploderClickFunctionCallEvents(this)">' +
+        var button_array = '<button type="button" class="btn exploder" onclick="exploderClickFunctionCallEventDetails(this)">' +
             ' <span class="fas fa-plus-square"></span></button >';
         for (const type_elem of types_list) {
             switch (parseInt(type_elem)) {
@@ -501,13 +512,13 @@ function exploderClickFunctionCallEventDetails(elem) {
         //We generate an additional row where we will show the arguments of the function
         var key = $(elem).parent().parent().find(".pkey").text();
         var parentRow = $(elem).parent().parent();
-        executeFormatFunctionArguments(
-            "SELECT func_from, dll_from, func_to, dll_to FROM taint_events AS t " +
-            "LEFT JOIN function_calls AS f " +
-            "ON t.func_index = f.appearance " +
-            "WHERE appearance=" + key +
-            " LIMIT 1",
-            parentRow);
+        executeFormatTaintEvents(
+            "SELECT type, func_index, inst_address, mem_address, color, color_mix_1, color_mix_2 FROM taint_events AS t " +
+            "LEFT JOIN color_transformation AS c ON t.color = c.derivate_color " +
+            "LEFT JOIN function_calls AS f ON t.func_index = f.appearance " +
+            "WHERE func_index = " + key+ " "+
+            "ORDER BY func_index ", parentRow
+        );
 
     } else {
         //Change the icon to hide element
