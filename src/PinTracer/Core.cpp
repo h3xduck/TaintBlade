@@ -666,8 +666,9 @@ int main(int argc, char* argv[])
 		{
 			//Instrumenting from target of branch to unconditional branch (includes calls)
 			//TRACE_AddInstrumentFunction(TraceTrace, 0);
-			RTN_AddInstrumentFunction(RoutineTrace, 0);
 			TRACE_AddInstrumentFunction(TraceBase, 0);
+			RTN_AddInstrumentFunction(RoutineTrace, 0);
+			
 		}
 		else if (instructionLevelTracing == 1)
 		{

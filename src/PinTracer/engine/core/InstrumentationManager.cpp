@@ -52,6 +52,16 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_MOVZX:
 		OPC_INST::instrumentOverwriteOpc(ins);
 		break;
+	case XED_ICLASS_CALL_FAR:
+	case XED_ICLASS_CALL_NEAR:
+	case XED_ICLASS_JMP:
+	case XED_ICLASS_JMP_FAR:
+	case XED_ICLASS_RET_FAR:
+	case XED_ICLASS_RET_NEAR:
+	case XED_ICLASS_JB:
+	case XED_ICLASS_JBE:
+		OPC_INST::instrumentControlFlowOpc(ins);
+		break;
 	default:
 		//Unsupported or ignored, no tainting for those
 	#if(REPORT_UNSUPPORTED_INS==1)
