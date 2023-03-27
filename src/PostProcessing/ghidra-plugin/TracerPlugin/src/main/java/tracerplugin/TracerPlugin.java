@@ -28,6 +28,7 @@ import com.google.common.util.concurrent.Monitor;
 import aQute.bnd.osgi.Instruction;
 import docking.ActionContext;
 import docking.ComponentProvider;
+import docking.DockingWindowManager;
 import docking.action.DockingAction;
 import docking.action.ToolBarData;
 import ghidra.app.ExamplesPluginPackage;
@@ -40,6 +41,8 @@ import ghidra.program.model.listing.CodeUnit;
 import ghidra.program.model.listing.Program;
 import ghidra.util.HelpLocation;
 import ghidra.util.Msg;
+import graph.TaintGraphProvider;
+import graph.TaintPlugin;
 import resources.Icons;
 import ui.UIProvider;
 
@@ -59,6 +62,7 @@ public class TracerPlugin extends ProgramPlugin {
 
 	UIProvider provider;
 	private ProgramManager programManager;
+	static final String SHOW_PROVIDER_ACTION_NAME = "Display Taint Graph";
 
 	/**
 	 * Plugin constructor.
@@ -68,20 +72,26 @@ public class TracerPlugin extends ProgramPlugin {
 	public TracerPlugin(PluginTool tool) {
 		super(tool);
 
-		// TODO: Customize provider (or remove if a provider is not desired)
 		String pluginName = getName();
 		provider = new UIProvider(this, pluginName);
-
-		// TODO: Customize help (or remove if help is not desired)
-		String topicName = this.getClass().getPackage().getName();
-		String anchorName = "HelpAnchor";
-		provider.setHelpLocation(new HelpLocation(topicName, anchorName));
+		DockingAction showProviderAction = new DockingAction(SHOW_PROVIDER_ACTION_NAME, getName()) {
+			@Override
+			public void actionPerformed(ActionContext context) {
+				showProvider();
+			}
+		};
+		tool.addAction(showProviderAction);
+		
 	}
 
 	@Override
 	public void init() {
 		super.init();
-		System.out.println("Test");
+		System.out.println("TracerPlugin initialized");
+	}
+	
+	private void showProvider() {
+		provider.setVisible(true);
 	}
 
 }

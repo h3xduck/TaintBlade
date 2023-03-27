@@ -1,3 +1,3 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\vm\iarglist.cpp: LEVEL_VM::IARGLIST_CLASS::AddArgumentsAndParams: 240: IARG_INVALID seen
+E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 21884. Interruption context: IP: 0x7ffd9f5ad0a3 SP: 0x21fe759eee0. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x7ffd9f5ad0a3. Access Type: READ. Access Address = 0x000000000. ExceptionFlags: 0x000000000

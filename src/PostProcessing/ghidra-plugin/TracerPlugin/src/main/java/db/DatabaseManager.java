@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import docking.Tool;
 import docking.action.DockingAction;
 import docking.actions.DockingToolActions;
+import taint.TaintEvent;
 
 public class DatabaseManager {
 	private Connection connection = null;

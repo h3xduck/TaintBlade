@@ -24,8 +24,8 @@ def insert_function_call(conn, function_call):
     return cur.lastrowid
 
 def insert_taint_event(conn, taint_event):
-    sql = ''' INSERT INTO taint_events(type, func_index, inst_address, mem_address, color)
-              VALUES(?,?,?,?,?) '''
+    sql = ''' INSERT INTO taint_events(type, func_index, inst_address, mem_address, color, mem_value, mem_len)
+              VALUES(?,?,?,?,?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, taint_event)
     conn.commit()

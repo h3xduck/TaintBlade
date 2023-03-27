@@ -29,7 +29,9 @@ void DataDumper::writeMemoryColorEventDump(memory_color_event_line_t event)
 		this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR <<
 		ctx.getCurrentInstruction() << DUMP_INTER_SEPARATOR <<
 		event.memAddr << DUMP_INTER_SEPARATOR <<
-		event.color << DUMP_OUTER_SEPARATOR;
+		event.color << DUMP_INTER_SEPARATOR <<
+		ctx.getLastMemoryValue() << DUMP_INTER_SEPARATOR <<
+		ctx.getLastMemoryLength() << DUMP_OUTER_SEPARATOR;
 }
 
 void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
@@ -116,5 +118,23 @@ void DataDumper::resetDumpFiles()
 	else
 	{
 		LOG_DEBUG("Colors transformation dump file successfully deleted");
+	}
+
+	if (remove(TAINT_EVENT_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting taint events dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Taint events dump file successfully deleted");
+	}
+
+	if (remove(FUNC_DLL_NAMES_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting function calls dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Function calls dump file successfully deleted");
 	}
 }

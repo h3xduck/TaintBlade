@@ -8,6 +8,7 @@
 #include "../../utils/io/DataDumper.h"
 #include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
 #include "../../utils/inst/ScopeFilterer.h"
+#include "../../common/Context.h"
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
@@ -22,6 +23,7 @@ namespace WINDOWS
 extern TaintController taintController;
 extern DataDumper dataDumper;
 extern ScopeFilterer scopeFilterer;
+extern Context ctx;
 
 //Function arguments
 struct wsock_recv_t
@@ -69,6 +71,9 @@ public:
 		}
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
 		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
+
+		std::string val = InstructionWorker::getMemoryValue((ADDRINT)wsockRecv.buf, retVal);
+		ctx.updateLastMemoryValue(val, retVal);
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);

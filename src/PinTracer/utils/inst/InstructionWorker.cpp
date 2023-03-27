@@ -54,6 +54,7 @@ std::string InstructionWorker::getFunctionNameFromAddress(ADDRINT addr)
 	return routineName;
 }
 
+
 std::wstring InstructionWorker::printFunctionArgument(void* arg)
 {
 	std::wstringstream result;
@@ -178,4 +179,19 @@ UINT64 getBufferStringLengthUTF16(void* buf)
 	}
 
 	return ii;
+}
+
+
+std::string InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
+{
+	char data[8] = {0};
+	PIN_SafeCopy(data, (VOID*)(memAddr), len);
+	std::stringstream ss;
+	ss << std::hex << std::setfill('0');
+	for (int ii = 0; ii < len; ii++) 
+	{
+		ss << std::setw(2) << static_cast<unsigned>((UINT8)(data[ii]));
+	}
+
+	return ss.str();
 }

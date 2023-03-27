@@ -21,6 +21,8 @@ void OPC_INST::binary_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memD
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
+	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
 }

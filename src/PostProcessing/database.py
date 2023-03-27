@@ -40,12 +40,14 @@ def reset_database(conn):
                 func_index   INTEGER,
                 inst_address INTEGER,
                 mem_address  INTEGER,
-                color        INTEGER NOT NULL
+                color        INTEGER NOT NULL,
+                mem_value    TEXT(16),
+                mem_len      INTEGER
             ); """
 
         sql_create_color_transformation_table = """
             CREATE TABLE color_transformation (
-                derivate_color  PRIMARY KEY,
+                derivate_color  INTEGER PRIMARY KEY,
                 color_mix_1     INTEGER,
                 color_mix_2     INTEGER
             ); """
