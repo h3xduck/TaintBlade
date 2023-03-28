@@ -4,6 +4,10 @@
 #include "pin.H"
 #include <xed-category-enum.h>
 
+/**
+A RevAtom is a single instruction that may be part of a comparison high-level instruction
+
+*/
 class RevAtom
 {
 private:

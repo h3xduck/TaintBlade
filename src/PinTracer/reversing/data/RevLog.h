@@ -5,17 +5,17 @@
 #include <vector>
 #include "RevAtom.h"
 
+template <typename T> 
 class RevLog
 {
 private:
-	std::vector<RevAtom> revLogVector;
+	std::vector<T> revLogVector;
 public:
-
 	RevLog();
 
 	void cleanLog();
-	void insertAtomInLog(RevAtom value);
-	std::vector<RevAtom> getLogVector();
+	void logInsert(T value);
+	std::vector<T> getLogVector();
 };
 
 #endif
