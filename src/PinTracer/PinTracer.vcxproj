@@ -261,6 +261,9 @@
     <ClCompile Include="engine\xed_iclass_instrumentation\ControlFlowOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\OverwriteOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\SpecialOpc.cpp" />
+    <ClCompile Include="reversing\core\ReversingManager.cpp" />
+    <ClCompile Include="reversing\data\RevAtom.cpp" />
+    <ClCompile Include="reversing\data\RevLog.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
@@ -284,6 +287,12 @@
     <ClInclude Include="engine\xed_iclass_instrumentation\ControlFlowOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\OverwriteOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\SpecialOpc.h" />
+    <ClInclude Include="reversing\core\ReversingManager.h" />
+    <ClInclude Include="reversing\data\RevAtom.h" />
+    <ClInclude Include="reversing\data\RevContext.h" />
+    <ClInclude Include="reversing\data\RevEvent.h" />
+    <ClInclude Include="reversing\data\RevLog.h" />
+    <ClInclude Include="reversing\heuristics\HComparison.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
     <ClInclude Include="taint\data\Tag.h" />
