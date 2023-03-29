@@ -26,6 +26,9 @@ private:
 	UINT32 leaScale;
 	UINT32 leaDis;
 
+	//For instructions with immediate as operand
+	UINT64 immSrc;
+
 public:
 	RevAtom(
 		int instType = XED_ICLASS_INVALID_DEFINED, ADDRINT memSrc = 0,
@@ -33,7 +36,7 @@ public:
 		INT32 memDestLen = 0, REG regSrc = REG_INVALID_, 
 		REG regDest = REG_INVALID_, REG leaBase = REG_INVALID_,	
 		REG leaIndex = REG_INVALID_, UINT32 leaScale = 0, 
-		UINT32 leaDis = 0
+		UINT32 leaDis = 0, UINT64 immSrc = 0
 	);
 
 	int getInstType();
@@ -50,6 +53,8 @@ public:
 	void setMemSrcLen(INT32 memSrcLen);
 	INT32 getMemDestLen();
 	void setMemDestLen(INT32 memDestLen);
+	UINT64 getImmSrc();
+	void setImmSrc(UINT64 immSrc);
 };
 
 #endif

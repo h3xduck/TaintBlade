@@ -3,7 +3,7 @@
 static const RevHeuristic heuristic[] = {
 	RevHeuristic(
 		XED_ICLASS_CMP, 0, 0, 0, 0, 0, 0
-	)
+	)	
 };
 
 

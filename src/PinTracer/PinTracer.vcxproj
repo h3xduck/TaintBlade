@@ -258,6 +258,7 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="engine\core\InstrumentationManager.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\BinaryOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\CompareOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\ControlFlowOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\OverwriteOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\SpecialOpc.cpp" />
@@ -285,6 +286,7 @@
     <ClInclude Include="engine\core\InstrumentationManager.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\Common.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\BinaryOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\CompareOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\ControlFlowOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\OverwriteOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\SpecialOpc.h" />

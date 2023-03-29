@@ -8,6 +8,8 @@
 
 static std::tr1::unordered_map<ADDRINT, std::string> instMap;
 
+//With disassembling
+//Does not work for AMD processors
 #define INS_CALL_R2R(proc_func, ins) \
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID, IARG_PTR, new std::string(INS_Disassemble(ins)), \
@@ -69,6 +71,22 @@ static std::tr1::unordered_map<ADDRINT, std::string> instMap;
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
 	IARG_INST_PTR, IARG_MEMORYWRITE_EA, IARG_MEMORYWRITE_SIZE, IARG_END);	\
 }
+
+#define INS_CALL_I2R_N(proc_func, ins)	\
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 0), \
+	IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_END);	\
+}
+
+#define INS_CALL_I2M_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_MEMORYWRITE_EA, IARG_MEMORYWRITE_SIZE, \
+	IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_END);	\
+}
+
+
 
 
 

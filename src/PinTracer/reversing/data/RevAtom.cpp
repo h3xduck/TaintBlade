@@ -6,7 +6,7 @@ RevAtom::RevAtom(
 	INT32 memDestLen, REG regSrc,
 	REG regDest, REG leaBase,
 	REG leaIndex, UINT32 leaScale,
-	UINT32 leaDis
+	UINT32 leaDis, UINT64 immSrc
 )
 {
 	this->instType = instType;
@@ -20,6 +20,7 @@ RevAtom::RevAtom(
 	this->leaIndex = leaIndex;
 	this->leaScale = leaScale;
 	this->leaDis = leaDis;
+	this->immSrc = immSrc;
 }
 
 int RevAtom::getInstType()
@@ -90,4 +91,14 @@ INT32 RevAtom::getMemDestLen()
 void RevAtom::setMemDestLen(INT32 memDestLen)
 {
 	this->memDestLen = memDestLen;
+}
+
+UINT64 RevAtom::getImmSrc()
+{
+	return this->immSrc;
+}
+
+void RevAtom::setImmSrc(UINT64 immSrc)
+{
+	this->immSrc = immSrc;
 }

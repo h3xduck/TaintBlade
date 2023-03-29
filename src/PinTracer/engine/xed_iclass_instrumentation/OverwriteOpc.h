@@ -25,7 +25,7 @@ namespace OPC_INST {
 	//Instrumentation functions, called from InstrumentationManager
 
 	/*
-	* MOV - https://www.felixcloutier.com/x86/and
+	* MOV - https://www.felixcloutier.com/x86/mov
 	*	mov reg, imm
 	*	mov mem, imm
 	*	mov mem, reg
