@@ -4,6 +4,7 @@ RevContext::RevContext()
 {
 	this->revLogCurrent.cleanLog();
 	this->revLogParsed.cleanLog();
+	this->currentRevAtom = RevAtom();
 }
 
 void RevContext::insertRevLog(RevAtom atom)
@@ -33,4 +34,14 @@ void RevContext::printRevLogCurrent()
 void RevContext::printRevLogParsed()
 {
 	//TODO
+}
+
+RevAtom* RevContext::getCurrentRevAtom()
+{
+	return &(this->currentRevAtom);
+}
+
+void RevContext::cleanCurrentRevAtom()
+{
+	this->currentRevAtom = RevAtom();
 }

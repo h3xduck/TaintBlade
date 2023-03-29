@@ -36,6 +36,10 @@ public:
 	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();
 	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> getOriginalColorsVector();
 	std::vector<Tag> getColorTransVector();
+
+	bool regIsTainted(REG reg);
+	bool memIsTainted(ADDRINT mem);
+	bool memRangeIsTainted(ADDRINT mem, int bytes);
 };
 
 

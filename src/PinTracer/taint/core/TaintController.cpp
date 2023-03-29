@@ -180,3 +180,18 @@ std::vector<Tag> TaintController::getColorTransVector()
 {
 	return this->tagMap.getColorTransVector();
 }
+
+bool TaintController::regIsTainted(REG reg)
+{
+	return this->tagMap.regIsTainted(reg);
+}
+
+bool TaintController::memIsTainted(ADDRINT mem)
+{
+	return this->tagMap.memIsTainted(mem);
+}
+
+bool TaintController::memRangeIsTainted(ADDRINT mem, int bytes)
+{
+	return this->tagMap.memRangeIsTainted(mem, bytes);
+}

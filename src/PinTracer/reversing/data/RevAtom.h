@@ -3,6 +3,7 @@
 
 #include "pin.H"
 #include <xed-category-enum.h>
+#include "RevHeuristic.h"
 
 /**
 A RevAtom is a single instruction that may be part of a sequence representing a
@@ -11,6 +12,9 @@ high-level operation (such as a comparison).
 class RevAtom
 {
 private:
+	//Stores info about which elements are tainted or not
+	RevHeuristic revHeuristic;
+
 	//Basic information found in most binary operations
 	int instType;
 	ADDRINT memSrc;
@@ -53,8 +57,14 @@ public:
 	void setMemSrcLen(INT32 memSrcLen);
 	INT32 getMemDestLen();
 	void setMemDestLen(INT32 memDestLen);
+	void setLeaBase(REG leaBase);
+	REG getLeaBase();
+	void setLeaIndex(REG leaIndex);
+	REG getLeaIndex();
 	UINT64 getImmSrc();
 	void setImmSrc(UINT64 immSrc);
+
+	RevHeuristic* getRevHeuristic();
 };
 
 #endif

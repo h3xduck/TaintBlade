@@ -1,29 +1,23 @@
 #include "CompareOpc.h"
 
+extern Context ctx;
+
 void OPC_INST::cmp_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	RevAtom atom(
-		ctx.getCurrentInstructionClass(),
-		memSrc, memSrcLen, 0, 0, REG_INVALID_, regDest
-	);
-	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	//No taint
+	INST_COMMON::revLogInst_mem2reg(memSrc, memSrcLen, regDest);
 }
 
 void OPC_INST::cmp_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	RevAtom atom(
-		ctx.getCurrentInstructionClass(),
-		0, 0, 0, 0, regSrc, regDest
-	);
-	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	//No taint
+	INST_COMMON::revLogInst_reg2reg(regSrc, regDest);
 }
 
 void OPC_INST::cmp_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
@@ -32,25 +26,15 @@ void OPC_INST::cmp_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
-	RevAtom atom(
-		ctx.getCurrentInstructionClass(),
-		0, 0, memDest, memDestLen, regSrc
-	);
-	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	//No taint
+	INST_COMMON::revLogInst_reg2mem(regSrc, memDest, memDestLen);
 }
 
 void OPC_INST::cmp_imm2reg(THREADID tid, ADDRINT ip, REG regDest, UINT64 immSrc)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	RevAtom atom(
-		ctx.getCurrentInstructionClass(),
-		0, 0, 0, 0, REG_INVALID_, regDest,
-		REG_INVALID_, REG_INVALID_, 0, 0, immSrc
-	);
-	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	//No taint
 }
@@ -61,12 +45,6 @@ void OPC_INST::cmp_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memD
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
-	RevAtom atom(
-		ctx.getCurrentInstructionClass(),
-		0, 0, memDest, memDestLen, REG_INVALID_, REG_INVALID_,
-		REG_INVALID_, REG_INVALID_, 0, 0, immSrc
-	);
-	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	//No taint
 }
@@ -87,7 +65,7 @@ void OPC_INST::instrumentCompareOpc(INS ins)
 			if (isMemSrc)
 			{
 				//mem, mem
-				LOG_ALERT("Unsupported case of MOV instruction: mem2mem");
+				//LOG_ALERT("Unsupported case of CMP instruction: mem2mem");
 			}
 			else
 			{
@@ -129,6 +107,7 @@ void OPC_INST::instrumentCompareOpc(INS ins)
 		}
 		else
 		{
+			//imm, imm
 			//LOG_ALERT("Unsupported case of CMP instruction");
 		}
 	}

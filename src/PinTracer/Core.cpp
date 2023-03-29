@@ -600,7 +600,7 @@ VOID Fini(INT32 code, VOID* v)
 	dataDumper.writeColorTransformationDump(colorTrans);
 
 	//Dump RevAtoms
-	//ctx.getRevContext()->printRevLogCurrent();
+	ctx.getRevContext()->printRevLogCurrent();
 	ctx.getRevContext()->operateRevLog();
 }
 

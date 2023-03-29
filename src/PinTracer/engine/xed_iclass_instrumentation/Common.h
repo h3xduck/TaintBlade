@@ -5,8 +5,11 @@
 #include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
 #include "../../common/Context.h"
 #include "../../utils/inst/InstructionWorker.h"
+#include "../../taint/core/TaintController.h"
+#include "../../taint/core/TaintManager.h"
 
-static std::tr1::unordered_map<ADDRINT, std::string> instMap;
+extern Context ctx;
+extern TaintManager taintManager;
 
 //With disassembling
 //Does not work for AMD processors
@@ -86,7 +89,13 @@ static std::tr1::unordered_map<ADDRINT, std::string> instMap;
 	IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_END);	\
 }
 
-
+namespace INST_COMMON
+{
+	void revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDest);
+	void revLogInst_reg2reg(REG regSrc, REG regDest);
+	void revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestLen);
+	void revLogInst_lea_mem2reg(REG destReg, REG leaBase, REG leaIndex);
+}
 
 
 

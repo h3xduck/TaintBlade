@@ -65,4 +65,6 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	#endif
 		break;
 	}
+
+	//Once instrumented and tainted, we try to see if the 
 }

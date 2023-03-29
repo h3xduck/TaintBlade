@@ -1,5 +1,7 @@
 #include "TagMap.h"
 
+extern Context ctx;
+
 void reportUnsupportedRegister(REG reg)
 {
 #if(REPORT_UNSUPPORTED_REG==1)
@@ -745,4 +747,45 @@ void TagMap::dumpTaintLogPrettified(UINT16 startColor)
 void TagMap::dumpTagLogOriginalColors()
 {
 	this->tagLog.dumpTagLogOriginalColors();
+}
+
+bool TagMap::regIsTainted(REG reg)
+{
+	const UINT32 posStart = this->tReg.getPos(reg);
+	const UINT32 taintLength = this->tReg.getTaintLength(reg);
+
+	for (UINT32 ii = posStart; ii < posStart + taintLength; ii++)
+	{
+		if (this->regTaintField[ii].color != EMPTY_COLOR)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool TagMap::memIsTainted(ADDRINT mem)
+{
+	auto it = this->memTaintField.find(mem);
+	if (it == this->memTaintField.end())
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool TagMap::memRangeIsTainted(ADDRINT mem, int bytes)
+{
+	for (int ii = 0; ii < bytes; ii++)
+	{
+		auto it = this->memTaintField.find(mem);
+		if (it != this->memTaintField.end())
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

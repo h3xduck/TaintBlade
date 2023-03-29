@@ -21,6 +21,7 @@
 #include "TRegister.h"
 #include "TagLog.h"
 #include "../../utils/io/DataDumper.h"
+#include "../../common/Context.h"
 
 #define PAGE_SIZE 4096
 #define COLOR_BYTES 2
@@ -176,6 +177,24 @@ public:
 	Returns vector with color transformations
 	*/
 	std::vector<Tag> getColorTransVector();
+
+	/**
+	Returns whether a register is tainted
+	*/
+	bool regIsTainted(REG reg);
+
+	/**
+	Returns whether a memory address is tainted
+	*/
+	bool memIsTainted(ADDRINT mem);
+
+	/**
+	Returns whether any of the bytes following a memory address are tainted
+	*/
+	bool memRangeIsTainted(ADDRINT mem, int bytes);
+
+
+
 
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();

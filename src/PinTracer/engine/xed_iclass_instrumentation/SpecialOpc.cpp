@@ -14,17 +14,12 @@ void OPC_INST::lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, R
 	//Taint value is always overwritten
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	RevAtom atom(
-		ctx.getCurrentInstructionClass(),
-		0, 0, 0, 0, REG_INVALID_, destReg, leaBase, leaIndex, leaScale, leaDis
-	);
-	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(destReg);
 
 	if (leaBase != REG_INVALID() && leaIndex != REG_INVALID())
 	{
-		//Might not be the best to manage ternary operation, but works for now
+		//Might not be the best to manage ternary operation, but works for now (it's mixing colors)
 		taintManager.getController().taintRegWithReg(destReg, leaIndex, true);
 		taintManager.getController().taintRegWithReg(destReg, leaBase, true);
 	}
@@ -39,6 +34,8 @@ void OPC_INST::lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, R
 	//If both invalid, memory was just untainted
 	
 	//The memory address itself will be tainted when it is used
+
+	INST_COMMON::revLogInst_lea_mem2reg(destReg, leaBase, leaIndex);
 }
 
 

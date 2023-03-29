@@ -41,6 +41,7 @@ ADDRINT RevAtom::getMemSrc()
 void RevAtom::setMemSrc(ADDRINT memSrc)
 {
 	this->memSrc = memSrc;
+	this->getRevHeuristic()->immSrcTainted = true;
 }
 
 ADDRINT RevAtom::getMemDest()
@@ -51,6 +52,7 @@ ADDRINT RevAtom::getMemDest()
 void RevAtom::setMemDest(ADDRINT memDest)
 {
 	this->memDest = memDest;
+	this->getRevHeuristic()->memDestTainted = true;
 }
 
 REG RevAtom::getRegSrc()
@@ -61,6 +63,7 @@ REG RevAtom::getRegSrc()
 void RevAtom::setRegSrc(REG regSrc)
 {
 	this->regSrc = regSrc;
+	this->getRevHeuristic()->regSrcTainted = true;
 }
 
 REG RevAtom::getRegDest()
@@ -71,6 +74,7 @@ REG RevAtom::getRegDest()
 void RevAtom::setRegDest(REG regDest)
 {
 	this->regDest = regDest;
+	this->getRevHeuristic()->regDestTainted = true;
 }
 
 INT32 RevAtom::getMemSrcLen()
@@ -93,6 +97,28 @@ void RevAtom::setMemDestLen(INT32 memDestLen)
 	this->memDestLen = memDestLen;
 }
 
+REG RevAtom::getLeaBase()
+{
+	return this->leaBase;
+}
+
+void RevAtom::setLeaBase(REG leaBase)
+{
+	this->leaBase = leaBase;
+	this->getRevHeuristic()->leaBaseTainted = true;
+}
+
+REG RevAtom::getLeaIndex()
+{
+	return this->leaIndex;
+}
+
+void RevAtom::setLeaIndex(REG leaIndex)
+{
+	this->leaIndex = leaIndex;
+	this->getRevHeuristic()->leaIndexTainted = true;
+}
+
 UINT64 RevAtom::getImmSrc()
 {
 	return this->immSrc;
@@ -101,4 +127,10 @@ UINT64 RevAtom::getImmSrc()
 void RevAtom::setImmSrc(UINT64 immSrc)
 {
 	this->immSrc = immSrc;
+	this->getRevHeuristic()->immSrcTainted = true;
+}
+
+RevHeuristic* RevAtom::getRevHeuristic()
+{
+	return &(this->revHeuristic);
 }

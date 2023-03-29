@@ -19,6 +19,13 @@ private:
 	*/
 	RevLog<HLComparison> revLogParsed;
 
+	/**
+	An auxiliary RevAtom that is used during instrumentation, used to store
+	information available at different steps of the program.
+	It may be deleted if no element is tainted or inserted if there are any.
+	*/
+	RevAtom currentRevAtom;
+
 public:
 	RevContext();
 
@@ -46,6 +53,16 @@ public:
 	Prints all entries in the revLogParsed
 	*/
 	void printRevLogParsed();
+
+	/**
+	Returns auxiliary RevAtom used during instrumentation
+	*/
+	RevAtom* getCurrentRevAtom();
+
+	/**
+	Cleans all values from the auxiliary RevAtom
+	*/
+	void cleanCurrentRevAtom();
 
 };
 
