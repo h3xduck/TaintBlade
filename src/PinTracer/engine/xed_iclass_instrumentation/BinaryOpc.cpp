@@ -7,6 +7,11 @@ void OPC_INST::binary_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 me
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		memSrc, memSrcLen, 0, 0, REG_INVALID_, regDest
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
 }
@@ -14,6 +19,11 @@ void OPC_INST::binary_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, 0, 0, regSrc, regDest
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().taintRegWithReg(regDest, regSrc, false);
 }
@@ -23,6 +33,11 @@ void OPC_INST::binary_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memD
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, memDest, memDestLen, regSrc
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
 }
@@ -32,6 +47,11 @@ void OPC_INST::binary_clr_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regD
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, 0, 0, regSrc, regDest
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 }

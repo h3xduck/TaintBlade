@@ -14,6 +14,11 @@ void OPC_INST::lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, R
 	//Taint value is always overwritten
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, 0, 0, REG_INVALID_, destReg, leaBase, leaIndex, leaScale, leaDis
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(destReg);
 

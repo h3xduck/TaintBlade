@@ -4,12 +4,14 @@
 #include <iostream>
 #include <vector>
 #include "RevAtom.h"
+#include "../heuristics/HLComparison.h"
 
 template <typename T> 
 class RevLog
 {
 private:
 	std::vector<T> revLogVector;
+
 public:
 	RevLog();
 

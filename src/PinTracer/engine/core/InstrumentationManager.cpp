@@ -25,11 +25,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		LOG_ERR(logLine);
 		return;
 	}
-
-	//Log instruction
-	//instMap.insert(std::make_pair<ADDRINT, std::string>(INS_Address(ins), INS_Disassemble(ins)));
-	//instMap[INS_Address(ins)] = INS_Disassemble(ins);
-	//LOG_DEBUG("Logged ip:" << INS_Address(ins));
+	ctx.updateCurrentInstructionClass(opc);
 
 	switch (opc)
 	{

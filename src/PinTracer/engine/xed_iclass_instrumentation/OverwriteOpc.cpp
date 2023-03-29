@@ -6,6 +6,11 @@ void OPC_INST::ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSr
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		memSrc, memSrcLen, 0, 0, REG_INVALID_, regDest
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
@@ -15,6 +20,11 @@ void OPC_INST::ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, 0, 0, regSrc, regDest
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithReg(regDest, regSrc, true);
@@ -26,7 +36,11 @@ void OPC_INST::ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
-	//LOG_DEBUG("Moved mem of len " << memDestLen << " : " << val);
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, memDest, memDestLen, regSrc
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc, true);
 }
@@ -35,6 +49,11 @@ void OPC_INST::ovw_imm2reg(THREADID tid, ADDRINT ip, REG regDest)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, 0, 0, REG_INVALID_, regDest
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 }
@@ -45,6 +64,11 @@ void OPC_INST::ovw_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memD
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
+	RevAtom atom(
+		ctx.getCurrentInstructionClass(),
+		0, 0, memDest, memDestLen
+	);
+	ctx.getRevContext()->insertRevLog(atom);
 	PIN_UnlockClient();
 	taintManager.getController().untaintMem(memDest, memDestLen);
 }

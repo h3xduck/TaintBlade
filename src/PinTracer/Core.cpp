@@ -598,6 +598,10 @@ VOID Fini(INT32 code, VOID* v)
 	//Dump color transformations
 	std::vector<Tag> colorTrans  = taintController.getColorTransVector();
 	dataDumper.writeColorTransformationDump(colorTrans);
+
+	//Dump RevAtoms
+	//ctx.getRevContext()->printRevLogCurrent();
+	ctx.getRevContext()->operateRevLog();
 }
 
 /*!
