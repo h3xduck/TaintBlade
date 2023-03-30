@@ -267,6 +267,7 @@
     <ClCompile Include="reversing\core\RevContext.cpp" />
     <ClCompile Include="reversing\data\RevLog.cpp" />
     <ClCompile Include="reversing\heuristics\HLComparison.cpp" />
+    <ClCompile Include="reversing\heuristics\RevHeuristic.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
@@ -293,9 +294,10 @@
     <ClInclude Include="engine\xed_iclass_instrumentation\SpecialOpc.h" />
     <ClInclude Include="reversing\data\RevAtom.h" />
     <ClInclude Include="reversing\core\RevContext.h" />
-    <ClInclude Include="reversing\data\RevHeuristic.h" />
+    <ClInclude Include="reversing\data\RevHeuristicAtom.h" />
     <ClInclude Include="reversing\data\RevLog.h" />
     <ClInclude Include="reversing\heuristics\HLComparison.h" />
+    <ClInclude Include="reversing\heuristics\RevHeuristic.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
     <ClInclude Include="taint\data\Tag.h" />

@@ -98,7 +98,7 @@ UINT32 TReg::getTaintLength(LEVEL_BASE::REG reg)
 {
 	if (!REG_valid(reg))
 	{
-		LOG_DEBUG("Invalid register found");
+		//LOG_DEBUG("Invalid register found");
 		return 0;
 	}
 	if (REG_is_gr64(reg))

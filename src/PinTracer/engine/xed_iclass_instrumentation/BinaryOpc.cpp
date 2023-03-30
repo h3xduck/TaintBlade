@@ -3,23 +3,23 @@
 extern Context ctx;
 
 //and, or
-void OPC_INST::binary_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest)
+void OPC_INST::binary_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
-	INST_COMMON::revLogInst_mem2reg(memSrc, memSrcLen, regDest);
+	INST_COMMON::revLogInst_mem2reg(memSrc, memSrcLen, regDest, opc);
 }
-void OPC_INST::binary_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
+void OPC_INST::binary_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().taintRegWithReg(regDest, regSrc, false);
-	INST_COMMON::revLogInst_reg2reg(regSrc, regDest);
+	INST_COMMON::revLogInst_reg2reg(regSrc, regDest, opc);
 }
-void OPC_INST::binary_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen)
+void OPC_INST::binary_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
@@ -27,11 +27,11 @@ void OPC_INST::binary_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memD
 	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc);
-	INST_COMMON::revLogInst_reg2mem(regSrc, memDest, memDestLen);
+	INST_COMMON::revLogInst_reg2mem(regSrc, memDest, memDestLen, opc);
 }
 
 //xor
-void OPC_INST::binary_clr_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest)
+void OPC_INST::binary_clr_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();

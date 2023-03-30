@@ -558,6 +558,12 @@ void TraceBase(TRACE trace, VOID* v)
 					}
 			}
 		}
+
+		//At this point, the reverse engineering module should have found a HL instruction
+		//using the encoded heuristics. Otherwise, the end of the BBL signals the flush of the 
+		ctx.getRevContext()->cleanCurrentRevAtom();
+		ctx.getRevContext()->cleanRevLogCurrent();
+
 	}
 }
 
@@ -601,7 +607,6 @@ VOID Fini(INT32 code, VOID* v)
 
 	//Dump RevAtoms
 	ctx.getRevContext()->printRevLogCurrent();
-	ctx.getRevContext()->operateRevLog();
 }
 
 /*!

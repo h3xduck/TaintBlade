@@ -25,7 +25,6 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		LOG_ERR(logLine);
 		return;
 	}
-	ctx.updateCurrentInstructionClass(opc);
 
 	switch (opc)
 	{
@@ -58,6 +57,9 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_JBE:
 		OPC_INST::instrumentControlFlowOpc(ins);
 		break;
+	case XED_ICLASS_CMP:
+		OPC_INST::instrumentCompareOpc(ins);
+		break;
 	default:
 		//Unsupported or ignored, no tainting for those
 	#if(REPORT_UNSUPPORTED_INS==1)
@@ -66,5 +68,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		break;
 	}
 
-	//Once instrumented and tainted, we try to see if the 
+	//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+	//HL operation using the heuristics.
+	ctx.getRevContext()->operateRevLog();
 }

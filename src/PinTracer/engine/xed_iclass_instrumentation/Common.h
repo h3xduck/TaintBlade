@@ -48,19 +48,22 @@ extern TaintManager taintManager;
 #define INS_CALL_R2R_N(proc_func, ins) \
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID, \
-	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_UINT32, INS_OperandReg(ins, 0), IARG_END);	\
+	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_UINT32, INS_OperandReg(ins, 0), \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
 #define INS_CALL_R2M_N(proc_func, ins) \
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
-	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_MEMORYWRITE_EA, IARG_MEMORYWRITE_SIZE, IARG_END);	\
+	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_MEMORYWRITE_EA, IARG_MEMORYWRITE_SIZE, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
 #define INS_CALL_M2R_N(proc_func, ins) \
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
-	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE, IARG_UINT32, INS_OperandReg(ins, 0), IARG_END);	\
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE, IARG_UINT32, INS_OperandReg(ins, 0), \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
 #define INS_CALL_ZERO2R_N(proc_func, ins)	\
@@ -91,9 +94,9 @@ extern TaintManager taintManager;
 
 namespace INST_COMMON
 {
-	void revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDest);
-	void revLogInst_reg2reg(REG regSrc, REG regDest);
-	void revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestLen);
+	void revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc);
+	void revLogInst_reg2reg(REG regSrc, REG regDest, UINT32 opc);
+	void revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
 	void revLogInst_lea_mem2reg(REG destReg, REG leaBase, REG leaIndex);
 }
 

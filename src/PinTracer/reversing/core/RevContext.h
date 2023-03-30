@@ -50,6 +50,11 @@ public:
 	void printRevLogCurrent();
 
 	/**
+	Deletes all entries in the revLogCurrent
+	*/
+	void cleanRevLogCurrent();
+
+	/**
 	Prints all entries in the revLogParsed
 	*/
 	void printRevLogParsed();

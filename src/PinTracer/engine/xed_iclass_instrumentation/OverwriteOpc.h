@@ -13,9 +13,9 @@ namespace OPC_INST {
 	////////////////////////////////////////////////////////
 	//Taint functions, called from instrumentation functions
 
-	void ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest);
-	void ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest);
-	void ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen);
+	void ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc);
+	void ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc);
+	void ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
 
 	void ovw_imm2reg(THREADID tid, ADDRINT ip, REG regDest);
 	void ovw_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memDestLen);
