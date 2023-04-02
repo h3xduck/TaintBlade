@@ -30,19 +30,24 @@ int HLComparison::checkValidity(std::vector<RevAtom> revLog)
 		LOG_DEBUG("Heuristics for HLComparison initialized");
 	}
 
+	return checkHeuristicAlgNRS(revLog);
+}
+
+int HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> revLog)
+{
 	//We must check whether the revLog corresponds to any of the hardcoded heuristics
 	size_t size = revLog.size();
-	
+
 	for (int ii = HLComparison::revHeuristicNumber; ii > 0; ii--)
 	{
-		for (int jj = size-1; jj >=0; jj--)
+		for (int jj = size - 1; jj >= 0; jj--)
 		{
 			RevAtom atom = revLog.at(jj);
-			RevHeuristic heuristic = HLComparison::revHeuristic[ii-1];
+			RevHeuristic heuristic = HLComparison::revHeuristic[ii - 1];
 			std::vector<RevHeuristicAtom> atomHeuristicVector = heuristic.getAtomVector();
 
 			//LOG_DEBUG("V: " << atom.getInstType() << " H: "<< atomHeuristicVector.back().instType);
-			
+
 			if (atom.getInstType() == atomHeuristicVector.back().instType)
 			{
 				//Found possible start of heuristic in building block

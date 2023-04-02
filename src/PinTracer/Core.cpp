@@ -561,6 +561,7 @@ void TraceBase(TRACE trace, VOID* v)
 
 		//At this point, the reverse engineering module should have found a HL instruction
 		//using the encoded heuristics. Otherwise, the end of the BBL signals the flush of the 
+		//TODO Maybe change this so that the revLog gets cleared on image change, not bbl
 		ctx.getRevContext()->cleanCurrentRevAtom();
 		ctx.getRevContext()->cleanRevLogCurrent();
 

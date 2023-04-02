@@ -20,9 +20,17 @@ private:
 	static RevHeuristic revHeuristic[];
 
 	/**
-	Numeber of posibilities inside the heuristic
+	Number of posibilities inside the heuristic
 	*/
 	static const int revHeuristicNumber;
+
+	/**
+	Algorithm for checking an heuristic
+	- For all instructions in the RevLog (N)
+	- - For all heuristics in the list of heuristics (R)
+	- - - Check if RevAtom of instruction = RevHeuristicAtom of instruction in heuristic (S)
+	*/
+	static int checkHeuristicAlgNRS(std::vector<RevAtom> revLog);
 
 public:
 
