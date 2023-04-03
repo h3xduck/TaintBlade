@@ -3,6 +3,12 @@
 const int HLComparison::revHeuristicNumber = 1;
 RevHeuristic HLComparison::revHeuristic[revHeuristicNumber] = {};
 
+HLComparison::HLComparison(std::vector<RevAtom> &atomVec)
+{
+	this->revAtomVector = atomVec;
+}
+
+
 void HLComparison::initializeRevHeuristic()
 {
 	if (!HLComparison::revHeuristic->getAtomVector().empty())
@@ -22,7 +28,7 @@ void HLComparison::initializeRevHeuristic()
 	atoms.clear();
 }
 
-int HLComparison::checkValidity(std::vector<RevAtom> revLog)
+HLComparison HLComparison::checkValidity(std::vector<RevAtom> revLog)
 {
 	if (HLComparison::revHeuristic->getAtomVector().empty())
 	{
@@ -30,11 +36,22 @@ int HLComparison::checkValidity(std::vector<RevAtom> revLog)
 		LOG_DEBUG("Heuristics for HLComparison initialized");
 	}
 
-	return checkHeuristicAlgNRS(revLog);
+	std::vector<RevAtom> atomVec = HLComparison::checkHeuristicAlgNRS(revLog);
+	if (atomVec.empty())
+	{
+		return HLComparison();
+	}
+	else
+	{
+		return HLComparison(atomVec);
+	}
 }
 
-int HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> revLog)
+std::vector<RevAtom> HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> revLog)
 {
+	//Result vector
+	std::vector<RevAtom> resVec;
+
 	//We must check whether the revLog corresponds to any of the hardcoded heuristics
 	size_t size = revLog.size();
 
@@ -68,6 +85,12 @@ int HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> revLog)
 						heuristicMet = 0;
 						break;
 					}
+					else
+					{
+						//Part of the heuristic was met here
+						RevAtom atom = RevAtom(revLog.at(jj - reverseTraversed));
+						resVec.push_back();
+					}
 				}
 
 				//We now check if we met the heuristic
@@ -75,11 +98,12 @@ int HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> revLog)
 				{
 					//TODO check other things apart from instType and return more stuff.
 					LOG_DEBUG("Heuristic met!");
-					return 1;
+					return resVec;
 				}
 			}
 		}
 	}
 
-	return 0;
+	//Return empty vector
+	return std::vector<RevAtom>();
 }
