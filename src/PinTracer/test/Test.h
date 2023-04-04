@@ -122,6 +122,11 @@ public:
 		return 0;
 	}
 
+	std::string getName()
+	{
+		return this->name;
+	}
+
 };
 
 

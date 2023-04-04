@@ -144,13 +144,13 @@ void TestEngine::evaluateTests()
 		if (test.getTestResults() == Test::SUCCESS)
 		{
 			WINDOWS::SetConsoleTextAttribute(hConsole, 10);
-			std::cout << "TEST " << ii << " SUCCEEDED" << std::endl;
+			std::cout << "TEST " << ii << " SUCCEEDED - " << test.getName() << std::endl;
 			WINDOWS::SetConsoleTextAttribute(hConsole, 15);
 		}
 		else
 		{
 			WINDOWS::SetConsoleTextAttribute(hConsole, 12);
-			std::cout << "TEST " << ii << " FAILED" << std::endl;
+			std::cout << "TEST " << ii << " FAILED - " << test.getName() << std::endl;
 			WINDOWS::SetConsoleTextAttribute(hConsole, 15);
 		}
 	}
