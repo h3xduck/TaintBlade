@@ -15,6 +15,13 @@ function runTest {
     Write-Host 'Running test'$testCounter'/'$testNumber' at: '$testDir
     cd $testDir
 
+    if(!(Test-Path "testset.txt")){
+        Write-Host "No testset.txt file found, ignoring test`n" -ForegroundColor Red
+        $script:testCounter++
+        cd ..
+        return
+    }
+
     $serverProcess = Start-Process -FilePath "..\..\..\samples\tcp_server.exe" -PassThru
     $user32 = New-Object User32
     $null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
@@ -30,6 +37,8 @@ function runTest {
     Stop-Process -Id $testProcess.Id
 
     $script:testCounter++
+
+    Write-Host ''
 
     cd ..
 }
