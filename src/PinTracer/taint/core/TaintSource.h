@@ -43,9 +43,23 @@ static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_l
 class TaintSource
 {
 public:
+	bool TaintSource::operator==(const TaintSource& other) const
+	{
+		if (this->dllName != other.dllName ||
+			this->funcName != other.funcName ||
+			this->numArgs != other.numArgs)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+
 	//Map for generic routine instrumentation. Key is retIP, includes arguments addresses
 	
-	//Handlers
+	//****************Handlers***********************************************************//
+	//WSOCK
 	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		int NUM_ARGS = 4;
@@ -84,6 +98,7 @@ public:
 		
 	}
 
+	//MAIN (FOR TESTING). Taints RAX and RBX
 	static VOID mainEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		LOG_DEBUG("Called mainEnter()");

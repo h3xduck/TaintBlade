@@ -76,6 +76,7 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 	}*/
 	else
 	{
+		//The DLL + FUNC combination was not registered in our system
 		LOG_ERR("Received request to register unknown taint source: DllName = " << dllName << " FuncName = " << funcName);
 		return;
 	}
@@ -96,9 +97,17 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 	else
 	{
 		//DLLname already exists
-		taintIt->second.push_back(taintSource);
-
-		LOG_ALERT("Registered a new taintSource: DllName =  " << dllName << " FuncName = " << funcName);
+		if (std::find(taintIt->second.begin(), taintIt->second.end(), taintSource) != taintIt->second.end())
+		{
+			//Function already in map
+			LOG_ALERT("Tried to register an already registered taint source: DllName =  " << dllName << " FuncName = " << funcName);
+		}
+		else
+		{
+			//New function for existing DLL
+			taintIt->second.push_back(taintSource);
+			LOG_ALERT("Registered a taintSource in a known DLL: DllName =  " << dllName << " FuncName = " << funcName);
+		}
 	}
 }
 

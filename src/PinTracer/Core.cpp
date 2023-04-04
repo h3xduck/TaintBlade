@@ -68,13 +68,15 @@ KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
 
 KNOB< string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "activate test mode, specifies input file for reading tests");
 
+KNOB< string > KnobTaintSourceFile(KNOB_MODE_WRITEONCE, "pintool", "taint", "", "specifies a file with dll+func combos to register as taint sources");
+
 /* ===================================================================== */
 // Utilities
 /* ===================================================================== */
 
-/*!
- *  Print out help message.
- */
+/**
+Print out help message.
+*/
 INT32 Usage()
 {
 	std::cerr << "This tool prints out the number of dynamically executed " << std::endl
@@ -627,11 +629,7 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
-	scopeFilterer = ScopeFilterer(TCP_CLIENT_PROG);
-	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
-	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
-	taintManager.registerTaintSource(WSOCK32_DLL, RECV_FUNC, 4);
-
+	//Start instruction counter
 	PerformanceOperator::startChrono();
 
 	// Initialize PIN library. Print help message if -h(elp) is specified
@@ -647,6 +645,8 @@ int main(int argc, char* argv[])
 	string filterlistFilename = KnobFilterlistFile.Value();
 	string debugFileFilename = KnobDebugFile.Value();
 	string testFileFilename = KnobTestFile.Value();
+	string taintSourceFileFilename = KnobTaintSourceFile.Value();
+	
 	instructionLevelTracing = KnobInstLevelTrace.Value();
 
 	if (!fileName.empty())
@@ -676,15 +676,46 @@ int main(int argc, char* argv[])
 		//Read the tests to perform
 		globalTestEngine.loadTestsFromFile(testFileFilename);
 
-		//Redirect all logging
+		//Redirect all logging TODO?
 		/*std::ostream* out = &std::cerr;
 		std::ostream* sysinfoOut = &std::cerr;
 		std::ostream* imageInfoOut = &std::cerr;
 		std::ostream* debugFile = &std::cerr;*/
 
-		//Test the test module
-		
 	}
+
+	if (!taintSourceFileFilename.empty())
+	{
+		//If a taint source file was specified, we load DLL+FUNC combos from there
+		std::cerr << "Loading taint sources dynamically from " << taintSourceFileFilename << std::endl;
+		LOG_DEBUG("Loading taint sources from " << taintSourceFileFilename);
+
+		std::ifstream infile(taintSourceFileFilename);
+		std::string line;
+		//The file is made of lines with FUNC DLL <num arguments>
+		while (std::getline(infile, line))
+		{
+			std::istringstream isdata(line);
+			std::string dllName;
+			//DLL
+			std::getline(isdata, dllName, ' ');
+			//FUNC
+			std::string funcName;
+			std::getline(isdata, funcName, ' ');
+			//FUNC
+			std::string numArgs;
+			std::getline(isdata, numArgs, ' ');
+			taintManager.registerTaintSource(dllName, funcName, atoi(numArgs.c_str()));
+		}
+
+	}
+
+	//Only the specified program is to be instrumented
+	scopeFilterer = ScopeFilterer(TCP_CLIENT_PROG);
+	//Register taint sources
+	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
+	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
+	taintManager.registerTaintSource(WSOCK32_DLL, RECV_FUNC, 4);
 
 	PIN_InitSymbols();
 
