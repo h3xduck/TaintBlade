@@ -602,7 +602,7 @@ VOID Fini(INT32 code, VOID* v)
 	taintController.dumpTaintLogPrettified(29);
 	taintController.dumpTagLogOriginalColors();
 	PerformanceOperator::measureChrono();
-
+	
 	//Dump original colors vector
 	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> orgVec = taintController.getOriginalColorsVector();
 	dataDumper.writeOriginalColorDump(orgVec);
