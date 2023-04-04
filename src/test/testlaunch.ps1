@@ -1,6 +1,3 @@
-$pinExecutablePath = "..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe"
-$pinArguments = "-t ..\PinTracer\x64\Release\PinTracer.dll -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -- ..\..\samples\tcp_client.exe 127.0.0.1"
-
 Add-Type @"
     using System;
     using System.Runtime.InteropServices;
@@ -10,17 +7,43 @@ Add-Type @"
     }
 "@
 
-$serverProcess = Start-Process -FilePath "..\..\samples\tcp_server.exe" -PassThru
-#[System.Windows.Forms.SendKeys]::SendWait("%{TAB}")
-$user32 = New-Object User32
-$null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
-Start-Sleep -Seconds 0.5
+$testNumber = (Get-ChildItem -Directory).Count
+$testCounter = 1
 
-$testProcess = Start-Process cmd -ArgumentList '/k', '..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe -t ..\PinTracer\x64\Release\PinTracer.dll -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -- ..\..\samples\tcp_client.exe 127.0.0.1' -PassThru
-$user32 = New-Object User32
-$null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
+function runTest {
+    param( [String]$testDir )
+    Write-Host 'Running test'$testCounter'/'$testNumber' at: '$testDir
+    cd $testDir
 
-Write-Host -NoNewLine 'Press any key to close test...';
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
-Stop-Process -Id $serverProcess.Id
-Stop-Process -Id $testProcess.Id
+    $serverProcess = Start-Process -FilePath "..\..\..\samples\tcp_server.exe" -PassThru
+    $user32 = New-Object User32
+    $null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
+    Start-Sleep -Seconds 0.5
+
+    $testProcess = Start-Process cmd -ArgumentList '/k', '..\..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe -t ..\..\PinTracer\x64\Release\PinTracer.dll -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -- ..\..\..\samples\tcp_client.exe 127.0.0.1' -PassThru
+    $user32 = New-Object User32
+    $null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
+
+    Write-Host 'Press any key to go to the next test...';
+    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+    Stop-Process -Id $serverProcess.Id
+    Stop-Process -Id $testProcess.Id
+
+    $script:testCounter++
+
+    cd ..
+}
+
+#Info
+if($testNumber -gt 0){
+    Write-Host "Found"$testNumber" test to run" -ForegroundColor Green
+}else{
+    Write-Host "No tests found" -ForegroundColor Red
+    Exit
+}
+
+#Iterate over all directories in the test directory to find all test sets
+Get-ChildItem -Directory | ForEach-Object {
+    $directoryName = $_.Name
+    runTest($directoryName)
+}
