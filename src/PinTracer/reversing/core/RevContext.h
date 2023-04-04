@@ -4,6 +4,7 @@
 #include "../data/RevLog.h"
 #include "../data/RevAtom.h"
 #include "../heuristics/HLComparison.h"
+#include "../../test/TestEngine.h"
 
 class RevContext
 {

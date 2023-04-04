@@ -1,5 +1,7 @@
 #include "RevContext.h"
 
+extern TestEngine globalTestEngine;
+
 RevContext::RevContext()
 {
 	this->revLogCurrent.cleanLog();
@@ -16,9 +18,14 @@ void RevContext::operateRevLog()
 {
 	//Try to get whether it is a comparison HL inst.
 	HLComparison heuristicFound = HLComparison::checkValidity(this->revLogCurrent.getLogVector());
-
+	
 	if (heuristicFound.isHeuristicMet())
 	{
+		//Test milestone
+		HeuristicMilestone testMilestone = HeuristicMilestone(heuristicFound.getInstructionVector(), TestMilestone::HEURISTIC);
+		globalTestEngine.logMilestone(&testMilestone);
+
+		//Clean logs
 		this->cleanRevLogCurrent();
 		this->cleanCurrentRevAtom();
 	}

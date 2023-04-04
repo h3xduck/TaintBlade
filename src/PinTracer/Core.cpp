@@ -683,8 +683,7 @@ int main(int argc, char* argv[])
 		std::ostream* debugFile = &std::cerr;*/
 
 		//Test the test module
-		HeuristicMilestone testMilestone = HeuristicMilestone("CMP", TestMilestone::HEURISTIC);
-		globalTestEngine.logMilestone(&testMilestone);
+		
 	}
 
 	PIN_InitSymbols();

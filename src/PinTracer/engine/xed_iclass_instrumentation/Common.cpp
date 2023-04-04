@@ -21,6 +21,7 @@ void INST_COMMON::revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDes
 	}
 	if (atomChanged)
 	{
+		//atom->setInstType((xed_iclass_enum_t)opc);
 		LOG_DEBUG("Inserting atom :" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
 	}

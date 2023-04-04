@@ -43,7 +43,9 @@ HLComparison HLComparison::checkValidity(std::vector<RevAtom> revLog)
 	}
 	else
 	{
-		return HLComparison(atomVec);
+		HLComparison hl(atomVec);
+		hl.heuristicMet = 1;
+		return hl;
 	}
 }
 
@@ -70,7 +72,7 @@ std::vector<RevAtom> HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> rev
 				//Found possible start of heuristic in building block
 				//We now go back checking for continuation of heuristic
 				int reverseTraversed = 0;
-				int heuristicMet = 1;
+				int heuristicMet = -1;
 				for (int kk = atomHeuristicVector.size() - 1; kk >= 0; kk--)
 				{
 					if (jj - reverseTraversed < 0)
@@ -89,7 +91,8 @@ std::vector<RevAtom> HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> rev
 					{
 						//Part of the heuristic was met here
 						RevAtom atom = RevAtom(revLog.at(jj - reverseTraversed));
-						resVec.push_back();
+						resVec.push_back(atom);
+						heuristicMet = 1;
 					}
 				}
 
