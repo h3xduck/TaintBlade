@@ -65,6 +65,11 @@ public:
 	{
 		return this->heuristicMet;
 	}
+
+	/**
+	Returns a vector of strings describing the instructions which compound the heuristic
+	*/
+	std::vector<std::string> getInstructionVector();
 };
 
 

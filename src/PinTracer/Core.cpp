@@ -23,6 +23,7 @@
 #include "config/Names.h"
 #include "utils/io/DataDumper.h"
 #include "taint/core/TaintSource.h"
+#include "test/TestEngine.h"
 
 using std::string;
 
@@ -39,9 +40,11 @@ std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
 std::ostream* debugFile = &std::cerr;
 
+
 BOOL instructionLevelTracing = 0;
 ScopeFilterer scopeFilterer;
 extern TaintManager taintManager;
+extern TestEngine globalTestEngine;
 
 //ScopeFilterer scopeFilterer = NULL;
 
@@ -62,6 +65,8 @@ KNOB< BOOL > KnobInstLevelTrace(KNOB_MODE_WRITEONCE, "pintool", "t", "0", "activ
 
 KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
 	"count instructions, basic blocks and threads in the application");
+
+KNOB< string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "activate test mode, specifies input file for reading tests");
 
 /* ===================================================================== */
 // Utilities
@@ -608,6 +613,9 @@ VOID Fini(INT32 code, VOID* v)
 
 	//Dump RevAtoms
 	ctx.getRevContext()->printRevLogCurrent();
+
+	//Evaluate tests
+	globalTestEngine.evaluateTests();
 }
 
 /*!
@@ -638,6 +646,7 @@ int main(int argc, char* argv[])
 	string imageInfoFilename = KnobImageFile.Value();
 	string filterlistFilename = KnobFilterlistFile.Value();
 	string debugFileFilename = KnobDebugFile.Value();
+	string testFileFilename = KnobTestFile.Value();
 	instructionLevelTracing = KnobInstLevelTrace.Value();
 
 	if (!fileName.empty())
@@ -658,6 +667,24 @@ int main(int argc, char* argv[])
 	if (!debugFileFilename.empty())
 	{
 		debugFile = new std::ofstream(debugFileFilename.c_str());
+	}
+
+	if (!testFileFilename.empty())
+	{
+		std::cerr << "Test mode now active" << std::endl;
+		globalTestEngine.setTestLevel(TestEngine::ACTIVE);
+		//Read the tests to perform
+		globalTestEngine.loadTestsFromFile(testFileFilename);
+
+		//Redirect all logging
+		/*std::ostream* out = &std::cerr;
+		std::ostream* sysinfoOut = &std::cerr;
+		std::ostream* imageInfoOut = &std::cerr;
+		std::ostream* debugFile = &std::cerr;*/
+
+		//Test the test module
+		HeuristicMilestone testMilestone = HeuristicMilestone("CMP", TestMilestone::HEURISTIC);
+		globalTestEngine.logMilestone(&testMilestone);
 	}
 
 	PIN_InitSymbols();

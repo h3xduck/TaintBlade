@@ -107,3 +107,15 @@ std::vector<RevAtom> HLComparison::checkHeuristicAlgNRS(std::vector<RevAtom> rev
 	//Return empty vector
 	return std::vector<RevAtom>();
 }
+
+std::vector<std::string> HLComparison::getInstructionVector()
+{
+	std::vector<std::string> resVec;
+
+	for (auto& elem : this->revAtomVector)
+	{
+		resVec.push_back(xed_iclass_enum_t2str((xed_iclass_enum_t)elem.getInstType()));
+	}
+
+	return resVec;
+}

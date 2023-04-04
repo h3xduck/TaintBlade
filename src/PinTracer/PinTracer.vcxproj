@@ -275,6 +275,7 @@
     <ClCompile Include="taint\data\TRegister.cpp" />
     <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
+    <ClCompile Include="test\TestEngine.cpp" />
     <ClCompile Include="utils\inst\InstructionWorker.cpp" />
     <ClCompile Include="utils\inst\PerformanceOperator.cpp" />
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
@@ -305,6 +306,10 @@
     <ClInclude Include="taint\data\TRegister.h" />
     <ClInclude Include="taint\data\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />
+    <ClInclude Include="test\HeuristicMilestone.h" />
+    <ClInclude Include="test\Test.h" />
+    <ClInclude Include="test\TestEngine.h" />
+    <ClInclude Include="test\TestMilestone.h" />
     <ClInclude Include="utils\inst\PerformanceOperator.h" />
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
     <ClInclude Include="utils\io\DataDumper.h" />
