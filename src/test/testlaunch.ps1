@@ -12,11 +12,13 @@ Add-Type @"
 
 $serverProcess = Start-Process -FilePath "..\..\samples\tcp_server.exe" -PassThru
 #[System.Windows.Forms.SendKeys]::SendWait("%{TAB}")
+$user32 = New-Object User32
+$null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
 Start-Sleep -Seconds 0.5
 
 $testProcess = Start-Process cmd -ArgumentList '/k', '..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe -t ..\PinTracer\x64\Release\PinTracer.dll -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -- ..\..\samples\tcp_client.exe 127.0.0.1' -PassThru
 $user32 = New-Object User32
-$user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
+$null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
 
 Write-Host -NoNewLine 'Press any key to close test...';
 $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
