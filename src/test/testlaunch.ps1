@@ -15,6 +15,13 @@ function runTest {
     Write-Host 'Running test'$testCounter'/'$testNumber' at: '$testDir
     cd $testDir
 
+    if(!(Test-Path "programinfo.txt")){
+        Write-Host "No programinfo.txt file found, ignoring test`n" -ForegroundColor Red
+        $script:testCounter++
+        cd ..
+        return
+    }
+
     if(!(Test-Path "testset.txt")){
         Write-Host "No testset.txt file found, ignoring test`n" -ForegroundColor Red
         $script:testCounter++
@@ -22,12 +29,15 @@ function runTest {
         return
     }
 
+    $programInfo = (Get-Content -Path .\programinfo.txt)
+    Write-Host 'Running program'$programInfo
+
     $serverProcess = Start-Process -FilePath "..\..\..\samples\tcp_server.exe" -PassThru
     $user32 = New-Object User32
     $null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
     Start-Sleep -Seconds 0.5
 
-    $testProcess = Start-Process cmd -ArgumentList '/k', '..\..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe -t ..\..\PinTracer\x64\Release\PinTracer.dll -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -- ..\..\..\samples\tcp_client.exe 127.0.0.1' -PassThru
+    $testProcess = Start-Process cmd -ArgumentList '/k', "..\..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe -t ..\..\PinTracer\x64\Release\PinTracer.dll -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -- ..\..\..\samples\$programInfo" -PassThru
     $user32 = New-Object User32
     $null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
 
