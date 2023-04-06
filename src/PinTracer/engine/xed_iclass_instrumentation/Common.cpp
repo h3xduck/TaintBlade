@@ -4,26 +4,33 @@ void INST_COMMON::revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDes
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
-	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevAtom *atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevColorAtom* atomColor = atom->getRevColorAtom();
 	bool atomChanged = false;
 	if (tController.memRangeIsTainted(memSrc, memSrcLen))
 	{
 		atom->setInstType((xed_iclass_enum_t) opc);
 		atom->setMemSrc(memSrc);
 		atom->setMemSrcLen(memSrcLen);
+		atomColor->memSrcColor = tController.memRangeGetColor(memSrc, memSrcLen);
+		atomColor->memSrcLen = memSrcLen;
 		atomChanged = true;
 	}
 	if (tController.regIsTainted(regDest))
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setRegDest(regDest);
+		atomColor->regDestColor = tController.regGetColor(regDest);
 		atomChanged = true;
 	}
 	if (atomChanged)
 	{
 		//atom->setInstType((xed_iclass_enum_t)opc);
-		LOG_DEBUG("Inserting atom :" << atom->getInstType());
+		LOG_DEBUG("Inserting atom m2r:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
+		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+		//HL operation using the heuristics.
+		ctx.getRevContext()->operateRevLog();
 	}
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
@@ -33,23 +40,29 @@ void INST_COMMON::revLogInst_reg2reg(REG regSrc, REG regDest, UINT32 opc)
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
 	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevColorAtom* atomColor = atom->getRevColorAtom();
 	bool atomChanged = false;
 	if (tController.regIsTainted(regSrc))
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setRegSrc(regSrc);
+		atomColor->regDestColor = tController.regGetColor(regSrc);
 		atomChanged = true;
 	}
 	if (tController.regIsTainted(regDest))
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setRegDest(regDest);
+		atomColor->regDestColor = tController.regGetColor(regDest);
 		atomChanged = true;
 	}
 	if (atomChanged)
 	{
-		LOG_DEBUG("Inserting atom :" << atom->getInstType());
+		LOG_DEBUG("Inserting atom r2r:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
+		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+		//HL operation using the heuristics.
+		ctx.getRevContext()->operateRevLog();
 	}
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
@@ -59,11 +72,13 @@ void INST_COMMON::revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestL
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
 	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevColorAtom* atomColor = atom->getRevColorAtom();
 	bool atomChanged = false;
 	if (tController.regIsTainted(regSrc))
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setRegSrc(regSrc);
+		atomColor->regSrcColor = tController.regGetColor(regSrc);
 		atomChanged = true;
 	}
 	if (tController.memRangeIsTainted(memDest, memDestLen))
@@ -71,12 +86,17 @@ void INST_COMMON::revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestL
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setMemDest(memDest);
 		atom->setMemDestLen(memDestLen);
+		atomColor->memDestColor = tController.memRangeGetColor(memDest, memDestLen);
+		atomColor->memDestLen = memDestLen;
 		atomChanged = true;
 	}
 	if (atomChanged)
 	{
-		LOG_DEBUG("Inserting atom :" << atom->getInstType());
+		LOG_DEBUG("Inserting atom r2m:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
+		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+		//HL operation using the heuristics.
+		ctx.getRevContext()->operateRevLog();
 	}
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
@@ -112,8 +132,13 @@ void INST_COMMON::revLogInst_lea_mem2reg(REG destReg, REG leaBase, REG leaIndex)
 
 	if (atomChanged)
 	{
-		LOG_DEBUG("Inserting atom :" << atom->getInstType());
+		LOG_DEBUG("Inserting atom TODO:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
+		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+		//HL operation using the heuristics.
+		ctx.getRevContext()->operateRevLog();
 	}
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
+
+//TODO support IMMs

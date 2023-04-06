@@ -55,61 +55,56 @@ void OPC_INST::instrumentCompareOpc(INS ins)
 	//Only src operand can be imm
 	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);
 	//If dest operand is mem, src cannot be mem
-	const BOOL isMemDest = INS_IsMemoryWrite(ins);
-	const BOOL isMemSrc = INS_IsMemoryRead(ins);
+	const BOOL isMemDest = INS_OperandIsMemory(ins, 0);
+	const BOOL isMemSrc = INS_OperandIsMemory(ins, 1);
+	const BOOL isRegDest = INS_OperandIsReg(ins, 0);
+	const BOOL isRegSrc = INS_OperandIsReg(ins, 1);
+
+	LOG_DEBUG("CMP:: mS:" << isMemSrc << " mD:" << isMemDest << " rS:"<<isRegSrc<<" rD:"<<isRegDest);
+
 
 	if (!isImmSrc)
 	{
-		if (isMemDest)
+		if (isRegSrc)
 		{
-			if (isMemSrc)
-			{
-				//mem, mem
-				//LOG_ALERT("Unsupported case of CMP instruction: mem2mem");
-			}
-			else
-			{
-				//mem, reg
-				INS_CALL_R2M_N(cmp_reg2mem, ins);
-			}
-		}
-		else
-		{
-			const BOOL isMemSrc = INS_IsMemoryRead(ins);
-			if (isMemSrc)
-			{
-				//reg, mem
-				INS_CALL_M2R_N(cmp_mem2reg, ins);
-				return;
-			}
-			else
+			if (isRegDest)
 			{
 				//reg, reg
 				INS_CALL_R2R_N(cmp_reg2reg, ins);
 				return;
 			}
+			else
+			{
+				//mem, reg
+				INS_CALL_NOWRITE_R2M_N(cmp_reg2mem, ins);
+			}
+		}
+		else
+		{
+			//reg, mem
+			INS_CALL_M2R_N(cmp_mem2reg, ins);
+			return;
+
+			//mem, mem not possible
 		}
 	}
 	else
 	{
-		const BOOL isRegDest = INS_OperandIsReg(ins, 0);
-		if (isMemDest)
-		{
-			//mem, imm
-			INS_CALL_I2M_N(cmp_imm2mem, ins);
-			return;
-		}
-		else if (isRegDest)
+		//TODO imms
+		if (isRegDest)
 		{
 			//reg, imm
-			INS_CALL_I2R_N(cmp_imm2reg, ins);
+			//INS_CALL_I2R_N(cmp_imm2reg, ins);
 			return;
 		}
-		else
+		else 
 		{
-			//imm, imm
-			//LOG_ALERT("Unsupported case of CMP instruction");
+			//mem, imm
+			//INS_CALL_I2M_N(cmp_imm2mem, ins);
+			return;
 		}
+
+		//imm, imm not possible
 	}
 
 }

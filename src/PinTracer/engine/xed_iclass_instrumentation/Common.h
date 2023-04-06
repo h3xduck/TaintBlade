@@ -45,6 +45,7 @@ extern TaintManager taintManager;
 
 
 //Without disassemble
+
 #define INS_CALL_R2R_N(proc_func, ins) \
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID, \
@@ -66,12 +67,18 @@ extern TaintManager taintManager;
 	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
+/**
+Deprecated
+*/
 #define INS_CALL_ZERO2R_N(proc_func, ins)	\
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
 	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 0), IARG_END);	\
 }
 
+/**
+Deprecated
+*/
 #define INS_CALL_ZERO2M_N(proc_func, ins) \
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
@@ -92,11 +99,41 @@ extern TaintManager taintManager;
 	IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_END);	\
 }
 
+//For instructions that use memory but do not write to it
+
+#define INS_CALL_NOWRITE_R2M_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_MEMORYOP_EA, 0, IARG_MEMORYOP_SIZE, 0, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+
+
 namespace INST_COMMON
 {
+	/**
+	Instruction that puts a value from one memory address to a register.
+	Checks tainted elements, and creates an atom in the RevLog if any.
+	*/
 	void revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc);
+	
+	/**
+	Instruction that puts a value from one register to another register.
+	Checks tainted elements, and creates an atom in the RevLog if any.
+	*/
 	void revLogInst_reg2reg(REG regSrc, REG regDest, UINT32 opc);
+
+	/**
+	Instruction that puts a value from a register to a memory address.
+	Checks tainted elements, and creates an atom in the RevLog if any.
+	*/
 	void revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
+
+	/**
+	Instruction that describes a lea instruction, from a memory address to a register.
+	Checks tainted elements, and creates an atom in the RevLog if any.
+	*/
 	void revLogInst_lea_mem2reg(REG destReg, REG leaBase, REG leaIndex);
 }
 
