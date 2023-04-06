@@ -55,7 +55,7 @@ int isAnyColorInVector(std::vector<UINT16>& colors, std::vector<UINT16>& vec)
 {
 	for (UINT16& color : colors)
 	{
-		LOG_DEBUG("Checking color" << color);
+		//LOG_DEBUG("Checking color" << color);
 		//If any of the colors is contained in the vector, then the heuristic is valid
 		if (isColorInVector(color, vec))
 		{
