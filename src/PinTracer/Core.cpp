@@ -566,12 +566,6 @@ void TraceBase(TRACE trace, VOID* v)
 			}
 		}
 
-		//At this point, the reverse engineering module should have found a HL instruction
-		//using the encoded heuristics. Otherwise, the end of the BBL signals the flush of the 
-		//TODO Maybe change this so that the revLog gets cleared on image change, not bbl
-		ctx.getRevContext()->cleanCurrentRevAtom();
-		ctx.getRevContext()->cleanRevLogCurrent();
-
 	}
 }
 
@@ -712,9 +706,11 @@ int main(int argc, char* argv[])
 
 	//Only the specified program is to be instrumented
 	scopeFilterer = ScopeFilterer(TCP_CLIENT_PROG);
-	//Register taint sources
+	//Register taint sources - deprecated: now dynamically via flag
+	//TODO - set program name dynamically
 	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
 	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
+	taintManager.registerTaintSource(TEST1_PROG, ANY_FUNC_IN_DLL, 0);
 	taintManager.registerTaintSource(WSOCK32_DLL, RECV_FUNC, 4);
 
 	PIN_InitSymbols();

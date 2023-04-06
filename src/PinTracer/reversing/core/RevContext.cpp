@@ -1,11 +1,12 @@
 #include "RevContext.h"
+#include "../heuristics/HeuristicsValidator.h"
 
 extern TestEngine globalTestEngine;
 
 RevContext::RevContext()
 {
 	this->revLogCurrent.cleanLog();
-	this->revLogParsed.cleanLog();
+	//this->revLogParsed.cleanLog();
 	this->currentRevAtom = RevAtom();
 }
 
@@ -17,17 +18,14 @@ void RevContext::insertRevLog(RevAtom atom)
 void RevContext::operateRevLog()
 {
 	//Try to get whether it is a comparison HL inst.
-	HLComparison heuristicFound = HLComparison::checkValidity(this->revLogCurrent.getLogVector());
-	
+	HLComparison heuristicFound = HEURISTICS::VALIDATOR::checkValidity(this->revLogCurrent.getLogVector());
+
 	if (heuristicFound.isHeuristicMet())
 	{
+		LOG_DEBUG("Logging test milestone");
 		//Test milestone
 		HeuristicMilestone testMilestone = HeuristicMilestone(heuristicFound.getInstructionVector(), TestMilestone::HEURISTIC);
 		globalTestEngine.logMilestone(&testMilestone);
-
-		//Clean logs
-		this->cleanRevLogCurrent();
-		this->cleanCurrentRevAtom();
 	}
 }
 

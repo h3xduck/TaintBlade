@@ -12,11 +12,15 @@
 #include <memory>
 #include <cstdlib>
 
+#ifndef _WINDOWS_HEADERS_H_
+#define _WINDOWS_HEADERS_H_
 #define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
 namespace WINDOWS
 {
 #include <windows.h>
+#include <WinSock2.h>
 }
+#endif
 
 class TestEngine
 {

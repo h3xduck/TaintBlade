@@ -79,16 +79,19 @@ void TestEngine::loadTestsFromFile(std::string testFile)
 						std::istringstream isdata(milestoneData);
 						std::string token;
 
+						HeuristicMilestone milestone = HeuristicMilestone(TestMilestone::HEURISTIC);
 						//List of instruction types for the heuristic
 						while (std::getline(isdata, token, ' ')) {
 							LOG_DEBUG("Extracting instruction types: "<<token);
-							HeuristicMilestone milestone = HeuristicMilestone(token, TestMilestone::HEURISTIC);
-							test.addMilestone(&milestone);
-							loadedMilestoneCounter++;
+							milestone.addInst(token);
 						}
+
+						//Finished adding all data, now we store the milestone itself
+						test.addMilestone(&milestone);
+						loadedMilestoneCounter++;
 					}
-					
 				}
+
 			}
 
 			//Add test to set
@@ -114,14 +117,14 @@ void TestEngine::evaluateTests()
 	int testCounter = 0;
 	for (Test test : this->testSet)
 	{
-		LOG_DEBUG("Evaluating test " << testCounter);
+		LOG_DEBUG("Evaluating test " << testCounter+1 << "/" << this->testSet.size() << " with " << test.getNumberMilestones() << " milestones");
 		//For each test, evaluate the milestone log
 		int milestoneCounter = 0;
 		for (TestMilestone *milestone : this->milestoneLog)
 		{
 			if (milestone->getType() == TestMilestone::HEURISTIC)
 			{
-				LOG_DEBUG("Evaluating milestone " << milestoneCounter)
+				LOG_DEBUG("Trying to fit gathered test data " << milestoneCounter + 1 << "/" << this->milestoneLog.size() << " into the test...");
 				HeuristicMilestone* hmilestone = static_cast<HeuristicMilestone*>(milestone);
 				//LOG_DEBUG("Milestone inst len: " << hmilestone->getInstVector().size());
 				int res = test.evaluateMilestone(*hmilestone);

@@ -1,6 +1,8 @@
 #ifndef _REVHEURISTICATOM_H_
 #define _REVHEURISTICATOM_H_
 
+#include "../../utils/io/log.h"
+
 /**
 Determines the fields of a RevAtom which should be tainted for the instruction
 to be considered part of a heuristic.
@@ -33,6 +35,32 @@ public:
 		this->leaBaseTainted = leaBaseTainted;
 		this->leaIndexTainted = leaIndexTainted;
 		this->immSrcTainted = immSrcTainted;
+	}
+
+	/**
+	Returns whether an heuristic atom (this) is containted on another (other).
+	For this to be true, the instructions must be the same, and the tainted elements on (other)
+	must always be present on (this).
+	*/
+	bool containtedIn(const RevHeuristicAtom& other)
+	{
+		if (this->instType != other.instType)
+		{
+			return false;
+		}
+
+		if ((other.immSrcTainted && !this->immSrcTainted) ||
+			(other.leaBaseTainted && !this->leaBaseTainted) || 
+			(other.leaIndexTainted && !this->leaIndexTainted) || 
+			(other.memDestTainted && !this->memDestTainted) || 
+			(other.memSrcTainted && !this->memSrcTainted) || 
+			(other.regDestTainted && !this->regDestTainted) || 
+			(other.regSrcTainted && !this->regSrcTainted))
+		{
+			return false;
+		}
+
+		return true;
 	}
 };
 

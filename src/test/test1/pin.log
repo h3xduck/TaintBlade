@@ -1,5 +1,3 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  [tid:134316] Cannot execute file. System error: System error 2 : The system cannot find the file specified.
-. File name: "..\..\..\samples\$($programInfo)"
-E:  Pin is exiting due to fatal error
+E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 248212. Interruption context: IP: 0x7ffc9227f0a6 SP: 0x19aa81ce288. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x7ffc9227f0a6. Access Type: WRITE. Access Address = 0x000000000. ExceptionFlags: 0x000000000

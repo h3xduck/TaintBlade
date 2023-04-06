@@ -143,7 +143,10 @@ void TaintController::registerOriginalColor(UINT16 color, std::string dllName, s
 	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName);
 }
 
-
+std::vector<UINT16> TaintController::getColorParents(UINT16 color)
+{
+	return this->tagMap.tagLog.getColorParentsRecursive(color);
+}
 
 void TaintController::printTaint()
 {
@@ -194,4 +197,19 @@ bool TaintController::memIsTainted(ADDRINT mem)
 bool TaintController::memRangeIsTainted(ADDRINT mem, int bytes)
 {
 	return this->tagMap.memRangeIsTainted(mem, bytes);
+}
+
+std::vector<UINT16> TaintController::regGetColor(REG reg)
+{
+	return this->tagMap.regGetColor(reg);
+}
+
+UINT16 TaintController::memGetColor(ADDRINT mem)
+{
+	return this->tagMap.memGetColor(mem);
+}
+
+std::vector<UINT16> TaintController::memRangeGetColor(ADDRINT mem, int bytes)
+{
+	return this->tagMap.memRangeGetColor(mem, bytes);
 }

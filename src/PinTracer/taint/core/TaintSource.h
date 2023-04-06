@@ -12,13 +12,15 @@
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
+#ifndef _WINDOWS_HEADERS_H_
+#define _WINDOWS_HEADERS_H_
 #define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
-
 namespace WINDOWS
 {
 #include <windows.h>
 #include <WinSock2.h>
 }
+#endif
 
 extern TaintController taintController;
 extern DataDumper dataDumper;
@@ -130,7 +132,7 @@ public:
 
 	void taintSourceLogAll();
 
-	static VOID genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, ADDRINT nextInstAddr, CONTEXT* ctx, THREADID tid,
+	static VOID genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, ADDRINT nextInstAddr, CONTEXT* localCtx, THREADID tid,
 		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 	{
 		PIN_LockClient();
@@ -186,7 +188,7 @@ public:
 		
 	}
 
-	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, int retVal, UINT32 instSize, CONTEXT* ctx, THREADID tid)
+	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, int retVal, UINT32 instSize, CONTEXT* localCtx, THREADID tid)
 	{
 		PIN_LockClient();
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
@@ -218,6 +220,12 @@ public:
 				}
 			}
 		}
+
+		//At this point, the reverse engineering module should have found a HL instruction
+		//using the encoded heuristics. Otherwise, returning to another function signals the flush of the RevLog
+		ctx.getRevContext()->cleanCurrentRevAtom();
+		ctx.getRevContext()->cleanRevLogCurrent();
+
 		PIN_UnlockClient();
 	}
 

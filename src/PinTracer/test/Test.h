@@ -127,6 +127,10 @@ public:
 		return this->name;
 	}
 
+	int getNumberMilestones()
+	{
+		return this->milestoneSet.size();
+	}
 };
 
 

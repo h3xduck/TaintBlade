@@ -10,6 +10,7 @@
 
 #define TCP_CLIENT_PROG "c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\tcp_client.exe"
 #define HELLO_WORLD_PROG "c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\hello_world.exe"
+#define TEST1_PROG "c:\\users\\marcos\\source\\repos\\h3xduck\\tfm\\samples\\test1.exe"
 
 //////////////////////////////
 ///			FUNCs		//////

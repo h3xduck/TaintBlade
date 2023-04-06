@@ -25,6 +25,16 @@ public:
 	void logTagOriginal(UINT16 color, std::string dllName, std::string funcName);
 	void dumpTagLogOriginalColors();
 
+	std::tr1::unordered_map<UINT16, Tag> getTagLogMap()
+	{
+		return this->tagLogMap;
+	}
+
+	std::tr1::unordered_map<UINT16, std::vector<std::pair<UINT16, UINT16>>> getReverseTagLogMap()
+	{
+		return this->reverseTagLogMap;
+	}
+
 	/**
 	Checks if colors have already been mixed. If so, returns resulting color. Otherwise, empty color.
 	*/
@@ -39,6 +49,11 @@ public:
 	Get vector of color transformations
 	*/
 	std::vector<Tag> getColorTransVector();
+
+	/**
+	Get list of colors from which a color has been derived. Recursive, returns full list.
+	*/
+	std::vector<UINT16> getColorParentsRecursive(UINT16 color);
 };
 
 

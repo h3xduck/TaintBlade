@@ -18,6 +18,11 @@ public:
 		this->instVector.push_back(inst);
 	};
 
+	HeuristicMilestone(milestone_type_t type) : TestMilestone()
+	{
+		this->milestoneType = type;
+	};
+
 	HeuristicMilestone(std::string inst, milestone_type_t type) : TestMilestone()
 	{
 		this->instVector = std::vector<std::string>();
@@ -42,7 +47,7 @@ public:
 		//Compare heuristic vector with the milestone vector
 		if (hVector.size() != this->instVector.size())
 		{
-			LOG_DEBUG(hVector.size() << ":"<<this->instVector.size());
+			//LOG_DEBUG(hVector.size() << ":"<<this->instVector.size());
 			return UNCOMPLETED;
 		}
 		for (int ii = 0; ii < hVector.size(); ii++)
@@ -59,6 +64,16 @@ public:
 	std::vector<std::string> getInstVector()
 	{
 		return this->instVector;
+	}
+
+	void setInstVector(std::vector<std::string> vec)
+	{
+		this->instVector = vec;
+	}
+
+	void addInst(std::string ins)
+	{
+		this->instVector.push_back(ins);
 	}
 
 };

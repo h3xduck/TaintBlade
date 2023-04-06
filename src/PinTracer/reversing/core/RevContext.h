@@ -17,8 +17,9 @@ private:
 	/**
 	List of instructions that were found to correspond to a high-level operation
 	(such as a comparison).
+	TODO
 	*/
-	RevLog<HLComparison> revLogParsed;
+	//RevLog<HLComparison*> revLogParsed;
 
 	/**
 	An auxiliary RevAtom that is used during instrumentation, used to store

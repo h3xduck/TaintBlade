@@ -28,6 +28,11 @@ public:
 	void untaintReg(const LEVEL_BASE::REG reg);
 
 	void registerOriginalColor(UINT16 color, std::string dllName, std::string funcName);
+	
+	/**
+	Returns a vector will all parents of a color (recursively, not limited to 1 generation)
+	*/
+	std::vector<UINT16> getColorParents(UINT16 color);
 
 	void printTaint();
 	void dumpTaintLog();
@@ -40,6 +45,10 @@ public:
 	bool regIsTainted(REG reg);
 	bool memIsTainted(ADDRINT mem);
 	bool memRangeIsTainted(ADDRINT mem, int bytes);
+
+	std::vector<UINT16> regGetColor(REG reg);
+	UINT16 memGetColor(ADDRINT mem);
+	std::vector<UINT16> memRangeGetColor(ADDRINT mem, int bytes);
 };
 
 

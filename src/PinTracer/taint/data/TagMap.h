@@ -21,7 +21,6 @@
 #include "TRegister.h"
 #include "TagLog.h"
 #include "../../utils/io/DataDumper.h"
-#include "../../common/Context.h"
 
 #define PAGE_SIZE 4096
 #define COLOR_BYTES 2
@@ -193,6 +192,20 @@ public:
 	*/
 	bool memRangeIsTainted(ADDRINT mem, int bytes);
 
+	/**
+	Returns taint colors of a register
+	*/
+	std::vector<UINT16> regGetColor(REG reg);
+
+	/**
+	Returns taint color of a memory address
+	*/
+	UINT16 memGetColor(ADDRINT mem);
+
+	/**
+	Returns vector with color of memory address range, one entry per byte
+	*/
+	std::vector<UINT16> memRangeGetColor(ADDRINT mem, int bytes);
 
 
 

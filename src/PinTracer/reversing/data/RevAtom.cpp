@@ -31,6 +31,7 @@ int RevAtom::getInstType()
 void RevAtom::setInstType(int instType)
 {
 	this->instType = instType;
+	this->getRevHeuristicAtom()->instType = instType;
 }
 
 ADDRINT RevAtom::getMemSrc()
@@ -133,4 +134,9 @@ void RevAtom::setImmSrc(UINT64 immSrc)
 RevHeuristicAtom* RevAtom::getRevHeuristicAtom()
 {
 	return &(this->revHeuristicAtom);
+}
+
+RevColorAtom* RevAtom::getRevColorAtom()
+{
+	return &(this->revColorAtom);
 }

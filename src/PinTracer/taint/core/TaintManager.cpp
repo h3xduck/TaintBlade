@@ -69,6 +69,12 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		enterHandler = TaintSource::mainEnter;
 		exitHandler = TaintSource::mainExit;
 	}
+	else if (dllName == TEST1_PROG && funcName == ANY_FUNC_IN_DLL)
+	{
+		LOG_DEBUG("Registered function handlers for main");
+		enterHandler = TaintSource::mainEnter;
+		exitHandler = TaintSource::mainExit;
+	}
 	/*else if (dllName == "C:\\Users\\Marcos\\source\\repos\\h3xduck\\TFM\\samples\\tcp_client.exe" && funcName == ANY_FUNC_IN_DLL)
 	{
 		enterHandler = TaintSource::mainEnter;

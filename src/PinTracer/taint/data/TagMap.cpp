@@ -1,7 +1,5 @@
 #include "TagMap.h"
 
-extern Context ctx;
-
 void reportUnsupportedRegister(REG reg)
 {
 #if(REPORT_UNSUPPORTED_REG==1)
@@ -788,4 +786,48 @@ bool TagMap::memRangeIsTainted(ADDRINT mem, int bytes)
 	}
 
 	return false;
+}
+
+std::vector<UINT16> TagMap::regGetColor(REG reg)
+{
+	const UINT32 posStart = this->tReg.getPos(reg);
+	const UINT32 taintLength = this->tReg.getTaintLength(reg);
+	std::vector<UINT16> colorVec;
+
+	for (UINT32 ii = posStart; ii < posStart + taintLength; ii++)
+	{
+		colorVec.push_back(this->regTaintField[ii].color);
+	}
+
+	return colorVec;
+}
+
+UINT16 TagMap::memGetColor(ADDRINT mem)
+{
+	auto it = this->memTaintField.find(mem);
+	if (it == this->memTaintField.end())
+	{
+		return EMPTY_COLOR;
+	}
+
+	return it->second.color;
+}
+
+std::vector<UINT16> TagMap::memRangeGetColor(ADDRINT mem, int bytes)
+{
+	std::vector<UINT16> colorVec;
+	for (int ii = 0; ii < bytes; ii++)
+	{
+		auto it = this->memTaintField.find(mem);
+		if (it != this->memTaintField.end())
+		{
+			colorVec.push_back(it->second.color);
+		}
+		else
+		{
+			colorVec.push_back(EMPTY_COLOR);
+		}
+	}
+
+	return colorVec;
 }

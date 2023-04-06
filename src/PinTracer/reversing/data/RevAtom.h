@@ -4,6 +4,7 @@
 #include "pin.H"
 #include <xed-category-enum.h>
 #include "RevHeuristicAtom.h"
+#include "RevColorAtom.h"
 
 /**
 A RevAtom is a single instruction that may be part of a sequence representing a
@@ -14,6 +15,9 @@ class RevAtom
 private:
 	//Stores info about which elements are tainted or not
 	RevHeuristicAtom revHeuristicAtom;
+
+	//Stores colors of tainted elements in the atom
+	RevColorAtom revColorAtom;
 
 	//Basic information found in most binary operations
 	int instType;
@@ -65,6 +69,7 @@ public:
 	void setImmSrc(UINT64 immSrc);
 
 	RevHeuristicAtom* getRevHeuristicAtom();
+	RevColorAtom* getRevColorAtom();
 };
 
 #endif

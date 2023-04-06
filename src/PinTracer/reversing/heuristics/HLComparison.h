@@ -34,17 +34,6 @@ private:
 	*/
 	static const int revHeuristicNumber;
 
-	/**
-	Algorithm for checking an heuristic
-	- For all instructions in the RevLog (N)
-	- - For all heuristics in the list of heuristics (R)
-	- - - Check if RevAtom of instruction = RevHeuristicAtom of instruction in heuristic (S)
-	
-	Returns vector of RevAtoms found to belong to the RevHeuristic (ignoring any
-	RevAtom not included in the heuristic). If heuristic not met, returns empty vector.
-	*/
-	static std::vector<RevAtom> checkHeuristicAlgNRS(std::vector<RevAtom> revLog);
-
 public:
 	HLComparison() {};
 
@@ -55,16 +44,13 @@ public:
 	*/
 	static void initializeRevHeuristic();
 
-	/**
-	Returns a HLComparison instance if the vector corresponds to one of the heuristics
-	describing a high-level comparison instruction. Otherwise, null
-	*/
-	static HLComparison checkValidity(std::vector<RevAtom> revLog);
+	int isHeuristicMet();
 
-	int isHeuristicMet()
-	{
-		return this->heuristicMet;
-	}
+	void setHeuristicMet(int state);
+
+	static RevHeuristic* getInternalRevHeuristic();
+
+	static const int getRevHeuristicNumber();
 
 	/**
 	Returns a vector of strings describing the instructions which compound the heuristic

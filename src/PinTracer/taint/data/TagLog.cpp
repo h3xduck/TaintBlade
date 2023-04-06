@@ -151,3 +151,39 @@ std::vector<Tag> TagLog::getColorTransVector()
 
 	return vec;
 }
+
+
+std::vector<UINT16>* _getColorParents(TagLog *tagLog, UINT16 color, std::vector<UINT16> *vec)
+{
+	auto it = tagLog->getTagLogMap().find(color);
+	if (it == tagLog->getTagLogMap().end())
+	{
+		//vec->push_back(EMPTY_COLOR);
+	}
+	else
+	{
+		for (auto& color : *_getColorParents(tagLog, it->second.derivate1, vec))
+		{
+			vec->push_back(color);
+		}
+		for (auto& color : *_getColorParents(tagLog, it->second.derivate2, vec))
+		{
+			vec->push_back(color);
+		}
+
+		//Ensure colors are not repeated
+		std::sort(vec->begin(), vec->end());
+		vec->erase(std::unique(vec->begin(), vec->end()), vec->end());
+	}
+
+	return vec;
+}
+
+std::vector<UINT16> TagLog::getColorParentsRecursive(UINT16 color)
+{
+	std::vector<UINT16> vec;
+	_getColorParents(this, color, &vec);
+	
+
+	return vec;
+}

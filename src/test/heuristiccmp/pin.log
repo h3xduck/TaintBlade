@@ -1,5 +1,3 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  [tid:134316] Cannot execute file. System error: System error 2 : The system cannot find the file specified.
-. File name: "..\..\..\samples\$($programInfo)"
-E:  Pin is exiting due to fatal error
+E:  C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\engine\xed_iclass_instrumentation\CompareOpc.cpp:102: Cannot use IARG_MEMORYWRITE_EA for ins without memory write ( 11427 0x00007ff6219be682 cmp qword ptr [rax-0x18], 0x0)
