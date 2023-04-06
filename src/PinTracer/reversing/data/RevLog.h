@@ -16,6 +16,7 @@ public:
 	RevLog();
 
 	void cleanLog();
+	void cleanFirstX(int x);
 	void logInsert(T value);
 	std::vector<T> getLogVector();
 };

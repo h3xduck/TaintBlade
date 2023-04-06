@@ -17,6 +17,14 @@ void RevLog<T>::cleanLog()
 }
 
 template <typename T>
+void RevLog<T>::cleanFirstX(int x)
+{
+	if (x < 0) return;
+	if (x >= this->revLogVector.size()) this->revLogVector.clear();
+	this->revLogVector.erase(this->revLogVector.begin(), this->revLogVector.begin() + x);
+}
+
+template <typename T>
 void RevLog<T>::logInsert(T value)
 {
 	this->revLogVector.push_back(value);

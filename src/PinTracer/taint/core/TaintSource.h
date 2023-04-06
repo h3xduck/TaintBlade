@@ -223,8 +223,7 @@ public:
 
 		//At this point, the reverse engineering module should have found a HL instruction
 		//using the encoded heuristics. Otherwise, returning to another function signals the flush of the RevLog
-		ctx.getRevContext()->cleanCurrentRevAtom();
-		ctx.getRevContext()->cleanRevLogCurrent();
+		
 
 		PIN_UnlockClient();
 	}

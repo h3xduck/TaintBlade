@@ -46,7 +46,7 @@ void HLComparison::initializeRevHeuristic()
 
 	//CMP(mem, REG)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, 0, 0, 0, 1, 0, 0, 0
+		XED_ICLASS_CMP, 0, 0, 1, 0, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(
 		atoms

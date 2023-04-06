@@ -47,6 +47,11 @@ void RevContext::cleanRevLogCurrent()
 	this->revLogCurrent.cleanLog();
 }
 
+void RevContext::cleanRangeRevLogCurrent(int x)
+{
+	this->revLogCurrent.cleanFirstX(x);
+}
+
 void RevContext::printRevLogParsed()
 {
 	//TODO
@@ -60,4 +65,9 @@ RevAtom* RevContext::getCurrentRevAtom()
 void RevContext::cleanCurrentRevAtom()
 {
 	this->currentRevAtom = RevAtom();
+}
+
+int RevContext::getRevLogCurrentLength()
+{
+	return this->revLogCurrent.getLogVector().size();
 }

@@ -57,6 +57,11 @@ public:
 	void cleanRevLogCurrent();
 
 	/**
+	Deletes first x elements in the revLogCurrent
+	*/
+	void cleanRangeRevLogCurrent(int x);
+
+	/**
 	Prints all entries in the revLogParsed
 	*/
 	void printRevLogParsed();
@@ -70,6 +75,11 @@ public:
 	Cleans all values from the auxiliary RevAtom
 	*/
 	void cleanCurrentRevAtom();
+
+	/**
+	Returns length of the RevLog vector
+	*/
+	int getRevLogCurrentLength();
 
 };
 

@@ -7,6 +7,7 @@
 #include "../../utils/inst/InstructionWorker.h"
 #include "../../taint/core/TaintController.h"
 #include "../../taint/core/TaintManager.h"
+#include "../../config/GlobalConfig.h"
 
 extern Context ctx;
 extern TaintManager taintManager;
