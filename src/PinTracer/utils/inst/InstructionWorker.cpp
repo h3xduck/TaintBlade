@@ -10,6 +10,11 @@ std::string getStringFromArg(void* arg)
 
 ADDRINT InstructionWorker::getBaseAddress(ADDRINT addr)
 {
+	if (addr == 0)
+	{
+		return 0;
+	}
+
 	IMG module = IMG_FindByAddress(addr);
 	ADDRINT base = IMG_LoadOffset(module);
 	if (base == 0)

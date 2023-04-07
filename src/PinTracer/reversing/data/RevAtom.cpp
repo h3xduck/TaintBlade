@@ -1,7 +1,7 @@
 #include "RevAtom.h"
 
 RevAtom::RevAtom(
-	int instType, ADDRINT memSrc,
+	ADDRINT insAddress, int instType, ADDRINT memSrc,
 	INT32 memSrcLen, ADDRINT memDest,
 	INT32 memDestLen, REG regSrc,
 	REG regDest, REG leaBase,
@@ -9,6 +9,10 @@ RevAtom::RevAtom(
 	UINT32 leaDis, UINT64 immSrc
 )
 {
+	PIN_LockClient();
+	this->baseAddress = InstructionWorker::getBaseAddress(insAddress);
+	PIN_UnlockClient();
+	this->insAddress = insAddress;
 	this->instType = instType;
 	this->memSrc = memSrc;
 	this->memDest = memDest;
@@ -21,6 +25,24 @@ RevAtom::RevAtom(
 	this->leaScale = leaScale;
 	this->leaDis = leaDis;
 	this->immSrc = immSrc;
+}
+
+ADDRINT RevAtom::getBaseAddress()
+{
+	return this->baseAddress;
+}
+
+ADDRINT RevAtom::getInstAddress()
+{
+	return this->insAddress;
+}
+
+void RevAtom::setInstAddress(ADDRINT address)
+{
+	PIN_LockClient();
+	this->insAddress = address;
+	this->baseAddress = InstructionWorker::getBaseAddress(insAddress);
+	PIN_UnlockClient();
 }
 
 int RevAtom::getInstType()

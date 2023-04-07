@@ -117,25 +117,25 @@ namespace INST_COMMON
 	Instruction that puts a value from one memory address to a register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc);
+	void revLogInst_mem2reg(ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc);
 	
 	/**
 	Instruction that puts a value from one register to another register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_reg2reg(REG regSrc, REG regDest, UINT32 opc);
+	void revLogInst_reg2reg(ADDRINT ip, REG regSrc, REG regDest, UINT32 opc);
 
 	/**
 	Instruction that puts a value from a register to a memory address.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
+	void revLogInst_reg2mem(ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
 
 	/**
 	Instruction that describes a lea instruction, from a memory address to a register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_lea_mem2reg(REG destReg, REG leaBase, REG leaIndex);
+	void revLogInst_lea_mem2reg(ADDRINT ip, REG destReg, REG leaBase, REG leaIndex);
 }
 
 

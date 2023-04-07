@@ -10,7 +10,7 @@ void OPC_INST::ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSr
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
-	INST_COMMON::revLogInst_mem2reg(memSrc, memSrcLen, regDest, opc);
+	INST_COMMON::revLogInst_mem2reg(ip, memSrc, memSrcLen, regDest, opc);
 }
 
 void OPC_INST::ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
@@ -21,7 +21,7 @@ void OPC_INST::ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UI
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithReg(regDest, regSrc, true);
-	INST_COMMON::revLogInst_reg2reg(regSrc, regDest, opc);
+	INST_COMMON::revLogInst_reg2reg(ip, regSrc, regDest, opc);
 }
 
 void OPC_INST::ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
@@ -33,7 +33,7 @@ void OPC_INST::ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest
 	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc, true);
-	INST_COMMON::revLogInst_reg2mem(regSrc, memDest, memDestLen, opc);
+	INST_COMMON::revLogInst_reg2mem(ip, regSrc, memDest, memDestLen, opc);
 }
 
 void OPC_INST::ovw_imm2reg(THREADID tid, ADDRINT ip, REG regDest)

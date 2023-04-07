@@ -94,13 +94,13 @@ void DataDumper::writeColorTransformationDump(std::vector<Tag> vec)
 
 void DataDumper::writeRevHeuristicDumpLine(HLComparison log)
 {
-	std::vector<std::string> insVec = log.getInstructionVector();
-	this->heuristicsResultsDumpFile << "HEURISTIC MET: ";
-	for (std::string &s : insVec)
+	std::vector<RevAtom> atomVec = log.getFullAtomVector();
+	std::vector<std::string> instVec = log.getInstructionVector();
+	this->heuristicsResultsDumpFile << "HEURISTIC MET: " <<std::endl;
+	for (int ii=0; ii<atomVec.size(); ii++)
 	{
-		this->heuristicsResultsDumpFile << s << " ";
+		this->heuristicsResultsDumpFile << "\t" << to_hex(atomVec.at(ii).getBaseAddress()) << ": " << instVec.at(ii) << std::endl;
 	}
-	this->heuristicsResultsDumpFile << DUMP_OUTER_SEPARATOR;
 }
 
 void DataDumper::resetDumpFiles()

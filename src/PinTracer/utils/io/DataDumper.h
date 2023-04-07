@@ -8,6 +8,7 @@
 #include "../inst/InstructionWorker.h"
 #include "../../taint/data/Tag.h"
 #include "../../common/Context.h"
+#include "../../utils/io/format.h"
 
 class DataDumper
 {

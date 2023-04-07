@@ -171,7 +171,7 @@ public:
 
 				genericRoutineCalls.erase(nextInstAddr);
 				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(nextInstAddr, data));
-				//LOG_DEBUG("Inserted entry jump at " << to_hex(branchTargetAddress));
+				//LOG_DEBUG("Inserted entry jump at " << to_hex_dbg(branchTargetAddress));
 
 				//At this point, we dump the function and the arguments
 				dataDumper.writeRoutineDumpLine(data);
@@ -198,7 +198,7 @@ public:
 				auto it = genericRoutineCalls.find(branchTargetAddress);
 				if (it == genericRoutineCalls.end())
 				{
-					LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex(branchTargetAddress));
+					LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex_dbg(branchTargetAddress));
 				}
 				else
 				{

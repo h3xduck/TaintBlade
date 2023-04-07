@@ -8,7 +8,7 @@ void OPC_INST::cmp_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSr
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_mem2reg(memSrc, memSrcLen, regDest, opc);
+	INST_COMMON::revLogInst_mem2reg(ip, memSrc, memSrcLen, regDest, opc);
 }
 
 void OPC_INST::cmp_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
@@ -17,7 +17,7 @@ void OPC_INST::cmp_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UI
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_reg2reg(regSrc, regDest, opc);
+	INST_COMMON::revLogInst_reg2reg(ip, regSrc, regDest, opc);
 }
 
 void OPC_INST::cmp_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
@@ -28,7 +28,7 @@ void OPC_INST::cmp_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest
 	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_reg2mem(regSrc, memDest, memDestLen, opc);
+	INST_COMMON::revLogInst_reg2mem(ip, regSrc, memDest, memDestLen, opc);
 }
 
 void OPC_INST::cmp_imm2reg(THREADID tid, ADDRINT ip, REG regDest, UINT64 immSrc)
@@ -37,6 +37,7 @@ void OPC_INST::cmp_imm2reg(THREADID tid, ADDRINT ip, REG regDest, UINT64 immSrc)
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
+	//TODO manage atoms
 }
 
 void OPC_INST::cmp_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memDestLen, UINT64 immSrc)
@@ -47,6 +48,7 @@ void OPC_INST::cmp_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memD
 	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	//No taint
+	//TODO manage atoms
 }
 
 

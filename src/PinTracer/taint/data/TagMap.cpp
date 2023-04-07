@@ -36,7 +36,7 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 	{
 		//Byte not in map yet
 		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, tag));
-		LOG_DEBUG("New memory taint taintMemNew(" << to_hex(addr) << ") --> mem.ins(" << to_hex(addr) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
+		LOG_DEBUG("New memory taint taintMemNew(" << to_hex_dbg(addr) << ") --> mem.ins(" << to_hex_dbg(addr) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 		
 		//Register event for dump files
 		struct DataDumper::memory_color_event_line_t event;
@@ -50,7 +50,7 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 		it->second.color = tag.color;
 		it->second.derivate1 = EMPTY_COLOR;
 		it->second.derivate2 = EMPTY_COLOR;
-		LOG_DEBUG("New color for existing memory taint taintMemNew(" << to_hex(addr) << ") --> modified T(" << it->second.color << "," << it->second.derivate1 << "," << it->second.derivate2 << "))");
+		LOG_DEBUG("New color for existing memory taint taintMemNew(" << to_hex_dbg(addr) << ") --> modified T(" << it->second.color << "," << it->second.derivate1 << "," << it->second.derivate2 << "))");
 		
 		//Register event for dump files
 		struct DataDumper::memory_color_event_line_t event;
@@ -75,7 +75,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 			Tag tag(color);
 			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, tag));
 			//this->printMemTaintComplete();
-			LOG_DEBUG("New memory taint taintMem(" << to_hex(addr) << ", "<<color<<") --> mem.ins(" << to_hex(addr) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
+			LOG_DEBUG("New memory taint taintMem(" << to_hex_dbg(addr) << ", "<<color<<") --> mem.ins(" << to_hex_dbg(addr) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 			
 			//Register event for dump files
 			struct DataDumper::memory_color_event_line_t event;
@@ -90,7 +90,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 	{
 		//LOG_DEBUG("Memory taint--> ADDR:" << addr << " COL:" << color);
 		it->second.color = color;
-		LOG_DEBUG("New color for existing memory taint taintMem(" << to_hex(addr) << ", " << color << ") --> mem.ins(" << to_hex(addr) << ", T(" << it->second.color << ", X, X ))");
+		LOG_DEBUG("New color for existing memory taint taintMem(" << to_hex_dbg(addr) << ", " << color << ") --> mem.ins(" << to_hex_dbg(addr) << ", T(" << it->second.color << ", X, X ))");
 		
 		//Register event for dump files
 		struct DataDumper::memory_color_event_line_t event;
@@ -108,7 +108,7 @@ void TagMap::untaintMem(ADDRINT addr)
 	auto it = this->memTaintField.find(addr);
 	if (it != this->memTaintField.end())
 	{
-		LOG_DEBUG("Untainted mem untaintMem(" << to_hex(addr) << ") --> mem.erase(" << to_hex(addr) << ")");
+		LOG_DEBUG("Untainted mem untaintMem(" << to_hex_dbg(addr) << ") --> mem.erase(" << to_hex_dbg(addr) << ")");
 		
 		//Register event for dump files
 		struct DataDumper::memory_color_event_line_t event;
@@ -147,7 +147,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			//Dest=src1 is tainted with color of src2
 			tag = Tag(src2MemTag.color);
 			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, tag));
-			LOG_DEBUG("New memory taint mixTaintMem(" << to_hex(dest) << ", " << to_hex(src1) << ", "<< to_hex(src2) <<") --> mem.ins(" << dest << ", T(" << tag.color << ", "<<tag.derivate1<<", "<<tag.derivate2<<"))");
+			LOG_DEBUG("New memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", "<< to_hex_dbg(src2) <<") --> mem.ins(" << dest << ", T(" << tag.color << ", "<<tag.derivate1<<", "<<tag.derivate2<<"))");
 		
 			//Register event for dump files
 			struct DataDumper::memory_color_event_line_t event;
@@ -171,7 +171,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				tag = Tag(src1MemTag.color, src2MemTag.color);
 				it->second = tag;
 				this->tagLog.logTag(tag);
-				LOG_DEBUG("Mixed memory taint mixTaintMem(" << to_hex(dest) << ", " << to_hex(src1) << ", " << to_hex(src2) << ") --> modified T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
+				LOG_DEBUG("Mixed memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> modified T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
 			
 				//Register event for dump files
 				struct DataDumper::memory_color_event_line_t event;
@@ -185,7 +185,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				//Mix already generated before, use that color again
 				tag = Tag(mixColor);
 				it->second = tag;
-				LOG_DEBUG("Reused mix taint mixTaintMem(" << to_hex(dest) << ", " << to_hex(src1) << ", " << to_hex(src2) << ") --> reused T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
+				LOG_DEBUG("Reused mix taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> reused T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
 			
 				//Register event for dump files
 				struct DataDumper::memory_color_event_line_t event;
@@ -200,7 +200,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 		{
 			//src2 is an empty_color, thus we directly taint dest=src1 with empty_color
 			it->second.color = EMPTY_COLOR;
-			LOG_DEBUG("New color for existing memory taint mixTaintMem(" << to_hex(dest) << ", " << to_hex(src1) << ", " << to_hex(src2) << ") --> modified T(" << tag.color << ", X, X))");
+			LOG_DEBUG("New color for existing memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> modified T(" << tag.color << ", X, X))");
 		
 			//Register event for dump files
 			struct DataDumper::memory_color_event_line_t event;
@@ -618,7 +618,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				//Byte not in map yet
 				Tag tag(src2color);
 				this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest+ii, tag));
-				LOG_DEBUG("(in loop) New memory taint mixTaintMemRegAllBytes(" << to_hex(dest) << ", " << length << ", " << to_hex(src1) << ", " << src2 << ") --> mem.ins(" << to_hex(dest + ii) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
+				LOG_DEBUG("(in loop) New memory taint mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> mem.ins(" << to_hex_dbg(dest + ii) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 			
 				//Register event for dump files
 				struct DataDumper::memory_color_event_line_t event;
@@ -636,7 +636,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 			//reg src2 has empty_color, just taint dest mem with empty_color
 			Tag tag(src2color);
 			it->second = tag;
-			LOG_DEBUG("(in loop) Memory taint with empty color mixTaintMemRegAllBytes(" << to_hex(dest) << ", " << length << ", " << to_hex(src1) << ", " << src2 << ") --> modified mem at " << dest + ii << " with T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
+			LOG_DEBUG("(in loop) Memory taint with empty color mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> modified mem at " << dest + ii << " with T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 		
 			//Register event for dump files
 			struct DataDumper::memory_color_event_line_t event;
@@ -655,7 +655,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				Tag tag(it->second.color, src2color);
 				it->second = tag;
 				this->tagLog.logTag(tag);
-				LOG_DEBUG("(in loop) Mixed taint reg mixTaintMemRegAllBytes(" << to_hex(dest) << ", " << length << ", " << to_hex(src1) << ", " << src2 << ") --> modified mem tag at " << dest + ii << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+				LOG_DEBUG("(in loop) Mixed taint reg mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> modified mem tag at " << dest + ii << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 			
 				//Register event for dump files
 				struct DataDumper::memory_color_event_line_t event;
@@ -669,7 +669,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				//Mix already generated before, use that color again
 				Tag tag = Tag(mixColor);
 				it->second = tag;
-				LOG_DEBUG("(in loop) Reused mix taint reg mixTaintMemRegAllBytes(" << to_hex(dest) << ", " << length << ", " << to_hex(src1) << ", " << src2 << ") --> reused mem tag for " << to_hex(dest + ii) << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
+				LOG_DEBUG("(in loop) Reused mix taint reg mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> reused mem tag for " << to_hex_dbg(dest + ii) << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 			
 				//Register event for dump files
 				struct DataDumper::memory_color_event_line_t event;

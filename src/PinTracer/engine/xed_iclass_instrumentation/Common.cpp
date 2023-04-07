@@ -1,6 +1,6 @@
 #include "Common.h"
 
-void INST_COMMON::revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
+void INST_COMMON::revLogInst_mem2reg(ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -25,6 +25,7 @@ void INST_COMMON::revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDes
 	}
 	if (atomChanged)
 	{
+		atom->setInstAddress(ip);
 		//atom->setInstType((xed_iclass_enum_t)opc);
 		LOG_DEBUG("Inserting atom m2r:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
@@ -35,7 +36,7 @@ void INST_COMMON::revLogInst_mem2reg(ADDRINT memSrc, INT32 memSrcLen, REG regDes
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_reg2reg(REG regSrc, REG regDest, UINT32 opc)
+void INST_COMMON::revLogInst_reg2reg(ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -58,6 +59,7 @@ void INST_COMMON::revLogInst_reg2reg(REG regSrc, REG regDest, UINT32 opc)
 	}
 	if (atomChanged)
 	{
+		atom->setInstAddress(ip);
 		LOG_DEBUG("Inserting atom r2r:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
 		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
@@ -67,7 +69,7 @@ void INST_COMMON::revLogInst_reg2reg(REG regSrc, REG regDest, UINT32 opc)
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
+void INST_COMMON::revLogInst_reg2mem(ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -92,6 +94,7 @@ void INST_COMMON::revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestL
 	}
 	if (atomChanged)
 	{
+		atom->setInstAddress(ip);
 		LOG_DEBUG("Inserting atom r2m:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
 		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
@@ -101,7 +104,7 @@ void INST_COMMON::revLogInst_reg2mem(REG regSrc, ADDRINT memDest, INT32 memDestL
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_lea_mem2reg(REG destReg, REG leaBase, REG leaIndex)
+void INST_COMMON::revLogInst_lea_mem2reg(ADDRINT ip, REG destReg, REG leaBase, REG leaIndex)
 {
 	//TODO control if the memory address is tainted
 	TaintController tController = taintManager.getController();
@@ -132,6 +135,7 @@ void INST_COMMON::revLogInst_lea_mem2reg(REG destReg, REG leaBase, REG leaIndex)
 
 	if (atomChanged)
 	{
+		atom->setInstAddress(ip);
 		LOG_DEBUG("Inserting atom TODO:" << atom->getInstType());
 		ctx.getRevContext()->insertRevLog(*atom);
 		//Once instrumented and tainted, we try to see if the RevLog corresponds to some

@@ -5,6 +5,7 @@
 #include <xed-category-enum.h>
 #include "RevHeuristicAtom.h"
 #include "RevColorAtom.h"
+#include "../../utils/inst/InstructionWorker.h"
 
 /**
 A RevAtom is a single instruction that may be part of a sequence representing a
@@ -40,9 +41,15 @@ private:
 	//Stores list of heuristics (its index) that have already detected this heuristic
 	std::vector<int> detectedHeuristics;
 
+	//Instruction address
+	ADDRINT insAddress;
+
+	//Base address (in the image)
+	ADDRINT baseAddress;
+
 public:
 	RevAtom(
-		int instType = XED_ICLASS_INVALID_DEFINED, ADDRINT memSrc = 0,
+		ADDRINT insAddress = 0, int instType = XED_ICLASS_INVALID_DEFINED, ADDRINT memSrc = 0,
 		INT32 memSrcLen = 0, ADDRINT memDest = 0, 
 		INT32 memDestLen = 0, REG regSrc = REG_INVALID_, 
 		REG regDest = REG_INVALID_, REG leaBase = REG_INVALID_,	
@@ -50,6 +57,9 @@ public:
 		UINT32 leaDis = 0, UINT64 immSrc = 0
 	);
 
+	ADDRINT getBaseAddress();
+	ADDRINT getInstAddress();
+	void setInstAddress(ADDRINT address);
 	int getInstType();
 	void setInstType(int instType);
 	ADDRINT getMemSrc();

@@ -4,11 +4,12 @@
 #include "../../config/GlobalConfig.h"
 
 #if(DEBUG_IN_HEX==1)
-	#define to_hex(mem) std::hex << mem << std::dec
+	#define to_hex_dbg(mem) std::hex << mem << std::dec
 #else 
-	#define to_hex(mem) mem
+	#define to_hex_dbg(mem) mem
 #endif
 
+#define to_hex(mem) std::hex << mem << std::dec
 
 
 #define fixed_precision(file)	

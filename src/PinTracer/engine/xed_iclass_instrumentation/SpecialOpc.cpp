@@ -35,7 +35,7 @@ void OPC_INST::lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, R
 	
 	//The memory address itself will be tainted when it is used
 
-	INST_COMMON::revLogInst_lea_mem2reg(destReg, leaBase, leaIndex);
+	INST_COMMON::revLogInst_lea_mem2reg(ip, destReg, leaBase, leaIndex);
 }
 
 
