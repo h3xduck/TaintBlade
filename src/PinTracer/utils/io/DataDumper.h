@@ -17,6 +17,7 @@ private:
 	std::ofstream colorTransDumpFile;
 	std::ofstream funcDllNamesDumpFile;
 	std::ofstream memColorEventDumpFile;
+	std::ofstream heuristicsResultsDumpFile;
 
 	int lastRoutineDumpIndex;
 
@@ -80,6 +81,8 @@ public:
 	void writeColorTransformationDump(std::vector<Tag>);
 	void writeRoutineDumpLine(struct func_dll_names_dump_line_t data);
 	void writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>>);
+	void writeRevHeuristicDumpLine(HLComparison log);
+
 
 	void resetDumpFiles();
 

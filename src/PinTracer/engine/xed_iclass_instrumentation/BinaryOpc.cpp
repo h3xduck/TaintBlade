@@ -38,6 +38,7 @@ void OPC_INST::binary_clr_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regD
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
+	INST_COMMON::revLogInst_reg2reg(regSrc, regDest, opc);
 }
 
 
@@ -88,7 +89,6 @@ void OPC_INST::instrumentBinaryIfEqualRegClearOpc(INS ins)
 	const BOOL isImmSrc = INS_OperandIsImmediate(ins, 1);
 	//If dest operand is mem, src cannot be mem
 	const BOOL isMemDest = INS_IsMemoryWrite(ins);
-
 	if (!isImmSrc)
 	{
 		if (isMemDest)

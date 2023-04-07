@@ -16,6 +16,10 @@ extern _CRT_INIT
 
 main:
     add rbx, rax
+    cmp rbx, [msg]
+    cmp [msg], rbx
+    sub rbx, rax
+    add rcx, rbx
     cmp [msg], rbx
 
     

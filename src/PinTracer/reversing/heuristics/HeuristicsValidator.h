@@ -15,7 +15,7 @@ namespace HEURISTICS
 		Returns a HLComparison instance if the vector corresponds to one of the heuristics
 		describing a high-level comparison instruction.
 		*/
-		HLComparison checkValidity(std::vector<RevAtom> revLog);
+		HLComparison checkValidity(RevLog<RevAtom> *revLog);
 
 		/**
 		Compares a RevAtom with a certain RevHeuristicAtom.
@@ -36,7 +36,17 @@ namespace HEURISTICS
 		Returns vector of RevAtoms found to belong to the RevHeuristic (ignoring any
 		RevAtom not included in the heuristic). If heuristic not met, returns empty vector.
 		*/
-		static std::vector<RevAtom> checkHeuristicAlgNRS(std::vector<RevAtom> revLog);
+		static std::vector<RevAtom> checkHeuristicAlgNRS(RevLog<RevAtom> *revLog);
+
+		/**
+		Algorithm for checking an heuristic
+		Same as checkHeuristicAlgNRS, but heuristics are checked from the start of the vector instead of from the end.
+		For now, this algorithm is the only that prevents repetition of heuristic matches.
+
+		Returns vector of RevAtoms found to belong to the RevHeuristic (ignoring any
+		RevAtom not included in the heuristic). If heuristic not met, returns empty vector.
+		*/
+		static std::vector<RevAtom> checkHeuristicAlgNRSinverse(RevLog<RevAtom>* revLog);
 	};
 };
 

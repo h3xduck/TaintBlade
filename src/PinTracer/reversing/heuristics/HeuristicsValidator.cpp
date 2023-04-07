@@ -1,6 +1,13 @@
 #include "HeuristicsValidator.h"
 
-HLComparison HEURISTICS::VALIDATOR::checkValidity(std::vector<RevAtom> revLog)
+#define H_MARK \
+	"[H:" << ii << "/" << HLComparison::getRevHeuristicNumber() << " | I:" << jj+1 << "/" << atomSize << "] "
+
+#define H_MARK_i \
+	"[H:" << ii << "/" << HLComparison::getRevHeuristicNumber() << " | I:" << jj+1 << "/" << atomSize << " | i:" << currentInstructionIndex+1 << "] "
+
+
+HLComparison HEURISTICS::VALIDATOR::checkValidity(RevLog<RevAtom> *revLog)
 {
 	if (HLComparison::getInternalRevHeuristic()->getAtomVector().empty())
 	{
@@ -53,7 +60,7 @@ Returns whether any color in a vector is contained in the other
 */
 int isAnyColorInVector(std::vector<UINT16>& colors, std::vector<UINT16>& vec)
 {
-	for (UINT16& color : colors)
+	for (const UINT16& color : colors)
 	{
 		//LOG_DEBUG("Checking color" << color);
 		//If any of the colors is contained in the vector, then the heuristic is valid
@@ -65,24 +72,25 @@ int isAnyColorInVector(std::vector<UINT16>& colors, std::vector<UINT16>& vec)
 	return 0;
 }
 
-std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<RevAtom> revLog)
+std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(RevLog<RevAtom> *revLog)
 {
 	//Result vector
 	std::vector<RevAtom> resAtomVec(0);
 
 	//We must check whether the revLog corresponds to any of the hardcoded heuristics
-	const size_t atomSize = revLog.size();
+	std::vector<RevAtom> revLogVector = revLog->getLogVector();
+	const size_t atomSize = revLogVector.size();
 
 	LOG_DEBUG("Started heuristic validation, RevLog size: " << atomSize);
 
 	for (int ii = HLComparison::getRevHeuristicNumber(); ii > 0; ii--)
 	{
-		LOG_DEBUG("Starting to check heuristic " << ii << "/"<<HLComparison::getRevHeuristicNumber());
+		LOG_DEBUG(">> Starting to check heuristic " << ii << "/"<<HLComparison::getRevHeuristicNumber());
 		RevHeuristic heuristic = HLComparison::getInternalRevHeuristic()[ii - 1];
 		std::vector<RevHeuristicAtom> atomHeuristicVector = heuristic.getAtomVector();
 
 		//Number of instructions in the heuristic to meet to consider it met (the full length of it)
-		int heuristicLength = atomHeuristicVector.size();
+		const int heuristicLength = atomHeuristicVector.size();
 		int numberInstructionsMet = 0;
 		
 		//Check heuristic with every single (consequent) combination of instructions, going back in time
@@ -92,11 +100,11 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 		//int skippedInstructions = 0;
 		for (int jj = atomSize - 1; jj >= 0; jj--)
 		{
-			RevAtom atom = revLog.at(jj);
-			if (atomHeuristicVector.size() > revLog.size())
+			RevAtom atom = revLogVector.at(jj);
+			if (atomHeuristicVector.size() > revLogVector.size())
 			{
 				//The heuristic is longer than the vector, just quit and go for the next heuristic
-				LOG_DEBUG("The heuristic is longer than the vector");
+				LOG_DEBUG(H_MARK "The heuristic is longer than the vector");
 				numberInstructionsMet = 0;
 				break;
 			}
@@ -106,7 +114,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 			//Quick check just to see if the last instructions are the same, if they are we go ahead and try to check the full heuristic and taint data
 			if (HEURISTICS::VALIDATOR::quickAtomicCompare(atom, hHeuristicAtom))
 			{
-				LOG_DEBUG("Quick compare step success");
+				LOG_DEBUG(H_MARK "Quick compare step success");
 				//Found possible start of heuristic in building block
 				//We now go back checking for continuation of the full heuristic 
 
@@ -172,12 +180,12 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 				//these colors were derived (and which are considered to be the same for the heuristic).
 				for (UINT16& color : runningColorVector)
 				{
-					LOG_DEBUG("Getting parents of color: " << color);
+					LOG_DEBUG(H_MARK"Getting parents of color: " << color);
 					//For every color that is its parent, we store it in our vector
 					std::vector<UINT16> resVec = taintManager.getController().getColorParents(color);
 					for (UINT16& c : resVec)
 					{
-						LOG_DEBUG("Storing color in runningColorVector: "<<c);
+						LOG_DEBUG(H_MARK"Storing color in runningColorVector: "<<c);
 						runningColorVector.push_back(c);
 					}
 				}
@@ -194,10 +202,19 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 				int currentHeuristicPosition = heuristicLength - 1;
 				while (currentInstructionIndex >= 0)
 				{
-					LOG_DEBUG("Comparing heuristic with instruction at index: " << currentInstructionIndex <<" (max " << atomSize-1 << ")")
+					LOG_DEBUG(H_MARK_i "Comparing heuristic with instruction at position: " << currentInstructionIndex+1 << " (1-" << atomSize <<")");
+
+					//Check if the heuristic already found a hit at this point, if it did, halt
+					if (revLog->getHeuristicLastHitIndex(ii - 1) >= currentInstructionIndex)
+					{
+						//Go to next heuristic
+						LOG_DEBUG(H_MARK_i "Heuristic check halted at instruction position " << currentInstructionIndex+1 << " because of a previous hit");
+						resAtomVec.clear();
+						goto endOfHeuristic;
+					}
 
 					//We start from the back, going backwards
-					RevAtom itAtom = revLog.at(currentInstructionIndex);
+					RevAtom itAtom = revLogVector.at(currentInstructionIndex);
 					RevHeuristicAtom *itHAtom = itAtom.getRevHeuristicAtom();
 
 					RevHeuristicAtom itHeuristicAtom = atomHeuristicVector.at(currentHeuristicPosition);
@@ -205,12 +222,12 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 					{
 						//Might be an instruction interleaved but the heuristic can still be met.
 						//Skip the instruction and go for the next
-						LOG_DEBUG("Skipped due to quick compare");
+						LOG_DEBUG(H_MARK_i "Skipped due to quick compare");
 						currentInstructionIndex--;
 						continue;
 					}
 
-					LOG_DEBUG("Started deep heuristic check");
+					LOG_DEBUG(H_MARK_i "Started deep heuristic check");
 					//It seemed to be met, now check the actual colors using the vector we extracted before
 					//The colors must be contained in said vector.
 					RevColorAtom* itColorAtom = itAtom.getRevColorAtom();
@@ -219,7 +236,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 						if (isColorInVector(itColorAtom->immSrcColor, runningColorVector))
 						{
 							//Could not find color in vector.
-							LOG_DEBUG("Skipped due to immSrc");
+							LOG_DEBUG(H_MARK_i "Skipped due to immSrc");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -230,7 +247,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 					{
 						if (isColorInVector(itColorAtom->leaBaseColor, runningColorVector))
 						{
-							LOG_DEBUG("Skipped due to leaBase");
+							LOG_DEBUG(H_MARK_i "Skipped due to leaBase");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -239,7 +256,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 					{
 						if (isColorInVector(itColorAtom->leaIndexColor, runningColorVector))
 						{
-							LOG_DEBUG("Skipped due to leaIndex");
+							LOG_DEBUG(H_MARK_i "Skipped due to leaIndex");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -248,7 +265,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 					{
 						if (!isAnyColorInVector(itColorAtom->memDestColor, runningColorVector))
 						{
-							LOG_DEBUG("Skipped due to memDest");
+							LOG_DEBUG(H_MARK_i "Skipped due to memDest");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -257,7 +274,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 					{
 						if (!isAnyColorInVector(itColorAtom->memSrcColor, runningColorVector)) 
 						{
-							LOG_DEBUG("Skipped due to memSrc");
+							LOG_DEBUG(H_MARK_i "Skipped due to memSrc");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -266,7 +283,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 					{
 						if (!isAnyColorInVector(itColorAtom->regDestColor, runningColorVector)) 
 						{
-							LOG_DEBUG("Skipped due regDest");
+							LOG_DEBUG(H_MARK_i "Skipped due regDest");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -275,7 +292,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 					{
 						if (!isAnyColorInVector(itColorAtom->regSrcColor, runningColorVector)) 
 						{
-							LOG_DEBUG("Skipped due to regSrc");
+							LOG_DEBUG(H_MARK_i "Skipped due to regSrc");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -283,21 +300,24 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 
 					//If we are here, the heuristic was met for this instruction atom
 					//It must be met for all, so just continue to the next one
-					LOG_DEBUG("Atom met the heuristic");
+					LOG_DEBUG(H_MARK_i "Atom met the heuristic");
 					resAtomVec.push_back(itAtom);
 					numberInstructionsMet++;
-					currentInstructionIndex--;
-					currentHeuristicPosition--;
 
 					if (numberInstructionsMet == heuristicLength)
 					{
 						//We already have the full heuristic, so halt all comparisons
-						LOG_DEBUG("Heuristic completed")
+						LOG_DEBUG(H_MARK_i "Heuristic completed");
+						//Mark the heuristic match
+						revLog->setHeutisticLastHit(ii - 1, currentInstructionIndex);
 						break; // == goto endOfSequence;
 					}
 
+					currentInstructionIndex--;
+					currentHeuristicPosition--;
+
 				} //end of sequence of instructions
-				LOG_DEBUG("Reached the end of the RevLog at heuristic "<<ii);
+				LOG_DEBUG(H_MARK "Reached the end of the RevLog at heuristic "<<ii);
 
 			}
 			else
@@ -305,19 +325,20 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 				//Failed the quick check
 				numberInstructionsMet = 0;
 				resAtomVec.clear();
+				LOG_DEBUG(H_MARK"Failed quickCompare");
 			}
 
 		endOfSequence:
 			//Next instruction in the sequence, going backwards
 
-			LOG_DEBUG("Currently met " << numberInstructionsMet << "/" << heuristicLength << " atoms of the heuristic");
+			LOG_DEBUG(H_MARK "Currently met " << numberInstructionsMet << "/" << heuristicLength << " atoms of the heuristic");
 
 			//Check if we finished
 			if (numberInstructionsMet == heuristicLength)
 			{
 				//If we reached this point, the heuristic was met for all instructions. So we met the heuristic itself
 				//with all the atoms that we have found
-				LOG_DEBUG("HEURISTIC " << ii << " FULLY MET!");
+				LOG_DEBUG(H_MARK "HEURISTIC " << ii << " FULLY MET!");
 				return resAtomVec;
 			}
 
@@ -325,7 +346,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(std::vector<Rev
 			numberInstructionsMet = 0;
 			resAtomVec.clear();
 
-			LOG_DEBUG("Finished checking heuristic starting at index " << jj);
+			LOG_DEBUG(H_MARK "Finished checking heuristic starting at index " << jj);
 
 		} //end of checking one heuristic starting at one instruction
 

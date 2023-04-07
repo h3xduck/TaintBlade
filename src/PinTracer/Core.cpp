@@ -610,6 +610,9 @@ VOID Fini(INT32 code, VOID* v)
 	//Dump RevAtoms
 	ctx.getRevContext()->printRevLogCurrent();
 
+	//Dump info about heuristics found
+	ctx.getRevContext()->dumpFoundHeuristics();
+
 	//Evaluate tests
 	globalTestEngine.evaluateTests();
 }

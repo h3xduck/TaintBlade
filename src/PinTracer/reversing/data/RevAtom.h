@@ -37,6 +37,9 @@ private:
 	//For instructions with immediate as operand
 	UINT64 immSrc;
 
+	//Stores list of heuristics (its index) that have already detected this heuristic
+	std::vector<int> detectedHeuristics;
+
 public:
 	RevAtom(
 		int instType = XED_ICLASS_INVALID_DEFINED, ADDRINT memSrc = 0,
@@ -70,6 +73,9 @@ public:
 
 	RevHeuristicAtom* getRevHeuristicAtom();
 	RevColorAtom* getRevColorAtom();
+
+	void addDetectedHeuristic(int index);
+	bool isDetectedHeuristic(int index);
 };
 
 #endif

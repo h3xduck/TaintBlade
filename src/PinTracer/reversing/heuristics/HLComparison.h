@@ -56,6 +56,11 @@ public:
 	Returns a vector of strings describing the instructions which compound the heuristic
 	*/
 	std::vector<std::string> getInstructionVector();
+
+	/**
+	Returns full vector of atoms that make up the heuristic
+	*/
+	std::vector<RevAtom> getFullAtomVector();
 };
 
 

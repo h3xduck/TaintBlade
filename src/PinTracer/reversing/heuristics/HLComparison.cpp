@@ -97,3 +97,8 @@ const int HLComparison::getRevHeuristicNumber()
 {
 	return HLComparison::revHeuristicNumber;
 }
+
+std::vector<RevAtom> HLComparison::getFullAtomVector()
+{
+	return this->revAtomVector;
+}

@@ -2,6 +2,7 @@
 #include "../heuristics/HeuristicsValidator.h"
 
 extern TestEngine globalTestEngine;
+extern DataDumper dataDumper;
 
 RevContext::RevContext()
 {
@@ -18,12 +19,15 @@ void RevContext::insertRevLog(RevAtom atom)
 void RevContext::operateRevLog()
 {
 	//Try to get whether it is a comparison HL inst.
-	HLComparison heuristicFound = HEURISTICS::VALIDATOR::checkValidity(this->revLogCurrent.getLogVector());
+	HLComparison heuristicFound = HEURISTICS::VALIDATOR::checkValidity(&(this->revLogCurrent));
 
 	if (heuristicFound.isHeuristicMet())
 	{
 		LOG_DEBUG("Logging test milestone");
-		//Test milestone
+		//Logging the found heuristic
+		this->revLogParsed.logInsert(heuristicFound);
+
+		//For tests relying on heuristics
 		HeuristicMilestone testMilestone = HeuristicMilestone(heuristicFound.getInstructionVector(), TestMilestone::HEURISTIC);
 		globalTestEngine.logMilestone(&testMilestone);
 	}
@@ -70,4 +74,12 @@ void RevContext::cleanCurrentRevAtom()
 int RevContext::getRevLogCurrentLength()
 {
 	return this->revLogCurrent.getLogVector().size();
+}
+
+void RevContext::dumpFoundHeuristics()
+{
+	for (HLComparison& c : this->revLogParsed.getLogVector())
+	{
+		dataDumper.writeRevHeuristicDumpLine(c);
+	}
 }

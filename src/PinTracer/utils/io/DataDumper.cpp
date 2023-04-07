@@ -10,6 +10,7 @@ DataDumper::DataDumper()
 	this->colorTransDumpFile.open(COLOR_TRANS_DUMP_FILE);
 	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
 	this->memColorEventDumpFile.open(TAINT_EVENT_DUMP_FILE);
+	this->heuristicsResultsDumpFile.open(HEURISTIC_RESULTS_DUMP_FILE);
 }
 
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec)
@@ -91,6 +92,17 @@ void DataDumper::writeColorTransformationDump(std::vector<Tag> vec)
 	}
 }
 
+void DataDumper::writeRevHeuristicDumpLine(HLComparison log)
+{
+	std::vector<std::string> insVec = log.getInstructionVector();
+	this->heuristicsResultsDumpFile << "HEURISTIC MET: ";
+	for (std::string &s : insVec)
+	{
+		this->heuristicsResultsDumpFile << s << " ";
+	}
+	this->heuristicsResultsDumpFile << DUMP_OUTER_SEPARATOR;
+}
+
 void DataDumper::resetDumpFiles()
 {
 	if (remove(CURRENT_TAINTED_MEMORY_DUMP_FILE) != 0)
@@ -136,5 +148,14 @@ void DataDumper::resetDumpFiles()
 	else
 	{
 		LOG_DEBUG("Function calls dump file successfully deleted");
+	}
+
+	if (remove(HEURISTIC_RESULTS_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting heuristic results dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Heuristic results dump file successfully deleted");
 	}
 }

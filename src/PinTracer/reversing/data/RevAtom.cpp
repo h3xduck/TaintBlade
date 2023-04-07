@@ -140,3 +140,13 @@ RevColorAtom* RevAtom::getRevColorAtom()
 {
 	return &(this->revColorAtom);
 }
+
+void RevAtom::addDetectedHeuristic(int index)
+{
+	this->detectedHeuristics.push_back(index);
+}
+
+bool RevAtom::isDetectedHeuristic(int index)
+{
+	return std::find(this->detectedHeuristics.begin(), this->detectedHeuristics.end(), index) != this->detectedHeuristics.end();
+}

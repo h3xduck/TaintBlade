@@ -17,9 +17,8 @@ private:
 	/**
 	List of instructions that were found to correspond to a high-level operation
 	(such as a comparison).
-	TODO
 	*/
-	//RevLog<HLComparison*> revLogParsed;
+	RevLog<HLComparison> revLogParsed;
 
 	/**
 	An auxiliary RevAtom that is used during instrumentation, used to store
@@ -80,6 +79,11 @@ public:
 	Returns length of the RevLog vector
 	*/
 	int getRevLogCurrentLength();
+
+	/**
+	Writes all the heuristics found during the execution of the program to a file
+	*/
+	void dumpFoundHeuristics();
 
 };
 
