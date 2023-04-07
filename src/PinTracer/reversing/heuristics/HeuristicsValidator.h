@@ -37,16 +37,6 @@ namespace HEURISTICS
 		RevAtom not included in the heuristic). If heuristic not met, returns empty vector.
 		*/
 		static std::vector<RevAtom> checkHeuristicAlgNRS(RevLog<RevAtom> *revLog);
-
-		/**
-		Algorithm for checking an heuristic
-		Same as checkHeuristicAlgNRS, but heuristics are checked from the start of the vector instead of from the end.
-		For now, this algorithm is the only that prevents repetition of heuristic matches.
-
-		Returns vector of RevAtoms found to belong to the RevHeuristic (ignoring any
-		RevAtom not included in the heuristic). If heuristic not met, returns empty vector.
-		*/
-		static std::vector<RevAtom> checkHeuristicAlgNRSinverse(RevLog<RevAtom>* revLog);
 	};
 };
 
