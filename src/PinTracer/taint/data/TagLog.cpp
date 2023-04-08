@@ -162,6 +162,7 @@ std::vector<UINT16>* _getColorParents(TagLog *tagLog, UINT16 color, std::vector<
 	}
 	else
 	{
+		vec->push_back(color);
 		_getColorParents(tagLog, it->second.derivate1, vec);
 		_getColorParents(tagLog, it->second.derivate2, vec);
 		

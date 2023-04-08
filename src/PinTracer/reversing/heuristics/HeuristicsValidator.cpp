@@ -190,10 +190,6 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					}
 				}
 
-				for (UINT16& color : runningColorVector)
-				{
-					LOG_DEBUG("Color " << color);
-				}
 				//Delete duplicates (shouldn't be any, but just in case)
 				std::sort(runningColorVector.begin(), runningColorVector.end());
 				runningColorVector.erase(std::unique(runningColorVector.begin(), runningColorVector.end()), runningColorVector.end());
