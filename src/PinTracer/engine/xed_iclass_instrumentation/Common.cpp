@@ -6,6 +6,7 @@ void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRIN
 	//Log instruction for the reverse engineering module, in case params were tainted
 	RevAtom *atom = ctx.getRevContext()->getCurrentRevAtom();
 	RevColorAtom* atomColor = atom->getRevColorAtom();
+	RevDataAtom* atomData = atom->getRevDataAtom();
 	bool atomChanged = false;
 	if (tController.memRangeIsTainted(memSrc, memSrcLen))
 	{
@@ -15,6 +16,9 @@ void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRIN
 		atomColor->memSrcColor = tController.memRangeGetColor(memSrc, memSrcLen);
 		atomColor->memSrcLen = memSrcLen;
 		atomChanged = true;
+		PIN_LockClient();
+		atomData->setMemSrcValueBytes(InstructionWorker::getMemoryValue(memSrc, memSrcLen));
+		PIN_UnlockClient();
 	}
 	if (tController.regIsTainted(regDest))
 	{
@@ -22,6 +26,11 @@ void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRIN
 		atom->setRegDest(regDest);
 		atomColor->regDestColor = tController.regGetColor(regDest);
 		atomChanged = true;
+		PIN_LockClient();
+		UINT8 valBuffer[8];
+		InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
+		atomData->setRegDestValue(valBuffer, REG_Size(regDest));
+		PIN_UnlockClient();
 	}
 	if (atomChanged)
 	{
@@ -42,6 +51,7 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 	//Log instruction for the reverse engineering module, in case params were tainted
 	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
 	RevColorAtom* atomColor = atom->getRevColorAtom();
+	RevDataAtom* atomData = atom->getRevDataAtom();
 	bool atomChanged = false;
 	if (tController.regIsTainted(regSrc))
 	{
@@ -49,6 +59,11 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 		atom->setRegSrc(regSrc);
 		atomColor->regDestColor = tController.regGetColor(regSrc);
 		atomChanged = true;
+		PIN_LockClient();
+		UINT8 valBuffer[8];
+		InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
+		atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
+		PIN_UnlockClient();
 	}
 	if (tController.regIsTainted(regDest))
 	{
@@ -56,6 +71,11 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 		atom->setRegDest(regDest);
 		atomColor->regDestColor = tController.regGetColor(regDest);
 		atomChanged = true;
+		PIN_LockClient();
+		UINT8 valBuffer[8];
+		InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
+		atomData->setRegDestValue(valBuffer, REG_Size(regDest));
+		PIN_UnlockClient();
 	}
 	if (atomChanged)
 	{
@@ -75,6 +95,7 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 	//Log instruction for the reverse engineering module, in case params were tainted
 	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
 	RevColorAtom* atomColor = atom->getRevColorAtom();
+	RevDataAtom* atomData = atom->getRevDataAtom();
 	bool atomChanged = false;
 	if (tController.regIsTainted(regSrc))
 	{
@@ -82,6 +103,11 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 		atom->setRegSrc(regSrc);
 		atomColor->regSrcColor = tController.regGetColor(regSrc);
 		atomChanged = true;
+		PIN_LockClient();
+		UINT8 valBuffer[8];
+		InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
+		atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
+		PIN_UnlockClient();
 	}
 	if (tController.memRangeIsTainted(memDest, memDestLen))
 	{
@@ -91,6 +117,9 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 		atomColor->memDestColor = tController.memRangeGetColor(memDest, memDestLen);
 		atomColor->memDestLen = memDestLen;
 		atomChanged = true;
+		PIN_LockClient();
+		atomData->setMemDestValueBytes(InstructionWorker::getMemoryValue(memDest, memDestLen));
+		PIN_UnlockClient();
 	}
 	if (atomChanged)
 	{

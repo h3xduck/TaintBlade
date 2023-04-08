@@ -214,3 +214,20 @@ std::vector<char> InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
 	return vec;
 }
 
+ADDRINT InstructionWorker::getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8 *valBuffer)
+{
+	PIN_GetContextRegval(lctx, reg, valBuffer);
+	
+	//Now we reverse the order, since we want the MSB to be at the "left" of the vector, that is, at index 0
+	const UINT32 regSize = REG_Size(reg);
+	for (int ii = 0; ii < regSize/2; ii++)
+	{
+		UINT8 aux = valBuffer[ii];
+		valBuffer[ii] = valBuffer[regSize - ii - 1];
+		valBuffer[regSize - ii - 1] = aux;
+	}
+	
+	//for (int ii = 0; ii < 8; ii++) LOG_DEBUG("OUT ValBuffer[" << ii << "]: " << valBuffer[ii]);
+	return 0;
+}
+

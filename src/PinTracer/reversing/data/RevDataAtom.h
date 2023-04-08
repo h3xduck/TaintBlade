@@ -17,18 +17,18 @@ private:
 	std::vector<char> memSrcValueBytes;
 	std::vector<char> memDestValueBytes;
 	
-	//One ADDRINT for the whole register
-	ADDRINT regSrcValue = 0;
-	ADDRINT regDestValue = 0;
+	//One UINT8 for each byte of the register
+	std::vector<UINT8> regSrcValueBytes;
+	std::vector<UINT8> regDestValueBytes;
 
 public:
 	RevDataAtom() {};
-	RevDataAtom(std::vector<char> memSrc, std::vector<char> memDest, ADDRINT regSrc, ADDRINT regDest)
+	RevDataAtom(std::vector<char> memSrc, std::vector<char> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest)
 	{
 		this->memSrcValueBytes = memSrc;
 		this->memDestValueBytes = memDest;
-		this->regSrcValue = regSrc;
-		this->regDestValue = regDest;
+		this->regSrcValueBytes = regSrc;
+		this->regDestValueBytes = regDest;
 	}
 
 	void setMemSrcValueBytes(std::vector<char> valueBytes)
@@ -61,24 +61,32 @@ public:
 		this->memDestValueBytes.push_back(valueByte);
 	}
 
-	void setRegSrcValue(ADDRINT value)
+	void setRegSrcValue(UINT8 *value, UINT32 byteSize)
 	{
-		this->regSrcValue = value;
+		this->regSrcValueBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regSrcValueBytes.push_back(value[ii]);
+		}
 	}
 
-	ADDRINT getRegSrcValue()
+	std::vector<UINT8> getRegSrcValue()
 	{
-		return this->regSrcValue;
+		return this->regSrcValueBytes;
 	}
 
-	void setRegDestValue(ADDRINT value)
+	void setRegDestValue(UINT8 *value, UINT32 byteSize)
 	{
-		this->regDestValue = value;
+		this->regSrcValueBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regDestValueBytes.push_back(value[ii]);
+		}
 	}
 
-	ADDRINT getRegDestValue()
+	std::vector<UINT8> getRegDestValue()
 	{
-		return this->regDestValue;
+		return this->regDestValueBytes;
 	}
 
 
