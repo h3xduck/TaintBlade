@@ -163,6 +163,11 @@ RevColorAtom* RevAtom::getRevColorAtom()
 	return &(this->revColorAtom);
 }
 
+RevDataAtom* RevAtom::getRevDataAtom()
+{
+	return &(this->revDataAtom);
+}
+
 void RevAtom::addDetectedHeuristic(int index)
 {
 	this->detectedHeuristics.push_back(index);

@@ -2,7 +2,7 @@
 
 extern Context ctx;
 
-void OPC_INST::ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
+void OPC_INST::ovw_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
@@ -10,10 +10,10 @@ void OPC_INST::ovw_mem2reg(THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSr
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
-	INST_COMMON::revLogInst_mem2reg(ip, memSrc, memSrcLen, regDest, opc);
+	INST_COMMON::revLogInst_mem2reg(lctx, ip, memSrc, memSrcLen, regDest, opc);
 }
 
-void OPC_INST::ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
+void OPC_INST::ovw_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
@@ -21,22 +21,24 @@ void OPC_INST::ovw_reg2reg(THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UI
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
 	taintManager.getController().taintRegWithReg(regDest, regSrc, true);
-	INST_COMMON::revLogInst_reg2reg(ip, regSrc, regDest, opc);
+	INST_COMMON::revLogInst_reg2reg(lctx, ip, regSrc, regDest, opc);
 }
 
-void OPC_INST::ovw_reg2mem(THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
+void OPC_INST::ovw_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
+	std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	taintManager.getController().taintMemWithReg(memDest, memDestLen, regSrc, true);
-	INST_COMMON::revLogInst_reg2mem(ip, regSrc, memDest, memDestLen, opc);
+	INST_COMMON::revLogInst_reg2mem(lctx, ip, regSrc, memDest, memDestLen, opc);
 }
 
-void OPC_INST::ovw_imm2reg(THREADID tid, ADDRINT ip, REG regDest)
+//TODO: support IMMs for heuristics
+
+void OPC_INST::ovw_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regDest)
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
@@ -45,12 +47,12 @@ void OPC_INST::ovw_imm2reg(THREADID tid, ADDRINT ip, REG regDest)
 	taintManager.getController().untaintReg(regDest);
 }
 
-void OPC_INST::ovw_imm2mem(THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memDestLen)
+void OPC_INST::ovw_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memDestLen)
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	std::string val = InstructionWorker::getMemoryValue(memDest, memDestLen);
+	std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	taintManager.getController().untaintMem(memDest, memDestLen);

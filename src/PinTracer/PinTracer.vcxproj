@@ -299,11 +299,13 @@
     <ClInclude Include="reversing\data\RevAtom.h" />
     <ClInclude Include="reversing\core\RevContext.h" />
     <ClInclude Include="reversing\data\RevColorAtom.h" />
+    <ClInclude Include="reversing\data\RevDataAtom.h" />
     <ClInclude Include="reversing\data\RevHeuristicAtom.h" />
     <ClInclude Include="reversing\data\RevLog.h" />
     <ClInclude Include="reversing\heuristics\HeuristicsValidator.h" />
     <ClInclude Include="reversing\heuristics\HLComparison.h" />
     <ClInclude Include="reversing\heuristics\RevHeuristic.h" />
+    <ClInclude Include="reversing\protocol\ProtocolNetworkBuffer.h" />
     <ClInclude Include="reversing\protocol\ProtocolReverser.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />

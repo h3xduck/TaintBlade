@@ -5,6 +5,7 @@
 #include <xed-category-enum.h>
 #include "RevHeuristicAtom.h"
 #include "RevColorAtom.h"
+#include "RevDataAtom.h"
 #include "../../utils/inst/InstructionWorker.h"
 
 /**
@@ -19,6 +20,9 @@ private:
 
 	//Stores colors of tainted elements in the atom
 	RevColorAtom revColorAtom;
+
+	//Stores actual values of the memory addresses and registers that are tainted
+	RevDataAtom revDataAtom;
 
 	//Basic information found in most binary operations
 	int instType;
@@ -83,6 +87,7 @@ public:
 
 	RevHeuristicAtom* getRevHeuristicAtom();
 	RevColorAtom* getRevColorAtom();
+	RevDataAtom* getRevDataAtom();
 
 	void addDetectedHeuristic(int index);
 	bool isDetectedHeuristic(int index);

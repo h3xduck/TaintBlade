@@ -57,7 +57,7 @@ public:
 		this->immSrcColor = immSrcColor;
 	}
 
-	//TODO
+	//TODO ?? I believe this is done already in revheuristicatom, see if delete
 	/**
 	Returns whether an heuristic atom (this) is containted on another (other).
 	For this to be true, the instructions must be the same, and the tainted elements on (other)

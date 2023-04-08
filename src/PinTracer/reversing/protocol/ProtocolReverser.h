@@ -3,6 +3,9 @@
 
 #include "../core/RevContext.h"
 #include "../../common/Context.h"
+#include "../../taint/core/TaintManager.h"
+
+extern TaintManager taintManager;
 
 namespace REVERSING
 {

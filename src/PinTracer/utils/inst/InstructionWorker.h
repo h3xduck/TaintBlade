@@ -32,7 +32,12 @@ namespace InstructionWorker
 	/**
 	Returns a string of length len representing the bytes at memAddr. No extra info.
 	*/
-	std::string getMemoryValue(ADDRINT memAddr, int len);
+	std::string getMemoryValueHexString(ADDRINT memAddr, int len);
+
+	/**
+	Returns an vector of chars of length len representing the bytes at memAddr. No extra info.
+	*/
+	std::vector<char> getMemoryValue(ADDRINT memAddr, int len);
 
 	/**
 	Returns a string representing the bytes at memAddr with length len.

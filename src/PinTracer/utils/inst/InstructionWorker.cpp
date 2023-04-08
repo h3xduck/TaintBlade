@@ -187,7 +187,7 @@ UINT64 getBufferStringLengthUTF16(void* buf)
 }
 
 
-std::string InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
+std::string InstructionWorker::getMemoryValueHexString(ADDRINT memAddr, int len)
 {
 	char data[8] = {0};
 	PIN_SafeCopy(data, (VOID*)(memAddr), len);
@@ -197,6 +197,20 @@ std::string InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
 	{
 		ss << std::setw(2) << static_cast<unsigned>((UINT8)(data[ii]));
 	}
-
+	
 	return ss.str();
 }
+
+std::vector<char> InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
+{
+	char data[8] = { 0 };
+	PIN_SafeCopy(data, (VOID*)(memAddr), len);
+	std::vector<char> vec;
+	for (int ii = 0; ii < len; ii++)
+	{
+		vec.push_back(data[ii]);
+	}
+
+	return vec;
+}
+

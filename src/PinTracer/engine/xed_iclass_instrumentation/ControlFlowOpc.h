@@ -11,7 +11,7 @@ extern TaintManager taintManager;
 
 namespace OPC_INST {
 
-	void controlFlow_empty(THREADID tid, ADDRINT ip);
+	void controlFlow_empty(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip);
 
 	/**
 	Empty instrumentation, no tainting. We will just keep track of current instruction

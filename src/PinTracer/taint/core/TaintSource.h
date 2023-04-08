@@ -88,7 +88,7 @@ public:
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
 		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
-		std::string val = InstructionWorker::getMemoryValue((ADDRINT)wsockRecv.buf, retVal);
+		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wsockRecv.buf, retVal);
 		ctx.updateLastMemoryValue(val, retVal);
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);

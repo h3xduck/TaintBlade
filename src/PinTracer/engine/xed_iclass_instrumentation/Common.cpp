@@ -1,6 +1,6 @@
 #include "Common.h"
 
-void INST_COMMON::revLogInst_mem2reg(ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
+void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -36,7 +36,7 @@ void INST_COMMON::revLogInst_mem2reg(ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_reg2reg(ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
+void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -69,7 +69,7 @@ void INST_COMMON::revLogInst_reg2reg(ADDRINT ip, REG regSrc, REG regDest, UINT32
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_reg2mem(ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
+void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -104,7 +104,7 @@ void INST_COMMON::revLogInst_reg2mem(ADDRINT ip, REG regSrc, ADDRINT memDest, IN
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_lea_mem2reg(ADDRINT ip, REG destReg, REG leaBase, REG leaIndex)
+void INST_COMMON::revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex)
 {
 	//TODO control if the memory address is tainted
 	TaintController tController = taintManager.getController();
