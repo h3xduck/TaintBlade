@@ -16,9 +16,9 @@ private:
 
 	/**
 	List of instructions that were found to correspond to a high-level operation
-	(such as a comparison).
+	(such as a comparison). A vector of heuristics.
 	*/
-	RevLog<HLComparison> revLogParsed;
+	RevLog<HLComparison> revLogHeuristics;
 
 	/**
 	An auxiliary RevAtom that is used during instrumentation, used to store
@@ -26,6 +26,10 @@ private:
 	It may be deleted if no element is tainted or inserted if there are any.
 	*/
 	RevAtom currentRevAtom;
+
+	/**
+	List of memory addresses range
+	*/
 
 public:
 	RevContext();
@@ -61,9 +65,9 @@ public:
 	void cleanRangeRevLogCurrent(int x);
 
 	/**
-	Prints all entries in the revLogParsed
+	Prints all heuristics found during the program execution
 	*/
-	void printRevLogParsed();
+	void printRevLogHeuristics();
 
 	/**
 	Returns auxiliary RevAtom used during instrumentation
@@ -84,6 +88,11 @@ public:
 	Writes all the heuristics found during the execution of the program to a file
 	*/
 	void dumpFoundHeuristics();
+
+	/**
+	Returns the vector of all heuristics found during the program execution
+	*/
+	RevLog<HLComparison> getHeuristicsVector();
 
 };
 

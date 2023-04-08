@@ -8,13 +8,20 @@
 
 class TagLog
 {
+public:
+	typedef struct original_color_data_t
+	{
+		std::string dllName;
+		std::string funcName; 
+		ADDRINT memAddress;
+	};
 private:
 	//Color, colors mixed to make it
 	std::tr1::unordered_map<UINT16, Tag> tagLogMap;
 	//Color used to mix, vector of colors with which it was combined (first) and the result (second element in vector)
 	std::tr1::unordered_map<UINT16, std::vector<std::pair<UINT16, UINT16>>> reverseTagLogMap;
 	//Stores original colors, not created by mixing two others
-	std::tr1::unordered_map<UINT16, std::pair<std::string, std::string>> originalColorsMap;
+	std::tr1::unordered_map<UINT16, original_color_data_t> originalColorsMap;
 
 	void printBT(const std::string& prefix, const UINT16 color, bool isLeft);
 	void printBT(const UINT16 color);
@@ -22,7 +29,12 @@ public:
 	void logTag(Tag tag);
 	void dumpTagLog();
 	void dumpTagLogPrettified(UINT16 startColor);
-	void logTagOriginal(UINT16 color, std::string dllName, std::string funcName);
+
+	/**
+	Stores in the list of original colors a color along with other data
+	*/
+	void logTagOriginal(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress);
+
 	void dumpTagLogOriginalColors();
 
 	std::tr1::unordered_map<UINT16, Tag> getTagLogMap()
@@ -43,7 +55,7 @@ public:
 	/**
 	Get vector of original colors
 	*/
-	std::vector < std::pair<UINT16, std::pair<std::string, std::string>>> getOriginalColorsVector();
+	std::vector<std::pair<UINT16, original_color_data_t>> getOriginalColorsVector();
 
 	/**
 	Get vector of color transformations

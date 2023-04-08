@@ -7,7 +7,7 @@ extern DataDumper dataDumper;
 RevContext::RevContext()
 {
 	this->revLogCurrent.cleanLog();
-	//this->revLogParsed.cleanLog();
+	this->revLogHeuristics.cleanLog();
 	this->currentRevAtom = RevAtom();
 }
 
@@ -25,7 +25,7 @@ void RevContext::operateRevLog()
 	{
 		LOG_DEBUG("Logging test milestone");
 		//Logging the found heuristic
-		this->revLogParsed.logInsert(heuristicFound);
+		this->revLogHeuristics.logInsert(heuristicFound);
 
 		//For tests relying on heuristics
 		HeuristicMilestone testMilestone = HeuristicMilestone(heuristicFound.getInstructionVector(), TestMilestone::HEURISTIC);
@@ -56,7 +56,7 @@ void RevContext::cleanRangeRevLogCurrent(int x)
 	this->revLogCurrent.cleanFirstX(x);
 }
 
-void RevContext::printRevLogParsed()
+void RevContext::printRevLogHeuristics()
 {
 	//TODO
 }
@@ -78,8 +78,13 @@ int RevContext::getRevLogCurrentLength()
 
 void RevContext::dumpFoundHeuristics()
 {
-	for (HLComparison& c : this->revLogParsed.getLogVector())
+	for (HLComparison& c : this->revLogHeuristics.getLogVector())
 	{
 		dataDumper.writeRevHeuristicDumpLine(c);
 	}
+}
+
+RevLog<HLComparison> RevContext::getHeuristicsVector()
+{
+	return this->revLogHeuristics;
 }

@@ -170,7 +170,7 @@ public:
 	/**
 	Returns vector with original colors
 	*/
-	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> getOriginalColorsVector();
+	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> getOriginalColorsVector();
 
 	/**
 	Returns vector with color transformations

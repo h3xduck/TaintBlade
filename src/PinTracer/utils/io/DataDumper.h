@@ -7,6 +7,7 @@
 #include <fstream>  
 #include "../inst/InstructionWorker.h"
 #include "../../taint/data/Tag.h"
+#include "../../taint/data/TagLog.h"
 #include "../../common/Context.h"
 #include "../../utils/io/format.h"
 
@@ -77,7 +78,7 @@ public:
 
 	DataDumper();
 
-	void writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec);
+	void writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec);
 	void writeMemoryColorEventDump(memory_color_event_line_t event);
 	void writeColorTransformationDump(std::vector<Tag>);
 	void writeRoutineDumpLine(struct func_dll_names_dump_line_t data);

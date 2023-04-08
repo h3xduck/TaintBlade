@@ -24,6 +24,7 @@
 #include "utils/io/DataDumper.h"
 #include "taint/core/TaintSource.h"
 #include "test/TestEngine.h"
+#include "taint/data/TagLog.h"
 
 using std::string;
 
@@ -600,7 +601,7 @@ VOID Fini(INT32 code, VOID* v)
 	PerformanceOperator::measureChrono();
 	
 	//Dump original colors vector
-	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> orgVec = taintController.getOriginalColorsVector();
+	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
 	dataDumper.writeOriginalColorDump(orgVec);
 
 	//Dump color transformations

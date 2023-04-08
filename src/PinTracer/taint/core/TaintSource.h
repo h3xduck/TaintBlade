@@ -95,7 +95,8 @@ public:
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
 		for (auto color : colorVector)
 		{
-			taintController.registerOriginalColor(color, dllName, funcName);
+			//Each 1 byte, we get a different color
+			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)(wsockRecv.buf+1));
 		}
 		
 	}

@@ -693,7 +693,7 @@ std::vector<std::pair<ADDRINT, UINT16>> TagMap::getTaintedMemoryVector()
 	return vec;
 }
 
-std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> TagMap::getOriginalColorsVector()
+std::vector<std::pair<UINT16, TagLog::original_color_data_t>> TagMap::getOriginalColorsVector()
 {
 	return this->tagLog.getOriginalColorsVector();
 }

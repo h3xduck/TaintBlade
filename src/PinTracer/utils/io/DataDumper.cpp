@@ -13,13 +13,14 @@ DataDumper::DataDumper()
 	this->heuristicsResultsDumpFile.open(HEURISTIC_RESULTS_DUMP_FILE);
 }
 
-void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec)
+void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec)
 {
+	//NOTE: in here we also have the memAddress available
 	for (auto it : colorVec)
 	{
 		this->orgColorsDumpFile << it.first << DUMP_INTER_SEPARATOR <<
-			it.second.first << DUMP_INTER_SEPARATOR <<
-			it.second.second << DUMP_INTER_SEPARATOR <<
+			it.second.dllName << DUMP_INTER_SEPARATOR <<
+			it.second.funcName << DUMP_INTER_SEPARATOR <<
 			this->lastRoutineDumpIndex << DUMP_OUTER_SEPARATOR;
 	}
 }
