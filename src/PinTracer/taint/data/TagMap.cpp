@@ -340,10 +340,12 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 			//src1=dest is not empty_color
 			if (colorSrc2 == EMPTY_COLOR)
 			{
-				//src2=empty_color, thus just untaint that reg byte
-				Tag tag(0);
-				this->regTaintField[posStart + ii] = tag;
-				LOG_DEBUG("(in loop) Untainted reg mixTaintReg(" << dest << ", "<<src1<<", "<< src2<<") --> modified Tag of reg(R:" << dest << " P:"<< posStart + ii << ") with full empty color");
+				//src2=empty_color, thus just keep the color of that taint byte
+				LOG_DEBUG("(in loop) Maintained taint of reg at mixTaintReg(" << dest << ", " << src1 << ", " << src2 << ") --> maintained Tag of reg(R:" << dest << " P:" << posStart + ii << ") because src has empty color");
+				
+				//Tag tag(0);
+				//this->regTaintField[posStart + ii] = tag;
+				//LOG_DEBUG("(in loop) Untainted reg mixTaintReg(" << dest << ", "<<src1<<", "<< src2<<") --> modified Tag of reg(R:" << dest << " P:"<< posStart + ii << ") with full empty color");
 			}
 			else
 			{

@@ -7,7 +7,7 @@
 	"[H:" << ii << "/" << HLComparison::getRevHeuristicNumber() << " | I:" << jj+1 << "/" << atomSize << " | i:" << currentInstructionIndex+1 << "] "
 
 
-HLComparison HEURISTICS::VALIDATOR::checkValidity(RevLog<RevAtom> *revLog)
+HLComparison REVERSING::HEURISTICS::checkValidity(RevLog<RevAtom> *revLog)
 {
 	if (HLComparison::getInternalRevHeuristic()->getAtomVector().empty())
 	{
@@ -15,7 +15,7 @@ HLComparison HEURISTICS::VALIDATOR::checkValidity(RevLog<RevAtom> *revLog)
 		LOG_DEBUG("Heuristics for HLComparison initialized");
 	}
 
-	std::vector<RevAtom> atomVec = HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(revLog);
+	std::vector<RevAtom> atomVec = REVERSING::HEURISTICS::checkHeuristicAlgNRS(revLog);
 	if (atomVec.empty())
 	{
 		return HLComparison();
@@ -28,7 +28,7 @@ HLComparison HEURISTICS::VALIDATOR::checkValidity(RevLog<RevAtom> *revLog)
 	}
 }
 
-int HEURISTICS::VALIDATOR::quickAtomicCompare(RevAtom atom1, RevHeuristicAtom hAtom2)
+int REVERSING::HEURISTICS::quickAtomicCompare(RevAtom atom1, RevHeuristicAtom hAtom2)
 {
 	RevHeuristicAtom* internalhAtom1 = atom1.getRevHeuristicAtom();
 
@@ -72,7 +72,7 @@ int isAnyColorInVector(std::vector<UINT16>& colors, std::vector<UINT16>& vec)
 	return 0;
 }
 
-std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(RevLog<RevAtom> *revLog)
+std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom> *revLog)
 {
 	//Result vector
 	std::vector<RevAtom> resAtomVec(0);
@@ -112,7 +112,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(RevLog<RevAtom>
 
 			RevHeuristicAtom hHeuristicAtom = atomHeuristicVector.back();
 			//Quick check just to see if the last instructions are the same, if they are we go ahead and try to check the full heuristic and taint data
-			if (HEURISTICS::VALIDATOR::quickAtomicCompare(atom, hHeuristicAtom))
+			if (REVERSING::HEURISTICS::quickAtomicCompare(atom, hHeuristicAtom))
 			{
 				LOG_DEBUG(H_MARK "Quick compare step success");
 				//Found possible start of heuristic in building block
@@ -189,6 +189,11 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(RevLog<RevAtom>
 						runningColorVector.push_back(c);
 					}
 				}
+
+				for (UINT16& color : runningColorVector)
+				{
+					LOG_DEBUG("Color " << color);
+				}
 				//Delete duplicates (shouldn't be any, but just in case)
 				std::sort(runningColorVector.begin(), runningColorVector.end());
 				runningColorVector.erase(std::unique(runningColorVector.begin(), runningColorVector.end()), runningColorVector.end());
@@ -218,7 +223,7 @@ std::vector<RevAtom> HEURISTICS::VALIDATOR::checkHeuristicAlgNRS(RevLog<RevAtom>
 					RevHeuristicAtom *itHAtom = itAtom.getRevHeuristicAtom();
 
 					RevHeuristicAtom itHeuristicAtom = atomHeuristicVector.at(currentHeuristicPosition);
-					if (!HEURISTICS::VALIDATOR::quickAtomicCompare(itAtom, itHeuristicAtom))
+					if (!REVERSING::HEURISTICS::quickAtomicCompare(itAtom, itHeuristicAtom))
 					{
 						//Might be an instruction interleaved but the heuristic can still be met.
 						//Skip the instruction and go for the next

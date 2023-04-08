@@ -7,9 +7,9 @@
 
 extern TaintManager taintManager;
 
-namespace HEURISTICS
+namespace REVERSING
 {
-	namespace VALIDATOR
+	namespace HEURISTICS
 	{
 		/**
 		Returns a HLComparison instance if the vector corresponds to one of the heuristics

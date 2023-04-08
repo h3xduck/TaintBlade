@@ -15,12 +15,14 @@ extern ExitProcess
 extern _CRT_INIT
 
 main:
-    add rbx, rax
-    cmp rbx, [msg]
-    cmp [msg], rbx
-    sub rbx, rax
+    add rcx, rax
     add rcx, rbx
-    cmp [msg], rbx
+    cmp [msg], rcx
+    add rcx, rdx
+    add rcx, rbx
+    mov rdx, rcx
+    add rdx, rbx
+    cmp [msg], rdx
 
     
 

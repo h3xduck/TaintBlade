@@ -19,7 +19,7 @@ void RevContext::insertRevLog(RevAtom atom)
 void RevContext::operateRevLog()
 {
 	//Try to get whether it is a comparison HL inst.
-	HLComparison heuristicFound = HEURISTICS::VALIDATOR::checkValidity(&(this->revLogCurrent));
+	HLComparison heuristicFound = REVERSING::HEURISTICS::checkValidity(&(this->revLogCurrent));
 
 	if (heuristicFound.isHeuristicMet())
 	{
