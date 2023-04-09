@@ -71,6 +71,21 @@ public:
 
 		return true;
 	}
+
+	/**
+	Returns whether the RevHeuristicAtom has any field active (=tainted)
+	*/
+	bool containsAnyData()
+	{
+		if (this->hasImmSrc || this->instType != 0 || this->leaBaseTainted ||
+			this->leaIndexTainted || this->memDestTainted || this->memSrcTainted ||
+			this->regDestTainted || this->regSrcTainted)
+		{
+			return true;
+		}
+
+		return false;
+	}
 };
 
 #endif

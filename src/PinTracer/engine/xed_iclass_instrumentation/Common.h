@@ -104,7 +104,7 @@ Deprecated
 	IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_END);	\
 }
 
-//For instructions that use memory but do not write to it
+////////////////// For instructions that use memory but do not write to it //////////////////
 
 #define INS_CALL_NOWRITE_R2M_N(proc_func, ins) \
 {	\
@@ -127,7 +127,52 @@ Deprecated
 	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
+////////////////// For CMP instructions. CMPs need to be divided into two, to get the CMP result //////////////////
 
+#define INS_CALL_CMP_R2M_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_MEMORYOP_PTR, 0, IARG_MEMORYOP_SIZE, 0, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+	INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) cmp_after, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_CMP_I2M_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_MEMORYOP_PTR, 0, IARG_MEMORYOP_SIZE, 0, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+	INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) cmp_after, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_CMP_I2R_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_UINT32, INS_OperandReg(ins, 0), \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+	INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) cmp_after, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_CMP_R2R_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_UINT32, INS_OperandReg(ins, 0), \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+	INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) cmp_after, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_CMP_M2R_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE, IARG_UINT32, INS_OperandReg(ins, 0), \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+	INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) cmp_after, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
 
 namespace INST_COMMON
 {
@@ -135,37 +180,43 @@ namespace INST_COMMON
 	Instruction that puts a value from one memory address to a register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc);
+	void revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc, bool needsAfterInstruction = false);
 	
 	/**
 	Instruction that puts a value from one register to another register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc);
+	void revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc, bool needsAfterInstruction = false);
 
 	/**
 	Instruction that puts a value from a register to a memory address.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
+	void revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc, bool needsAfterInstruction = false);
 
 	/**
 	Instruction that involves a value from an immediate to a memory address.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
+	void revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc, bool needsAfterInstruction = false);
 
 	/**
 	Instruction that involves a value from an immediate to a register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc);
+	void revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc, bool needsAfterInstruction = false);
 
 	/**
 	Instruction that describes a lea instruction, from a memory address to a register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex);
+	void revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, bool needsAfterInstruction = false);
+
+	/**
+	This instrumentation is for instructions that need to be instrumented before and after their execution (e,g, CMP).
+	In this case, we take the atom saved in the context and save that one
+	*/
+	void revLogInst_after(LEVEL_VM::CONTEXT *lctx, ADDRINT ip);
 }
 
 

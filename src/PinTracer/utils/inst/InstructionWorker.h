@@ -43,10 +43,11 @@ namespace InstructionWorker
 	std::vector<char> getMemoryValue(ADDRINT memAddr, int len);
 
 	/**
-	Returns the value of a register given an instrumentation context (the value at that point)
+	Puts into valBuffer the value of a register given an instrumentation context (the value at that point)
 	Must pass a buffer valBuffer. Normal call to getContextReg does not work for some reason in PIN
+	If we select msbAtIndex0=true, the returned vector goes MSB --> LSB, otherwise it reorders the bytes LSB --> MSB
 	*/
-	ADDRINT getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8* valBuffer);
+	void getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8* valBuffer, bool msbAtIndex0 = false);
 
 }
 

@@ -21,14 +21,22 @@ private:
 	std::vector<UINT8> regSrcValueBytes;
 	std::vector<UINT8> regDestValueBytes;
 
+	//One UINT8 for each Flag in flag register. We are only storing FLAGS, not RFLAGS:
+	//https://en.wikipedia.org/wiki/FLAGS_register
+	//These are the values of the flags AFTER execution the instruction.
+	//Stored as one UINT8 PER FLAG (Where each Flag is 1 bit in the FLAGS register)
+	//Will be empty except for operations when it's needed (e.g CMP after its execution)
+	std::vector<UINT8> flags;
+
 public:
 	RevDataAtom() {};
-	RevDataAtom(std::vector<char> memSrc, std::vector<char> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest)
+	RevDataAtom(std::vector<char> memSrc, std::vector<char> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest, std::vector<UINT8> flags)
 	{
 		this->memSrcValueBytes = memSrc;
 		this->memDestValueBytes = memDest;
 		this->regSrcValueBytes = regSrc;
 		this->regDestValueBytes = regDest;
+		this->flags = flags;
 	}
 
 	void setMemSrcValueBytes(std::vector<char> valueBytes)
@@ -89,6 +97,24 @@ public:
 		return this->regDestValueBytes;
 	}
 
+	//Asumming we get FLAGS. Get value of interesting bits
+	void setFlagsValue(UINT8* value)
+	{
+		this->flags.clear();
+		for (int ii = 0; ii < 2; ii++)
+		{
+			for (int jj = 0; jj < 8; jj++)
+			{
+				UINT8 bit = (value[ii] >> jj) & 1U;
+				this->flags.push_back(bit);
+			}
+		}
+	}
+
+	std::vector<UINT8> getFlagsValue()
+	{
+		return this->flags;
+	}
 
 };
 

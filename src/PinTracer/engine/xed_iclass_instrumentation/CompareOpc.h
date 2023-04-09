@@ -20,6 +20,9 @@ namespace OPC_INST {
 	void cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc);
 	void cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
 
+	//After function, since CMP needs to be instrumented in two parts. These get the flag values and insert the atom.
+	void cmp_after(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, UINT32 opc);
+
 
 	///////////////////////////////////////////////////////////////
 	//Instrumentation functions, called from InstrumentationManager

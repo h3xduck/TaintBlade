@@ -1,16 +1,16 @@
 #include "Common.h"
 
-void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
+void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc, bool needsAfterInstruction)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
-	RevAtom *atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
 	RevColorAtom* atomColor = atom->getRevColorAtom();
 	RevDataAtom* atomData = atom->getRevDataAtom();
 	bool atomChanged = false;
 	if (tController.memRangeIsTainted(memSrc, memSrcLen))
 	{
-		atom->setInstType((xed_iclass_enum_t) opc);
+		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setMemSrc(memSrc);
 		atom->setMemSrcLen(memSrcLen);
 		atomColor->memSrcColor = tController.memRangeGetColor(memSrc, memSrcLen);
@@ -36,16 +36,19 @@ void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, ADDRIN
 	{
 		atom->setInstAddress(ip);
 		//atom->setInstType((xed_iclass_enum_t)opc);
-		LOG_DEBUG("Inserting atom m2r:" << atom->getInstType());
-		ctx.getRevContext()->insertRevLog(*atom);
-		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
-		//HL operation using the heuristics.
-		ctx.getRevContext()->operateRevLog();
+		if (!needsAfterInstruction)
+		{
+			LOG_DEBUG("Inserting atom m2r:" << atom->getInstType());
+			ctx.getRevContext()->insertRevLog(*atom);
+			//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+			//HL operation using the heuristics.
+			ctx.getRevContext()->operateRevLog();
+		}
 	}
-	ctx.getRevContext()->cleanCurrentRevAtom();
+	if(!needsAfterInstruction) ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
+void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc, bool needsAfterInstruction)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -80,16 +83,21 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-		LOG_DEBUG("Inserting atom r2r:" << atom->getInstType());
-		ctx.getRevContext()->insertRevLog(*atom);
-		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
-		//HL operation using the heuristics.
-		ctx.getRevContext()->operateRevLog();
+		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
+		//we take tainted data and insert the atom in the RevLog.
+		if (!needsAfterInstruction)
+		{
+			LOG_DEBUG("Inserting atom r2r:" << atom->getInstType());
+			ctx.getRevContext()->insertRevLog(*atom);
+			//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+			//HL operation using the heuristics.
+			ctx.getRevContext()->operateRevLog();
+		}
 	}
-	ctx.getRevContext()->cleanCurrentRevAtom();
+	if (!needsAfterInstruction) ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
+void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc, bool needsAfterInstruction)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -124,16 +132,21 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG re
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-		LOG_DEBUG("Inserting atom r2m:" << atom->getInstType());
-		ctx.getRevContext()->insertRevLog(*atom);
-		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
-		//HL operation using the heuristics.
-		ctx.getRevContext()->operateRevLog();
+		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
+		//we take tainted data and insert the atom in the RevLog.
+		if (!needsAfterInstruction)
+		{
+			LOG_DEBUG("Inserting atom r2m:" << atom->getInstType());
+			ctx.getRevContext()->insertRevLog(*atom);
+			//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+			//HL operation using the heuristics.
+			ctx.getRevContext()->operateRevLog();
+		}
 	}
-	ctx.getRevContext()->cleanCurrentRevAtom();
+	if (!needsAfterInstruction) ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex)
+void INST_COMMON::revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, bool needsAfterInstruction)
 {
 	//TODO control if the memory address is tainted
 	TaintController tController = taintManager.getController();
@@ -165,16 +178,22 @@ void INST_COMMON::revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, RE
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-		LOG_DEBUG("Inserting atom TODO:" << atom->getInstType());
-		ctx.getRevContext()->insertRevLog(*atom);
-		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
-		//HL operation using the heuristics.
-		ctx.getRevContext()->operateRevLog();
+
+		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
+		//we take tainted data and insert the atom in the RevLog.
+		if (!needsAfterInstruction)
+		{
+			LOG_DEBUG("Inserting atom TODO:" << atom->getInstType());
+			ctx.getRevContext()->insertRevLog(*atom);
+			//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+			//HL operation using the heuristics.
+			ctx.getRevContext()->operateRevLog();
+		}
 	}
-	ctx.getRevContext()->cleanCurrentRevAtom();
+	if (!needsAfterInstruction) ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc)
+void INST_COMMON::revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc, bool needsAfterInstruction)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -197,18 +216,24 @@ void INST_COMMON::revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-		//imm values
-		atom->setImmSrc(immSrc);
-		LOG_DEBUG("Inserting atom i2r:" << atom->getInstType());
-		ctx.getRevContext()->insertRevLog(*atom);
-		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
-		//HL operation using the heuristics.
-		ctx.getRevContext()->operateRevLog();
+
+		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
+		//we take tainted data and insert the atom in the RevLog.
+		if (!needsAfterInstruction)
+		{
+			//imm values
+			atom->setImmSrc(immSrc);
+			LOG_DEBUG("Inserting atom i2r:" << atom->getInstType());
+			ctx.getRevContext()->insertRevLog(*atom);
+			//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+			//HL operation using the heuristics.
+			ctx.getRevContext()->operateRevLog();
+		}
 	}
-	ctx.getRevContext()->cleanCurrentRevAtom();
+	if (!needsAfterInstruction) ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-void INST_COMMON::revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
+void INST_COMMON::revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc, bool needsAfterInstruction)
 {
 	TaintController tController = taintManager.getController();
 	//Log instruction for the reverse engineering module, in case params were tainted
@@ -231,13 +256,49 @@ void INST_COMMON::revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-		//imm value
-		atom->setImmSrc(immSrc);
-		LOG_DEBUG("Inserting atom i2m:" << atom->getInstType());
-		ctx.getRevContext()->insertRevLog(*atom);
-		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
-		//HL operation using the heuristics.
-		ctx.getRevContext()->operateRevLog();
+
+		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
+		//we take tainted data and insert the atom in the RevLog.
+		if (!needsAfterInstruction)
+		{
+			//imm value
+			atom->setImmSrc(immSrc);
+			LOG_DEBUG("Inserting atom i2m:" << atom->getInstType());
+			ctx.getRevContext()->insertRevLog(*atom);
+			//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+			//HL operation using the heuristics.
+			ctx.getRevContext()->operateRevLog();
+		}
 	}
-	ctx.getRevContext()->cleanCurrentRevAtom();
+	if (!needsAfterInstruction) ctx.getRevContext()->cleanCurrentRevAtom();
+}
+
+void INST_COMMON::revLogInst_after(LEVEL_VM::CONTEXT* lctx, ADDRINT ip)
+{
+	RevContext* rctx = ctx.getRevContext();
+	//Take the current atom. If anything is tainted, we insert it in the RevLog.
+	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevHeuristicAtom* hAtom = atom->getRevHeuristicAtom();
+	RevDataAtom* dataAtom = atom->getRevDataAtom();
+
+	if (hAtom->containsAnyData())
+	{
+		//At this point, and only after the execution of the CMP, we can get the value of the flags
+		PIN_LockClient();
+		RevDataAtom* dataAtom = atom->getRevDataAtom();
+		UINT8 valBuffer[8];
+		InstructionWorker::getRegisterValue(lctx, REG::REG_FLAGS, valBuffer);
+		dataAtom->setFlagsValue(valBuffer);
+		PIN_UnlockClient();
+
+		LOG_DEBUG("Inserting atom at after:" << atom->getInstType());
+		rctx->insertRevLog(*atom);
+		rctx->operateRevLog();
+	}
+	else
+	{
+		//LOG_DEBUG("After clause ignored");
+	}
+
+	rctx->cleanCurrentRevAtom();
 }

@@ -110,6 +110,14 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 				break;
 			}
 
+			/* (Test)
+				if (atom.getInstType() == XED_ICLASS_CMP)
+			{
+				RevDataAtom* dataAtom = atom.getRevDataAtom();
+				std::vector<UINT8> flags = dataAtom->getFlagsValue();
+				LOG_DEBUG("Flags:: CF:" << to_hex_dbg((int)flags.at(0)) << " PF:" << to_hex_dbg((int)flags.at(2)) << " AF:" << to_hex_dbg((int)flags.at(4)) << " ZF:" << to_hex_dbg((int)flags.at(6)) << " SF:" << to_hex_dbg((int)flags.at(7)));
+			}*/
+
 			RevHeuristicAtom hHeuristicAtom = atomHeuristicVector.back();
 			//Quick check just to see if the last instructions are the same, if they are we go ahead and try to check the full heuristic and taint data
 			if (REVERSING::HEURISTICS::quickAtomicCompare(atom, hHeuristicAtom))

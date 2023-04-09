@@ -2,13 +2,18 @@
 
 extern Context ctx;
 
+//CMP instructions are instrumented in two parts: one to get the memory and reg operands,
+//another to get the result of the CMP and how it affects the flags: cmp_after
+
 void OPC_INST::cmp_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_mem2reg(lctx, ip, memSrc, memSrcLen, regDest, opc);
+
+	//First part, store in the atom the relevant values. We will insert the atom in the second part.
+	INST_COMMON::revLogInst_mem2reg(lctx, ip, memSrc, memSrcLen, regDest, opc, true);
 }
 
 void OPC_INST::cmp_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
@@ -17,7 +22,7 @@ void OPC_INST::cmp_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_reg2reg(lctx, ip, regSrc, regDest, opc);
+	INST_COMMON::revLogInst_reg2reg(lctx, ip, regSrc, regDest, opc, true);
 }
 
 void OPC_INST::cmp_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
@@ -28,7 +33,7 @@ void OPC_INST::cmp_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 	//ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_reg2mem(lctx, ip, regSrc, memDest, memDestLen, opc);
+	INST_COMMON::revLogInst_reg2mem(lctx, ip, regSrc, memDest, memDestLen, opc, true);
 }
 
 void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc)
@@ -37,7 +42,7 @@ void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UI
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_imm2reg(lctx, ip, immSrc, regDest, opc);
+	INST_COMMON::revLogInst_imm2reg(lctx, ip, immSrc, regDest, opc, true);
 }
 
 void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
@@ -46,7 +51,13 @@ void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UI
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
-	INST_COMMON::revLogInst_imm2mem(lctx, ip, immSrc, memDest, memDestLen, opc);
+	INST_COMMON::revLogInst_imm2mem(lctx, ip, immSrc, memDest, memDestLen, opc, true);
+}
+
+void OPC_INST::cmp_after(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, UINT32 opc)
+{
+	//This is called after executing the CMP instruction. Now, insert the atom in the log
+	INST_COMMON::revLogInst_after(lctx, ip);
 }
 
 
@@ -70,19 +81,19 @@ void OPC_INST::instrumentCompareOpc(INS ins)
 			if (isRegDest)
 			{
 				//reg, reg
-				INS_CALL_R2R_N(cmp_reg2reg, ins);
+				INS_CALL_CMP_R2R_N(cmp_reg2reg, ins);
 				return;
 			}
 			else
 			{
 				//mem, reg
-				INS_CALL_NOWRITE_R2M_N(cmp_reg2mem, ins);
+				INS_CALL_CMP_R2M_N(cmp_reg2mem, ins);
 			}
 		}
 		else
 		{
 			//reg, mem
-			INS_CALL_M2R_N(cmp_mem2reg, ins);
+			INS_CALL_CMP_M2R_N(cmp_mem2reg, ins);
 			return;
 
 			//mem, mem not possible
@@ -94,13 +105,13 @@ void OPC_INST::instrumentCompareOpc(INS ins)
 		if (isRegDest)
 		{
 			//reg, imm
-			INS_CALL_NOWRITE_I2R_N(cmp_imm2reg, ins);
+			INS_CALL_CMP_I2R_N(cmp_imm2reg, ins);
 			return;
 		}
 		else 
 		{
 			//mem, imm
-			INS_CALL_NOWRITE_I2M_N(cmp_imm2mem, ins);
+			INS_CALL_CMP_I2M_N(cmp_imm2mem, ins);
 			return;
 		}
 
