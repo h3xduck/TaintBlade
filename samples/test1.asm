@@ -20,7 +20,8 @@ main:
     xor rcx, rcx
     add rcx, rax
     add rcx, rbx
-    cmp [msg], rcx
+    mov [msg], rcx
+    cmp [msg], rax
 
     
 

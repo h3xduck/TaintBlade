@@ -23,8 +23,23 @@ namespace REVERSING
 			*/
 			ADDRINT endMemAddress;
 
+			/**
+			Vector of chars, where each char is one byte of the buffer, with its actual values.
+			This is the data received from the network by the system.
+			*/
+			std::vector<char> valuesVector;
+
 		public:
+			ProtocolNetworkBuffer();
 			ProtocolNetworkBuffer(ADDRINT start, ADDRINT end);
+
+			void setStartMemAddress(ADDRINT address);
+			void setEndMemAddress(ADDRINT address);
+			ADDRINT getStartMemAddress();
+			ADDRINT getEndMemAddress();
+			void setValuesVector(std::vector<char> vec);
+			void addValueToValuesVector(char val);
+			
 		};
 	}
 }

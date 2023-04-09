@@ -4,6 +4,8 @@
 #include "../core/RevContext.h"
 #include "../../common/Context.h"
 #include "../../taint/core/TaintManager.h"
+#include "ProtocolNetworkBuffer.h"
+#include "Protocol.h"
 
 extern TaintManager taintManager;
 

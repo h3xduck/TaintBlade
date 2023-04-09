@@ -270,6 +270,8 @@
     <ClCompile Include="reversing\heuristics\HeuristicsValidator.cpp" />
     <ClCompile Include="reversing\heuristics\HLComparison.cpp" />
     <ClCompile Include="reversing\heuristics\RevHeuristic.cpp" />
+    <ClCompile Include="reversing\protocol\Protocol.cpp" />
+    <ClCompile Include="reversing\protocol\ProtocolNetworkBuffer.cpp" />
     <ClCompile Include="reversing\protocol\ProtocolReverser.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
@@ -305,6 +307,7 @@
     <ClInclude Include="reversing\heuristics\HeuristicsValidator.h" />
     <ClInclude Include="reversing\heuristics\HLComparison.h" />
     <ClInclude Include="reversing\heuristics\RevHeuristic.h" />
+    <ClInclude Include="reversing\protocol\Protocol.h" />
     <ClInclude Include="reversing\protocol\ProtocolNetworkBuffer.h" />
     <ClInclude Include="reversing\protocol\ProtocolReverser.h" />
     <ClInclude Include="taint\core\TaintController.h" />

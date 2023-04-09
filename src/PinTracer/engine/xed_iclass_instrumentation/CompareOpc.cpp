@@ -62,7 +62,7 @@ void OPC_INST::instrumentCompareOpc(INS ins)
 	const BOOL isRegDest = INS_OperandIsReg(ins, 0);
 	const BOOL isRegSrc = INS_OperandIsReg(ins, 1);
 
-	LOG_DEBUG("CMP:: mS:" << isMemSrc << " mD:" << isMemDest << " rS:"<<isRegSrc<<" rD:"<<isRegDest);
+	//LOG_DEBUG("CMP:: mS:" << isMemSrc << " mD:" << isMemDest << " rS:"<<isRegSrc<<" rD:"<<isRegDest);
 
 
 	if (!isImmSrc)

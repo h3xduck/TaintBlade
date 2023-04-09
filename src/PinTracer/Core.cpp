@@ -25,6 +25,7 @@
 #include "taint/core/TaintSource.h"
 #include "test/TestEngine.h"
 #include "taint/data/TagLog.h"
+#include "reversing/protocol/ProtocolReverser.h"
 
 using std::string;
 
@@ -613,6 +614,9 @@ VOID Fini(INT32 code, VOID* v)
 
 	//Dump info about heuristics found
 	ctx.getRevContext()->dumpFoundHeuristics();
+
+	//Reverse the protocols using the found heuristics
+	REVERSING::PROTOCOL::reverseProtocol();
 
 	//Evaluate tests
 	globalTestEngine.evaluateTests();
