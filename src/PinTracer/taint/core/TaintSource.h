@@ -93,10 +93,11 @@ public:
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
+		int offset = 0;
 		for (auto color : colorVector)
 		{
 			//Each 1 byte, we get a different color
-			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)(wsockRecv.buf+1));
+			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)((wsockRecv.buf)+offset++));
 		}
 		
 	}

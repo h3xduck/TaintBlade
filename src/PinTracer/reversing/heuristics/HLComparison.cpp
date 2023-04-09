@@ -1,6 +1,9 @@
 #include "HLComparison.h"
 
-const int HLComparison::revHeuristicNumber = 1;
+/**
+IMPORTANT: Set here the number of heuristics
+*/
+const int HLComparison::revHeuristicNumber = 2;
 RevHeuristic HLComparison::revHeuristic[revHeuristicNumber] = {};
 
 HLComparison::HLComparison(std::vector<RevAtom> &atomVec)
@@ -54,6 +57,13 @@ void HLComparison::initializeRevHeuristic()
 	//CMP(MEM, imm), CMP(mem, REG)
 	atoms.push_back(RevHeuristicAtom(
 		XED_ICLASS_CMP, 0, 1, 0, 0, 0, 0, 1
+	));
+	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
+	atoms.clear();
+
+	//CMP(REG, reg)
+	atoms.push_back(RevHeuristicAtom(
+		XED_ICLASS_CMP, 0, 0, 0, 1, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
