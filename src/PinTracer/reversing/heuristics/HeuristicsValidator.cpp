@@ -37,7 +37,6 @@ int REVERSING::HEURISTICS::quickAtomicCompare(RevAtom atom1, RevHeuristicAtom hA
 		LOG_DEBUG("Quick compare, not same instruction: "<<atom1.getInstType()<<" : "<<hAtom2.instType);
 		return 0;
 	}
-
 	if (!internalhAtom1->containtedIn(hAtom2))
 	{
 		LOG_DEBUG("Quick compare, heuristic not contained in the other ");
@@ -100,6 +99,8 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 		//int skippedInstructions = 0;
 		for (int jj = atomSize - 1; jj >= 0; jj--)
 		{
+			LOG_DEBUG(H_MARK "Starting with instruction at "<<to_hex_dbg(revLogVector.at(jj).getBaseAddress()));
+
 			RevAtom atom = revLogVector.at(jj);
 			if (atomHeuristicVector.size() > revLogVector.size())
 			{
@@ -108,7 +109,6 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 				numberInstructionsMet = 0;
 				break;
 			}
-			//LOG_DEBUG("V: " << atom.getInstType() << " H: "<< atomHeuristicVector.back().instType);
 
 			RevHeuristicAtom hHeuristicAtom = atomHeuristicVector.back();
 			//Quick check just to see if the last instructions are the same, if they are we go ahead and try to check the full heuristic and taint data
@@ -127,7 +127,6 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 				//We will check the selected elements of the RevHeuristicAtom. For those elements, we will check the colors
 				//in the RevColorAtom. Those colors will be stored and subsequent RevAtoms will only be valid for the heuristic
 				//if their taint colors are contained in said vector.
-				if (hAtom->immSrcTainted) runningColorVector.push_back(colorAtom->immSrcColor);
 				if (hAtom->leaBaseTainted) runningColorVector.push_back(colorAtom->leaBaseColor);
 				if (hAtom->leaIndexTainted) runningColorVector.push_back(colorAtom->leaIndexColor);
 				if (hAtom->memDestTainted)
@@ -232,26 +231,17 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					//It seemed to be met, now check the actual colors using the vector we extracted before
 					//The colors must be contained in said vector.
 					RevColorAtom* itColorAtom = itAtom.getRevColorAtom();
-					if (itHAtom->immSrcTainted)
-					{
-						if (isColorInVector(itColorAtom->immSrcColor, runningColorVector))
-						{
-							//Could not find color in vector.
-							LOG_DEBUG(H_MARK_i "Skipped due to immSrc");
-							currentInstructionIndex--;
-							continue;
-						}
-						//Found the color in the previous instruction. Alright
-					}
 					//Same for the rest
 					if (itHAtom->leaBaseTainted)
 					{
 						if (isColorInVector(itColorAtom->leaBaseColor, runningColorVector))
 						{
+							//Could not find color in vector.
 							LOG_DEBUG(H_MARK_i "Skipped due to leaBase");
 							currentInstructionIndex--;
 							continue;
 						}
+						//Found the color in the previous instruction. Alright
 					}
 					if (itHAtom->leaIndexTainted)
 					{
@@ -298,6 +288,8 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 							continue;
 						}
 					}
+
+					//No need for any more imm checks
 
 					//If we are here, the heuristic was met for this instruction atom
 					//It must be met for all, so just continue to the next one

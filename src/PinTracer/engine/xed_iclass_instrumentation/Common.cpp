@@ -174,4 +174,70 @@ void INST_COMMON::revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, RE
 	ctx.getRevContext()->cleanCurrentRevAtom();
 }
 
-//TODO support IMMs
+void INST_COMMON::revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc)
+{
+	TaintController tController = taintManager.getController();
+	//Log instruction for the reverse engineering module, in case params were tainted
+	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevColorAtom* atomColor = atom->getRevColorAtom();
+	RevDataAtom* atomData = atom->getRevDataAtom();
+	bool atomChanged = false;
+	if (tController.regIsTainted(regDest))
+	{
+		atom->setInstType((xed_iclass_enum_t)opc);
+		atom->setRegDest(regDest);
+		atomColor->regDestColor = tController.regGetColor(regDest);
+		atomChanged = true;
+		PIN_LockClient();
+		UINT8 valBuffer[8];
+		InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
+		atomData->setRegDestValue(valBuffer, REG_Size(regDest));
+		PIN_UnlockClient();
+	}
+	if (atomChanged)
+	{
+		atom->setInstAddress(ip);
+		//imm values
+		atom->setImmSrc(immSrc);
+		LOG_DEBUG("Inserting atom i2r:" << atom->getInstType());
+		ctx.getRevContext()->insertRevLog(*atom);
+		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+		//HL operation using the heuristics.
+		ctx.getRevContext()->operateRevLog();
+	}
+	ctx.getRevContext()->cleanCurrentRevAtom();
+}
+
+void INST_COMMON::revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
+{
+	TaintController tController = taintManager.getController();
+	//Log instruction for the reverse engineering module, in case params were tainted
+	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevColorAtom* atomColor = atom->getRevColorAtom();
+	RevDataAtom* atomData = atom->getRevDataAtom();
+	bool atomChanged = false;
+	if (tController.memRangeIsTainted(memDest, memDestLen))
+	{
+		atom->setInstType((xed_iclass_enum_t)opc);
+		atom->setMemDest(memDest);
+		atom->setMemDestLen(memDestLen);
+		atomColor->memDestColor = tController.memRangeGetColor(memDest, memDestLen);
+		atomColor->memDestLen = memDestLen;
+		atomChanged = true;
+		PIN_LockClient();
+		atomData->setMemDestValueBytes(InstructionWorker::getMemoryValue(memDest, memDestLen));
+		PIN_UnlockClient();
+	}
+	if (atomChanged)
+	{
+		atom->setInstAddress(ip);
+		//imm value
+		atom->setImmSrc(immSrc);
+		LOG_DEBUG("Inserting atom i2m:" << atom->getInstType());
+		ctx.getRevContext()->insertRevLog(*atom);
+		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+		//HL operation using the heuristics.
+		ctx.getRevContext()->operateRevLog();
+	}
+	ctx.getRevContext()->cleanCurrentRevAtom();
+}

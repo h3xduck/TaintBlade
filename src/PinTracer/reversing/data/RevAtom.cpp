@@ -25,6 +25,10 @@ RevAtom::RevAtom(
 	this->leaScale = leaScale;
 	this->leaDis = leaDis;
 	this->immSrc = immSrc;
+
+	//this->revColorAtom = RevColorAtom();
+	//this->revDataAtom = RevDataAtom();
+	//this->revHeuristicAtom = RevHeuristicAtom();
 }
 
 ADDRINT RevAtom::getBaseAddress()
@@ -64,7 +68,7 @@ ADDRINT RevAtom::getMemSrc()
 void RevAtom::setMemSrc(ADDRINT memSrc)
 {
 	this->memSrc = memSrc;
-	this->getRevHeuristicAtom()->immSrcTainted = true;
+	this->getRevHeuristicAtom()->memSrcTainted = true;
 }
 
 ADDRINT RevAtom::getMemDest()
@@ -150,7 +154,7 @@ UINT64 RevAtom::getImmSrc()
 void RevAtom::setImmSrc(UINT64 immSrc)
 {
 	this->immSrc = immSrc;
-	this->getRevHeuristicAtom()->immSrcTainted = true;
+	this->getRevHeuristicAtom()->hasImmSrc = true;
 }
 
 RevHeuristicAtom* RevAtom::getRevHeuristicAtom()

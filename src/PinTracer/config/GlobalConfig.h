@@ -16,7 +16,7 @@
 #define REPORT_UNSUPPORTED_REG 0
 
 //Debug write memory addresses in hexadecimal or decimal notation
-#define DEBUG_IN_HEX 0
+#define DEBUG_IN_HEX 1
 
 //******************************* DATA DUMPING CONFIG *******************************//
 

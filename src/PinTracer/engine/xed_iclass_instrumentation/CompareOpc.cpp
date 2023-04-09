@@ -24,31 +24,29 @@ void OPC_INST::cmp_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
-	ctx.updateLastMemoryValue(val, memDestLen);
+	//std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
+	//ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	//No taint
 	INST_COMMON::revLogInst_reg2mem(lctx, ip, regSrc, memDest, memDestLen, opc);
 }
 
-void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regDest, UINT64 immSrc)
+void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
-	//TODO manage atoms
+	INST_COMMON::revLogInst_imm2reg(lctx, ip, immSrc, regDest, opc);
 }
 
-void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT memDest, INT32 memDestLen, UINT64 immSrc)
+void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
-	std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
-	ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
 	//No taint
-	//TODO manage atoms
+	INST_COMMON::revLogInst_imm2mem(lctx, ip, immSrc, memDest, memDestLen, opc);
 }
 
 
@@ -96,13 +94,13 @@ void OPC_INST::instrumentCompareOpc(INS ins)
 		if (isRegDest)
 		{
 			//reg, imm
-			//INS_CALL_I2R_N(cmp_imm2reg, ins);
+			INS_CALL_NOWRITE_I2R_N(cmp_imm2reg, ins);
 			return;
 		}
 		else 
 		{
 			//mem, imm
-			//INS_CALL_I2M_N(cmp_imm2mem, ins);
+			INS_CALL_NOWRITE_I2M_N(cmp_imm2mem, ins);
 			return;
 		}
 

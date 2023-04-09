@@ -15,7 +15,8 @@ public:
 	bool memDestTainted = 0;
 	bool regSrcTainted = 0;
 	bool regDestTainted = 0;
-	bool immSrcTainted = 0;
+	//Never tainted, but important to know we have one
+	bool hasImmSrc = 0;
 
 	//For LEA operations
 	bool leaBaseTainted = 0;
@@ -25,7 +26,7 @@ public:
 
 	RevHeuristicAtom(int instType, bool memSrcTainted, bool memDestTainted, 
 		bool regSrcTainted, bool regDestTainted, bool leaBaseTainted, 
-		bool leaIndexTainted, bool immSrcTainted)
+		bool leaIndexTainted, bool hasImmSrc)
 	{
 		this->instType = instType;
 		this->memSrcTainted = memSrcTainted;
@@ -34,7 +35,7 @@ public:
 		this->regDestTainted = regDestTainted;
 		this->leaBaseTainted = leaBaseTainted;
 		this->leaIndexTainted = leaIndexTainted;
-		this->immSrcTainted = immSrcTainted;
+		this->hasImmSrc = hasImmSrc;
 	}
 
 	/**
@@ -44,13 +45,21 @@ public:
 	*/
 	bool containtedIn(const RevHeuristicAtom& other)
 	{
+		//Check instruction types
 		if (this->instType != other.instType)
 		{
 			return false;
 		}
 
-		if ((other.immSrcTainted && !this->immSrcTainted) ||
-			(other.leaBaseTainted && !this->leaBaseTainted) || 
+		//If either the heuristic or the atom have an immSrc, then the other MUST too
+		//otherwise it is not the same instruction
+		if ((other.hasImmSrc && !this->hasImmSrc) || (!other.hasImmSrc && this->hasImmSrc))
+		{
+			return false;
+		}
+
+		//Check tainting
+		if ((other.leaBaseTainted && !this->leaBaseTainted) || 
 			(other.leaIndexTainted && !this->leaIndexTainted) || 
 			(other.memDestTainted && !this->memDestTainted) || 
 			(other.memSrcTainted && !this->memSrcTainted) || 

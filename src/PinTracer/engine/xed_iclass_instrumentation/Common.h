@@ -89,6 +89,7 @@ Deprecated
 	IARG_INST_PTR, IARG_MEMORYWRITE_EA, IARG_MEMORYWRITE_SIZE, IARG_END);	\
 }
 
+
 #define INS_CALL_I2R_N(proc_func, ins)	\
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
@@ -109,6 +110,20 @@ Deprecated
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
 	IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 1), IARG_MEMORYOP_EA, 0, IARG_MEMORYOP_SIZE, 0, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_NOWRITE_I2M_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_MEMORYOP_EA, 0, IARG_MEMORYOP_SIZE, 0, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_NOWRITE_I2R_N(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_UINT64, INS_OperandImmediate(ins, 1), IARG_UINT32, INS_OperandReg(ins, 0), \
 	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
@@ -133,6 +148,18 @@ namespace INST_COMMON
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
 	void revLogInst_reg2mem(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
+
+	/**
+	Instruction that involves a value from an immediate to a memory address.
+	Checks tainted elements, and creates an atom in the RevLog if any.
+	*/
+	void revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc);
+
+	/**
+	Instruction that involves a value from an immediate to a register.
+	Checks tainted elements, and creates an atom in the RevLog if any.
+	*/
+	void revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc);
 
 	/**
 	Instruction that describes a lea instruction, from a memory address to a register.
