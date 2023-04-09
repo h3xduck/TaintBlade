@@ -54,7 +54,7 @@ void HLComparison::initializeRevHeuristic()
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();*/
 
-	//CMP(MEM, imm), CMP(mem, REG)
+	//CMP(MEM, imm)
 	atoms.push_back(RevHeuristicAtom(
 		XED_ICLASS_CMP, 0, 1, 0, 0, 0, 0, 1
 	));
@@ -130,9 +130,18 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 	for (RevAtom& atom : this->revAtomVector)
 	{
 		RevHeuristicAtom* hAtom = atom.getRevHeuristicAtom();
-		if (atom.getInstAddress() == XED_ICLASS_CMP && hAtom->regDestTainted && !hAtom->memSrcTainted && !hAtom->hasImmSrc)
+		if (atom.getInstType() == XED_ICLASS_CMP && hAtom->regDestTainted && !hAtom->memSrcTainted && !hAtom->hasImmSrc)
 		{
+			LOG_DEBUG("Calculating values for heuristic CMP(REG, reg)");
 			this->comparisonValueFirst = &(atom.getRevDataAtom()->getRegSrcValue());
+			this->comparisonValueSecond = &(atom.getRevDataAtom()->getRegDestValue());
+			//ZF is set to 1 if the values checked via CMP were equal
+			this->comparisonResult = atom.getRevDataAtom()->getFlagsValue().at(6);
+			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
+		}
+		else
+		{
+			LOG_DEBUG("Requested to calculate values for an heuristic but the rules to do so are not loaded. Ignoring")
 		}
 	}
 
