@@ -45,6 +45,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		
 		//We put the original values of the buffer now, depending on whether it is the same buffer or not
 		const ADDRINT memAddress = data.second.memAddress;
+		const UINT16 color = data.first;
 		if (memAddress != lastMemValue+1)
 		{
 			LOG_DEBUG("Found new buffer, starting at " << to_hex_dbg(memAddress));
@@ -60,6 +61,8 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.setStartMemAddress(memAddress);
 			protNetBuffer.setEndMemAddress(memAddress);
 			protNetBuffer.addValueToValuesVector(memAddress);
+			//Include the color information into buffer byte
+			protNetBuffer.addColorToColorsVector(color);
 		}
 		else
 		{
@@ -68,6 +71,8 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addValueToValuesVector(memAddress);
 			//The end address is just every time, until it is no longer modified
 			protNetBuffer.setEndMemAddress(memAddress);
+			//Include the color information into buffer byte
+			protNetBuffer.addColorToColorsVector(color);
 			
 		}
 		lastMemValue = memAddress;
@@ -85,5 +90,8 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	{
 		LOG_DEBUG("Start: " << to_hex(buf.getStartMemAddress()) << " | End: " << to_hex(buf.getEndMemAddress()));
 	}
+
+	//Now, we have all network buffers used in the program. It is time to reverse the protocol using the heuristics
+
 	
 }

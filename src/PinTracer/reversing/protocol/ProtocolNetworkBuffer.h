@@ -29,6 +29,12 @@ namespace REVERSING
 			*/
 			std::vector<char> valuesVector;
 
+			/**
+			Vector of colors, where each color corresponds to one byte of the buffer, orderly.
+			This is the data gathered by the tainting module.
+			*/
+			std::vector<UINT16> colorsVector;
+
 		public:
 			ProtocolNetworkBuffer();
 			ProtocolNetworkBuffer(ADDRINT start, ADDRINT end);
@@ -39,6 +45,8 @@ namespace REVERSING
 			ADDRINT getEndMemAddress();
 			void setValuesVector(std::vector<char> vec);
 			void addValueToValuesVector(char val);
+			void setColorsVector(std::vector<UINT16> vec);
+			void addColorToColorsVector(UINT16 color);
 			
 		};
 	}

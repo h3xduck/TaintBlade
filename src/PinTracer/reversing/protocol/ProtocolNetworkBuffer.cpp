@@ -41,3 +41,13 @@ void  REVERSING::PROTOCOL::ProtocolNetworkBuffer::addValueToValuesVector(char va
 {
 	this->valuesVector.push_back(val);
 }
+
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::setColorsVector(std::vector<UINT16> vec)
+{
+	this->colorsVector = vec;
+}
+
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addColorToColorsVector(UINT16 color)
+{
+	this->colorsVector.push_back(color);
+}
