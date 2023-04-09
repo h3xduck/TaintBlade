@@ -74,6 +74,11 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		currentVectorIndex++;
 		firstProtocolBuffer = false;
 	}
+	//Include the last buffer, if we found at least one
+	if (!firstProtocolBuffer)
+	{
+		protocol.addBufferToNetworkBufferVector(protNetBuffer);
+	}
 	
 	LOG_DEBUG("Protocol reverser detected the following buffers:");
 	for (ProtocolNetworkBuffer &buf : protocol.getNetworkBufferVector())
