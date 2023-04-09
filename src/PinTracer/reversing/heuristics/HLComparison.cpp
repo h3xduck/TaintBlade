@@ -105,3 +105,36 @@ std::vector<RevAtom> HLComparison::getFullAtomVector()
 {
 	return this->revAtomVector;
 }
+
+std::vector<UINT8>* HLComparison::getComparisonValueFirst()
+{
+	return this->comparisonValueFirst;
+}
+
+std::vector<UINT8>* HLComparison::getComparisonValueSecond()
+{
+	return this->comparisonValueSecond;
+}
+
+int HLComparison::getComparisonResult()
+{
+	return this->comparisonResult;
+}
+
+void HLComparison::calculateComparisonFromLoadedAtoms()
+{
+	//First we will find which element of the atom has the comparison
+	//NOTE: Add here the calculation for other types of heuristics
+
+	//Heuristic CMP(REG, reg)
+	for (RevAtom& atom : this->revAtomVector)
+	{
+		RevHeuristicAtom* hAtom = atom.getRevHeuristicAtom();
+		if (atom.getInstAddress() == XED_ICLASS_CMP && hAtom->regDestTainted && !hAtom->memSrcTainted && !hAtom->hasImmSrc)
+		{
+			this->comparisonValueFirst = &(atom.getRevDataAtom()->getRegSrcValue());
+		}
+	}
+
+
+}

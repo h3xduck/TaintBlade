@@ -34,9 +34,27 @@ private:
 	*/
 	static const int revHeuristicNumber;
 
+	/**
+	Pointer to a vector of bytes, where the first operand (operand 0, dest) values can be found
+	*/
+	std::vector<UINT8> *comparisonValueFirst;
+
+	/**
+	Pointer to a vector of bytes, where the second operand (operand 1, src) values can be found
+	*/
+	std::vector<UINT8> *comparisonValueSecond;
+
+	/**
+	Result of the comparison. Just 0 if false, or 1 if true.
+	*/
+	int comparisonResult;
+
 public:
 	HLComparison() {};
 
+	/**
+	Constructor, based on a vector of RevAtoms. Incorporates the computation of the comparisonValue and result
+	*/
 	HLComparison(std::vector<RevAtom> &atomVec);
 
 	/**
@@ -61,6 +79,30 @@ public:
 	Returns full vector of atoms that make up the heuristic
 	*/
 	std::vector<RevAtom> getFullAtomVector();
+
+	/**
+	Returns the vector of bytes describing the value with which the comparison was made
+	*/
+
+	/**
+	Returns the first value to which the comparison was made (first operand, dest)
+	*/
+	std::vector<UINT8>* getComparisonValueFirst();
+
+	/**
+	Returns the second value to which the comparison was made (second operand, src)
+	*/
+	std::vector<UINT8>* getComparisonValueSecond();
+
+	/**
+	Returns the result of the comparison
+	*/
+	int getComparisonResult();
+
+	/**
+	Takes the loaded vector of RevAtoms and calculates the comparison result and src and dest values.
+	*/
+	void calculateComparisonFromLoadedAtoms();
 };
 
 

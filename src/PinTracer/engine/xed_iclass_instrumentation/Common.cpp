@@ -16,22 +16,25 @@ void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, ADDRIN
 		atomColor->memSrcColor = tController.memRangeGetColor(memSrc, memSrcLen);
 		atomColor->memSrcLen = memSrcLen;
 		atomChanged = true;
-		PIN_LockClient();
-		atomData->setMemSrcValueBytes(InstructionWorker::getMemoryValue(memSrc, memSrcLen));
-		PIN_UnlockClient();
 	}
+	//The data is stored into the atom even if it is not tainted
+	PIN_LockClient();
+	atomData->setMemSrcValueBytes(InstructionWorker::getMemoryValue(memSrc, memSrcLen));
+	PIN_UnlockClient();
+
 	if (tController.regIsTainted(regDest))
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setRegDest(regDest);
 		atomColor->regDestColor = tController.regGetColor(regDest);
 		atomChanged = true;
-		PIN_LockClient();
-		UINT8 valBuffer[8];
-		InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
-		atomData->setRegDestValue(valBuffer, REG_Size(regDest));
-		PIN_UnlockClient();
 	}
+	PIN_LockClient();
+	UINT8 valBuffer[8];
+	InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
+	atomData->setRegDestValue(valBuffer, REG_Size(regDest));
+	PIN_UnlockClient();
+
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
@@ -62,24 +65,26 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 		atom->setRegSrc(regSrc);
 		atomColor->regDestColor = tController.regGetColor(regSrc);
 		atomChanged = true;
-		PIN_LockClient();
-		UINT8 valBuffer[8];
-		InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
-		atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
-		PIN_UnlockClient();
 	}
+	PIN_LockClient();
+	UINT8 valBuffer[8];
+	InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
+	atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
+	PIN_UnlockClient();
+
 	if (tController.regIsTainted(regDest))
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setRegDest(regDest);
 		atomColor->regDestColor = tController.regGetColor(regDest);
 		atomChanged = true;
-		PIN_LockClient();
-		UINT8 valBuffer[8];
-		InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
-		atomData->setRegDestValue(valBuffer, REG_Size(regDest));
-		PIN_UnlockClient();
 	}
+	PIN_LockClient();
+	UINT8 valBuffer2[8];
+	InstructionWorker::getRegisterValue(lctx, regDest, valBuffer2);
+	atomData->setRegDestValue(valBuffer2, REG_Size(regDest));
+	PIN_UnlockClient();
+
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
@@ -111,12 +116,13 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 		atom->setRegSrc(regSrc);
 		atomColor->regSrcColor = tController.regGetColor(regSrc);
 		atomChanged = true;
-		PIN_LockClient();
-		UINT8 valBuffer[8];
-		InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
-		atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
-		PIN_UnlockClient();
 	}
+	PIN_LockClient();
+	UINT8 valBuffer[8];
+	InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
+	atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
+	PIN_UnlockClient();
+
 	if (tController.memRangeIsTainted(memDest, memDestLen))
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
@@ -125,10 +131,11 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 		atomColor->memDestColor = tController.memRangeGetColor(memDest, memDestLen);
 		atomColor->memDestLen = memDestLen;
 		atomChanged = true;
-		PIN_LockClient();
-		atomData->setMemDestValueBytes(InstructionWorker::getMemoryValue(memDest, memDestLen));
-		PIN_UnlockClient();
 	}
+	PIN_LockClient();
+	atomData->setMemDestValueBytes(InstructionWorker::getMemoryValue(memDest, memDestLen));
+	PIN_UnlockClient();
+
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
@@ -207,12 +214,14 @@ void INST_COMMON::revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64
 		atom->setRegDest(regDest);
 		atomColor->regDestColor = tController.regGetColor(regDest);
 		atomChanged = true;
-		PIN_LockClient();
-		UINT8 valBuffer[8];
-		InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
-		atomData->setRegDestValue(valBuffer, REG_Size(regDest));
-		PIN_UnlockClient();
 	}
+	PIN_LockClient();
+	UINT8 valBuffer[8];
+	InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
+	atomData->setRegDestValue(valBuffer, REG_Size(regDest));
+	atomData->setImmSrcValue(immSrc);
+	PIN_UnlockClient();
+
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
@@ -249,10 +258,12 @@ void INST_COMMON::revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64
 		atomColor->memDestColor = tController.memRangeGetColor(memDest, memDestLen);
 		atomColor->memDestLen = memDestLen;
 		atomChanged = true;
-		PIN_LockClient();
-		atomData->setMemDestValueBytes(InstructionWorker::getMemoryValue(memDest, memDestLen));
-		PIN_UnlockClient();
 	}
+	PIN_LockClient();
+	atomData->setMemDestValueBytes(InstructionWorker::getMemoryValue(memDest, memDestLen));
+	atomData->setImmSrcValue(immSrc);
+	PIN_UnlockClient();
+
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);

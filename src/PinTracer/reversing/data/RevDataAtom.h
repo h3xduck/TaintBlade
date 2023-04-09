@@ -7,19 +7,22 @@
 /**
 Contains the actual values of a RevAtom that are referenced by a 
 memory address range or contained in a register.
-If the atom does not have some of the values tainted, then this is 0,
-it only stores tainted information.
+It stores ALL information, even if the element is not tainted
+THEREFORE THIS SHOULD NOT BE USED AS RELIABLE DATA TO DETERMINE IF THE ELEMENT IS TAINTED
 */
 class RevDataAtom
 {
 private:
 	//One char per byte
-	std::vector<char> memSrcValueBytes;
-	std::vector<char> memDestValueBytes;
+	std::vector<UINT8> memSrcValueBytes;
+	std::vector<UINT8> memDestValueBytes;
 	
 	//One UINT8 for each byte of the register
 	std::vector<UINT8> regSrcValueBytes;
 	std::vector<UINT8> regDestValueBytes;
+
+	//One UINT8 for each byte of the immediate
+	std::vector<UINT8> immSrcValueBytes;
 
 	//One UINT8 for each Flag in flag register. We are only storing FLAGS, not RFLAGS:
 	//https://en.wikipedia.org/wiki/FLAGS_register
@@ -30,7 +33,7 @@ private:
 
 public:
 	RevDataAtom() {};
-	RevDataAtom(std::vector<char> memSrc, std::vector<char> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest, std::vector<UINT8> flags)
+	RevDataAtom(std::vector<UINT8> memSrc, std::vector<UINT8> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest, std::vector<UINT8> flags)
 	{
 		this->memSrcValueBytes = memSrc;
 		this->memDestValueBytes = memDest;
@@ -41,10 +44,14 @@ public:
 
 	void setMemSrcValueBytes(std::vector<char> valueBytes)
 	{
-		this->memSrcValueBytes = valueBytes;
+		this->memSrcValueBytes.empty();
+		for (int ii = 0; ii < valueBytes.size(); ii++)
+		{
+			this->memSrcValueBytes.push_back((UINT8)valueBytes.at(ii));
+		}
 	}
 
-	std::vector<char> getMemSrcValueBytes()
+	std::vector<UINT8> getMemSrcValueBytes()
 	{
 		return this->memSrcValueBytes;
 	}
@@ -56,10 +63,14 @@ public:
 
 	void setMemDestValueBytes(std::vector<char> valueBytes)
 	{
-		this->memDestValueBytes = valueBytes;
+		this->memDestValueBytes.empty();
+		for (int ii = 0; ii < valueBytes.size(); ii++)
+		{
+			this->memDestValueBytes.push_back((UINT8)valueBytes.at(ii));
+		}
 	}
 
-	std::vector<char> getMemDestValueBytes()
+	std::vector<UINT8> getMemDestValueBytes()
 	{
 		return this->memDestValueBytes;
 	}
@@ -108,6 +119,22 @@ public:
 				UINT8 bit = (value[ii] >> jj) & 1U;
 				this->flags.push_back(bit);
 			}
+		}
+	}
+
+	std::vector<UINT8> getImmSrcValue()
+	{
+		return this->immSrcValueBytes;
+	}
+
+	void setImmSrcValue(UINT64 value)
+	{
+		this->immSrcValueBytes.empty();
+		this->immSrcValueBytes.reserve(sizeof(UINT64));
+		for (int ii = 0; ii < 8; ii++)
+		{
+			this->immSrcValueBytes.push_back(value & 0xFF);
+			value >>= 8;
 		}
 	}
 
