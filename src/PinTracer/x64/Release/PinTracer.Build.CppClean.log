@@ -5,6 +5,7 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tag.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintmanager.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintcontroller.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revheuristic.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\hlcomparison.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revlog.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revcontext.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revatom.obj
@@ -22,9 +23,13 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\syscallparser
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\scopefilterer.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\performanceoperator.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\instructionworker.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintsource.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\hlcomparison.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\testengine.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintsource.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\heuristicsvalidator.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolreverser.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolnetworkbuffer.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocol.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocoldelimeter.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.lib
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.exp
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.dll

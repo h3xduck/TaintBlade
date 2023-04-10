@@ -38,6 +38,7 @@ void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, ADDRIN
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
+		atom->setOperandsType(RevHeuristicAtom::MEM2REG);
 		//atom->setInstType((xed_iclass_enum_t)opc);
 		if (!needsAfterInstruction)
 		{
@@ -70,6 +71,7 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 	UINT8 valBuffer[8];
 	InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
 	atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
+	//LOG_DEBUG("RegSrcValueSize: " << atomData->getRegSrcValue().size());
 	PIN_UnlockClient();
 
 	if (tController.regIsTainted(regDest))
@@ -83,11 +85,13 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 	UINT8 valBuffer2[8];
 	InstructionWorker::getRegisterValue(lctx, regDest, valBuffer2);
 	atomData->setRegDestValue(valBuffer2, REG_Size(regDest));
+	//LOG_DEBUG("RegDestValueSize: " << atomData->getRegDestValue().size());
 	PIN_UnlockClient();
 
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
+		atom->setOperandsType(RevHeuristicAtom::REG2REG);
 		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
 		//we take tainted data and insert the atom in the RevLog.
 		if (!needsAfterInstruction)
@@ -139,6 +143,7 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
+		atom->setOperandsType(RevHeuristicAtom::REG2MEM);
 		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
 		//we take tainted data and insert the atom in the RevLog.
 		if (!needsAfterInstruction)
@@ -185,7 +190,7 @@ void INST_COMMON::revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, RE
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-
+		atom->setOperandsType(RevHeuristicAtom::MEM2REG_LEA);
 		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
 		//we take tainted data and insert the atom in the RevLog.
 		if (!needsAfterInstruction)
@@ -225,7 +230,7 @@ void INST_COMMON::revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-
+		atom->setOperandsType(RevHeuristicAtom::IMM2REG);
 		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
 		//we take tainted data and insert the atom in the RevLog.
 		if (!needsAfterInstruction)
@@ -267,7 +272,7 @@ void INST_COMMON::revLogInst_imm2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64
 	if (atomChanged)
 	{
 		atom->setInstAddress(ip);
-
+		atom->setOperandsType(RevHeuristicAtom::IMM2MEM);
 		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
 		//we take tainted data and insert the atom in the RevLog.
 		if (!needsAfterInstruction)
@@ -298,7 +303,7 @@ void INST_COMMON::revLogInst_after(LEVEL_VM::CONTEXT* lctx, ADDRINT ip)
 		PIN_LockClient();
 		RevDataAtom* dataAtom = atom->getRevDataAtom();
 		UINT8 valBuffer[8];
-		InstructionWorker::getRegisterValue(lctx, REG::REG_FLAGS, valBuffer);
+		InstructionWorker::getRegisterValue(lctx, REG::REG_FLAGS, valBuffer, true);
 		dataAtom->setFlagsValue(valBuffer);
 		PIN_UnlockClient();
 

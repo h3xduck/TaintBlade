@@ -12,6 +12,17 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	//were initially related to
 	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintManager.getController().getOriginalColorsVector();
 
+	//Test
+	/*TagLog::original_color_data_t data;
+	data.byteValue = 0;
+	data.memAddress = 1000000;
+	std::pair<UINT16, TagLog::original_color_data_t > log = std::make_pair(1, data);
+	orgVec.push_back(log);
+	data.byteValue = 1;
+	data.memAddress = 1000001;
+	log = std::make_pair(2, data);
+	orgVec.push_back(log);*/
+
 	if (orgVec.size() <= 0)
 	{
 		LOG_ERR("It is not possible to reverse the protocol since no data was rule tainted");
@@ -37,6 +48,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	bool firstProtocolBuffer = true;
 	//The first one should be the first byte, it was supposed to be put in order
 	protNetBuffer.setStartMemAddress(orgVec.front().second.memAddress);
+	protNetBuffer.setStartColor(orgVec.front().first);
 	LOG_DEBUG("Starting protocol reversing, found " << logHeuristicVec.size() << " heuristics and " << orgVec.size() << " entries at the original colors vector");
 	while(currentVectorIndex < orgVec.size())
 	{
@@ -60,7 +72,9 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			//Create new buffer and store new start
 			protNetBuffer = ProtocolNetworkBuffer();
 			protNetBuffer.setStartMemAddress(memAddress);
+			protNetBuffer.setStartColor(color);
 			protNetBuffer.setEndMemAddress(memAddress);
+			protNetBuffer.setEndColor(color);
 			protNetBuffer.addValueToValuesVector(byteValue);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
@@ -71,6 +85,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			//Next memory address follows the previous one, it is the same joint buffer
 			//The end address is just every time, until it is no longer modified
 			protNetBuffer.setEndMemAddress(memAddress);
+			protNetBuffer.setEndColor(color);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
 			//We get the actual value of the byte at that memory address and store it
@@ -90,11 +105,68 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	LOG_DEBUG("Protocol reverser detected the following buffers:");
 	for (ProtocolNetworkBuffer &buf : protocol.getNetworkBufferVector())
 	{
-		LOG_DEBUG("Start: " << to_hex(buf.getStartMemAddress()) << " | End: " << to_hex(buf.getEndMemAddress()));
+		LOG_DEBUG("Start: " << to_hex(buf.getStartMemAddress()) << " | End: " << to_hex(buf.getEndMemAddress() << "Colors:(" << buf.getStartColor() << "-" << buf.getEndColor() << ")"));
 	}
 
 	//Now, we have all network buffers used in the program. It is time to reverse the protocol using the heuristics
-	//First, let's load the comparison heuristics we gathered during the program execution
+	//First, let's load the comparison heuristics we gathered during the program execution and try to cross-reference them
+	//with the network buffers we've got using the color of their bytes. 
+	//Any heuristic may contain multiple bytes in the comparison and therefore ordering them is difficult.
+	//Therefore we will deconstruct the heuristics into a simpler form, one byte comparison each,
+	//taking into account that if an heuristic with 2 bytes comparison is correct, then each byte
+	//alone by itself must be a successful compare too.
+	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
+	{
+		typedef struct comparison_data_t
+		{
+			int comparisonResult; //reuslt
+			UINT8 byteComparison; //byte value to which the buffer byte is compared
+		};
+
+		//Each entry contains a vector, one for each color.
+		//For each of the vectors at each colors, we find the comparisons made to them.
+		std::vector<std::vector<comparison_data_t>> comparisonMatrix(buf.getColorsVector().size(), std::vector<comparison_data_t>());
+		//comparisonMatrix.reserve(buf.getColorsVector().size());
+		LOG_DEBUG("Starting with buffer of size " << buf.getColorsVector().size());
+		
+		//We take the values we want from the heuristics to fill up the matrix
+		//TODO optimize: get this heuristic out already if all colors covered
+		for (HLComparison& heuristic : logHeuristicVec)
+		{
+			std::vector<UINT16>* heuristicColors = heuristic.getComparisonColorsFirst();
+			std::vector<UINT8>* heuristicValues = heuristic.getComparisonValuesSecond();
+			LOG_DEBUG("Iterating in heuristic for " << heuristicColors->size() << " colors");
+			for (int ii = 0; ii < heuristicColors->size(); ii++)
+			{
+				UINT16& color = heuristicColors->at(ii);
+				//If the heuristic refers to a color contained in the buffer
+				if (color >= buf.getStartColor() && color <= buf.getEndColor())
+				{
+					//Get position based on colors, which are sequential
+					//Store the data about the comparison
+					//We must write all different possible colors.
+					LOG_DEBUG("Storing compvalues for color " << color << " in position " << ii << " of the heuristic");
+					UINT8 byteValue = heuristicValues->at(ii);
+					comparison_data_t comp = { heuristic.getComparisonResult(), byteValue};
+					LOG_DEBUG("Introduced at position " << color - buf.getStartColor() << ": COMPVALUE:" << byteValue << " COMPRES: " << heuristic.getComparisonResult());
+					comparisonMatrix.at(color - buf.getStartColor()).push_back(comp);
+					
+				}
+			}
+		}
+
+		LOG_DEBUG("Starting buffer dump:");
+		//Test, checkout results
+		for (std::vector<comparison_data_t>& vec : comparisonMatrix)
+		{
+			LOG_DEBUG("COLOR: ");
+			for (comparison_data_t& data : vec)
+			{
+				LOG_DEBUG("\tBYTE:"<<data.byteComparison<<" RES:"<<data.comparisonResult);
+			}
+		}
+	}
+
 	
 
 }

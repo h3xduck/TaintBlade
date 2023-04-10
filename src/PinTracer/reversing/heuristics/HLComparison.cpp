@@ -56,14 +56,14 @@ void HLComparison::initializeRevHeuristic()
 
 	//CMP(MEM, imm)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, 0, 1, 0, 0, 0, 0, 1
+		XED_ICLASS_CMP, RevHeuristicAtom::IMM2MEM, 0, 1, 0, 0, 0, 0, 1
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
 
 	//CMP(REG, reg)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, 0, 0, 0, 1, 0, 0, 0
+		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 0, 1, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
@@ -106,14 +106,24 @@ std::vector<RevAtom> HLComparison::getFullAtomVector()
 	return this->revAtomVector;
 }
 
-std::vector<UINT8>* HLComparison::getComparisonValueFirst()
+std::vector<UINT16>* HLComparison::getComparisonColorsFirst()
 {
-	return this->comparisonValueFirst;
+	return this->comparisonColorsFirst;
 }
 
-std::vector<UINT8>* HLComparison::getComparisonValueSecond()
+std::vector<UINT16>* HLComparison::getComparisonColorsSecond()
 {
-	return this->comparisonValueSecond;
+	return this->comparisonColorsSecond;
+}
+
+std::vector<UINT8>* HLComparison::getComparisonValuesFirst()
+{
+	return this->comparisonValuesFirst;
+}
+
+std::vector<UINT8>* HLComparison::getComparisonValuesSecond()
+{
+	return this->comparisonValuesSecond;
 }
 
 int HLComparison::getComparisonResult()
@@ -130,14 +140,23 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 	for (RevAtom& atom : this->revAtomVector)
 	{
 		RevHeuristicAtom* hAtom = atom.getRevHeuristicAtom();
-		if (atom.getInstType() == XED_ICLASS_CMP && hAtom->regDestTainted && !hAtom->memSrcTainted && !hAtom->hasImmSrc)
+		RevColorAtom* colorAtom = atom.getRevColorAtom();
+		RevDataAtom* dataAtom = atom.getRevDataAtom();
+		if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::REG2REG && hAtom->regDestTainted && !hAtom->memSrcTainted && !hAtom->hasImmSrc)
 		{
 			LOG_DEBUG("Calculating values for heuristic CMP(REG, reg)");
-			this->comparisonValueFirst = &(atom.getRevDataAtom()->getRegSrcValue());
-			this->comparisonValueSecond = &(atom.getRevDataAtom()->getRegDestValue());
+			this->comparisonColorsFirst = colorAtom->getRegDestColor();
+			this->comparisonColorsSecond = colorAtom->getRegSrcColor();
+			this->comparisonValuesFirst = dataAtom->getRegDestValue();
+			this->comparisonValuesSecond = dataAtom->getRegSrcValue();
 			//ZF is set to 1 if the values checked via CMP were equal
-			this->comparisonResult = atom.getRevDataAtom()->getFlagsValue().at(6);
+			this->comparisonResult = dataAtom->getFlagsValue().at(6);
 			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
+			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond->size() << "):");
+			for (int ii = 0; ii < this->comparisonValuesSecond->size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond->at(ii));
+			}
 		}
 		else
 		{

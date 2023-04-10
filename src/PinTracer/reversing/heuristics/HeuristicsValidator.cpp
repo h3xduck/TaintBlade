@@ -39,6 +39,13 @@ int REVERSING::HEURISTICS::quickAtomicCompare(RevAtom atom1, RevHeuristicAtom hA
 		LOG_DEBUG("Quick compare, not same instruction: "<<atom1.getInstType()<<" : "<<hAtom2.instType);
 		return 0;
 	}
+
+	if (atom1.getOperandsType() == RevHeuristicAtom::INVALID)
+	{
+		LOG_DEBUG("Quick compare, invalid operands for instruction");
+		return 0;
+	}
+
 	if (!internalhAtom1->containtedIn(hAtom2))
 	{
 		LOG_DEBUG("Quick compare, heuristic not contained in the other ");
@@ -226,7 +233,6 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					//We start from the back, going backwards
 					RevAtom itAtom = revLogVector.at(currentInstructionIndex);
 					RevHeuristicAtom *itHAtom = itAtom.getRevHeuristicAtom();
-
 					RevHeuristicAtom itHeuristicAtom = atomHeuristicVector.at(currentHeuristicPosition);
 					if (!REVERSING::HEURISTICS::quickAtomicCompare(itAtom, itHeuristicAtom))
 					{
@@ -240,9 +246,10 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					LOG_DEBUG(H_MARK_i "Started deep heuristic check");
 					//It seemed to be met, now check the actual colors using the vector we extracted before
 					//The colors must be contained in said vector.
+					//We check the values that MUST be tainted in the heuristic
 					RevColorAtom* itColorAtom = itAtom.getRevColorAtom();
 					//Same for the rest
-					if (itHAtom->leaBaseTainted)
+					if (itHeuristicAtom.leaBaseTainted)
 					{
 						if (isColorInVector(itColorAtom->leaBaseColor, runningColorVector))
 						{
@@ -253,7 +260,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 						}
 						//Found the color in the previous instruction. Alright
 					}
-					if (itHAtom->leaIndexTainted)
+					if (itHeuristicAtom.leaIndexTainted)
 					{
 						if (isColorInVector(itColorAtom->leaIndexColor, runningColorVector))
 						{
@@ -262,7 +269,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 							continue;
 						}
 					}
-					if (itHAtom->memDestTainted)
+					if (itHeuristicAtom.memDestTainted)
 					{
 						if (!isAnyColorInVector(itColorAtom->memDestColor, runningColorVector))
 						{
@@ -271,7 +278,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 							continue;
 						}
 					}
-					if (itHAtom->memSrcTainted)
+					if (itHeuristicAtom.memSrcTainted)
 					{
 						if (!isAnyColorInVector(itColorAtom->memSrcColor, runningColorVector)) 
 						{
@@ -280,7 +287,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 							continue;
 						}
 					}
-					if (itHAtom->regDestTainted)
+					if (itHeuristicAtom.regDestTainted)
 					{
 						if (!isAnyColorInVector(itColorAtom->regDestColor, runningColorVector)) 
 						{
@@ -289,7 +296,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 							continue;
 						}
 					}
-					if (itHAtom->regSrcTainted)
+					if (itHeuristicAtom.regSrcTainted)
 					{
 						if (!isAnyColorInVector(itColorAtom->regSrcColor, runningColorVector)) 
 						{

@@ -1,7 +1,8 @@
 #include "RevAtom.h"
 
 RevAtom::RevAtom(
-	ADDRINT insAddress, int instType, ADDRINT memSrc,
+	ADDRINT insAddress, int instType, 
+	RevHeuristicAtom::atom_operands_type_t operandsType, ADDRINT memSrc,
 	INT32 memSrcLen, ADDRINT memDest,
 	INT32 memDestLen, REG regSrc,
 	REG regDest, REG leaBase,
@@ -58,6 +59,16 @@ void RevAtom::setInstType(int instType)
 {
 	this->instType = instType;
 	this->getRevHeuristicAtom()->instType = instType;
+}
+
+RevHeuristicAtom::atom_operands_type_t RevAtom::getOperandsType()
+{
+	return this->getRevHeuristicAtom()->operandsType;
+}
+
+void RevAtom::setOperandsType(RevHeuristicAtom::atom_operands_type_t operandsType)
+{
+	this->getRevHeuristicAtom()->operandsType = operandsType;
 }
 
 ADDRINT RevAtom::getMemSrc()

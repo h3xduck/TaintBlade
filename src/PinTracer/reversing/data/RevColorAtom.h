@@ -57,7 +57,18 @@ public:
 		this->immSrcColor = immSrcColor;
 	}
 
-	//TODO ?? I believe this is done already in revheuristicatom, see if delete
+	//Setters and getters
+	std::vector<UINT16>* getRegSrcColor()
+	{
+		return &(this->regSrcColor);
+	}
+	std::vector<UINT16>* getRegDestColor()
+	{
+		return &(this->regDestColor);
+	}
+
+
+	//TODO Don't think we'll need this anymore
 	/**
 	Returns whether an heuristic atom (this) is containted on another (other).
 	For this to be true, the instructions must be the same, and the tainted elements on (other)

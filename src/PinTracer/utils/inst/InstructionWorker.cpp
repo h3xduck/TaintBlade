@@ -214,11 +214,11 @@ std::vector<char> InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
 	return vec;
 }
 
-void InstructionWorker::getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8 *valBuffer, bool msbAtIndex0)
+void InstructionWorker::getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8 *valBuffer, bool resultBigEndian)
 {
 	PIN_GetContextRegval(lctx, reg, valBuffer);
 
-	if (msbAtIndex0)
+	if (!resultBigEndian)
 	{
 		//Now we reverse the order, since we want the MSB to be at the "left" of the vector, that is, at index 0
 		const UINT32 regSize = REG_Size(reg);

@@ -37,7 +37,7 @@ void OPC_INST::binary_clr_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
-	taintManager.getController().untaintReg(regDest);
+	//taintManager.getController().untaintReg(regDest);
 	INST_COMMON::revLogInst_reg2reg(lctx, ip, regSrc, regDest, opc);
 }
 

@@ -53,7 +53,8 @@ private:
 
 public:
 	RevAtom(
-		ADDRINT insAddress = 0, int instType = XED_ICLASS_INVALID_DEFINED, ADDRINT memSrc = 0,
+		ADDRINT insAddress = 0, int instType = XED_ICLASS_INVALID_DEFINED, 
+		RevHeuristicAtom::atom_operands_type_t operandsType = RevHeuristicAtom::INVALID, ADDRINT memSrc = 0,
 		INT32 memSrcLen = 0, ADDRINT memDest = 0, 
 		INT32 memDestLen = 0, REG regSrc = REG_INVALID_, 
 		REG regDest = REG_INVALID_, REG leaBase = REG_INVALID_,	
@@ -61,11 +62,14 @@ public:
 		UINT32 leaDis = 0, UINT64 immSrc = 0
 	);
 
+	//Setters and getters
 	ADDRINT getBaseAddress();
 	ADDRINT getInstAddress();
 	void setInstAddress(ADDRINT address);
 	int getInstType();
 	void setInstType(int instType);
+	RevHeuristicAtom::atom_operands_type_t getOperandsType();
+	void setOperandsType(RevHeuristicAtom::atom_operands_type_t operandsType);
 	ADDRINT getMemSrc();
 	void setMemSrc(ADDRINT memSrc);
 	ADDRINT getMemDest();

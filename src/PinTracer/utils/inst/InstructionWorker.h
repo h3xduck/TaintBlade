@@ -45,9 +45,9 @@ namespace InstructionWorker
 	/**
 	Puts into valBuffer the value of a register given an instrumentation context (the value at that point)
 	Must pass a buffer valBuffer. Normal call to getContextReg does not work for some reason in PIN
-	If we select msbAtIndex0=true, the returned vector goes MSB --> LSB, otherwise it reorders the bytes LSB --> MSB
+	If we select resultBigEndian=true it reorders the bytes LSB --> MSB, otherwise the returned vector goes MSB --> LSB
 	*/
-	void getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8* valBuffer, bool msbAtIndex0 = false);
+	void getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8* valBuffer, bool resultBigEndian = false);
 
 }
 
