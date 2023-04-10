@@ -32,12 +32,12 @@ ADDRINT REVERSING::PROTOCOL::ProtocolNetworkBuffer::getEndMemAddress()
 	return this->endMemAddress;
 }
 
-void  REVERSING::PROTOCOL::ProtocolNetworkBuffer::setValuesVector(std::vector<char> vec)
+void  REVERSING::PROTOCOL::ProtocolNetworkBuffer::setValuesVector(std::vector<UINT8> vec)
 {
 	this->valuesVector = vec;
 }
 
-void  REVERSING::PROTOCOL::ProtocolNetworkBuffer::addValueToValuesVector(char val)
+void  REVERSING::PROTOCOL::ProtocolNetworkBuffer::addValueToValuesVector(UINT8 val)
 {
 	this->valuesVector.push_back(val);
 }

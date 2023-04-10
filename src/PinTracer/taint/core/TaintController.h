@@ -30,8 +30,9 @@ public:
 
 	/**
 	Registers a color that has been tainted manually (by a rule), along with function, dll, and memory address that it covers
+	Includes actual value of the byte too
 	*/
-	void registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress);
+	void registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue);
 	
 	/**
 	Returns a vector will all parents of a color (recursively, not limited to 1 generation)

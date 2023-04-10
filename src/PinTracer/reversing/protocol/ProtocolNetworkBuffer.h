@@ -24,10 +24,10 @@ namespace REVERSING
 			ADDRINT endMemAddress;
 
 			/**
-			Vector of chars, where each char is one byte of the buffer, with its actual values.
+			Vector of bytes, where each byte is one byte of the buffer, with its actual values.
 			This is the data received from the network by the system.
 			*/
-			std::vector<char> valuesVector;
+			std::vector<UINT8> valuesVector;
 
 			/**
 			Vector of colors, where each color corresponds to one byte of the buffer, orderly.
@@ -43,8 +43,8 @@ namespace REVERSING
 			void setEndMemAddress(ADDRINT address);
 			ADDRINT getStartMemAddress();
 			ADDRINT getEndMemAddress();
-			void setValuesVector(std::vector<char> vec);
-			void addValueToValuesVector(char val);
+			void setValuesVector(std::vector<UINT8> vec);
+			void addValueToValuesVector(UINT8 val);
 			void setColorsVector(std::vector<UINT16> vec);
 			void addColorToColorsVector(UINT16 color);
 			

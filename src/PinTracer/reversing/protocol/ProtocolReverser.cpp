@@ -45,6 +45,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		
 		//We put the original values of the buffer now, depending on whether it is the same buffer or not
 		const ADDRINT memAddress = data.second.memAddress;
+		const UINT8 byteValue = data.second.byteValue;
 		const UINT16 color = data.first;
 		if (memAddress != lastMemValue+1)
 		{
@@ -60,7 +61,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer = ProtocolNetworkBuffer();
 			protNetBuffer.setStartMemAddress(memAddress);
 			protNetBuffer.setEndMemAddress(memAddress);
-			protNetBuffer.addValueToValuesVector(memAddress);
+			protNetBuffer.addValueToValuesVector(byteValue);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
 		}
@@ -68,11 +69,12 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		{
 			LOG_DEBUG("Continuing buffer (start:" << to_hex_dbg(protNetBuffer.getStartMemAddress()) << "), currently at " << to_hex_dbg(memAddress));
 			//Next memory address follows the previous one, it is the same joint buffer
-			protNetBuffer.addValueToValuesVector(memAddress);
 			//The end address is just every time, until it is no longer modified
 			protNetBuffer.setEndMemAddress(memAddress);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
+			//We get the actual value of the byte at that memory address and store it
+			protNetBuffer.addValueToValuesVector(byteValue);
 			
 		}
 		lastMemValue = memAddress;

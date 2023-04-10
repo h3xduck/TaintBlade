@@ -138,9 +138,9 @@ void TaintController::untaintReg(const LEVEL_BASE::REG reg)
 	}
 }
 
-void TaintController::registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress)
+void TaintController::registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue)
 {
-	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName, memAddress);
+	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName, memAddress, byteValue);
 }
 
 std::vector<UINT16> TaintController::getColorParents(UINT16 color)

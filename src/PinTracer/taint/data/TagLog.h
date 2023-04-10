@@ -14,6 +14,7 @@ public:
 		std::string dllName;
 		std::string funcName; 
 		ADDRINT memAddress;
+		UINT8 byteValue;
 	};
 private:
 	//Color, colors mixed to make it
@@ -33,7 +34,7 @@ public:
 	/**
 	Stores in the list of original colors a color along with other data
 	*/
-	void logTagOriginal(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress);
+	void logTagOriginal(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue);
 
 	void dumpTagLogOriginalColors();
 

@@ -97,7 +97,8 @@ public:
 		for (auto color : colorVector)
 		{
 			//Each 1 byte, we get a different color
-			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)((wsockRecv.buf)+offset++));
+			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)((wsockRecv.buf)+offset), (UINT8)(wsockRecv.buf[offset]));
+			offset++;
 		}
 		
 	}

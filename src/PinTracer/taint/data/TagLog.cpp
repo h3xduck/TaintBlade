@@ -115,10 +115,10 @@ UINT16 TagLog::getMixColor(UINT16 d1, UINT16 d2)
 	}
 }
 
-void TagLog::logTagOriginal(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress)
+void TagLog::logTagOriginal(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue)
 {
-	LOG_DEBUG("Logged original color [" << color << "] for DLL " << dllName << " and FUNC " << funcName << ", MEM:" << memAddress);
-	original_color_data_t data = { dllName, funcName, memAddress };
+	LOG_DEBUG("Logged original color [" << color << "] for DLL " << dllName << " and FUNC " << funcName << ", MEM:" << memAddress << ", BYTEVALUE:" << byteValue);
+	original_color_data_t data = { dllName, funcName, memAddress, byteValue };
 	this->originalColorsMap.insert(std::make_pair<UINT16, original_color_data_t>(color, data));
 }
 
@@ -127,7 +127,7 @@ void TagLog::dumpTagLogOriginalColors()
 	std::stringstream logLine;
 	logLine << "ORIGINAL COLORS TAG LOG: COLOR, DLL, FUNCTION" << std::endl;
 	for (auto& it : this->originalColorsMap) {
-		logLine<<"|-> COLOR:" << it.first << ":: DLL:" << it.second.dllName << " FUNC:" << it.second.funcName << " MEM: " << it.second.memAddress << std::endl;
+		logLine<<"|-> COLOR:" << it.first << ":: DLL:" << it.second.dllName << " FUNC:" << it.second.funcName << " MEM: " << it.second.memAddress << " BYTEVALUE: " << it.second.byteValue << std::endl;
 	}
 	LOG_INFO(logLine.str());
 }
