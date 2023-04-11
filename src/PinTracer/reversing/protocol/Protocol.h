@@ -2,7 +2,7 @@
 #define _PROTOCOL_H_
 
 #include "ProtocolNetworkBuffer.h"
-#include "ProtocolDelimeter.h"
+#include "ProtocolWord.h"
 
 namespace REVERSING
 {
@@ -14,7 +14,7 @@ namespace REVERSING
 			std::vector<ProtocolNetworkBuffer> networkBufferVector;
 
 		public:
-			std::vector<ProtocolNetworkBuffer> getNetworkBufferVector();
+			std::vector<ProtocolNetworkBuffer>& getNetworkBufferVector();
 			void addBufferToNetworkBufferVector(ProtocolNetworkBuffer buf);
 			int getNumberProtocolsStored();
 		};

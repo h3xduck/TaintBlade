@@ -139,14 +139,24 @@ int __cdecl main(int argc, char** argv)
     printf("Test: %c\n", c);*/
     
     
-    char* var = "jj";
+    /*char* var = "jj";
     if(recvbuf[0] == var[0])
     {
-        printf("Whoo");
+        printf("Whoo\n");
     }
     else
     {
-        printf("Whee");
+        printf("Whee\n");
+    }*/
+
+    char* delimeter = "n";
+    for (char c : recvbuf)
+    {
+        if (c == delimeter[0])
+        {
+            printf("Found delimeter\n");
+            break;
+        }
     }
 
     // cleanup

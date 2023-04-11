@@ -1,6 +1,6 @@
 #include "Protocol.h"
 
-std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer> REVERSING::PROTOCOL::Protocol::getNetworkBufferVector()
+std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& REVERSING::PROTOCOL::Protocol::getNetworkBufferVector()
 {
 	return this->networkBufferVector;
 }

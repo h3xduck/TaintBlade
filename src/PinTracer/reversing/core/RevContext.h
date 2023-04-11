@@ -92,7 +92,7 @@ public:
 	/**
 	Returns the vector of all heuristics found during the program execution
 	*/
-	RevLog<HLComparison> getHeuristicsVector();
+	RevLog<HLComparison>& getHeuristicsVector();
 
 };
 

@@ -16,8 +16,8 @@ bool compare_comparison_data_t(const comparison_data_t& a, const comparison_data
 void REVERSING::PROTOCOL::reverseProtocol()
 {
 	//First we get the heuristics. They must be there already at this point
-	RevLog<HLComparison> heuristicsVec = ctx.getRevContext()->getHeuristicsVector();
-	std::vector<HLComparison> logHeuristicVec = heuristicsVec.getLogVector();
+	RevLog<HLComparison> &heuristicsVec = ctx.getRevContext()->getHeuristicsVector();
+	std::vector<HLComparison> &logHeuristicVec = heuristicsVec.getLogVector();
 
 	//Get list of original colors (tainted by rules) with the memory addresses they 
 	//were initially related to
@@ -118,7 +118,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	LOG_DEBUG("Protocol reverser detected the following buffers:");
 	for (ProtocolNetworkBuffer &buf : protocol.getNetworkBufferVector())
 	{
-		LOG_DEBUG("Start: " << to_hex(buf.getStartMemAddress()) << " | End: " << to_hex(buf.getEndMemAddress() << "Colors:(" << buf.getStartColor() << "-" << buf.getEndColor() << ")"));
+		LOG_DEBUG("Start: " << to_hex(buf.getStartMemAddress()) << " | End: " << to_hex(buf.getEndMemAddress() << " | Colors:(" << buf.getStartColor() << "-" << buf.getEndColor() << ")"));
 	}
 
 	//Now, we have all network buffers used in the program. It is time to reverse the protocol using the heuristics
@@ -140,22 +140,22 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		//TODO optimize: get this heuristic out already if all colors covered
 		for (HLComparison& heuristic : logHeuristicVec)
 		{
-			std::vector<UINT16>* heuristicColors = heuristic.getComparisonColorsFirst();
-			std::vector<UINT8>* heuristicValues = heuristic.getComparisonValuesSecond();
-			LOG_DEBUG("Iterating in heuristic for " << heuristicColors->size() << " colors");
-			for (int ii = 0; ii < heuristicColors->size(); ii++)
+			std::vector<UINT16>& heuristicColors = heuristic.getComparisonColorsFirst();
+			std::vector<UINT8>& heuristicValues = heuristic.getComparisonValuesSecond();
+			LOG_DEBUG("Iterating in heuristic for " << heuristicColors.size() << " colors");
+			for (int ii = 0; ii < heuristicColors.size(); ii++)
 			{
-				UINT16& color = heuristicColors->at(ii);
+				UINT16& color = heuristicColors.at(ii);
 				//If the heuristic refers to a color contained in the buffer
 				if (color >= buf.getStartColor() && color <= buf.getEndColor())
 				{
 					//Get position based on colors, which are sequential
 					//Store the data about the comparison
 					//We must write all different possible colors.
-					LOG_DEBUG("Storing compvalues for color " << color << " in position " << ii << " of the heuristic");
-					UINT8 byteValue = heuristicValues->at(ii);
+					LOG_DEBUG("Storing compvalues for color " << color << " which were at position " << ii << " of the heuristic");
+					UINT8 byteValue = heuristicValues.at(ii);
 					comparison_data_t comp = { heuristic.getComparisonResult(), byteValue};
-					LOG_DEBUG("Introduced at position " << color - buf.getStartColor() << ": COMPVALUE:" << byteValue << " COMPRES: " << heuristic.getComparisonResult());
+					LOG_DEBUG("Introduced at position " << color - buf.getStartColor() << ", where bufStartColor is "<< buf.getStartColor() <<": COMPVALUE:" << byteValue << " COMPRES: " << heuristic.getComparisonResult());
 					comparisonMatrix.at(color - buf.getStartColor()).push_back(comp);
 				}
 				else
@@ -182,6 +182,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 		//At this point, we already have the matrix fully built. It is time to fill up to build the delimitors
 		//First, we sort the vectors for each of the bytes of the buffer, so that they are ordered
+		
 		//NOTE: Maybe it is better if we do not sort it, to avoid interfering in keyword detection, where
 		// we might reorder some keyword comparison bytes. In the end, heuristics have come ordered already.
 		/*for (std::vector<comparison_data_t>& vec : comparisonMatrix)
@@ -198,11 +199,199 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		// - A "keyword" is a value not checked sequentially, but rather checked for a certain byte(s).
 		//   it is commonly made of multiple bytes, so we will try to extend the keyword.
 
+		int currentFirstColumn = 0;
+		int matrixLength = comparisonMatrix.size();
 
-		
+		LOG_DEBUG("Starting word extraction process");
+		while (currentFirstColumn < matrixLength)
+		{
+			ProtocolWord currentWord;
+			if (comparisonMatrix.at(currentFirstColumn).empty())
+			{
+				//Go to the next column in the matrix, the next byte in the buffer
+				currentFirstColumn++;
+				LOG_DEBUG("Empty column at netbuffer[" << currentFirstColumn << "], going to next one");
+				continue;
+			}
 
+			//If we've got some comparison for this byte in the buffer, we take the first
+			std::vector<comparison_data_t>& currentVector = comparisonMatrix.at(currentFirstColumn);
+			const comparison_data_t topComparison = currentVector.front();
+
+			//Put the data we want from the byte we checked, then pop it from the vector
+			currentWord.addByte(topComparison.byteComparison);
+			currentWord.addSuccessIndex(topComparison.comparisonResult);
+			currentWord.setStartIndex(currentFirstColumn);
+			//Pop byte from the vector
+			currentVector.erase(currentVector.begin() + currentFirstColumn);
+			LOG_DEBUG("Calculating word starting at netbuffer[" << currentFirstColumn << "], COMPVALUE:" << topComparison.byteComparison);
+
+			//We check the result
+			if (topComparison.comparisonResult == 0)
+			{
+				LOG_DEBUG("Failed comparison");
+				//Failed comparison
+				//Either missed delimeter or (failed) keyword check
+				//Let's check subsequent bytes to see if it is a delimeter
+				if (currentFirstColumn + 1 == matrixLength)
+				{
+					//Means this is the last byte of the buffer. It might be a delimiter checked for the last byte,
+					//or maybe a keyword. Let's just say we don't know
+					currentWord = ProtocolWord(topComparison.byteComparison, currentFirstColumn, currentFirstColumn, ProtocolWord::SEPARATORLASTBYTE, topComparison.comparisonResult);
+					buf.addWordToWordVector(currentWord);
+					//Value poped already
+					LOG_DEBUG("netbuffer[" << currentFirstColumn << "] is empty, and it was the very last byte, so SEPARATORLASTBYTE");
+
+					//We have finished this comparison, but there might be more in the current column
+					continue;
+				}
+				else
+				{
+					//It is not the last byte of the buffer, so let's check the next bytes at the buffer
+					//If the next bytes of the buffer have the same bytes in the comparison, then this is
+					//highly likely a delimeter, but we need to see if there is a success comparison at some point
+					//(the byte at which the program finds the delimeter).
+					//If the next bytes are do not have the same value in the comparisons, this might be a keyword
+					//(which failed), and we might join the next bytes in the same keyword too.
+
+					LOG_DEBUG("Starting to check next bytes in the buffer...");
+					for (int jj = currentFirstColumn + 1; jj < matrixLength; jj++)
+					{
+						LOG_DEBUG("Now checking byte at index "<<jj);
+						std::vector<comparison_data_t>& itVector = comparisonMatrix.at(jj);
+						if (itVector.empty())
+						{
+							//Nothing in the next bytes... 
+							
+							if (currentWord.getWordType() != ProtocolWord::UNDEFINED)
+							{
+								//If we have identified this word before as a delimeter or something, just insert it and that's it
+								//It ended at the previous byte
+								currentWord = ProtocolWord(currentWord.getAllBytes(), currentFirstColumn, jj - 1, currentWord.getWordType(), currentWord.getSuccessIndexes());
+								buf.addWordToWordVector(currentWord);
+								LOG_DEBUG("Empty column at netbuffer[" << jj << "] is empty, storing the word of length "<< currentWord.getAllBytes().size()<<" until this point: "<<currentWord.toString());
+								//No value, no pop
+								
+								break; //Quit loop, word defined, go to next comparison in buffer
+							}
+							else
+							{
+								//It was a 1-byte check, since we did not identify the type yet.
+								//Let's just say it was a keyword check, of a single byte, we are not too sure, so save that info too
+								currentWord = ProtocolWord(topComparison.byteComparison, currentFirstColumn, jj - 1, ProtocolWord::BYTEKEYWORD, topComparison.comparisonResult);
+								buf.addWordToWordVector(currentWord);
+								LOG_DEBUG("Empty column at netbuffer[" << jj << "] is empty, and nothing to store, saving BYTEKEYWORD: "<<currentWord.toString());
+								//No value, no pops
+								break; //Quit loop, word defined, go to next comparison in buffer
+							}
+						}
+						else
+						{
+							//We've got some comparison for this byte
+							//Get the value of the topmost comparison at the byte
+							const comparison_data_t& itComparison = itVector.front();
+							if (itComparison.byteComparison == topComparison.byteComparison)
+							{
+								//This is highly likely a delimiter, since it's the same byte as before
+								//Check if this time it was a success
+								if (itComparison.comparisonResult == 0)
+								{
+									//It was a fail again
+									//This looks like a delimeter, but we need to wait for a success condition to say so
+									//For now, mark it as a delimeter without success clause
+									currentWord.setWordType(ProtocolWord::FAILEDDELIMETER);
+									currentWord.addByte(itComparison.byteComparison);
+									currentWord.addSuccessIndex(itComparison.comparisonResult);
+									LOG_DEBUG("Next byte is the same as the last one, and a failed comp. Storing:" << currentWord.toString());
+									//Pop byte it from the vector
+									itVector.erase(itVector.begin());
+
+									//Continue iterating to next buffer byte to see the type of the word
+								}
+								else
+								{
+									//Now the comparison succeeded
+									//It is almost surely a delimeter. Add the last byte and insert the word already
+									currentWord.addByte(itComparison.byteComparison);
+									currentWord.addSuccessIndex(itComparison.comparisonResult);
+									currentWord = ProtocolWord(currentWord.getAllBytes(), currentFirstColumn, jj, ProtocolWord::DELIMETER, currentWord.getSuccessIndexes());
+									buf.addWordToWordVector(currentWord);
+									LOG_DEBUG("Next byte is the same as the last one, and a successful comp. Storing:" << currentWord.toString());
+									//Pop byte it from the vector
+									itVector.erase(itVector.begin());
+									break; //Quit loop, word defined, go to next comparison in buffer
+								}
+							}
+							else
+							{
+								//The byte is not the same as the one before. The previous byte might have been a keyword then
+								//Save word as 1-byte keyword. We will try to join the keywords into one later,
+								//since there is no way of knowing where the checks of a keyword end and we might mix it with byte checks
+								//for a delimeter.
+								currentWord = ProtocolWord(currentWord.getAllBytes(), currentFirstColumn, currentFirstColumn, ProtocolWord::BYTEKEYWORD, currentWord.getSuccessIndexes());
+								buf.addWordToWordVector(currentWord);
+								LOG_DEBUG("Next byte is NOT the same as the last one. Saving last byte as BYTEKEYWORD. Storing:" << currentWord.toString());
+								//Do not pop this value, it will be analyzed later by itself
+								break; //Quit loop, word defined, go to next comparison in buffer
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				LOG_DEBUG("Successful comparison");
+				//The comparison was a success.
+				//It might be a keyword (which succeeded) or a delimeter with succeded for the very first byte
+				//However it does not make much sense to have a delimeter succeeding at the first byte of its checking, so let's consider it a keyword
+				//and later try to join it with others.
+				currentWord = ProtocolWord(topComparison.byteComparison, currentFirstColumn, currentFirstColumn, ProtocolWord::BYTEKEYWORD, topComparison.comparisonResult);
+				buf.addWordToWordVector(currentWord);
+				LOG_DEBUG("Storing: " << currentWord.toString());
+				//Value poped already
+			}
+
+		} //end while all bytes of the protocol netbuffer
+
+		//Finally, try to join the keywords
+		std::vector<ProtocolWord>& wordVector = buf.getWordVector();
+		for (int ii=0; ii<wordVector.size(); ii++)
+		{
+			ProtocolWord& word = wordVector.at(ii);
+			if (word.getWordType() == ProtocolWord::BYTEKEYWORD)
+			{
+				//Try and check if the next keywords can be joined
+				int nextKeywordIndex = ii + 1;
+				while(nextKeywordIndex < wordVector.size()) /*We are reducing the size of the wordVector in each iteration*/
+				{
+					ProtocolWord& wordIt = wordVector.at(nextKeywordIndex);
+					if (word.getWordType() == ProtocolWord::BYTEKEYWORD)
+					{
+						//If the keywords are placed in sequential bytes in the netbuffer, and both had the same result
+						if (word.getEndIndex() == wordIt.getStartIndex() &&
+							word.getSuccessIndexes().at(0) == wordIt.getSuccessIndexes().at(0))
+						{
+							//We can join keywords
+							word.addByte(wordIt.getAllBytes().at(0));
+							word.addSuccessIndex(wordIt.getSuccessIndexes().at(0));
+							wordVector.erase(wordVector.begin() + nextKeywordIndex);
+						}
+					}
+					nextKeywordIndex++;
+				}
+			}
+		}
+
+	} //finished parsing for all protocol netbuffers
+
+	//Test
+	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
+	{
+		LOG_DEBUG("NETWORKBUFFER of len:"<< buf.getWordVector().size());
+		for (ProtocolWord& word : buf.getWordVector())
+		{
+			LOG_DEBUG(word.toString());
+		}
 	}
-
-	
 
 }

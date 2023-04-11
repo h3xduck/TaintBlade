@@ -271,7 +271,7 @@
     <ClCompile Include="reversing\heuristics\HLComparison.cpp" />
     <ClCompile Include="reversing\heuristics\RevHeuristic.cpp" />
     <ClCompile Include="reversing\protocol\Protocol.cpp" />
-    <ClCompile Include="reversing\protocol\ProtocolDelimeter.cpp" />
+    <ClCompile Include="reversing\protocol\ProtocolWord.cpp" />
     <ClCompile Include="reversing\protocol\ProtocolNetworkBuffer.cpp" />
     <ClCompile Include="reversing\protocol\ProtocolReverser.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
@@ -309,7 +309,7 @@
     <ClInclude Include="reversing\heuristics\HLComparison.h" />
     <ClInclude Include="reversing\heuristics\RevHeuristic.h" />
     <ClInclude Include="reversing\protocol\Protocol.h" />
-    <ClInclude Include="reversing\protocol\ProtocolDelimeter.h" />
+    <ClInclude Include="reversing\protocol\ProtocolWord.h" />
     <ClInclude Include="reversing\protocol\ProtocolNetworkBuffer.h" />
     <ClInclude Include="reversing\protocol\ProtocolReverser.h" />
     <ClInclude Include="taint\core\TaintController.h" />

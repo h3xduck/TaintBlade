@@ -89,9 +89,9 @@ public:
 		}
 	}
 
-	std::vector<UINT8>* getRegSrcValue()
+	std::vector<UINT8>& getRegSrcValue()
 	{
-		return &(this->regSrcValueBytes);
+		return this->regSrcValueBytes;
 	}
 
 	void setRegDestValue(UINT8 *value, UINT32 byteSize)
@@ -103,9 +103,9 @@ public:
 		}
 	}
 
-	std::vector<UINT8>* getRegDestValue()
+	std::vector<UINT8>& getRegDestValue()
 	{
-		return &(this->regDestValueBytes);
+		return this->regDestValueBytes;
 	}
 
 	//Asumming we get FLAGS. Get value of interesting bits

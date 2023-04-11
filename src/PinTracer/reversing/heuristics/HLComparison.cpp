@@ -106,22 +106,22 @@ std::vector<RevAtom> HLComparison::getFullAtomVector()
 	return this->revAtomVector;
 }
 
-std::vector<UINT16>* HLComparison::getComparisonColorsFirst()
+std::vector<UINT16>& HLComparison::getComparisonColorsFirst()
 {
 	return this->comparisonColorsFirst;
 }
 
-std::vector<UINT16>* HLComparison::getComparisonColorsSecond()
+std::vector<UINT16>& HLComparison::getComparisonColorsSecond()
 {
 	return this->comparisonColorsSecond;
 }
 
-std::vector<UINT8>* HLComparison::getComparisonValuesFirst()
+std::vector<UINT8>& HLComparison::getComparisonValuesFirst()
 {
 	return this->comparisonValuesFirst;
 }
 
-std::vector<UINT8>* HLComparison::getComparisonValuesSecond()
+std::vector<UINT8>& HLComparison::getComparisonValuesSecond()
 {
 	return this->comparisonValuesSecond;
 }
@@ -152,10 +152,15 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 			//ZF is set to 1 if the values checked via CMP were equal
 			this->comparisonResult = dataAtom->getFlagsValue().at(6);
 			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
-			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond->size() << "):");
-			for (int ii = 0; ii < this->comparisonValuesSecond->size(); ii++)
+			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");
+			for (int ii = 0; ii < this->comparisonColorsFirst.size(); ii++)
 			{
-				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond->at(ii));
+				LOG_DEBUG(ii << ": " << this->comparisonColorsFirst.at(ii));
+			}
+			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
+			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
 			}
 		}
 		else

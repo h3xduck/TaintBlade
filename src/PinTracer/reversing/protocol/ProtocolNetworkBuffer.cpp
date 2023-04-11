@@ -82,17 +82,17 @@ std::vector<UINT16> REVERSING::PROTOCOL::ProtocolNetworkBuffer::getColorsVector(
 	return this->colorsVector;
 }
 
-void REVERSING::PROTOCOL::ProtocolNetworkBuffer::setDelimeterVector(std::vector<ProtocolDelimeter> vec)
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::setWordVector(std::vector<ProtocolWord> vec)
 {
-	this->delimeterVector = vec;
+	this->wordVector = vec;
 }
 
-void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addDelimeterToDelimeterVector(ProtocolDelimeter delimeter)
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addWordToWordVector(ProtocolWord &word)
 {
-	this->delimeterVector.push_back(delimeter);
+	this->wordVector.push_back(word);
 }
 
-std::vector<REVERSING::PROTOCOL::ProtocolDelimeter> REVERSING::PROTOCOL::ProtocolNetworkBuffer::getDelimeterVector()
+std::vector<REVERSING::PROTOCOL::ProtocolWord> REVERSING::PROTOCOL::ProtocolNetworkBuffer::getWordVector()
 {
-	return this->delimeterVector;
+	return this->wordVector;
 }

@@ -58,13 +58,13 @@ public:
 	}
 
 	//Setters and getters
-	std::vector<UINT16>* getRegSrcColor()
+	std::vector<UINT16>& getRegSrcColor()
 	{
-		return &(this->regSrcColor);
+		return this->regSrcColor;
 	}
-	std::vector<UINT16>* getRegDestColor()
+	std::vector<UINT16>& getRegDestColor()
 	{
-		return &(this->regDestColor);
+		return this->regDestColor;
 	}
 
 

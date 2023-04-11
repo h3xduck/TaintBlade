@@ -38,25 +38,25 @@ private:
 	Pointer to a vector of colors, where each color is of one byte
 	from the first operand (operand 0, dest)
 	*/
-	std::vector<UINT16> *comparisonColorsFirst;
+	std::vector<UINT16> comparisonColorsFirst;
 
 	/**
 	Pointer to a vector of colors, where each color is of one byte
 	from the second operand (operand 1, src)
 	*/
-	std::vector<UINT16> *comparisonColorsSecond;
+	std::vector<UINT16> comparisonColorsSecond;
 
 	/**
 	Pointer to a vector of bytes, where each byte is the value of one byte
 	from the first operand (operand 0, dest)
 	*/
-	std::vector<UINT8>* comparisonValuesFirst;
+	std::vector<UINT8> comparisonValuesFirst;
 
 	/**
 	Pointer to a vector of bytes, where each byte is the value of one byte
 	from the second operand (operand 1, src)
 	*/
-	std::vector<UINT8>* comparisonValuesSecond;
+	std::vector<UINT8> comparisonValuesSecond;
 
 	/**
 	Result of the comparison. Just 0 if false, or 1 if true.
@@ -101,22 +101,22 @@ public:
 	/**
 	Returns the first colors vector of the operand to which the comparison was made (first operand, dest)
 	*/
-	std::vector<UINT16>* getComparisonColorsFirst();
+	std::vector<UINT16>& getComparisonColorsFirst();
 
 	/**
 	Returns the second colors vector of the operand to which the comparison was made (second operand, src)
 	*/
-	std::vector<UINT16>* getComparisonColorsSecond();
+	std::vector<UINT16>& getComparisonColorsSecond();
 
 	/**
 	Returns the first values vector of the operand to which the comparison was made (first operand, dest)
 	*/
-	std::vector<UINT8>* getComparisonValuesFirst();
+	std::vector<UINT8>& getComparisonValuesFirst();
 
 	/**
 	Returns the second values vector of the operand to which the comparison was made (second operand, src)
 	*/
-	std::vector<UINT8>* getComparisonValuesSecond();
+	std::vector<UINT8>& getComparisonValuesSecond();
 
 	/**
 	Returns the result of the comparison
