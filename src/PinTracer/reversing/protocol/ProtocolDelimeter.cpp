@@ -1,4 +1,5 @@
 #include "ProtocolDelimeter.h"
+#include "ProtocolNetworkBuffer.h"
 
 std::vector<UINT8> REVERSING::PROTOCOL::ProtocolDelimeter::getAllDelimeterBytes()
 {

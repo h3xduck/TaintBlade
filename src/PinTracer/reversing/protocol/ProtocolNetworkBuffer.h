@@ -2,6 +2,7 @@
 #define _PROTOCOLNETWORKBUFFER_H_
 
 #include "pin.H"
+#include "ProtocolDelimeter.h"
 
 namespace REVERSING
 {
@@ -45,6 +46,11 @@ namespace REVERSING
 			*/
 			std::vector<UINT16> colorsVector;
 
+			/**
+			Vector of delimeters that apply to this network buffer
+			*/
+			std::vector<ProtocolDelimeter> delimeterVector;
+
 		public:
 			ProtocolNetworkBuffer();
 			ProtocolNetworkBuffer(ADDRINT start, ADDRINT end);
@@ -64,6 +70,9 @@ namespace REVERSING
 			void setColorsVector(std::vector<UINT16> vec);
 			void addColorToColorsVector(UINT16 color);
 			std::vector<UINT16> getColorsVector();
+			void setDelimeterVector(std::vector<ProtocolDelimeter> vec);
+			void addDelimeterToDelimeterVector(ProtocolDelimeter delimeter);
+			std::vector<ProtocolDelimeter> getDelimeterVector();
 		};
 	}
 }

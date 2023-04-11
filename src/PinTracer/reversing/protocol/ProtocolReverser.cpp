@@ -2,6 +2,17 @@
 
 extern Context ctx;
 
+typedef struct comparison_data_t
+{
+	int comparisonResult; //reuslt
+	UINT8 byteComparison; //byte value to which the buffer byte is compared
+};
+
+bool compare_comparison_data_t(const comparison_data_t& a, const comparison_data_t& b)
+{
+	return a.byteComparison < b.byteComparison;
+}
+
 void REVERSING::PROTOCOL::reverseProtocol()
 {
 	//First we get the heuristics. They must be there already at this point
@@ -34,6 +45,8 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		return;
 	}
 
+	//TODO revise whether to do this with colors
+	// 
 	//Now we must build the original buffers from this data
 	//Note that a program may do some things that we must bear in mind:
 	// - Receive network data in the same buffer (same memory address)
@@ -117,12 +130,6 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	//alone by itself must be a successful compare too.
 	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
 	{
-		typedef struct comparison_data_t
-		{
-			int comparisonResult; //reuslt
-			UINT8 byteComparison; //byte value to which the buffer byte is compared
-		};
-
 		//Each entry contains a vector, one for each color.
 		//For each of the vectors at each colors, we find the comparisons made to them.
 		std::vector<std::vector<comparison_data_t>> comparisonMatrix(buf.getColorsVector().size(), std::vector<comparison_data_t>());
@@ -150,11 +157,17 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					comparison_data_t comp = { heuristic.getComparisonResult(), byteValue};
 					LOG_DEBUG("Introduced at position " << color - buf.getStartColor() << ": COMPVALUE:" << byteValue << " COMPRES: " << heuristic.getComparisonResult());
 					comparisonMatrix.at(color - buf.getStartColor()).push_back(comp);
-					
+				}
+				else
+				{
+					//TODO: What if the heuristic holds a derived color?
+					LOG_DEBUG("Ignored heuristic color " << color << " since it's not in range");
 				}
 			}
 		}
 
+
+		//Test
 		LOG_DEBUG("Starting buffer dump:");
 		//Test, checkout results
 		for (std::vector<comparison_data_t>& vec : comparisonMatrix)
@@ -165,6 +178,29 @@ void REVERSING::PROTOCOL::reverseProtocol()
 				LOG_DEBUG("\tBYTE:"<<data.byteComparison<<" RES:"<<data.comparisonResult);
 			}
 		}
+
+
+		//At this point, we already have the matrix fully built. It is time to fill up to build the delimitors
+		//First, we sort the vectors for each of the bytes of the buffer, so that they are ordered
+		//NOTE: Maybe it is better if we do not sort it, to avoid interfering in keyword detection, where
+		// we might reorder some keyword comparison bytes. In the end, heuristics have come ordered already.
+		/*for (std::vector<comparison_data_t>& vec : comparisonMatrix)
+		
+			std::sort(vec.begin(), vec.end(), compare_comparison_data_t);
+		}*/
+
+		//Once sorted, we try to find the delimitors and keywords. The idea is the following:
+		//We get the first element from the first byte of the buffer. If it exists. Otherwise,
+		//we start from the nth element, where n is the first vector with any element inside.
+		//From that nth vector, we consider that:
+		// - A "delimeter" is a value that the buffer is compared with multiple times, sequentially,
+		//   with lots of false comparison results. We will check for bytes checked in sequential vectors.
+		// - A "keyword" is a value not checked sequentially, but rather checked for a certain byte(s).
+		//   it is commonly made of multiple bytes, so we will try to extend the keyword.
+
+
+		
+
 	}
 
 	

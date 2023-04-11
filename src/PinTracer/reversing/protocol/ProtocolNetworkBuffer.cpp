@@ -81,3 +81,18 @@ std::vector<UINT16> REVERSING::PROTOCOL::ProtocolNetworkBuffer::getColorsVector(
 {
 	return this->colorsVector;
 }
+
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::setDelimeterVector(std::vector<ProtocolDelimeter> vec)
+{
+	this->delimeterVector = vec;
+}
+
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addDelimeterToDelimeterVector(ProtocolDelimeter delimeter)
+{
+	this->delimeterVector.push_back(delimeter);
+}
+
+std::vector<REVERSING::PROTOCOL::ProtocolDelimeter> REVERSING::PROTOCOL::ProtocolNetworkBuffer::getDelimeterVector()
+{
+	return this->delimeterVector;
+}

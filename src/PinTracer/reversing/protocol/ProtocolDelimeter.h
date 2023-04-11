@@ -2,13 +2,13 @@
 #define _PROTOCOLDELIMETER_H_
 
 #include "pin.H"
-#include "ProtocolNetworkBuffer.h"
 #include <vector>
 
 namespace REVERSING
 {
 	namespace PROTOCOL
 	{
+		class ProtocolNetworkBuffer;
 		class ProtocolDelimeter
 		{
 		private:
