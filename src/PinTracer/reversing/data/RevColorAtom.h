@@ -66,6 +66,24 @@ public:
 	{
 		return this->regDestColor;
 	}
+	std::vector<UINT16>& getMemSrcColor()
+	{
+		return this->memSrcColor;
+	}
+	std::vector<UINT16>& getMemDestColor()
+	{
+		return this->memDestColor;
+	}
+	std::vector<UINT16>& getImmSrcColorVector()
+	{
+		std::vector<UINT16> vec;
+		vec.push_back(this->immSrcColor);
+		return vec;
+	}
+	UINT16 getImmSrcColor()
+	{
+		return this->immSrcColor;
+	}
 
 
 	//TODO Don't think we'll need this anymore

@@ -117,14 +117,14 @@ void TaintController::taintRegWithReg(const LEVEL_BASE::REG destReg, LEVEL_BASE:
 void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BASE::REG src1Reg, const ADDRINT src2Mem, const UINT32 src2Bytes)
 {
 	const UINT32 destRegLength = this->tagMap.tReg.getTaintLength(destReg);
-	const UINT16 colorSrc2Mem = this->tagMap.getTaintColorMem(src2Mem);
 	const UINT32 destPos = this->tagMap.tReg.getPos(destReg);
 
 	//LOG_DEBUG("M2R:: REG:" << destReg << " POS:" << destPos << " src2Mem:" << to_hex_dbg(src2Mem) << " len:" << src2Bytes);
-	LOG_DEBUG("REGLEN: " << destRegLength << " | MEMLEN: " << src2Bytes);
+	//LOG_DEBUG("REGLEN: " << destRegLength << " | MEMLEN: " << src2Bytes);
 	for (int ii = 0; ii < src2Bytes; ii++)
 	{
 		UINT16 colorReg = this->tagMap.getTaintColorReg(src1Reg).at(destRegLength-src2Bytes+ii).color;
+		const UINT16 colorSrc2Mem = this->tagMap.getTaintColorMem(src2Mem+ii);
 		this->tagMap.mixTaintRegByte(destReg, destRegLength - src2Bytes + ii, colorReg, colorSrc2Mem);
 	}
 

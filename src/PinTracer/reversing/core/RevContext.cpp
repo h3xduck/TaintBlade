@@ -25,10 +25,9 @@ void RevContext::operateRevLog()
 	{
 		LOG_DEBUG("Logging test milestone");
 		//Logging the found heuristic
-		LOG_DEBUG("CHECKPOINT REVLOGHEURISTICS[last]: " << heuristicFound.getComparisonColorsFirst().at(0));
 		this->revLogHeuristics.logInsert(heuristicFound);
 
-		LOG_DEBUG("CHECKPOINT REVLOGHEURISTICS[last]: " << this->revLogHeuristics.getLogVector().back().getComparisonColorsFirst().at(0));
+		//LOG_DEBUG("CHECKPOINT REVLOGHEURISTICS[last]: " << this->revLogHeuristics.getLogVector().back().getComparisonColorsFirst().at(0));
 
 		//For tests relying on heuristics
 		HeuristicMilestone testMilestone = HeuristicMilestone(heuristicFound.getInstructionVector(), TestMilestone::HEURISTIC);

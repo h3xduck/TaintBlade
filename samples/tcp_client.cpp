@@ -159,6 +159,12 @@ int __cdecl main(int argc, char** argv)
         }
     }
 
+    char* comp = "testx";
+    if (strncmp(recvbuf, comp, 5) == 0)
+    {
+        printf("Hi");
+    }
+
     // cleanup
     closesocket(ConnectSocket);
     WSACleanup();

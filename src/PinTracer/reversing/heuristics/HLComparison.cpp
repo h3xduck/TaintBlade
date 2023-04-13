@@ -3,7 +3,7 @@
 /**
 IMPORTANT: Set here the number of heuristics
 */
-const int HLComparison::revHeuristicNumber = 2;
+const int HLComparison::revHeuristicNumber = 5;
 RevHeuristic HLComparison::revHeuristic[revHeuristicNumber] = {};
 
 HLComparison::HLComparison(std::vector<RevAtom> &atomVec)
@@ -64,6 +64,27 @@ void HLComparison::initializeRevHeuristic()
 	//CMP(REG, reg)
 	atoms.push_back(RevHeuristicAtom(
 		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 0, 1, 0, 0, 0
+	));
+	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
+	atoms.clear();
+
+	//CMP(MEM, reg)
+	atoms.push_back(RevHeuristicAtom(
+		XED_ICLASS_CMP, RevHeuristicAtom::REG2MEM, 0, 0, 1, 0, 0, 0, 0
+	));
+	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
+	atoms.clear();
+
+	//CMP(REG, mem)
+	atoms.push_back(RevHeuristicAtom(
+		XED_ICLASS_CMP, RevHeuristicAtom::MEM2REG, 0, 0, 0, 1, 0, 0, 0
+	));
+	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
+	atoms.clear();
+
+	//CMP(REG, imm)
+	atoms.push_back(RevHeuristicAtom(
+		XED_ICLASS_CMP, RevHeuristicAtom::IMM2REG, 0, 0, 0, 1, 0, 0, 1
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
@@ -142,7 +163,9 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 		RevHeuristicAtom* hAtom = atom.getRevHeuristicAtom();
 		RevColorAtom* colorAtom = atom.getRevColorAtom();
 		RevDataAtom* dataAtom = atom.getRevDataAtom();
-		if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::REG2REG && hAtom->regDestTainted && !hAtom->memSrcTainted && !hAtom->hasImmSrc)
+
+		//CMP(REG, reg)
+		if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::REG2REG && hAtom->regDestTainted)
 		{
 			LOG_DEBUG("Calculating values for heuristic CMP(REG, reg)");
 			this->comparisonColorsFirst = colorAtom->getRegDestColor();
@@ -150,6 +173,90 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 			this->comparisonValuesFirst = dataAtom->getRegDestValue();
 			this->comparisonValuesSecond = dataAtom->getRegSrcValue();
 			//ZF is set to 1 if the values checked via CMP were equal
+			this->comparisonResult = dataAtom->getFlagsValue().at(6);
+			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
+			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");
+			for (int ii = 0; ii < this->comparisonColorsFirst.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonColorsFirst.at(ii));
+			}
+			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
+			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+			}
+		}
+		//CMP(MEM, imm)
+		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::IMM2MEM && hAtom->memDestTainted)
+		{
+			LOG_DEBUG("Calculating values for heuristic CMP(MEM, imm)");
+			this->comparisonColorsFirst = colorAtom->getMemDestColor();
+			this->comparisonColorsSecond = colorAtom->getImmSrcColorVector();
+			this->comparisonValuesFirst = dataAtom->getMemDestValueBytes();
+			this->comparisonValuesSecond = dataAtom->getImmSrcValue();
+			this->comparisonResult = dataAtom->getFlagsValue().at(6);
+			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
+			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");
+			for (int ii = 0; ii < this->comparisonColorsFirst.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonColorsFirst.at(ii));
+			}
+			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
+			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+			}
+		}
+		//CMP(MEM, reg)
+		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::REG2MEM && hAtom->memDestTainted)
+		{
+			LOG_DEBUG("Calculating values for heuristic CMP(MEM, reg)");
+			this->comparisonColorsFirst = colorAtom->getMemDestColor();
+			this->comparisonColorsSecond = colorAtom->getRegSrcColor();
+			this->comparisonValuesFirst = dataAtom->getMemDestValueBytes();
+			this->comparisonValuesSecond = dataAtom->getRegSrcValue();
+			this->comparisonResult = dataAtom->getFlagsValue().at(6);
+			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
+			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");
+			for (int ii = 0; ii < this->comparisonColorsFirst.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonColorsFirst.at(ii));
+			}
+			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
+			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+			}
+		}
+		//CMP(REG, mem)
+		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::MEM2REG && hAtom->regDestTainted)
+		{
+			LOG_DEBUG("Calculating values for heuristic CMP(REG, mem)");
+			this->comparisonColorsFirst = colorAtom->getRegDestColor();
+			this->comparisonColorsSecond = colorAtom->getMemSrcColor();
+			this->comparisonValuesFirst = dataAtom->getRegDestValue();
+			this->comparisonValuesSecond = dataAtom->getMemSrcValueBytes();
+			this->comparisonResult = dataAtom->getFlagsValue().at(6);
+			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
+			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");
+			for (int ii = 0; ii < this->comparisonColorsFirst.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonColorsFirst.at(ii));
+			}
+			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
+			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+			}
+		}
+		//CMP(REG, imm)
+		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::IMM2REG && hAtom->regDestTainted)
+		{
+			LOG_DEBUG("Calculating values for heuristic CMP(REG, imm)");
+			this->comparisonColorsFirst = colorAtom->getRegDestColor();
+			this->comparisonColorsSecond = colorAtom->getImmSrcColorVector();
+			this->comparisonValuesFirst = dataAtom->getRegDestValue();
+			this->comparisonValuesSecond = dataAtom->getImmSrcValue();
 			this->comparisonResult = dataAtom->getFlagsValue().at(6);
 			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
 			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");

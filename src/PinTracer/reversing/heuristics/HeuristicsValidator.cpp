@@ -194,8 +194,10 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 
 				//Now we get the full vector will all taint colors, including the parent colors from which
 				//these colors were derived (and which are considered to be the same for the heuristic).
-				for (UINT16& color : runningColorVector)
+				int initialSize = runningColorVector.size();
+				for (int it=0; it < initialSize; it++)
 				{
+					const UINT16& color = runningColorVector.at(it);
 					LOG_DEBUG(H_MARK"Getting parents of color: " << color);
 					//For every color that is its parent, we store it in our vector
 					std::vector<UINT16> resVec = taintManager.getController().getColorParents(color);
