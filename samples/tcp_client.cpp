@@ -139,15 +139,23 @@ int __cdecl main(int argc, char** argv)
     printf("Test: %c\n", c);*/
     
     
-    /*char* var = "jj";
-    if(recvbuf[0] == var[0])
+
+    char* var = "jj";
+    if (recvbuf[0] == var[0])
     {
         printf("Whoo\n");
     }
     else
     {
         printf("Whee\n");
-    }*/
+    }
+
+
+    char* comp = "testx";
+    if (strncmp(recvbuf, comp, 5) == 0)
+    {
+        printf("Hi");
+    }
 
     char* delimeter = "n";
     for (char c : recvbuf)
@@ -157,12 +165,6 @@ int __cdecl main(int argc, char** argv)
             printf("Found delimeter\n");
             break;
         }
-    }
-
-    char* comp = "testx";
-    if (strncmp(recvbuf, comp, 5) == 0)
-    {
-        printf("Hi");
     }
 
     // cleanup
