@@ -2,6 +2,7 @@
 
 ScopeFilterer::ScopeFilterer(std::string name)
 {
+	LOG_DEBUG("Restricting instrumentation via ScopeFilterer to image " << name);
 	this->mainExecutableName = name;
 }
 
@@ -11,6 +12,7 @@ BOOL ScopeFilterer::isMainExecutable(ADDRINT ip)
 	IMG img = IMG_FindByAddress(ip);
 	if (!IMG_Valid(img))
 	{
+		//LOG_DEBUG("Not valid");
 		return FALSE;
 	}
 
@@ -19,7 +21,7 @@ BOOL ScopeFilterer::isMainExecutable(ADDRINT ip)
 		this->mainExecutableName = IMG_Name(img);
 		return TRUE;
 	}
-
+	//LOG_DEBUG("No: " << IMG_Name(img));
 	return FALSE;
 }
 

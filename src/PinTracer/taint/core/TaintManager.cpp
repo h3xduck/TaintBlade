@@ -63,6 +63,12 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
 	}
+	else if (dllName == WININET_DLL && funcName == INTERNET_READ_FILE_FUNC)
+	{
+		LOG_DEBUG("Registered function handlers for InternetReadFile in wininet");
+		enterHandler = TaintSource::wininetInternetReadFileEnter;
+		exitHandler = TaintSource::wininetInternetReadFileExit;
+	}
 	else if (dllName == HELLO_WORLD_PROG && funcName == ANY_FUNC_IN_DLL)
 	{
 		LOG_DEBUG("Registered function handlers for main");

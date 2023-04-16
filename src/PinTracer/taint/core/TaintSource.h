@@ -19,6 +19,7 @@ namespace WINDOWS
 {
 #include <windows.h>
 #include <WinSock2.h>
+#include <wininet.h>
 }
 #endif
 
@@ -39,6 +40,18 @@ struct wsock_recv_t
 	// https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv
 };
 static wsock_recv_t wsockRecv;
+
+struct wininet_internetreadfile_t
+{
+	//Args
+	WINDOWS::LPVOID hFile;
+	WINDOWS::LPVOID lpBuffer;
+	WINDOWS::DWORD dwNumberOfBytesToRead;
+	WINDOWS::LPDWORD lpdwNumberOfBytesRead;
+
+	// https://learn.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetreadfile
+};
+static wininet_internetreadfile_t wininetInternetReadFile;
 
 static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_line_t> genericRoutineCalls;
 
@@ -61,7 +74,8 @@ public:
 	//Map for generic routine instrumentation. Key is retIP, includes arguments addresses
 	
 	//****************Handlers***********************************************************//
-	//WSOCK
+	
+	///////////////// WSOCK /////////////////
 	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		int NUM_ARGS = 4;
@@ -101,9 +115,53 @@ public:
 			offset++;
 		}
 		
-	}
+	};
 
-	//MAIN (FOR TESTING). Taints RAX and RBX
+	///////////////// WININET /////////////////
+	static VOID wininetInternetReadFileEnter(int retIp, std::string dllName, std::string funcName, ...)
+	{
+		int NUM_ARGS = 4;
+		va_list vaList;
+		va_start(vaList, funcName);
+
+		wininetInternetReadFile.hFile = va_arg(vaList, WINDOWS::LPVOID);
+		wininetInternetReadFile.lpBuffer = va_arg(vaList, WINDOWS::LPVOID);
+		wininetInternetReadFile.dwNumberOfBytesToRead = va_arg(vaList, WINDOWS::DWORD);
+		wininetInternetReadFile.lpdwNumberOfBytesRead = va_arg(vaList, WINDOWS::LPDWORD);
+
+		va_end(vaList);
+
+		LOG_INFO("Called wininetInternetReadFileEnter()\n\tretIp: " << retIp << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tRequested length: " << wininetInternetReadFile.dwNumberOfBytesToRead);
+	}
+	static VOID wininetInternetReadFileExit(int retVal, std::string dllName, std::string funcName, ...)
+	{
+		//Firstly, we must check that we received something. Return value is TRUE if call successful, FALSE otherwise
+		if (retVal == FALSE)
+		{
+			//No tainting needed
+			return;
+		}
+		//Otherwise, we taint as many bytes in buf as indicated by retVal
+		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << wininetInternetReadFile.lpdwNumberOfBytesRead);
+
+		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+		ctx.updateLastMemoryValue(val, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+
+		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
+		int offset = 0;
+		for (auto color : colorVector)
+		{
+			//Each 1 byte, we get a different color
+			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)(((char*)wininetInternetReadFile.lpBuffer) + offset), (UINT8)(((char*)wininetInternetReadFile.lpBuffer)[offset]));
+			offset++;
+		}
+
+	};
+
+
+
+	///////////////// MAIN (FOR TESTING). Taints RAX and RBX /////////////////
 	static VOID mainEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		LOG_DEBUG("Called mainEnter()");

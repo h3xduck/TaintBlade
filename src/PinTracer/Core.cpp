@@ -42,7 +42,7 @@ std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
 std::ostream* debugFile = &std::cerr;
 
-
+std::string mainImageName;
 BOOL instructionLevelTracing = 0;
 ScopeFilterer scopeFilterer;
 extern TaintManager taintManager;
@@ -304,6 +304,13 @@ VOID ImageTrace(IMG img, VOID* v)
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
+
+	//Detect the name of the main image, and restrict all tracing to it
+	if (mainImageName.empty() && IMG_IsMainExecutable(img)) {
+		mainImageName = IMG_Name(img);
+		//Only the specified program is to be instrumented
+		scopeFilterer = ScopeFilterer(mainImageName);
+	}
 }
 
 VOID TraceTrace(TRACE trace, VOID* v)
@@ -500,6 +507,7 @@ void TraceBase(TRACE trace, VOID* v)
 			std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 
 			InstrumentationManager instManager;
+			
 			if (scopeFilterer.isMainExecutable(inst)) {
 				instManager.instrumentInstruction(inst);
 
@@ -712,11 +720,10 @@ int main(int argc, char* argv[])
 
 	}
 
-	//Only the specified program is to be instrumented
-	scopeFilterer = ScopeFilterer(TCP_CLIENT_PROG);
 	//Register taint sources - deprecated: now dynamically via flag
 	//TODO - set program name dynamically
 	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
+	taintManager.registerTaintSource(WININET_DLL, INTERNET_READ_FILE_FUNC, 4);
 	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
 	taintManager.registerTaintSource(TEST1_PROG, ANY_FUNC_IN_DLL, 0);
 	taintManager.registerTaintSource(WSOCK32_DLL, RECV_FUNC, 4);

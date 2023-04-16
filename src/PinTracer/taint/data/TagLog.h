@@ -11,10 +11,10 @@ class TagLog
 public:
 	typedef struct original_color_data_t
 	{
-		std::string dllName;
-		std::string funcName; 
-		ADDRINT memAddress;
-		UINT8 byteValue;
+		std::string dllName; //DLL specifying the TaintSource at which the color was generated
+		std::string funcName; //function name specifying the TaintSource at which the color was generated
+		ADDRINT memAddress; //Memory address at which the color was generated
+		UINT8 byteValue; //Original value of the byte at which the color was generated
 	};
 private:
 	//Color, colors mixed to make it
