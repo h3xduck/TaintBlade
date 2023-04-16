@@ -198,8 +198,9 @@ public:
 	{
 		PIN_LockClient();
 
-		//Only if we are going from main dll to another
-		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
+		//Only if we are going from main dll to another, or another scoped image
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
+			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
 		{
 			if (branchTaken)
 			{
@@ -252,7 +253,8 @@ public:
 	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, int retVal, UINT32 instSize, CONTEXT* localCtx, THREADID tid)
 	{
 		PIN_LockClient();
-		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
+			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
 		{
 			if (branchTaken)
 			{

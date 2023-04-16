@@ -1,3 +1,13 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 162260. Interruption context: IP: 0x06cb1e460 SP: 0x2491f3ae940. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x06cb1e460. Access Type: READ. Access Address = 0x2491f3af000. ExceptionFlags: 0x000000000
+A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\vm_w\vm_thread_windows.cpp: LEVEL_VM::VM_THREAD_WINDOWS::PrepareToAttach: 151: LEVEL_VM::PrepareToAttach(): Current thread holds VM lock
+firstTime: 0
+WasCreatedPriorToAttach(): 1
+KnobAttachToProcessPid.Value(): 0
+Thread info:
+ ThreadId = 0 SysThreadId = 116632
+Started: 0
+Alive: 1
+Current: 1
+Terminated: 0
+
