@@ -27,6 +27,7 @@
 #define COLOR_TRANS_DUMP_FILE "colortransdump.dfx"
 #define FUNC_DLL_NAMES_DUMP_FILE "funcdllnames.dfx"
 #define HEURISTIC_RESULTS_DUMP_FILE "heuristics.dfx"
+#define PROTOCOL_RESULTS_DUMP_FILE "protocol.dfx"
 #define DUMP_INTER_SEPARATOR "%"
 #define DUMP_OUTER_SEPARATOR std::endl
 

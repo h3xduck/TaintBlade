@@ -90,12 +90,22 @@ void REVERSING::PROTOCOL::ProtocolWord::setWordType(protocol_word_type_t type)
 std::string REVERSING::PROTOCOL::ProtocolWord::toString()
 {
 	std::stringstream ss;
-	ss << "Word TYPE : " << this->getWordType() << " STARTINDEX : " << this->getStartIndex() << " ENDINDEX : " << this->getEndIndex();
+	std::string wordType;
+	switch (this->getWordType())
+	{
+	case 0:wordType = "UNDEFINED"; break;
+	case 1:wordType = "DELIMETER"; break;
+	case 2:wordType = "KEYWORD"; break;
+	case 3: wordType = "SEPARATORLASTVALUE"; break;
+	case 4: wordType = "FAILEDDELIMETER"; break;
+	case 5: wordType = "BYTEKEYWORD"; break;
+	}
+	ss << "Word TYPE : " << wordType << " | STARTINDEX : " << this->getStartIndex() << " | ENDINDEX : " << this->getEndIndex();
 	std::vector<UINT8> &bytesVec = this->getAllBytes();
 	std::vector<int> &compVec = this->getSuccessIndexes();
 	for (int ii = 0; ii < bytesVec.size(); ii++)
 	{
-		ss << "\n\tByte " << ii << ": " << bytesVec.at(ii) << " | Comp res: " << compVec.at(ii);
+		ss << "\n\tByte " << ii << ": " << bytesVec.at(ii) << " | Comparison result: " << compVec.at(ii);
 	}
 
 	return ss.str();

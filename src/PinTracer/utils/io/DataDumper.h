@@ -10,6 +10,7 @@
 #include "../../taint/data/TagLog.h"
 #include "../../common/Context.h"
 #include "../../utils/io/format.h"
+#include "../../reversing/protocol/Protocol.h"
 
 class DataDumper
 {
@@ -20,6 +21,7 @@ private:
 	std::ofstream funcDllNamesDumpFile;
 	std::ofstream memColorEventDumpFile;
 	std::ofstream heuristicsResultsDumpFile;
+	std::ofstream protocolResultsDumpFile;
 
 	int lastRoutineDumpIndex;
 
@@ -84,7 +86,7 @@ public:
 	void writeRoutineDumpLine(struct func_dll_names_dump_line_t data);
 	void writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>>);
 	void writeRevHeuristicDumpLine(HLComparison log);
-
+	void writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol);
 
 	void resetDumpFiles();
 
