@@ -17,6 +17,10 @@ int Context::getLastMemoryLength()
 	return this->lastMemoryLength;
 }
 
+RevContext* Context::getRevContext()
+{
+	return &(this->revContext);
+}
 
 
 void Context::updateCurrentInstruction(ADDRINT inst_addr)

@@ -9,6 +9,7 @@
 #include "../xed_iclass_instrumentation/SpecialOpc.h"
 #include "../../utils/inst/PerformanceOperator.h"
 #include "../xed_iclass_instrumentation/ControlFlowOpc.h"
+#include "../xed_iclass_instrumentation/CompareOpc.h"
 
 
 class InstrumentationManager

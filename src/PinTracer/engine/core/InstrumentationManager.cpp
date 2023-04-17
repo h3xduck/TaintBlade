@@ -26,11 +26,6 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		return;
 	}
 
-	//Log instruction
-	//instMap.insert(std::make_pair<ADDRINT, std::string>(INS_Address(ins), INS_Disassemble(ins)));
-	//instMap[INS_Address(ins)] = INS_Disassemble(ins);
-	//LOG_DEBUG("Logged ip:" << INS_Address(ins));
-
 	switch (opc)
 	{
 		//Logical binary instructions
@@ -61,6 +56,9 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_JB:
 	case XED_ICLASS_JBE:
 		OPC_INST::instrumentControlFlowOpc(ins);
+		break;
+	case XED_ICLASS_CMP:
+		OPC_INST::instrumentCompareOpc(ins);
 		break;
 	default:
 		//Unsupported or ignored, no tainting for those

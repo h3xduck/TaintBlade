@@ -13,7 +13,7 @@ namespace OPC_INST {
 	////////////////////////////////////////////////////////
 	//Taint functions, called from instrumentation functions
 
-	void lea_mem2reg(THREADID tid, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, UINT32 leaScale, UINT32 leaDis);
+	void lea_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, UINT32 leaScale, UINT32 leaDis);
 
 
 

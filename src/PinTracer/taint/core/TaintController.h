@@ -2,6 +2,7 @@
 #define _TAINT_CONTROLLER_H_
 
 #include "../data/TagMap.h"
+#include "../data/TagLog.h"
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
@@ -27,15 +28,32 @@ public:
 	void taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BASE::REG src1Reg, const ADDRINT src2Mem, const UINT32 src2Bytes);
 	void untaintReg(const LEVEL_BASE::REG reg);
 
-	void registerOriginalColor(UINT16 color, std::string dllName, std::string funcName);
+	/**
+	Registers a color that has been tainted manually (by a rule), along with function, dll, and memory address that it covers
+	Includes actual value of the byte too
+	*/
+	void registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue);
+	
+	/**
+	Returns a vector will all parents of a color (recursively, not limited to 1 generation)
+	*/
+	std::vector<UINT16> getColorParents(UINT16 color);
 
 	void printTaint();
 	void dumpTaintLog();
 	void dumpTaintLogPrettified(UINT16 color);
 	void dumpTagLogOriginalColors();
 	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();
-	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> getOriginalColorsVector();
+	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> getOriginalColorsVector();
 	std::vector<Tag> getColorTransVector();
+
+	bool regIsTainted(REG reg);
+	bool memIsTainted(ADDRINT mem);
+	bool memRangeIsTainted(ADDRINT mem, int bytes);
+
+	std::vector<UINT16> regGetColor(REG reg);
+	UINT16 memGetColor(ADDRINT mem);
+	std::vector<UINT16> memRangeGetColor(ADDRINT mem, int bytes);
 };
 
 

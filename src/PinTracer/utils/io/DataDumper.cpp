@@ -10,15 +10,18 @@ DataDumper::DataDumper()
 	this->colorTransDumpFile.open(COLOR_TRANS_DUMP_FILE);
 	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
 	this->memColorEventDumpFile.open(TAINT_EVENT_DUMP_FILE);
+	this->heuristicsResultsDumpFile.open(HEURISTIC_RESULTS_DUMP_FILE);
+	this->protocolResultsDumpFile.open(PROTOCOL_RESULTS_DUMP_FILE);
 }
 
-void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> &colorVec)
+void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec)
 {
+	//NOTE: in here we also have the memAddress available
 	for (auto it : colorVec)
 	{
 		this->orgColorsDumpFile << it.first << DUMP_INTER_SEPARATOR <<
-			it.second.first << DUMP_INTER_SEPARATOR <<
-			it.second.second << DUMP_INTER_SEPARATOR <<
+			it.second.dllName << DUMP_INTER_SEPARATOR <<
+			it.second.funcName << DUMP_INTER_SEPARATOR <<
 			this->lastRoutineDumpIndex << DUMP_OUTER_SEPARATOR;
 	}
 }
@@ -91,6 +94,61 @@ void DataDumper::writeColorTransformationDump(std::vector<Tag> vec)
 	}
 }
 
+void DataDumper::writeRevHeuristicDumpLine(HLComparison log)
+{
+	std::vector<RevAtom> atomVec = log.getFullAtomVector();
+	std::vector<std::string> instVec = log.getInstructionVector();
+	this->heuristicsResultsDumpFile << "HEURISTIC MET: " <<std::endl;
+	for (int ii=0; ii<atomVec.size(); ii++)
+	{
+		this->heuristicsResultsDumpFile << "\t" << to_hex(atomVec.at(ii).getBaseAddress()) << ": " << instVec.at(ii) << std::endl;
+	}
+}
+
+void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
+{
+	std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& protNetbufferVec = protocol.getNetworkBufferVector();
+	
+	for (int ii = 0; ii < protNetbufferVec.size(); ii++)
+	{
+		this->protocolResultsDumpFile << "The tracer detected " << protNetbufferVec.size() << " buffers:" << std::endl;
+		this->protocolResultsDumpFile << "PROTOCOL NETWORK BUFFER " << ii << ":" << std::endl;
+		REVERSING::PROTOCOL::ProtocolNetworkBuffer& protNetBuf = protNetbufferVec.at(ii);
+		std::vector<UINT16> &colors = protNetBuf.getColorsVector();
+		std::vector<UINT8> &values = protNetBuf.getValuesVector();
+		ADDRINT start = protNetBuf.getStartMemAddress();
+		ADDRINT end = protNetBuf.getEndMemAddress();
+		this->protocolResultsDumpFile << "\tMemory start: " << start << " | Memory end: " << end << std::endl;
+
+		this->protocolResultsDumpFile << "\tValues:" << std::endl;
+		for (int jj = 0; jj < colors.size(); jj++)
+		{
+			UINT16& color = colors.at(jj);
+			UINT8& value = values.at(jj);
+			this->protocolResultsDumpFile << "\t\t Color: " << color << " | Byte value: " << value << std::endl;
+		}
+
+
+		std::vector<REVERSING::PROTOCOL::ProtocolWord> &protWordVec = protNetBuf.getWordVector();
+		this->protocolResultsDumpFile << "\tThe buffer contains " << protWordVec.size() << " words:" << std::endl;
+		for (REVERSING::PROTOCOL::ProtocolWord &protWord : protWordVec)
+		{
+			//Print the word, pad it with some tabs for pretty printing
+			std::string wordStr = protWord.toString();
+			std::string old("\n");
+			std::string rep("\n\t\t");
+			for (std::size_t pos = 0;
+				(pos = wordStr.find(old, pos)) != std::string::npos;
+				pos += rep.length())
+			{
+				wordStr.replace(pos, old.length(), rep);
+			}
+			this->protocolResultsDumpFile << "\t\t" << wordStr << std::endl;
+		}
+		this->protocolResultsDumpFile << std::endl;
+	}
+}
+
 void DataDumper::resetDumpFiles()
 {
 	if (remove(CURRENT_TAINTED_MEMORY_DUMP_FILE) != 0)
@@ -136,5 +194,23 @@ void DataDumper::resetDumpFiles()
 	else
 	{
 		LOG_DEBUG("Function calls dump file successfully deleted");
+	}
+
+	if (remove(HEURISTIC_RESULTS_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting heuristic results dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Heuristic results dump file successfully deleted");
+	}
+
+	if (remove(PROTOCOL_RESULTS_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting protocol results dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Protocol results dump file successfully deleted");
 	}
 }

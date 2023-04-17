@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <cstdio>
+#include <algorithm>
 
 #define INS_CALL_RTN_TAINT_ENTER_0(rtn, dllName, funcName, enter_handler)	\
 	RTN_InsertCall(rtn, IPOINT_BEFORE, AFUNPTR(enter_handler), IARG_RETURN_IP, IARG_PTR, new std::string(dllName), IARG_PTR, new std::string(funcName), IARG_END);
@@ -49,7 +50,13 @@ public:
 
 	void routineLoadedEvent(RTN rtn, std::string dllName, std::string funcName);
 
+	/**
+	Registers a new DLL + FUNC combination in the system as taint sources.
+	The combination must be previously prepared by the system, it does not accept arbitrary generic
+	function instrumentation (yet).
+	*/
 	void registerTaintSource(const std::string& dllName, const std::string& funcName, int numArgs);
+
 	void unregisterTaintSource(const std::string& dllName, const std::string& funcName);
 
 };

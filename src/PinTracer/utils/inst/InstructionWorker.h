@@ -31,13 +31,23 @@ namespace InstructionWorker
 
 	/**
 	Returns a string of length len representing the bytes at memAddr. No extra info.
+	Shown as a string of hexadecimal values (e.g.: FF29878289)
+	IMPORTANT: Requires locking the PIN client.
 	*/
-	std::string getMemoryValue(ADDRINT memAddr, int len);
+	std::string getMemoryValueHexString(ADDRINT memAddr, int len);
 
 	/**
-	Returns a string representing the bytes at memAddr with length len.
-	Shown as a string of hexadecimal values (e.g.: FF29878289)
+	Returns an vector of chars of length len representing the bytes at memAddr. No extra info.
+	IMPORTANT: Requires locking the PIN client.
 	*/
+	std::vector<char> getMemoryValue(ADDRINT memAddr, int len);
+
+	/**
+	Puts into valBuffer the value of a register given an instrumentation context (the value at that point)
+	Must pass a buffer valBuffer. Normal call to getContextReg does not work for some reason in PIN
+	If we select resultBigEndian=true it reorders the bytes LSB --> MSB, otherwise the returned vector goes MSB --> LSB
+	*/
+	void getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8* valBuffer, bool resultBigEndian = false);
 
 }
 

@@ -63,7 +63,19 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
 	}
+	else if (dllName == WININET_DLL && funcName == INTERNET_READ_FILE_FUNC)
+	{
+		LOG_DEBUG("Registered function handlers for InternetReadFile in wininet");
+		enterHandler = TaintSource::wininetInternetReadFileEnter;
+		exitHandler = TaintSource::wininetInternetReadFileExit;
+	}
 	else if (dllName == HELLO_WORLD_PROG && funcName == ANY_FUNC_IN_DLL)
+	{
+		LOG_DEBUG("Registered function handlers for main");
+		enterHandler = TaintSource::mainEnter;
+		exitHandler = TaintSource::mainExit;
+	}
+	else if (dllName == TEST1_PROG && funcName == ANY_FUNC_IN_DLL)
 	{
 		LOG_DEBUG("Registered function handlers for main");
 		enterHandler = TaintSource::mainEnter;
@@ -76,6 +88,7 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 	}*/
 	else
 	{
+		//The DLL + FUNC combination was not registered in our system
 		LOG_ERR("Received request to register unknown taint source: DllName = " << dllName << " FuncName = " << funcName);
 		return;
 	}
@@ -96,9 +109,17 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 	else
 	{
 		//DLLname already exists
-		taintIt->second.push_back(taintSource);
-
-		LOG_ALERT("Registered a new taintSource: DllName =  " << dllName << " FuncName = " << funcName);
+		if (std::find(taintIt->second.begin(), taintIt->second.end(), taintSource) != taintIt->second.end())
+		{
+			//Function already in map
+			LOG_ALERT("Tried to register an already registered taint source: DllName =  " << dllName << " FuncName = " << funcName);
+		}
+		else
+		{
+			//New function for existing DLL
+			taintIt->second.push_back(taintSource);
+			LOG_ALERT("Registered a taintSource in a known DLL: DllName =  " << dllName << " FuncName = " << funcName);
+		}
 	}
 }
 

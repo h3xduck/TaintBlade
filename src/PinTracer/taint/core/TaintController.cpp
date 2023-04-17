@@ -44,8 +44,8 @@ void TaintController::taintMemWithMem(const ADDRINT destMem, const UINT32 destBy
 			this->tagMap.mixTaintMem(destMemIt, destMemIt, srcMemIt);
 		}
 
-		srcMemIt += 8;
-		destMemIt += 8;
+		srcMemIt += 1;
+		destMemIt += 1;
 	}
 }
 
@@ -69,7 +69,7 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 			//Ignore color overwrite if the color is already there
 			if (colorDest == color)
 			{
-				//LOG_DEBUG("Ignored color overwrite for " << to_hex(destMemIt) << " since it's the same one");
+				//LOG_DEBUG("Ignored color overwrite for " << to_hex_dbg(destMemIt) << " since it's the same one");
 				return;
 			}
 
@@ -117,14 +117,15 @@ void TaintController::taintRegWithReg(const LEVEL_BASE::REG destReg, LEVEL_BASE:
 void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BASE::REG src1Reg, const ADDRINT src2Mem, const UINT32 src2Bytes)
 {
 	const UINT32 destRegLength = this->tagMap.tReg.getTaintLength(destReg);
-	const UINT16 colorSrc2Mem = this->tagMap.getTaintColorMem(src2Mem);
 	const UINT32 destPos = this->tagMap.tReg.getPos(destReg);
 
-	//LOG_DEBUG("M2R:: REG:" << destReg << " POS:" << destPos << " src2Mem:" << to_hex(src2Mem) << " len:" << src2Bytes);
-	for (int ii = 0; ii < destRegLength; ii++)
+	//LOG_DEBUG("M2R:: REG:" << destReg << " POS:" << destPos << " src2Mem:" << to_hex_dbg(src2Mem) << " len:" << src2Bytes);
+	//LOG_DEBUG("REGLEN: " << destRegLength << " | MEMLEN: " << src2Bytes);
+	for (int ii = 0; ii < src2Bytes; ii++)
 	{
-		UINT16 colorReg = this->tagMap.getTaintColorReg(src1Reg).at(ii).color;
-		this->tagMap.mixTaintRegByte(destReg, ii, colorReg, colorSrc2Mem);
+		UINT16 colorReg = this->tagMap.getTaintColorReg(src1Reg).at(destRegLength-src2Bytes+ii).color;
+		const UINT16 colorSrc2Mem = this->tagMap.getTaintColorMem(src2Mem+ii);
+		this->tagMap.mixTaintRegByte(destReg, destRegLength - src2Bytes + ii, colorReg, colorSrc2Mem);
 	}
 
 }
@@ -138,12 +139,15 @@ void TaintController::untaintReg(const LEVEL_BASE::REG reg)
 	}
 }
 
-void TaintController::registerOriginalColor(UINT16 color, std::string dllName, std::string funcName)
+void TaintController::registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue)
 {
-	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName);
+	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName, memAddress, byteValue);
 }
 
-
+std::vector<UINT16> TaintController::getColorParents(UINT16 color)
+{
+	return this->tagMap.tagLog.getColorParentsRecursive(color);
+}
 
 void TaintController::printTaint()
 {
@@ -171,7 +175,7 @@ std::vector<std::pair<ADDRINT, UINT16>> TaintController::getTaintedMemoryVector(
 	return this->tagMap.getTaintedMemoryVector();
 }
 
-std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> TaintController::getOriginalColorsVector()
+std::vector<std::pair<UINT16, TagLog::original_color_data_t>> TaintController::getOriginalColorsVector()
 {
 	return this->tagMap.getOriginalColorsVector();
 }
@@ -179,4 +183,34 @@ std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> TaintControl
 std::vector<Tag> TaintController::getColorTransVector()
 {
 	return this->tagMap.getColorTransVector();
+}
+
+bool TaintController::regIsTainted(REG reg)
+{
+	return this->tagMap.regIsTainted(reg);
+}
+
+bool TaintController::memIsTainted(ADDRINT mem)
+{
+	return this->tagMap.memIsTainted(mem);
+}
+
+bool TaintController::memRangeIsTainted(ADDRINT mem, int bytes)
+{
+	return this->tagMap.memRangeIsTainted(mem, bytes);
+}
+
+std::vector<UINT16> TaintController::regGetColor(REG reg)
+{
+	return this->tagMap.regGetColor(reg);
+}
+
+UINT16 TaintController::memGetColor(ADDRINT mem)
+{
+	return this->tagMap.memGetColor(mem);
+}
+
+std::vector<UINT16> TaintController::memRangeGetColor(ADDRINT mem, int bytes)
+{
+	return this->tagMap.memRangeGetColor(mem, bytes);
 }

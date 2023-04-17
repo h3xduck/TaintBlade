@@ -234,6 +234,7 @@
       <DebugInformationFormat>
       </DebugInformationFormat>
       <DisableSpecificWarnings>4530;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions>/export:main %(AdditionalOptions)</AdditionalOptions>
@@ -258,9 +259,21 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="engine\core\InstrumentationManager.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\BinaryOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\Common.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\CompareOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\ControlFlowOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\OverwriteOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\SpecialOpc.cpp" />
+    <ClCompile Include="reversing\data\RevAtom.cpp" />
+    <ClCompile Include="reversing\core\RevContext.cpp" />
+    <ClCompile Include="reversing\data\RevLog.cpp" />
+    <ClCompile Include="reversing\heuristics\HeuristicsValidator.cpp" />
+    <ClCompile Include="reversing\heuristics\HLComparison.cpp" />
+    <ClCompile Include="reversing\heuristics\RevHeuristic.cpp" />
+    <ClCompile Include="reversing\protocol\Protocol.cpp" />
+    <ClCompile Include="reversing\protocol\ProtocolWord.cpp" />
+    <ClCompile Include="reversing\protocol\ProtocolNetworkBuffer.cpp" />
+    <ClCompile Include="reversing\protocol\ProtocolReverser.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
@@ -268,6 +281,7 @@
     <ClCompile Include="taint\data\TRegister.cpp" />
     <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
+    <ClCompile Include="test\TestEngine.cpp" />
     <ClCompile Include="utils\inst\InstructionWorker.cpp" />
     <ClCompile Include="utils\inst\PerformanceOperator.cpp" />
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
@@ -281,9 +295,23 @@
     <ClInclude Include="engine\core\InstrumentationManager.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\Common.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\BinaryOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\CompareOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\ControlFlowOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\OverwriteOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\SpecialOpc.h" />
+    <ClInclude Include="reversing\data\RevAtom.h" />
+    <ClInclude Include="reversing\core\RevContext.h" />
+    <ClInclude Include="reversing\data\RevColorAtom.h" />
+    <ClInclude Include="reversing\data\RevDataAtom.h" />
+    <ClInclude Include="reversing\data\RevHeuristicAtom.h" />
+    <ClInclude Include="reversing\data\RevLog.h" />
+    <ClInclude Include="reversing\heuristics\HeuristicsValidator.h" />
+    <ClInclude Include="reversing\heuristics\HLComparison.h" />
+    <ClInclude Include="reversing\heuristics\RevHeuristic.h" />
+    <ClInclude Include="reversing\protocol\Protocol.h" />
+    <ClInclude Include="reversing\protocol\ProtocolWord.h" />
+    <ClInclude Include="reversing\protocol\ProtocolNetworkBuffer.h" />
+    <ClInclude Include="reversing\protocol\ProtocolReverser.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
     <ClInclude Include="taint\data\Tag.h" />
@@ -291,6 +319,10 @@
     <ClInclude Include="taint\data\TRegister.h" />
     <ClInclude Include="taint\data\TagMap.h" />
     <ClInclude Include="taint\core\TaintSource.h" />
+    <ClInclude Include="test\HeuristicMilestone.h" />
+    <ClInclude Include="test\Test.h" />
+    <ClInclude Include="test\TestEngine.h" />
+    <ClInclude Include="test\TestMilestone.h" />
     <ClInclude Include="utils\inst\PerformanceOperator.h" />
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
     <ClInclude Include="utils\io\DataDumper.h" />

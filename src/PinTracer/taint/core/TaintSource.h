@@ -12,13 +12,16 @@
 
 #define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
 
+#ifndef _WINDOWS_HEADERS_H_
+#define _WINDOWS_HEADERS_H_
 #define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
-
 namespace WINDOWS
 {
 #include <windows.h>
 #include <WinSock2.h>
+#include <wininet.h>
 }
+#endif
 
 extern TaintController taintController;
 extern DataDumper dataDumper;
@@ -38,14 +41,41 @@ struct wsock_recv_t
 };
 static wsock_recv_t wsockRecv;
 
+struct wininet_internetreadfile_t
+{
+	//Args
+	WINDOWS::LPVOID hFile;
+	WINDOWS::LPVOID lpBuffer;
+	WINDOWS::DWORD dwNumberOfBytesToRead;
+	WINDOWS::LPDWORD lpdwNumberOfBytesRead;
+
+	// https://learn.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetreadfile
+};
+static wininet_internetreadfile_t wininetInternetReadFile;
+
 static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_line_t> genericRoutineCalls;
 
 class TaintSource
 {
 public:
+	bool TaintSource::operator==(const TaintSource& other) const
+	{
+		if (this->dllName != other.dllName ||
+			this->funcName != other.funcName ||
+			this->numArgs != other.numArgs)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+
 	//Map for generic routine instrumentation. Key is retIP, includes arguments addresses
 	
-	//Handlers
+	//****************Handlers***********************************************************//
+	
+	///////////////// WSOCK /////////////////
 	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		int NUM_ARGS = 4;
@@ -72,18 +102,66 @@ public:
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
 		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
-		std::string val = InstructionWorker::getMemoryValue((ADDRINT)wsockRecv.buf, retVal);
+		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wsockRecv.buf, retVal);
 		ctx.updateLastMemoryValue(val, retVal);
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
+		int offset = 0;
 		for (auto color : colorVector)
 		{
-			taintController.registerOriginalColor(color, dllName, funcName);
+			//Each 1 byte, we get a different color
+			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)((wsockRecv.buf)+offset), (UINT8)(wsockRecv.buf[offset]));
+			offset++;
 		}
 		
-	}
+	};
 
+	///////////////// WININET /////////////////
+	static VOID wininetInternetReadFileEnter(int retIp, std::string dllName, std::string funcName, ...)
+	{
+		int NUM_ARGS = 4;
+		va_list vaList;
+		va_start(vaList, funcName);
+
+		wininetInternetReadFile.hFile = va_arg(vaList, WINDOWS::LPVOID);
+		wininetInternetReadFile.lpBuffer = va_arg(vaList, WINDOWS::LPVOID);
+		wininetInternetReadFile.dwNumberOfBytesToRead = va_arg(vaList, WINDOWS::DWORD);
+		wininetInternetReadFile.lpdwNumberOfBytesRead = va_arg(vaList, WINDOWS::LPDWORD);
+
+		va_end(vaList);
+
+		LOG_INFO("Called wininetInternetReadFileEnter()\n\tretIp: " << retIp << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tRequested length: " << wininetInternetReadFile.dwNumberOfBytesToRead);
+	}
+	static VOID wininetInternetReadFileExit(int retVal, std::string dllName, std::string funcName, ...)
+	{
+		//Firstly, we must check that we received something. Return value is TRUE if call successful, FALSE otherwise
+		if (retVal == FALSE)
+		{
+			//No tainting needed
+			return;
+		}
+		//Otherwise, we taint as many bytes in buf as indicated by retVal
+		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << wininetInternetReadFile.lpdwNumberOfBytesRead);
+
+		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+		ctx.updateLastMemoryValue(val, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+
+		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
+		int offset = 0;
+		for (auto color : colorVector)
+		{
+			//Each 1 byte, we get a different color
+			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)(((char*)wininetInternetReadFile.lpBuffer) + offset), (UINT8)(((char*)wininetInternetReadFile.lpBuffer)[offset]));
+			offset++;
+		}
+
+	};
+
+
+
+	///////////////// MAIN (FOR TESTING). Taints RAX and RBX /////////////////
 	static VOID mainEnter(int retIp, std::string dllName, std::string funcName, ...)
 	{
 		LOG_DEBUG("Called mainEnter()");
@@ -115,13 +193,14 @@ public:
 
 	void taintSourceLogAll();
 
-	static VOID genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, ADDRINT nextInstAddr, CONTEXT* ctx, THREADID tid,
+	static VOID genericRoutineInstrumentEnter(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, UINT32 instSize, ADDRINT nextInstAddr, CONTEXT* localCtx, THREADID tid,
 		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 	{
 		PIN_LockClient();
 
-		//Only if we are going from main dll to another
-		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
+		//Only if we are going from main dll to another, or another scoped image
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
+			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
 		{
 			if (branchTaken)
 			{
@@ -154,7 +233,7 @@ public:
 
 				genericRoutineCalls.erase(nextInstAddr);
 				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(nextInstAddr, data));
-				//LOG_DEBUG("Inserted entry jump at " << to_hex(branchTargetAddress));
+				//LOG_DEBUG("Inserted entry jump at " << to_hex_dbg(branchTargetAddress));
 
 				//At this point, we dump the function and the arguments
 				dataDumper.writeRoutineDumpLine(data);
@@ -171,17 +250,18 @@ public:
 		
 	}
 
-	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, int retVal, UINT32 instSize, CONTEXT* ctx, THREADID tid)
+	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, int retVal, UINT32 instSize, CONTEXT* localCtx, THREADID tid)
 	{
 		PIN_LockClient();
-		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
+			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
 		{
 			if (branchTaken)
 			{
 				auto it = genericRoutineCalls.find(branchTargetAddress);
 				if (it == genericRoutineCalls.end())
 				{
-					LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex(branchTargetAddress));
+					LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex_dbg(branchTargetAddress));
 				}
 				else
 				{
@@ -203,6 +283,11 @@ public:
 				}
 			}
 		}
+
+		//At this point, the reverse engineering module should have found a HL instruction
+		//using the encoded heuristics. Otherwise, returning to another function signals the flush of the RevLog
+		
+
 		PIN_UnlockClient();
 	}
 

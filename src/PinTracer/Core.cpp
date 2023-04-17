@@ -23,6 +23,9 @@
 #include "config/Names.h"
 #include "utils/io/DataDumper.h"
 #include "taint/core/TaintSource.h"
+#include "test/TestEngine.h"
+#include "taint/data/TagLog.h"
+#include "reversing/protocol/ProtocolReverser.h"
 
 using std::string;
 
@@ -39,9 +42,16 @@ std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
 std::ostream* debugFile = &std::cerr;
 
+std::string mainImageName;
 BOOL instructionLevelTracing = 0;
+
+//Determines whether to ask for user input after detecting a new image, deciding whether it should be traced or not
+bool settingAskForIndividualImageTrace = 0;
+bool settingTraceAllImages = 0;
+
 ScopeFilterer scopeFilterer;
 extern TaintManager taintManager;
+extern TestEngine globalTestEngine;
 
 //ScopeFilterer scopeFilterer = NULL;
 
@@ -63,13 +73,20 @@ KNOB< BOOL > KnobInstLevelTrace(KNOB_MODE_WRITEONCE, "pintool", "t", "0", "activ
 KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
 	"count instructions, basic blocks and threads in the application");
 
+KNOB< string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "activate test mode, specifies input file for reading tests");
+
+KNOB< string > KnobTaintSourceFile(KNOB_MODE_WRITEONCE, "pintool", "taint", "", "specifies a file with dll+func combos to register as taint sources");
+
+KNOB< BOOL > KnobAskForIndividualImageTrace(KNOB_MODE_WRITEONCE, "pintool", "choosetraceimages", "", "Ask for user before including any image in the list of images to trace. Otherwise, only main image is traced");
+KNOB< BOOL > KnobTraceAllImages(KNOB_MODE_WRITEONCE, "pintool", "traceallimages", "", "Force program to trace all images, without asking user input. Overrides choosetraceimages flag.");
+
 /* ===================================================================== */
 // Utilities
 /* ===================================================================== */
 
-/*!
- *  Print out help message.
- */
+/**
+Print out help message.
+*/
 INT32 Usage()
 {
 	std::cerr << "This tool prints out the number of dynamically executed " << std::endl
@@ -290,11 +307,42 @@ VOID SyscallTrace(THREADID threadIndex, CONTEXT* ctx, SYSCALL_STANDARD std, VOID
 
 VOID ImageTrace(IMG img, VOID* v)
 {
+	PIN_LockClient();
+	
 	std::string dllName = IMG_Name(img);
 	const ADDRINT entryAddr = IMG_EntryAddress(img);
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
+	//Detect the name of the main image, and restrict all tracing to it
+	if (mainImageName.empty() && IMG_IsMainExecutable(img)) {
+		mainImageName = IMG_Name(img);
+		//Only the specified program is to be instrumented
+		scopeFilterer = ScopeFilterer(mainImageName);
+	}
+	//Check if we must trace all images because the user requested it like that via program flags
+	else if (settingTraceAllImages) {
+		scopeFilterer.addScopeImage(img);
+	}
+	//Check if we should trace this routine, even if it is not the main one
+	else if (settingAskForIndividualImageTrace)
+	{
+		std::cout << "Should we trace the image \"" << dllName << "\"? y/n: ";
+		char c;
+		while (((c = getchar()) != 'y') && (c != 'n'));
+		if (c == 'y')
+		{
+			//Add the image to traceable images
+			scopeFilterer.addScopeImage(img);
+			LOG_DEBUG("Added image " << dllName << " to the scopable images list");
+		}
+		else
+		{
+			LOG_DEBUG("Decided not to include image " << dllName << " to the scopable images list");
+		}
+	}
+
+	PIN_UnlockClient();
 }
 
 VOID TraceTrace(TRACE trace, VOID* v)
@@ -303,8 +351,8 @@ VOID TraceTrace(TRACE trace, VOID* v)
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
 		{
-			if (scopeFilterer.isMainExecutable(inst) || (scopeFilterer.wasMainExecutableReached() &&
-				!scopeFilterer.hasMainExecutableExited())) {
+			if (scopeFilterer.isMainExecutable(inst) || scopeFilterer.isScopeImage(inst) ||
+				(scopeFilterer.wasMainExecutableReached() && !scopeFilterer.hasMainExecutableExited())) {
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
 					INS_Address(inst), IARG_UINT32, INS_Size(inst),
 					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
@@ -361,7 +409,9 @@ VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchT
 {
 	PIN_LockClient();
 
-	if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress))
+	//We trace the control flow if it is the main image or one of the scoped images
+	if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
+		scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
 	{
 		if (branchTaken)
 		{
@@ -382,7 +432,7 @@ VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchT
 			std::string routineNameTo = InstructionWorker::getFunctionNameFromAddress(branchTargetAddress);
 
 			//Only print arguments if it the target is another function. Some random dll should not be calling any function from us
-			if (scopeFilterer.isMainExecutable(ip))
+			if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isScopeImage(ip))
 			{
 				//Logging in imageinfo logs
 				*imageInfoOut << "--FROM-- DLL: " << std::hex << dllFrom << " | BaseAddr: " << baseAddrFrom << " | Addr: " << ip << " | RoutineName: " << routineNameFrom << std::endl;
@@ -491,7 +541,8 @@ void TraceBase(TRACE trace, VOID* v)
 			std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 
 			InstrumentationManager instManager;
-			if (scopeFilterer.isMainExecutable(inst)) {
+			
+			if (scopeFilterer.isMainExecutable(inst) || scopeFilterer.isScopeImage(inst)) {
 				instManager.instrumentInstruction(inst);
 
 			#if(CONFIG_INST_LOG_FILES==1)
@@ -558,6 +609,7 @@ void TraceBase(TRACE trace, VOID* v)
 					}
 			}
 		}
+
 	}
 }
 
@@ -590,14 +642,26 @@ VOID Fini(INT32 code, VOID* v)
 	taintController.dumpTaintLogPrettified(29);
 	taintController.dumpTagLogOriginalColors();
 	PerformanceOperator::measureChrono();
-
+	
 	//Dump original colors vector
-	std::vector<std::pair<UINT16, std::pair<std::string, std::string>>> orgVec = taintController.getOriginalColorsVector();
+	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
 	dataDumper.writeOriginalColorDump(orgVec);
 
 	//Dump color transformations
 	std::vector<Tag> colorTrans  = taintController.getColorTransVector();
 	dataDumper.writeColorTransformationDump(colorTrans);
+
+	//Dump RevAtoms
+	ctx.getRevContext()->printRevLogCurrent();
+
+	//Dump info about heuristics found
+	ctx.getRevContext()->dumpFoundHeuristics();
+
+	//Reverse the protocols using the found heuristics
+	REVERSING::PROTOCOL::reverseProtocol();
+
+	//Evaluate tests
+	globalTestEngine.evaluateTests();
 }
 
 /*!
@@ -609,11 +673,7 @@ VOID Fini(INT32 code, VOID* v)
  */
 int main(int argc, char* argv[])
 {
-	scopeFilterer = ScopeFilterer(TCP_CLIENT_PROG);
-	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
-	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
-	taintManager.registerTaintSource(WSOCK32_DLL, RECV_FUNC, 4);
-
+	//Start instruction counter
 	PerformanceOperator::startChrono();
 
 	// Initialize PIN library. Print help message if -h(elp) is specified
@@ -628,6 +688,11 @@ int main(int argc, char* argv[])
 	string imageInfoFilename = KnobImageFile.Value();
 	string filterlistFilename = KnobFilterlistFile.Value();
 	string debugFileFilename = KnobDebugFile.Value();
+	string testFileFilename = KnobTestFile.Value();
+	string taintSourceFileFilename = KnobTaintSourceFile.Value();
+	settingAskForIndividualImageTrace = KnobAskForIndividualImageTrace.Value();
+	settingTraceAllImages = KnobTraceAllImages.Value();
+	
 	instructionLevelTracing = KnobInstLevelTrace.Value();
 
 	if (!fileName.empty())
@@ -649,6 +714,55 @@ int main(int argc, char* argv[])
 	{
 		debugFile = new std::ofstream(debugFileFilename.c_str());
 	}
+
+	if (!testFileFilename.empty())
+	{
+		std::cerr << "Test mode now active" << std::endl;
+		globalTestEngine.setTestLevel(TestEngine::ACTIVE);
+		//Read the tests to perform
+		globalTestEngine.loadTestsFromFile(testFileFilename);
+
+		//Redirect all logging TODO?
+		/*std::ostream* out = &std::cerr;
+		std::ostream* sysinfoOut = &std::cerr;
+		std::ostream* imageInfoOut = &std::cerr;
+		std::ostream* debugFile = &std::cerr;*/
+
+	}
+
+	if (!taintSourceFileFilename.empty())
+	{
+		//If a taint source file was specified, we load DLL+FUNC combos from there
+		std::cerr << "Loading taint sources dynamically from " << taintSourceFileFilename << std::endl;
+		LOG_DEBUG("Loading taint sources from " << taintSourceFileFilename);
+
+		std::ifstream infile(taintSourceFileFilename);
+		std::string line;
+		//The file is made of lines with FUNC DLL <num arguments>
+		while (std::getline(infile, line))
+		{
+			std::istringstream isdata(line);
+			std::string dllName;
+			//DLL
+			std::getline(isdata, dllName, ' ');
+			//FUNC
+			std::string funcName;
+			std::getline(isdata, funcName, ' ');
+			//FUNC
+			std::string numArgs;
+			std::getline(isdata, numArgs, ' ');
+			taintManager.registerTaintSource(dllName, funcName, atoi(numArgs.c_str()));
+		}
+
+	}
+
+	//Register taint sources - deprecated: now dynamically via flag
+	//TODO - set program name dynamically
+	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
+	taintManager.registerTaintSource(WININET_DLL, INTERNET_READ_FILE_FUNC, 4);
+	taintManager.registerTaintSource(HELLO_WORLD_PROG, ANY_FUNC_IN_DLL, 0);
+	taintManager.registerTaintSource(TEST1_PROG, ANY_FUNC_IN_DLL, 0);
+	taintManager.registerTaintSource(WSOCK32_DLL, RECV_FUNC, 4);
 
 	PIN_InitSymbols();
 
@@ -692,6 +806,14 @@ int main(int argc, char* argv[])
 	std::cerr << "===============================================" << std::endl;
 	std::cerr << "This application is instrumented by PinTracer" << std::endl;
 	std::cerr << "Instrumentating instructions directly: " << instructionLevelTracing << "" << std::endl;
+	if (settingAskForIndividualImageTrace) {
+		std::cerr << "Received request to ask for every new detected image" << std::endl;
+	}else if (settingTraceAllImages) {
+		std::cerr << "Received request to trace ALL images" << std::endl;
+	}
+	else {
+		std::cerr << "Only the main image will be traced" << std::endl;
+	}
 	if (!KnobFilterlistFile.Value().empty())
 	{
 		std::cerr << "Using file " << KnobFilterlistFile.Value() << " for filtering traced DLL jumps" << std::endl;

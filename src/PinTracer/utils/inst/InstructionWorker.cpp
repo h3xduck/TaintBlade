@@ -10,6 +10,11 @@ std::string getStringFromArg(void* arg)
 
 ADDRINT InstructionWorker::getBaseAddress(ADDRINT addr)
 {
+	if (addr == 0)
+	{
+		return 0;
+	}
+
 	IMG module = IMG_FindByAddress(addr);
 	ADDRINT base = IMG_LoadOffset(module);
 	if (base == 0)
@@ -182,7 +187,7 @@ UINT64 getBufferStringLengthUTF16(void* buf)
 }
 
 
-std::string InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
+std::string InstructionWorker::getMemoryValueHexString(ADDRINT memAddr, int len)
 {
 	char data[8] = {0};
 	PIN_SafeCopy(data, (VOID*)(memAddr), len);
@@ -192,6 +197,41 @@ std::string InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
 	{
 		ss << std::setw(2) << static_cast<unsigned>((UINT8)(data[ii]));
 	}
-
+	
 	return ss.str();
 }
+
+std::vector<char> InstructionWorker::getMemoryValue(ADDRINT memAddr, int len)
+{
+	char data[8] = { 0 };
+	PIN_SafeCopy(data, (VOID*)(memAddr), len);
+	std::vector<char> vec;
+	for (int ii = 0; ii < len; ii++)
+	{
+		vec.push_back(data[ii]);
+	}
+
+	return vec;
+}
+
+void InstructionWorker::getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8 *valBuffer, bool resultBigEndian)
+{
+	PIN_GetContextRegval(lctx, reg, valBuffer);
+
+	if (!resultBigEndian)
+	{
+		//Now we reverse the order, since we want the MSB to be at the "left" of the vector, that is, at index 0
+		const UINT32 regSize = REG_Size(reg);
+		for (int ii = 0; ii < regSize / 2; ii++)
+		{
+			UINT8 aux = valBuffer[ii];
+			valBuffer[ii] = valBuffer[regSize - ii - 1];
+			valBuffer[regSize - ii - 1] = aux;
+		}
+	}
+	
+	//for (int ii = 0; ii < 2; ii++) LOG_DEBUG("OUT ValBuffer[" << ii << "]: " << valBuffer[ii]);
+}
+
+
+

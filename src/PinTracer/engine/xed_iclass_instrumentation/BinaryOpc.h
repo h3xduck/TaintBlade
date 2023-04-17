@@ -14,12 +14,12 @@ namespace OPC_INST {
 	//Taint functions, called from instrumentation functions
 
 	//and, or
-	void binary_mem2reg(THREADID tid, ADDRINT ip, ADDRINT mem_src, INT32 mem_src_len, REG reg_dest);
-	void binary_reg2reg(THREADID tid, ADDRINT ip, REG reg_src, REG reg_dest);
-	void binary_reg2mem(THREADID tid, ADDRINT ip, REG reg_src, ADDRINT mem_dest, INT32 mem_dest_len);
+	void binary_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT mem_src, INT32 mem_src_len, REG reg_dest, UINT32 opc);
+	void binary_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG reg_src, REG reg_dest, UINT32 opc);
+	void binary_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG reg_src, ADDRINT mem_dest, INT32 mem_dest_len, UINT32 opc);
 	
 	//xor
-	void binary_clr_reg2reg(THREADID tid, ADDRINT ip, REG reg_src, REG reg_dest);
+	void binary_clr_reg2reg(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, REG reg_src, REG reg_dest, UINT32 opc);
 
 	///////////////////////////////////////////////////////////////
 	//Instrumentation functions, called from InstrumentationManager

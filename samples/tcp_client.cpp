@@ -130,13 +130,42 @@ int __cdecl main(int argc, char** argv)
     //} while (iResult > 0);
 
     //Test
-    char secret[3];
+    /*char secret[3];
     secret[0] = recvbuf[0] & recvbuf2[1];
     secret[1] = recvbuf[5];
     secret[2] = recvbuf[3] + recvbuf2[0];
-    printf("Test: %s\n", secret);
-        /*char c = recvbuf[1] & recvbuf2[3];
-        printf("Test: %c\n", c);*/
+    printf("Test: %s\n", secret);*/
+    /*char c = recvbuf[1] & recvbuf2[3];
+    printf("Test: %c\n", c);*/
+    
+    
+
+    char* var = "jj";
+    if (recvbuf[0] == var[0])
+    {
+        printf("Whoo\n");
+    }
+    else
+    {
+        printf("Whee\n");
+    }
+
+
+    char* comp = "testx";
+    if (strncmp(recvbuf, comp, 5) == 0)
+    {
+        printf("Hi");
+    }
+
+    char* delimeter = "n";
+    for (char c : recvbuf)
+    {
+        if (c == delimeter[0])
+        {
+            printf("Found delimeter\n");
+            break;
+        }
+    }
 
     // cleanup
     closesocket(ConnectSocket);
