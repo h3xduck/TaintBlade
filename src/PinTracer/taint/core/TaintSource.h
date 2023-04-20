@@ -224,12 +224,12 @@ public:
 				data.dllTo = dllTo;
 				data.funcTo = routineNameTo;
 				data.memAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
-				data.arg0 = arg0;
-				data.arg1 = arg1;
-				data.arg2 = arg2;
-				data.arg3 = arg3;
-				data.arg4 = arg4;
-				data.arg5 = arg5;
+				data.arg0 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg0));
+				data.arg1 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg1));
+				data.arg2 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg2));
+				data.arg3 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg3));
+				data.arg4 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg4));
+				data.arg5 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg5));
 
 				genericRoutineCalls.erase(nextInstAddr);
 				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(nextInstAddr, data));

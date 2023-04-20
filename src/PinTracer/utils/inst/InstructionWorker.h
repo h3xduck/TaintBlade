@@ -7,6 +7,19 @@
 #include <typeinfo>
 #include "../io/log.h"
 
+#define ANY_FUNC_IN_DLL "ANY_FUNC_DLL_SOURCE"
+
+#ifndef _WINDOWS_HEADERS_H_
+#define _WINDOWS_HEADERS_H_
+#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+namespace WINDOWS
+{
+#include <windows.h>
+#include <WinSock2.h>
+#include <wininet.h>
+}
+#endif
+
 namespace InstructionWorker
 {
 	ADDRINT getBaseAddress(ADDRINT addr);
@@ -48,6 +61,16 @@ namespace InstructionWorker
 	If we select resultBigEndian=true it reorders the bytes LSB --> MSB, otherwise the returned vector goes MSB --> LSB
 	*/
 	void getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::REG reg, UINT8* valBuffer, bool resultBigEndian = false);
+
+	/**
+	Convert a wide Unicode string to an UTF8 string
+	*/
+	std::string utf8Encode(const std::wstring& wstr);
+
+	/**
+	Convert an UTF8 string to a wide Unicode String
+	*/
+	std::wstring utf8Decode(const std::string& str);
 
 }
 

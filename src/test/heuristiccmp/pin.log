@@ -1,3 +1,4 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 129288. Interruption context: IP: 0x06cb1cf07 SP: 0x2044cdceb50. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x06cb1cf07. Access Type: READ. Access Address = 0x10000006d. ExceptionFlags: 0x000000000
+E:  [tid:153936] Failure to map DLL C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll
+      System error 216 : 

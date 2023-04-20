@@ -25,7 +25,7 @@ int __cdecl main(int argc, char** argv)
     struct addrinfo* result = NULL,
         * ptr = NULL,
         hints;
-    const char* sendbuf = "test for send!";
+    const char* sendbuf = "this is a test";
     char recvbuf[DEFAULT_BUFLEN];
     char recvbuf2[DEFAULT_BUFLEN];
     int iResult;
@@ -108,39 +108,16 @@ int __cdecl main(int argc, char** argv)
     }
 
     // Receive until the peer closes the connection
-    //do {
+    iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
+    if (iResult > 0)
+        printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
+    else if (iResult == 0)
+        printf("Connection closed\n");
+    else
+        printf("recv failed with error: %d\n", WSAGetLastError());
 
-        iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
-        if (iResult > 0)
-            printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
-        else if (iResult == 0)
-            printf("Connection closed\n");
-        else
-            printf("recv failed with error: %d\n", WSAGetLastError());
-
-        iResult = recv(ConnectSocket, recvbuf2, recvbuflen, 0);
-        if (iResult > 0)
-            printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
-        else if (iResult == 0)
-            printf("Connection closed\n");
-        else
-            printf("recv failed with error: %d\n", WSAGetLastError());
-
-
-    //} while (iResult > 0);
-
-    //Test
-    /*char secret[3];
-    secret[0] = recvbuf[0] & recvbuf2[1];
-    secret[1] = recvbuf[5];
-    secret[2] = recvbuf[3] + recvbuf2[0];
-    printf("Test: %s\n", secret);*/
-    /*char c = recvbuf[1] & recvbuf2[3];
-    printf("Test: %c\n", c);*/
-    
-    
-
-    char* var = "jj";
+    //Simple compare against a char
+   char* var = "jj";
     if (recvbuf[0] == var[0])
     {
         printf("Whoo\n");
@@ -150,14 +127,15 @@ int __cdecl main(int argc, char** argv)
         printf("Whee\n");
     }
 
-
-    char* comp = "testx";
-    if (strncmp(recvbuf, comp, 5) == 0)
+    //Strncmp
+    char* comp = "this";
+    if (strncmp(recvbuf, comp, 4) == 0)
     {
         printf("Hi");
     }
 
-    char* delimeter = "n";
+    //Delimeter
+    char* delimeter = "e";
     for (char c : recvbuf)
     {
         if (c == delimeter[0])

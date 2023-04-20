@@ -1,7 +1,26 @@
 #include "InstructionWorker.h"
 
+std::string InstructionWorker::utf8Encode(const std::wstring& wstr)
+{
+	if (wstr.empty()) return std::string();
+	int size_needed = WINDOWS::WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), NULL, 0, NULL, NULL);
+	std::string strTo(size_needed, 0);
+	WINDOWS::WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), &strTo[0], size_needed, NULL, NULL);
+	return strTo;
+}
+
+std::wstring InstructionWorker::utf8Decode(const std::string& str)
+{
+	if (str.empty()) return std::wstring();
+	int size_needed = WINDOWS::MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), NULL, 0);
+	std::wstring wstrTo(size_needed, 0);
+	WINDOWS::MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), &wstrTo[0], size_needed);
+	return wstrTo;
+}
+
 std::string getStringFromArg(void* arg)
 {
+	//Just discovered that this function may be lossy to some character types
 	std::wstring res = InstructionWorker::printFunctionArgument((void*)arg);
 	std::string resW(res.begin(), res.end());
 	return resW;

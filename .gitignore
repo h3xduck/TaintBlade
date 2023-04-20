@@ -22,3 +22,4 @@ src/AntiDebugTest
 /src/PinTracer/imgpinlog.txt
 *.txt
 *.db
+src/oldtest

@@ -52,12 +52,12 @@ public:
 		std::string dllTo;
 		std::string funcTo;
 		ADDRINT memAddrTo;
-		void* arg0;
-		void* arg1;
-		void* arg2;
-		void* arg3;
-		void* arg4;
-		void* arg5;
+		std::string arg0;
+		std::string arg1;
+		std::string arg2;
+		std::string arg3;
+		std::string arg4;
+		std::string arg5;
 	};
 
 	typedef enum memory_color_event

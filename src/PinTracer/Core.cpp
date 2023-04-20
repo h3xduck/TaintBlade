@@ -314,6 +314,7 @@ VOID ImageTrace(IMG img, VOID* v)
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
+	LOG_DEBUG("NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr);
 	//Detect the name of the main image, and restrict all tracing to it
 	if (mainImageName.empty() && IMG_IsMainExecutable(img)) {
 		mainImageName = IMG_Name(img);
