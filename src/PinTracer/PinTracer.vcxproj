@@ -287,6 +287,8 @@
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
     <ClCompile Include="utils\inst\SyscallParser.cpp" />
     <ClCompile Include="utils\io\DataDumper.cpp" />
+    <ClCompile Include="utils\trace\TraceManager.cpp" />
+    <ClCompile Include="utils\trace\TracePoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\Context.h" />
@@ -330,6 +332,8 @@
     <ClInclude Include="utils\io\log.h" />
     <ClInclude Include="utils\inst\InstructionWorker.h" />
     <ClInclude Include="utils\inst\SyscallParser.h" />
+    <ClInclude Include="utils\trace\TraceManager.h" />
+    <ClInclude Include="utils\trace\TracePoint.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
