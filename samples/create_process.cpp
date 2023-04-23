@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
+#include <winsock2.h>
 
 void _tmain(int argc, TCHAR* argv[])
 {
@@ -11,7 +12,7 @@ void _tmain(int argc, TCHAR* argv[])
     si.cb = sizeof(si);
     ZeroMemory(&pi, sizeof(pi));
 
-    if (argc != 2)
+    if (argc < 2)
     {
         printf("Usage: %s [cmdline]\n", argv[0]);
         return;

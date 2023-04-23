@@ -2,16 +2,18 @@
 
 DataDumper dataDumper;
 extern Context ctx;
+extern std::string pintracerSuffix;
 
 DataDumper::DataDumper()
 {
-	this->memDumpFile.open(CURRENT_TAINTED_MEMORY_DUMP_FILE);
-	this->orgColorsDumpFile.open(ORG_COLORS_DUMP_FILE);
-	this->colorTransDumpFile.open(COLOR_TRANS_DUMP_FILE);
-	this->funcDllNamesDumpFile.open(FUNC_DLL_NAMES_DUMP_FILE);
-	this->memColorEventDumpFile.open(TAINT_EVENT_DUMP_FILE);
-	this->heuristicsResultsDumpFile.open(HEURISTIC_RESULTS_DUMP_FILE);
-	this->protocolResultsDumpFile.open(PROTOCOL_RESULTS_DUMP_FILE);
+	this->memDumpFile.open(getFilenameFullName(CURRENT_TAINTED_MEMORY_DUMP_FILE).c_str());
+	this->orgColorsDumpFile.open(getFilenameFullName(ORG_COLORS_DUMP_FILE).c_str());
+	this->colorTransDumpFile.open(getFilenameFullName(COLOR_TRANS_DUMP_FILE).c_str());
+	this->funcDllNamesDumpFile.open(getFilenameFullName(FUNC_DLL_NAMES_DUMP_FILE).c_str());
+	this->memColorEventDumpFile.open(getFilenameFullName(TAINT_EVENT_DUMP_FILE).c_str());
+	this->heuristicsResultsDumpFile.open(getFilenameFullName(HEURISTIC_RESULTS_DUMP_FILE).c_str());
+	this->protocolResultsDumpFile.open(getFilenameFullName(PROTOCOL_RESULTS_DUMP_FILE).c_str());
+	this->traceResultsDumpFile.open(getFilenameFullName(TRACE_RESULTS_DUMP_FILE).c_str());
 }
 
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec)
@@ -149,6 +151,18 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 	}
 }
 
+void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
+{
+	std::vector<std::string> args = tp.getArgsPost();
+	this->traceResultsDumpFile << "DLL: " << tp.getDllName() << " | FUNC: " << tp.getFuncName() << std::endl;
+	for (int ii = 0; ii < tp.getNumArgs(); ii++)
+	{
+		this->traceResultsDumpFile << "\targ" << ii << ": " << args.at(ii) << std::endl;
+	}
+	this->traceResultsDumpFile << std::endl;
+}
+
+
 void DataDumper::resetDumpFiles()
 {
 	if (remove(CURRENT_TAINTED_MEMORY_DUMP_FILE) != 0)
@@ -212,5 +226,14 @@ void DataDumper::resetDumpFiles()
 	else
 	{
 		LOG_DEBUG("Protocol results dump file successfully deleted");
+	}
+
+	if (remove(TRACE_RESULTS_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting trace results dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Trace results dump file successfully deleted");
 	}
 }

@@ -6,20 +6,82 @@ void UTILS::TRACE::TraceManager::addTracePoint(const std::string& dllName, const
 {
 	TracePoint tp(dllName, funcName, numArgs);
 	this->traceVector.push_back(tp);
+
+	LOG_DEBUG("Added function to trace with DLL:" << dllName << " FUNC:" << funcName << " NUMARGS:" << numArgs);
 }
 
-void UTILS::TRACE::TraceManager::traceFunction(const std::string& dllName, const std::string& funcName)
+void UTILS::TRACE::TraceManager::traceFunction(RTN rtn, const std::string& dllName, const std::string& funcName)
 {
-	for (TracePoint& tp : this->traceVector)
+	for (TracePoint tp : this->traceVector)
 	{
 		if (tp.getDllName() == dllName && tp.getFuncName() == funcName)
 		{
 			//Function was set to be traced
+			this->traceTracePoint(rtn, tp);
 		}
 	}
 }
 
-void UTILS::TRACE::TraceManager::traceTracePoint(TracePoint& tp)
+static void genericFunctionTraceEnter(ADDRINT retIp, std::string dllName, std::string funcName, UINT32 numArgs, ...)
 {
-	//TODO 
+	UTILS::TRACE::TracePoint tp(dllName, funcName, numArgs);
+
+	//Extract argument of function
+	va_list vaList;
+	va_start(vaList, numArgs);
+	std::vector<std::string> argsVec;
+	std::vector<void*> argsVecPtr;
+	for (int ii = 0; ii < numArgs; ii++)
+	{
+		argsVecPtr.push_back(va_arg(vaList, void*));
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+	}
+	va_end(vaList);
+	tp.setArgsPre(argsVec);
+	tp.setArgsPrePtr(argsVecPtr);
+	
+	UTILS::TRACE::interFunctionCallsVector.push_back(tp);
+
+	LOG_DEBUG("Traced function DLL:" << dllName << " FUNC:" << funcName);
+
+}
+
+static void genericFunctionTraceExit(ADDRINT retValue, std::string dllName, std::string funcName)
+{
+	//Check if the trace point was inserted (it should, as the exit event should be called after the enter one)
+	for (int ii=0; ii< UTILS::TRACE::interFunctionCallsVector.size(); ii++)
+	{
+		UTILS::TRACE::TracePoint& tp = UTILS::TRACE::interFunctionCallsVector.at(ii);
+		if (tp.getDllName() == dllName && tp.getFuncName() == funcName)
+		{
+			//Found it
+			std::vector<std::string> argsVecPost;
+			for (void* argPtr : tp.getArgsPrePtr())
+			{
+				argsVecPost.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argPtr)));
+			}
+			tp.setArgsPost(argsVecPost);
+
+			LOG_DEBUG("TRACED FUNCTION AT EXIT: " << std::endl << "\tDLL:" << tp.getDllName() << " FUNC:" << tp.getFuncName());
+			for (int jj = 0; jj < tp.getNumArgs(); jj++)
+			{
+				std::string arg = argsVecPost.at(jj);
+				LOG_DEBUG("arg" << jj << ": " << arg);
+			}
+
+			UTILS::TRACE::interFunctionCallsVector.erase(UTILS::TRACE::interFunctionCallsVector.begin() + ii);
+			
+			//.writeTraceDumpLine(tp);
+			return;
+		}
+	}
+
+	
+}
+
+void UTILS::TRACE::TraceManager::traceTracePoint(RTN &rtn, TracePoint &tp)
+{
+	//We will trace the arguments before and after the execution
+	LOG_DEBUG("Tracing function DLL:" << tp.getDllName() << " FUNC:" << tp.getFuncName()<<" NUM:"<<tp.getNumArgs());
+	FUNCTION_TRACE(rtn, tp.getDllName(), tp.getFuncName(), tp.getNumArgs(), genericFunctionTraceEnter, genericFunctionTraceExit);
 }

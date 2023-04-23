@@ -11,6 +11,7 @@
 #include "../../common/Context.h"
 #include "../../utils/io/format.h"
 #include "../../reversing/protocol/Protocol.h"
+#include "../trace/TracePoint.h"
 
 class DataDumper
 {
@@ -22,6 +23,7 @@ private:
 	std::ofstream memColorEventDumpFile;
 	std::ofstream heuristicsResultsDumpFile;
 	std::ofstream protocolResultsDumpFile;
+	std::ofstream traceResultsDumpFile;
 
 	int lastRoutineDumpIndex;
 
@@ -87,6 +89,7 @@ public:
 	void writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>>);
 	void writeRevHeuristicDumpLine(HLComparison log);
 	void writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol);
+	void writeTraceDumpLine(UTILS::TRACE::TracePoint& tp);
 
 	void resetDumpFiles();
 

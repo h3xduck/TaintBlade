@@ -287,6 +287,7 @@
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
     <ClCompile Include="utils\inst\SyscallParser.cpp" />
     <ClCompile Include="utils\io\DataDumper.cpp" />
+    <ClCompile Include="utils\io\format.cpp" />
     <ClCompile Include="utils\trace\TraceManager.cpp" />
     <ClCompile Include="utils\trace\TracePoint.cpp" />
   </ItemGroup>

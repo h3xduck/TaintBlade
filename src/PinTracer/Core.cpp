@@ -11,6 +11,7 @@
 #include "pin.H"
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 
 
 //#include "config/GlobalConfig.h"
@@ -26,8 +27,6 @@
 #include "test/TestEngine.h"
 #include "taint/data/TagLog.h"
 #include "reversing/protocol/ProtocolReverser.h"
-
-using std::string;
 
 /* ================================================================== */
 // Global variables
@@ -53,29 +52,28 @@ ScopeFilterer scopeFilterer;
 extern TaintManager taintManager;
 extern TestEngine globalTestEngine;
 
-//ScopeFilterer scopeFilterer = NULL;
-
 /* ===================================================================== */
 // Command line switches
 /* ===================================================================== */
-KNOB< string > KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o", "", "specify file name for PinTracer output");
+KNOB< std::string > KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o", "", "specify file name for PinTracer output");
 
-KNOB< string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify file name for syscalls info output");
+KNOB< std::string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify file name for syscalls info output");
 
-KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
+KNOB< std::string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
 
-KNOB< string > KnobFilterlistFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
+KNOB< std::string > KnobFilterlistFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
 
-KNOB< string > KnobDebugFile(KNOB_MODE_WRITEONCE, "pintool", "d", "", "specify file name where to store debug logs");
+KNOB< std::string > KnobDebugFile(KNOB_MODE_WRITEONCE, "pintool", "d", "", "specify file name where to store debug logs");
 
 KNOB< BOOL > KnobInstLevelTrace(KNOB_MODE_WRITEONCE, "pintool", "t", "0", "activate instruction level tracing, faster but more reliable");
 
 KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
 	"count instructions, basic blocks and threads in the application");
 
-KNOB< string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "activate test mode, specifies input file for reading tests");
+KNOB< std::string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "activate test mode, specifies input file for reading tests");
 
-KNOB< string > KnobTaintSourceFile(KNOB_MODE_WRITEONCE, "pintool", "taint", "", "specifies a file with dll+func combos to register as taint sources");
+KNOB< std::string > KnobTaintSourceFile(KNOB_MODE_WRITEONCE, "pintool", "taint", "", "specifies a file with dll+func combos to register as taint sources");
+KNOB< std::string > KnobTracePointsFile(KNOB_MODE_WRITEONCE, "pintool", "trace", "tracepoints.txt", "specifies a file with dll+func+numargs combos to register as trace points");
 
 KNOB< BOOL > KnobAskForIndividualImageTrace(KNOB_MODE_WRITEONCE, "pintool", "choosetraceimages", "", "Ask for user before including any image in the list of images to trace. Otherwise, only main image is traced");
 KNOB< BOOL > KnobTraceAllImages(KNOB_MODE_WRITEONCE, "pintool", "traceallimages", "", "Force program to trace all images, without asking user input. Overrides choosetraceimages flag.");
@@ -517,6 +515,9 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 
 	//LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
 
+	//Trace the function arguments
+	ctx.getTraceManager().traceFunction(rtn, dllName, rtnName);
+
 	//Check if it should be tainted
 	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
 
@@ -614,9 +615,16 @@ void TraceBase(TRACE trace, VOID* v)
 	}
 }
 
+/**
+Executed when the process executes another (or creates a child process)
+*/
+BOOL FollowChild(CHILD_PROCESS cProcess, VOID* userData)
+{
+	std::cout << "Now executing a child process with PID: " << PIN_GetPid() <<std::endl;
+	return TRUE;
+}
 
-
-/*!
+/**
  * Increase counter of threads in the application.
  * This function is called for every thread created by the application when it is
  * about to start running (including the root thread).
@@ -653,7 +661,7 @@ VOID Fini(INT32 code, VOID* v)
 	dataDumper.writeColorTransformationDump(colorTrans);
 
 	//Dump RevAtoms
-	ctx.getRevContext()->printRevLogCurrent();
+	//ctx.getRevContext()->printRevLogCurrent();
 
 	//Dump info about heuristics found
 	ctx.getRevContext()->dumpFoundHeuristics();
@@ -684,36 +692,37 @@ int main(int argc, char* argv[])
 		return Usage();
 	}
 
-	string fileName = KnobOutputFile.Value();
-	string sysinfoFilename = KnobSyscallFile.Value();
-	string imageInfoFilename = KnobImageFile.Value();
-	string filterlistFilename = KnobFilterlistFile.Value();
-	string debugFileFilename = KnobDebugFile.Value();
-	string testFileFilename = KnobTestFile.Value();
-	string taintSourceFileFilename = KnobTaintSourceFile.Value();
+	std::string fileName = KnobOutputFile.Value();
+	std::string sysinfoFilename = KnobSyscallFile.Value();
+	std::string imageInfoFilename = KnobImageFile.Value();
+	std::string filterlistFilename = KnobFilterlistFile.Value();
+	std::string debugFileFilename = KnobDebugFile.Value();
+	std::string testFileFilename = KnobTestFile.Value();
+	std::string taintSourceFileFilename = KnobTaintSourceFile.Value();
+	std::string tracePointsFileFilename = KnobTracePointsFile.Value();
 	settingAskForIndividualImageTrace = KnobAskForIndividualImageTrace.Value();
 	settingTraceAllImages = KnobTraceAllImages.Value();
 	
 	instructionLevelTracing = KnobInstLevelTrace.Value();
-
+	
 	if (!fileName.empty())
 	{
-		out = new std::ofstream(fileName.c_str());
+		out = new std::ofstream(getFilenameFullName(fileName).c_str());
 	}
 
 	if (!sysinfoFilename.empty())
 	{
-		sysinfoOut = new std::ofstream(sysinfoFilename.c_str());
+		sysinfoOut = new std::ofstream(getFilenameFullName(sysinfoFilename).c_str());
 	}
 
 	if (!imageInfoFilename.empty())
 	{
-		imageInfoOut = new std::ofstream(imageInfoFilename.c_str());
+		imageInfoOut = new std::ofstream(getFilenameFullName(imageInfoFilename).c_str());
 	}
 
 	if (!debugFileFilename.empty())
 	{
-		debugFile = new std::ofstream(debugFileFilename.c_str());
+		debugFile = new std::ofstream(getFilenameFullName(debugFileFilename).c_str());
 	}
 
 	if (!testFileFilename.empty())
@@ -755,6 +764,31 @@ int main(int argc, char* argv[])
 			taintManager.registerTaintSource(dllName, funcName, atoi(numArgs.c_str()));
 		}
 
+	}
+
+	if (!tracePointsFileFilename.empty())
+	{
+		//If a taint source file was specified, we load DLL+FUNC combos from there
+		std::cerr << "Loading trace points dynamically from " << tracePointsFileFilename << std::endl;
+		LOG_DEBUG("Loading trace points from " << tracePointsFileFilename);
+
+		std::ifstream infile(tracePointsFileFilename);
+		std::string line;
+		//The file is made of lines with FUNC DLL <num arguments>
+		while (std::getline(infile, line))
+		{
+			std::istringstream isdata(line);
+			std::string dllName;
+			//DLL
+			std::getline(isdata, dllName, ' ');
+			//FUNC
+			std::string funcName;
+			std::getline(isdata, funcName, ' ');
+			//FUNC
+			std::string numArgs;
+			std::getline(isdata, numArgs, ' ');
+			ctx.getTraceManager().addTracePoint(dllName, funcName, atoi(numArgs.c_str()));
+		}
 	}
 
 	//Register taint sources - deprecated: now dynamically via flag
@@ -800,12 +834,16 @@ int main(int argc, char* argv[])
 		std::cerr << "Linux mode now active" << std::endl;
 		#endif
 
+		//Follow any child process execution
+		PIN_AddFollowChildProcessFunction(FollowChild, 0);
+
 		// Register function to be called when the application exits
 		PIN_AddFiniFunction(Fini, 0);
 	}
 
 	std::cerr << "===============================================" << std::endl;
 	std::cerr << "This application is instrumented by PinTracer" << std::endl;
+	std::cerr << "Application PID: " << PIN_GetPid() << std::endl;
 	std::cerr << "Instrumentating instructions directly: " << instructionLevelTracing << "" << std::endl;
 	if (settingAskForIndividualImageTrace) {
 		std::cerr << "Received request to ask for every new detected image" << std::endl;

@@ -22,6 +22,11 @@ RevContext* Context::getRevContext()
 	return &(this->revContext);
 }
 
+UTILS::TRACE::TraceManager& Context::getTraceManager()
+{
+	return this->traceManager;
+}
+
 
 void Context::updateCurrentInstruction(ADDRINT inst_addr)
 {
