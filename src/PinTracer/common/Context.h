@@ -4,6 +4,7 @@
 #include "pin.H"
 #include "../reversing/core/RevContext.h"
 #include "../utils/trace/TraceManager.h"
+#include "../utils/exec/ExecutionManager.h"
 
 class Context {
 private:
@@ -12,6 +13,7 @@ private:
 	int lastMemoryLength;
 	RevContext revContext;
 	UTILS::TRACE::TraceManager traceManager;
+	UTILS::EXEC::ExecutionManager executionManager;
 
 public:
 	ADDRINT getCurrentInstruction();
@@ -27,6 +29,7 @@ public:
 	RevContext* getRevContext();
 	
 	UTILS::TRACE::TraceManager& getTraceManager();
+	UTILS::EXEC::ExecutionManager& getExecutionManager();
 };
 
 #endif

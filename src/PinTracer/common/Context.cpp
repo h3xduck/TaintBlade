@@ -27,6 +27,11 @@ UTILS::TRACE::TraceManager& Context::getTraceManager()
 	return this->traceManager;
 }
 
+UTILS::EXEC::ExecutionManager& Context::getExecutionManager()
+{
+	return this->executionManager;
+}
+
 
 void Context::updateCurrentInstruction(ADDRINT inst_addr)
 {

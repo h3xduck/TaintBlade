@@ -282,6 +282,8 @@
     <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
     <ClCompile Include="test\TestEngine.cpp" />
+    <ClCompile Include="utils\exec\DllImageLoad.cpp" />
+    <ClCompile Include="utils\exec\ExecutionManager.cpp" />
     <ClCompile Include="utils\inst\InstructionWorker.cpp" />
     <ClCompile Include="utils\inst\PerformanceOperator.cpp" />
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
@@ -326,6 +328,9 @@
     <ClInclude Include="test\Test.h" />
     <ClInclude Include="test\TestEngine.h" />
     <ClInclude Include="test\TestMilestone.h" />
+    <ClInclude Include="utils\exec\DllImageLoad.h" />
+    <ClInclude Include="utils\exec\ExecutionManager.h" />
+    <ClInclude Include="utils\exec\NopSection.h" />
     <ClInclude Include="utils\inst\PerformanceOperator.h" />
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
     <ClInclude Include="utils\io\DataDumper.h" />
