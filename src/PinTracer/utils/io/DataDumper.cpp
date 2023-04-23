@@ -153,11 +153,18 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 
 void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
 {
-	std::vector<std::string> args = tp.getArgsPost();
+	std::vector<std::string> argsPre = tp.getArgsPre();
+	std::vector<std::string> argsPost = tp.getArgsPost();
 	this->traceResultsDumpFile << "DLL: " << tp.getDllName() << " | FUNC: " << tp.getFuncName() << std::endl;
+	this->traceResultsDumpFile << "Called with arguments:" << std::endl;
 	for (int ii = 0; ii < tp.getNumArgs(); ii++)
 	{
-		this->traceResultsDumpFile << "\targ" << ii << ": " << args.at(ii) << std::endl;
+		this->traceResultsDumpFile << "\targ" << ii << ": " << argsPre.at(ii) << std::endl;
+	}
+	this->traceResultsDumpFile << "Exited with arguments:" << std::endl;
+	for (int ii = 0; ii < tp.getNumArgs(); ii++)
+	{
+		this->traceResultsDumpFile << "\targ" << ii << ": " << argsPost.at(ii) << std::endl;
 	}
 	this->traceResultsDumpFile << std::endl;
 }

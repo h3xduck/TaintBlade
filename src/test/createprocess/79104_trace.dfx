@@ -1,0 +1,24 @@
+DLL: c:\windows\system32\ws2_32.dll | FUNC: getaddrinfo
+Called with arguments:
+	arg0: [0x000001fe7cf152e7] --> Len: 0x9 | Value: 127.0.0.1
+	arg1: [0x00007ff70afd63cc] --> Len: 0x5 | Value: 27015
+	arg2: [0x000000072250f910] --> <not string>
+	arg3: [0x000000072250f8d8] --> <not string>
+Exited with arguments:
+	arg0: [0x000001fe7cf152e7] --> Len: 0x9 | Value: 127.0.0.1
+	arg1: [0x00007ff70afd63cc] --> Len: 0x5 | Value: 27015
+	arg2: [0x000000072250f910] --> <not string>
+	arg3: [0x000000072250f8d8] --> <not string>
+
+DLL: c:\windows\system32\ws2_32.dll | FUNC: recv
+Called with arguments:
+	arg0: 0x0000000000000144
+	arg1: [0x000000072250fae0] --> Len: 0x20 | Value: xduck\TFM\samples\tcp_client.exe
+	arg2: 0x0000000000000200
+	arg3: 0
+Exited with arguments:
+	arg0: 0x0000000000000144
+	arg1: [0x000000072250fae0] --> Len: 0xf | Value: this is a testF
+	arg2: 0x0000000000000200
+	arg3: 0
+

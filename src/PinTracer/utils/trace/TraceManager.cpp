@@ -1,4 +1,7 @@
 #include "TraceManager.h"
+#include "../io/DataDumper.h"
+
+extern DataDumper dataDumper;
 
 UTILS::TRACE::TraceManager::TraceManager() {};
 
@@ -69,9 +72,9 @@ static void genericFunctionTraceExit(ADDRINT retValue, std::string dllName, std:
 				LOG_DEBUG("arg" << jj << ": " << arg);
 			}
 
+			dataDumper.writeTraceDumpLine(tp);
+
 			UTILS::TRACE::interFunctionCallsVector.erase(UTILS::TRACE::interFunctionCallsVector.begin() + ii);
-			
-			//.writeTraceDumpLine(tp);
 			return;
 		}
 	}

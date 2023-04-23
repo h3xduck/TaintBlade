@@ -1,12 +1,11 @@
 #ifndef _TRACE_MANAGER_H_
-#define _TRACE_MANAGER_H
+#define _TRACE_MANAGER_H_
 
 #include "pin.H"
 #include "../../../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/stlport/include/unordered_map"
 #include "TracePoint.h"
 #include "../io/log.h"
 #include "../inst/InstructionWorker.h"
-//#include "../io/DataDumper.h"
 
 namespace UTILS
 {
@@ -42,7 +41,6 @@ namespace UTILS
 	Elements inserted when the function is entered and removed when the function exits.
 	*/
 	static std::vector<TracePoint> interFunctionCallsVector;
-	//extern DataDumper dataDumper;
 
 		class TraceManager
 		{
