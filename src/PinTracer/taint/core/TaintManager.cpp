@@ -104,7 +104,7 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		taintVector.push_back(taintSource);
 		this->taintFunctionMap.insert(std::pair<std::string, std::vector<TaintSource>>(dllName, taintVector));
 		
-		LOG_ALERT("Registered a new taintSource: NEW DllName =  " << dllName << " FuncName = " << funcName);
+		LOG_INFO("Registered a new taintSource: NEW DllName =  " << dllName << " FuncName = " << funcName);
 	}
 	else
 	{
@@ -118,7 +118,7 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		{
 			//New function for existing DLL
 			taintIt->second.push_back(taintSource);
-			LOG_ALERT("Registered a taintSource in a known DLL: DllName =  " << dllName << " FuncName = " << funcName);
+			LOG_INFO("Registered a taintSource in a known DLL: DllName =  " << dllName << " FuncName = " << funcName);
 		}
 	}
 }

@@ -19,10 +19,10 @@ void UTILS::EXEC::ExecutionManager::addImage(IMG img)
 	ADDRINT dynamicStart = 0, dynamicEnd = 0;
 	for (NopSection &section: this->nopSectionVector)
 	{
-		if (section.dllName == dllName)
+		if (section.getDllName() == dllName)
 		{
-			section.dynamicStartAddress = section.baseStartAddress + dllImageLoad.getDynamicLoadAddress();
-			section.dynamicEndAddress = section.baseEndAddress + dllImageLoad.getDynamicLoadAddress();
+			section.setDynamicStartAddress(section.getBaseStartAddress() + dllImageLoad.getDynamicLoadAddress());
+			section.setDynamicEndAddress(section.getBaseEndAddress() + dllImageLoad.getDynamicLoadAddress());
 			LOG_DEBUG("Loaded NOP section dynamic values in DLL " << dllName << ", starting at " << entryAddr);
 		}
 	}
@@ -30,11 +30,12 @@ void UTILS::EXEC::ExecutionManager::addImage(IMG img)
 	PIN_UnlockClient();
 }
 
-void UTILS::EXEC::ExecutionManager::registerNopSection(std::string dllName, ADDRINT rangeStart, ADDRINT rangeEnd)
+void UTILS::EXEC::ExecutionManager::registerNopSection(std::string dllName, ADDRINT rangeStart, ADDRINT rangeEnd, std::vector<std::string> userAssemblyLines)
 {
 	NopSection nopSection(dllName, rangeStart, rangeEnd);
+	nopSection.setUserAssemblyLines(userAssemblyLines);
 	this->nopSectionVector.push_back(nopSection);
-	LOG_DEBUG("Registered a NOP Section at " << dllName << " between " << rangeStart << " and " << rangeEnd);
+	LOG_DEBUG("Registered a NOP Section at " << dllName << " between " << rangeStart << " and " << rangeEnd << " with " << userAssemblyLines.size() << " user assembly lines");
 }
 
 
@@ -43,7 +44,7 @@ bool UTILS::EXEC::ExecutionManager::isInNopSection(INS ins)
 	const ADDRINT address = INS_Address(ins);
 	for (NopSection nopSection : this->nopSectionVector)
 	{
-		if (nopSection.dynamicStartAddress <= address && nopSection.dynamicEndAddress >= address)
+		if (nopSection.getDynamicStartAddress() <= address && nopSection.getDynamicEndAddress() >= address)
 		{
 			return true;
 		}
@@ -58,11 +59,20 @@ void UTILS::EXEC::ExecutionManager::instrumentNopSection(INS ins)
 	ADDRINT address = INS_Address(ins);
 	for (NopSection nopSection : this->nopSectionVector)
 	{
-		if (nopSection.dynamicStartAddress <= address && nopSection.dynamicEndAddress >= address)
+		if (nopSection.getDynamicStartAddress() <= address && nopSection.getDynamicEndAddress() >= address)
 		{
+			//If the user specified that we need to set some registers to some value, now it is the time
+			std::vector<std::string> userAssemblyLines = nopSection.getUserAssemblyLines();
+			for (std::string assemblyLine : userAssemblyLines)
+			{
+				LOG_INFO("Executing user assembly line: " << assemblyLine);
+				PseudoAssemblyParser::instrumentAssemblyLine(ins, assemblyLine);
+			}
+
 			//Instrument the instruction so that it does not get executed
-			INS_InsertDirectJump(ins, IPOINT_BEFORE, nopSection.dynamicEndAddress + 1);
-			LOG_INFO("Instrumented NOP section at DLL " << nopSection.dllName << " B[" << nopSection.baseStartAddress << ", " << nopSection.baseEndAddress << "]" << " | D[" << nopSection.dynamicStartAddress << ", " << nopSection.dynamicEndAddress << "]");
+			//Jump to the end of the NOP section
+			INS_InsertDirectJump(ins, IPOINT_BEFORE, nopSection.getDynamicEndAddress() + 1);
+			LOG_INFO("Instrumented NOP section at DLL " << nopSection.getDllName() << " B[" << nopSection.getBaseStartAddress() << ", " << nopSection.getBaseEndAddress() << "]" << " | D[" << nopSection.getDynamicStartAddress() << ", " << nopSection.getDynamicEndAddress() << "]");
 			return;
 		}
 	}

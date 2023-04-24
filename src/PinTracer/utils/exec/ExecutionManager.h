@@ -4,6 +4,7 @@
 #include <vector>
 #include "DllImageLoad.h"
 #include "NopSection.h"
+#include "PseudoAssemblyParser.h"
 
 namespace UTILS
 {
@@ -32,7 +33,7 @@ namespace UTILS
 			Registers a set of instructions in a range at a certain image so that they are not executed.
 			The start and end of the range are included.
 			*/
-			void registerNopSection(std::string dllName, ADDRINT rangeStart, ADDRINT rangeEnd);
+			void registerNopSection(std::string dllName, ADDRINT rangeStart, ADDRINT rangeEnd, std::vector<std::string> userAssemblyLines);
 
 			/**
 			Checks whether an instruction belongs to a noped section

@@ -788,7 +788,7 @@ int main(int argc, char* argv[])
 
 		std::ifstream infile(tracePointsFileFilename);
 		std::string line;
-		//The file is made of lines with FUNC DLL <num arguments>
+		//The file is made of lines with FUNC DLL <num arguments> <user assembly lines>
 		while (std::getline(infile, line))
 		{
 			std::istringstream isdata(line);
@@ -826,7 +826,26 @@ int main(int argc, char* argv[])
 			//END
 			std::string end;
 			std::getline(isdata, end, ' ');
-			ctx.getExecutionManager().registerNopSection(dllName, atoi(start.c_str()), atoi(end.c_str()));
+
+			//Finally, we get the lines of user assembly (if any) to be executed when NOP-ing the section
+			std::string userAssemblyLines;
+			std::vector<std::string> userAssemblyLinesVec;
+			std::getline(isdata, userAssemblyLines, ' ');
+			//We will parse them. They come separated with commas: instruction1,instruction2,instruction3,...instructionN
+			std::istringstream isAssemblyLine(userAssemblyLines);
+
+			std::string assemblyLine;
+			while(std::getline(isAssemblyLine, assemblyLine, ','))
+			{
+				std::cerr << "LINE: " << assemblyLine << std::endl;
+				if (!assemblyLine.empty())
+				{
+					userAssemblyLinesVec.push_back(assemblyLine);
+					LOG_DEBUG("Found user assembly line: " << assemblyLine);
+				}
+			}
+
+			ctx.getExecutionManager().registerNopSection(dllName, atoi(start.c_str()), atoi(end.c_str()), userAssemblyLinesVec);
 		}
 	}
 

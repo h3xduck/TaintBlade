@@ -261,7 +261,7 @@ public:
 				auto it = genericRoutineCalls.find(branchTargetAddress);
 				if (it == genericRoutineCalls.end())
 				{
-					LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex_dbg(ip) << " | " << to_hex_dbg(branchTargetAddress));
+					//LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex_dbg(ip) << " | " << to_hex_dbg(branchTargetAddress));
 				}
 				else
 				{

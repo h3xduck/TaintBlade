@@ -25,7 +25,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		LOG_ERR(logLine);
 		return;
 	}
-
+	
 	switch (opc)
 	{
 		//Logical binary instructions

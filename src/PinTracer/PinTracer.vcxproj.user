@@ -3,4 +3,13 @@
   <PropertyGroup>
     <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebuggerFlavor>PinDebugger</DebuggerFlavor>
+    <PinToolPath>x64\Release\PinTracer.dll</PinToolPath>
+    <PinToolCommandArguments> -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -taint taintsources.txt</PinToolCommandArguments>
+    <PinTimeout>5</PinTimeout>
+    <LocalDebuggerCommand>tcp_client.exe 127.0.0.1</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>..\samples\</LocalDebuggerWorkingDirectory>
+    <PinDebuggerCommandArguments>-follow_execv</PinDebuggerCommandArguments>
+  </PropertyGroup>
 </Project>

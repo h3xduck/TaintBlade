@@ -1,0 +1,5 @@
+Pin: pin-3.25-98650-8f6168173
+Copyright 2002-2022 Intel Corporation.
+E:  [tid:168968] Cannot execute file. System error: System error 2 : The system cannot find the file specified.
+. File name: "..\..\..\samples\tcpsandbox.exe"
+E:  Pin is exiting due to fatal error

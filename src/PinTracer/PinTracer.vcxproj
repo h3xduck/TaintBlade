@@ -284,6 +284,8 @@
     <ClCompile Include="test\TestEngine.cpp" />
     <ClCompile Include="utils\exec\DllImageLoad.cpp" />
     <ClCompile Include="utils\exec\ExecutionManager.cpp" />
+    <ClCompile Include="utils\exec\NopSection.cpp" />
+    <ClCompile Include="utils\exec\PseudoAssemblyParser.cpp" />
     <ClCompile Include="utils\inst\InstructionWorker.cpp" />
     <ClCompile Include="utils\inst\PerformanceOperator.cpp" />
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
@@ -328,6 +330,8 @@
     <ClInclude Include="test\Test.h" />
     <ClInclude Include="test\TestEngine.h" />
     <ClInclude Include="test\TestMilestone.h" />
+    <ClInclude Include="utils\debug\DebugManager.h" />
+    <ClInclude Include="utils\exec\PseudoAssemblyParser.h" />
     <ClInclude Include="utils\exec\DllImageLoad.h" />
     <ClInclude Include="utils\exec\ExecutionManager.h" />
     <ClInclude Include="utils\exec\NopSection.h" />
