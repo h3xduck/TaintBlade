@@ -50,6 +50,11 @@ void ScopeFilterer::addScopeImage(IMG img)
 	this->scopeImages.push_back(IMG_Name(img));
 }
 
+void ScopeFilterer::addScopeImage(std::string imgName)
+{
+	this->scopeImages.push_back(imgName);
+}
+
 bool ScopeFilterer::isScopeImage(IMG img)
 {
 	return std::find(this->scopeImages.begin(), this->scopeImages.end(), IMG_Name(img)) != this->scopeImages.end();

@@ -75,6 +75,8 @@ KNOB< std::string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "ac
 KNOB< std::string > KnobTaintSourceFile(KNOB_MODE_WRITEONCE, "pintool", "taint", "", "specifies a file with dll+func combos to register as taint sources");
 KNOB< std::string > KnobTracePointsFile(KNOB_MODE_WRITEONCE, "pintool", "trace", "tracepoints.txt", "specifies a file with dll+func+numargs combos to register as trace points");
 KNOB< std::string > KnobNopSectionsFile(KNOB_MODE_WRITEONCE, "pintool", "nopsections", "nopsections.txt", "specifies a file with dll+func+start+end combos to register the code sections that will not be executed");
+KNOB< std::string > KnobDllIncludeFile(KNOB_MODE_WRITEONCE, "pintool", "dllinclude", "dllinclude.txt", "specifies a file with dlls to be traced (and not just the main image)");
+
 
 KNOB< BOOL > KnobAskForIndividualImageTrace(KNOB_MODE_WRITEONCE, "pintool", "choosetraceimages", "", "Ask for user before including any image in the list of images to trace. Otherwise, only main image is traced");
 KNOB< BOOL > KnobTraceAllImages(KNOB_MODE_WRITEONCE, "pintool", "traceallimages", "", "Force program to trace all images, without asking user input. Overrides choosetraceimages flag.");
@@ -714,6 +716,7 @@ int main(int argc, char* argv[])
 	std::string taintSourceFileFilename = KnobTaintSourceFile.Value();
 	std::string tracePointsFileFilename = KnobTracePointsFile.Value();
 	std::string nopSectionsFileFilename = KnobNopSectionsFile.Value();
+	std::string dllIncludeFileFilename = KnobDllIncludeFile.Value();
 	settingAskForIndividualImageTrace = KnobAskForIndividualImageTrace.Value();
 	settingTraceAllImages = KnobTraceAllImages.Value();
 	
@@ -846,6 +849,28 @@ int main(int argc, char* argv[])
 			}
 
 			ctx.getExecutionManager().registerNopSection(dllName, atoi(start.c_str()), atoi(end.c_str()), userAssemblyLinesVec);
+		}
+	}
+
+	if (!dllIncludeFileFilename.empty())
+	{
+		//If a taint source file was specified, we load DLL+FUNC combos from there
+		std::cerr << "Loading dll to trace from " << dllIncludeFileFilename << std::endl;
+		LOG_DEBUG("Loading dlls from " << dllIncludeFileFilename);
+
+		std::ifstream infile(dllIncludeFileFilename);
+		std::string line;
+		//The file is made of lines with FUNC DLL <num arguments> <user assembly lines>
+		while (std::getline(infile, line))
+		{
+			std::istringstream isdata(line);
+			std::string dllName;
+			//DLL
+			std::getline(isdata, dllName, ' ');
+
+			std::cerr << dllName << " selected to be traced" << std::endl;
+			LOG_DEBUG("Adding " << dllName << " to traced dlls");
+			scopeFilterer.addScopeImage(dllName);
 		}
 	}
 
