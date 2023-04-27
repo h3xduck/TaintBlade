@@ -17,6 +17,8 @@ src/PinTracer/syspinlog.txt
 src/PinTracer/pinlog.txt
 src/PinTracer/imgpinlog.txt
 *.txt
+*.obj
+*.dfx
 src/src.zip
 src/AntiDebugTest
 /src/PinTracer/imgpinlog.txt
