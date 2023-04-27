@@ -522,7 +522,7 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 
 	//LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
 
-	//Trace the function arguments
+	//Trace the function arguments, if the routine is selected to be traced by the user
 	ctx.getTraceManager().traceFunction(rtn, dllName, rtnName);
 
 	//Check if it should be tainted
@@ -536,10 +536,10 @@ void TraceBase(TRACE trace, VOID* v)
 {
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
-		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
+		for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins))
 		{		
-			RTN rtn = INS_Rtn(inst);
-			ADDRINT addr = INS_Address(inst);
+			RTN rtn = INS_Rtn(ins);
+			ADDRINT addr = INS_Address(ins);
 			IMG dll = IMG_FindByAddress(addr);
 			if (!IMG_Valid(dll))
 			{
@@ -549,18 +549,20 @@ void TraceBase(TRACE trace, VOID* v)
 			//tolower
 			std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 
+			//Track where we are in the execution
+			PerformanceOperator::trackCurrentState(ins);
 
-			//Firstly, we will check if the instruction belongs to a NOP-ed section, and in this case we will jump over the nop-ed range
-			if (ctx.getExecutionManager().isInNopSection(inst))
+			//We will check if the instruction belongs to a NOP-ed section, and in this case we will jump over the nop-ed range
+			if (ctx.getExecutionManager().isInNopSection(ins))
 			{
-				ctx.getExecutionManager().instrumentNopSection(inst);
+				ctx.getExecutionManager().instrumentNopSection(ins);
 				continue;
 			}
 
 			//Instrumentation of instructions - calls the tainting engine and all the underlaying analysis ones
 			InstrumentationManager instManager;
-			if (scopeFilterer.isMainExecutable(inst) || scopeFilterer.isScopeImage(inst)) {
-				instManager.instrumentInstruction(inst);
+			if (scopeFilterer.isMainExecutable(ins) || scopeFilterer.isScopeImage(ins)) {
+				instManager.instrumentInstruction(ins);
 
 			#if(CONFIG_INST_LOG_FILES==1)
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
@@ -572,7 +574,7 @@ void TraceBase(TRACE trace, VOID* v)
 			}
 
 			//Register jumps
-			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			if (INS_IsControlFlow(ins) || INS_IsFarJump(ins))
 				{
 				//For debugging
 					/*INS_InsertCall(
@@ -592,15 +594,15 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_END);*/
 
 				//Data dumping
-					if (INS_IsRet(inst))
+					if (INS_IsRet(ins))
 					{
 						INS_InsertCall(
-							inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentExit,
-							IARG_ADDRINT, INS_Address(inst),
+							ins, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentExit,
+							IARG_ADDRINT, INS_Address(ins),
 							IARG_BRANCH_TARGET_ADDR,
 							IARG_BRANCH_TAKEN,
 							IARG_FUNCRET_EXITPOINT_VALUE,
-							IARG_UINT32, INS_Size(inst),
+							IARG_UINT32, INS_Size(ins),
 							IARG_CONST_CONTEXT,
 							IARG_THREAD_ID,
 							IARG_END);
@@ -608,12 +610,12 @@ void TraceBase(TRACE trace, VOID* v)
 					else
 					{
 						INS_InsertCall(
-							inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentEnter,
-							IARG_ADDRINT, INS_Address(inst),
+							ins, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentEnter,
+							IARG_ADDRINT, INS_Address(ins),
 							IARG_BRANCH_TARGET_ADDR,
 							IARG_BRANCH_TAKEN,
-							IARG_UINT32, INS_Size(inst),
-							IARG_ADDRINT, INS_NextAddress(inst),
+							IARG_UINT32, INS_Size(ins),
+							IARG_ADDRINT, INS_NextAddress(ins),
 							IARG_CONST_CONTEXT,
 							IARG_THREAD_ID,
 							IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
@@ -798,9 +800,11 @@ int main(int argc, char* argv[])
 			std::string dllName;
 			//DLL
 			std::getline(isdata, dllName, ' ');
+			std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 			//FUNC
 			std::string funcName;
 			std::getline(isdata, funcName, ' ');
+			std::transform(funcName.begin(), funcName.end(), funcName.begin(), [](unsigned char c) { return std::tolower(c); });
 			//args
 			std::string numArgs;
 			std::getline(isdata, numArgs, ' ');

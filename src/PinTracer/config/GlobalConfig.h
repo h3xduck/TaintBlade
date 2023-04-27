@@ -29,6 +29,7 @@
 #define HEURISTIC_RESULTS_DUMP_FILE "heuristics.dfx"
 #define PROTOCOL_RESULTS_DUMP_FILE "protocol.dfx"
 #define TRACE_RESULTS_DUMP_FILE "trace.dfx"
+#define STATE_TRACKER_FILE "state_tracker.dfx"
 #define DUMP_INTER_SEPARATOR "%"
 #define DUMP_OUTER_SEPARATOR std::endl
 
