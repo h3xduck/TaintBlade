@@ -22,6 +22,7 @@
     <ProjectGuid>{639EF517-FCFC-408E-9500-71F0DC0458DB}</ProjectGuid>
     <RootNamespace>PinTracer</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -72,8 +73,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
@@ -170,7 +171,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalOptions>/GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FI../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/crt/include/msvc_compat.h %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h %(AdditionalOptions)</AdditionalOptions>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <AdditionalIncludeDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\InstLib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-ia32\include\xed;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\components\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\libstdc++\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\arch-x86;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi\asm-x86;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -190,11 +191,12 @@
       <DebugInformationFormat>
       </DebugInformationFormat>
       <DisableSpecificWarnings>4530;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions>/export:main %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>pin.lib;xed.lib;pincrt.lib;kernel32.lib;crtbeginS.obj</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\ia32\lib;..\..\..\ia32\lib-ext;..\..\..\extras\xed-ia32\lib;..\..\..\ia32\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\ia32\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\ia32\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-ia32\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\ia32\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>

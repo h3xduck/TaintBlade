@@ -76,17 +76,21 @@ public:
 	//****************Handlers***********************************************************//
 	
 	///////////////// WSOCK /////////////////
-	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
+	static VOID wsockRecvEnter(ADDRINT retIp, std::string dllName, std::string funcName, ...)
 	{
+		LOG_DEBUG("Called it\n");
 		int NUM_ARGS = 4;
 		va_list vaList;
 		va_start(vaList, funcName);
-
+		LOG_DEBUG("Called it1\n");
 		wsockRecv.s = va_arg(vaList, WINDOWS::SOCKET);
-		wsockRecv.buf = va_arg(vaList, char*);
-		wsockRecv.len = va_arg(vaList, int);
-		wsockRecv.flags = va_arg(vaList, int);
-
+		LOG_DEBUG("Called it2\n");
+		wsockRecv.buf = va_arg(*&vaList, char*);
+		LOG_DEBUG("Called it3\n");
+		wsockRecv.len = va_arg(*&vaList, int);
+		LOG_DEBUG("Called it4\n");
+		wsockRecv.flags = va_arg(*&vaList, int);
+		LOG_DEBUG("Called it5\n");
 		va_end(vaList);
 
 		LOG_INFO("Called wsockRecvEnter()\n\tretIp: "<<retIp<<"\n\tbuf: " << wsockRecv.buf << "\n\tlen: "<< wsockRecv.len);
@@ -118,7 +122,7 @@ public:
 	};
 
 	///////////////// WININET /////////////////
-	static VOID wininetInternetReadFileEnter(int retIp, std::string dllName, std::string funcName, ...)
+	static VOID wininetInternetReadFileEnter(ADDRINT retIp, std::string dllName, std::string funcName, ...)
 	{
 		int NUM_ARGS = 4;
 		va_list vaList;
@@ -162,14 +166,14 @@ public:
 
 
 	///////////////// MAIN (FOR TESTING). Taints RAX and RBX /////////////////
-	static VOID mainEnter(int retIp, std::string dllName, std::string funcName, ...)
+	static VOID mainEnter(ADDRINT retIp, std::string dllName, std::string funcName, ...)
 	{
 		LOG_DEBUG("Called mainEnter()");
 		
 		//Test: taint RAX
 		//taintController.printTaint();
-		taintController.taintRegNewColor(REG_RAX);
-		taintController.taintRegNewColor(REG_RBX);
+		taintController.taintRegNewColor(LEVEL_BASE::REG::REG_EAX);
+		taintController.taintRegNewColor(REG_EBX);
 	};
 	static VOID mainExit(int retVal, std::string dllName, std::string funcName, ...)
 	{
@@ -185,11 +189,11 @@ public:
 	int numArgs = 0;
 
 	//placeholders
-	VOID(*enterHandler)(int, std::string, std::string, ...) = NULL;
+	VOID(*enterHandler)(ADDRINT, std::string, std::string, ...) = NULL;
 	VOID(*exitHandler)(int, std::string, std::string, ...) = NULL;
 
 	TaintSource() {};
-	TaintSource(const std::string dllName, const std::string funcName, int numArgs, VOID(*enter)(int, std::string, std::string, ...), VOID(*exit)(int, std::string, std::string, ...));
+	TaintSource(const std::string dllName, const std::string funcName, int numArgs, VOID(*enter)(ADDRINT, std::string, std::string, ...), VOID(*exit)(int, std::string, std::string, ...));
 
 	void taintSourceLogAll();
 

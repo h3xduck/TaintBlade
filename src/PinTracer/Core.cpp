@@ -523,7 +523,7 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	//LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
 
 	//Trace the function arguments, if the routine is selected to be traced by the user
-	ctx.getTraceManager().traceFunction(rtn, dllName, rtnName);
+	//ctx.getTraceManager().traceFunction(rtn, dllName, rtnName);
 
 	//Check if it should be tainted
 	taintManager.routineLoadedEvent(rtn, dllName, rtnName);

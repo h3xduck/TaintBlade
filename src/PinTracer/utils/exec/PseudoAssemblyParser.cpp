@@ -22,6 +22,7 @@ void UTILS::EXEC::PseudoAssemblyParser::instrumentAssemblyLine(INS ins, std::str
 	REG reg;
 	switch (xedReg)
 	{
+#ifdef TARGET_IA32E
 	case XED_REG_RAX: reg = REG_RAX; break;
 	case XED_REG_RBX: reg = REG_RBX; break;
 	case XED_REG_RCX: reg = REG_RCX; break;
@@ -34,6 +35,13 @@ void UTILS::EXEC::PseudoAssemblyParser::instrumentAssemblyLine(INS ins, std::str
 	case XED_REG_R11: reg = REG_R11; break;
 	case XED_REG_R12: reg = REG_R12; break;
 	case XED_REG_R13: reg = REG_R13; break;
+#endif
+	case XED_REG_EAX: reg = REG_EAX; break;
+	case XED_REG_EBX: reg = REG_EBX; break;
+	case XED_REG_ECX: reg = REG_ECX; break;
+	case XED_REG_EDX: reg = REG_EDX; break;
+	case XED_REG_EDI: reg = REG_EDI; break;
+	case XED_REG_ESI: reg = REG_ESI; break;
 	default:
 		LOG_ALERT("Tried to execute an invalid user-provided assembly line");
 		return;
