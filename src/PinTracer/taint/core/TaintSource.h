@@ -88,9 +88,11 @@ public:
 	};
 	static VOID wsockRecvExit(ADDRINT retVal, VOID* dllName, VOID* funcName)
 	{
+		INT32 retValSigned = static_cast<INT32>(retVal);
 		//Firstly, we must check that we received something. Return value is # of bytes read
-		if (retVal <= 0)
+		if (retValSigned <= 0)
 		{
+			LOG_INFO("Called wsockRecvExit(), but no tainting needed (retval: " << retValSigned << ")");
 			//No tainting needed
 			return;
 		}
@@ -98,7 +100,7 @@ public:
 		const std::string* funcNameStr = static_cast<std::string*>(funcName);
 
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
-		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
+		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retValSigned << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wsockRecv.buf, retVal);
 		//LOG_DEBUG("Here0\n");
@@ -145,7 +147,7 @@ public:
 		const std::string* funcNameStr = static_cast<std::string*>(funcName);
 
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
-		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << wininetInternetReadFile.lpdwNumberOfBytesRead);
+		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << *wininetInternetReadFile.lpdwNumberOfBytesRead);
 
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
 		ctx.updateLastMemoryValue(val, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
@@ -156,7 +158,7 @@ public:
 		for (auto color : colorVector)
 		{
 			//Each 1 byte, we get a different color
-			taintController.registerOriginalColor(color, *dllNameStr, *funcNameStr, (ADDRINT)(((char*)wininetInternetReadFile.lpBuffer) + offset), (UINT8)(((char*)wininetInternetReadFile.lpBuffer)[offset]));
+			taintController.registerOriginalColor(color, *dllNameStr, *funcNameStr, (ADDRINT)((char*)(wininetInternetReadFile.lpBuffer) + offset), (UINT8)(((char*)wininetInternetReadFile.lpBuffer)[offset]));
 			offset++;
 		}
 

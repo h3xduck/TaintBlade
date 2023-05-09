@@ -208,7 +208,7 @@ ADDRINT getBufferStringLengthUTF16(void* buf)
 
 std::string InstructionWorker::getMemoryValueHexString(ADDRINT memAddr, int len)
 {
-	char data[512] = {0};
+	char data[1024] = {0};
 	PIN_SafeCopy(data, (VOID*)(memAddr), len);
 	std::stringstream ss;
 	ss << std::hex << std::setfill('0');
