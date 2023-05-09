@@ -37,7 +37,7 @@ function runTest {
     $null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
     Start-Sleep -Seconds 0.5
 
-    $testProcess = Start-Process cmd -ArgumentList '/k', "..\..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe -follow_execv -t ..\..\PinTracer\x64\Release\PinTracer.dll -o pinlog.txt -s syspinlog.txt -i imgpinlog.txt -d debuglogfile.txt -test testset.txt -taint taintsources.txt -- ..\..\..\samples\$programInfo" -PassThru
+    $testProcess = Start-Process cmd -ArgumentList '/k', "..\..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\pin.exe -follow_execv -t ..\..\PinTracer\x64\Release\PinTracer.dll -o pinlog.dfx -s syspinlog.dfx -i imgpinlog.dfx -d debuglogfile.dfx -test testset.txt -taint taintsources.txt -- ..\..\..\samples\$programInfo" -PassThru
     $user32 = New-Object User32
     $null = $user32::SetForegroundWindow((Get-Process -id $pid).MainWindowHandle)
 

@@ -1,9 +1,9 @@
 #include "PseudoAssemblyParser.h"
 
-void executeAssemblyLine(ADDRINT *reg, UINT64 value)
+void executeAssemblyLine(ADDRINT *reg, ADDRINT value)
 {
 	*reg = value;
-	LOG_DEBUG("Modified value of register in user-provided assembly line to be: " << (UINT64)*reg<<" | original: "<<(UINT64)value);
+	LOG_DEBUG("Modified value of register in user-provided assembly line to be: " << (ADDRINT)*reg<<" | original: "<<(ADDRINT)value);
 }
 
 void UTILS::EXEC::PseudoAssemblyParser::instrumentAssemblyLine(INS ins, std::string codeLine)
@@ -46,6 +46,6 @@ void UTILS::EXEC::PseudoAssemblyParser::instrumentAssemblyLine(INS ins, std::str
 		LOG_ALERT("Tried to execute an invalid user-provided assembly line");
 		return;
 	}
-	UINT64 value = std::stoull(valueStr);
-	INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(executeAssemblyLine), IARG_REG_REFERENCE, reg, IARG_UINT64, value, IARG_END);
+	ADDRINT value = std::stoull(valueStr);
+	INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(executeAssemblyLine), IARG_REG_REFERENCE, reg, IARG_ADDRINT, value, IARG_END);
 }

@@ -25,9 +25,11 @@ void UTILS::TRACE::TraceManager::traceFunction(RTN rtn, const std::string& dllNa
 	}
 }
 
-static void genericFunctionTraceEnter(ADDRINT retIp, std::string dllName, std::string funcName, UINT32 numArgs, ...)
+static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* funcNamePtr, UINT32 numArgs, ...)
 {
-	UTILS::TRACE::TracePoint tp(dllName, funcName, numArgs);
+	const std::string* dllName = static_cast<std::string*>(dllNamePtr);
+	const std::string* funcName = static_cast<std::string*>(funcNamePtr);
+	UTILS::TRACE::TracePoint tp(*dllName, *funcName, numArgs);
 
 	//Extract argument of function
 	va_list vaList;
@@ -45,17 +47,20 @@ static void genericFunctionTraceEnter(ADDRINT retIp, std::string dllName, std::s
 	
 	UTILS::TRACE::interFunctionCallsVector.push_back(tp);
 
-	LOG_DEBUG("Traced function DLL:" << dllName << " FUNC:" << funcName);
+	LOG_DEBUG("Traced function DLL:" << *dllName << " FUNC:" << *funcName);
 
 }
 
-static void genericFunctionTraceExit(ADDRINT retValue, std::string dllName, std::string funcName)
+static void genericFunctionTraceExit(ADDRINT retValue, VOID* dllNamePtr, VOID* funcNamePtr)
 {
+	const std::string* dllName = static_cast<std::string*>(dllNamePtr);
+	const std::string* funcName = static_cast<std::string*>(funcNamePtr);
+
 	//Check if the trace point was inserted (it should, as the exit event should be called after the enter one)
 	for (int ii=0; ii< UTILS::TRACE::interFunctionCallsVector.size(); ii++)
 	{
 		UTILS::TRACE::TracePoint& tp = UTILS::TRACE::interFunctionCallsVector.at(ii);
-		if (tp.getDllName() == dllName && tp.getFuncName() == funcName)
+		if (tp.getDllName() == *dllName && tp.getFuncName() == *funcName)
 		{
 			//Found it
 			std::vector<std::string> argsVecPost;

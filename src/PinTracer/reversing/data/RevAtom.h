@@ -40,7 +40,7 @@ private:
 	UINT32 leaDis;
 
 	//For instructions with immediate as operand
-	UINT64 immSrc;
+	ADDRINT immSrc;
 
 	//Stores list of heuristics (its index) that have already detected this heuristic
 	std::vector<int> detectedHeuristics;
@@ -59,7 +59,7 @@ public:
 		INT32 memDestLen = 0, REG regSrc = REG_INVALID_, 
 		REG regDest = REG_INVALID_, REG leaBase = REG_INVALID_,	
 		REG leaIndex = REG_INVALID_, UINT32 leaScale = 0, 
-		UINT32 leaDis = 0, UINT64 immSrc = 0
+		UINT32 leaDis = 0, ADDRINT immSrc = 0
 	);
 
 	//Setters and getters
@@ -86,8 +86,8 @@ public:
 	REG getLeaBase();
 	void setLeaIndex(REG leaIndex);
 	REG getLeaIndex();
-	UINT64 getImmSrc();
-	void setImmSrc(UINT64 immSrc);
+	ADDRINT getImmSrc();
+	void setImmSrc(ADDRINT immSrc);
 
 	RevHeuristicAtom* getRevHeuristicAtom();
 	RevColorAtom* getRevColorAtom();

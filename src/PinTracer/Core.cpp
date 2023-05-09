@@ -12,7 +12,9 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
-
+#include <cstring>
+#include <cstdio>
+#include <string>
 
 //#include "config/GlobalConfig.h"
 #include "utils/inst/SyscallParser.h"
@@ -28,13 +30,24 @@
 #include "taint/data/TagLog.h"
 #include "reversing/protocol/ProtocolReverser.h"
 
+#ifndef _WINDOWS_HEADERS_H_
+#define _WINDOWS_HEADERS_H_
+#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+namespace WINDOWS
+{
+#include <windows.h>
+#include <WinSock2.h>
+#include <wininet.h>
+}
+#endif
+
 /* ================================================================== */
 // Global variables
 /* ================================================================== */
 
-UINT64 insCount = 0; //number of dynamically executed instructions
-UINT64 bblCount = 0; //number of dynamically executed basic blocks
-UINT64 threadCount = 0; //total number of threads, including main thread
+UINT32 insCount = 0; //number of dynamically executed instructions
+UINT32 bblCount = 0; //number of dynamically executed basic blocks
+UINT32 threadCount = 0; //total number of threads, including main thread
 
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
@@ -97,6 +110,23 @@ INT32 Usage()
 	std::cerr << KNOB_BASE::StringKnobSummary() << std::endl;
 
 	return -1;
+}
+
+//Deletes all previous dfx files in the directory
+void cleanDfxFiles()
+{
+	WINDOWS::HANDLE hFind;
+	WINDOWS::WIN32_FIND_DATA FindFileData;
+
+	if ((hFind = FindFirstFile("./*.dfx", &FindFileData)) != ((WINDOWS::HANDLE)(WINDOWS::LONG_PTR)-1)) 
+	{
+		do 
+		{
+			int res = std::remove(FindFileData.cFileName);
+			LOG_DEBUG("Cleaning old output file " << FindFileData.cFileName << " (result: " << res << ")" << std::endl);
+		} while (FindNextFile(hFind, &FindFileData));
+		WINDOWS::FindClose(hFind);
+	}
 }
 
 /* ===================================================================== */
@@ -519,11 +549,12 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	std::string dllName = IMG_Name(module);
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
+	std::transform(rtnName.begin(), rtnName.end(), rtnName.begin(), [](unsigned char c) { return std::tolower(c); });
 
 	//LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
 
 	//Trace the function arguments, if the routine is selected to be traced by the user
-	//ctx.getTraceManager().traceFunction(rtn, dllName, rtnName);
+	ctx.getTraceManager().traceFunction(rtn, dllName, rtnName);
 
 	//Check if it should be tainted
 	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
@@ -558,7 +589,7 @@ void TraceBase(TRACE trace, VOID* v)
 				ctx.getExecutionManager().instrumentNopSection(ins);
 				continue;
 			}
-
+			
 			//Instrumentation of instructions - calls the tainting engine and all the underlaying analysis ones
 			InstrumentationManager instManager;
 			if (scopeFilterer.isMainExecutable(ins) || scopeFilterer.isScopeImage(ins)) {
@@ -653,6 +684,36 @@ BOOL FollowChild(CHILD_PROCESS cProcess, VOID* userData)
  */
  //VOID ThreadStart(THREADID threadIndex, CONTEXT* ctxt, INT32 flags, VOID* v) { threadCount++; }
 
+
+void dumpEndInfo()
+{
+	taintController.printTaint();
+	taintController.dumpTaintLog();
+	taintController.dumpTaintLogPrettified(29);
+	taintController.dumpTagLogOriginalColors();
+	PerformanceOperator::measureChrono();
+
+	//Dump original colors vector
+	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
+	dataDumper.writeOriginalColorDump(orgVec);
+
+	//Dump color transformations
+	std::vector<Tag> colorTrans = taintController.getColorTransVector();
+	dataDumper.writeColorTransformationDump(colorTrans);
+
+	//Dump RevAtoms
+	//ctx.getRevContext()->printRevLogCurrent();
+
+	//Dump info about heuristics found
+	ctx.getRevContext()->dumpFoundHeuristics();
+}
+
+void resolveProtocol()
+{
+	//Reverse the protocols using the found heuristics
+	REVERSING::PROTOCOL::reverseProtocol();
+}
+
  /*!
   * Print out analysis results.
   * This function is called when the application exits.
@@ -663,28 +724,12 @@ BOOL FollowChild(CHILD_PROCESS cProcess, VOID* userData)
 VOID Fini(INT32 code, VOID* v)
 {
 	std::cerr << "Finished" << std::endl;
-	taintController.printTaint();
-	taintController.dumpTaintLog();
-	taintController.dumpTaintLogPrettified(29);
-	taintController.dumpTagLogOriginalColors();
-	PerformanceOperator::measureChrono();
-	
-	//Dump original colors vector
-	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
-	dataDumper.writeOriginalColorDump(orgVec);
 
-	//Dump color transformations
-	std::vector<Tag> colorTrans  = taintController.getColorTransVector();
-	dataDumper.writeColorTransformationDump(colorTrans);
+	//Dump relevant info about program execution, tainting, etc
+	dumpEndInfo();
 
-	//Dump RevAtoms
-	//ctx.getRevContext()->printRevLogCurrent();
-
-	//Dump info about heuristics found
-	ctx.getRevContext()->dumpFoundHeuristics();
-
-	//Reverse the protocols using the found heuristics
-	REVERSING::PROTOCOL::reverseProtocol();
+	//Resolve the final form of the protocol
+	resolveProtocol();
 
 	//Evaluate tests
 	globalTestEngine.evaluateTests();
@@ -708,6 +753,9 @@ int main(int argc, char* argv[])
 	{
 		return Usage();
 	}
+
+	//Clean all .dfx files that were left from previous runs
+	cleanDfxFiles();
 
 	std::string fileName = KnobOutputFile.Value();
 	std::string sysinfoFilename = KnobSyscallFile.Value();

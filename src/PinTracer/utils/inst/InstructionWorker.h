@@ -74,8 +74,7 @@ namespace InstructionWorker
 
 }
 
-UINT64 getBufferStringLengthUTF8(void* buf);
-
-UINT64 getBufferStringLengthUTF16(void* buf);
+ADDRINT getBufferStringLengthUTF8(void* buf);
+ADDRINT getBufferStringLengthUTF16(void* buf);
 
 #endif

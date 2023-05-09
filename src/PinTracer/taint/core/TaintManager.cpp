@@ -48,8 +48,8 @@ void TaintManager::routineLoadedEvent(RTN rtn, std::string dllName, std::string 
 void TaintManager::registerTaintSource(const std::string &dllName, const std::string &funcName, int numArgs)
 {
 	//Select handler depending on function
-	VOID(*enterHandler)(ADDRINT retIp, std::string dllName, std::string funcName, ...) = NULL;
-	VOID(*exitHandler)(int retVal, std::string dllName, std::string funcName, ...) = NULL;
+	VOID(*enterHandler)(ADDRINT retIp, VOID * dllName, VOID * funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6) = NULL;
+	VOID(*exitHandler)(ADDRINT retVal, VOID* dllName, VOID* funcName) = NULL;
 
 	if ((dllName == WS2_32_DLL || dllName == WS2_32_DLL_x86) && funcName == RECV_FUNC)
 	{
@@ -57,7 +57,7 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
 	}
-	else if((dllName == WSOCK32_DLL || dllName == WSOCK32_DLL_x86)  && funcName == RECV_FUNC)
+	else if ((dllName == WSOCK32_DLL || dllName == WSOCK32_DLL_x86) && funcName == RECV_FUNC)
 	{
 		LOG_DEBUG("Registered function handlers for recv in wsock32");
 		enterHandler = TaintSource::wsockRecvEnter;

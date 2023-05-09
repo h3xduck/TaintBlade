@@ -127,10 +127,10 @@ public:
 		return this->immSrcValueBytes;
 	}
 
-	void setImmSrcValue(UINT64 value)
+	void setImmSrcValue(ADDRINT value)
 	{
 		this->immSrcValueBytes.empty();
-		this->immSrcValueBytes.reserve(sizeof(UINT64));
+		this->immSrcValueBytes.reserve(sizeof(ADDRINT));
 		for (int ii = 0; ii < 8; ii++)
 		{
 			this->immSrcValueBytes.push_back(value & 0xFF);

@@ -7,7 +7,7 @@ RevAtom::RevAtom(
 	INT32 memDestLen, REG regSrc,
 	REG regDest, REG leaBase,
 	REG leaIndex, UINT32 leaScale,
-	UINT32 leaDis, UINT64 immSrc
+	UINT32 leaDis, ADDRINT immSrc
 )
 {
 	PIN_LockClient();
@@ -157,12 +157,12 @@ void RevAtom::setLeaIndex(REG leaIndex)
 	this->getRevHeuristicAtom()->leaIndexTainted = true;
 }
 
-UINT64 RevAtom::getImmSrc()
+ADDRINT RevAtom::getImmSrc()
 {
 	return this->immSrc;
 }
 
-void RevAtom::setImmSrc(UINT64 immSrc)
+void RevAtom::setImmSrc(ADDRINT immSrc)
 {
 	this->immSrc = immSrc;
 	this->getRevHeuristicAtom()->hasImmSrc = true;

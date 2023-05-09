@@ -241,7 +241,7 @@
     <Link>
       <AdditionalOptions>/export:main %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>pin.lib;xed.lib;pincrt.lib;kernel32.lib;crtbeginS.obj</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib;C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -292,6 +292,7 @@
     <ClCompile Include="utils\inst\PerformanceOperator.cpp" />
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
     <ClCompile Include="utils\inst\SyscallParser.cpp" />
+    <ClCompile Include="utils\io\CommandCenter.cpp" />
     <ClCompile Include="utils\io\DataDumper.cpp" />
     <ClCompile Include="utils\io\format.cpp" />
     <ClCompile Include="utils\trace\TraceManager.cpp" />
@@ -299,6 +300,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\Context.h" />
+    <ClInclude Include="config\Command.h" />
     <ClInclude Include="config\GlobalConfig.h" />
     <ClInclude Include="config\Names.h" />
     <ClInclude Include="engine\core\InstrumentationManager.h" />
@@ -339,6 +341,7 @@
     <ClInclude Include="utils\exec\NopSection.h" />
     <ClInclude Include="utils\inst\PerformanceOperator.h" />
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
+    <ClInclude Include="utils\io\CommandCenter.h" />
     <ClInclude Include="utils\io\DataDumper.h" />
     <ClInclude Include="utils\io\format.h" />
     <ClInclude Include="utils\io\log.h" />

@@ -124,8 +124,8 @@ std::wstring InstructionWorker::printFunctionArgument(void* arg)
 		}
 			
 		//Char* or wchar_t*
-		UINT64 stringLenUTF8 = getBufferStringLengthUTF8(arg);
-		UINT64 stringLenUTF16 = getBufferStringLengthUTF16(arg);
+		ADDRINT stringLenUTF8 = getBufferStringLengthUTF8(arg);
+		ADDRINT stringLenUTF16 = getBufferStringLengthUTF16(arg);
 		if (stringLenUTF8 == 1 && stringLenUTF8 < stringLenUTF16)
 		{
 			result << "Len: 0x" << stringLenUTF16;
@@ -145,10 +145,10 @@ std::wstring InstructionWorker::printFunctionArgument(void* arg)
 }
 
 
-UINT64 getBufferStringLengthUTF8(void* buf)
+ADDRINT getBufferStringLengthUTF8(void* buf)
 {
-	const UINT64 BUFFER_LIMIT_LEN = 100;
-	UINT64 ii = 0;
+	const ADDRINT BUFFER_LIMIT_LEN = 100;
+	ADDRINT ii = 0;
 
 	//std::cerr << "" << std::endl;
 
@@ -176,10 +176,10 @@ UINT64 getBufferStringLengthUTF8(void* buf)
 	return ii;
 }
 
-UINT64 getBufferStringLengthUTF16(void* buf)
+ADDRINT getBufferStringLengthUTF16(void* buf)
 {
-	const UINT64 BUFFER_LIMIT_LEN = 100;
-	UINT64 ii = 0;
+	const ADDRINT BUFFER_LIMIT_LEN = 100;
+	ADDRINT ii = 0;
 
 	while (ii < BUFFER_LIMIT_LEN)
 	{
@@ -208,7 +208,7 @@ UINT64 getBufferStringLengthUTF16(void* buf)
 
 std::string InstructionWorker::getMemoryValueHexString(ADDRINT memAddr, int len)
 {
-	char data[8] = {0};
+	char data[512] = {0};
 	PIN_SafeCopy(data, (VOID*)(memAddr), len);
 	std::stringstream ss;
 	ss << std::hex << std::setfill('0');
@@ -216,7 +216,7 @@ std::string InstructionWorker::getMemoryValueHexString(ADDRINT memAddr, int len)
 	{
 		ss << std::setw(2) << static_cast<unsigned>((UINT8)(data[ii]));
 	}
-	
+	//LOG_DEBUG(ss.str());
 	return ss.str();
 }
 

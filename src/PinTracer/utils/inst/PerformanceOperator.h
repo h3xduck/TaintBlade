@@ -5,7 +5,7 @@
 #include "pin.H"
 
 namespace PerformanceOperator {
-	static long instructionCounter;
+	static ADDRINT instructionCounter;
 	const static int milestone = 5000;
 
 	void incrementInstructionCounter();
