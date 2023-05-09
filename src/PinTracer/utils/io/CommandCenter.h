@@ -1,6 +1,7 @@
 #ifndef _COMMAND_CENTER_H_
 #define _COMMAND_CENTER_
 
+#include "pin.H"
 #include "../../config/Command.h"
 #include "log.h"
 #include <iostream>
@@ -16,7 +17,11 @@ namespace UTILS
 		{
 		private:
 			std::ifstream commandFile;
-			void executeCommand();
+
+			/**
+			Checks whether the string corresponds to a known command and, if so, executes it
+			*/
+			void executeCommand(std::string command);
 		public:
 			CommandCenter();
 

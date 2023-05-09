@@ -5,7 +5,7 @@
 #define PINTOOL_COMMAND_FILE "command.txt"
 
 //Commands
-#define COMMAND_RESOLVE_PROTOCOL
+#define COMMAND_CALL_APPLICATION_EXIT "C_APP_EXIT"
 
 
 #endif

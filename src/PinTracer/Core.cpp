@@ -29,6 +29,7 @@
 #include "test/TestEngine.h"
 #include "taint/data/TagLog.h"
 #include "reversing/protocol/ProtocolReverser.h"
+#include "utils/io/CommandCenter.h"
 
 #ifndef _WINDOWS_HEADERS_H_
 #define _WINDOWS_HEADERS_H_
@@ -62,6 +63,7 @@ bool settingAskForIndividualImageTrace = 0;
 bool settingTraceAllImages = 0;
 
 ScopeFilterer scopeFilterer;
+UTILS::IO::CommandCenter commandCenter;
 extern TaintManager taintManager;
 extern TestEngine globalTestEngine;
 
@@ -559,6 +561,10 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	//Check if it should be tainted
 	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
 
+	//Check whether we have any command from the user.
+	//This has to refresh a file for communicating with pin, so better to keep it at an
+	//instrumentation function with not much frequency.
+	commandCenter.queryCommandAvailable();
 
 	RTN_Close(rtn);
 }
