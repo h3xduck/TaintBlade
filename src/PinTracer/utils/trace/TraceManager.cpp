@@ -25,23 +25,52 @@ void UTILS::TRACE::TraceManager::traceFunction(RTN rtn, const std::string& dllNa
 	}
 }
 
-static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* funcNamePtr, UINT32 numArgs, ...)
+static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* funcNamePtr, UINT32 numArgs, void* arg1, void* arg2, void* arg3, void* arg4)
 {
 	const std::string* dllName = static_cast<std::string*>(dllNamePtr);
 	const std::string* funcName = static_cast<std::string*>(funcNamePtr);
 	UTILS::TRACE::TracePoint tp(*dllName, *funcName, numArgs);
 
 	//Extract argument of function
-	va_list vaList;
-	va_start(vaList, numArgs);
 	std::vector<std::string> argsVec;
 	std::vector<void*> argsVecPtr;
-	for (int ii = 0; ii < numArgs; ii++)
+	
+	//optimizable, but we were out of variadic functions due to msvc and x32, so will do for now
+	switch (numArgs)
 	{
-		argsVecPtr.push_back(va_arg(vaList, void*));
+	case 0:
+		break;
+	case 1:
+		argsVecPtr.push_back((void*)arg1);
 		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		break;
+	case 2:
+		argsVecPtr.push_back((void*)arg1);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg2);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		break;
+	case 3:
+		argsVecPtr.push_back((void*)arg1);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg2);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg3);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		break;
+	case 4:
+		argsVecPtr.push_back((void*)arg1);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg2);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg3);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg4);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		break;
 	}
-	va_end(vaList);
+	
+
 	tp.setArgsPre(argsVec);
 	tp.setArgsPrePtr(argsVecPtr);
 	
