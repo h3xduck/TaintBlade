@@ -5,6 +5,7 @@
 #include "../reversing/core/RevContext.h"
 #include "../utils/trace/TraceManager.h"
 #include "../utils/exec/ExecutionManager.h"
+#include "../utils/io/CommandCenter.h"
 
 class Context {
 private:

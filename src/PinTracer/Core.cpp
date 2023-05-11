@@ -29,7 +29,6 @@
 #include "test/TestEngine.h"
 #include "taint/data/TagLog.h"
 #include "reversing/protocol/ProtocolReverser.h"
-#include "utils/io/CommandCenter.h"
 
 #ifndef _WINDOWS_HEADERS_H_
 #define _WINDOWS_HEADERS_H_
@@ -63,7 +62,6 @@ bool settingAskForIndividualImageTrace = 0;
 bool settingTraceAllImages = 0;
 
 ScopeFilterer scopeFilterer;
-UTILS::IO::CommandCenter commandCenter;
 extern TaintManager taintManager;
 extern TestEngine globalTestEngine;
 
@@ -561,16 +559,12 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	//Check if it should be tainted
 	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
 
-	//Check whether we have any command from the user.
-	//This has to refresh a file for communicating with pin, so better to keep it at an
-	//instrumentation function with not much frequency.
-	commandCenter.queryCommandAvailable();
-
 	RTN_Close(rtn);
 }
 
 void TraceBase(TRACE trace, VOID* v)
 {
+	//Instrument each instruction on each basic block
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
 		for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins))
@@ -1011,6 +1005,11 @@ int main(int argc, char* argv[])
 		std::cerr << "See file " << KnobDebugFile.Value() << " for debug logs" << std::endl;
 	}
 	std::cerr << "===============================================" << std::endl;
+
+
+	//Starts a background threat that periodically checks whether
+	//we have any command from the user.
+	UTILS::IO::CommandCenter::startCommandCenterJob();
 
 	// Start the program, never returns
 	PIN_StartProgram();

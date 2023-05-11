@@ -16,6 +16,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		LOG_ERR("Tried to instrument invalid instruction");
 		return;
 	}
+
 	PerformanceOperator::incrementInstructionCounter();
 
 	xed_iclass_enum_t opc = (xed_iclass_enum_t) INS_Opcode(ins);

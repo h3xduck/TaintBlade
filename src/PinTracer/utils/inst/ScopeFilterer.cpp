@@ -2,7 +2,7 @@
 
 ScopeFilterer::ScopeFilterer(std::string name)
 {
-	LOG_DEBUG("Restricting instrumentation via ScopeFilterer to main image " << name);
+	LOG_DEBUG("SELECTED MAIN IMAGE: " << name);
 	this->mainExecutableName = name;
 }
 

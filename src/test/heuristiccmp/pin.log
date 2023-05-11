@@ -1,3 +1,4 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 190392. Interruption context: IP: 0x69cb15ed SP: 0x262eed8. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x69cb15ed. Access Type: READ. Access Address = 0x262f000. ExceptionFlags: 0x0
+A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\vm\vm_threaddb.cpp: LEVEL_VM::VM_THREAD_DB::GetThreadById: 322: assertion failed: (UINT32)threadId < PIN_MAX_THREADS
+
