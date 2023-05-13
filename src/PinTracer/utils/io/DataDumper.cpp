@@ -127,7 +127,7 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		{
 			UINT16& color = colors.at(jj);
 			UINT8& value = values.at(jj);
-			this->protocolResultsDumpFile << "\t\t Color: " << color << " | Byte value: " << value << std::endl;
+			this->protocolResultsDumpFile << "\t\t Color: " << color << " | Byte value: " << InstructionWorker::byteToHexValueString(value) << " (as char: " << value <<")" << std::endl;
 		}
 
 

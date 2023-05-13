@@ -105,7 +105,7 @@ std::string REVERSING::PROTOCOL::ProtocolWord::toString()
 	std::vector<int> &compVec = this->getSuccessIndexes();
 	for (int ii = 0; ii < bytesVec.size(); ii++)
 	{
-		ss << "\n\tByte " << ii << ": " << bytesVec.at(ii) << " | Comparison result: " << compVec.at(ii);
+		ss << "\n\tByte " << ii << ": " << InstructionWorker::byteToHexValueString(bytesVec.at(ii)) << " (as char: " << bytesVec.at(ii) << ") | Comparison result: " << compVec.at(ii);
 	}
 
 	return ss.str();

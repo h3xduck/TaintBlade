@@ -30,9 +30,10 @@ void INST_COMMON::revLogInst_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, ADDRIN
 		atomChanged = true;
 	}
 	PIN_LockClient();
-	UINT8 valBuffer[8];
+	UINT8* valBuffer = (UINT8*)calloc(REG_Size(regDest), sizeof(UINT8));
 	InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
 	atomData->setRegDestValue(valBuffer, REG_Size(regDest));
+	free(valBuffer);
 	PIN_UnlockClient();
 
 	if (atomChanged)
@@ -68,10 +69,11 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 		atomChanged = true;
 	}
 	PIN_LockClient();
-	UINT8 valBuffer[8];
+	UINT8 *valBuffer = (UINT8*)calloc(REG_Size(regSrc), sizeof(UINT8));
 	InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
 	atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
-	//LOG_DEBUG("RegSrcValueSize: " << atomData->getRegSrcValue().size());
+	//LOG_DEBUG("RegSrcValueSize of reg " << regSrc << ": " << atomData->getRegSrcValue().size());
+	free(valBuffer);
 	PIN_UnlockClient();
 
 	if (tController.regIsTainted(regDest))
@@ -82,9 +84,10 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 		atomChanged = true;
 	}
 	PIN_LockClient();
-	UINT8 valBuffer2[8];
+	UINT8* valBuffer2 = (UINT8*)calloc(REG_Size(regDest), sizeof(UINT8));
 	InstructionWorker::getRegisterValue(lctx, regDest, valBuffer2);
 	atomData->setRegDestValue(valBuffer2, REG_Size(regDest));
+	free(valBuffer2);
 	//LOG_DEBUG("RegDestValueSize: " << atomData->getRegDestValue().size());
 	PIN_UnlockClient();
 
@@ -92,6 +95,7 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 	{
 		atom->setInstAddress(ip);
 		atom->setOperandsType(RevHeuristicAtom::REG2REG);
+		LOG_DEBUG("R2R WITH RegDestByte[0]: " << atomData->getRegDestValue().at(0) << " | RegSrcByte[0]: " << atomData->getRegSrcValue().at(0));
 		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
 		//we take tainted data and insert the atom in the RevLog.
 		if (!needsAfterInstruction)
@@ -122,9 +126,10 @@ void INST_COMMON::revLogInst_reg2mem(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 		atomChanged = true;
 	}
 	PIN_LockClient();
-	UINT8 valBuffer[8];
+	UINT8* valBuffer = (UINT8*)calloc(REG_Size(regSrc), sizeof(UINT8));
 	InstructionWorker::getRegisterValue(lctx, regSrc, valBuffer);
 	atomData->setRegSrcValue(valBuffer, REG_Size(regSrc));
+	free(valBuffer);
 	PIN_UnlockClient();
 
 	if (tController.memRangeIsTainted(memDest, memDestLen))
@@ -221,10 +226,11 @@ void INST_COMMON::revLogInst_imm2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, UINT64
 		atomChanged = true;
 	}
 	PIN_LockClient();
-	UINT8 valBuffer[8];
+	UINT8* valBuffer = (UINT8*)calloc(REG_Size(regDest), sizeof(UINT8));
 	InstructionWorker::getRegisterValue(lctx, regDest, valBuffer);
 	atomData->setRegDestValue(valBuffer, REG_Size(regDest));
 	atomData->setImmSrcValue(immSrc);
+	free(valBuffer);
 	PIN_UnlockClient();
 
 	if (atomChanged)
@@ -302,9 +308,10 @@ void INST_COMMON::revLogInst_after(LEVEL_VM::CONTEXT* lctx, ADDRINT ip)
 		//At this point, and only after the execution of the CMP, we can get the value of the flags
 		PIN_LockClient();
 		RevDataAtom* dataAtom = atom->getRevDataAtom();
-		UINT8 valBuffer[8];
+		UINT8* valBuffer = (UINT8*)calloc(REG_Size(REG::REG_FLAGS), sizeof(UINT8));
 		InstructionWorker::getRegisterValue(lctx, REG::REG_FLAGS, valBuffer, true);
 		dataAtom->setFlagsValue(valBuffer);
+		free(valBuffer);
 		PIN_UnlockClient();
 
 		LOG_DEBUG("Inserting atom at after:" << atom->getInstType());

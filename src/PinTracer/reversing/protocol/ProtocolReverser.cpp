@@ -205,7 +205,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		//Test, checkout results
 		for (comparison_data_t& comp: comparisonVector)
 		{
-			LOG_DEBUG("\tHL:"<< comp.heuristicLevel<<" BYTE:"<<comp.byteComparison<<" RES:"<<comp.comparisonResult);
+			LOG_DEBUG("\tHL:" << comp.heuristicLevel << " BYTE:" << InstructionWorker::byteToHexValueString(comp.byteComparison) << " (as char: " << comp.byteComparison << ") RES:" << comp.comparisonResult);
 		}
 
 
@@ -234,7 +234,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			currentWord.setStartIndex(topComparison.bufferIndex);
 			currentWord.setEndIndex(topComparison.bufferIndex);
 
-			LOG_DEBUG("Starting from BYTE:" << topComparison.byteComparison << " SUCCESS:" << topComparison.comparisonResult);
+			LOG_DEBUG("Starting from BYTE:" << InstructionWorker::byteToHexValueString(topComparison.byteComparison) << "(as char: " << topComparison.byteComparison << ") SUCCESS:" << topComparison.comparisonResult);
 
 			//First of all, we join in the word all bytes that were related to the same compare instruction (they chave the same HL)
 			for (int jj = ii + 1; jj <= comparisonVector.size(); jj++)

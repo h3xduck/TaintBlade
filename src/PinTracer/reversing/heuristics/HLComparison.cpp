@@ -183,7 +183,7 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
 			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
 			{
-				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+				LOG_DEBUG(ii << ": " << InstructionWorker::byteToHexValueString(this->comparisonValuesSecond.at(ii)));
 			}
 		}
 		//CMP(MEM, imm)
@@ -204,7 +204,7 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
 			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
 			{
-				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+				LOG_DEBUG(ii << ": " << InstructionWorker::byteToHexValueString(this->comparisonValuesSecond.at(ii)));
 			}
 		}
 		//CMP(MEM, reg)
@@ -225,7 +225,7 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
 			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
 			{
-				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+				LOG_DEBUG(ii << ": " << InstructionWorker::byteToHexValueString(this->comparisonValuesSecond.at(ii)));
 			}
 		}
 		//CMP(REG, mem)
@@ -246,7 +246,7 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
 			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
 			{
-				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+				LOG_DEBUG(ii << ": " << InstructionWorker::byteToHexValueString(this->comparisonValuesSecond.at(ii)));
 			}
 		}
 		//CMP(REG, imm)
@@ -267,7 +267,7 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
 			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
 			{
-				LOG_DEBUG(ii << ": " << this->comparisonValuesSecond.at(ii));
+				LOG_DEBUG(ii << ": " << InstructionWorker::byteToHexValueString(this->comparisonValuesSecond.at(ii)));
 			}
 		}
 		else

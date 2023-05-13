@@ -2,6 +2,7 @@
 #define _PROTOCOLWORD_H_
 
 #include "pin.H"
+#include "../../utils/inst/InstructionWorker.h"
 #include <vector>
 
 namespace REVERSING

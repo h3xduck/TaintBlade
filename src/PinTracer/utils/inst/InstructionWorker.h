@@ -72,6 +72,12 @@ namespace InstructionWorker
 	*/
 	std::wstring utf8Decode(const std::string& str);
 
+	/**
+	Returns a string with the value of the bytes (in hex) of the byte
+	passed. This is useful when it needs to be printed.
+	*/
+	std::string byteToHexValueString(UINT8 byte);
+
 }
 
 ADDRINT getBufferStringLengthUTF8(void* buf);
