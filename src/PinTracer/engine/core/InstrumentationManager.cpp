@@ -61,10 +61,20 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 	case XED_ICLASS_CMP:
 		OPC_INST::instrumentCompareOpc(ins);
 		break;
+	case XED_ICLASS_SCASB:
+	case XED_ICLASS_SCASD:
+	case XED_ICLASS_SCASQ:
+	case XED_ICLASS_SCASW:
+		OPC_INST::instrumentScasGeneric(ins);
+		break;
+	case XED_ICLASS_REPNE_SCASB:
+		//For some reason, this may fall into the SCASB category, we considered that too
+		OPC_INST::instrumentRepneScasOpc(ins);
+		break;
 	default:
 		//Unsupported or ignored, no tainting for those
-	#if(REPORT_UNSUPPORTED_INS==1)
-			LOG_DEBUG("Unsupported instruction: " << INS_Disassemble(ins));
+	#if(REPORT_UNSUPPORTED_INS==0)
+		LOG_DEBUG("Unsupported instruction (val:" << opc << "): " << INS_Disassemble(ins));
 	#endif
 		break;
 	}

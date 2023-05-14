@@ -174,6 +174,23 @@ Deprecated
 	IARG_INST_PTR, IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
+
+////////////////// For REPE / REPNE instructions. 2 regs, 1 mem. Must be evaluated afterwards, for getting iteration end //////////////////
+#define INS_CALL_REPXE_M8_BEFORE(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_REG_VALUE, REG::REG_AL, IARG_REG_VALUE, REG::REG_EDI, IARG_REG_VALUE, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+	INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) cmp_after, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
+	IARG_INST_PTR, IARG_REG_VALUE, REG::REG_EDI,	\
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+
+
+
+
 namespace INST_COMMON
 {
 	/**
