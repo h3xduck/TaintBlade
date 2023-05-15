@@ -46,6 +46,33 @@
 const int REG_TAINT_FIELD_LEN = 128;
 extern DataDumper dataDumper;
 
+
+#define LOG_MESSAGE_TAINT_MEM(effect, op, memAddr, color)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << " --> mem." << op << "(addr:" << to_hex_dbg(memAddr) << " color:" << color << ")")
+
+#define LOG_MESSAGE_MIX_MEM(effect, op, memAddrDest, memAddrSrc, colorRes, colorDest, colorSrc)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << "(destMem:" << to_hex_dbg(memAddrDest) << " srcMem: "<< to_hex_dbg(memAddrSrc) <<") --> mem." << op << "(addr:" << to_hex_dbg(memAddrDest) << " color:" << colorRes << ") MIXED FROM ("<<colorDest<<" + "<<colorSrc<<")")
+
+#define LOG_MESSAGE_TAINT_REG_RANGE(effect, op, reg, posStart, posEnd, colorStart, colorEnd)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << " --> reg." << op << "("<<REG_StringShort(reg)<<" R:"<<reg<<" PI:"<<posStart<<" PF:"<<posEnd<<") with new color from PI:" << colorStart <<" to PF:"<< colorEnd << ")")
+
+#define LOG_MESSAGE_TAINT_REG_UNIQUE(effect, op, reg, posStart, posEnd, color)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << " --> reg." << op << "("<<REG_StringShort(reg)<<" R:"<<reg<<" P:"<<posStart<<" PF:"<<posEnd<<") with new color " << color << ")")
+
+#define LOG_MESSAGE_TAINT_REG_UNIQUE_WITHINDEX(effect, op, reg, posStart, byteIndex, color)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << " --> reg." << op << "("<<REG_StringShort(reg)<<" R:"<<reg<<" P:"<<posStart<<" ByteIndex:"<<byteIndex<<") with new color " << color << ")")
+
+#define LOG_MESSAGE_TAINT_REG_MULTI(effect, op, regDest, regSrc, posStart, byteIndex, colorRes, colorDest, colorSrc)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << "(destReg: "<< REG_StringShort(regDest)<<" srcReg:"<<REG_StringShort(regSrc)<<") --> reg." << op << "(R:"<<regDest<<" P:"<<posStart<<" ByteIndex:"<<byteIndex<<") with color "<< colorRes << ") MIXED FROM ("<<colorDest<<" + "<<colorSrc<<")");
+
+#define LOG_MESSAGE_TAINT_REG_MULTI_UNKNOWNSRC(effect, op, regDest, posStart, byteIndex, colorRes, colorDest, colorSrc)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << "(destReg: "<< REG_StringShort(regDest)<<") --> reg." << op << "(R:"<<regDest<<" P:"<<posStart<<" ByteIndex:"<<byteIndex<<") with color "<< colorRes << ") MIXED FROM ("<<colorDest<<" + "<<colorSrc<<")");
+
+#define LOG_MESSAGE_MIX_MEM_WITH_REG(effect, op, memDest, regSrc, colorRes, colorDest, colorSrc)	\
+LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << "(destMem:" << to_hex_dbg(memDest) << " srcReg: " << REG_StringShort(regSrc) << ") --> mem." << op << "(addr:" << to_hex_dbg(memDest) << " color:" << colorRes << ") MIXED FROM (" << colorDest << " + " << colorSrc << ")")
+
+
+
 class TagMap
 {
 public:

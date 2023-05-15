@@ -95,7 +95,7 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 	{
 		atom->setInstAddress(ip);
 		atom->setOperandsType(RevHeuristicAtom::REG2REG);
-		LOG_DEBUG("R2R WITH RegDestByte[0]: " << atomData->getRegDestValue().at(0) << " | RegSrcByte[0]: " << atomData->getRegSrcValue().at(0));
+		//LOG_DEBUG("R2R WITH RegDestByte[0]: " << atomData->getRegDestValue().at(0) << " | RegSrcByte[0]: " << atomData->getRegSrcValue().at(0));
 		//Only if this is an instruction that is instrumented in one part (e.g., not like a CMP)
 		//we take tainted data and insert the atom in the RevLog.
 		if (!needsAfterInstruction)

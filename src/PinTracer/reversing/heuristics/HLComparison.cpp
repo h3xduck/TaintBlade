@@ -88,6 +88,8 @@ void HLComparison::initializeRevHeuristic()
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
+
+	//REPNE SCAS[MEM]
 }
 
 std::vector<std::string> HLComparison::getInstructionVector()

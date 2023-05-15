@@ -2,9 +2,9 @@
 
 Context ctx;
 
-ADDRINT Context::getCurrentInstruction()
+ADDRINT Context::getCurrentBaseInstruction()
 {
-	return this->currentInstruction;
+	return this->currentBaseInstruction;
 }
 
 std::string Context::getLastMemoryValue()
@@ -33,9 +33,9 @@ UTILS::EXEC::ExecutionManager& Context::getExecutionManager()
 }
 
 
-void Context::updateCurrentInstruction(ADDRINT inst_addr)
+void Context::updateCurrentBaseInstruction(ADDRINT inst_addr)
 {
-	this->currentInstruction = inst_addr;
+	this->currentBaseInstruction = inst_addr;
 }
 
 void Context::updateLastMemoryValue(std::string value, int len) 

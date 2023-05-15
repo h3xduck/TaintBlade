@@ -128,8 +128,8 @@ void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL
 	const UINT32 destRegLength = this->tagMap.tReg.getTaintLength(destReg);
 	const UINT32 destPos = this->tagMap.tReg.getPos(destReg);
 
-	LOG_DEBUG("M2R:: REG:" << destReg << " POS:" << destPos << " src2Mem:" << to_hex_dbg(src2Mem) << " len:" << src2Bytes);
-	LOG_DEBUG("REGLEN: " << destRegLength << " | MEMLEN: " << src2Bytes);
+	//LOG_DEBUG("M2R:: REG:" << destReg << " POS:" << destPos << " src2Mem:" << to_hex_dbg(src2Mem) << " len:" << src2Bytes);
+	//LOG_DEBUG("REGLEN: " << destRegLength << " | MEMLEN: " << src2Bytes);
 
 	for (int ii = src2Bytes - 1; ii >= 0; ii--)
 	{

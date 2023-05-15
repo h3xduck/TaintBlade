@@ -32,7 +32,7 @@ void DataDumper::writeMemoryColorEventDump(memory_color_event_line_t event)
 {
 	this->memColorEventDumpFile << event.eventType << DUMP_INTER_SEPARATOR <<
 		this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR <<
-		ctx.getCurrentInstruction() << DUMP_INTER_SEPARATOR <<
+		ctx.getCurrentBaseInstruction() << DUMP_INTER_SEPARATOR <<
 		event.memAddr << DUMP_INTER_SEPARATOR <<
 		event.color << DUMP_INTER_SEPARATOR <<
 		ctx.getLastMemoryValue() << DUMP_INTER_SEPARATOR <<

@@ -13,7 +13,7 @@ void OPC_INST::lea_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 
 	//Taint value is always overwritten
 	PIN_LockClient();
-	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(destReg);
 

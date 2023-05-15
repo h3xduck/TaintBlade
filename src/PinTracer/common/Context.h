@@ -9,7 +9,7 @@
 
 class Context {
 private:
-	ADDRINT currentInstruction;
+	ADDRINT currentBaseInstruction;
 	std::string lastMemoryValue;
 	int lastMemoryLength;
 	RevContext revContext;
@@ -17,11 +17,11 @@ private:
 	UTILS::EXEC::ExecutionManager executionManager;
 
 public:
-	ADDRINT getCurrentInstruction();
+	ADDRINT getCurrentBaseInstruction();
 	std::string getLastMemoryValue();
 	int getLastMemoryLength();
 
-	void updateCurrentInstruction(ADDRINT instAddr);
+	void updateCurrentBaseInstruction(ADDRINT instAddr);
 	void updateLastMemoryValue(std::string value, int len);
 
 	/**

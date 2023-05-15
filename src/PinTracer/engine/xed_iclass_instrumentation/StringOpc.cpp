@@ -6,7 +6,7 @@ extern Context ctx;
 void OPC_INST::repnescas_mem(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, ADDRINT mem, INT32 mem_len, REG reg_ax, REG reg_xdi, REG reg_xcx, UINT32 opc)
 {
 	PIN_LockClient();
-	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	LOG_DEBUG("Called repnescas at mem: " << to_hex_dbg(mem) << " with memlen: " << mem_len);
 
