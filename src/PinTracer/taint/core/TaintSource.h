@@ -122,7 +122,7 @@ public:
 		LOG_DEBUG("Called wsockexit");
 	};
 
-	///////////////// WININET ///////////////// Yet to test
+	///////////////// WININET /////////////////
 	static VOID wininetInternetReadFileEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		int NUM_ARGS = 4;

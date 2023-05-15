@@ -3,7 +3,7 @@
 /**
 IMPORTANT: Set here the number of heuristics
 */
-const int HLComparison::revHeuristicNumber = 5;
+const int HLComparison::revHeuristicNumber = 6;
 RevHeuristic HLComparison::revHeuristic[revHeuristicNumber] = {};
 
 HLComparison::HLComparison(std::vector<RevAtom> &atomVec)
@@ -64,6 +64,13 @@ void HLComparison::initializeRevHeuristic()
 	//CMP(REG, reg)
 	atoms.push_back(RevHeuristicAtom(
 		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0
+	));
+	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
+	atoms.clear();
+
+	//CMP(reg, REG)
+	atoms.push_back(RevHeuristicAtom(
+		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
@@ -188,6 +195,32 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 				LOG_DEBUG(ii << ": " << InstructionWorker::byteToHexValueString(this->comparisonValuesSecond.at(ii)));
 			}
 		}
+
+		//CMP(reg, REG)
+		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::REG2REG && hAtom->regSrcTainted)
+		{
+			//The protocol will be reversed considering that the comparison is made of the first argument to the second, so we will
+			//reverse the order of the arguments (the second one is the tainted one, and we care about the value of the first)
+			LOG_DEBUG("Calculating values for heuristic CMP(reg, REG)");
+			this->comparisonColorsFirst = colorAtom->getRegSrcColor();
+			this->comparisonColorsSecond = colorAtom->getRegDestColor();
+			this->comparisonValuesFirst = dataAtom->getRegSrcValue();
+			this->comparisonValuesSecond = dataAtom->getRegDestValue();
+			//ZF is set to 1 if the values checked via CMP were equal
+			this->comparisonResult = dataAtom->getFlagsValue().at(6);
+			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
+			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");
+			for (int ii = 0; ii < this->comparisonColorsFirst.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << this->comparisonColorsFirst.at(ii));
+			}
+			LOG_DEBUG("Values used in the comparison (length: " << this->comparisonValuesSecond.size() << "):");
+			for (int ii = 0; ii < this->comparisonValuesSecond.size(); ii++)
+			{
+				LOG_DEBUG(ii << ": " << InstructionWorker::byteToHexValueString(this->comparisonValuesSecond.at(ii)));
+			}
+		}
+
 		//CMP(MEM, imm)
 		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::IMM2MEM && hAtom->memDestTainted)
 		{

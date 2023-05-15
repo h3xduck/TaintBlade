@@ -65,7 +65,7 @@ void INST_COMMON::revLogInst_reg2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG re
 	{
 		atom->setInstType((xed_iclass_enum_t)opc);
 		atom->setRegSrc(regSrc);
-		atomColor->regDestColor = tController.regGetColor(regSrc);
+		atomColor->regSrcColor = tController.regGetColor(regSrc);
 		atomChanged = true;
 	}
 	PIN_LockClient();

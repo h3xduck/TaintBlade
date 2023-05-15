@@ -11,6 +11,8 @@ void OPC_INST::lea_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 	//leaBase invalid, leaIndex valid --> overwrite taint with leaIndex
 	//leaBase invalid, leaIndex invalid --> error
 
+	//We are considering that getting the pointer to a tainted address does not involve tainting
+
 	//Taint value is always overwritten
 	PIN_LockClient();
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
@@ -43,6 +45,7 @@ void OPC_INST::instrumentLeaOpc(INS ins)
 {
 	//LOG_DEBUG("OPC: " << INS_Disassemble(ins));
 	//mem =  base + (index * scale) + displacement
+
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)lea_mem2reg, IARG_CONTEXT, IARG_THREAD_ID, IARG_INST_PTR, IARG_UINT32, INS_OperandReg(ins, 0),
 		IARG_UINT32, INS_MemoryBaseReg(ins), IARG_UINT32, INS_MemoryIndexReg(ins), IARG_UINT32, INS_MemoryScale(ins),
 		IARG_UINT32, INS_MemoryDisplacement(ins), IARG_END);

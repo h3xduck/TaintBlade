@@ -8,7 +8,7 @@ void OPC_INST::repnescas_mem(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, 
 	PIN_LockClient();
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
-	LOG_DEBUG("Called repnescas at mem: " << to_hex_dbg(mem) << " with memlen: " << mem_len);
+	//LOG_DEBUG("Called repnescas at mem: " << to_hex_dbg(mem) << " with memlen: " << mem_len);
 
 	if (taintManager.getController().memRangeIsTainted(mem, mem_len))
 	{
