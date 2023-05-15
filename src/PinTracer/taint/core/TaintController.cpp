@@ -79,6 +79,7 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 			if (colorDest == color)
 			{
 				LOG_DEBUG("Ignored color overwrite for " << to_hex_dbg(destMemIt) << " since it's the same one");
+				destMemIt -= 1;
 				continue;
 			}
 
