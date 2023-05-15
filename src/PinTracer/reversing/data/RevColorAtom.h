@@ -25,11 +25,19 @@ public:
 	UINT16 leaBaseColor = 0;
 	UINT16 leaIndexColor = 0;
 
+	//For REPE/REPNE SCAS operations
+	std::vector<UINT16> scasMemColor;
+	INT32 scasMemLen = 0;
+	std::vector<UINT16> regScasXAXColor;
+	std::vector<UINT16> regScasXCXColor;
+	std::vector<UINT16> regScasXDIColor;
+
 	RevColorAtom() {};
 
 	RevColorAtom(UINT16 memSrcColor, INT32 memSrcLen, UINT16 memDestColor, INT32 memDestLen,
 		UINT16 regSrcColor, UINT16 regDestColor, UINT16 leaBaseColor,
-		UINT16 leaIndexColor, UINT16 immSrcColor)
+		UINT16 leaIndexColor, UINT16 immSrcColor,
+		UINT16 scasMemColor, INT32 scasMemLen, UINT16 regScasXAXColor, UINT16 regScasXCXColor, UINT16 regScasXDIColor)
 	{
 		this->memSrcColor.push_back(memSrcColor);
 		this->memSrcLen = memSrcLen;
@@ -40,11 +48,17 @@ public:
 		this->leaBaseColor = leaBaseColor;
 		this->leaIndexColor = leaIndexColor;
 		this->immSrcColor = immSrcColor;
+		this->scasMemColor.push_back(scasMemColor);
+		this->scasMemLen = scasMemLen;
+		this->regScasXAXColor.push_back(regScasXAXColor);
+		this->regScasXCXColor.push_back(regScasXCXColor);
+		this->regScasXDIColor.push_back(regScasXDIColor);
 	}
 
 	RevColorAtom(std::vector<UINT16> memSrcColor, INT32 memSrcLen, std::vector<UINT16> memDestColor, INT32 memDestLen,
 		std::vector<UINT16> regSrcColor, std::vector<UINT16> regDestColor, UINT16 leaBaseColor,
-		UINT16 leaIndexColor, UINT16 immSrcColor)
+		UINT16 leaIndexColor, UINT16 immSrcColor,
+		std::vector<UINT16> scasMemColor, INT32 scasMemLen, std::vector<UINT16> regScasXAXColor, std::vector<UINT16> regScasXCXColor, std::vector<UINT16> regScasXDIColor)
 	{
 		this->memSrcColor = memSrcColor;
 		this->memSrcLen = memSrcLen;
@@ -55,6 +69,11 @@ public:
 		this->leaBaseColor = leaBaseColor;
 		this->leaIndexColor = leaIndexColor;
 		this->immSrcColor = immSrcColor;
+		this->scasMemColor = scasMemColor;
+		this->scasMemLen = scasMemLen;
+		this->regScasXAXColor = regScasXAXColor;
+		this->regScasXCXColor = regScasXCXColor;
+		this->regScasXDIColor = regScasXDIColor;
 	}
 
 	//Setters and getters

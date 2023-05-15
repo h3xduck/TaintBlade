@@ -56,35 +56,35 @@ void HLComparison::initializeRevHeuristic()
 
 	//CMP(MEM, imm)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::IMM2MEM, 0, 1, 0, 0, 0, 0, 1
+		XED_ICLASS_CMP, RevHeuristicAtom::IMM2MEM, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
 
 	//CMP(REG, reg)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 0, 1, 0, 0, 0
+		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
 
 	//CMP(MEM, reg)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::REG2MEM, 0, 0, 1, 0, 0, 0, 0
+		XED_ICLASS_CMP, RevHeuristicAtom::REG2MEM, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
 
 	//CMP(REG, mem)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::MEM2REG, 0, 0, 0, 1, 0, 0, 0
+		XED_ICLASS_CMP, RevHeuristicAtom::MEM2REG, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();
 
 	//CMP(REG, imm)
 	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::IMM2REG, 0, 0, 0, 1, 0, 0, 1
+		XED_ICLASS_CMP, RevHeuristicAtom::IMM2REG, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0
 	));
 	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
 	atoms.clear();

@@ -41,12 +41,19 @@ public:
 	bool leaBaseTainted = 0;
 	bool leaIndexTainted = 0;
 
+	//For REPE/REPNE SCAS operations
+	bool scasMemTainted = 0;
+	bool regScasXAXTainted = 0;
+	bool regScasXCXTainted = 0;
+	bool regScasXDITainted = 0;
+
 	RevHeuristicAtom() {};
 
 	RevHeuristicAtom(int instType, atom_operands_type_t operandsType,
 		bool memSrcTainted, bool memDestTainted, bool regSrcTainted, 
 		bool regDestTainted, bool leaBaseTainted, 
-		bool leaIndexTainted, bool hasImmSrc)
+		bool leaIndexTainted, bool hasImmSrc,
+		bool scasMemTainted, bool regScasXAXTainted, bool regScasXCXTainted, bool regScasXDITainted)
 	{
 		this->instType = instType;
 		this->operandsType = operandsType;
@@ -57,6 +64,10 @@ public:
 		this->leaBaseTainted = leaBaseTainted;
 		this->leaIndexTainted = leaIndexTainted;
 		this->hasImmSrc = hasImmSrc;
+		this->scasMemTainted = scasMemTainted;
+		this->regScasXAXTainted = regScasXAXTainted;
+		this->regScasXCXTainted = regScasXCXTainted;
+		this->regScasXDITainted = regScasXDITainted;
 	}
 
 	/**
@@ -91,7 +102,12 @@ public:
 			(other.memDestTainted && !this->memDestTainted) || 
 			(other.memSrcTainted && !this->memSrcTainted) || 
 			(other.regDestTainted && !this->regDestTainted) || 
-			(other.regSrcTainted && !this->regSrcTainted))
+			(other.regSrcTainted && !this->regSrcTainted) ||
+			(other.scasMemTainted && !this->scasMemTainted) ||
+			(other.regScasXAXTainted && !this->regScasXAXTainted) ||
+			(other.regScasXCXTainted && !this->regScasXCXTainted) ||
+			(other.regScasXDITainted && !this->regScasXDITainted)
+			)
 		{
 			return false;
 		}
@@ -106,7 +122,8 @@ public:
 	{
 		if (this->hasImmSrc || this->instType != 0 || this->leaBaseTainted ||
 			this->leaIndexTainted || this->memDestTainted || this->memSrcTainted ||
-			this->regDestTainted || this->regSrcTainted)
+			this->regDestTainted || this->regSrcTainted || this->scasMemTainted ||
+			this->regScasXAXTainted || this->regScasXCXTainted || this->regScasXDITainted)
 		{
 			return true;
 		}

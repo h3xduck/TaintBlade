@@ -51,6 +51,15 @@ private:
 	//Base address (in the image)
 	ADDRINT baseAddress;
 
+	//For REPE/REPNE SCAS operations
+	ADDRINT scasMem;
+	INT32 scasMemLen;
+	REG regScasXAX;
+	REG regScasXCX;
+	REG regScasXDI;
+	bool REPNE; //true if REPNE
+	bool REPE; //true if REPE
+
 public:
 	RevAtom(
 		ADDRINT insAddress = 0, int instType = XED_ICLASS_INVALID_DEFINED, 
@@ -59,7 +68,9 @@ public:
 		INT32 memDestLen = 0, REG regSrc = REG_INVALID_, 
 		REG regDest = REG_INVALID_, REG leaBase = REG_INVALID_,	
 		REG leaIndex = REG_INVALID_, UINT32 leaScale = 0, 
-		UINT32 leaDis = 0, ADDRINT immSrc = 0
+		UINT32 leaDis = 0, ADDRINT immSrc = 0,
+		ADDRINT scasMem = 0, INT32 scasMemLen = 0, REG regScasXAX = REG::REG_INVALID_, REG regScasXCX = REG::REG_INVALID_,
+		REG regScasXDI = REG::REG_INVALID_, bool REPNE = false, bool REPE = false
 	);
 
 	//Setters and getters
@@ -88,6 +99,22 @@ public:
 	REG getLeaIndex();
 	ADDRINT getImmSrc();
 	void setImmSrc(ADDRINT immSrc);
+
+	//REPE/REPNE SCAS
+	ADDRINT getScasMem();
+	void setScasMem(ADDRINT mem);
+	INT32 getScasMemLen();
+	void setScasMemLen(INT32 len);
+	REG getRegScasXAX();
+	void setRegScasXAX(REG reg);
+	REG getRegScasXCX();
+	void setRegScasXCX(REG reg);
+	REG getRegScasXDI();
+	void setRegScasXDI(REG reg);
+	bool isREPNE(); 
+	void setREPNE(bool val);
+	bool isREPE();
+	void setREPE(bool val);
 
 	RevHeuristicAtom* getRevHeuristicAtom();
 	RevColorAtom* getRevColorAtom();

@@ -173,8 +173,13 @@ public:
 		
 		//Test: taint RAX
 		//taintController.printTaint();
+#ifdef TARGET_IA32E
 		taintController.taintRegNewColor(LEVEL_BASE::REG::REG_EAX);
 		taintController.taintRegNewColor(REG_EBX);
+#else 
+		taintController.taintRegNewColor(LEVEL_BASE::REG::REG_EAX);
+		taintController.taintRegNewColor(REG_EBX);
+#endif
 	};
 	static VOID mainExit(ADDRINT retVal, VOID* dllName, VOID* funcName)
 	{

@@ -7,7 +7,9 @@ RevAtom::RevAtom(
 	INT32 memDestLen, REG regSrc,
 	REG regDest, REG leaBase,
 	REG leaIndex, UINT32 leaScale,
-	UINT32 leaDis, ADDRINT immSrc
+	UINT32 leaDis, ADDRINT immSrc,
+	ADDRINT scasMem, INT32 scasMemLen, REG regScasXAX, REG regScasXCX,
+	REG regScasXDI, bool REPNE, bool REPE
 )
 {
 	PIN_LockClient();
@@ -26,6 +28,13 @@ RevAtom::RevAtom(
 	this->leaScale = leaScale;
 	this->leaDis = leaDis;
 	this->immSrc = immSrc;
+	this->scasMem = scasMem;
+	this->scasMemLen = scasMemLen;
+	this->regScasXAX = regScasXAX;
+	this->regScasXCX = regScasXCX;
+	this->regScasXDI = regScasXDI;
+	this->REPNE = REPNE;
+	this->REPE = REPE;
 
 	//this->revColorAtom = RevColorAtom();
 	//this->revDataAtom = RevDataAtom();
@@ -191,4 +200,62 @@ void RevAtom::addDetectedHeuristic(int index)
 bool RevAtom::isDetectedHeuristic(int index)
 {
 	return std::find(this->detectedHeuristics.begin(), this->detectedHeuristics.end(), index) != this->detectedHeuristics.end();
+}
+
+//REPE/REPNE SCAS
+ADDRINT RevAtom::getScasMem()
+{
+	return this->scasMem;
+}
+void RevAtom::setScasMem(ADDRINT mem)
+{
+	this->scasMem = mem;
+}
+INT32 RevAtom::getScasMemLen()
+{
+	return this->scasMemLen;
+}
+void RevAtom::setScasMemLen(INT32 len)
+{
+	this->scasMemLen = len;
+}
+REG RevAtom::getRegScasXAX()
+{
+	return this->regScasXAX;
+}
+void RevAtom::setRegScasXAX(REG reg)
+{
+	this->regScasXAX = reg;
+}
+REG RevAtom::getRegScasXCX()
+{
+	return this->regScasXCX;
+}
+void RevAtom::setRegScasXCX(REG reg)
+{
+	this->regScasXCX = reg;
+}
+REG RevAtom::getRegScasXDI()
+{
+	return this->regScasXDI;
+}
+void RevAtom::setRegScasXDI(REG reg)
+{
+	this->regScasXDI = reg;
+}
+bool RevAtom::isREPNE()
+{
+	return this->REPNE;
+}
+void RevAtom::setREPNE(bool val)
+{
+	this->REPNE = val;
+}
+bool RevAtom::isREPE()
+{
+	return this->REPE;
+}
+void RevAtom::setREPE(bool val)
+{
+	this->REPE = val;
 }

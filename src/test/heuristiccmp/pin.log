@@ -1,4 +1,4 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\vm\vm_threaddb.cpp: LEVEL_VM::VM_THREAD_DB::GetThreadById: 322: assertion failed: (UINT32)threadId < PIN_MAX_THREADS
-
+E:  [tid:26476] Failure to map DLL C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll
+      System error 216 : 

@@ -14,7 +14,7 @@ namespace OPC_INST {
 	//Taint functions, called from instrumentation functions
 
 	//REPNE SCAS
-	void repnescas_mem(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, ADDRINT mem, INT32 mem_len, UINT32 opc);
+	void repnescas_mem(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, ADDRINT mem, INT32 mem_len, REG reg_ax, REG reg_xdi, REG reg_xcx, UINT32 opc);
 
 	///////////////////////////////////////////////////////////////
 	//Instrumentation functions, called from InstrumentationManager

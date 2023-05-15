@@ -294,11 +294,12 @@ std::vector<Tag> TagMap::getTaintColorReg(LEVEL_BASE::REG reg)
 {
 	const UINT32 posStart = this->tReg.getPos(reg);
 	const UINT32 taintLength = this->tReg.getTaintLength(reg);
-	std::vector<Tag> colorVector;
+	std::vector<Tag> colorVector = std::vector<Tag>();
 
 	for (UINT32 ii = posStart; ii < posStart+taintLength; ii++)
 	{
 		colorVector.push_back(this->regTaintField[ii]);
+		LOG_DEBUG("Color " << ii << ": " << this->regTaintField[ii].color);
 	}
 
 	return colorVector;

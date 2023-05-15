@@ -175,17 +175,47 @@ Deprecated
 }
 
 
-////////////////// For REPE / REPNE instructions. 2 regs, 1 mem. Must be evaluated afterwards, for getting iteration end //////////////////
-#define INS_CALL_REPXE_M8_BEFORE(proc_func, ins) \
+////////////////// For REPE / REPNE instructions. 2 regs, 1 mem //////////////////
+#define INS_CALL_REPXE_M8_x32(proc_func, ins) \
 {	\
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
 	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
-	IARG_REG_VALUE, REG::REG_AL, IARG_REG_VALUE, REG::REG_EDI, IARG_REG_VALUE, REG::REG_ECX, \
-	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
-	INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) cmp_after, IARG_CONST_CONTEXT, IARG_THREAD_ID,\
-	IARG_INST_PTR, IARG_REG_VALUE, REG::REG_EDI,	\
+	IARG_UINT32, REG::REG_AL, IARG_UINT32, REG::REG_EDI, IARG_UINT32, REG::REG_ECX, \
 	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
+
+#define INS_CALL_REPXE_M8_x64(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_AL, IARG_UINT32, REG::REG_RDI, IARG_UINT32, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_REPXE_M16(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_AX, IARG_UINT32, REG::REG_EDI, IARG_UINT32, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_REPXE_M32(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_EAX, IARG_UINT32, REG::REG_EDI, IARG_UINT32, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_REPXE_M64(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_RAX, IARG_UINT32, REG::REG_RDI, IARG_UINT32, REG::REG_RCX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
 
 
 
@@ -234,6 +264,12 @@ namespace INST_COMMON
 	In this case, we take the atom saved in the context and save that one
 	*/
 	void revLogInst_after(LEVEL_VM::CONTEXT *lctx, ADDRINT ip);
+
+	/**
+	Instruction that was part of a REPNE SCAS
+	If any element is tainted, goes into the RevLog
+	*/
+	void revLogInst_repnescas(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, ADDRINT mem, INT32 memLen, REG regXAX, REG regXCX, REG regXDI, UINT32 opc);
 }
 
 

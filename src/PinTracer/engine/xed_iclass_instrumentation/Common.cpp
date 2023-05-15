@@ -325,3 +325,80 @@ void INST_COMMON::revLogInst_after(LEVEL_VM::CONTEXT* lctx, ADDRINT ip)
 
 	rctx->cleanCurrentRevAtom();
 }
+
+void INST_COMMON::revLogInst_repnescas(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, ADDRINT mem, INT32 memLen, REG regXAX, REG regXCX, REG regXDI, UINT32 opc)
+{
+	TaintController tController = taintManager.getController();
+	//Log instruction for the reverse engineering module, in case params were tainted
+	RevAtom* atom = ctx.getRevContext()->getCurrentRevAtom();
+	RevColorAtom* atomColor = atom->getRevColorAtom();
+	RevDataAtom* atomData = atom->getRevDataAtom();
+	bool atomChanged = false;
+	if (tController.memRangeIsTainted(mem, memLen))
+	{
+		atom->setInstType((xed_iclass_enum_t)opc);
+		atom->setScasMem(mem);
+		atom->setScasMemLen(memLen);
+		atomColor->scasMemColor = tController.memRangeGetColor(mem, memLen);
+		atomColor->scasMemLen = memLen;
+		atomChanged = true;
+	}
+	PIN_LockClient();
+	atomData->setMemDestValueBytes(InstructionWorker::getMemoryValue(mem, memLen));
+	PIN_UnlockClient();
+
+	if (tController.regIsTainted(regXAX))
+	{
+		atom->setInstType((xed_iclass_enum_t)opc);
+		atom->setRegScasXAX(regXAX);
+		atomColor->regScasXAXColor = tController.regGetColor(regXAX);
+		atomChanged = true;
+	}
+	PIN_LockClient();
+	UINT8* valBuffer = (UINT8*)calloc(REG_Size(regXAX), sizeof(UINT8));
+	InstructionWorker::getRegisterValue(lctx, regXAX, valBuffer);
+	atomData->setRegScasXAXBytes(valBuffer, REG_Size(regXAX));
+	free(valBuffer);
+	PIN_UnlockClient();
+
+	if (tController.regIsTainted(regXCX))
+	{
+		atom->setInstType((xed_iclass_enum_t)opc);
+		atom->setRegScasXCX(regXCX);
+		atomColor->regScasXCXColor = tController.regGetColor(regXCX);
+		atomChanged = true;
+	}
+	PIN_LockClient();
+	UINT8* valBuffer2 = (UINT8*)calloc(REG_Size(regXCX), sizeof(UINT8));
+	InstructionWorker::getRegisterValue(lctx, regXCX, valBuffer2);
+	atomData->setRegScasXCXBytes(valBuffer2, REG_Size(regXCX));
+	free(valBuffer2);
+	PIN_UnlockClient();
+
+	if (tController.regIsTainted(regXDI))
+	{
+		atom->setInstType((xed_iclass_enum_t)opc);
+		atom->setRegScasXDI(regXDI);
+		atomColor->regScasXDIColor = tController.regGetColor(regXDI);
+		atomChanged = true;
+	}
+	PIN_LockClient();
+	UINT8* valBuffer3 = (UINT8*)calloc(REG_Size(regXDI), sizeof(UINT8));
+	InstructionWorker::getRegisterValue(lctx, regXDI, valBuffer3);
+	atomData->setRegScasXDIBytes(valBuffer3, REG_Size(regXDI));
+	free(valBuffer3);
+	PIN_UnlockClient();
+
+	if (atomChanged)
+	{
+		atom->setInstAddress(ip);
+		atom->setOperandsType(RevHeuristicAtom::REG2MEM);
+		LOG_DEBUG("Inserting atom repne scas:" << atom->getInstType());
+		ctx.getRevContext()->insertRevLog(*atom);
+		//Once instrumented and tainted, we try to see if the RevLog corresponds to some
+		//HL operation using the heuristics.
+		ctx.getRevContext()->operateRevLog();
+	}
+	ctx.getRevContext()->cleanCurrentRevAtom();
+
+}
