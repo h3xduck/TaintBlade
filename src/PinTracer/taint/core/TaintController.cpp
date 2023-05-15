@@ -53,7 +53,7 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 {
 	//TODO: Check if destBytes and srcRegLength are the same
 	const UINT32 srcRegLength = this->tagMap.tReg.getTaintLength(srcReg);
-	LOG_DEBUG("R2M --> M:" << destMem << "(len:" << destBytes << ")  R:" << REG_StringShort(srcReg) << "(code:" << srcReg << ")");
+	//LOG_DEBUG("R2M --> M:" << destMem << "(len:" << destBytes << ")  R:" << REG_StringShort(srcReg) << "(code:" << srcReg << ")");
 	ADDRINT destMemIt = destMem + destBytes -1;
 	std::vector<Tag> srcRegColorVector = this->tagMap.getTaintColorReg(srcReg);
 
@@ -78,12 +78,12 @@ void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBy
 			//Ignore color overwrite if the color is already there
 			if (colorDest == color)
 			{
-				LOG_DEBUG("Ignored color overwrite for " << to_hex_dbg(destMemIt) << " since it's the same one");
+				//LOG_DEBUG("Ignored color overwrite for " << to_hex_dbg(destMemIt) << " since it's the same one");
 				destMemIt -= 1;
 				continue;
 			}
 
-			LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << unsigned(color) << " from reg " << REG_StringShort(srcReg));
+			//LOG_DEBUG("Empty color, tainting " << destMemIt << " with color " << unsigned(color) << " from reg " << REG_StringShort(srcReg));
 			this->tagMap.taintMem(destMemIt, color);
 		}
 		else
@@ -128,11 +128,18 @@ void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL
 	const UINT32 destRegLength = this->tagMap.tReg.getTaintLength(destReg);
 	const UINT32 destPos = this->tagMap.tReg.getPos(destReg);
 
-	//LOG_DEBUG("M2R:: REG:" << destReg << " POS:" << destPos << " src2Mem:" << to_hex_dbg(src2Mem) << " len:" << src2Bytes);
-	//LOG_DEBUG("REGLEN: " << destRegLength << " | MEMLEN: " << src2Bytes);
-	for (int ii = 0; ii < src2Bytes; ii++)
+	LOG_DEBUG("M2R:: REG:" << destReg << " POS:" << destPos << " src2Mem:" << to_hex_dbg(src2Mem) << " len:" << src2Bytes);
+	LOG_DEBUG("REGLEN: " << destRegLength << " | MEMLEN: " << src2Bytes);
+
+	for (int ii = src2Bytes - 1; ii >= 0; ii--)
 	{
-		UINT16 colorReg = this->tagMap.getTaintColorReg(src1Reg).at(destRegLength - src2Bytes + ii).color;
+		//If the memory position is already greater than the register's, it means we covered all bytes
+		//from the register already so we halt
+		if (src2Bytes - (ii + 1) > destRegLength)
+		{
+			return;
+		}
+		UINT16 colorReg = this->tagMap.getTaintColorReg(src1Reg).at((destRegLength - 1) - (src2Bytes - 1 - ii)).color;
 		const UINT16 colorSrc2Mem = this->tagMap.getTaintColorMem(src2Mem + ii);
 		this->tagMap.mixTaintRegByte(destReg, destRegLength - src2Bytes + ii, colorReg, colorSrc2Mem);
 	}

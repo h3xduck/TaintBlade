@@ -8,12 +8,13 @@ void OPC_INST::repnescas_mem(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, 
 	PIN_LockClient();
 	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
-	LOG_DEBUG("Called repnescas with memlen: "<<mem_len);
+	LOG_DEBUG("Called repnescas at mem: " << to_hex_dbg(mem) << " with memlen: " << mem_len);
 
 	if (taintManager.getController().memRangeIsTainted(mem, mem_len))
 	{
 		//If the memory is tainted, then the register XDI directly points to the value of that memory region, so must be tainted with that color
 		//Also, XCX will probably hold the length of the in-memory string, so must be tainted too (and it will be mixed in each repetition)
+		LOG_DEBUG("REPNE SCAS TAINTED MEM DETECTED");
 		taintManager.getController().taintRegWithMem(reg_ax, reg_ax, mem, mem_len);
 		taintManager.getController().taintRegWithMem(reg_xcx, reg_xcx, mem, mem_len);
 	}

@@ -174,8 +174,8 @@ public:
 		//Test: taint RAX
 		//taintController.printTaint();
 #ifdef TARGET_IA32E
-		taintController.taintRegNewColor(LEVEL_BASE::REG::REG_EAX);
-		taintController.taintRegNewColor(REG_EBX);
+		//taintController.taintRegNewColor(LEVEL_BASE::REG::REG_RBX);
+		taintController.taintRegNewColor(REG_RBX);
 #else 
 		taintController.taintRegNewColor(LEVEL_BASE::REG::REG_EAX);
 		taintController.taintRegNewColor(REG_EBX);
