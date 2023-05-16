@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
-#include <winsock2.h>
+//#include <winsock2.h>
 
 void _tmain(int argc, TCHAR* argv[])
 {
@@ -19,7 +19,7 @@ void _tmain(int argc, TCHAR* argv[])
     }
 
     // Start the child process. 
-    if (!CreateProcess(NULL,   // No module name (use command line)
+    if (!CreateProcessA(NULL,   // No module name (use command line)
         argv[1],        // Command line
         NULL,           // Process handle not inheritable
         NULL,           // Thread handle not inheritable

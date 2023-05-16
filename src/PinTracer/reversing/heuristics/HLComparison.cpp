@@ -245,11 +245,14 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 		//CMP(MEM, reg)
 		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::REG2MEM && hAtom->memDestTainted)
 		{
+			//NOTE: The vectors from the registers is inverted so that it can be compared with the memory
 			LOG_DEBUG("Calculating values for heuristic CMP(MEM, reg)");
 			this->comparisonColorsFirst = colorAtom->getMemDestColor();
 			this->comparisonColorsSecond = colorAtom->getRegSrcColor();
+			std::reverse(this->comparisonColorsSecond.begin(), this->comparisonColorsSecond.end());
 			this->comparisonValuesFirst = dataAtom->getMemDestValueBytes();
 			this->comparisonValuesSecond = dataAtom->getRegSrcValue();
+			std::reverse(this->comparisonValuesSecond.begin(), this->comparisonValuesSecond.end());
 			this->comparisonResult = dataAtom->getFlagsValue().at(6);
 			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);
 			LOG_DEBUG("Colors of the DEST of the comparison (length: " << this->comparisonColorsFirst.size() << "):");
@@ -266,10 +269,13 @@ void HLComparison::calculateComparisonFromLoadedAtoms()
 		//CMP(REG, mem)
 		else if (atom.getInstType() == XED_ICLASS_CMP && atom.getOperandsType() == RevHeuristicAtom::MEM2REG && hAtom->regDestTainted)
 		{
+			//NOTE: The vectors from the registers are inverted so that it can be compared with the memory
 			LOG_DEBUG("Calculating values for heuristic CMP(REG, mem)");
 			this->comparisonColorsFirst = colorAtom->getRegDestColor();
+			std::reverse(this->comparisonColorsFirst.begin(), this->comparisonColorsFirst.end());
 			this->comparisonColorsSecond = colorAtom->getMemSrcColor();
 			this->comparisonValuesFirst = dataAtom->getRegDestValue();
+			std::reverse(this->comparisonValuesFirst.begin(), this->comparisonValuesFirst.end());
 			this->comparisonValuesSecond = dataAtom->getMemSrcValueBytes();
 			this->comparisonResult = dataAtom->getFlagsValue().at(6);
 			LOG_DEBUG("Result of the comparison: " << this->comparisonResult);

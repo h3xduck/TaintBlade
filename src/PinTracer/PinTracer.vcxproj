@@ -279,6 +279,7 @@
     <ClCompile Include="reversing\protocol\ProtocolReverser.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
+    <ClCompile Include="taint\core\TaintSink.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
     <ClCompile Include="taint\data\TagLog.cpp" />
     <ClCompile Include="taint\data\TRegister.cpp" />
@@ -327,6 +328,7 @@
     <ClInclude Include="reversing\protocol\ProtocolReverser.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
+    <ClInclude Include="taint\core\TaintSink.h" />
     <ClInclude Include="taint\data\Tag.h" />
     <ClInclude Include="taint\data\TagLog.h" />
     <ClInclude Include="taint\data\TRegister.h" />

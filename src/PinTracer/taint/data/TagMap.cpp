@@ -564,7 +564,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		{
 			//No previous mixes
 			Tag tag(color1, color2);
-			this->regTaintField[posStart + byteIndex] = tag;
+			this->regTaintField[posStart] = tag;
 			this->tagLog.logTag(tag);
 			LOG_MESSAGE_TAINT_REG_MULTI_UNKNOWNSRC("Mixed taint reg", "modified", dest, posStart, byteIndex, tag.color, color1, color2);
 			//LOG_DEBUG("Mixed taint reg "<< REG_StringShort(dest) <<" mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
@@ -579,7 +579,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		{
 			//Mix already generated before, use that color again
 			Tag tag = Tag(mixColor);
-			this->regTaintField[posStart + byteIndex] = tag;
+			this->regTaintField[posStart] = tag;
 			LOG_MESSAGE_TAINT_REG_MULTI_UNKNOWNSRC("Reused mix taint reg", "modified", dest, posStart, byteIndex, tag.color, color1, color2);
 			//LOG_DEBUG("Reused mix taint reg "<< REG_StringShort(dest) <<" mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> reused Tag for reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 		

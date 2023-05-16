@@ -43,6 +43,12 @@ void TaintManager::routineLoadedEvent(RTN rtn, std::string dllName, std::string 
 		}
 	}
 
+	//Manage taint sinks
+	if ((dllName == KERNEL32_DLL || dllName == KERNEL32_DLL_x86) && funcName == CREATE_PROCESS_A_FUNC)
+	{
+		INS_CALL_RTN_TAINT(rtn, dllName, funcName, 10, TAINT::CORE::TAINT_SINK::createProcessAEnter, NULL);
+	}
+
 }
 
 void TaintManager::registerTaintSource(const std::string &dllName, const std::string &funcName, int numArgs)
