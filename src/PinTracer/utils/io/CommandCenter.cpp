@@ -70,3 +70,27 @@ void UTILS::IO::CommandCenter::queryCommandAvailable(VOID* arg)
         commandFile.close();
     }
 }
+
+
+void stopAnalysisWithDelay(VOID *arg)
+{
+    UINT32* millis = static_cast<UINT32*>(arg);
+    PIN_Sleep(*millis);
+    UTILS::IO::CommandCenter::executeCommand(COMMAND_CALL_APPLICATION_EXIT);
+}
+
+void UTILS::IO::CommandCenter::registerAnalysisTimeout(UINT32 millis)
+{
+    THREADID threadId;
+    PIN_THREAD_UID threadUid;
+
+    LOG_DEBUG("Registering analysis timeout after "<<millis<< " milliseconds");
+    threadId = PIN_SpawnInternalThread(stopAnalysisWithDelay, &millis, 0, &threadUid);
+
+    if (threadId == INVALID_THREADID)
+    {
+        LOG_ALERT("Unable to register analysis timeout");
+        PIN_ExitThread(-1);
+    }
+    LOG_DEBUG("Successfully registered timeout");
+}

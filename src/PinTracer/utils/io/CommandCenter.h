@@ -36,6 +36,11 @@ namespace UTILS
 			that was entered by the user, and executes it if there is.
 			*/
 			void startCommandCenterJob();
+
+			/**
+			Registers a timer which, after waiting for the specified time, will stop the tracer execution
+			*/
+			void registerAnalysisTimeout(UINT32 millis);
 		};
 	}
 }

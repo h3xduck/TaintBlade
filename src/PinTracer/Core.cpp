@@ -48,6 +48,7 @@ namespace WINDOWS
 UINT32 insCount = 0; //number of dynamically executed instructions
 UINT32 bblCount = 0; //number of dynamically executed basic blocks
 UINT32 threadCount = 0; //total number of threads, including main thread
+UINT32 timeoutMillis = 0; //Number of milliseconds to wait until the tracer halts the program execution automatically. If set to 0, the timeout is not active
 
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
@@ -94,6 +95,7 @@ KNOB< std::string > KnobDllIncludeFile(KNOB_MODE_WRITEONCE, "pintool", "dllinclu
 KNOB< BOOL > KnobAskForIndividualImageTrace(KNOB_MODE_WRITEONCE, "pintool", "choosetraceimages", "", "Ask for user before including any image in the list of images to trace. Otherwise, only main image is traced");
 KNOB< BOOL > KnobTraceAllImages(KNOB_MODE_WRITEONCE, "pintool", "traceallimages", "", "Force program to trace all images, without asking user input. Overrides choosetraceimages flag.");
 
+KNOB<UINT32> KnobAnalysisTimeout(KNOB_MODE_WRITEONCE, "pintool", "timeout", "", "If this flag is set, it specifies the number of milliseconds to wait until the analysis stops itself automatically");
 /* ===================================================================== */
 // Utilities
 /* ===================================================================== */
@@ -769,6 +771,7 @@ int main(int argc, char* argv[])
 	std::string dllIncludeFileFilename = KnobDllIncludeFile.Value();
 	settingAskForIndividualImageTrace = KnobAskForIndividualImageTrace.Value();
 	settingTraceAllImages = KnobTraceAllImages.Value();
+	timeoutMillis = KnobAnalysisTimeout.Value();
 	
 	instructionLevelTracing = KnobInstLevelTrace.Value();
 	
@@ -926,6 +929,12 @@ int main(int argc, char* argv[])
 		}
 	}
 
+	//Registering analyzer timeout, if requested
+	if (timeoutMillis != 0)
+	{
+		UTILS::IO::CommandCenter::registerAnalysisTimeout(timeoutMillis);
+	}
+
 	//Register taint sources - deprecated: now dynamically via flag
 	//TODO - set program name dynamically
 	taintManager.registerTaintSource(WS2_32_DLL, RECV_FUNC, 4);
@@ -978,6 +987,12 @@ int main(int argc, char* argv[])
 
 	std::cerr << "===============================================" << std::endl;
 	std::cerr << "This application is instrumented by PinTracer" << std::endl;
+	if(timeoutMillis!=0) std::cerr << "The analysis will stop itself in " << timeoutMillis/1000 << " seconds" << std::endl;
+#ifdef TARGET_IA32E
+	std::cerr << "Tracer running in x64 mode" << std::endl;
+#else
+	std::cerr << "Tracer running in x86 mode" << std::endl;
+#endif 
 	std::cerr << "Application PID: " << PIN_GetPid() << std::endl;
 	std::cerr << "Instrumentating instructions directly: " << instructionLevelTracing << "" << std::endl;
 	if (settingAskForIndividualImageTrace) {
