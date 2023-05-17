@@ -9,6 +9,8 @@
 #include <sstream>
 #include <string>
 
+extern UINT32 timeoutMillis;
+
 namespace UTILS
 {
 	namespace IO 
@@ -38,9 +40,9 @@ namespace UTILS
 			void startCommandCenterJob();
 
 			/**
-			Registers a timer which, after waiting for the specified time, will stop the tracer execution
+			Registers a timer which, after waiting for the time specified at global timeoutMillis, will stop the tracer execution
 			*/
-			void registerAnalysisTimeout(UINT32 millis);
+			void registerAnalysisTimeout();
 		};
 	}
 }

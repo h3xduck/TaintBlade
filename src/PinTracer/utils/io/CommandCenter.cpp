@@ -74,18 +74,20 @@ void UTILS::IO::CommandCenter::queryCommandAvailable(VOID* arg)
 
 void stopAnalysisWithDelay(VOID *arg)
 {
-    UINT32* millis = static_cast<UINT32*>(arg);
-    PIN_Sleep(*millis);
+    //We'll not pass the timeout by parameter, just to have it easier with generated child processes
+    LOG_DEBUG("Starting analysis timeout of " << timeoutMillis << " millis");
+    PIN_Sleep(timeoutMillis);
+    LOG_DEBUG("Timer timeout! Stopping analysis");
     UTILS::IO::CommandCenter::executeCommand(COMMAND_CALL_APPLICATION_EXIT);
 }
 
-void UTILS::IO::CommandCenter::registerAnalysisTimeout(UINT32 millis)
+void UTILS::IO::CommandCenter::registerAnalysisTimeout()
 {
     THREADID threadId;
     PIN_THREAD_UID threadUid;
 
-    LOG_DEBUG("Registering analysis timeout after "<<millis<< " milliseconds");
-    threadId = PIN_SpawnInternalThread(stopAnalysisWithDelay, &millis, 0, &threadUid);
+    LOG_DEBUG("Registering analysis timeout after "<<&timeoutMillis << " milliseconds");
+    threadId = PIN_SpawnInternalThread(stopAnalysisWithDelay, 0, 0, &threadUid);
 
     if (threadId == INVALID_THREADID)
     {

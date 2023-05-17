@@ -932,7 +932,7 @@ int main(int argc, char* argv[])
 	//Registering analyzer timeout, if requested
 	if (timeoutMillis != 0)
 	{
-		UTILS::IO::CommandCenter::registerAnalysisTimeout(timeoutMillis);
+		UTILS::IO::CommandCenter::registerAnalysisTimeout();
 	}
 
 	//Register taint sources - deprecated: now dynamically via flag

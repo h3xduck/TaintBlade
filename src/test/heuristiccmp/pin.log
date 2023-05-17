@@ -1,3 +1,5 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 36984. Interruption context: IP: 0x7ffc5c6d3b04 SP: 0x2067806ed60. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x7ffc5c6d3b04. Access Type: READ. Access Address = 0x000000283. ExceptionFlags: 0x000000000
+E:  [tid:49908] Cannot execute file. System error: System error 2 : The system cannot find the file specified.
+. File name: "..\..\..\samples\execute_process"
+E:  Pin is exiting due to fatal error
