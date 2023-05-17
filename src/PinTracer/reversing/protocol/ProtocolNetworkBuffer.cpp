@@ -96,3 +96,18 @@ std::vector<REVERSING::PROTOCOL::ProtocolWord> REVERSING::PROTOCOL::ProtocolNetw
 {
 	return this->wordVector;
 }
+
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::setcolorTaintReasonsVector(std::vector<TagLog::color_taint_reason_t> vec)
+{
+	this->colorTaintReasonsVector = vec;
+}
+
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addReasonTocolorTaintReasonsVector(TagLog::color_taint_reason_t& reason)
+{
+	this->colorTaintReasonsVector.push_back(reason);
+}
+
+std::vector<TagLog::color_taint_reason_t> REVERSING::PROTOCOL::ProtocolNetworkBuffer::gecolorTaintReasonsVector()
+{
+	return this->colorTaintReasonsVector;
+}

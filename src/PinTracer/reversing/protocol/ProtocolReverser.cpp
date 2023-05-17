@@ -7,6 +7,7 @@ typedef struct comparison_data_t
 	int heuristicLevel;   //heuristic level (see reversing algorithm for explanation)
 	int comparisonResult; //result of comparison
 	UINT8 byteComparison; //byte value to which the buffer byte is compared
+	UINT16 colorInvolved; //taint color which the byte that was compared holded
 	int bufferIndex;	  //index at the netbuffer to which the comparison was made
 };
 
@@ -74,6 +75,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		const ADDRINT memAddress = data.second.memAddress;
 		const UINT8 byteValue = data.second.byteValue;
 		const UINT16 color = data.first;
+		TagLog::color_taint_reason_t taintReason = taintManager.getController().getColorTaintReason(color);
 		if (memAddress != lastMemValue+1)
 		{
 			LOG_DEBUG("Found new buffer, starting at " << to_hex_dbg(memAddress));
@@ -93,6 +95,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addValueToValuesVector(byteValue);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
+			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
 		}
 		else
 		{
@@ -105,6 +108,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addColorToColorsVector(color);
 			//We get the actual value of the byte at that memory address and store it
 			protNetBuffer.addValueToValuesVector(byteValue);
+			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
 			
 		}
 		lastMemValue = memAddress;
@@ -187,7 +191,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					LOG_DEBUG("Storing compvalues for color " << color << " which were at position " << ii << " of the heuristic");
 					UINT8 byteValue = heuristicValues.at(ii);
 					int bufferIndex = color-buf.getStartColor();
-					comparison_data_t comp = { heuristicLevel, heuristic.getComparisonResult(), byteValue, bufferIndex};
+					comparison_data_t comp = { heuristicLevel, heuristic.getComparisonResult(), byteValue, color, bufferIndex};
 					LOG_DEBUG("Introduced comparison:: HL:" << heuristicLevel << " COMPVALUE:" << byteValue << " COMPRES: " << heuristic.getComparisonResult());
 					comparisonVector.push_back(comp);
 				}
@@ -230,6 +234,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 			//Put the data we want from the byte we checked
 			currentWord.addByte(topComparison.byteComparison);
+			currentWord.addColor(topComparison.colorInvolved);
 			currentWord.addSuccessIndex(topComparison.comparisonResult);
 			currentWord.setStartIndex(topComparison.bufferIndex);
 			currentWord.setEndIndex(topComparison.bufferIndex);
@@ -273,6 +278,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					{
 						//It is most likely a delimeter, or we detected it as such before
 						currentWord.addByte(itData.byteComparison);
+						currentWord.addColor(itData.colorInvolved);
 						currentWord.addSuccessIndex(itData.comparisonResult);
 						currentWord.setEndIndex(itData.bufferIndex);
 						//Let's check if the delimeter already had its 'success' comparison:
@@ -299,6 +305,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					{
 						//It is not a delimeter, must be a keyword
 						currentWord.addByte(itData.byteComparison);
+						currentWord.addColor(itData.colorInvolved);
 						currentWord.addSuccessIndex(itData.comparisonResult);
 						currentWord.setEndIndex(itData.bufferIndex);
 						currentWord.setWordType(ProtocolWord::KEYWORD);
@@ -337,7 +344,6 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 
 	} //finished parsing for all protocol netbuffers
-	
 	
 	//Test
 	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())

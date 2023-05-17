@@ -23,7 +23,7 @@ void RevContext::operateRevLog()
 
 	if (heuristicFound.isHeuristicMet())
 	{
-		LOG_DEBUG("Logging test milestone");
+		LOG_DEBUG("Logging heuristic that was met");
 		//Logging the found heuristic
 		this->revLogHeuristics.logInsert(heuristicFound);
 

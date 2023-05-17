@@ -200,6 +200,16 @@ public:
 	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> getOriginalColorsVector();
 
 	/**
+	Returns vector with taint reason for each color, if any
+	*/
+	std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> getColorReasonsVector();
+
+	/**
+	Get reason why a color was tainted, if any. Reason class is NONE if color has no reason
+	*/
+	TagLog::color_taint_reason_t getColorTaintReason(UINT16 color);
+
+	/**
 	Returns vector with color transformations
 	*/
 	std::vector<Tag> getColorTransVector();

@@ -122,6 +122,12 @@ void TagLog::logTagOriginal(UINT16 color, std::string dllName, std::string funcN
 	this->originalColorsMap.insert(std::make_pair<UINT16, original_color_data_t>(color, data));
 }
 
+void TagLog::logColorTaintReason(UINT16 color, TagLog::color_taint_reason_t reason)
+{
+	LOG_DEBUG("Logged color taint reason for color [" << color << "], of reason class: " << reason.reasonClass);
+	this->colorReasonMap.insert(std::make_pair<UINT16, color_taint_reason_t>(color, reason));
+}
+
 void TagLog::dumpTagLogOriginalColors()
 {
 	std::stringstream logLine;
@@ -139,6 +145,29 @@ std::vector<std::pair<UINT16, TagLog::original_color_data_t>> TagLog::getOrigina
 		colorVec.push_back(it);
 	}
 	return colorVec;
+}
+
+std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> TagLog::getColorsReasonsVector()
+{
+	std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> reasonVec;
+	for (auto& it : this->colorReasonMap) {
+		reasonVec.push_back(it);
+	}
+	return reasonVec;
+}
+
+TagLog::color_taint_reason_t TagLog::getColorTaintReason(UINT16 color)
+{
+	auto it = this->colorReasonMap.find(color);
+	if (it == this->colorReasonMap.end())
+	{
+		//The color does not have a taint reason attached
+		color_taint_reason_t taintReason;
+		taintReason.reasonClass = TagLog::taint_reason_class::NONE;
+		return taintReason;
+	}
+	//Found some reason for that color
+	return it->second;
 }
 
 std::vector<Tag> TagLog::getColorTransVector()

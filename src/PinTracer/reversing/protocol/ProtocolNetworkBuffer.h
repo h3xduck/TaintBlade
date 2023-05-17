@@ -3,6 +3,7 @@
 
 #include "pin.H"
 #include "ProtocolWord.h"
+#include "../../taint/data/TagLog.h"
 
 namespace REVERSING
 {
@@ -51,6 +52,12 @@ namespace REVERSING
 			*/
 			std::vector<ProtocolWord> wordVector;
 
+			/**
+			Vector of taint reasons, one for each color, detailing whether there is a special reason behind
+			any byte was tainted
+			*/
+			std::vector<TagLog::color_taint_reason_t> colorTaintReasonsVector;
+
 		public:
 			ProtocolNetworkBuffer();
 			ProtocolNetworkBuffer(ADDRINT start, ADDRINT end);
@@ -73,6 +80,9 @@ namespace REVERSING
 			void setWordVector(std::vector<ProtocolWord> vec);
 			void addWordToWordVector(ProtocolWord &word);
 			std::vector<ProtocolWord> getWordVector();
+			void setcolorTaintReasonsVector(std::vector<TagLog::color_taint_reason_t> vec);
+			void addReasonTocolorTaintReasonsVector(TagLog::color_taint_reason_t& reason);
+			std::vector<TagLog::color_taint_reason_t> gecolorTaintReasonsVector();
 		};
 	}
 }

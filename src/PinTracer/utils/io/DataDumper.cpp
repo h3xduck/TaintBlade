@@ -111,13 +111,16 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 {
 	std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& protNetbufferVec = protocol.getNetworkBufferVector();
 	
+	//We will iterate over each protocol netbuffer and print the data of their data
 	for (int ii = 0; ii < protNetbufferVec.size(); ii++)
 	{
+		//Data from protocol netbuffer
 		this->protocolResultsDumpFile << "The tracer detected " << protNetbufferVec.size() << " buffers:" << std::endl;
 		this->protocolResultsDumpFile << "PROTOCOL NETWORK BUFFER " << ii << ":" << std::endl;
 		REVERSING::PROTOCOL::ProtocolNetworkBuffer& protNetBuf = protNetbufferVec.at(ii);
 		std::vector<UINT16> &colors = protNetBuf.getColorsVector();
 		std::vector<UINT8> &values = protNetBuf.getValuesVector();
+		std::vector<TagLog::color_taint_reason_t>& taintReasons = protNetBuf.gecolorTaintReasonsVector();
 		ADDRINT start = protNetBuf.getStartMemAddress();
 		ADDRINT end = protNetBuf.getEndMemAddress();
 		this->protocolResultsDumpFile << "\tMemory start: " << start << " | Memory end: " << end << std::endl;
@@ -127,10 +130,19 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		{
 			UINT16& color = colors.at(jj);
 			UINT8& value = values.at(jj);
-			this->protocolResultsDumpFile << "\t\t Color: " << color << " | Byte value: " << InstructionWorker::byteToHexValueString(value) << " (as char: " << value <<")" << std::endl;
+			TagLog::color_taint_reason_t& reason = taintReasons.at(jj);
+			this->protocolResultsDumpFile << "\t\t Color: " << color << " | Byte value: " << InstructionWorker::byteToHexValueString(value) << " (as char: " << value <<")";
+			//Print whether the byte has any special reason to be tainted
+			switch (reason.reasonClass)
+			{
+			case TagLog::TAINT_REASON_SINK:
+				this->protocolResultsDumpFile << " | used as arg " << reason.sinkData.argNumber << " in " << reason.sinkData.dllName << " ::> " << reason.sinkData.funcName << " at offset " << reason.sinkData.offsetFromArgStart;
+				break;
+			}
+			this->protocolResultsDumpFile << std::endl;
 		}
 
-
+		//Data from each of the protocol words contained in each protocol netbuffer
 		std::vector<REVERSING::PROTOCOL::ProtocolWord> &protWordVec = protNetBuf.getWordVector();
 		this->protocolResultsDumpFile << "\tThe buffer contains " << protWordVec.size() << " words:" << std::endl;
 		for (REVERSING::PROTOCOL::ProtocolWord &protWord : protWordVec)

@@ -164,6 +164,11 @@ void TaintController::registerOriginalColor(UINT16 color, std::string dllName, s
 	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName, memAddress, byteValue);
 }
 
+void TaintController::registerColorReason(UINT16 color, TagLog::color_taint_reason_t reason)
+{
+	this->tagMap.tagLog.logColorTaintReason(color, reason);
+}
+
 std::vector<UINT16> TaintController::getColorParents(UINT16 color)
 {
 	return this->tagMap.tagLog.getColorParentsRecursive(color);
@@ -198,6 +203,16 @@ std::vector<std::pair<ADDRINT, UINT16>> TaintController::getTaintedMemoryVector(
 std::vector<std::pair<UINT16, TagLog::original_color_data_t>> TaintController::getOriginalColorsVector()
 {
 	return this->tagMap.getOriginalColorsVector();
+}
+
+std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> TaintController::getColorReasonsVector()
+{
+	return this->tagMap.getColorReasonsVector();
+}
+
+TagLog::color_taint_reason_t TaintController::getColorTaintReason(UINT16 color)
+{
+	return this->tagMap.getColorTaintReason(color);
 }
 
 std::vector<Tag> TaintController::getColorTransVector()
