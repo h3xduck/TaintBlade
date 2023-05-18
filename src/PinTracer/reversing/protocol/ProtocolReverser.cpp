@@ -163,6 +163,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			LOG_DEBUG("Iterating in heuristic for " << heuristicColors.size() << " colors");
 
 			//All comparisons in the heuristic share heuristic level, since they belong to the same comparison
+			bool firstColorInHeuristic = true;
 			for (int ii = 0; ii < heuristicColors.size(); ii++)
 			{
 				UINT16& color = heuristicColors.at(ii);
@@ -172,14 +173,22 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					//Determine if we must maintain the heuristic level as with the previous heuristic
 					//Note that comparisons of the same heuristic always share Heuristic Level.
 					//TODO: improve this by using the instruction pointer at which the comparison occured
+					//TODO IMPORTANT: improve this so that we do not check just the color, but the color of the parent that was rule-tainted
 					if (color == lastComparedColor + 1)
 					{
 						//Means the comparison is sequential to the last one, so share heuristic colors
+						LOG_DEBUG("C: " << color << ", kept HL: " << heuristicLevel);
+						lastComparedColor = color;
+					}
+					else if (!firstColorInHeuristic)
+					{
+						//If we are still in the same heuristic, then even if the color is not consecutive, no big deal
+						LOG_DEBUG("C: " << color << " | LC: " << lastComparedColor<<", but same heuristic so maintained HL: "<<heuristicLevel);
 						lastComparedColor = color;
 					}
 					else
 					{
-						LOG_DEBUG("C: " << color << " | LC: " << lastComparedColor);
+						LOG_DEBUG("C: " << color << " | LC: " << lastComparedColor<<" | HL incremented: "<<heuristicLevel+1);
 						//Increment the heuristic level, since it is clearly not related to the last instruction
 						lastComparedColor = color;
 						heuristicLevel++;
@@ -194,6 +203,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					comparison_data_t comp = { heuristicLevel, heuristic.getComparisonResult(), byteValue, color, bufferIndex};
 					LOG_DEBUG("Introduced comparison:: HL:" << heuristicLevel << " COMPVALUE:" << byteValue << " COMPRES: " << heuristic.getComparisonResult());
 					comparisonVector.push_back(comp);
+					firstColorInHeuristic = false;
 				}
 				else
 				{

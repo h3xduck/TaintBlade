@@ -16,8 +16,13 @@ extern _CRT_INIT
 
 main:
     mov rcx, [msg]
-    add rcx, 0x1
-    mov [msg], rcx
+    mov rax, 0x41
+    cmp al, cl
+    je equal
+    ret
+
+equal:
+    mov rcx, 10
 
     
 
