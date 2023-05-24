@@ -210,13 +210,14 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter(ADDRINT retIp, VOID* dllN
 	data.arg1 = arg1;
 	data.arg2 = arg2;
 	data.arg3 = arg3;
-	WINDOWS::LPCCH str3W = (WINDOWS::LPCCH)arg3;
+	/*WINDOWS::LPCCH str3W = (WINDOWS::LPCCH)arg3;
 	char* str3 = (char*)str3W;
 	int int1 = (int)arg1;
 	int int2 = (int)arg2;
 	int int4 = (int)arg4;
 	PIN_LockClient();
 	LOG_DEBUG("["<<to_hex_dbg(InstructionWorker::getBaseAddress(retIp))<<"]AT "<< *dllNameStr <<" | "<< *funcNameStr<< " ENTERRECEIVED: " << str3<< "INT1:" << int1 << " INT2:"<<int2<<" INT4:"<<int4);
+	*/
 	data.arg4 = arg4;
 	data.arg5 = arg5;
 	data.arg6 = arg6;

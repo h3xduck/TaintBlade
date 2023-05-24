@@ -137,6 +137,12 @@ public:
 	void taintReg(LEVEL_BASE::REG reg, UINT16 color);
 
 	/**
+	Taints one byte of a register with the specified color.
+	The byte of the register to taint is specified in byteIndex.
+	*/
+	void taintRegByte(LEVEL_BASE::REG reg, UINT32 byteIndex, UINT16 color);
+
+	/**
 	Untaints a byte indicated by byteIndex of a register by writing the empty_color.
 	*/
 	void untaintReg(LEVEL_BASE::REG reg, int byteIndex);

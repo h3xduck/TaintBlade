@@ -265,6 +265,7 @@
     <ClCompile Include="engine\xed_iclass_instrumentation\CompareOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\ControlFlowOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\OverwriteOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\ShiftOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\StringOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\SpecialOpc.cpp" />
     <ClCompile Include="reversing\data\RevAtom.cpp" />
@@ -314,6 +315,7 @@
     <ClInclude Include="engine\xed_iclass_instrumentation\CompareOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\ControlFlowOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\OverwriteOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\ShiftOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\StringOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\SpecialOpc.h" />
     <ClInclude Include="reversing\data\RevAtom.h" />

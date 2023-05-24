@@ -155,6 +155,60 @@ void TaintController::taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL
 
 }
 
+void TaintController::shiftRegTaint(const LEVEL_BASE::REG destReg, bool rightDirection, const UINT32 numPositions)
+{
+	const UINT32 taintLength = this->tagMap.tReg.getTaintLength(destReg);
+	if (this->tagMap.regIsTainted(destReg)) {
+		if (!rightDirection)
+		{
+			LOG_DEBUG("Starting left shift for "<<numPositions<<" positions");
+			for (int ii = 0; ii < taintLength; ii++)
+			{
+				UINT16 color = this->tagMap.getTaintColorReg(destReg).at(ii).color;
+
+				//We get the destination byte to taint with that color
+				UINT32 destByteIndex = ii - numPositions;
+				if (destByteIndex >= taintLength)
+				{
+					//If it goes out of the register, then the color at the initial byte is just lost
+					this->tagMap.untaintReg(destReg, ii);
+				}
+				else
+				{
+					//If it is in the register even after the shift, we move the color to that byte before removing the original one
+					this->tagMap.taintRegByte(destReg, destByteIndex, color);
+					this->tagMap.untaintReg(destReg, ii);
+				}
+			}
+			LOG_DEBUG("Ending left shift");
+		}
+		else
+		{
+			LOG_DEBUG("Starting right shift for "<<numPositions<<" positions");
+			for (int ii = taintLength-1; ii >=0; ii--)
+			{
+				UINT16 color = this->tagMap.getTaintColorReg(destReg).at(ii).color;
+
+				//We get the destination byte to taint with that color
+				UINT32 destByteIndex = ii + numPositions;
+				if (destByteIndex < 0)
+				{
+					//If it goes out of the register, then the color at the initial byte is just lost
+					this->tagMap.untaintReg(destReg, ii);
+				}
+				else
+				{
+					//If it is in the register even after the shift, we move the color to that byte before removing the original one
+					this->tagMap.taintRegByte(destReg, destByteIndex, color);
+					this->tagMap.untaintReg(destReg, ii);
+				}
+			}
+			LOG_DEBUG("Ending right shift");
+		}
+		
+	}
+}
+
 void TaintController::untaintReg(const LEVEL_BASE::REG reg)
 {
 	const UINT32 taintLength = this->tagMap.tReg.getTaintLength(reg);

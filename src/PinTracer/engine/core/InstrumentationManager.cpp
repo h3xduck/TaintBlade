@@ -71,6 +71,8 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		//For some reason, this may fall into the SCASB category, we considered that too
 		OPC_INST::instrumentRepneScasOpc(ins);
 		break;
+	case XED_ICLASS_SHR:
+		OPC_INST::instrumentShrOpc(ins);
 	default:
 		//Unsupported or ignored, no tainting for those
 	#if(REPORT_UNSUPPORTED_INS==1)

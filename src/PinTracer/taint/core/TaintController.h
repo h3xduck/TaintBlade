@@ -27,6 +27,7 @@ public:
 	void taintRegNewColor(const LEVEL_BASE::REG reg);
 	void taintRegWithReg(const LEVEL_BASE::REG destReg, LEVEL_BASE::REG srcReg, BOOL srcExtension = false);
 	void taintRegWithMem(const LEVEL_BASE::REG destReg, const LEVEL_BASE::REG src1Reg, const ADDRINT src2Mem, const UINT32 src2Bytes);
+	void shiftRegTaint(const LEVEL_BASE::REG destReg, bool rightDirection, const UINT32 numPositions);
 	void untaintReg(const LEVEL_BASE::REG reg);
 
 	/**

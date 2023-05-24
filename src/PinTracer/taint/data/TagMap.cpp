@@ -274,6 +274,23 @@ void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
 	//LOG_DEBUG("New reg taint taintReg(" << reg << ", "<<color<<") --> modified Tags of reg("<< REG_StringShort(reg) <<" R:" << reg << " PI:" << posStart << " PF:" << posStart + taintLength << ") with new color "<<color);
 }
 
+void TagMap::taintRegByte(LEVEL_BASE::REG reg, UINT32 byteIndex, UINT16 color)
+{
+	//Whatever the color stored before is, we still overwrite it
+	const UINT32 posStart = this->tReg.getPos(reg);
+
+	if (!this->tReg.isSupported(reg))
+	{
+		reportUnsupportedRegister(reg);
+		return;
+	}
+
+	this->regTaintField[posStart + byteIndex] = Tag(color);
+
+	LOG_MESSAGE_TAINT_REG_UNIQUE("New reg byte taint", "modified", reg, posStart, posStart, color);
+	//LOG_DEBUG("New reg taint taintReg(" << reg << ", "<<color<<") --> modified Tags of reg("<< REG_StringShort(reg) <<" R:" << reg << " PI:" << posStart << " PF:" << posStart + taintLength << ") with new color "<<color);
+}
+
 void TagMap::untaintReg(LEVEL_BASE::REG reg, int byteIndex)
 {
 	const UINT32 posStart = this->tReg.getPos(reg);
