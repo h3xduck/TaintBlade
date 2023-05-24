@@ -99,28 +99,6 @@ void HLComparison::initializeRevHeuristic()
 	//REPNE SCAS[MEM]
 }
 
-std::vector<std::string> HLComparison::getInstructionVector()
-{
-	std::vector<std::string> resVec;
-
-	for (auto& elem : this->revAtomVector)
-	{
-		resVec.push_back(xed_iclass_enum_t2str((xed_iclass_enum_t)elem.getInstType()));
-	}
-
-	return resVec;
-}
-
-int HLComparison::isHeuristicMet()
-{
-	return this->heuristicMet;
-}
-
-void HLComparison::setHeuristicMet(int state)
-{
-	this->heuristicMet = state;
-}
-
 RevHeuristic* HLComparison::getInternalRevHeuristic()
 {
 	return HLComparison::revHeuristic;
@@ -129,11 +107,6 @@ RevHeuristic* HLComparison::getInternalRevHeuristic()
 const int HLComparison::getRevHeuristicNumber()
 {
 	return HLComparison::revHeuristicNumber;
-}
-
-std::vector<RevAtom> HLComparison::getFullAtomVector()
-{
-	return this->revAtomVector;
 }
 
 std::vector<UINT16>& HLComparison::getComparisonColorsFirst()
@@ -161,7 +134,7 @@ int HLComparison::getComparisonResult()
 	return this->comparisonResult;
 }
 
-void HLComparison::calculateComparisonFromLoadedAtoms()
+void HLComparison::calculateHLOperationFromLoadedAtoms()
 {
 	//First we will find which element of the atom has the comparison
 	//NOTE: Add here the calculation for other types of heuristics

@@ -50,25 +50,15 @@ public:
 	RevHeuristicAtom() {};
 
 	RevHeuristicAtom(int instType, atom_operands_type_t operandsType,
-		bool memSrcTainted, bool memDestTainted, bool regSrcTainted, 
-		bool regDestTainted, bool leaBaseTainted, 
+		bool memSrcTainted, bool memDestTainted, bool regSrcTainted,
+		bool regDestTainted, bool leaBaseTainted,
 		bool leaIndexTainted, bool hasImmSrc,
 		bool scasMemTainted, bool regScasXAXTainted, bool regScasXCXTainted, bool regScasXDITainted)
-	{
-		this->instType = instType;
-		this->operandsType = operandsType;
-		this->memSrcTainted = memSrcTainted;
-		this->memDestTainted = memDestTainted;
-		this->regSrcTainted = regSrcTainted;
-		this->regDestTainted = regDestTainted;
-		this->leaBaseTainted = leaBaseTainted;
-		this->leaIndexTainted = leaIndexTainted;
-		this->hasImmSrc = hasImmSrc;
-		this->scasMemTainted = scasMemTainted;
-		this->regScasXAXTainted = regScasXAXTainted;
-		this->regScasXCXTainted = regScasXCXTainted;
-		this->regScasXDITainted = regScasXDITainted;
-	}
+		: instType(instType), operandsType(operandsType), memSrcTainted(memSrcTainted), memDestTainted(memDestTainted),
+		regSrcTainted(regSrcTainted), regDestTainted(regDestTainted), leaBaseTainted(leaBaseTainted),
+		leaIndexTainted(leaIndexTainted), hasImmSrc(hasImmSrc), scasMemTainted(scasMemTainted),
+		regScasXAXTainted(regScasXAXTainted), regScasXCXTainted(regScasXCXTainted),
+		regScasXDITainted(regScasXDITainted) {}
 
 	/**
 	Returns whether an heuristic atom (this) is containted on another (other).

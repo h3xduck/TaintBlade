@@ -18,6 +18,9 @@ extern std::string pintracerSuffix;
 #define to_hex(mem) std::hex << mem << std::dec
 #define char_to_hex(c) std::hex << (int)c << std::dec
 
+std::string wcharstrToCharstr(std::wstring wstr);
+	
+
 
 #define fixed_precision(file)
 

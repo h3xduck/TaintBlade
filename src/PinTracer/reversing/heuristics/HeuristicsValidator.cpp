@@ -24,7 +24,7 @@ HLComparison REVERSING::HEURISTICS::checkValidity(RevLog<RevAtom> *revLog)
 	{
 		HLComparison hl(atomVec);
 		//Calculate the comparison values (and its result) based on the loaded atoms
-		hl.calculateComparisonFromLoadedAtoms();
+		hl.calculateHLOperationFromLoadedAtoms();
 		hl.setHeuristicMet(1);
 		return hl;
 	}

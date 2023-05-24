@@ -1,4 +1,4 @@
-//Sample taken from: https://learn.microsoft.com/en-us/windows/win32/winsock/complete-server-code
+//Sample based from: https://learn.microsoft.com/en-us/windows/win32/winsock/complete-server-code
 
 #undef UNICODE
 

@@ -1,4 +1,3 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\core_ia32\operand_ia32.cpp: LEVEL_CORE::INS_MemoryOperandSize: 649: Attempt to get size for non existent memory operand (0) in  17773 0x00007ff6d0171d88 lea rcx, ptr [rbp+0x18]
-
+E:  Function LEVEL_PINCLIENT::IMG_FindByAddress called without holding lock. Call PIN_LockClient()/PIN_UnlockClient()

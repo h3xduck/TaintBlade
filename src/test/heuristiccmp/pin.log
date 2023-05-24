@@ -1,4 +1,3 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  [tid:74956] Failure to map DLL C:\Users\Marcos\source\repos\h3xduck\TFM\src\PinTracer\x64\Release\PinTracer.dll
-      System error 216 : 
+E:  UPC Dispatcher: Unhandled internal exception in Pin or tool. ThreadId = 0 SysThreadId = 87684. Interruption context: IP: 0x7ff8e762b700 SP: 0x1c203d3ee08. Exception Code: RECEIVED_ACCESS_FAULT. Exception Address = 0x7ff8e762b700. Access Type: READ. Access Address = 0x000000000. ExceptionFlags: 0x000000000

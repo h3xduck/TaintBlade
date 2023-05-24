@@ -1,29 +1,16 @@
 #ifndef _HLCOMPARISON_H_
 #define _HLCOMPARISON_H_
 
-#include <vector>
-#include <memory>
-#include <iostream>
-#include <xed-category-enum.h>
-#include "../data/RevAtom.h"
+#include "HLOperation.h"
 #include "../data/RevLog.h"
 #include "../data/RevHeuristicAtom.h"
 #include "RevHeuristic.h"
 #include "../../utils/io/log.h"
+#include "operators/OpComparison.h"
 
-class HLComparison
+class HLComparison : public HLOperation
 {
 private:
-	/**
-	Vector of RevAtoms of which the HLComparison is made of
-	*/
-	std::vector<RevAtom> revAtomVector;
-
-	/**
-	Specifies whether an heuristic was met
-	*/
-	int heuristicMet = 0;
-
 	/**
 	Common heuristic that defines a HL comparison operation
 	*/
@@ -76,27 +63,9 @@ public:
 	*/
 	static void initializeRevHeuristic();
 
-	int isHeuristicMet();
-
-	void setHeuristicMet(int state);
-
 	static RevHeuristic* getInternalRevHeuristic();
 
 	static const int getRevHeuristicNumber();
-
-	/**
-	Returns a vector of strings describing the instructions which compound the heuristic
-	*/
-	std::vector<std::string> getInstructionVector();
-
-	/**
-	Returns full vector of atoms that make up the heuristic
-	*/
-	std::vector<RevAtom> getFullAtomVector();
-
-	/**
-	Returns the vector of bytes describing the value with which the comparison was made
-	*/
 
 	/**
 	Returns the first colors vector of the operand to which the comparison was made (first operand, dest)
@@ -123,10 +92,7 @@ public:
 	*/
 	int getComparisonResult();
 
-	/**
-	Takes the loaded vector of RevAtoms and calculates the comparison result and src and dest values.
-	*/
-	void calculateComparisonFromLoadedAtoms();
+	virtual void calculateHLOperationFromLoadedAtoms();
 };
 
 

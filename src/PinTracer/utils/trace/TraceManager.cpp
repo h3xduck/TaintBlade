@@ -25,7 +25,7 @@ void UTILS::TRACE::TraceManager::traceFunction(RTN rtn, const std::string& dllNa
 	}
 }
 
-static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* funcNamePtr, UINT32 numArgs, void* arg1, void* arg2, void* arg3, void* arg4)
+static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* funcNamePtr, UINT32 numArgs, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 {
 	const std::string* dllName = static_cast<std::string*>(dllNamePtr);
 	const std::string* funcName = static_cast<std::string*>(funcNamePtr);
@@ -68,6 +68,32 @@ static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* fun
 		argsVecPtr.push_back((void*)arg4);
 		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
 		break;
+	case 5:
+		argsVecPtr.push_back((void*)arg1);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg2);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg3);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg4);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg5);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		break;
+	case 6:
+		argsVecPtr.push_back((void*)arg1);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg2);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg3);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg4);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg5);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		argsVecPtr.push_back((void*)arg6);
+		argsVec.push_back(InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(argsVecPtr.back())));
+		break;
 	}
 	
 
@@ -76,14 +102,17 @@ static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* fun
 	
 	UTILS::TRACE::interFunctionCallsVector.push_back(tp);
 
-	LOG_DEBUG("Traced function DLL:" << *dllName << " FUNC:" << *funcName);
+	LOG_DEBUG("TRACED FUNCTION AT ENTER DLL:" << *dllName << " FUNC:" << *funcName);
 
 }
 
 static void genericFunctionTraceExit(ADDRINT retValue, VOID* dllNamePtr, VOID* funcNamePtr)
 {
+	LOG_DEBUG("mini");
 	const std::string* dllName = static_cast<std::string*>(dllNamePtr);
 	const std::string* funcName = static_cast<std::string*>(funcNamePtr);
+
+	LOG_DEBUG("miniexit: " << std::endl << "\tDLL:" << *dllName << " FUNC:" << *funcName);
 
 	//Check if the trace point was inserted (it should, as the exit event should be called after the enter one)
 	for (int ii=0; ii< UTILS::TRACE::interFunctionCallsVector.size(); ii++)

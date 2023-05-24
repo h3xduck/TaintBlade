@@ -272,6 +272,9 @@
     <ClCompile Include="reversing\data\RevLog.cpp" />
     <ClCompile Include="reversing\heuristics\HeuristicsValidator.cpp" />
     <ClCompile Include="reversing\heuristics\HLComparison.cpp" />
+    <ClCompile Include="reversing\heuristics\HLOperation.cpp" />
+    <ClCompile Include="reversing\heuristics\HLPointerField.cpp" />
+    <ClCompile Include="reversing\heuristics\operators\OpComparison.cpp" />
     <ClCompile Include="reversing\heuristics\RevHeuristic.cpp" />
     <ClCompile Include="reversing\protocol\Protocol.cpp" />
     <ClCompile Include="reversing\protocol\ProtocolWord.cpp" />
@@ -321,6 +324,9 @@
     <ClInclude Include="reversing\data\RevLog.h" />
     <ClInclude Include="reversing\heuristics\HeuristicsValidator.h" />
     <ClInclude Include="reversing\heuristics\HLComparison.h" />
+    <ClInclude Include="reversing\heuristics\HLOperation.h" />
+    <ClInclude Include="reversing\heuristics\HLPointerField.h" />
+    <ClInclude Include="reversing\heuristics\operators\OpComparison.h" />
     <ClInclude Include="reversing\heuristics\RevHeuristic.h" />
     <ClInclude Include="reversing\protocol\Protocol.h" />
     <ClInclude Include="reversing\protocol\ProtocolWord.h" />

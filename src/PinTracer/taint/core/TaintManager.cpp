@@ -48,6 +48,14 @@ void TaintManager::routineLoadedEvent(RTN rtn, std::string dllName, std::string 
 	{
 		INS_CALL_RTN_TAINT(rtn, dllName, funcName, 10, TAINT::CORE::TAINT_SINK::createProcessAEnter, NULL);
 	}
+	else if ((dllName == KERNEL32_DLL || dllName == KERNEL32_DLL_x86) && funcName == CREATE_PROCESS_W_FUNC)
+	{
+		INS_CALL_RTN_TAINT(rtn, dllName, funcName, 10, TAINT::CORE::TAINT_SINK::createProcessWEnter, NULL);
+	}
+	else if ((/*(dllName == KERNEL32_DLL || dllName == KERNEL32_DLL_x86) ||*/ (dllName == KERNELBASE_DLL || dllName == KERNELBASE_DLL_x86)) && funcName == MULTI_BYTE_TO_WIDE_CHAR_FUNC)
+	{
+		INS_CALL_RTN_TAINT(rtn, dllName, funcName, 6, TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter, TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit);
+	}
 
 }
 

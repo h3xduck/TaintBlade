@@ -49,6 +49,11 @@ void TaintController::taintMemWithMem(const ADDRINT destMem, const UINT32 destBy
 	}
 }
 
+void TaintController::taintMemByteWithColor(const ADDRINT destMem, UINT16 color)
+{
+	this->tagMap.taintMem(destMem, color);
+}
+
 void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg, BOOL colorOverwrite)
 {
 	//TODO: Check if destBytes and srcRegLength are the same
