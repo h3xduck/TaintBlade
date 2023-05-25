@@ -63,6 +63,12 @@ public:
 	std::vector<UINT16> regGetColor(REG reg);
 	UINT16 memGetColor(ADDRINT mem);
 	std::vector<UINT16> memRangeGetColor(ADDRINT mem, int bytes);
+
+	/**
+	For a given register, takes the memory address contained in it (assuming it is a pointer), and returns the color
+	with which it is tainted.
+	*/
+	UINT16 getPointerValueColor(LEVEL_VM::CONTEXT* lctx, LEVEL_BASE::REG reg);
 };
 
 

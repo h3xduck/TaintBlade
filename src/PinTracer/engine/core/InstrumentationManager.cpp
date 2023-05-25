@@ -45,6 +45,7 @@ void InstrumentationManager::instrumentInstruction(const INS& ins)
 		break;
 	case XED_ICLASS_MOV:
 	case XED_ICLASS_MOVSX:
+	case XED_ICLASS_MOVSXD:
 	case XED_ICLASS_MOVZX:
 		OPC_INST::instrumentOverwriteOpc(ins);
 		break;

