@@ -1,10 +1,6 @@
 #include "HLComparison.h"
 
-/**
-IMPORTANT: Set here the number of heuristics
-*/
-const int HLComparison::revHeuristicNumber = 6;
-RevHeuristic HLComparison::revHeuristic[revHeuristicNumber] = {};
+std::vector<RevHeuristic> HLComparison::revHeuristic = std::vector<RevHeuristic>();
 
 HLComparison::HLComparison(std::vector<RevAtom> &atomVec)
 {
@@ -14,7 +10,7 @@ HLComparison::HLComparison(std::vector<RevAtom> &atomVec)
 
 void HLComparison::initializeRevHeuristic()
 {
-	if (!HLComparison::revHeuristic->getAtomVector().empty())
+	if (!HLComparison::revHeuristic.empty())
 	{
 		return;
 	}
@@ -44,69 +40,28 @@ void HLComparison::initializeRevHeuristic()
 		and the second instruction is skipped.
 	*/
 
-	std::vector<RevHeuristicAtom> atoms;
-	int ii = 0;
-
-	//CMP(mem, REG)
-	/*atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, 0, 0, 1, 0, 0, 0, 0
-	));
-	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
-	atoms.clear();*/
-
-	//CMP(MEM, imm)
-	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::IMM2MEM, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0
-	));
-	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
-	atoms.clear();
-
-	//CMP(REG, reg)
-	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0
-	));
-	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
-	atoms.clear();
-
-	//CMP(reg, REG)
-	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::REG2REG, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
-	));
-	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
-	atoms.clear();
-
-	//CMP(MEM, reg)
-	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::REG2MEM, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
-	));
-	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
-	atoms.clear();
-
-	//CMP(REG, mem)
-	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::MEM2REG, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0
-	));
-	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
-	atoms.clear();
-
-	//CMP(REG, imm)
-	atoms.push_back(RevHeuristicAtom(
-		XED_ICLASS_CMP, RevHeuristicAtom::IMM2REG, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0
-	));
-	HLComparison::revHeuristic[ii++] = RevHeuristic(atoms);
-	atoms.clear();
-
-	//REPNE SCAS[MEM]
+	//A comparison covers all possibilities of CMP operation. See OpComparison.
+	REVERSING::HEURISTICS::OPERATORS::OpComparison opComparison = REVERSING::HEURISTICS::OPERATORS::OpComparison();
+	for (std::vector<RevHeuristicAtom>& vec : opComparison.getVectorOfAtomVectors())
+	{
+		HLComparison::revHeuristic.push_back(vec);
+	}
+	
 }
 
-RevHeuristic* HLComparison::getInternalRevHeuristic()
+std::vector<RevHeuristic> HLComparison::getInternalRevHeuristic()
 {
 	return HLComparison::revHeuristic;
 }
 
 const int HLComparison::getRevHeuristicNumber()
 {
-	return HLComparison::revHeuristicNumber;
+	if (HLComparison::getInternalRevHeuristic().empty())
+	{
+		HLComparison::initializeRevHeuristic();
+		//LOG_DEBUG("Heuristics for HLComparison initialized");
+	}
+	return HLComparison::revHeuristic.size();
 }
 
 std::vector<UINT16>& HLComparison::getComparisonColorsFirst()

@@ -1,10 +1,6 @@
 #include "HLPointerField.h"
 
-/**
-IMPORTANT: Set here the number of heuristics
-*/
-const int HLPointerField::revHeuristicNumber = 6;
-RevHeuristic HLPointerField::revHeuristic[revHeuristicNumber] = {};
+std::vector<RevHeuristic> HLPointerField::revHeuristic = std::vector<RevHeuristic>();
 
 HLPointerField::HLPointerField(std::vector<RevAtom>& atomVec)
 {
@@ -13,7 +9,7 @@ HLPointerField::HLPointerField(std::vector<RevAtom>& atomVec)
 
 void HLPointerField::initializeRevHeuristic()
 {
-	if (!HLPointerField::revHeuristic->getAtomVector().empty())
+	if (!HLPointerField::revHeuristic.empty())
 	{
 		return;
 	}
@@ -23,6 +19,16 @@ void HLPointerField::initializeRevHeuristic()
 
 	//TODO - Write the heuristics 
 
+}
+
+std::vector<RevHeuristic> HLPointerField::getInternalRevHeuristic()
+{
+	return HLPointerField::revHeuristic;
+}
+
+const int HLPointerField::getRevHeuristicNumber()
+{
+	return HLPointerField::revHeuristic.size();
 }
 
 void HLPointerField::calculateHLOperationFromLoadedAtoms()

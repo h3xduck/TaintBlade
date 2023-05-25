@@ -19,7 +19,7 @@ namespace REVERSING
 				atoms that, together, define a heuristic.
 				e.g.:
 					{
-						{CMP X X, }
+						{CMP X X}
 
 					}
 
@@ -29,6 +29,7 @@ namespace REVERSING
 
 			public:
 				OpComparison();
+				std::vector<std::vector<RevHeuristicAtom>> getVectorOfAtomVectors();
 			};
 		}
 	}

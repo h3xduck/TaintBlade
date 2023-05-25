@@ -13,12 +13,7 @@ private:
 	/**
 	Common heuristic that defines a HL comparison operation
 	*/
-	static RevHeuristic revHeuristic[];
-
-	/**
-	Number of posibilities inside the heuristic
-	*/
-	static const int revHeuristicNumber;
+	static std::vector<RevHeuristic> revHeuristic;
 
 	/**
 	Pointer to a vector of colors, where each color is of one byte
@@ -58,7 +53,7 @@ public:
 	*/
 	static void initializeRevHeuristic();
 
-	static RevHeuristic* getInternalRevHeuristic();
+	static std::vector<RevHeuristic> getInternalRevHeuristic();
 
 	static const int getRevHeuristicNumber();
 

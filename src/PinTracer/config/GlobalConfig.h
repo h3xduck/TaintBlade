@@ -18,6 +18,9 @@
 //Debug write memory addresses in hexadecimal or decimal notation
 #define DEBUG_IN_HEX 1
 
+//Debug heuristics process
+#define HEURISTIC_DEBUG 0
+
 //******************************* DATA DUMPING CONFIG *******************************//
 
 //Data dumping files

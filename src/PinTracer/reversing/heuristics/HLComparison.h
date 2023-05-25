@@ -14,7 +14,7 @@ private:
 	/**
 	Common heuristic that defines a HL comparison operation
 	*/
-	static RevHeuristic revHeuristic[];
+	static std::vector<RevHeuristic> revHeuristic;
 
 	/**
 	Number of posibilities inside the heuristic
@@ -59,11 +59,11 @@ public:
 	HLComparison(std::vector<RevAtom> &atomVec);
 
 	/**
-	Initializes the array of heuristics, must be called at least once before using them
+	Initializes the vector of heuristics, must be called at least once before using them
 	*/
 	static void initializeRevHeuristic();
 
-	static RevHeuristic* getInternalRevHeuristic();
+	static std::vector<RevHeuristic> getInternalRevHeuristic();
 
 	static const int getRevHeuristicNumber();
 
