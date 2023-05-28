@@ -23,6 +23,13 @@ protected:
 	int heuristicMet = 0;
 
 public:
+	enum HL_operation_type_t
+	{
+		HLUnknown,
+		HLComparison,
+		HLPointerField
+	};
+
 	int isHeuristicMet();
 
 	void setHeuristicMet(int state);

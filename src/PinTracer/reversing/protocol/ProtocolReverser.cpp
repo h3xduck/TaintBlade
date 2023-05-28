@@ -18,8 +18,8 @@ bool compare_comparison_data_t(const comparison_data_t& a, const comparison_data
 
 void REVERSING::PROTOCOL::reverseProtocol()
 {
-	//First we get the heuristics. They must be there already at this point
-	RevLog<HLComparison> &heuristicsVec = ctx.getRevContext()->getHeuristicsVector();
+	//First we get the comparison heuristics. They must be there already at this point
+	RevLog<HLComparison> &heuristicsVec = ctx.getRevContext()->getComparisonHeuristicsVector();
 	std::vector<HLComparison> &logHeuristicVec = heuristicsVec.getLogVector();
 
 	//Get list of original colors (tainted by rules) with the memory addresses they 

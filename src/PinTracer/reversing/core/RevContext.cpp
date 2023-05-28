@@ -7,7 +7,8 @@ extern DataDumper dataDumper;
 RevContext::RevContext()
 {
 	this->revLogCurrent.cleanLog();
-	this->revLogHeuristics.cleanLog();
+	this->revLogComparisonHeuristics.cleanLog();
+	this->revLogPointerFieldHeuristics.cleanLog();
 	this->currentRevAtom = RevAtom();
 }
 
@@ -19,19 +20,46 @@ void RevContext::insertRevLog(RevAtom atom)
 void RevContext::operateRevLog()
 {
 	//Try to get whether it is a comparison HL inst.
-	HLComparison heuristicFound = REVERSING::HEURISTICS::checkValidity(&(this->revLogCurrent));
+	std::pair<HLOperation*, HLOperation::HL_operation_type_t> heuristicFound = REVERSING::HEURISTICS::checkValidity(&(this->revLogCurrent));
 
-	if (heuristicFound.isHeuristicMet())
+	if (heuristicFound.second == HLOperation::HLUnknown)
 	{
-		LOG_DEBUG("Logging heuristic that was met");
-		//Logging the found heuristic
-		this->revLogHeuristics.logInsert(heuristicFound);
+		//We did not get any heuristic met
+		return;
+	}
 
-		//LOG_DEBUG("CHECKPOINT REVLOGHEURISTICS[last]: " << this->revLogHeuristics.getLogVector().back().getComparisonColorsFirst().at(0));
+	
+	if (heuristicFound.second == HLOperation::HLComparison)
+	{
+		HLComparison* heuristic = static_cast<HLComparison*>(heuristicFound.first);
+		if (heuristic->isHeuristicMet())
+		{
+			LOG_DEBUG("Logging comparison heuristic that was met");
+			//Logging the found heuristic
+			this->revLogComparisonHeuristics.logInsert(*heuristic);
 
-		//For tests relying on heuristics
-		HeuristicMilestone testMilestone = HeuristicMilestone(heuristicFound.getInstructionVector(), TestMilestone::HEURISTIC);
-		globalTestEngine.logMilestone(&testMilestone);
+			//LOG_DEBUG("CHECKPOINT REVLOGHEURISTICS[last]: " << this->revLogHeuristics.getLogVector().back().getComparisonColorsFirst().at(0));
+
+			//For tests relying on heuristics
+			HeuristicMilestone testMilestone = HeuristicMilestone(heuristic->getInstructionVector(), TestMilestone::HEURISTIC);
+			globalTestEngine.logMilestone(&testMilestone);
+		}
+	}
+	else if (heuristicFound.second == HLOperation::HLPointerField)
+	{
+		HLPointerField* heuristic = static_cast<HLPointerField*>(heuristicFound.first);
+		if (heuristic->isHeuristicMet())
+		{
+			LOG_DEBUG("Logging pointer field heuristic that was met");
+			//Logging the found heuristic
+			this->revLogPointerFieldHeuristics.logInsert(*heuristic);
+
+			//LOG_DEBUG("CHECKPOINT REVLOGHEURISTICS[last]: " << this->revLogHeuristics.getLogVector().back().getComparisonColorsFirst().at(0));
+
+			//For tests relying on heuristics
+			HeuristicMilestone testMilestone = HeuristicMilestone(heuristic->getInstructionVector(), TestMilestone::HEURISTIC);
+			globalTestEngine.logMilestone(&testMilestone);
+		}
 	}
 }
 
@@ -80,13 +108,22 @@ int RevContext::getRevLogCurrentLength()
 
 void RevContext::dumpFoundHeuristics()
 {
-	for (HLComparison& c : this->revLogHeuristics.getLogVector())
+	for (HLComparison& c : this->revLogComparisonHeuristics.getLogVector())
+	{
+		dataDumper.writeRevHeuristicDumpLine(c);
+	}
+	for (HLPointerField& c : this->revLogPointerFieldHeuristics.getLogVector())
 	{
 		dataDumper.writeRevHeuristicDumpLine(c);
 	}
 }
 
-RevLog<HLComparison>& RevContext::getHeuristicsVector()
+RevLog<HLComparison>& RevContext::getComparisonHeuristicsVector()
 {
-	return this->revLogHeuristics;
+	return this->revLogComparisonHeuristics;
+}
+
+RevLog<HLPointerField>& RevContext::getPointerFieldHeuristicsVector()
+{
+	return this->revLogPointerFieldHeuristics;
 }

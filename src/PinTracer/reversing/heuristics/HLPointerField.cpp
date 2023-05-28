@@ -17,7 +17,7 @@ void HLPointerField::initializeRevHeuristic()
 	REVERSING::HEURISTICS::OPERATORS::OpPointerArithmetic opPArith = REVERSING::HEURISTICS::OPERATORS::OpPointerArithmetic();
 	for (std::vector<RevHeuristicAtom>& vec : opPArith.getVectorOfAtomVectors())
 	{
-		HLPointerField::revHeuristic.push_back(vec);
+		HLPointerField::revHeuristic.push_back(RevHeuristic(vec, HLOperation::HLPointerField));
 	}
 
 }

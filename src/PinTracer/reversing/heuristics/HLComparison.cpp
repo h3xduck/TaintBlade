@@ -44,7 +44,7 @@ void HLComparison::initializeRevHeuristic()
 	REVERSING::HEURISTICS::OPERATORS::OpComparison opComparison = REVERSING::HEURISTICS::OPERATORS::OpComparison();
 	for (std::vector<RevHeuristicAtom>& vec : opComparison.getVectorOfAtomVectors())
 	{
-		HLComparison::revHeuristic.push_back(vec);
+		HLComparison::revHeuristic.push_back(RevHeuristic(vec, HLOperation::HL_operation_type_t::HLComparison));
 	}
 	
 }

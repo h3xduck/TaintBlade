@@ -1,4 +1,3 @@
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintcontroller.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolreverser.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolnetworkbuffer.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolword.obj
@@ -10,6 +9,7 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revlog.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revcontext.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revatom.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\specialopc.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\stringopc.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\overwriteopc.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\controlflowopc.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\compareopc.obj
@@ -18,8 +18,6 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\binaryopc.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\instrumentationmanager.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\core.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\context.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tracepoint.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tracemanager.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\format.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\datadumper.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\commandcenter.obj
@@ -37,14 +35,19 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tagmap.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tregister.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taglog.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tag.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintmanager.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\stringopc.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintsink.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintmanager.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintcontroller.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tracepoint.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tracemanager.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\hlpointerfield.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\hloperation.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\opcomparison.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\shiftopc.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\oppointerarithmetic.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.lib
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.exp
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.dll
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.pdb
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\repeatstringprefixopc.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\cl.command.1.tlog
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\cl.read.1.tlog
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.tlog\cl.write.1.tlog

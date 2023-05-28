@@ -19,7 +19,7 @@
 #define LOG_REV_DEBUG_i(log)
 #endif
 
-HLComparison REVERSING::HEURISTICS::checkValidity(RevLog<RevAtom> *revLog)
+std::pair<HLOperation*, HLOperation::HL_operation_type_t> REVERSING::HEURISTICS::checkValidity(RevLog<RevAtom> *revLog)
 {
 	if (HLComparison::getInternalRevHeuristic().empty())
 	{
@@ -33,18 +33,30 @@ HLComparison REVERSING::HEURISTICS::checkValidity(RevLog<RevAtom> *revLog)
 
 	LOG_DEBUG("Heuristics for all operators are initialized");
 
-	std::vector<RevAtom> atomVec = REVERSING::HEURISTICS::checkHeuristicAlgNRS(revLog);
-	if (atomVec.empty())
+	std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t> atomVec = REVERSING::HEURISTICS::checkHeuristicAlgNRS(revLog);
+	if (atomVec.first.empty())
 	{
-		return HLComparison();
+		return {NULL, HLOperation::HL_operation_type_t::HLUnknown};
 	}
 	else
 	{
-		HLComparison hl(atomVec);
-		//Calculate the comparison values (and its result) based on the loaded atoms
-		hl.calculateHLOperationFromLoadedAtoms();
-		hl.setHeuristicMet(1);
-		return hl;
+		//We've got a successful heuristic met at this point
+		if (atomVec.second == HLOperation::HLComparison)
+		{
+			HLComparison *hl = new HLComparison(atomVec.first);
+			//Calculate the comparison values (and its result) based on the loaded atoms
+			hl->calculateHLOperationFromLoadedAtoms();
+			hl->setHeuristicMet(1);
+			return {hl, HLOperation::HL_operation_type_t::HLComparison};
+		}
+		else if(atomVec.second == HLOperation::HLPointerField)
+		{
+			HLPointerField *hl = new HLPointerField(atomVec.first);
+			hl->calculateHLOperationFromLoadedAtoms();
+			hl->setHeuristicMet(1);
+			return { hl, HLOperation::HL_operation_type_t::HLPointerField};
+		}
+		
 	}
 }
 
@@ -121,10 +133,10 @@ std::vector<RevHeuristic> getTotalInternalRevHeuristic()
 }
 
 
-std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom> *revLog)
+std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom> *revLog)
 {
 	//Result vector
-	std::vector<RevAtom> resAtomVec(0);
+	std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t> resAtomVec(std::vector<RevAtom>(0), HLOperation::HLUnknown);
 
 	//We must check whether the revLog corresponds to any of the hardcoded heuristics
 	std::vector<RevAtom> revLogVector = revLog->getLogVector();
@@ -267,7 +279,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					{
 						//Go to next heuristic
 						LOG_REV_DEBUG_i("Heuristic check halted at instruction position " << currentInstructionIndex+1 << " because of a previous hit");
-						resAtomVec.clear();
+						resAtomVec.first.clear();
 						goto endOfHeuristic;
 					}
 
@@ -342,7 +354,9 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					//If we are here, the heuristic was met for this instruction atom
 					//It must be met for all, so just continue to the next one
 					LOG_REV_DEBUG_i("Atom met the heuristic");
-					resAtomVec.push_back(itAtom);
+
+					resAtomVec.first.push_back(itAtom);
+					resAtomVec.second = heuristic.heuristicType();
 					numberInstructionsMet++;
 
 					if (numberInstructionsMet == heuristicLength)
@@ -365,7 +379,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 			{
 				//Failed the quick check
 				numberInstructionsMet = 0;
-				resAtomVec.clear();
+				resAtomVec.first.clear();
 				LOG_REV_DEBUG("Failed quickCompare");
 			}
 
@@ -385,7 +399,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 
 			//Reset number of heuristic atoms met, since we will go check another sequence starting at another position
 			numberInstructionsMet = 0;
-			resAtomVec.clear();
+			resAtomVec.first.clear();
 
 			LOG_REV_DEBUG("Finished checking heuristic starting at index " << jj);
 
@@ -398,5 +412,5 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 	} //end of all heuristics
 
 	//Return empty vector
-	return std::vector<RevAtom>();
+	return std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t>();
 }

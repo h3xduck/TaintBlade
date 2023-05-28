@@ -928,7 +928,7 @@ int main(int argc, char* argv[])
 			scopeFilterer.addScopeImage(dllName);
 		}
 	}
-
+	
 	//Registering analyzer timeout, if requested
 	if (timeoutMillis != 0)
 	{

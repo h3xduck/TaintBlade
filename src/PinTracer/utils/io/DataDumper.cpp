@@ -100,8 +100,19 @@ void DataDumper::writeRevHeuristicDumpLine(HLComparison log)
 {
 	std::vector<RevAtom> atomVec = log.getFullAtomVector();
 	std::vector<std::string> instVec = log.getInstructionVector();
-	this->heuristicsResultsDumpFile << "HEURISTIC MET: " <<std::endl;
+	this->heuristicsResultsDumpFile << "COMPARISON HEURISTIC MET: " <<std::endl;
 	for (int ii=0; ii<atomVec.size(); ii++)
+	{
+		this->heuristicsResultsDumpFile << "\t" << to_hex(atomVec.at(ii).getBaseAddress()) << ": " << instVec.at(ii) << std::endl;
+	}
+}
+
+void DataDumper::writeRevHeuristicDumpLine(HLPointerField log)
+{
+	std::vector<RevAtom> atomVec = log.getFullAtomVector();
+	std::vector<std::string> instVec = log.getInstructionVector();
+	this->heuristicsResultsDumpFile << "POINTER FIELD HEURISTIC MET: " << std::endl;
+	for (int ii = 0; ii < atomVec.size(); ii++)
 	{
 		this->heuristicsResultsDumpFile << "\t" << to_hex(atomVec.at(ii).getBaseAddress()) << ": " << instVec.at(ii) << std::endl;
 	}

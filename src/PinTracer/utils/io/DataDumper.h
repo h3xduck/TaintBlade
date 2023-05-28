@@ -88,6 +88,7 @@ public:
 	void writeRoutineDumpLine(struct func_dll_names_dump_line_t data);
 	void writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair<ADDRINT, UINT16>>);
 	void writeRevHeuristicDumpLine(HLComparison log);
+	void writeRevHeuristicDumpLine(HLPointerField log);
 	void writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol);
 	void writeTraceDumpLine(UTILS::TRACE::TracePoint& tp);
 
