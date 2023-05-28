@@ -57,7 +57,7 @@ void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UI
 void OPC_INST::cmp_after(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, UINT32 opc)
 {
 	//This is called after executing the CMP instruction. Now, insert the atom in the log
-	INST_COMMON::revLogInst_after(lctx, ip);
+	INST_COMMON::revLogInst_after(lctx, ip, REG_INVALID());
 }
 
 

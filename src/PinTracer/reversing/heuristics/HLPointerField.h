@@ -6,6 +6,7 @@
 #include "../data/RevHeuristicAtom.h"
 #include "RevHeuristic.h"
 #include "../../utils/io/log.h"
+#include "operators/OpPointerArithmetic.h"
 
 class HLPointerField : public HLOperation
 {

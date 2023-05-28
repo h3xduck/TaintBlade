@@ -19,7 +19,7 @@
 #define DEBUG_IN_HEX 1
 
 //Debug heuristics process
-#define HEURISTIC_DEBUG 0
+#define HEURISTIC_DEBUG 1
 
 //******************************* DATA DUMPING CONFIG *******************************//
 

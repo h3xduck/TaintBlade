@@ -257,13 +257,13 @@ namespace INST_COMMON
 	Instruction that describes a lea instruction, from a memory address to a register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, bool needsAfterInstruction = false);
+	void revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, UINT32 leaScale, UINT32 leaDis, UINT32 opc, bool needsAfterInstruction);
 
 	/**
 	This instrumentation is for instructions that need to be instrumented before and after their execution (e,g, CMP).
 	In this case, we take the atom saved in the context and save that one
 	*/
-	void revLogInst_after(LEVEL_VM::CONTEXT *lctx, ADDRINT ip);
+	void revLogInst_after(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg);
 
 	/**
 	Instruction that was part of a REPNE SCAS

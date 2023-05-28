@@ -38,6 +38,8 @@ private:
 	REG leaIndex; 
 	UINT32 leaScale;
 	UINT32 leaDis;
+	//leaDest is contained in regDest
+	//memDest will contain the memory address stored as a pointer in regDest
 
 	//For instructions with immediate as operand
 	ADDRINT immSrc;
@@ -97,6 +99,10 @@ public:
 	REG getLeaBase();
 	void setLeaIndex(REG leaIndex);
 	REG getLeaIndex();
+	void setLeaScale(UINT32 leaScale);
+	UINT32 getLeaScale();
+	void setLeaDis(UINT32 leaDis);
+	UINT32 getLeaDis();
 	ADDRINT getImmSrc();
 	void setImmSrc(ADDRINT immSrc);
 

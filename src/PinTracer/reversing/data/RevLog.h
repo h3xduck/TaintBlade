@@ -5,6 +5,7 @@
 #include <vector>
 #include "RevAtom.h"
 #include "../heuristics/HLComparison.h"
+#include "../heuristics/HLPointerField.h"
 
 template <typename T> 
 class RevLog

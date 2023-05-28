@@ -31,6 +31,11 @@ private:
 	//Will be empty except for operations when it's needed (e.g CMP after its execution)
 	std::vector<UINT8> flags;
 
+	//For LEA instructions
+	std::vector<UINT8> regLeaBaseBytes;
+	std::vector<UINT8> regLeaIndexBytes;
+	//leaDest bytes contained in regDest
+
 	//For REPNE SCAS operations
 	std::vector<UINT8> scasMemBytes;
 	std::vector<UINT8> regScasXAXBytes;
@@ -40,18 +45,11 @@ private:
 public:
 	RevDataAtom() {};
 	RevDataAtom(std::vector<UINT8> memSrc, std::vector<UINT8> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest, std::vector<UINT8> flags,
-		std::vector<UINT8> scasMemBytes, std::vector<UINT8> regScasXAXBytes, std::vector<UINT8> regScasXCXBytes, std::vector<UINT8> regScasXDIBytes)
-	{
-		this->memSrcValueBytes = memSrc;
-		this->memDestValueBytes = memDest;
-		this->regSrcValueBytes = regSrc;
-		this->regDestValueBytes = regDest;
-		this->flags = flags;
-		this->scasMemBytes = scasMemBytes;
-		this->regScasXAXBytes = regScasXAXBytes;
-		this->regScasXCXBytes = regScasXCXBytes;
-		this->regScasXDIBytes = regScasXDIBytes;
-	}
+		std::vector<UINT8> regLeaBaseBytes, std::vector<UINT8> regLeaIndexBytes, std::vector<UINT8> scasMemBytes,
+		std::vector<UINT8> regScasXAXBytes, std::vector<UINT8> regScasXCXBytes, std::vector<UINT8> regScasXDIBytes) :
+		memSrcValueBytes(memSrc), memDestValueBytes(memDest), regSrcValueBytes(regSrc), regDestValueBytes(regDest), flags(flags), regLeaBaseBytes(regLeaBaseBytes),
+		regLeaIndexBytes(regLeaIndexBytes), scasMemBytes(scasMemBytes), regScasXAXBytes(regScasXAXBytes), regScasXCXBytes(regScasXCXBytes),
+		regScasXDIBytes(regScasXDIBytes) {};
 
 	void setMemSrcValueBytes(std::vector<char> valueBytes)
 	{
@@ -152,6 +150,32 @@ public:
 	std::vector<UINT8> getFlagsValue()
 	{
 		return this->flags;
+	}
+
+	//LEA
+	std::vector<UINT8>& getLeaBaseValue()
+	{
+		return this->regLeaBaseBytes;
+	}
+	void setLeaBaseValue(UINT8* value, UINT32 byteSize)
+	{
+		this->regLeaBaseBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regLeaBaseBytes.push_back(value[ii]);
+		}
+	}
+	std::vector<UINT8>& getLeaIndexValue()
+	{
+		return this->regLeaIndexBytes;
+	}
+	void setLeaIndexValue(UINT8* value, UINT32 byteSize)
+	{
+		this->regLeaIndexBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regLeaIndexBytes.push_back(value[ii]);
+		}
 	}
 
 	//REPE / REPNE SCAS

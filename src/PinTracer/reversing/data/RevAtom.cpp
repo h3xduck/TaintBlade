@@ -166,6 +166,25 @@ void RevAtom::setLeaIndex(REG leaIndex)
 	this->getRevHeuristicAtom()->leaIndexTainted = true;
 }
 
+void RevAtom::setLeaScale(UINT32 leaScale)
+{
+	this->leaScale = leaScale;
+}
+
+UINT32 RevAtom::getLeaScale()
+{
+	return this->leaScale;
+}
+
+void RevAtom::setLeaDis(UINT32 leaDis)
+{
+	this->leaDis = leaDis;
+}
+
+UINT32 RevAtom::getLeaDis() {
+	return this->leaDis;
+}
+
 ADDRINT RevAtom::getImmSrc()
 {
 	return this->immSrc;

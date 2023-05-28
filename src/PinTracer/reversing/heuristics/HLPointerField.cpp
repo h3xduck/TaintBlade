@@ -14,10 +14,11 @@ void HLPointerField::initializeRevHeuristic()
 		return;
 	}
 
-	std::vector<RevHeuristicAtom> atoms;
-	int ii = 0;
-
-	//TODO - Write the heuristics 
+	REVERSING::HEURISTICS::OPERATORS::OpPointerArithmetic opPArith = REVERSING::HEURISTICS::OPERATORS::OpPointerArithmetic();
+	for (std::vector<RevHeuristicAtom>& vec : opPArith.getVectorOfAtomVectors())
+	{
+		HLPointerField::revHeuristic.push_back(vec);
+	}
 
 }
 
@@ -28,6 +29,11 @@ std::vector<RevHeuristic> HLPointerField::getInternalRevHeuristic()
 
 const int HLPointerField::getRevHeuristicNumber()
 {
+	if (HLPointerField::getInternalRevHeuristic().empty())
+	{
+		HLPointerField::initializeRevHeuristic();
+		//LOG_DEBUG("Heuristics for HLPointerField initialized");
+	}
 	return HLPointerField::revHeuristic.size();
 }
 

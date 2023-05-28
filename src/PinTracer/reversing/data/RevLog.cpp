@@ -1,10 +1,15 @@
 #include "RevLog.h"
 
+int getTotalHeuristicsNumber()
+{
+	return HLComparison::getRevHeuristicNumber() + HLPointerField::getRevHeuristicNumber();
+}
+
 template <typename T>
 RevLog<T>::RevLog()
 {
 	this->revLogVector.clear();
-	this->lastHeuristicHits = std::vector<int>(HLComparison::getRevHeuristicNumber(), -1);
+	this->lastHeuristicHits = std::vector<int>(getTotalHeuristicsNumber(), -1);
 }
 
 //https://isocpp.org/wiki/faq/templates#separate-template-class-defn-from-decl
@@ -15,7 +20,7 @@ template <typename T>
 void RevLog<T>::cleanLog()
 {
 	this->revLogVector.clear();
-	this->lastHeuristicHits = std::vector<int>(HLComparison::getRevHeuristicNumber(), -1);
+	this->lastHeuristicHits = std::vector<int>(getTotalHeuristicsNumber(), -1);
 }
 
 template <typename T>

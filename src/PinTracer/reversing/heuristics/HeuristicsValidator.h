@@ -1,7 +1,9 @@
 #ifndef _HEURISTICVALIDATOR_H_
 #define _HEURISTICVALIDATOR_H_
 
+#include "HLOperation.h"
 #include "HLComparison.h"
+#include "HLPointerField.h"
 #include "../../taint/core/TaintManager.h"
 
 

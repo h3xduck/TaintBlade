@@ -40,6 +40,8 @@ public:
 	//For LEA operations
 	bool leaBaseTainted = 0;
 	bool leaIndexTainted = 0;
+	//leaDest is contained in regDest
+	bool leaIndirectTaint = 0; //indicates that there was an indirect taint (a pointer to a tainted address was LEA-ed)
 
 	//For REPE/REPNE SCAS operations
 	bool scasMemTainted = 0;
@@ -52,11 +54,11 @@ public:
 	RevHeuristicAtom(int instType, atom_operands_type_t operandsType,
 		bool memSrcTainted, bool memDestTainted, bool regSrcTainted,
 		bool regDestTainted, bool leaBaseTainted,
-		bool leaIndexTainted, bool hasImmSrc,
+		bool leaIndexTainted, bool leaIndirectTaint, bool hasImmSrc,
 		bool scasMemTainted, bool regScasXAXTainted, bool regScasXCXTainted, bool regScasXDITainted)
 		: instType(instType), operandsType(operandsType), memSrcTainted(memSrcTainted), memDestTainted(memDestTainted),
 		regSrcTainted(regSrcTainted), regDestTainted(regDestTainted), leaBaseTainted(leaBaseTainted),
-		leaIndexTainted(leaIndexTainted), hasImmSrc(hasImmSrc), scasMemTainted(scasMemTainted),
+		leaIndexTainted(leaIndexTainted), leaIndirectTaint(leaIndirectTaint), hasImmSrc(hasImmSrc), scasMemTainted(scasMemTainted),
 		regScasXAXTainted(regScasXAXTainted), regScasXCXTainted(regScasXCXTainted),
 		regScasXDITainted(regScasXDITainted) {}
 
@@ -89,6 +91,7 @@ public:
 		//Check tainting
 		if ((other.leaBaseTainted && !this->leaBaseTainted) || 
 			(other.leaIndexTainted && !this->leaIndexTainted) || 
+			(other.leaIndirectTaint && !this->leaIndirectTaint) ||
 			(other.memDestTainted && !this->memDestTainted) || 
 			(other.memSrcTainted && !this->memSrcTainted) || 
 			(other.regDestTainted && !this->regDestTainted) || 
@@ -110,7 +113,7 @@ public:
 	*/
 	bool containsAnyData()
 	{
-		if (this->hasImmSrc || this->instType != 0 || this->leaBaseTainted ||
+		if (this->hasImmSrc || this->instType != 0 || this->leaBaseTainted || this->leaIndirectTaint ||
 			this->leaIndexTainted || this->memDestTainted || this->memSrcTainted ||
 			this->regDestTainted || this->regSrcTainted || this->scasMemTainted ||
 			this->regScasXAXTainted || this->regScasXCXTainted || this->regScasXDITainted)
