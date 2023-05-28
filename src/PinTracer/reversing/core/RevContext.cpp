@@ -43,6 +43,7 @@ void RevContext::operateRevLog()
 			//For tests relying on heuristics
 			HeuristicMilestone testMilestone = HeuristicMilestone(heuristic->getInstructionVector(), TestMilestone::HEURISTIC);
 			globalTestEngine.logMilestone(&testMilestone);
+			delete heuristic;
 		}
 	}
 	else if (heuristicFound.second == HLOperation::HLPointerField)
@@ -59,6 +60,7 @@ void RevContext::operateRevLog()
 			//For tests relying on heuristics
 			HeuristicMilestone testMilestone = HeuristicMilestone(heuristic->getInstructionVector(), TestMilestone::HEURISTIC);
 			globalTestEngine.logMilestone(&testMilestone);
+			delete heuristic;
 		}
 	}
 }
