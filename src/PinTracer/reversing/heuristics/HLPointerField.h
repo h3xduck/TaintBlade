@@ -20,25 +20,25 @@ private:
 	Pointer to a vector of colors, where each color is of one byte
 	from the value the pointer field is made of
 	*/
-	std::vector<UINT16> comparisonColorsPointer;
+	std::vector<UINT16> comparisonColorsPointer_;
 
 	/**
 	Pointer to a vector of colors, where each color is of one byte
 	from the value of the element that is pointed to by the pointer field
 	*/
-	std::vector<UINT16> comparisonColorsPointed;
+	std::vector<UINT16> comparisonColorsPointed_;
 
 	/**
 	Pointer to a vector of bytes, where each color is of one byte
 	from the value the pointer field is made of
 	*/
-	std::vector<UINT8> comparisonValuesPointer;
+	std::vector<UINT8> comparisonValuesPointer_;
 
 	/**
 	Pointer to a vector of bytes, where each color is of one byte
 	from the value of the element that is pointed to by the pointer field
 	*/
-	std::vector<UINT8> comparisonValuesPointed;
+	std::vector<UINT8> comparisonValuesPointed_;
 
 
 public:
@@ -59,6 +59,12 @@ public:
 	static const int getRevHeuristicNumber();
 
 	virtual void calculateHLOperationFromLoadedAtoms();
+
+	//setters and getters
+	std::vector<UINT16>& comparisonColorsPointer() { return this->comparisonColorsPointer_; }
+	std::vector<UINT16>& comparisonColorsPointed() { return this->comparisonColorsPointed_; }
+	std::vector<UINT8>& comparisonValuesPointer() { return this->comparisonValuesPointer_; }
+	std::vector<UINT8>& comparisonValuesPointed() { return this->comparisonValuesPointed_; }
 };
 
 #endif

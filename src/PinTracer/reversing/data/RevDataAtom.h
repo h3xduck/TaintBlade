@@ -174,6 +174,7 @@ public:
 		this->regLeaIndexBytes.clear();
 		for (UINT32 ii = 0; ii < byteSize; ii++)
 		{
+			LOG_DEBUG("Pushed lea: " << value[ii]);
 			this->regLeaIndexBytes.push_back(value[ii]);
 		}
 	}

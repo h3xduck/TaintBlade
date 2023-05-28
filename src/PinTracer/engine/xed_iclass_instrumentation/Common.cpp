@@ -254,7 +254,9 @@ void manageLeaIndirectTaints(LEVEL_VM::CONTEXT* lctx, RevAtom* atom, REG destReg
 				atomColor->leaBaseColor = leaBaseColorVec;
 				atomColor->leaBaseDisColor = leaBaseDisColorVec;
 				atomColor->leaIndexColor = leaIndexColors;
-				
+
+				//Get the bytes in reversed order, going from MSB (at [0]) to LSB (at [size-1])
+				InstructionWorker::getRegisterValue(lctx, leaIndex, leaIndexBuffer);
 				atomData->setLeaBaseValue(leaBaseBuffer, REG_Size(leaBase));
 				atomData->setLeaIndexValue(leaIndexBuffer, REG_Size(leaIndex));
 			}

@@ -170,6 +170,24 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 			}
 			this->protocolResultsDumpFile << "\t\t" << wordStr << std::endl;
 		}
+
+		//Also inform about found pointer fields
+		std::vector<REVERSING::PROTOCOL::ProtocolPointer>& protPointerVec = protNetBuf.pointerVector();
+		this->protocolResultsDumpFile << "\tThe buffer contains " << protPointerVec.size() << " pointer fields:" << std::endl;
+		for (REVERSING::PROTOCOL::ProtocolPointer& protPointer : protPointerVec)
+		{
+			//Print the pointer, pad it with some tabs for pretty printing
+			std::string ptrStr = protPointer.toString();
+			std::string old("\n");
+			std::string rep("\n\t\t");
+			for (std::size_t pos = 0;
+				(pos = ptrStr.find(old, pos)) != std::string::npos;
+				pos += rep.length())
+			{
+				ptrStr.replace(pos, old.length(), rep);
+			}
+			this->protocolResultsDumpFile << "\t\t" << ptrStr << std::endl;
+		}
 		this->protocolResultsDumpFile << std::endl;
 	}
 }

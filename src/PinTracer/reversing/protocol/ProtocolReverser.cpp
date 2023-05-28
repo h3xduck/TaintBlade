@@ -65,7 +65,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	//The first one should be the first byte, it was supposed to be put in order
 	protNetBuffer.setStartMemAddress(orgVec.front().second.memAddress);
 	protNetBuffer.setStartColor(orgVec.front().first);
-	LOG_DEBUG("Starting protocol reversing, found " << logHeuristicVec.size() << " heuristics and " << orgVec.size() << " entries at the original colors vector");
+	LOG_DEBUG("Starting protocol reversing, found " << logHeuristicVec.size() << " comparison heuristics and " << orgVec.size() << " entries at the original colors vector");
 	while(currentVectorIndex < orgVec.size())
 	{
 		//We get both the heuristic (which has the original RevAtoms inside) and the color information
@@ -355,13 +355,47 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 	} //finished parsing for all protocol netbuffers
 	
+
+	//Once we've got all comparison heuristics interpreted into the protocol netbuffers, we will do the same with
+	//the pointer field heuristics
+	RevLog<HLPointerField>& pointerFieldheuristicsVec = ctx.getRevContext()->getPointerFieldHeuristicsVector();
+	std::vector<HLPointerField>& logPointerFieldHeuristicVec = pointerFieldheuristicsVec.getLogVector();
+	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
+	{
+		for (HLPointerField& pointerField : logPointerFieldHeuristicVec)
+		{
+			//Check if any of the pointer value goes correspond to this buffer
+			std::vector<UINT16> colorPointerVec = pointerField.comparisonColorsPointed();
+			UINT16 pointedColor = colorPointerVec.at(0);
+			if (pointedColor >= buf.getStartColor() && pointedColor <= buf.getEndColor())
+			{
+				ProtocolPointer protPointer(pointerField.comparisonValuesPointer(), pointerField.comparisonColorsPointer(), pointedColor);
+				buf.pointerVector().push_back(protPointer);
+				continue;
+			}
+			//Or if the pointed color corresponds to it
+			if (pointedColor >= buf.getStartColor() && pointedColor <= buf.getEndColor())
+			{
+				ProtocolPointer protPointer(pointerField.comparisonValuesPointer(), pointerField.comparisonColorsPointer(), pointedColor);
+				buf.pointerVector().push_back(protPointer);
+			}
+
+		}
+	}
+
 	//Test
 	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
 	{
 		LOG_DEBUG("NETWORKBUFFER of len:"<< buf.getWordVector().size());
+		LOG_DEBUG("PROTOCOL WORDS:")
 		for (ProtocolWord& word : buf.getWordVector())
 		{
 			LOG_DEBUG(word.toString());
+		}
+		LOG_DEBUG("PROTOCOL POINTERS ("<<buf.pointerVector().size()<<"):");
+		for (ProtocolPointer& pointer : buf.pointerVector())
+		{
+			LOG_DEBUG(pointer.toString());
 		}
 	}
 

@@ -94,7 +94,6 @@ void HLComparison::calculateHLOperationFromLoadedAtoms()
 	//First we will find which element of the atom has the comparison
 	//NOTE: Add here the calculation for other types of heuristics
 
-	//Heuristic CMP(REG, reg)
 	for (RevAtom& atom : this->revAtomVector)
 	{
 		RevHeuristicAtom* hAtom = atom.getRevHeuristicAtom();
@@ -241,7 +240,7 @@ void HLComparison::calculateHLOperationFromLoadedAtoms()
 		}
 		else
 		{
-			LOG_DEBUG("Requested to calculate values for an heuristic but the rules to do so are not loaded. Ignoring")
+			LOG_DEBUG("Requested to calculate values for a comparison heuristic but the rules to do so are not loaded. Ignoring")
 		}
 	}
 
