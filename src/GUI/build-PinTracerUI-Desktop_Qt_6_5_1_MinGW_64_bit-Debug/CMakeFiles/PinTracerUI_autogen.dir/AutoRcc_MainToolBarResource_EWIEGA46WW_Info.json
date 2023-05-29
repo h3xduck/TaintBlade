@@ -1,0 +1,30 @@
+{
+	"BUILD_DIR" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/PinTracerUI_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI",
+	"CMAKE_SOURCE_DIR" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI",
+	"INCLUDE_DIR" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/PinTracerUI_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-dll-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-flag-filled-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-usb-connected-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-knight-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-start-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-select-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-opened-folder-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-log-26.png",
+		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/icons/icons8-stop-26.png"
+	],
+	"LOCK_FILE" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/CMakeFiles/PinTracerUI_autogen.dir/AutoRcc_MainToolBarResource_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "MainToolBarResource" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_MainToolBarResource.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.5.1/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/CMakeFiles/PinTracerUI_autogen.dir/AutoRcc_MainToolBarResource_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/MainToolBarResource.qrc",
+	"VERBOSITY" : 0
+}
