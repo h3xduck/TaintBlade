@@ -1,3 +1,4 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-E:  Function LEVEL_PINCLIENT::IMG_FindByAddress called without holding lock. Call PIN_LockClient()/PIN_UnlockClient()
+A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\base_ia32\reg_ia32.cpp: LEVEL_BASE::REG_Size: 2135: Invalid register for REG_Size: *invalid*
+

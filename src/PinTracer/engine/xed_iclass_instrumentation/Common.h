@@ -174,6 +174,53 @@ Deprecated
 	IARG_INST_PTR, IARG_UINT32, INS_Opcode(ins), IARG_END);	\
 }
 
+
+////////////////// For REPE / REPNE instructions. 2 regs, 1 mem //////////////////
+#define INS_CALL_REPXE_M8_x32(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_AL, IARG_UINT32, REG::REG_EDI, IARG_UINT32, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_REPXE_M8_x64(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_AL, IARG_UINT32, REG::REG_RDI, IARG_UINT32, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_REPXE_M16(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_AX, IARG_UINT32, REG::REG_EDI, IARG_UINT32, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_REPXE_M32(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_EAX, IARG_UINT32, REG::REG_EDI, IARG_UINT32, REG::REG_ECX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+#define INS_CALL_REPXE_M64(proc_func, ins) \
+{	\
+	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) proc_func, IARG_CONST_CONTEXT, IARG_THREAD_ID, \
+	IARG_INST_PTR, IARG_MEMORYREAD_EA, IARG_MEMORYREAD_SIZE,	\
+	IARG_UINT32, REG::REG_RAX, IARG_UINT32, REG::REG_RDI, IARG_UINT32, REG::REG_RCX, \
+	IARG_UINT32, INS_Opcode(ins), IARG_END);	\
+}
+
+
+
+
+
+
 namespace INST_COMMON
 {
 	/**
@@ -210,13 +257,19 @@ namespace INST_COMMON
 	Instruction that describes a lea instruction, from a memory address to a register.
 	Checks tainted elements, and creates an atom in the RevLog if any.
 	*/
-	void revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, bool needsAfterInstruction = false);
+	void revLogInst_lea_mem2reg(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, REG destReg, REG leaBase, REG leaIndex, UINT32 leaScale, UINT32 leaDis, UINT32 opc, bool needsAfterInstruction);
 
 	/**
 	This instrumentation is for instructions that need to be instrumented before and after their execution (e,g, CMP).
 	In this case, we take the atom saved in the context and save that one
 	*/
-	void revLogInst_after(LEVEL_VM::CONTEXT *lctx, ADDRINT ip);
+	void revLogInst_after(LEVEL_VM::CONTEXT *lctx, ADDRINT ip, REG destReg);
+
+	/**
+	Instruction that was part of a REPNE SCAS
+	If any element is tainted, goes into the RevLog
+	*/
+	void revLogInst_repnescas(LEVEL_VM::CONTEXT* lctx, ADDRINT ip, ADDRINT mem, INT32 memLen, REG regXAX, REG regXCX, REG regXDI, UINT32 opc);
 }
 
 

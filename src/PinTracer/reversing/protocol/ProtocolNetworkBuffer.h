@@ -3,6 +3,8 @@
 
 #include "pin.H"
 #include "ProtocolWord.h"
+#include "ProtocolPointer.h"
+#include "../../taint/data/TagLog.h"
 
 namespace REVERSING
 {
@@ -47,15 +49,26 @@ namespace REVERSING
 			std::vector<UINT16> colorsVector;
 
 			/**
-			Vector of words (delimeters and keywords) that apply to this network buffer
+			Vector of protocol words (delimeters and keywords) that apply to this network buffer
 			*/
 			std::vector<ProtocolWord> wordVector;
+
+			/**
+			Vector of protocol pointers (pointer fields) that apply to this network buffer
+			*/
+			std::vector<ProtocolPointer> pointerVector_;
+
+			/**
+			Vector of taint reasons, one for each color, detailing whether there is a special reason behind
+			any byte was tainted
+			*/
+			std::vector<TagLog::color_taint_reason_t> colorTaintReasonsVector;
 
 		public:
 			ProtocolNetworkBuffer();
 			ProtocolNetworkBuffer(ADDRINT start, ADDRINT end);
 
-			//Setters and getters
+			//Setters and getters - TODO refactoring to C++ syntax (check ProtocolPointer.h)
 			void setStartMemAddress(ADDRINT address);
 			void setEndMemAddress(ADDRINT address);
 			ADDRINT getStartMemAddress();
@@ -73,6 +86,11 @@ namespace REVERSING
 			void setWordVector(std::vector<ProtocolWord> vec);
 			void addWordToWordVector(ProtocolWord &word);
 			std::vector<ProtocolWord> getWordVector();
+			void setcolorTaintReasonsVector(std::vector<TagLog::color_taint_reason_t> vec);
+			void addReasonTocolorTaintReasonsVector(TagLog::color_taint_reason_t& reason);
+			std::vector<TagLog::color_taint_reason_t> gecolorTaintReasonsVector();
+
+			std::vector<ProtocolPointer>& pointerVector() { return this->pointerVector_; }
 		};
 	}
 }

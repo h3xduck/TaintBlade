@@ -22,6 +22,7 @@
     <ProjectGuid>{639EF517-FCFC-408E-9500-71F0DC0458DB}</ProjectGuid>
     <RootNamespace>PinTracer</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -72,8 +73,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
@@ -170,7 +171,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalOptions>/GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FI../external/pin-3.25-98650-g8f6168173-msvc-windows/pin-3.25-98650-g8f6168173-msvc-windows/extras/crt/include/msvc_compat.h %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/GR- /GS- /EHs- /EHa- /FP:strict /Oi- /FIinclude/msvc_compat.h %(AdditionalOptions)</AdditionalOptions>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <AdditionalIncludeDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\tools\InstLib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-ia32\include\xed;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\components\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\libstdc++\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\arch-x86;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\kernel\uapi\asm-x86;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -190,11 +191,12 @@
       <DebugInformationFormat>
       </DebugInformationFormat>
       <DisableSpecificWarnings>4530;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions>/export:main %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>pin.lib;xed.lib;pincrt.lib;kernel32.lib;crtbeginS.obj</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\ia32\lib;..\..\..\ia32\lib-ext;..\..\..\extras\xed-ia32\lib;..\..\..\ia32\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\ia32\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\ia32\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-ia32\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\ia32\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -239,7 +241,7 @@
     <Link>
       <AdditionalOptions>/export:main %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>pin.lib;xed.lib;pincrt.lib;kernel32.lib;crtbeginS.obj</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib;C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -263,33 +265,50 @@
     <ClCompile Include="engine\xed_iclass_instrumentation\CompareOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\ControlFlowOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\OverwriteOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\ShiftOpc.cpp" />
+    <ClCompile Include="engine\xed_iclass_instrumentation\StringOpc.cpp" />
     <ClCompile Include="engine\xed_iclass_instrumentation\SpecialOpc.cpp" />
     <ClCompile Include="reversing\data\RevAtom.cpp" />
     <ClCompile Include="reversing\core\RevContext.cpp" />
     <ClCompile Include="reversing\data\RevLog.cpp" />
     <ClCompile Include="reversing\heuristics\HeuristicsValidator.cpp" />
     <ClCompile Include="reversing\heuristics\HLComparison.cpp" />
+    <ClCompile Include="reversing\heuristics\HLOperation.cpp" />
+    <ClCompile Include="reversing\heuristics\HLPointerField.cpp" />
+    <ClCompile Include="reversing\heuristics\operators\OpComparison.cpp" />
+    <ClCompile Include="reversing\heuristics\operators\OpPointerArithmetic.cpp" />
     <ClCompile Include="reversing\heuristics\RevHeuristic.cpp" />
     <ClCompile Include="reversing\protocol\Protocol.cpp" />
+    <ClCompile Include="reversing\protocol\ProtocolPointer.cpp" />
     <ClCompile Include="reversing\protocol\ProtocolWord.cpp" />
     <ClCompile Include="reversing\protocol\ProtocolNetworkBuffer.cpp" />
     <ClCompile Include="reversing\protocol\ProtocolReverser.cpp" />
     <ClCompile Include="taint\core\TaintController.cpp" />
     <ClCompile Include="taint\core\TaintManager.cpp" />
+    <ClCompile Include="taint\core\TaintSink.cpp" />
     <ClCompile Include="taint\data\Tag.cpp" />
     <ClCompile Include="taint\data\TagLog.cpp" />
     <ClCompile Include="taint\data\TRegister.cpp" />
     <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
     <ClCompile Include="test\TestEngine.cpp" />
+    <ClCompile Include="utils\exec\DllImageLoad.cpp" />
+    <ClCompile Include="utils\exec\ExecutionManager.cpp" />
+    <ClCompile Include="utils\exec\NopSection.cpp" />
+    <ClCompile Include="utils\exec\PseudoAssemblyParser.cpp" />
     <ClCompile Include="utils\inst\InstructionWorker.cpp" />
     <ClCompile Include="utils\inst\PerformanceOperator.cpp" />
     <ClCompile Include="utils\inst\ScopeFilterer.cpp" />
     <ClCompile Include="utils\inst\SyscallParser.cpp" />
+    <ClCompile Include="utils\io\CommandCenter.cpp" />
     <ClCompile Include="utils\io\DataDumper.cpp" />
+    <ClCompile Include="utils\io\format.cpp" />
+    <ClCompile Include="utils\trace\TraceManager.cpp" />
+    <ClCompile Include="utils\trace\TracePoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\Context.h" />
+    <ClInclude Include="config\Command.h" />
     <ClInclude Include="config\GlobalConfig.h" />
     <ClInclude Include="config\Names.h" />
     <ClInclude Include="engine\core\InstrumentationManager.h" />
@@ -298,6 +317,8 @@
     <ClInclude Include="engine\xed_iclass_instrumentation\CompareOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\ControlFlowOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\OverwriteOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\ShiftOpc.h" />
+    <ClInclude Include="engine\xed_iclass_instrumentation\StringOpc.h" />
     <ClInclude Include="engine\xed_iclass_instrumentation\SpecialOpc.h" />
     <ClInclude Include="reversing\data\RevAtom.h" />
     <ClInclude Include="reversing\core\RevContext.h" />
@@ -307,13 +328,19 @@
     <ClInclude Include="reversing\data\RevLog.h" />
     <ClInclude Include="reversing\heuristics\HeuristicsValidator.h" />
     <ClInclude Include="reversing\heuristics\HLComparison.h" />
+    <ClInclude Include="reversing\heuristics\HLOperation.h" />
+    <ClInclude Include="reversing\heuristics\HLPointerField.h" />
+    <ClInclude Include="reversing\heuristics\operators\OpComparison.h" />
+    <ClInclude Include="reversing\heuristics\operators\OpPointerArithmetic.h" />
     <ClInclude Include="reversing\heuristics\RevHeuristic.h" />
     <ClInclude Include="reversing\protocol\Protocol.h" />
+    <ClInclude Include="reversing\protocol\ProtocolPointer.h" />
     <ClInclude Include="reversing\protocol\ProtocolWord.h" />
     <ClInclude Include="reversing\protocol\ProtocolNetworkBuffer.h" />
     <ClInclude Include="reversing\protocol\ProtocolReverser.h" />
     <ClInclude Include="taint\core\TaintController.h" />
     <ClInclude Include="taint\core\TaintManager.h" />
+    <ClInclude Include="taint\core\TaintSink.h" />
     <ClInclude Include="taint\data\Tag.h" />
     <ClInclude Include="taint\data\TagLog.h" />
     <ClInclude Include="taint\data\TRegister.h" />
@@ -323,13 +350,21 @@
     <ClInclude Include="test\Test.h" />
     <ClInclude Include="test\TestEngine.h" />
     <ClInclude Include="test\TestMilestone.h" />
+    <ClInclude Include="utils\debug\DebugManager.h" />
+    <ClInclude Include="utils\exec\PseudoAssemblyParser.h" />
+    <ClInclude Include="utils\exec\DllImageLoad.h" />
+    <ClInclude Include="utils\exec\ExecutionManager.h" />
+    <ClInclude Include="utils\exec\NopSection.h" />
     <ClInclude Include="utils\inst\PerformanceOperator.h" />
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
+    <ClInclude Include="utils\io\CommandCenter.h" />
     <ClInclude Include="utils\io\DataDumper.h" />
     <ClInclude Include="utils\io\format.h" />
     <ClInclude Include="utils\io\log.h" />
     <ClInclude Include="utils\inst\InstructionWorker.h" />
     <ClInclude Include="utils\inst\SyscallParser.h" />
+    <ClInclude Include="utils\trace\TraceManager.h" />
+    <ClInclude Include="utils\trace\TracePoint.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

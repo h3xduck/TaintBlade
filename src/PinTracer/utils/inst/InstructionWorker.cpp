@@ -1,7 +1,26 @@
 #include "InstructionWorker.h"
 
+std::string InstructionWorker::utf8Encode(const std::wstring& wstr)
+{
+	if (wstr.empty()) return std::string();
+	int size_needed = WINDOWS::WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), NULL, 0, NULL, NULL);
+	std::string strTo(size_needed, 0);
+	WINDOWS::WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), &strTo[0], size_needed, NULL, NULL);
+	return strTo;
+}
+
+std::wstring InstructionWorker::utf8Decode(const std::string& str)
+{
+	if (str.empty()) return std::wstring();
+	int size_needed = WINDOWS::MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), NULL, 0);
+	std::wstring wstrTo(size_needed, 0);
+	WINDOWS::MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), &wstrTo[0], size_needed);
+	return wstrTo;
+}
+
 std::string getStringFromArg(void* arg)
 {
+	//Just discovered that this function may be lossy to some character types
 	std::wstring res = InstructionWorker::printFunctionArgument((void*)arg);
 	std::string resW(res.begin(), res.end());
 	return resW;
@@ -105,8 +124,8 @@ std::wstring InstructionWorker::printFunctionArgument(void* arg)
 		}
 			
 		//Char* or wchar_t*
-		UINT64 stringLenUTF8 = getBufferStringLengthUTF8(arg);
-		UINT64 stringLenUTF16 = getBufferStringLengthUTF16(arg);
+		ADDRINT stringLenUTF8 = getBufferStringLengthUTF8(arg);
+		ADDRINT stringLenUTF16 = getBufferStringLengthUTF16(arg);
 		if (stringLenUTF8 == 1 && stringLenUTF8 < stringLenUTF16)
 		{
 			result << "Len: 0x" << stringLenUTF16;
@@ -126,10 +145,10 @@ std::wstring InstructionWorker::printFunctionArgument(void* arg)
 }
 
 
-UINT64 getBufferStringLengthUTF8(void* buf)
+ADDRINT getBufferStringLengthUTF8(void* buf)
 {
-	const UINT64 BUFFER_LIMIT_LEN = 100;
-	UINT64 ii = 0;
+	const ADDRINT BUFFER_LIMIT_LEN = 100;
+	ADDRINT ii = 0;
 
 	//std::cerr << "" << std::endl;
 
@@ -157,10 +176,10 @@ UINT64 getBufferStringLengthUTF8(void* buf)
 	return ii;
 }
 
-UINT64 getBufferStringLengthUTF16(void* buf)
+ADDRINT getBufferStringLengthUTF16(void* buf)
 {
-	const UINT64 BUFFER_LIMIT_LEN = 100;
-	UINT64 ii = 0;
+	const ADDRINT BUFFER_LIMIT_LEN = 100;
+	ADDRINT ii = 0;
 
 	while (ii < BUFFER_LIMIT_LEN)
 	{
@@ -189,7 +208,7 @@ UINT64 getBufferStringLengthUTF16(void* buf)
 
 std::string InstructionWorker::getMemoryValueHexString(ADDRINT memAddr, int len)
 {
-	char data[8] = {0};
+	char data[1024] = {0};
 	PIN_SafeCopy(data, (VOID*)(memAddr), len);
 	std::stringstream ss;
 	ss << std::hex << std::setfill('0');
@@ -197,7 +216,7 @@ std::string InstructionWorker::getMemoryValueHexString(ADDRINT memAddr, int len)
 	{
 		ss << std::setw(2) << static_cast<unsigned>((UINT8)(data[ii]));
 	}
-	
+	//LOG_DEBUG(ss.str());
 	return ss.str();
 }
 
@@ -222,7 +241,7 @@ void InstructionWorker::getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::RE
 	{
 		//Now we reverse the order, since we want the MSB to be at the "left" of the vector, that is, at index 0
 		const UINT32 regSize = REG_Size(reg);
-		for (int ii = 0; ii < regSize / 2; ii++)
+		for (int ii = 0; ii < (regSize+2-1) / 2; ii++)
 		{
 			UINT8 aux = valBuffer[ii];
 			valBuffer[ii] = valBuffer[regSize - ii - 1];
@@ -233,5 +252,12 @@ void InstructionWorker::getRegisterValue(LEVEL_VM::CONTEXT *lctx, LEVEL_BASE::RE
 	//for (int ii = 0; ii < 2; ii++) LOG_DEBUG("OUT ValBuffer[" << ii << "]: " << valBuffer[ii]);
 }
 
+std::string InstructionWorker::byteToHexValueString(UINT8 byte)
+{
+	std::stringstream ss;
+	ss << std::hex << std::setfill('0');
+	ss << std::setw(2) << static_cast<unsigned>(byte);
+	return ss.str();
+}
 
 

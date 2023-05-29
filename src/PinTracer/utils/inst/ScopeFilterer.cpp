@@ -2,7 +2,7 @@
 
 ScopeFilterer::ScopeFilterer(std::string name)
 {
-	LOG_DEBUG("Restricting instrumentation via ScopeFilterer to main image " << name);
+	LOG_DEBUG("SELECTED MAIN IMAGE: " << name);
 	this->mainExecutableName = name;
 }
 
@@ -48,6 +48,11 @@ VOID ScopeFilterer::markMainExecutableFinished()
 void ScopeFilterer::addScopeImage(IMG img)
 {
 	this->scopeImages.push_back(IMG_Name(img));
+}
+
+void ScopeFilterer::addScopeImage(std::string imgName)
+{
+	this->scopeImages.push_back(imgName);
 }
 
 bool ScopeFilterer::isScopeImage(IMG img)

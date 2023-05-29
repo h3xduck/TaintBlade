@@ -31,20 +31,29 @@ private:
 	//Will be empty except for operations when it's needed (e.g CMP after its execution)
 	std::vector<UINT8> flags;
 
+	//For LEA instructions
+	std::vector<UINT8> regLeaBaseBytes;
+	std::vector<UINT8> regLeaIndexBytes;
+	//leaDest bytes contained in regDest
+
+	//For REPNE SCAS operations
+	std::vector<UINT8> scasMemBytes;
+	std::vector<UINT8> regScasXAXBytes;
+	std::vector<UINT8> regScasXCXBytes;
+	std::vector<UINT8> regScasXDIBytes;
+
 public:
 	RevDataAtom() {};
-	RevDataAtom(std::vector<UINT8> memSrc, std::vector<UINT8> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest, std::vector<UINT8> flags)
-	{
-		this->memSrcValueBytes = memSrc;
-		this->memDestValueBytes = memDest;
-		this->regSrcValueBytes = regSrc;
-		this->regDestValueBytes = regDest;
-		this->flags = flags;
-	}
+	RevDataAtom(std::vector<UINT8> memSrc, std::vector<UINT8> memDest, std::vector<UINT8> regSrc, std::vector<UINT8> regDest, std::vector<UINT8> flags,
+		std::vector<UINT8> regLeaBaseBytes, std::vector<UINT8> regLeaIndexBytes, std::vector<UINT8> scasMemBytes,
+		std::vector<UINT8> regScasXAXBytes, std::vector<UINT8> regScasXCXBytes, std::vector<UINT8> regScasXDIBytes) :
+		memSrcValueBytes(memSrc), memDestValueBytes(memDest), regSrcValueBytes(regSrc), regDestValueBytes(regDest), flags(flags), regLeaBaseBytes(regLeaBaseBytes),
+		regLeaIndexBytes(regLeaIndexBytes), scasMemBytes(scasMemBytes), regScasXAXBytes(regScasXAXBytes), regScasXCXBytes(regScasXCXBytes),
+		regScasXDIBytes(regScasXDIBytes) {};
 
 	void setMemSrcValueBytes(std::vector<char> valueBytes)
 	{
-		this->memSrcValueBytes.empty();
+		this->memSrcValueBytes.clear();
 		for (int ii = 0; ii < valueBytes.size(); ii++)
 		{
 			this->memSrcValueBytes.push_back((UINT8)valueBytes.at(ii));
@@ -63,7 +72,7 @@ public:
 
 	void setMemDestValueBytes(std::vector<char> valueBytes)
 	{
-		this->memDestValueBytes.empty();
+		this->memDestValueBytes.clear();
 		for (int ii = 0; ii < valueBytes.size(); ii++)
 		{
 			this->memDestValueBytes.push_back((UINT8)valueBytes.at(ii));
@@ -127,10 +136,10 @@ public:
 		return this->immSrcValueBytes;
 	}
 
-	void setImmSrcValue(UINT64 value)
+	void setImmSrcValue(ADDRINT value)
 	{
 		this->immSrcValueBytes.empty();
-		this->immSrcValueBytes.reserve(sizeof(UINT64));
+		this->immSrcValueBytes.reserve(sizeof(ADDRINT));
 		for (int ii = 0; ii < 8; ii++)
 		{
 			this->immSrcValueBytes.push_back(value & 0xFF);
@@ -143,6 +152,98 @@ public:
 		return this->flags;
 	}
 
+	//LEA
+	std::vector<UINT8>& getLeaBaseValue()
+	{
+		return this->regLeaBaseBytes;
+	}
+	void setLeaBaseValue(UINT8* value, UINT32 byteSize)
+	{
+		this->regLeaBaseBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regLeaBaseBytes.push_back(value[ii]);
+		}
+	}
+	std::vector<UINT8>& getLeaIndexValue()
+	{
+		return this->regLeaIndexBytes;
+	}
+	void setLeaIndexValue(UINT8* value, UINT32 byteSize)
+	{
+		this->regLeaIndexBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			LOG_DEBUG("Pushed lea: " << value[ii]);
+			this->regLeaIndexBytes.push_back(value[ii]);
+		}
+	}
+
+	//REPE / REPNE SCAS
+	std::vector<UINT8> getScasMemBytes()
+	{
+		return this->scasMemBytes;
+	}
+	std::vector<UINT8> getRegScasXAXBytes()
+	{
+		return this->regScasXAXBytes;
+	}
+	std::vector<UINT8> getRegScasXCXBytes()
+	{
+		return this->regScasXCXBytes;
+	}
+	std::vector<UINT8> getRegScasXDIBytes()
+	{
+		return this->regScasXDIBytes;
+	}
+	void setScasMemBytes(std::vector<UINT8> vec)
+	{
+		this->scasMemBytes = vec;
+	}
+	void setScasMemBytes(UINT8* value, UINT32 byteSize)
+	{
+		this->scasMemBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->scasMemBytes.push_back(value[ii]);
+		}
+	}
+	void setRegScasXAXBytes(std::vector<UINT8> vec)
+	{
+		this->regScasXAXBytes = vec;
+	}
+	void setRegScasXAXBytes(UINT8* value, UINT32 byteSize)
+	{
+		this->regScasXAXBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regScasXAXBytes.push_back(value[ii]);
+		}
+	}
+	void setRegScasXCXBytes(std::vector<UINT8> vec)
+	{
+		this->regScasXCXBytes = vec;
+	}
+	void setRegScasXCXBytes(UINT8* value, UINT32 byteSize)
+	{
+		this->regScasXCXBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regScasXCXBytes.push_back(value[ii]);
+		}
+	}
+	void setRegScasXDIBytes(std::vector<UINT8> vec)
+	{
+		this->regScasXDIBytes = vec;
+	}
+	void setRegScasXDIBytes(UINT8* value, UINT32 byteSize)
+	{
+		this->regScasXDIBytes.clear();
+		for (UINT32 ii = 0; ii < byteSize; ii++)
+		{
+			this->regScasXDIBytes.push_back(value[ii]);
+		}
+	}
 };
 
 

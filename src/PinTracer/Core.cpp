@@ -11,7 +11,10 @@
 #include "pin.H"
 #include <iostream>
 #include <fstream>
-
+#include <unistd.h>
+#include <cstring>
+#include <cstdio>
+#include <string>
 
 //#include "config/GlobalConfig.h"
 #include "utils/inst/SyscallParser.h"
@@ -27,15 +30,25 @@
 #include "taint/data/TagLog.h"
 #include "reversing/protocol/ProtocolReverser.h"
 
-using std::string;
+#ifndef _WINDOWS_HEADERS_H_
+#define _WINDOWS_HEADERS_H_
+#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+namespace WINDOWS
+{
+#include <windows.h>
+#include <WinSock2.h>
+#include <wininet.h>
+}
+#endif
 
 /* ================================================================== */
 // Global variables
 /* ================================================================== */
 
-UINT64 insCount = 0; //number of dynamically executed instructions
-UINT64 bblCount = 0; //number of dynamically executed basic blocks
-UINT64 threadCount = 0; //total number of threads, including main thread
+UINT32 insCount = 0; //number of dynamically executed instructions
+UINT32 bblCount = 0; //number of dynamically executed basic blocks
+UINT32 threadCount = 0; //total number of threads, including main thread
+UINT32 timeoutMillis = 0; //Number of milliseconds to wait until the tracer halts the program execution automatically. If set to 0, the timeout is not active
 
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
@@ -53,33 +66,36 @@ ScopeFilterer scopeFilterer;
 extern TaintManager taintManager;
 extern TestEngine globalTestEngine;
 
-//ScopeFilterer scopeFilterer = NULL;
-
 /* ===================================================================== */
 // Command line switches
 /* ===================================================================== */
-KNOB< string > KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o", "", "specify file name for PinTracer output");
+KNOB< std::string > KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool", "o", "", "specify file name for PinTracer output");
 
-KNOB< string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify file name for syscalls info output");
+KNOB< std::string > KnobSyscallFile(KNOB_MODE_WRITEONCE, "pintool", "s", "", "specify file name for syscalls info output");
 
-KNOB< string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
+KNOB< std::string > KnobImageFile(KNOB_MODE_WRITEONCE, "pintool", "i", "", "specify file name for images info output");
 
-KNOB< string > KnobFilterlistFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
+KNOB< std::string > KnobFilterlistFile(KNOB_MODE_WRITEONCE, "pintool", "f", "", "specify file name containing filter list of dlls on which to ignore tracing");
 
-KNOB< string > KnobDebugFile(KNOB_MODE_WRITEONCE, "pintool", "d", "", "specify file name where to store debug logs");
+KNOB< std::string > KnobDebugFile(KNOB_MODE_WRITEONCE, "pintool", "d", "", "specify file name where to store debug logs");
 
 KNOB< BOOL > KnobInstLevelTrace(KNOB_MODE_WRITEONCE, "pintool", "t", "0", "activate instruction level tracing, faster but more reliable");
 
 KNOB< BOOL > KnobCount(KNOB_MODE_WRITEONCE, "pintool", "count", "1",
 	"count instructions, basic blocks and threads in the application");
 
-KNOB< string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "activate test mode, specifies input file for reading tests");
+KNOB< std::string > KnobTestFile(KNOB_MODE_WRITEONCE, "pintool", "test", "", "activate test mode, specifies input file for reading tests");
 
-KNOB< string > KnobTaintSourceFile(KNOB_MODE_WRITEONCE, "pintool", "taint", "", "specifies a file with dll+func combos to register as taint sources");
+KNOB< std::string > KnobTaintSourceFile(KNOB_MODE_WRITEONCE, "pintool", "taint", "", "specifies a file with dll+func combos to register as taint sources");
+KNOB< std::string > KnobTracePointsFile(KNOB_MODE_WRITEONCE, "pintool", "trace", "tracepoints.txt", "specifies a file with dll+func+numargs combos to register as trace points");
+KNOB< std::string > KnobNopSectionsFile(KNOB_MODE_WRITEONCE, "pintool", "nopsections", "nopsections.txt", "specifies a file with dll+func+start+end combos to register the code sections that will not be executed");
+KNOB< std::string > KnobDllIncludeFile(KNOB_MODE_WRITEONCE, "pintool", "dllinclude", "dllinclude.txt", "specifies a file with dlls to be traced (and not just the main image)");
+
 
 KNOB< BOOL > KnobAskForIndividualImageTrace(KNOB_MODE_WRITEONCE, "pintool", "choosetraceimages", "", "Ask for user before including any image in the list of images to trace. Otherwise, only main image is traced");
 KNOB< BOOL > KnobTraceAllImages(KNOB_MODE_WRITEONCE, "pintool", "traceallimages", "", "Force program to trace all images, without asking user input. Overrides choosetraceimages flag.");
 
+KNOB<UINT32> KnobAnalysisTimeout(KNOB_MODE_WRITEONCE, "pintool", "timeout", "", "If this flag is set, it specifies the number of milliseconds to wait until the analysis stops itself automatically");
 /* ===================================================================== */
 // Utilities
 /* ===================================================================== */
@@ -96,6 +112,23 @@ INT32 Usage()
 	std::cerr << KNOB_BASE::StringKnobSummary() << std::endl;
 
 	return -1;
+}
+
+//Deletes all previous dfx files in the directory
+void cleanDfxFiles()
+{
+	WINDOWS::HANDLE hFind;
+	WINDOWS::WIN32_FIND_DATA FindFileData;
+
+	if ((hFind = FindFirstFile("./*.dfx", &FindFileData)) != ((WINDOWS::HANDLE)(WINDOWS::LONG_PTR)-1)) 
+	{
+		do 
+		{
+			int res = std::remove(FindFileData.cFileName);
+			LOG_DEBUG("Cleaning old output file " << FindFileData.cFileName << " (result: " << res << ")" << std::endl);
+		} while (FindNextFile(hFind, &FindFileData));
+		WINDOWS::FindClose(hFind);
+	}
 }
 
 /* ===================================================================== */
@@ -314,6 +347,11 @@ VOID ImageTrace(IMG img, VOID* v)
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 	std::cerr << "NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::endl;
+	LOG_DEBUG("NEW IMAGE DETECTED: " << dllName << " | Entry: " << std::hex << entryAddr << std::dec);
+
+	//Register that we found a new image
+	ctx.getExecutionManager().addImage(img);
+
 	//Detect the name of the main image, and restrict all tracing to it
 	if (mainImageName.empty() && IMG_IsMainExecutable(img)) {
 		mainImageName = IMG_Name(img);
@@ -513,24 +551,28 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 	std::string dllName = IMG_Name(module);
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
+	std::transform(rtnName.begin(), rtnName.end(), rtnName.begin(), [](unsigned char c) { return std::tolower(c); });
 
 	//LOG_DEBUG("Routine: " << rtnName << " | DLLname: " << dllName);
 
+	//Trace the function arguments, if the routine is selected to be traced by the user
+	ctx.getTraceManager().traceFunction(rtn, dllName, rtnName);
+
 	//Check if it should be tainted
 	taintManager.routineLoadedEvent(rtn, dllName, rtnName);
-
 
 	RTN_Close(rtn);
 }
 
 void TraceBase(TRACE trace, VOID* v)
 {
+	//Instrument each instruction on each basic block
 	for (BBL bbl = TRACE_BblHead(trace); BBL_Valid(bbl); bbl = BBL_Next(bbl))
 	{
-		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
+		for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins))
 		{		
-			RTN rtn = INS_Rtn(inst);
-			ADDRINT addr = INS_Address(inst);
+			RTN rtn = INS_Rtn(ins);
+			ADDRINT addr = INS_Address(ins);
 			IMG dll = IMG_FindByAddress(addr);
 			if (!IMG_Valid(dll))
 			{
@@ -540,10 +582,20 @@ void TraceBase(TRACE trace, VOID* v)
 			//tolower
 			std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 
-			InstrumentationManager instManager;
+			//Track where we are in the execution
+			PerformanceOperator::trackCurrentState(ins);
+
+			//We will check if the instruction belongs to a NOP-ed section, and in this case we will jump over the nop-ed range
+			if (ctx.getExecutionManager().isInNopSection(ins))
+			{
+				ctx.getExecutionManager().instrumentNopSection(ins);
+				continue;
+			}
 			
-			if (scopeFilterer.isMainExecutable(inst) || scopeFilterer.isScopeImage(inst)) {
-				instManager.instrumentInstruction(inst);
+			//Instrumentation of instructions - calls the tainting engine and all the underlaying analysis ones
+			InstrumentationManager instManager;
+			if (scopeFilterer.isMainExecutable(ins) || scopeFilterer.isScopeImage(ins)) {
+				instManager.instrumentInstruction(ins);
 
 			#if(CONFIG_INST_LOG_FILES==1)
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
@@ -555,7 +607,7 @@ void TraceBase(TRACE trace, VOID* v)
 			}
 
 			//Register jumps
-			if (INS_IsControlFlow(inst) || INS_IsFarJump(inst))
+			if (INS_IsControlFlow(ins) || INS_IsFarJump(ins))
 				{
 				//For debugging
 					/*INS_InsertCall(
@@ -575,15 +627,15 @@ void TraceBase(TRACE trace, VOID* v)
 						IARG_END);*/
 
 				//Data dumping
-					if (INS_IsRet(inst))
+					if (INS_IsRet(ins))
 					{
 						INS_InsertCall(
-							inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentExit,
-							IARG_ADDRINT, INS_Address(inst),
+							ins, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentExit,
+							IARG_ADDRINT, INS_Address(ins),
 							IARG_BRANCH_TARGET_ADDR,
 							IARG_BRANCH_TAKEN,
 							IARG_FUNCRET_EXITPOINT_VALUE,
-							IARG_UINT32, INS_Size(inst),
+							IARG_UINT32, INS_Size(ins),
 							IARG_CONST_CONTEXT,
 							IARG_THREAD_ID,
 							IARG_END);
@@ -591,12 +643,12 @@ void TraceBase(TRACE trace, VOID* v)
 					else
 					{
 						INS_InsertCall(
-							inst, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentEnter,
-							IARG_ADDRINT, INS_Address(inst),
+							ins, IPOINT_BEFORE, (AFUNPTR)TaintSource::genericRoutineInstrumentEnter,
+							IARG_ADDRINT, INS_Address(ins),
 							IARG_BRANCH_TARGET_ADDR,
 							IARG_BRANCH_TAKEN,
-							IARG_UINT32, INS_Size(inst),
-							IARG_ADDRINT, INS_NextAddress(inst),
+							IARG_UINT32, INS_Size(ins),
+							IARG_ADDRINT, INS_NextAddress(ins),
 							IARG_CONST_CONTEXT,
 							IARG_THREAD_ID,
 							IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
@@ -613,9 +665,16 @@ void TraceBase(TRACE trace, VOID* v)
 	}
 }
 
+/**
+Executed when the process executes another (or creates a child process)
+*/
+BOOL FollowChild(CHILD_PROCESS cProcess, VOID* userData)
+{
+	std::cout << "Now executing a child process with PID: " << PIN_GetPid() <<std::endl;
+	return TRUE;
+}
 
-
-/*!
+/**
  * Increase counter of threads in the application.
  * This function is called for every thread created by the application when it is
  * about to start running (including the root thread).
@@ -627,6 +686,36 @@ void TraceBase(TRACE trace, VOID* v)
  */
  //VOID ThreadStart(THREADID threadIndex, CONTEXT* ctxt, INT32 flags, VOID* v) { threadCount++; }
 
+
+void dumpEndInfo()
+{
+	taintController.printTaint();
+	taintController.dumpTaintLog();
+	taintController.dumpTaintLogPrettified(29);
+	taintController.dumpTagLogOriginalColors();
+	PerformanceOperator::measureChrono();
+
+	//Dump original colors vector
+	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
+	dataDumper.writeOriginalColorDump(orgVec);
+
+	//Dump color transformations
+	std::vector<Tag> colorTrans = taintController.getColorTransVector();
+	dataDumper.writeColorTransformationDump(colorTrans);
+
+	//Dump RevAtoms
+	//ctx.getRevContext()->printRevLogCurrent();
+
+	//Dump info about heuristics found
+	ctx.getRevContext()->dumpFoundHeuristics();
+}
+
+void resolveProtocol()
+{
+	//Reverse the protocols using the found heuristics
+	REVERSING::PROTOCOL::reverseProtocol();
+}
+
  /*!
   * Print out analysis results.
   * This function is called when the application exits.
@@ -637,28 +726,12 @@ void TraceBase(TRACE trace, VOID* v)
 VOID Fini(INT32 code, VOID* v)
 {
 	std::cerr << "Finished" << std::endl;
-	taintController.printTaint();
-	taintController.dumpTaintLog();
-	taintController.dumpTaintLogPrettified(29);
-	taintController.dumpTagLogOriginalColors();
-	PerformanceOperator::measureChrono();
-	
-	//Dump original colors vector
-	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
-	dataDumper.writeOriginalColorDump(orgVec);
 
-	//Dump color transformations
-	std::vector<Tag> colorTrans  = taintController.getColorTransVector();
-	dataDumper.writeColorTransformationDump(colorTrans);
+	//Dump relevant info about program execution, tainting, etc
+	dumpEndInfo();
 
-	//Dump RevAtoms
-	ctx.getRevContext()->printRevLogCurrent();
-
-	//Dump info about heuristics found
-	ctx.getRevContext()->dumpFoundHeuristics();
-
-	//Reverse the protocols using the found heuristics
-	REVERSING::PROTOCOL::reverseProtocol();
+	//Resolve the final form of the protocol
+	resolveProtocol();
 
 	//Evaluate tests
 	globalTestEngine.evaluateTests();
@@ -683,36 +756,43 @@ int main(int argc, char* argv[])
 		return Usage();
 	}
 
-	string fileName = KnobOutputFile.Value();
-	string sysinfoFilename = KnobSyscallFile.Value();
-	string imageInfoFilename = KnobImageFile.Value();
-	string filterlistFilename = KnobFilterlistFile.Value();
-	string debugFileFilename = KnobDebugFile.Value();
-	string testFileFilename = KnobTestFile.Value();
-	string taintSourceFileFilename = KnobTaintSourceFile.Value();
+	//Clean all .dfx files that were left from previous runs
+	cleanDfxFiles();
+
+	std::string fileName = KnobOutputFile.Value();
+	std::string sysinfoFilename = KnobSyscallFile.Value();
+	std::string imageInfoFilename = KnobImageFile.Value();
+	std::string filterlistFilename = KnobFilterlistFile.Value();
+	std::string debugFileFilename = KnobDebugFile.Value();
+	std::string testFileFilename = KnobTestFile.Value();
+	std::string taintSourceFileFilename = KnobTaintSourceFile.Value();
+	std::string tracePointsFileFilename = KnobTracePointsFile.Value();
+	std::string nopSectionsFileFilename = KnobNopSectionsFile.Value();
+	std::string dllIncludeFileFilename = KnobDllIncludeFile.Value();
 	settingAskForIndividualImageTrace = KnobAskForIndividualImageTrace.Value();
 	settingTraceAllImages = KnobTraceAllImages.Value();
+	timeoutMillis = KnobAnalysisTimeout.Value();
 	
 	instructionLevelTracing = KnobInstLevelTrace.Value();
-
+	
 	if (!fileName.empty())
 	{
-		out = new std::ofstream(fileName.c_str());
+		out = new std::ofstream(getFilenameFullName(fileName).c_str());
 	}
 
 	if (!sysinfoFilename.empty())
 	{
-		sysinfoOut = new std::ofstream(sysinfoFilename.c_str());
+		sysinfoOut = new std::ofstream(getFilenameFullName(sysinfoFilename).c_str());
 	}
 
 	if (!imageInfoFilename.empty())
 	{
-		imageInfoOut = new std::ofstream(imageInfoFilename.c_str());
+		imageInfoOut = new std::ofstream(getFilenameFullName(imageInfoFilename).c_str());
 	}
 
 	if (!debugFileFilename.empty())
 	{
-		debugFile = new std::ofstream(debugFileFilename.c_str());
+		debugFile = new std::ofstream(getFilenameFullName(debugFileFilename).c_str());
 	}
 
 	if (!testFileFilename.empty())
@@ -754,6 +834,105 @@ int main(int argc, char* argv[])
 			taintManager.registerTaintSource(dllName, funcName, atoi(numArgs.c_str()));
 		}
 
+	}
+
+	if (!tracePointsFileFilename.empty())
+	{
+		//If a taint source file was specified, we load DLL+FUNC combos from there
+		std::cerr << "Loading trace points dynamically from " << tracePointsFileFilename << std::endl;
+		LOG_DEBUG("Loading trace points from " << tracePointsFileFilename);
+
+		std::ifstream infile(tracePointsFileFilename);
+		std::string line;
+		//The file is made of lines with FUNC DLL <num arguments> <user assembly lines>
+		while (std::getline(infile, line))
+		{
+			std::istringstream isdata(line);
+			std::string dllName;
+			//DLL
+			std::getline(isdata, dllName, ' ');
+			std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
+			//FUNC
+			std::string funcName;
+			std::getline(isdata, funcName, ' ');
+			std::transform(funcName.begin(), funcName.end(), funcName.begin(), [](unsigned char c) { return std::tolower(c); });
+			//args
+			std::string numArgs;
+			std::getline(isdata, numArgs, ' ');
+			ctx.getTraceManager().addTracePoint(dllName, funcName, atoi(numArgs.c_str()));
+		}
+	}
+
+	if (!nopSectionsFileFilename.empty())
+	{
+		//If a taint source file was specified, we load DLL+FUNC combos from there
+		std::cerr << "Loading NOP sections from " << nopSectionsFileFilename << std::endl;
+		LOG_DEBUG("Loading NOP sections from " << nopSectionsFileFilename);
+
+		std::ifstream infile(nopSectionsFileFilename);
+		std::string line;
+		//The file is made of lines with DLL <start address> <end address>
+		while (std::getline(infile, line))
+		{
+			std::istringstream isdata(line);
+			std::string dllName;
+			//DLL
+			std::getline(isdata, dllName, ' ');
+			//START
+			std::string start;
+			std::getline(isdata, start, ' ');
+			//END
+			std::string end;
+			std::getline(isdata, end, ' ');
+
+			//Finally, we get the lines of user assembly (if any) to be executed when NOP-ing the section
+			std::string userAssemblyLines;
+			std::vector<std::string> userAssemblyLinesVec;
+			std::getline(isdata, userAssemblyLines, ' ');
+			//We will parse them. They come separated with commas: instruction1,instruction2,instruction3,...instructionN
+			std::istringstream isAssemblyLine(userAssemblyLines);
+
+			std::string assemblyLine;
+			while(std::getline(isAssemblyLine, assemblyLine, ','))
+			{
+				std::cerr << "LINE: " << assemblyLine << std::endl;
+				if (!assemblyLine.empty())
+				{
+					userAssemblyLinesVec.push_back(assemblyLine);
+					LOG_DEBUG("Found user assembly line: " << assemblyLine);
+				}
+			}
+
+			ctx.getExecutionManager().registerNopSection(dllName, atoi(start.c_str()), atoi(end.c_str()), userAssemblyLinesVec);
+		}
+	}
+
+	if (!dllIncludeFileFilename.empty())
+	{
+		//If a taint source file was specified, we load DLL+FUNC combos from there
+		std::cerr << "Loading dll to trace from " << dllIncludeFileFilename << std::endl;
+		LOG_DEBUG("Loading dlls from " << dllIncludeFileFilename);
+
+		std::ifstream infile(dllIncludeFileFilename);
+		std::string line;
+		//The file is made of lines with FUNC DLL <num arguments> <user assembly lines>
+		while (std::getline(infile, line))
+		{
+			std::istringstream isdata(line);
+			std::string dllName;
+			//DLL
+			std::getline(isdata, dllName, ' ');
+
+			std::cerr << dllName << " selected to be traced" << std::endl;
+			LOG_DEBUG("Adding " << dllName << " to traced dlls");
+			scopeFilterer.addScopeImage(dllName);
+		}
+	}
+	
+	//Registering analyzer timeout, if requested
+	if (timeoutMillis != 0)
+	{
+		UTILS::IO::CommandCenter::registerAnalysisTimeout();
 	}
 
 	//Register taint sources - deprecated: now dynamically via flag
@@ -799,12 +978,22 @@ int main(int argc, char* argv[])
 		std::cerr << "Linux mode now active" << std::endl;
 		#endif
 
+		//Follow any child process execution
+		PIN_AddFollowChildProcessFunction(FollowChild, 0);
+
 		// Register function to be called when the application exits
 		PIN_AddFiniFunction(Fini, 0);
 	}
 
 	std::cerr << "===============================================" << std::endl;
 	std::cerr << "This application is instrumented by PinTracer" << std::endl;
+	if(timeoutMillis!=0) std::cerr << "The analysis will stop itself in " << timeoutMillis/1000 << " seconds" << std::endl;
+#ifdef TARGET_IA32E
+	std::cerr << "Tracer running in x64 mode" << std::endl;
+#else
+	std::cerr << "Tracer running in x86 mode" << std::endl;
+#endif 
+	std::cerr << "Application PID: " << PIN_GetPid() << std::endl;
 	std::cerr << "Instrumentating instructions directly: " << instructionLevelTracing << "" << std::endl;
 	if (settingAskForIndividualImageTrace) {
 		std::cerr << "Received request to ask for every new detected image" << std::endl;
@@ -831,6 +1020,11 @@ int main(int argc, char* argv[])
 		std::cerr << "See file " << KnobDebugFile.Value() << " for debug logs" << std::endl;
 	}
 	std::cerr << "===============================================" << std::endl;
+
+
+	//Starts a background threat that periodically checks whether
+	//we have any command from the user.
+	UTILS::IO::CommandCenter::startCommandCenterJob();
 
 	// Start the program, never returns
 	PIN_StartProgram();

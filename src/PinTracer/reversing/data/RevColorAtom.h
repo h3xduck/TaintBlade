@@ -22,14 +22,26 @@ public:
 	UINT16 immSrcColor = 0;
 
 	//For LEA operations
-	UINT16 leaBaseColor = 0;
-	UINT16 leaIndexColor = 0;
+	std::vector<UINT16> leaBaseColor;
+	std::vector<UINT16> leaIndexColor;
+	//leaDest is contained in regDestColor
+	std::vector<UINT16> leaBaseDisColor; //leaBase + leaDis
+	std::vector<UINT16> leaIndexScaleColor; //leaIndex * leaScale
+	//memDestColor will contain the color of the memory address pointed by regDest
+
+	//For REPE/REPNE SCAS operations
+	std::vector<UINT16> scasMemColor;
+	INT32 scasMemLen = 0;
+	std::vector<UINT16> regScasXAXColor;
+	std::vector<UINT16> regScasXCXColor;
+	std::vector<UINT16> regScasXDIColor;
 
 	RevColorAtom() {};
 
 	RevColorAtom(UINT16 memSrcColor, INT32 memSrcLen, UINT16 memDestColor, INT32 memDestLen,
 		UINT16 regSrcColor, UINT16 regDestColor, UINT16 leaBaseColor,
-		UINT16 leaIndexColor, UINT16 immSrcColor)
+		UINT16 leaIndexColor, UINT16 leaBaseDisColor, UINT16 leaIndexScaleColor, UINT16 immSrcColor,
+		UINT16 scasMemColor, INT32 scasMemLen, UINT16 regScasXAXColor, UINT16 regScasXCXColor, UINT16 regScasXDIColor)
 	{
 		this->memSrcColor.push_back(memSrcColor);
 		this->memSrcLen = memSrcLen;
@@ -37,14 +49,22 @@ public:
 		this->memDestLen = memDestLen;
 		this->regSrcColor.push_back(regSrcColor);
 		this->regDestColor.push_back(regDestColor);
-		this->leaBaseColor = leaBaseColor;
-		this->leaIndexColor = leaIndexColor;
+		this->leaBaseColor.push_back(leaBaseColor);
+		this->leaIndexColor.push_back(leaIndexColor);
+		this->leaBaseDisColor.push_back(leaBaseDisColor);
+		this->leaIndexScaleColor.push_back(leaIndexScaleColor);
 		this->immSrcColor = immSrcColor;
+		this->scasMemColor.push_back(scasMemColor);
+		this->scasMemLen = scasMemLen;
+		this->regScasXAXColor.push_back(regScasXAXColor);
+		this->regScasXCXColor.push_back(regScasXCXColor);
+		this->regScasXDIColor.push_back(regScasXDIColor);
 	}
 
 	RevColorAtom(std::vector<UINT16> memSrcColor, INT32 memSrcLen, std::vector<UINT16> memDestColor, INT32 memDestLen,
-		std::vector<UINT16> regSrcColor, std::vector<UINT16> regDestColor, UINT16 leaBaseColor,
-		UINT16 leaIndexColor, UINT16 immSrcColor)
+		std::vector<UINT16> regSrcColor, std::vector<UINT16> regDestColor, std::vector<UINT16> leaBaseColor,
+		std::vector<UINT16> leaIndexColor, std::vector<UINT16> leaBaseDisColor, std::vector<UINT16> leaIndexScaleColor, UINT16 immSrcColor,
+		std::vector<UINT16> scasMemColor, INT32 scasMemLen, std::vector<UINT16> regScasXAXColor, std::vector<UINT16> regScasXCXColor, std::vector<UINT16> regScasXDIColor)
 	{
 		this->memSrcColor = memSrcColor;
 		this->memSrcLen = memSrcLen;
@@ -54,7 +74,14 @@ public:
 		this->regDestColor = regDestColor;
 		this->leaBaseColor = leaBaseColor;
 		this->leaIndexColor = leaIndexColor;
+		this->leaBaseDisColor = leaBaseDisColor;
+		this->leaIndexScaleColor = leaIndexScaleColor;
 		this->immSrcColor = immSrcColor;
+		this->scasMemColor = scasMemColor;
+		this->scasMemLen = scasMemLen;
+		this->regScasXAXColor = regScasXAXColor;
+		this->regScasXCXColor = regScasXCXColor;
+		this->regScasXDIColor = regScasXDIColor;
 	}
 
 	//Setters and getters

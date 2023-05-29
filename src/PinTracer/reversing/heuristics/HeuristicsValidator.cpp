@@ -1,32 +1,62 @@
 #include "HeuristicsValidator.h"
 
 #define H_MARK \
-	"[H:" << ii << "/" << HLComparison::getRevHeuristicNumber() << " | I:" << jj+1 << "/" << atomSize << "] "
+	"[H:" << ii << "/" << getTotalHeuristicNumber() << " | I:" << jj+1 << "/" << atomSize << "] "
 
 #define H_MARK_i \
-	"[H:" << ii << "/" << HLComparison::getRevHeuristicNumber() << " | I:" << jj+1 << "/" << atomSize << " | i:" << currentInstructionIndex+1 << "] "
+	"[H:" << ii << "/" << getTotalHeuristicNumber() << " | I:" << jj+1 << "/" << atomSize << " | i:" << currentInstructionIndex+1 << "] "
 
+#if(HEURISTIC_DEBUG==1)
+#define LOG_REV_DEBUG_noh(log) \
+	LOG_DEBUG(log)
+#define LOG_REV_DEBUG(log) \
+	LOG_DEBUG(H_MARK log)
+#define LOG_REV_DEBUG_i(log) \
+	LOG_DEBUG(H_MARK_i log)
+#else
+#define LOG_REV_DEBUG_noh(log)
+#define LOG_REV_DEBUG(log)
+#define LOG_REV_DEBUG_i(log)
+#endif
 
-HLComparison REVERSING::HEURISTICS::checkValidity(RevLog<RevAtom> *revLog)
+std::pair<HLOperation*, HLOperation::HL_operation_type_t> REVERSING::HEURISTICS::checkValidity(RevLog<RevAtom> *revLog)
 {
-	if (HLComparison::getInternalRevHeuristic()->getAtomVector().empty())
+	if (HLComparison::getInternalRevHeuristic().empty())
 	{
 		HLComparison::initializeRevHeuristic();
-		LOG_DEBUG("Heuristics for HLComparison initialized");
 	}
 
-	std::vector<RevAtom> atomVec = REVERSING::HEURISTICS::checkHeuristicAlgNRS(revLog);
-	if (atomVec.empty())
+	if (HLPointerField::getInternalRevHeuristic().empty())
 	{
-		return HLComparison();
+		HLPointerField::initializeRevHeuristic();
+	}
+
+	LOG_DEBUG("Heuristics for all operators are initialized");
+
+	std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t> atomVec = REVERSING::HEURISTICS::checkHeuristicAlgNRS(revLog);
+	if (atomVec.first.empty())
+	{
+		return {NULL, HLOperation::HL_operation_type_t::HLUnknown};
 	}
 	else
 	{
-		HLComparison hl(atomVec);
-		//Calculate the comparison values (and its result) based on the loaded atoms
-		hl.calculateComparisonFromLoadedAtoms();
-		hl.setHeuristicMet(1);
-		return hl;
+		//We've got a successful heuristic met at this point
+		if (atomVec.second == HLOperation::HLComparison)
+		{
+			HLComparison *hl = new HLComparison(atomVec.first);
+			//Calculate the comparison values (and its result) based on the loaded atoms
+			hl->calculateHLOperationFromLoadedAtoms();
+			hl->setHeuristicMet(1);
+			return {hl, HLOperation::HL_operation_type_t::HLComparison};
+		}
+		else if(atomVec.second == HLOperation::HLPointerField)
+		{
+			HLPointerField *hl = new HLPointerField(atomVec.first);
+			hl->calculateHLOperationFromLoadedAtoms();
+			hl->setHeuristicMet(1);
+			return { hl, HLOperation::HL_operation_type_t::HLPointerField};
+		}
+		
 	}
 }
 
@@ -36,19 +66,19 @@ int REVERSING::HEURISTICS::quickAtomicCompare(RevAtom atom1, RevHeuristicAtom hA
 
 	if (atom1.getInstType() != hAtom2.instType)
 	{
-		LOG_DEBUG("Quick compare, not same instruction: "<<atom1.getInstType()<<" : "<<hAtom2.instType);
+		//LOG_DEBUG("Quick compare, not same instruction: "<<atom1.getInstType()<<" : "<<hAtom2.instType);
 		return 0;
 	}
 
 	if (atom1.getOperandsType() == RevHeuristicAtom::INVALID)
 	{
-		LOG_DEBUG("Quick compare, invalid operands for instruction");
+		//LOG_DEBUG("Quick compare, invalid operands for instruction");
 		return 0;
 	}
 
 	if (!internalhAtom1->containtedIn(hAtom2))
 	{
-		LOG_DEBUG("Quick compare, heuristic not contained in the other ");
+		//LOG_DEBUG("Quick compare, heuristic not contained in the other ");
 		return 0;
 	}
 
@@ -80,21 +110,44 @@ int isAnyColorInVector(std::vector<UINT16>& colors, std::vector<UINT16>& vec)
 	return 0;
 }
 
-std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom> *revLog)
+/**
+Returns, using every different type of heuristic operation (comparison, pointer fields ...) the total number of heuristics
+*/
+int getTotalHeuristicNumber()
+{
+	return HLComparison::getRevHeuristicNumber() + HLPointerField::getRevHeuristicNumber();
+}
+
+/**
+Returns the complete vector of heuristics available considering all operation types (comparisons, pointer fields ...)
+*/
+std::vector<RevHeuristic> getTotalInternalRevHeuristic()
+{
+	std::vector<RevHeuristic> totalHeuristicVec;
+	std::vector<RevHeuristic> comparisonRevHeuristicVec = HLComparison::getInternalRevHeuristic();
+	std::vector<RevHeuristic> pointerFieldRevHeuristicVec = HLPointerField::getInternalRevHeuristic();
+	totalHeuristicVec.reserve(comparisonRevHeuristicVec.size() + pointerFieldRevHeuristicVec.size());
+	totalHeuristicVec.insert(totalHeuristicVec.end(), comparisonRevHeuristicVec.begin(), comparisonRevHeuristicVec.end());
+	totalHeuristicVec.insert(totalHeuristicVec.end(), pointerFieldRevHeuristicVec.begin(), pointerFieldRevHeuristicVec.end());
+	return totalHeuristicVec;
+}
+
+
+std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom> *revLog)
 {
 	//Result vector
-	std::vector<RevAtom> resAtomVec(0);
+	std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t> resAtomVec(std::vector<RevAtom>(0), HLOperation::HLUnknown);
 
 	//We must check whether the revLog corresponds to any of the hardcoded heuristics
 	std::vector<RevAtom> revLogVector = revLog->getLogVector();
 	const size_t atomSize = revLogVector.size();
+	
+	//LOG_REV_DEBUG_noh("Started heuristic validation, RevLog size: " << atomSize);
 
-	LOG_DEBUG("Started heuristic validation, RevLog size: " << atomSize);
-
-	for (int ii = HLComparison::getRevHeuristicNumber(); ii > 0; ii--)
+	for (int ii = getTotalHeuristicNumber(); ii > 0; ii--)
 	{
-		LOG_DEBUG(">> Starting to check heuristic " << ii << "/"<<HLComparison::getRevHeuristicNumber());
-		RevHeuristic heuristic = HLComparison::getInternalRevHeuristic()[ii - 1];
+		LOG_REV_DEBUG_noh(">> Starting to check heuristic " << ii << "/"<< getTotalHeuristicNumber());
+		RevHeuristic heuristic = getTotalInternalRevHeuristic().at(ii - 1);
 		std::vector<RevHeuristicAtom> atomHeuristicVector = heuristic.getAtomVector();
 
 		//Number of instructions in the heuristic to meet to consider it met (the full length of it)
@@ -108,13 +161,13 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 		//int skippedInstructions = 0;
 		for (int jj = atomSize - 1; jj >= 0; jj--)
 		{
-			LOG_DEBUG(H_MARK "Starting with instruction at "<<to_hex_dbg(revLogVector.at(jj).getBaseAddress()));
+			LOG_REV_DEBUG("Starting with instruction at "<<to_hex_dbg(revLogVector.at(jj).getBaseAddress()));
 
 			RevAtom atom = revLogVector.at(jj);
 			if (atomHeuristicVector.size() > revLogVector.size())
 			{
 				//The heuristic is longer than the vector, just quit and go for the next heuristic
-				LOG_DEBUG(H_MARK "The heuristic is longer than the vector");
+				LOG_REV_DEBUG("The heuristic is longer than the vector");
 				numberInstructionsMet = 0;
 				break;
 			}
@@ -124,14 +177,14 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 			{
 				RevDataAtom* dataAtom = atom.getRevDataAtom();
 				std::vector<UINT8> flags = dataAtom->getFlagsValue();
-				LOG_DEBUG("Flags:: CF:" << to_hex_dbg((int)flags.at(0)) << " PF:" << to_hex_dbg((int)flags.at(2)) << " AF:" << to_hex_dbg((int)flags.at(4)) << " ZF:" << to_hex_dbg((int)flags.at(6)) << " SF:" << to_hex_dbg((int)flags.at(7)));
+				LOG_REV_DEBUG_noh("Flags:: CF:" << to_hex_dbg((int)flags.at(0)) << " PF:" << to_hex_dbg((int)flags.at(2)) << " AF:" << to_hex_dbg((int)flags.at(4)) << " ZF:" << to_hex_dbg((int)flags.at(6)) << " SF:" << to_hex_dbg((int)flags.at(7)));
 			}*/
 
 			RevHeuristicAtom hHeuristicAtom = atomHeuristicVector.back();
 			//Quick check just to see if the last instructions are the same, if they are we go ahead and try to check the full heuristic and taint data
 			if (REVERSING::HEURISTICS::quickAtomicCompare(atom, hHeuristicAtom))
 			{
-				LOG_DEBUG(H_MARK "Quick compare step success");
+				LOG_REV_DEBUG("Quick compare step success");
 				//Found possible start of heuristic in building block
 				//We now go back checking for continuation of the full heuristic 
 
@@ -144,8 +197,6 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 				//We will check the selected elements of the RevHeuristicAtom. For those elements, we will check the colors
 				//in the RevColorAtom. Those colors will be stored and subsequent RevAtoms will only be valid for the heuristic
 				//if their taint colors are contained in said vector.
-				if (hAtom->leaBaseTainted) runningColorVector.push_back(colorAtom->leaBaseColor);
-				if (hAtom->leaIndexTainted) runningColorVector.push_back(colorAtom->leaIndexColor);
 				if (hAtom->memDestTainted)
 				{
 					for (UINT16& color : colorAtom->memDestColor)
@@ -177,10 +228,10 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 
 				if (!runningColorVector.empty())
 				{
-					LOG_DEBUG("Instruction has taint colors: ");
+					LOG_REV_DEBUG_noh("Instruction has taint colors: ");
 					for (UINT16& color : runningColorVector)
 					{
-						LOG_DEBUG(color);
+						LOG_REV_DEBUG_noh(color);
 					}
 				}
 				else
@@ -198,12 +249,12 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 				for (int it=0; it < initialSize; it++)
 				{
 					const UINT16& color = runningColorVector.at(it);
-					LOG_DEBUG(H_MARK"Getting parents of color: " << color);
+					LOG_REV_DEBUG("Getting parents of color: " << color);
 					//For every color that is its parent, we store it in our vector
 					std::vector<UINT16> resVec = taintManager.getController().getColorParents(color);
 					for (UINT16& c : resVec)
 					{
-						LOG_DEBUG(H_MARK"Storing color in runningColorVector: "<<c);
+						LOG_REV_DEBUG("Storing color in runningColorVector: "<<c);
 						runningColorVector.push_back(c);
 					}
 				}
@@ -221,14 +272,14 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 				int currentHeuristicPosition = heuristicLength - 1;
 				while (currentInstructionIndex >= 0)
 				{
-					LOG_DEBUG(H_MARK_i "Comparing heuristic with instruction at position: " << currentInstructionIndex+1 << " (1-" << atomSize <<")");
+					LOG_REV_DEBUG_i("Comparing heuristic with instruction at position: " << currentInstructionIndex+1 << " (1-" << atomSize <<")");
 
 					//Check if the heuristic already found a hit at this point, if it did, halt
 					if (revLog->getHeuristicLastHitIndex(ii - 1) >= currentInstructionIndex)
 					{
 						//Go to next heuristic
-						LOG_DEBUG(H_MARK_i "Heuristic check halted at instruction position " << currentInstructionIndex+1 << " because of a previous hit");
-						resAtomVec.clear();
+						LOG_REV_DEBUG_i("Heuristic check halted at instruction position " << currentInstructionIndex+1 << " because of a previous hit");
+						resAtomVec.first.clear();
 						goto endOfHeuristic;
 					}
 
@@ -240,42 +291,31 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					{
 						//Might be an instruction interleaved but the heuristic can still be met.
 						//Skip the instruction and go for the next
-						LOG_DEBUG(H_MARK_i "Skipped due to quick compare");
+						LOG_REV_DEBUG_i("Skipped due to quick compare");
 						currentInstructionIndex--;
 						continue;
 					}
 
-					LOG_DEBUG(H_MARK_i "Started deep heuristic check");
+					LOG_REV_DEBUG_i("Started deep heuristic check");
 					//It seemed to be met, now check the actual colors using the vector we extracted before
 					//The colors must be contained in said vector.
 					//We check the values that MUST be tainted in the heuristic
 					RevColorAtom* itColorAtom = itAtom.getRevColorAtom();
 					//Same for the rest
-					if (itHeuristicAtom.leaBaseTainted)
+					if (itHeuristicAtom.leaIndirectTaint)
 					{
-						if (isColorInVector(itColorAtom->leaBaseColor, runningColorVector))
+						//This means that we are upon a potential pointer field
+						if (itHeuristicAtom.memDestTainted && itHeuristicAtom.leaIndexTainted)
 						{
-							//Could not find color in vector.
-							LOG_DEBUG(H_MARK_i "Skipped due to leaBase");
-							currentInstructionIndex--;
-							continue;
-						}
-						//Found the color in the previous instruction. Alright
-					}
-					if (itHeuristicAtom.leaIndexTainted)
-					{
-						if (isColorInVector(itColorAtom->leaIndexColor, runningColorVector))
-						{
-							LOG_DEBUG(H_MARK_i "Skipped due to leaIndex");
-							currentInstructionIndex--;
-							continue;
+							//Found pointer field
+							goto heuristicChecksSuccess;
 						}
 					}
 					if (itHeuristicAtom.memDestTainted)
 					{
 						if (!isAnyColorInVector(itColorAtom->memDestColor, runningColorVector))
 						{
-							LOG_DEBUG(H_MARK_i "Skipped due to memDest");
+							LOG_REV_DEBUG_i("Skipped due to memDest");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -284,7 +324,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					{
 						if (!isAnyColorInVector(itColorAtom->memSrcColor, runningColorVector)) 
 						{
-							LOG_DEBUG(H_MARK_i "Skipped due to memSrc");
+							LOG_REV_DEBUG_i("Skipped due to memSrc");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -293,7 +333,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					{
 						if (!isAnyColorInVector(itColorAtom->regDestColor, runningColorVector)) 
 						{
-							LOG_DEBUG(H_MARK_i "Skipped due regDest");
+							LOG_REV_DEBUG_i("Skipped due regDest");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -302,7 +342,7 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					{
 						if (!isAnyColorInVector(itColorAtom->regSrcColor, runningColorVector)) 
 						{
-							LOG_DEBUG(H_MARK_i "Skipped due to regSrc");
+							LOG_REV_DEBUG_i("Skipped due to regSrc");
 							currentInstructionIndex--;
 							continue;
 						}
@@ -310,16 +350,19 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 
 					//No need for any more imm checks
 
+				heuristicChecksSuccess:
 					//If we are here, the heuristic was met for this instruction atom
 					//It must be met for all, so just continue to the next one
-					LOG_DEBUG(H_MARK_i "Atom met the heuristic");
-					resAtomVec.push_back(itAtom);
+					LOG_REV_DEBUG_i("Atom met the heuristic");
+
+					resAtomVec.first.push_back(itAtom);
+					resAtomVec.second = heuristic.heuristicType();
 					numberInstructionsMet++;
 
 					if (numberInstructionsMet == heuristicLength)
 					{
 						//We already have the full heuristic, so halt all comparisons
-						LOG_DEBUG(H_MARK_i "Heuristic completed");
+						LOG_REV_DEBUG_i("Heuristic completed");
 						//Mark the heuristic match
 						revLog->setHeutisticLastHit(ii - 1, currentInstructionIndex);
 						break; // == goto endOfSequence;
@@ -329,36 +372,36 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 					currentHeuristicPosition--;
 
 				} //end of sequence of instructions
-				LOG_DEBUG(H_MARK "Reached the end of the RevLog at heuristic "<<ii);
+				LOG_REV_DEBUG("Reached the end of the RevLog at heuristic "<<ii);
 
 			}
 			else
 			{
 				//Failed the quick check
 				numberInstructionsMet = 0;
-				resAtomVec.clear();
-				LOG_DEBUG(H_MARK"Failed quickCompare");
+				resAtomVec.first.clear();
+				LOG_REV_DEBUG("Failed quickCompare");
 			}
 
 		endOfSequence:
 			//Next instruction in the sequence, going backwards
 
-			LOG_DEBUG(H_MARK "Currently met " << numberInstructionsMet << "/" << heuristicLength << " atoms of the heuristic");
+			LOG_REV_DEBUG("Currently met " << numberInstructionsMet << "/" << heuristicLength << " atoms of the heuristic");
 
 			//Check if we finished
 			if (numberInstructionsMet == heuristicLength)
 			{
 				//If we reached this point, the heuristic was met for all instructions. So we met the heuristic itself
 				//with all the atoms that we have found
-				LOG_DEBUG(H_MARK "HEURISTIC " << ii << " FULLY MET!");
+				LOG_REV_DEBUG("HEURISTIC " << ii << " FULLY MET!");
 				return resAtomVec;
 			}
 
 			//Reset number of heuristic atoms met, since we will go check another sequence starting at another position
 			numberInstructionsMet = 0;
-			resAtomVec.clear();
+			resAtomVec.first.clear();
 
-			LOG_DEBUG(H_MARK "Finished checking heuristic starting at index " << jj);
+			LOG_REV_DEBUG("Finished checking heuristic starting at index " << jj);
 
 		} //end of checking one heuristic starting at one instruction
 
@@ -369,5 +412,5 @@ std::vector<RevAtom> REVERSING::HEURISTICS::checkHeuristicAlgNRS(RevLog<RevAtom>
 	} //end of all heuristics
 
 	//Return empty vector
-	return std::vector<RevAtom>();
+	return std::pair<std::vector<RevAtom>, HLOperation::HL_operation_type_t>();
 }

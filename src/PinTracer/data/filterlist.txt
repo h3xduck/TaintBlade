@@ -1,3 +1,0 @@
-C:\Windows\SYSTEM32\ntdll.dll
-C:\Windows\System32\KERNEL32.dll
-C:\Windows\System32\KERNELBASE.dll

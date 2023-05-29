@@ -3,26 +3,34 @@
 
 #include "pin.H"
 #include "../reversing/core/RevContext.h"
+#include "../utils/trace/TraceManager.h"
+#include "../utils/exec/ExecutionManager.h"
+#include "../utils/io/CommandCenter.h"
 
 class Context {
 private:
-	ADDRINT currentInstruction;
+	ADDRINT currentBaseInstruction;
 	std::string lastMemoryValue;
 	int lastMemoryLength;
 	RevContext revContext;
+	UTILS::TRACE::TraceManager traceManager;
+	UTILS::EXEC::ExecutionManager executionManager;
 
 public:
-	ADDRINT getCurrentInstruction();
+	ADDRINT getCurrentBaseInstruction();
 	std::string getLastMemoryValue();
 	int getLastMemoryLength();
 
-	void updateCurrentInstruction(ADDRINT instAddr);
+	void updateCurrentBaseInstruction(ADDRINT instAddr);
 	void updateLastMemoryValue(std::string value, int len);
 
 	/**
 	Get RevContext object
 	*/
 	RevContext* getRevContext();
+	
+	UTILS::TRACE::TraceManager& getTraceManager();
+	UTILS::EXEC::ExecutionManager& getExecutionManager();
 };
 
 #endif

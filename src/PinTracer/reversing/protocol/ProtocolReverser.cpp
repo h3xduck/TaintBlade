@@ -7,6 +7,7 @@ typedef struct comparison_data_t
 	int heuristicLevel;   //heuristic level (see reversing algorithm for explanation)
 	int comparisonResult; //result of comparison
 	UINT8 byteComparison; //byte value to which the buffer byte is compared
+	UINT16 colorInvolved; //taint color which the byte that was compared holded
 	int bufferIndex;	  //index at the netbuffer to which the comparison was made
 };
 
@@ -17,8 +18,8 @@ bool compare_comparison_data_t(const comparison_data_t& a, const comparison_data
 
 void REVERSING::PROTOCOL::reverseProtocol()
 {
-	//First we get the heuristics. They must be there already at this point
-	RevLog<HLComparison> &heuristicsVec = ctx.getRevContext()->getHeuristicsVector();
+	//First we get the comparison heuristics. They must be there already at this point
+	RevLog<HLComparison> &heuristicsVec = ctx.getRevContext()->getComparisonHeuristicsVector();
 	std::vector<HLComparison> &logHeuristicVec = heuristicsVec.getLogVector();
 
 	//Get list of original colors (tainted by rules) with the memory addresses they 
@@ -64,7 +65,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	//The first one should be the first byte, it was supposed to be put in order
 	protNetBuffer.setStartMemAddress(orgVec.front().second.memAddress);
 	protNetBuffer.setStartColor(orgVec.front().first);
-	LOG_DEBUG("Starting protocol reversing, found " << logHeuristicVec.size() << " heuristics and " << orgVec.size() << " entries at the original colors vector");
+	LOG_DEBUG("Starting protocol reversing, found " << logHeuristicVec.size() << " comparison heuristics and " << orgVec.size() << " entries at the original colors vector");
 	while(currentVectorIndex < orgVec.size())
 	{
 		//We get both the heuristic (which has the original RevAtoms inside) and the color information
@@ -74,6 +75,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		const ADDRINT memAddress = data.second.memAddress;
 		const UINT8 byteValue = data.second.byteValue;
 		const UINT16 color = data.first;
+		TagLog::color_taint_reason_t taintReason = taintManager.getController().getColorTaintReason(color);
 		if (memAddress != lastMemValue+1)
 		{
 			LOG_DEBUG("Found new buffer, starting at " << to_hex_dbg(memAddress));
@@ -93,6 +95,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addValueToValuesVector(byteValue);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
+			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
 		}
 		else
 		{
@@ -105,6 +108,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addColorToColorsVector(color);
 			//We get the actual value of the byte at that memory address and store it
 			protNetBuffer.addValueToValuesVector(byteValue);
+			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
 			
 		}
 		lastMemValue = memAddress;
@@ -159,6 +163,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			LOG_DEBUG("Iterating in heuristic for " << heuristicColors.size() << " colors");
 
 			//All comparisons in the heuristic share heuristic level, since they belong to the same comparison
+			bool firstColorInHeuristic = true;
 			for (int ii = 0; ii < heuristicColors.size(); ii++)
 			{
 				UINT16& color = heuristicColors.at(ii);
@@ -168,14 +173,22 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					//Determine if we must maintain the heuristic level as with the previous heuristic
 					//Note that comparisons of the same heuristic always share Heuristic Level.
 					//TODO: improve this by using the instruction pointer at which the comparison occured
+					//TODO IMPORTANT: improve this so that we do not check just the color, but the color of the parent that was rule-tainted
 					if (color == lastComparedColor + 1)
 					{
 						//Means the comparison is sequential to the last one, so share heuristic colors
+						LOG_DEBUG("C: " << color << ", kept HL: " << heuristicLevel);
+						lastComparedColor = color;
+					}
+					else if (!firstColorInHeuristic)
+					{
+						//If we are still in the same heuristic, then even if the color is not consecutive, no big deal
+						LOG_DEBUG("C: " << color << " | LC: " << lastComparedColor<<", but same heuristic so maintained HL: "<<heuristicLevel);
 						lastComparedColor = color;
 					}
 					else
 					{
-						LOG_DEBUG("C: " << color << " | LC: " << lastComparedColor);
+						LOG_DEBUG("C: " << color << " | LC: " << lastComparedColor<<" | HL incremented: "<<heuristicLevel+1);
 						//Increment the heuristic level, since it is clearly not related to the last instruction
 						lastComparedColor = color;
 						heuristicLevel++;
@@ -187,9 +200,10 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					LOG_DEBUG("Storing compvalues for color " << color << " which were at position " << ii << " of the heuristic");
 					UINT8 byteValue = heuristicValues.at(ii);
 					int bufferIndex = color-buf.getStartColor();
-					comparison_data_t comp = { heuristicLevel, heuristic.getComparisonResult(), byteValue, bufferIndex};
+					comparison_data_t comp = { heuristicLevel, heuristic.getComparisonResult(), byteValue, color, bufferIndex};
 					LOG_DEBUG("Introduced comparison:: HL:" << heuristicLevel << " COMPVALUE:" << byteValue << " COMPRES: " << heuristic.getComparisonResult());
 					comparisonVector.push_back(comp);
+					firstColorInHeuristic = false;
 				}
 				else
 				{
@@ -205,7 +219,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		//Test, checkout results
 		for (comparison_data_t& comp: comparisonVector)
 		{
-			LOG_DEBUG("\tHL:"<< comp.heuristicLevel<<" BYTE:"<<comp.byteComparison<<" RES:"<<comp.comparisonResult);
+			LOG_DEBUG("\tHL:" << comp.heuristicLevel << " BYTE:" << InstructionWorker::byteToHexValueString(comp.byteComparison) << " (as char: " << comp.byteComparison << ") RES:" << comp.comparisonResult);
 		}
 
 
@@ -230,11 +244,12 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 			//Put the data we want from the byte we checked
 			currentWord.addByte(topComparison.byteComparison);
+			currentWord.addColor(topComparison.colorInvolved);
 			currentWord.addSuccessIndex(topComparison.comparisonResult);
 			currentWord.setStartIndex(topComparison.bufferIndex);
 			currentWord.setEndIndex(topComparison.bufferIndex);
 
-			LOG_DEBUG("Starting from BYTE:" << topComparison.byteComparison << " SUCCESS:" << topComparison.comparisonResult);
+			LOG_DEBUG("Starting from BYTE:" << InstructionWorker::byteToHexValueString(topComparison.byteComparison) << "(as char: " << topComparison.byteComparison << ") SUCCESS:" << topComparison.comparisonResult);
 
 			//First of all, we join in the word all bytes that were related to the same compare instruction (they chave the same HL)
 			for (int jj = ii + 1; jj <= comparisonVector.size(); jj++)
@@ -273,6 +288,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					{
 						//It is most likely a delimeter, or we detected it as such before
 						currentWord.addByte(itData.byteComparison);
+						currentWord.addColor(itData.colorInvolved);
 						currentWord.addSuccessIndex(itData.comparisonResult);
 						currentWord.setEndIndex(itData.bufferIndex);
 						//Let's check if the delimeter already had its 'success' comparison:
@@ -299,6 +315,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 					{
 						//It is not a delimeter, must be a keyword
 						currentWord.addByte(itData.byteComparison);
+						currentWord.addColor(itData.colorInvolved);
 						currentWord.addSuccessIndex(itData.comparisonResult);
 						currentWord.setEndIndex(itData.bufferIndex);
 						currentWord.setWordType(ProtocolWord::KEYWORD);
@@ -338,14 +355,47 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 	} //finished parsing for all protocol netbuffers
 	
-	
+
+	//Once we've got all comparison heuristics interpreted into the protocol netbuffers, we will do the same with
+	//the pointer field heuristics
+	RevLog<HLPointerField>& pointerFieldheuristicsVec = ctx.getRevContext()->getPointerFieldHeuristicsVector();
+	std::vector<HLPointerField>& logPointerFieldHeuristicVec = pointerFieldheuristicsVec.getLogVector();
+	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
+	{
+		for (HLPointerField& pointerField : logPointerFieldHeuristicVec)
+		{
+			//Check if any of the pointer value goes correspond to this buffer
+			std::vector<UINT16> colorPointerVec = pointerField.comparisonColorsPointed();
+			UINT16 pointedColor = colorPointerVec.at(0);
+			if (pointedColor >= buf.getStartColor() && pointedColor <= buf.getEndColor())
+			{
+				ProtocolPointer protPointer(pointerField.comparisonValuesPointer(), pointerField.comparisonColorsPointer(), pointedColor);
+				buf.pointerVector().push_back(protPointer);
+				continue;
+			}
+			//Or if the pointed color corresponds to it
+			if (pointedColor >= buf.getStartColor() && pointedColor <= buf.getEndColor())
+			{
+				ProtocolPointer protPointer(pointerField.comparisonValuesPointer(), pointerField.comparisonColorsPointer(), pointedColor);
+				buf.pointerVector().push_back(protPointer);
+			}
+
+		}
+	}
+
 	//Test
 	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
 	{
 		LOG_DEBUG("NETWORKBUFFER of len:"<< buf.getWordVector().size());
+		LOG_DEBUG("PROTOCOL WORDS:")
 		for (ProtocolWord& word : buf.getWordVector())
 		{
 			LOG_DEBUG(word.toString());
+		}
+		LOG_DEBUG("PROTOCOL POINTERS ("<<buf.pointerVector().size()<<"):");
+		for (ProtocolPointer& pointer : buf.pointerVector())
+		{
+			LOG_DEBUG(pointer.toString());
 		}
 	}
 

@@ -76,34 +76,37 @@ public:
 	//****************Handlers***********************************************************//
 	
 	///////////////// WSOCK /////////////////
-	static VOID wsockRecvEnter(int retIp, std::string dllName, std::string funcName, ...)
+	static VOID wsockRecvEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		int NUM_ARGS = 4;
-		va_list vaList;
-		va_start(vaList, funcName);
-
-		wsockRecv.s = va_arg(vaList, WINDOWS::SOCKET);
-		wsockRecv.buf = va_arg(vaList, char*);
-		wsockRecv.len = va_arg(vaList, int);
-		wsockRecv.flags = va_arg(vaList, int);
-
-		va_end(vaList);
+		wsockRecv.s = (WINDOWS::SOCKET)arg1;
+		wsockRecv.buf = (char*)arg2;
+		wsockRecv.len = (int)arg3;
+		wsockRecv.flags = (int)arg4;
 
 		LOG_INFO("Called wsockRecvEnter()\n\tretIp: "<<retIp<<"\n\tbuf: " << wsockRecv.buf << "\n\tlen: "<< wsockRecv.len);
 	};
-	static VOID wsockRecvExit(int retVal, std::string dllName, std::string funcName, ...)
+	static VOID wsockRecvExit(ADDRINT retVal, VOID* dllName, VOID* funcName)
 	{
+		INT32 retValSigned = static_cast<INT32>(retVal);
 		//Firstly, we must check that we received something. Return value is # of bytes read
-		if(retVal<=0)
+		if (retValSigned <= 0)
 		{
+			LOG_INFO("Called wsockRecvExit(), but no tainting needed (retval: " << retValSigned << ")");
 			//No tainting needed
 			return;
 		}
+		const std::string* dllNameStr = static_cast<std::string*>(dllName);
+		const std::string* funcNameStr = static_cast<std::string*>(funcName);
+
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
-		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retVal << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
+		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retValSigned << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wsockRecv.buf, retVal);
+		//LOG_DEBUG("Here0\n");
 		ctx.updateLastMemoryValue(val, retVal);
+
+		//LOG_DEBUG("Here1\n");
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
@@ -111,29 +114,27 @@ public:
 		for (auto color : colorVector)
 		{
 			//Each 1 byte, we get a different color
-			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)((wsockRecv.buf)+offset), (UINT8)(wsockRecv.buf[offset]));
+			taintController.registerOriginalColor(color, *dllNameStr, *funcNameStr, (ADDRINT)((wsockRecv.buf)+offset), (UINT8)(wsockRecv.buf[offset]));
 			offset++;
+			//LOG_DEBUG("Here2");
 		}
-		
+
+		LOG_DEBUG("Called wsockexit");
 	};
 
 	///////////////// WININET /////////////////
-	static VOID wininetInternetReadFileEnter(int retIp, std::string dllName, std::string funcName, ...)
+	static VOID wininetInternetReadFileEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		int NUM_ARGS = 4;
-		va_list vaList;
-		va_start(vaList, funcName);
 
-		wininetInternetReadFile.hFile = va_arg(vaList, WINDOWS::LPVOID);
-		wininetInternetReadFile.lpBuffer = va_arg(vaList, WINDOWS::LPVOID);
-		wininetInternetReadFile.dwNumberOfBytesToRead = va_arg(vaList, WINDOWS::DWORD);
-		wininetInternetReadFile.lpdwNumberOfBytesRead = va_arg(vaList, WINDOWS::LPDWORD);
-
-		va_end(vaList);
+		wininetInternetReadFile.hFile = (WINDOWS::LPVOID)arg1;
+		wininetInternetReadFile.lpBuffer = (WINDOWS::LPVOID)arg2;
+		wininetInternetReadFile.dwNumberOfBytesToRead = (WINDOWS::DWORD)arg3;
+		wininetInternetReadFile.lpdwNumberOfBytesRead = (WINDOWS::LPDWORD)arg4;
 
 		LOG_INFO("Called wininetInternetReadFileEnter()\n\tretIp: " << retIp << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tRequested length: " << wininetInternetReadFile.dwNumberOfBytesToRead);
 	}
-	static VOID wininetInternetReadFileExit(int retVal, std::string dllName, std::string funcName, ...)
+	static VOID wininetInternetReadFileExit(ADDRINT retVal, VOID* dllName, VOID* funcName)
 	{
 		//Firstly, we must check that we received something. Return value is TRUE if call successful, FALSE otherwise
 		if (retVal == FALSE)
@@ -141,8 +142,12 @@ public:
 			//No tainting needed
 			return;
 		}
+
+		const std::string* dllNameStr = static_cast<std::string*>(dllName);
+		const std::string* funcNameStr = static_cast<std::string*>(funcName);
+
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
-		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << wininetInternetReadFile.lpdwNumberOfBytesRead);
+		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << *wininetInternetReadFile.lpdwNumberOfBytesRead);
 
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
 		ctx.updateLastMemoryValue(val, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
@@ -153,7 +158,7 @@ public:
 		for (auto color : colorVector)
 		{
 			//Each 1 byte, we get a different color
-			taintController.registerOriginalColor(color, dllName, funcName, (ADDRINT)(((char*)wininetInternetReadFile.lpBuffer) + offset), (UINT8)(((char*)wininetInternetReadFile.lpBuffer)[offset]));
+			taintController.registerOriginalColor(color, *dllNameStr, *funcNameStr, (ADDRINT)((char*)(wininetInternetReadFile.lpBuffer) + offset), (UINT8)(((char*)wininetInternetReadFile.lpBuffer)[offset]));
 			offset++;
 		}
 
@@ -162,16 +167,21 @@ public:
 
 
 	///////////////// MAIN (FOR TESTING). Taints RAX and RBX /////////////////
-	static VOID mainEnter(int retIp, std::string dllName, std::string funcName, ...)
+	static VOID mainEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		LOG_DEBUG("Called mainEnter()");
 		
 		//Test: taint RAX
 		//taintController.printTaint();
-		taintController.taintRegNewColor(REG_RAX);
+#ifdef TARGET_IA32E
+		//taintController.taintRegNewColor(LEVEL_BASE::REG::REG_RBX);
 		taintController.taintRegNewColor(REG_RBX);
+#else 
+		taintController.taintRegNewColor(LEVEL_BASE::REG::REG_EAX);
+		taintController.taintRegNewColor(REG_EBX);
+#endif
 	};
-	static VOID mainExit(int retVal, std::string dllName, std::string funcName, ...)
+	static VOID mainExit(ADDRINT retVal, VOID* dllName, VOID* funcName)
 	{
 		LOG_DEBUG("Called mainExit()");
 		//taintController.printTaint();
@@ -185,11 +195,13 @@ public:
 	int numArgs = 0;
 
 	//placeholders
-	VOID(*enterHandler)(int, std::string, std::string, ...) = NULL;
-	VOID(*exitHandler)(int, std::string, std::string, ...) = NULL;
+	VOID(*enterHandler)(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6) = NULL;
+	VOID(*exitHandler)(ADDRINT, VOID*, VOID*) = NULL;
 
 	TaintSource() {};
-	TaintSource(const std::string dllName, const std::string funcName, int numArgs, VOID(*enter)(int, std::string, std::string, ...), VOID(*exit)(int, std::string, std::string, ...));
+	TaintSource(const std::string dllName, const std::string funcName, int numArgs, 
+		VOID(*enter)(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6),
+		VOID(*exit)(ADDRINT, VOID*, VOID*));
 
 	void taintSourceLogAll();
 
@@ -197,7 +209,7 @@ public:
 		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 	{
 		PIN_LockClient();
-
+		
 		//Only if we are going from main dll to another, or another scoped image
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
 			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
@@ -224,12 +236,12 @@ public:
 				data.dllTo = dllTo;
 				data.funcTo = routineNameTo;
 				data.memAddrTo = InstructionWorker::getBaseAddress(branchTargetAddress);
-				data.arg0 = arg0;
-				data.arg1 = arg1;
-				data.arg2 = arg2;
-				data.arg3 = arg3;
-				data.arg4 = arg4;
-				data.arg5 = arg5;
+				data.arg0 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg0));
+				data.arg1 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg1));
+				data.arg2 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg2));
+				data.arg3 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg3));
+				data.arg4 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg4));
+				data.arg5 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg5));
 
 				genericRoutineCalls.erase(nextInstAddr);
 				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(nextInstAddr, data));
@@ -250,7 +262,7 @@ public:
 		
 	}
 
-	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, int retVal, UINT32 instSize, CONTEXT* localCtx, THREADID tid)
+	static void genericRoutineInstrumentExit(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchTaken, ADDRINT retVal, UINT32 instSize, CONTEXT* localCtx, THREADID tid)
 	{
 		PIN_LockClient();
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
@@ -261,7 +273,7 @@ public:
 				auto it = genericRoutineCalls.find(branchTargetAddress);
 				if (it == genericRoutineCalls.end())
 				{
-					LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex_dbg(branchTargetAddress));
+					//LOG_ALERT("Tried to instrument generic routine at exit, but entry not found: " << to_hex_dbg(ip) << " | " << to_hex_dbg(branchTargetAddress));
 				}
 				else
 				{
@@ -277,7 +289,6 @@ public:
 					if (!vec.empty()) {
 						dataDumper.writeCurrentTaintedMemoryDump(branchTargetAddress, vec);
 					}
-
 
 					genericRoutineCalls.erase(branchTargetAddress);
 				}

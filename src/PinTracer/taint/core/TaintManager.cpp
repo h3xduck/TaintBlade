@@ -43,27 +43,41 @@ void TaintManager::routineLoadedEvent(RTN rtn, std::string dllName, std::string 
 		}
 	}
 
+	//Manage taint sinks
+	if ((dllName == KERNEL32_DLL || dllName == KERNEL32_DLL_x86) && funcName == CREATE_PROCESS_A_FUNC)
+	{
+		INS_CALL_RTN_TAINT(rtn, dllName, funcName, 10, TAINT::CORE::TAINT_SINK::createProcessAEnter, NULL);
+	}
+	else if ((dllName == KERNEL32_DLL || dllName == KERNEL32_DLL_x86) && funcName == CREATE_PROCESS_W_FUNC)
+	{
+		INS_CALL_RTN_TAINT(rtn, dllName, funcName, 10, TAINT::CORE::TAINT_SINK::createProcessWEnter, NULL);
+	}
+	else if ((/*(dllName == KERNEL32_DLL || dllName == KERNEL32_DLL_x86) ||*/ (dllName == KERNELBASE_DLL || dllName == KERNELBASE_DLL_x86)) && funcName == MULTI_BYTE_TO_WIDE_CHAR_FUNC)
+	{
+		INS_CALL_RTN_TAINT(rtn, dllName, funcName, 6, TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter, TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit);
+	}
+
 }
 
 void TaintManager::registerTaintSource(const std::string &dllName, const std::string &funcName, int numArgs)
 {
 	//Select handler depending on function
-	VOID(*enterHandler)(int retIp, std::string dllName, std::string funcName, ...) = NULL;
-	VOID(*exitHandler)(int retVal, std::string dllName, std::string funcName, ...) = NULL;
+	VOID(*enterHandler)(ADDRINT retIp, VOID * dllName, VOID * funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6) = NULL;
+	VOID(*exitHandler)(ADDRINT retVal, VOID* dllName, VOID* funcName) = NULL;
 
-	if (dllName == WS2_32_DLL && funcName == RECV_FUNC)
+	if ((dllName == WS2_32_DLL || dllName == WS2_32_DLL_x86) && funcName == RECV_FUNC)
 	{
 		LOG_DEBUG("Registered function handlers for recv in ws2_32");
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
 	}
-	else if(dllName == WSOCK32_DLL && funcName == RECV_FUNC)
+	else if ((dllName == WSOCK32_DLL || dllName == WSOCK32_DLL_x86) && funcName == RECV_FUNC)
 	{
 		LOG_DEBUG("Registered function handlers for recv in wsock32");
 		enterHandler = TaintSource::wsockRecvEnter;
 		exitHandler = TaintSource::wsockRecvExit;
 	}
-	else if (dllName == WININET_DLL && funcName == INTERNET_READ_FILE_FUNC)
+	else if ((dllName == WININET_DLL || dllName == WININET_DLL_x86) && funcName == INTERNET_READ_FILE_FUNC)
 	{
 		LOG_DEBUG("Registered function handlers for InternetReadFile in wininet");
 		enterHandler = TaintSource::wininetInternetReadFileEnter;
@@ -104,7 +118,7 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		taintVector.push_back(taintSource);
 		this->taintFunctionMap.insert(std::pair<std::string, std::vector<TaintSource>>(dllName, taintVector));
 		
-		LOG_ALERT("Registered a new taintSource: NEW DllName =  " << dllName << " FuncName = " << funcName);
+		LOG_INFO("Registered a new taintSource: NEW DllName =  " << dllName << " FuncName = " << funcName);
 	}
 	else
 	{
@@ -118,7 +132,7 @@ void TaintManager::registerTaintSource(const std::string &dllName, const std::st
 		{
 			//New function for existing DLL
 			taintIt->second.push_back(taintSource);
-			LOG_ALERT("Registered a taintSource in a known DLL: DllName =  " << dllName << " FuncName = " << funcName);
+			LOG_INFO("Registered a taintSource in a known DLL: DllName =  " << dllName << " FuncName = " << funcName);
 		}
 	}
 }

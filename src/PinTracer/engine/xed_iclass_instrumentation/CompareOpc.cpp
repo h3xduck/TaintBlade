@@ -8,7 +8,7 @@ extern Context ctx;
 void OPC_INST::cmp_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
-	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
 
@@ -19,7 +19,7 @@ void OPC_INST::cmp_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, AD
 void OPC_INST::cmp_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
-	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
 	INST_COMMON::revLogInst_reg2reg(lctx, ip, regSrc, regDest, opc, true);
@@ -28,7 +28,7 @@ void OPC_INST::cmp_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 void OPC_INST::cmp_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	PIN_LockClient();
-	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	//std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
 	//ctx.updateLastMemoryValue(val, memDestLen);
 	PIN_UnlockClient();
@@ -39,7 +39,7 @@ void OPC_INST::cmp_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
-	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
 	INST_COMMON::revLogInst_imm2reg(lctx, ip, immSrc, regDest, opc, true);
@@ -48,7 +48,7 @@ void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UI
 void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	PIN_LockClient();
-	ctx.updateCurrentInstruction(InstructionWorker::getBaseAddress(ip));
+	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
 	INST_COMMON::revLogInst_imm2mem(lctx, ip, immSrc, memDest, memDestLen, opc, true);
@@ -57,7 +57,7 @@ void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UI
 void OPC_INST::cmp_after(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, UINT32 opc)
 {
 	//This is called after executing the CMP instruction. Now, insert the atom in the log
-	INST_COMMON::revLogInst_after(lctx, ip);
+	INST_COMMON::revLogInst_after(lctx, ip, REG_INVALID());
 }
 
 

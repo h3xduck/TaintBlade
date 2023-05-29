@@ -4,6 +4,7 @@
 #include "../data/RevLog.h"
 #include "../data/RevAtom.h"
 #include "../heuristics/HLComparison.h"
+#include "../heuristics/HLPointerField.h"
 #include "../../test/TestEngine.h"
 
 class RevContext
@@ -15,10 +16,16 @@ private:
 	RevLog<RevAtom> revLogCurrent;
 
 	/**
-	List of instructions that were found to correspond to a high-level operation
-	(such as a comparison). A vector of heuristics.
+	List of instructions that were found to correspond to a high-level comparison operation.
+	A vector of heuristics.
 	*/
-	RevLog<HLComparison> revLogHeuristics;
+	RevLog<HLComparison> revLogComparisonHeuristics;
+
+	/**
+	List of instructions that were found to correspond to a high-level pointer field operation.
+	A vector of heuristics.
+	*/
+	RevLog<HLPointerField> revLogPointerFieldHeuristics;
 
 	/**
 	An auxiliary RevAtom that is used during instrumentation, used to store
@@ -90,9 +97,14 @@ public:
 	void dumpFoundHeuristics();
 
 	/**
-	Returns the vector of all heuristics found during the program execution
+	Returns the vector of all comparison heuristics found during the program execution
 	*/
-	RevLog<HLComparison>& getHeuristicsVector();
+	RevLog<HLComparison>& getComparisonHeuristicsVector();
+
+	/**
+	Returns the vector of all comparison heuristics found during the program execution
+	*/
+	RevLog<HLPointerField>& getPointerFieldHeuristicsVector();
 
 };
 

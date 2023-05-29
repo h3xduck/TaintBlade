@@ -3,6 +3,7 @@
 
 TReg::TReg()
 {
+#ifdef TARGET_IA32E
 	//64 bit
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_RAX, 0));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_RBX, 8));
@@ -20,6 +21,7 @@ TReg::TReg()
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R15, 104 ));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_RSP, 112 ));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_RBP, 120 ));
+#endif
 	//32 bit
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_EAX, 4));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_EBX, 12));
@@ -27,6 +29,7 @@ TReg::TReg()
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_EDX, 28));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_ESI, 36));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_EDI, 44));
+#ifdef TARGET_IA32E
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R8D, 52));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R9D, 60));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R10D, 68));
@@ -35,6 +38,7 @@ TReg::TReg()
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R13D, 92));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R14D, 100));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R15D, 108));
+#endif
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_ESP, 116));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_EBP, 124));
 	//16 bit
@@ -44,6 +48,7 @@ TReg::TReg()
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_DX, 30));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_SI, 38));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_DI, 46));
+#ifdef TARGET_IA32E
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R8W, 54));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R9W, 62));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R10W, 70));
@@ -52,6 +57,7 @@ TReg::TReg()
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R13W, 94));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R14W, 102));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R15W, 110));
+#endif
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_SP, 118));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_BP, 126));
 	//8 bit - high
@@ -64,6 +70,7 @@ TReg::TReg()
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_BL, 15));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_CL, 23));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_DL, 31));
+#ifdef TARGET_IA32E
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_SIL, 39));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_DIL, 47));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R8B, 55));
@@ -76,6 +83,7 @@ TReg::TReg()
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_R15B, 111));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_SPL, 119));
 	this->regIndexMapping.insert(std::make_pair<INT, UINT32>(REG_BPL, 127));
+#endif
 };
 
 UINT32 TReg::getPos(INT reg)

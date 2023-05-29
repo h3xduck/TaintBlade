@@ -18,6 +18,9 @@
 //Debug write memory addresses in hexadecimal or decimal notation
 #define DEBUG_IN_HEX 1
 
+//Debug heuristics process
+#define HEURISTIC_DEBUG 1
+
 //******************************* DATA DUMPING CONFIG *******************************//
 
 //Data dumping files
@@ -28,6 +31,8 @@
 #define FUNC_DLL_NAMES_DUMP_FILE "funcdllnames.dfx"
 #define HEURISTIC_RESULTS_DUMP_FILE "heuristics.dfx"
 #define PROTOCOL_RESULTS_DUMP_FILE "protocol.dfx"
+#define TRACE_RESULTS_DUMP_FILE "trace.dfx"
+#define STATE_TRACKER_FILE "state_tracker.dfx"
 #define DUMP_INTER_SEPARATOR "%"
 #define DUMP_OUTER_SEPARATOR std::endl
 

@@ -2,6 +2,7 @@
 #define _PROTOCOLWORD_H_
 
 #include "pin.H"
+#include "../../utils/inst/InstructionWorker.h"
 #include <vector>
 
 namespace REVERSING
@@ -35,6 +36,11 @@ namespace REVERSING
 			Value that the delimeter holds. Vector of one byte
 			*/
 			std::vector<UINT8> wordValue;
+
+			/**
+			Colors to which each byte making up the word were compared to
+			*/
+			std::vector<UINT16> comparedColors;
 
 			/**
 			Protocol network buffer to which the delimeter is applied to
@@ -73,6 +79,9 @@ namespace REVERSING
 			std::vector<UINT8> getAllBytes();
 			void addByte(UINT8 valByte);
 			void setBytes(std::vector<UINT8> valBytes);
+			void addColor(UINT16 color);
+			void setColors(std::vector<UINT16> colors);
+			std::vector<UINT16> getComparedColors();
 			//ProtocolNetworkBuffer* getBuffer();
 			//void setBuffer(ProtocolNetworkBuffer* buffer);
 			int getStartIndex();

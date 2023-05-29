@@ -40,24 +40,27 @@ public:
 	//For LEA operations
 	bool leaBaseTainted = 0;
 	bool leaIndexTainted = 0;
+	//leaDest is contained in regDest
+	bool leaIndirectTaint = 0; //indicates that there was an indirect taint (a pointer to a tainted address was LEA-ed)
+
+	//For REPE/REPNE SCAS operations
+	bool scasMemTainted = 0;
+	bool regScasXAXTainted = 0;
+	bool regScasXCXTainted = 0;
+	bool regScasXDITainted = 0;
 
 	RevHeuristicAtom() {};
 
 	RevHeuristicAtom(int instType, atom_operands_type_t operandsType,
-		bool memSrcTainted, bool memDestTainted, bool regSrcTainted, 
-		bool regDestTainted, bool leaBaseTainted, 
-		bool leaIndexTainted, bool hasImmSrc)
-	{
-		this->instType = instType;
-		this->operandsType = operandsType;
-		this->memSrcTainted = memSrcTainted;
-		this->memDestTainted = memDestTainted;
-		this->regSrcTainted = regSrcTainted;
-		this->regDestTainted = regDestTainted;
-		this->leaBaseTainted = leaBaseTainted;
-		this->leaIndexTainted = leaIndexTainted;
-		this->hasImmSrc = hasImmSrc;
-	}
+		bool memSrcTainted, bool memDestTainted, bool regSrcTainted,
+		bool regDestTainted, bool leaBaseTainted,
+		bool leaIndexTainted, bool leaIndirectTaint, bool hasImmSrc,
+		bool scasMemTainted, bool regScasXAXTainted, bool regScasXCXTainted, bool regScasXDITainted)
+		: instType(instType), operandsType(operandsType), memSrcTainted(memSrcTainted), memDestTainted(memDestTainted),
+		regSrcTainted(regSrcTainted), regDestTainted(regDestTainted), leaBaseTainted(leaBaseTainted),
+		leaIndexTainted(leaIndexTainted), leaIndirectTaint(leaIndirectTaint), hasImmSrc(hasImmSrc), scasMemTainted(scasMemTainted),
+		regScasXAXTainted(regScasXAXTainted), regScasXCXTainted(regScasXCXTainted),
+		regScasXDITainted(regScasXDITainted) {}
 
 	/**
 	Returns whether an heuristic atom (this) is containted on another (other).
@@ -88,10 +91,16 @@ public:
 		//Check tainting
 		if ((other.leaBaseTainted && !this->leaBaseTainted) || 
 			(other.leaIndexTainted && !this->leaIndexTainted) || 
+			(other.leaIndirectTaint && !this->leaIndirectTaint) ||
 			(other.memDestTainted && !this->memDestTainted) || 
 			(other.memSrcTainted && !this->memSrcTainted) || 
 			(other.regDestTainted && !this->regDestTainted) || 
-			(other.regSrcTainted && !this->regSrcTainted))
+			(other.regSrcTainted && !this->regSrcTainted) ||
+			(other.scasMemTainted && !this->scasMemTainted) ||
+			(other.regScasXAXTainted && !this->regScasXAXTainted) ||
+			(other.regScasXCXTainted && !this->regScasXCXTainted) ||
+			(other.regScasXDITainted && !this->regScasXDITainted)
+			)
 		{
 			return false;
 		}
@@ -104,9 +113,10 @@ public:
 	*/
 	bool containsAnyData()
 	{
-		if (this->hasImmSrc || this->instType != 0 || this->leaBaseTainted ||
+		if (this->hasImmSrc || this->instType != 0 || this->leaBaseTainted || this->leaIndirectTaint ||
 			this->leaIndexTainted || this->memDestTainted || this->memSrcTainted ||
-			this->regDestTainted || this->regSrcTainted)
+			this->regDestTainted || this->regSrcTainted || this->scasMemTainted ||
+			this->regScasXAXTainted || this->regScasXCXTainted || this->regScasXDITainted)
 		{
 			return true;
 		}

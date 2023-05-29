@@ -37,6 +37,21 @@ void REVERSING::PROTOCOL::ProtocolWord::setBytes(std::vector<UINT8> valBytes)
 	this->wordValue = valBytes;
 }
 
+void REVERSING::PROTOCOL::ProtocolWord::addColor(UINT16 color)
+{
+	this->comparedColors.push_back(color);
+}
+
+void REVERSING::PROTOCOL::ProtocolWord::setColors(std::vector<UINT16> colors)
+{
+	this->comparedColors = colors;
+}
+
+std::vector<UINT16> REVERSING::PROTOCOL::ProtocolWord::getComparedColors()
+{
+	return this->comparedColors;
+}
+
 /*REVERSING::PROTOCOL::ProtocolNetworkBuffer* REVERSING::PROTOCOL::ProtocolWord::getBuffer()
 {
 	return this->buffer;
@@ -105,7 +120,7 @@ std::string REVERSING::PROTOCOL::ProtocolWord::toString()
 	std::vector<int> &compVec = this->getSuccessIndexes();
 	for (int ii = 0; ii < bytesVec.size(); ii++)
 	{
-		ss << "\n\tByte " << ii << ": " << bytesVec.at(ii) << " | Comparison result: " << compVec.at(ii);
+		ss << "\n\tByte " << ii << ": " << InstructionWorker::byteToHexValueString(bytesVec.at(ii)) << " (as char: " << bytesVec.at(ii) << ") | Comparison result: " << compVec.at(ii);
 	}
 
 	return ss.str();
