@@ -286,6 +286,24 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ExecutionBridge.h",
+			"MU",
+			"EWIEGA46WW/moc_ExecutionBridge.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/Globals.h",
+			"MU",
+			"EWIEGA46WW/moc_Globals.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.h",
+			"MU",
+			"EWIEGA46WW/moc_PinConfigurationDialog.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -361,6 +379,21 @@
 	"SETTINGS_FILE" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/CMakeFiles/PinTracerUI_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ExecutionBridge.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/Globals.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp",
+			"MU",
+			null
+		],
 		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/main.cpp",
 			"MU",

@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>808</width>
+    <height>588</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>808</width>
      <height>26</height>
     </rect>
    </property>
@@ -28,7 +28,7 @@
      <string>File</string>
     </property>
     <addaction name="actionOpen"/>
-    <addaction name="actionSelect_output_directory"/>
+    <addaction name="actionSelect_configuration"/>
     <addaction name="separator"/>
     <addaction name="actionProperties"/>
     <addaction name="separator"/>
@@ -84,7 +84,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionOpen"/>
-   <addaction name="actionSelect_output_directory"/>
+   <addaction name="actionSelect_configuration"/>
    <addaction name="separator"/>
    <addaction name="actionRun"/>
    <addaction name="actionStop"/>
@@ -117,13 +117,16 @@
     <string>Open</string>
    </property>
   </action>
-  <action name="actionSelect_output_directory">
+  <action name="actionSelect_configuration">
    <property name="icon">
     <iconset resource="MainToolBarResource.qrc">
      <normaloff>:/res/icons/icons8-log-26.png</normaloff>:/res/icons/icons8-log-26.png</iconset>
    </property>
    <property name="text">
-    <string>Select output dir</string>
+    <string>PIN configuration</string>
+   </property>
+   <property name="toolTip">
+    <string>PIN configuration</string>
    </property>
   </action>
   <action name="actionRun">

@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDebug>
+#include <QVBoxLayout>
+#include <QMenu>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,14 +16,16 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    public:
+        MainWindow(QWidget *parent = nullptr);
+        ~MainWindow();
 
-private slots:
-    void on_actionOpen_triggered();
+    private slots:
+        void on_actionOpen_triggered();
 
-private:
-    Ui::MainWindow *ui;
+        void on_actionSelect_configuration_triggered();
+
+    private:
+        Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

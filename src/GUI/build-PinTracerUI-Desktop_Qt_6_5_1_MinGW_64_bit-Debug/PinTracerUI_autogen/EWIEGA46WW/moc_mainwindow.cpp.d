@@ -144,10 +144,17 @@ C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_
   C:/Qt/6.5.1/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QFileDialog \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/QMenu \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QMessageBox \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/QVBoxLayout \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qboxlayout.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qfiledialog.h \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qgridlayout.h \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qmainwindow.h \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qmenu.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qmessagebox.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qtabwidget.h \
