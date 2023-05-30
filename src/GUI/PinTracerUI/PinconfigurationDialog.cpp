@@ -28,7 +28,7 @@ void PinConfigurationDialog::enableOkButtonIfAllDataSet()
 
 void PinConfigurationDialog::on_outputDirBrowseButton_clicked()
 {
-    QString selectedPath = QFileDialog::getOpenFileName(this, "Select file");
+    QString selectedPath = QFileDialog::getExistingDirectory(this, "Select output directory");
     if(!selectedPath.isEmpty())
     {
         ui->outputDirLineEdit->setText(selectedPath);

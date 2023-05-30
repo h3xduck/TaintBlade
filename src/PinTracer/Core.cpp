@@ -53,7 +53,7 @@ UINT32 timeoutMillis = 0; //Number of milliseconds to wait until the tracer halt
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
-std::ostream* debugFile = &std::cerr;
+std::ofstream debugFile;
 
 std::string mainImageName;
 BOOL instructionLevelTracing = 0;
@@ -792,7 +792,7 @@ int main(int argc, char* argv[])
 
 	if (!debugFileFilename.empty())
 	{
-		debugFile = new std::ofstream(getFilenameFullName(debugFileFilename).c_str());
+		debugFile.open(getFilenameFullName(debugFileFilename).c_str());
 	}
 
 	if (!testFileFilename.empty())

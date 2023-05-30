@@ -4,6 +4,7 @@
 #include <QString>
 #include <QMessageBox>
 #include <QDebug>
+#include <QProcess>
 
 namespace EXECUTION
 {

@@ -28,7 +28,7 @@ void UTILS::IO::CommandCenter::startCommandCenterJob()
     PIN_THREAD_UID threadUid;
 
     LOG_DEBUG("Starting Command Center job");
-    threadId = PIN_SpawnInternalThread(queryCommandAvailable, debugFile, 0, &threadUid);
+    threadId = PIN_SpawnInternalThread(queryCommandAvailable, &debugFile, 0, &threadUid);
     
     if (threadId == INVALID_THREADID)
     {
@@ -48,7 +48,7 @@ void UTILS::IO::CommandCenter::startCommandCenterJob()
 
 void UTILS::IO::CommandCenter::queryCommandAvailable(VOID* arg)
 {
-    debugFile = (std::ostream*)(arg);
+   // debugFile = (std::ofstream)(arg);
     
     //For every X seconds, try and see if there are commands to execute
     while (true)
