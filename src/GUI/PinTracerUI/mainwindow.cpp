@@ -25,9 +25,6 @@ void MainWindow::on_actionOpen_triggered()
     if (!GLOBAL_VARS::selectedToTraceBinaryPath.isEmpty())
     {
         qDebug() << "User selected file "<< GLOBAL_VARS::selectedToTraceBinaryPath <<" to be opened";
-        //Execute main tracer program. Will fail if arguments are not properly set until this point
-        EXECUTION::executeTracer(GLOBAL_VARS::selectedToTraceBinaryPath, GLOBAL_VARS::pinExeDirPath,
-                                 GLOBAL_VARS::tracerDLLDirPath, GLOBAL_VARS::selectedOutputDirPath);
     }
 }
 
@@ -37,6 +34,52 @@ void MainWindow::on_actionSelect_configuration_triggered()
     //Open the dialog to select the three different config options
     qDebug() << "Launching pin configuration option dialog";
     PinConfigurationDialog *dialog = new PinConfigurationDialog;
-    dialog->show();
+    dialog->exec();
+}
+
+
+void MainWindow::on_actionRun_triggered()
+{
+    //Execute the program. If some argument is not available, then show a message of so
+    if(GLOBAL_VARS::selectedToTraceBinaryPath.isEmpty())
+    {
+        QMessageBox msgWarning;
+        msgWarning.setText("Please select the program to trace first");
+        msgWarning.setIcon(QMessageBox::Warning);
+        msgWarning.setWindowTitle("Caution");
+        msgWarning.exec();
+
+        MainWindow::on_actionOpen_triggered();
+    }
+
+    //If we reach this point and the argument is not set, is because the user cancelled some operation. So halt
+    if(GLOBAL_VARS::selectedToTraceBinaryPath.isEmpty())
+    {
+        return;
+    }
+
+    if(GLOBAL_VARS::selectedOutputDirPath.isEmpty() ||
+        GLOBAL_VARS::pinExeDirPath.isEmpty() ||
+        GLOBAL_VARS::tracerDLLDirPath.isEmpty())
+    {
+        QMessageBox msgWarning;
+        msgWarning.setText("Please complete PIN configuration first");
+        msgWarning.setIcon(QMessageBox::Warning);
+        msgWarning.setWindowTitle("Caution");
+        msgWarning.exec();
+
+        MainWindow::on_actionSelect_configuration_triggered();
+    }
+
+    //If we reach this point and some argument is not set, is because the user cancelled some operation. So halt
+    if(GLOBAL_VARS::selectedOutputDirPath.isEmpty() ||
+        GLOBAL_VARS::pinExeDirPath.isEmpty() ||
+        GLOBAL_VARS::tracerDLLDirPath.isEmpty())
+    {
+        return;
+    }
+
+    //If we reach this point, everything is set, call tracer
+    EXECUTION::executeTracer(GLOBAL_VARS::selectedToTraceBinaryPath, GLOBAL_VARS::pinExeDirPath, GLOBAL_VARS::tracerDLLDirPath, GLOBAL_VARS::selectedOutputDirPath);
 }
 

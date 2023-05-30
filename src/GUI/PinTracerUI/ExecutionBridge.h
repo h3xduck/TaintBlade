@@ -2,6 +2,8 @@
 #define EXECUTIONBRIDGE_H
 
 #include <QString>
+#include <QMessageBox>
+#include <QDebug>
 
 namespace EXECUTION
 {

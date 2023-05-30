@@ -25,6 +25,8 @@ class MainWindow : public QMainWindow
 
         void on_actionSelect_configuration_triggered();
 
+        void on_actionRun_triggered();
+
     private:
         Ui::MainWindow *ui;
 };
