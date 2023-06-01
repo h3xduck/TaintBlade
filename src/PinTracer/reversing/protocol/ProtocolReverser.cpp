@@ -400,6 +400,6 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	}
 
 	//Dump data about the protocol
-	dataDumper.writeProtocolDump(protocol);
+	ctx.getDataDumper().writeProtocolDump(protocol);
 
 }

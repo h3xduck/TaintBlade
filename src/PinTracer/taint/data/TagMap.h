@@ -44,8 +44,6 @@
 */
 
 const int REG_TAINT_FIELD_LEN = 128;
-extern DataDumper dataDumper;
-
 
 #define LOG_MESSAGE_TAINT_MEM(effect, op, memAddr, color)	\
 LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << " --> mem." << op << "(addr:" << to_hex_dbg(memAddr) << " color:" << color << ")")

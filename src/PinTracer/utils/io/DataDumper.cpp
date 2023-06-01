@@ -1,6 +1,6 @@
 #include "DataDumper.h"
+#include "../../common/Context.h"
 
-DataDumper dataDumper;
 extern Context ctx;
 extern std::string pintracerSuffix;
 
@@ -19,12 +19,18 @@ DataDumper::DataDumper()
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec)
 {
 	//NOTE: in here we also have the memAddress available
+	LOG_DEBUG("Logging original size: " << colorVec.size());
 	for (auto it : colorVec)
 	{
+#if(FILE_LOGGING_ACTIVATE==1)
 		this->orgColorsDumpFile << it.first << DUMP_INTER_SEPARATOR <<
 			it.second.dllName << DUMP_INTER_SEPARATOR <<
 			it.second.funcName << DUMP_INTER_SEPARATOR <<
 			this->lastRoutineDumpIndex << DUMP_OUTER_SEPARATOR;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+		ctx.getDatabaseManager().insertOriginalColorLine(it.first, it.second, this->lastRoutineDumpIndex);
+#endif
 	}
 }
 

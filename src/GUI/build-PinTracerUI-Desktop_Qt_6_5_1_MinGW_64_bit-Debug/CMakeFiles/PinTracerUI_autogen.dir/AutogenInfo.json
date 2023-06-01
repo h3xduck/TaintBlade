@@ -286,6 +286,12 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/DatabaseManager.h",
+			"MU",
+			"EWIEGA46WW/moc_DatabaseManager.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ExecutionBridge.h",
 			"MU",
 			"EWIEGA46WW/moc_ExecutionBridge.cpp",
@@ -379,6 +385,11 @@
 	"SETTINGS_FILE" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Debug/CMakeFiles/PinTracerUI_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/DatabaseManager.cpp",
+			"MU",
+			null
+		],
 		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ExecutionBridge.cpp",
 			"MU",

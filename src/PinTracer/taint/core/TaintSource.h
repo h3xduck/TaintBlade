@@ -24,10 +24,8 @@ namespace WINDOWS
 #endif
 
 extern TaintController taintController;
-extern DataDumper dataDumper;
 extern ScopeFilterer scopeFilterer;
 extern Context ctx;
-
 //Function arguments
 struct wsock_recv_t
 {
@@ -248,12 +246,12 @@ public:
 				//LOG_DEBUG("Inserted entry jump at " << to_hex_dbg(branchTargetAddress));
 
 				//At this point, we dump the function and the arguments
-				dataDumper.writeRoutineDumpLine(data);
+				ctx.getDataDumper().writeRoutineDumpLine(data);
 				//Now we dump the current tainted memory
 				std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
 				//In the case we don't have tainted memory yet, we write nothing
 				if (!vec.empty()) {
-					dataDumper.writeCurrentTaintedMemoryDump(ip, vec);
+					ctx.getDataDumper().writeCurrentTaintedMemoryDump(ip, vec);
 				}
 			}
 		}
@@ -282,12 +280,12 @@ public:
 					//At this point, we dump the function and the arguments
 					struct DataDumper::func_dll_names_dump_line_t data;
 					data = it->second;
-					dataDumper.writeRoutineDumpLine(data);
+					ctx.getDataDumper().writeRoutineDumpLine(data);
 					//Now we dump the current tainted memory
 					std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
 					//In the case we don't have tainted memory yet, we write nothing
 					if (!vec.empty()) {
-						dataDumper.writeCurrentTaintedMemoryDump(branchTargetAddress, vec);
+						ctx.getDataDumper().writeCurrentTaintedMemoryDump(branchTargetAddress, vec);
 					}
 
 					genericRoutineCalls.erase(branchTargetAddress);

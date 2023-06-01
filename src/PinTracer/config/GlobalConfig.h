@@ -19,7 +19,7 @@
 #define DEBUG_IN_HEX 1
 
 //Debug heuristics process
-#define HEURISTIC_DEBUG 1
+#define HEURISTIC_DEBUG 0
 
 //******************************* DATA DUMPING CONFIG *******************************//
 
@@ -44,6 +44,23 @@
 //to avoid continously erasing values when we soon surpass it again. This sets how
 //many values are deleted apart from the truncation.
 #define REVLOG_TRUNCATE_ADDITIONAL 30
+
+//******************************* DATABASE CONFIG *******************************//
+//Activates DB logging.
+#define DB_LOGGING_ACTIVATE 1
+//Activates file logging
+#define FILE_LOGGING_ACTIVATE 1
+
+//Location of DB (current directory)
+#define DB_LOCATION "dump.db"
+
+//Table names
+#define DB_TABLE_FUNCTION_CALLS "function_calls"
+#define DB_TABLE_TAINT_EVENTS "taint_events"
+#define DB_TABLE_COLOR_TRANSFORMATION "color_transformation"
+#define DB_TABLE_MEMORY_COLORS "memory_colors"
+#define DB_TABLE_ORIGINAL_COLORS "original_colors"
+
 
 
 #endif

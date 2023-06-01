@@ -1,7 +1,6 @@
 #include "TaintManager.h"
 
 TaintManager taintManager;
-extern DataDumper dataDumper;
 
 TaintManager::TaintManager()
 {

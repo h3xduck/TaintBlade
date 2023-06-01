@@ -18,7 +18,6 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\binaryopc.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\instrumentationmanager.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\core.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\context.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\performanceoperator.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\instructionworker.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pseudoassemblyparser.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\nopsection.obj
@@ -36,6 +35,7 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\taintcontroll
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolreverser.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolnetworkbuffer.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolword.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolpointer.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocol.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\revheuristic.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\tracepoint.obj
@@ -45,7 +45,8 @@ c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\datadumper.ob
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\commandcenter.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\syscallparser.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\scopefilterer.obj
-c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\protocolpointer.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\performanceoperator.obj
+c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\databasemanager.obj
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.lib
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.exp
 c:\users\marcos\source\repos\h3xduck\tfm\src\pintracer\x64\release\pintracer.dll

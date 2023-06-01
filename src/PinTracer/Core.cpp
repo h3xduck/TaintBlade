@@ -697,11 +697,11 @@ void dumpEndInfo()
 
 	//Dump original colors vector
 	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
-	dataDumper.writeOriginalColorDump(orgVec);
+	ctx.getDataDumper().writeOriginalColorDump(orgVec);
 
 	//Dump color transformations
 	std::vector<Tag> colorTrans = taintController.getColorTransVector();
-	dataDumper.writeColorTransformationDump(colorTrans);
+	ctx.getDataDumper().writeColorTransformationDump(colorTrans);
 
 	//Dump RevAtoms
 	//ctx.getRevContext()->printRevLogCurrent();
@@ -1025,6 +1025,11 @@ int main(int argc, char* argv[])
 	//Starts a background threat that periodically checks whether
 	//we have any command from the user.
 	UTILS::IO::CommandCenter::startCommandCenterJob();
+
+	//Initialize database
+	ctx.getDatabaseManager().openDatabase();
+	ctx.getDatabaseManager().emptyDatabase();
+	ctx.getDatabaseManager().createDatabase();
 
 	// Start the program, never returns
 	PIN_StartProgram();

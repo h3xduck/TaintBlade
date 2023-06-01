@@ -8,10 +8,11 @@
 #include "../inst/InstructionWorker.h"
 #include "../../taint/data/Tag.h"
 #include "../../taint/data/TagLog.h"
-#include "../../common/Context.h"
 #include "../../utils/io/format.h"
 #include "../../reversing/protocol/Protocol.h"
 #include "../trace/TracePoint.h"
+#include "../db/DatabaseManager.h"
+#include "../../reversing/heuristics/HLPointerField.h"
 
 class DataDumper
 {

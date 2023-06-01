@@ -51,7 +51,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 33,
+				"line" : 35,
 				"parent" : 0
 			},
 			{
@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 47,
+				"line" : 49,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 41,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
@@ -371,7 +371,8 @@
 				6,
 				8,
 				10,
-				16
+				12,
+				18
 			]
 		}
 	],
@@ -498,7 +499,8 @@
 				6,
 				8,
 				10,
-				16
+				12,
+				18
 			]
 		},
 		{
@@ -506,9 +508,9 @@
 			"sourceIndexes" : 
 			[
 				1,
-				11,
-				12,
-				15
+				13,
+				14,
+				17
 			]
 		},
 		{
@@ -519,16 +521,17 @@
 				5,
 				7,
 				9,
-				13,
-				14
+				11,
+				15,
+				16
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				17,
-				18
+				19,
+				20
 			]
 		}
 	],
@@ -594,6 +597,17 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "PinconfigurationDialog.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "DatabaseManager.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "DatabaseManager.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

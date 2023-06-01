@@ -240,8 +240,8 @@
     </ClCompile>
     <Link>
       <AdditionalOptions>/export:main %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>pin.lib;xed.lib;pincrt.lib;kernel32.lib;crtbeginS.obj</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib;C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pin.lib;xed.lib;pincrt.lib;kernel32.lib;crtbeginS.obj;sqlite3.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\lib-ext;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\xed-intel64\lib;C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include;..\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\intel64\runtime\pincrt;C:\Users\Marcos\source\repos\h3xduck\TFM\src\external\sqlite-dll-win64-x64-3420000;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -292,6 +292,7 @@
     <ClCompile Include="taint\data\TagMap.cpp" />
     <ClCompile Include="taint\core\TaintSource.cpp" />
     <ClCompile Include="test\TestEngine.cpp" />
+    <ClCompile Include="utils\db\DatabaseManager.cpp" />
     <ClCompile Include="utils\exec\DllImageLoad.cpp" />
     <ClCompile Include="utils\exec\ExecutionManager.cpp" />
     <ClCompile Include="utils\exec\NopSection.cpp" />
@@ -350,6 +351,9 @@
     <ClInclude Include="test\Test.h" />
     <ClInclude Include="test\TestEngine.h" />
     <ClInclude Include="test\TestMilestone.h" />
+    <ClInclude Include="utils\db\DatabaseManager.h" />
+    <ClInclude Include="utils\db\sqlite3.h" />
+    <ClInclude Include="utils\db\sqlite3ext.h" />
     <ClInclude Include="utils\debug\DebugManager.h" />
     <ClInclude Include="utils\exec\PseudoAssemblyParser.h" />
     <ClInclude Include="utils\exec\DllImageLoad.h" />

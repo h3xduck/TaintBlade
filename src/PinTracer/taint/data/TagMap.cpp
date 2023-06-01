@@ -46,7 +46,7 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 		event.color = tag.color;
 		event.memAddr = addr;
 		event.eventType = DataDumper::TAINT;
-		dataDumper.writeMemoryColorEventDump(event);
+		ctx.getDataDumper().writeMemoryColorEventDump(event);
 	}
 	else
 	{
@@ -60,7 +60,7 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 		event.color = tag.color;
 		event.memAddr = addr;
 		event.eventType = DataDumper::CHANGE;
-		dataDumper.writeMemoryColorEventDump(event);
+		ctx.getDataDumper().writeMemoryColorEventDump(event);
 	}
 
 	return tag.color;
@@ -85,7 +85,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 			event.color = tag.color;
 			event.memAddr = addr;
 			event.eventType = manualTaint==true ? DataDumper::TAINTGEN : DataDumper::TAINT;
-			dataDumper.writeMemoryColorEventDump(event);
+			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		//No empty color tainting
 	}
@@ -100,7 +100,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 		event.color = color;
 		event.memAddr = addr;
 		event.eventType = manualTaint == true ? DataDumper::CHANGEGEN : DataDumper::CHANGE;
-		dataDumper.writeMemoryColorEventDump(event);
+		ctx.getDataDumper().writeMemoryColorEventDump(event);
 
 	}
 }
@@ -117,7 +117,7 @@ void TagMap::untaintMem(ADDRINT addr)
 		struct DataDumper::memory_color_event_line_t event;
 		event.memAddr = addr;
 		event.eventType = DataDumper::UNTAINT;
-		dataDumper.writeMemoryColorEventDump(event);
+		ctx.getDataDumper().writeMemoryColorEventDump(event);
 	}
 	this->memTaintField.erase(addr);
 }
@@ -158,7 +158,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			event.color = tag.color;
 			event.memAddr = dest;
 			event.eventType = DataDumper::TAINT;
-			dataDumper.writeMemoryColorEventDump(event);
+			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		//else, nothing, since src2=empty_color and dest=src1 was not tainted
 	}
@@ -183,7 +183,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				event.color = tag.color;
 				event.memAddr = dest;
 				event.eventType = DataDumper::MIX;
-				dataDumper.writeMemoryColorEventDump(event);
+				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			else
 			{
@@ -198,7 +198,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				event.color = tag.color;
 				event.memAddr = dest;
 				event.eventType = DataDumper::MIX;
-				dataDumper.writeMemoryColorEventDump(event);
+				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			
 		}
@@ -214,7 +214,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			event.color = tag.color;
 			event.memAddr = dest;
 			event.eventType = DataDumper::UNTAINT;
-			dataDumper.writeMemoryColorEventDump(event);
+			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 	}
 
@@ -394,7 +394,7 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 					struct DataDumper::memory_color_event_line_t event;
 					event.color = tag.color;
 					event.eventType = DataDumper::MIX;
-					dataDumper.writeMemoryColorEventDump(event);
+					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 				else
 				{
@@ -408,7 +408,7 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 					struct DataDumper::memory_color_event_line_t event;
 					event.color = tag.color;
 					event.eventType = DataDumper::MIX;
-					dataDumper.writeMemoryColorEventDump(event);
+					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 			}
 		}
@@ -493,7 +493,7 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 					struct DataDumper::memory_color_event_line_t event;
 					event.color = tag.color;
 					event.eventType = DataDumper::MIX;
-					dataDumper.writeMemoryColorEventDump(event);
+					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 				else
 				{
@@ -507,7 +507,7 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 					struct DataDumper::memory_color_event_line_t event;
 					event.color = tag.color;
 					event.eventType = DataDumper::MIX;
-					dataDumper.writeMemoryColorEventDump(event);
+					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 			}
 		}
@@ -590,7 +590,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 			struct DataDumper::memory_color_event_line_t event;
 			event.color = tag.color;
 			event.eventType = DataDumper::MIX;
-			dataDumper.writeMemoryColorEventDump(event);
+			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		else
 		{
@@ -604,7 +604,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 			struct DataDumper::memory_color_event_line_t event;
 			event.color = tag.color;
 			event.eventType = DataDumper::MIX;
-			dataDumper.writeMemoryColorEventDump(event);
+			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 	}
 }
@@ -668,7 +668,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				event.color = tag.color;
 				event.memAddr = dest+ii;
 				event.eventType = DataDumper::TAINT;
-				dataDumper.writeMemoryColorEventDump(event);
+				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			continue;
 		}
@@ -687,7 +687,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 			event.color = tag.color;
 			event.memAddr = dest;
 			event.eventType = DataDumper::UNTAINT;
-			dataDumper.writeMemoryColorEventDump(event);
+			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		else
 		{
@@ -707,7 +707,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				event.color = tag.color;
 				event.memAddr = dest;
 				event.eventType = DataDumper::MIX;
-				dataDumper.writeMemoryColorEventDump(event);
+				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			else
 			{
@@ -722,7 +722,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				event.color = tag.color;
 				event.memAddr = dest;
 				event.eventType = DataDumper::MIX;
-				dataDumper.writeMemoryColorEventDump(event);
+				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 		}
 	}
