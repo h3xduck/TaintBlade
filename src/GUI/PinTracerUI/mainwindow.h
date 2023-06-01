@@ -27,6 +27,8 @@ class MainWindow : public QMainWindow
 
         void on_actionRun_triggered();
 
+        void on_tracerProcess_finished();
+
     private:
         Ui::MainWindow *ui;
 };

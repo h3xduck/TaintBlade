@@ -51,7 +51,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 31,
+				"line" : 33,
 				"parent" : 0
 			},
 			{
@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 45,
+				"line" : 47,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 39,
+				"line" : 41,
 				"parent" : 0
 			},
 			{
@@ -374,7 +374,8 @@
 				3,
 				6,
 				8,
-				12
+				10,
+				16
 			]
 		}
 	],
@@ -500,7 +501,8 @@
 				3,
 				6,
 				8,
-				12
+				10,
+				16
 			]
 		},
 		{
@@ -509,8 +511,8 @@
 			[
 				1,
 				11,
-				13,
-				14
+				12,
+				15
 			]
 		},
 		{
@@ -521,15 +523,16 @@
 				5,
 				7,
 				9,
-				10
+				13,
+				14
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				15,
-				16
+				17,
+				18
 			]
 		}
 	],
@@ -588,14 +591,35 @@
 		},
 		{
 			"backtrace" : 4,
-			"isGenerated" : true,
-			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_mainwindow.h",
+			"path" : "PinConfigurationDialog.h",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "PinconfigurationDialog.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "mainwindow.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "PinConfigurationDialog.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_PinConfigurationDialog.h",
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_mainwindow.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_PinConfigurationDialog.h",
 			"sourceGroupIndex" : 2
 		},
 		{
@@ -610,16 +634,6 @@
 			"isGenerated" : true,
 			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 0,
-			"path" : "mainwindow.ui",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 0,
-			"path" : "PinConfigurationDialog.ui",
-			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,

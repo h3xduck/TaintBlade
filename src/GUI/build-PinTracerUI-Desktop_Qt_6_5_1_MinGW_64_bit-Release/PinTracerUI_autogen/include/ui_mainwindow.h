@@ -79,7 +79,6 @@ public:
         actionRun->setIcon(icon3);
         actionStop = new QAction(MainWindow);
         actionStop->setObjectName("actionStop");
-        actionStop->setEnabled(false);
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/res/icons/icons8-stop-26.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionStop->setIcon(icon4);

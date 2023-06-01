@@ -298,6 +298,12 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.h",
+			"MU",
+			"EWIEGA46WW/moc_PinConfigurationDialog.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -363,11 +369,7 @@
 	],
 	"MOC_PREDEFS_FILE" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : 
-	[
-		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_PinConfigurationDialog.h",
-		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_mainwindow.h"
-	],
+	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
 	"PARSE_CACHE_FILE" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/CMakeFiles/PinTracerUI_autogen.dir/ParseCache.txt",
@@ -389,6 +391,11 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/main.cpp",
 			"MU",
 			null
@@ -401,13 +408,7 @@
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : 
-	[
-		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.ui",
-		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/mainwindow.ui",
-		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_PinConfigurationDialog.h",
-		"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_mainwindow.h"
-	],
+	"UIC_SKIP" : [],
 	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
 }

@@ -47,7 +47,7 @@ cmake_ninja_workdir = C$:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-Pi
 #############################################
 # Order-only phony target for PinTracerUI
 
-build cmake_object_order_depends_target_PinTracerUI: phony || PinTracerUI_autogen PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp PinTracerUI_autogen/mocs_compilation.cpp PinTracerUI_autogen/timestamp PinTracerUI_autogen_timestamp_deps ui_PinConfigurationDialog.h ui_mainwindow.h
+build cmake_object_order_depends_target_PinTracerUI: phony || PinTracerUI_autogen PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp PinTracerUI_autogen/mocs_compilation.cpp PinTracerUI_autogen/timestamp PinTracerUI_autogen_timestamp_deps
 
 build CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/mocs_compilation.cpp.obj: CXX_COMPILER__PinTracerUI_Release C$:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_PinTracerUI
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
@@ -89,6 +89,14 @@ build CMakeFiles/PinTracerUI.dir/ExecutionBridge.cpp.obj: CXX_COMPILER__PinTrace
   OBJECT_DIR = CMakeFiles\PinTracerUI.dir
   OBJECT_FILE_DIR = CMakeFiles\PinTracerUI.dir
 
+build CMakeFiles/PinTracerUI.dir/PinconfigurationDialog.cpp.obj: CXX_COMPILER__PinTracerUI_Release C$:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp || cmake_object_order_depends_target_PinTracerUI
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\PinTracerUI.dir\PinconfigurationDialog.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++17
+  INCLUDES = -IC:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include -isystem C:/Qt/6.5.1/mingw_64/include/QtCore -isystem C:/Qt/6.5.1/mingw_64/include -isystem C:/Qt/6.5.1/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.5.1/mingw_64/include/QtWidgets -isystem C:/Qt/6.5.1/mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\PinTracerUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\PinTracerUI.dir
+
 build CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp.obj: CXX_COMPILER__PinTracerUI_Release C$:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp || cmake_object_order_depends_target_PinTracerUI
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\PinTracerUI.dir\PinTracerUI_autogen\EWIEGA46WW\qrc_MainToolBarResource.cpp.obj.d
@@ -105,7 +113,7 @@ build CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarR
 #############################################
 # Link the executable PinTracerUI.exe
 
-build PinTracerUI.exe: CXX_EXECUTABLE_LINKER__PinTracerUI_Release CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/mocs_compilation.cpp.obj CMakeFiles/PinTracerUI.dir/main.cpp.obj CMakeFiles/PinTracerUI.dir/mainwindow.cpp.obj CMakeFiles/PinTracerUI.dir/Globals.cpp.obj CMakeFiles/PinTracerUI.dir/ExecutionBridge.cpp.obj CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp.obj | C$:/Qt/6.5.1/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.5.1/mingw_64/lib/libQt6Gui.a C$:/Qt/6.5.1/mingw_64/lib/libQt6Core.a C$:/Qt/6.5.1/mingw_64/lib/libQt6EntryPoint.a || PinTracerUI_autogen PinTracerUI_autogen_timestamp_deps
+build PinTracerUI.exe: CXX_EXECUTABLE_LINKER__PinTracerUI_Release CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/mocs_compilation.cpp.obj CMakeFiles/PinTracerUI.dir/main.cpp.obj CMakeFiles/PinTracerUI.dir/mainwindow.cpp.obj CMakeFiles/PinTracerUI.dir/Globals.cpp.obj CMakeFiles/PinTracerUI.dir/ExecutionBridge.cpp.obj CMakeFiles/PinTracerUI.dir/PinconfigurationDialog.cpp.obj CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp.obj | C$:/Qt/6.5.1/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.5.1/mingw_64/lib/libQt6Gui.a C$:/Qt/6.5.1/mingw_64/lib/libQt6Core.a C$:/Qt/6.5.1/mingw_64/lib/libQt6EntryPoint.a || PinTracerUI_autogen PinTracerUI_autogen_timestamp_deps
   FLAGS = -O3 -DNDEBUG
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/6.5.1/mingw_64/lib/libQt6Widgets.a  C:/Qt/6.5.1/mingw_64/lib/libQt6Gui.a  C:/Qt/6.5.1/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.5.1/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ldcomp  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -192,25 +200,7 @@ build PinTracerUI_autogen_timestamp_deps: phony CMakeFiles/PinTracerUI_autogen_t
 #############################################
 # Utility command for PinTracerUI_autogen
 
-build PinTracerUI_autogen: phony CMakeFiles/PinTracerUI_autogen PinTracerUI_autogen/timestamp PinTracerUI_autogen/mocs_compilation.cpp PinTracerUI_autogen_timestamp_deps
-
-
-#############################################
-# Custom command for ui_mainwindow.h
-
-build ui_mainwindow.h | ${cmake_ninja_workdir}ui_mainwindow.h: CUSTOM_COMMAND C$:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/mainwindow.ui C$:/Qt/6.5.1/mingw_64/./bin/uic.exe || PinTracerUI_autogen PinTracerUI_autogen_timestamp_deps
-  COMMAND = cmd.exe /C "cd /D C:\Users\Marcos\source\repos\h3xduck\TFM\src\GUI\build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release && C:\Qt\6.5.1\mingw_64\.\bin\uic.exe -o C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_mainwindow.h C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/mainwindow.ui"
-  DESC = Generating ui_mainwindow.h
-  restat = 1
-
-
-#############################################
-# Custom command for ui_PinConfigurationDialog.h
-
-build ui_PinConfigurationDialog.h | ${cmake_ninja_workdir}ui_PinConfigurationDialog.h: CUSTOM_COMMAND C$:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.ui C$:/Qt/6.5.1/mingw_64/./bin/uic.exe || PinTracerUI_autogen PinTracerUI_autogen_timestamp_deps
-  COMMAND = cmd.exe /C "cd /D C:\Users\Marcos\source\repos\h3xduck\TFM\src\GUI\build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release && C:\Qt\6.5.1\mingw_64\.\bin\uic.exe -o C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/ui_PinConfigurationDialog.h C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.ui"
-  DESC = Generating ui_PinConfigurationDialog.h
-  restat = 1
+build PinTracerUI_autogen: phony CMakeFiles/PinTracerUI_autogen PinTracerUI_autogen/include/ui_mainwindow.h PinTracerUI_autogen/include/ui_PinConfigurationDialog.h PinTracerUI_autogen/timestamp PinTracerUI_autogen/mocs_compilation.cpp PinTracerUI_autogen_timestamp_deps
 
 
 #############################################
@@ -235,13 +225,13 @@ build PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp | ${cmake_ninja
 #############################################
 # Phony custom command for CMakeFiles\PinTracerUI_autogen_timestamp_deps
 
-build CMakeFiles/PinTracerUI_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/PinTracerUI_autogen_timestamp_deps: phony C$:/Qt/6.5.1/mingw_64/lib/libQt6Core.a C$:/Qt/6.5.1/mingw_64/./bin/moc.exe C$:/Qt/6.5.1/mingw_64/./bin/uic.exe C$:/Qt/6.5.1/mingw_64/lib/libQt6Widgets.a
+build CMakeFiles/PinTracerUI_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/PinTracerUI_autogen_timestamp_deps: phony C$:/Qt/6.5.1/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.5.1/mingw_64/lib/libQt6Core.a C$:/Qt/6.5.1/mingw_64/./bin/uic.exe C$:/Qt/6.5.1/mingw_64/./bin/moc.exe
 
 
 #############################################
 # Phony custom command for CMakeFiles\PinTracerUI_autogen
 
-build CMakeFiles/PinTracerUI_autogen | ${cmake_ninja_workdir}CMakeFiles/PinTracerUI_autogen: phony PinTracerUI_autogen/timestamp || PinTracerUI_autogen_timestamp_deps
+build CMakeFiles/PinTracerUI_autogen PinTracerUI_autogen/include/ui_mainwindow.h PinTracerUI_autogen/include/ui_PinConfigurationDialog.h | ${cmake_ninja_workdir}CMakeFiles/PinTracerUI_autogen ${cmake_ninja_workdir}PinTracerUI_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}PinTracerUI_autogen/include/ui_PinConfigurationDialog.h: phony PinTracerUI_autogen/timestamp || PinTracerUI_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.

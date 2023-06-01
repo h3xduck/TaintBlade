@@ -139,6 +139,9 @@
    </property>
   </action>
   <action name="actionStop">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="MainToolBarResource.qrc">
      <normaloff>:/res/icons/icons8-stop-26.png</normaloff>:/res/icons/icons8-stop-26.png</iconset>

@@ -37,6 +37,12 @@ void MainWindow::on_actionSelect_configuration_triggered()
     dialog->exec();
 }
 
+void MainWindow::on_tracerProcess_finished()
+{
+    qDebug()<<"TRACER PROCESS FINISHED";
+    ui->actionRun->setEnabled(true);
+    ui->actionStop->setEnabled(false);
+}
 
 void MainWindow::on_actionRun_triggered()
 {
@@ -79,7 +85,12 @@ void MainWindow::on_actionRun_triggered()
         return;
     }
 
-    //If we reach this point, everything is set, call tracer
+    //If we reach this point, everything is set, call tracer program
     EXECUTION::executeTracer(GLOBAL_VARS::selectedToTraceBinaryPath, GLOBAL_VARS::pinExeDirPath, GLOBAL_VARS::tracerDLLDirPath, GLOBAL_VARS::selectedOutputDirPath);
+    ui->actionRun->setEnabled(false);
+    ui->actionStop->setEnabled(true);
+
+    //Now, register a callback so that we can know when the process finishes
+    connect(EXECUTION::tracerProcess, (void(QProcess::*)(int))&QProcess::finished, [=]{ on_tracerProcess_finished(); });
 }
 
