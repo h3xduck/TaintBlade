@@ -96,6 +96,9 @@ KNOB< BOOL > KnobAskForIndividualImageTrace(KNOB_MODE_WRITEONCE, "pintool", "cho
 KNOB< BOOL > KnobTraceAllImages(KNOB_MODE_WRITEONCE, "pintool", "traceallimages", "", "Force program to trace all images, without asking user input. Overrides choosetraceimages flag.");
 
 KNOB<UINT32> KnobAnalysisTimeout(KNOB_MODE_WRITEONCE, "pintool", "timeout", "", "If this flag is set, it specifies the number of milliseconds to wait until the analysis stops itself automatically");
+
+//DB
+KNOB<BOOL> KnobFuncCallsArgsDump(KNOB_MODE_WRITEONCE, "pintool", "funcargs", "0", "If set to true, the full arguments of every called function will be dumped to the DB. This is very slow");
 /* ===================================================================== */
 // Utilities
 /* ===================================================================== */
@@ -1030,6 +1033,8 @@ int main(int argc, char* argv[])
 	ctx.getDatabaseManager().openDatabase();
 	ctx.getDatabaseManager().emptyDatabase();
 	ctx.getDatabaseManager().createDatabase();
+	ctx.getDatabaseManager().dumpFuncCallsArgs() = KnobFuncCallsArgsDump.Value();
+
 
 	// Start the program, never returns
 	PIN_StartProgram();

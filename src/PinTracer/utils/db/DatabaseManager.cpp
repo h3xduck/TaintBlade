@@ -11,24 +11,37 @@ UTILS::DB::DatabaseManager::DatabaseManager() {};
 
 void UTILS::DB::DatabaseManager::createDatabase()
 {
-	//Function calls table
-	std::string sql = "CREATE TABLE function_calls ("\
-		"appearance   INTEGER    PRIMARY KEY NOT NULL, "\
-		"dll_from     TEXT(150), "\
-		"func_from    TEXT(150), "\
-		"memaddr_from INTEGER    NOT NULL,"\
-		"dll_to,"\
-		"func_to,"\
-		"memaddr_to              NOT NULL,"\
-		"arg0         INTEGER,"\
-		"arg1         INTEGER,"\
-		"arg2         INTEGER,"\
-		"arg3         INTEGER,"\
-		"arg4         INTEGER,"\
-		"arg5         INTEGER"\
+	//DLL namestable
+	std::string sql = "CREATE TABLE dll_names ("\
+		"idx		INTEGER PRIMARY KEY AUTOINCREMENT, "\
+		"dll_name	TEXT(150)"\
 		"); ";
 	char* errMsg = 0;
 	int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << "while running SQL : "<< sql);
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
+	//Function calls table
+	sql = "CREATE TABLE function_calls ("\
+		"appearance   INTEGER    PRIMARY KEY NOT NULL, "\
+		"dll_from_ix  INTEGER, "\
+		"func_from    TEXT(150), "\
+		"memaddr_from INTEGER    NOT NULL,"\
+		"dll_to_ix    INTEGER, "\
+		"func_to      TEXT(150), "\
+		"memaddr_to   INTEGER    NOT NULL,"\
+		"arg0         BLOB,"\
+		"arg1         BLOB,"\
+		"arg2         BLOB,"\
+		"arg3         BLOB,"\
+		"arg4         BLOB,"\
+		"arg5         BLOB"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)
 	{
 		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
@@ -106,6 +119,9 @@ void UTILS::DB::DatabaseManager::emptyDatabase()
 	char* errMsg = 0;
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 
+	sql = "DROP TABLE dll_names";
+	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+
 	sql = "DROP TABLE taint_events";
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 
@@ -133,16 +149,7 @@ void UTILS::DB::DatabaseManager::openDatabase()
 	}
 }
 
-/*int callback(void* notUsed, int argc, char** argv, char** azcolename)
-{
-	for (int ii = 0; ii < argc; ii++)
-	{
-		LOG_DEBUG("LINE:: "<<azcolename[ii] << ": " << argv[ii]);
-	}
-	return 0;
-}*/
-
-void UTILS::DB::DatabaseManager::insertOriginalColorLine(UINT16& color, TagLog::original_color_data_t& data, int routineIndex)
+void UTILS::DB::DatabaseManager::insertOriginalColorRecord(UINT16& color, TagLog::original_color_data_t& data, int routineIndex)
 {
 	if (!databaseOpened())
 	{
@@ -153,18 +160,17 @@ void UTILS::DB::DatabaseManager::insertOriginalColorLine(UINT16& color, TagLog::
 		quotesql(data.dllName) +", "+
 		quotesql(data.funcName) +", "+
 		quotesql(std::to_string(routineIndex)) + ");";
-	LOG_DEBUG("running sql: " << sql);
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)
 	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession)<<" while running SQL: "<< sql);
 		sqlite3_close(this->dbSession);
 		return;
 	}
 }
 
-void UTILS::DB::DatabaseManager::insertTaintEventLine(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex)
+void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex)
 {
 	if (!databaseOpened())
 	{
@@ -178,12 +184,114 @@ void UTILS::DB::DatabaseManager::insertTaintEventLine(UTILS::IO::DataDumpLine::m
 		quotesql(std::to_string((int)event.color)) + ", " +
 		quotesql(ctx.getLastMemoryValue()) + ", " +
 		quotesql(std::to_string(ctx.getLastMemoryLength())) + ");";
-	LOG_DEBUG("running sql: " << sql);
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)
 	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
+		sqlite3_close(this->dbSession);
+		return;
+	}
+}
+
+int getDLLIndex_callback(void* veryUsed, int argc, char** argv, char** azcolename)
+{
+	int* ret = (int*)veryUsed;
+	LOG_DEBUG("Here");
+	for (int ii = 0; ii < argc; ii++)
+	{
+		*ret = (int)*argv[ii];
+		return 0;
+	}
+	*ret = -1;
+	return 0;
+}
+
+int UTILS::DB::DatabaseManager::getDLLIndex(std::string dllName)
+{
+	std::string sql = "SELECT idx FROM dll_names WHERE dll_name='" + dllName + "'";
+	char* errMsg = 0;
+	int* ret;
+	*ret = -1;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getDLLIndex_callback, ret, &errMsg);
+	LOG_DEBUG("returning " << *ret);
+	return *ret;
+}
+
+void UTILS::DB::DatabaseManager::insertDLLName(std::string dllName)
+{
+	std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + dllName + "')";
+	char* errMsg = 0;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+}
+
+
+void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t event, int routineIndex)
+{
+	if (!databaseOpened())
+	{
+		this->openDatabase();
+	}
+	std::replace(event.arg0.begin(), event.arg0.end(), '\'', (char)'\\\'');
+	std::replace(event.arg1.begin(), event.arg1.end(), '\'', (char)'\\\'');
+	std::replace(event.arg2.begin(), event.arg2.end(), '\'', (char)'\\\'');
+	std::replace(event.arg3.begin(), event.arg3.end(), '\'', (char)'\\\'');
+	std::replace(event.arg4.begin(), event.arg4.end(), '\'', (char)'\\\'');
+	std::replace(event.arg5.begin(), event.arg5.end(), '\'', (char)'\\\'');
+
+	int dllFromIx = this->getDLLIndex(event.dllFrom);
+	LOG_DEBUG("Got IX: " << dllFromIx);
+	if (dllFromIx == -1)
+	{
+		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + event.dllFrom + "')";
+		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		dllFromIx = this->getDLLIndex(event.dllFrom);
+	}
+
+	int dllToIx = this->getDLLIndex(event.dllTo);
+	LOG_DEBUG("Got IX2: " << dllToIx);
+	if (dllToIx == -1)
+	{
+		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + event.dllTo + "')";
+		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		dllToIx = this->getDLLIndex(event.dllTo);
+	}
+
+	std::string sql;
+	if (this->dumpFuncCallsArgs())
+	{
+		sql = "INSERT INTO function_calls(appearance, dll_from_ix, func_from, memaddr_from, dll_to_ix, func_to, memaddr_to, arg0, arg1, arg2, arg3, arg4, arg5) VALUES(" +
+			quotesql(std::to_string(routineIndex)) + ", " +
+			quotesql(std::to_string(dllFromIx)) + ", " +
+			quotesql(event.funcFrom) + ", " +
+			quotesql(std::to_string(event.memAddrFrom)) + ", " +
+			quotesql(std::to_string(dllToIx)) + ", " +
+			quotesql(event.funcTo) + ", " +
+			quotesql(std::to_string(event.memAddrTo)) + ", " +
+			quotesql(event.arg0) + ", " +
+			quotesql(event.arg1) + ", " +
+			quotesql(event.arg2) + ", " +
+			quotesql(event.arg3) + ", " +
+			quotesql(event.arg4) + ", " +
+			quotesql(event.arg5) + ");";
+	}
+	else
+	{
+		sql = "INSERT INTO function_calls(appearance, dll_from_ix, func_from, memaddr_from, dll_to_ix, func_to, memaddr_to) VALUES(" +
+			quotesql(std::to_string(routineIndex)) + ", " +
+			quotesql(std::to_string(dllFromIx)) + ", " +
+			quotesql(event.funcFrom) + ", " +
+			quotesql(std::to_string(event.memAddrFrom)) + ", " +
+			quotesql(std::to_string(dllToIx)) + ", " +
+			quotesql(event.funcTo) + ", " +
+			quotesql(std::to_string(event.memAddrTo)) + ");";
+	}
+	
+	char* errMsg = 0;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
 		sqlite3_close(this->dbSession);
 		return;
 	}

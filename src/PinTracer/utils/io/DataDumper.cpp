@@ -29,7 +29,7 @@ void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::or
 			this->lastRoutineDumpIndex << DUMP_OUTER_SEPARATOR;
 #endif
 #if(DB_LOGGING_ACTIVATE==1)
-		ctx.getDatabaseManager().insertOriginalColorLine(it.first, it.second, this->lastRoutineDumpIndex);
+		ctx.getDatabaseManager().insertOriginalColorRecord(it.first, it.second, this->lastRoutineDumpIndex);
 #endif
 	}
 }
@@ -46,12 +46,13 @@ void DataDumper::writeMemoryColorEventDump(UTILS::IO::DataDumpLine::memory_color
 		ctx.getLastMemoryLength() << DUMP_OUTER_SEPARATOR;
 #endif
 #if(DB_LOGGING_ACTIVATE==1)
-	ctx.getDatabaseManager().insertTaintEventLine(event, this->lastRoutineDumpIndex);
+	ctx.getDatabaseManager().insertTaintEventRecord(event, this->lastRoutineDumpIndex);
 #endif
 }
 
 void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data)
 {
+#if(FILE_LOGGING_ACTIVATE==1)
 	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << 
 		data.dllFrom.c_str() << DUMP_INTER_SEPARATOR << data.funcFrom.c_str() << 
 		DUMP_INTER_SEPARATOR << data.memAddrFrom << DUMP_INTER_SEPARATOR << 
@@ -63,7 +64,14 @@ void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_n
 		data.arg3 << DUMP_INTER_SEPARATOR <<
 		data.arg4 << DUMP_INTER_SEPARATOR <<
 		data.arg5 << DUMP_OUTER_SEPARATOR;
+	
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertFunctionCallsRecord(data, this->lastRoutineDumpIndex);
+#endif
+	PIN_LockClient();
 	this->lastRoutineDumpIndex++;
+	PIN_UnlockClient();
 }
 
 size_t hashCalculateMemoryVector(std::vector<std::pair<ADDRINT, UINT16>> vec)

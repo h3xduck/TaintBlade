@@ -17,6 +17,7 @@ namespace UTILS
 		private:
 			sqlite3* dbSession;
 			bool databaseOpened_ = false;
+			bool dumpFuncCallsArgs_ = false;
 
 		public:
 			DatabaseManager();
@@ -36,12 +37,19 @@ namespace UTILS
 			*/
 			void emptyDatabase();
 
-			//Data insertion
-			void insertOriginalColorLine(UINT16 &color, TagLog::original_color_data_t &data, int routineIndex);
-			void insertTaintEventLine(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex);
+			//SQL 
+			/**
+			Returns the index in the DLLnames table of the DLL name. Returns -1 if not found
+			*/
+			int getDLLIndex(std::string dllName);
+			void insertDLLName(std::string dllName);
+			void insertOriginalColorRecord(UINT16 &color, TagLog::original_color_data_t &data, int routineIndex);
+			void insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex);
+			void insertFunctionCallsRecord(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t event, int routineIndex);
 
 			//setters and getters
 			bool& databaseOpened() { return this->databaseOpened_; };
+			bool& dumpFuncCallsArgs() { return this->dumpFuncCallsArgs_; };
 		};
 	}
 }
