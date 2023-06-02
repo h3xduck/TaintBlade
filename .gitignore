@@ -25,3 +25,4 @@ src/AntiDebugTest
 *.txt
 *.db
 src/oldtest
+!CMakeLists.txt
