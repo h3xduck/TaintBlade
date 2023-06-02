@@ -52,6 +52,7 @@ void DataDumper::writeMemoryColorEventDump(UTILS::IO::DataDumpLine::memory_color
 
 void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data)
 {
+	LOG_DEBUG("Starting routineee");
 #if(FILE_LOGGING_ACTIVATE==1)
 	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << 
 		data.dllFrom.c_str() << DUMP_INTER_SEPARATOR << data.funcFrom.c_str() << 
@@ -69,9 +70,7 @@ void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_n
 #if(DB_LOGGING_ACTIVATE==1)
 	ctx.getDatabaseManager().insertFunctionCallsRecord(data, this->lastRoutineDumpIndex);
 #endif
-	PIN_LockClient();
 	this->lastRoutineDumpIndex++;
-	PIN_UnlockClient();
 }
 
 size_t hashCalculateMemoryVector(std::vector<std::pair<ADDRINT, UINT16>> vec)

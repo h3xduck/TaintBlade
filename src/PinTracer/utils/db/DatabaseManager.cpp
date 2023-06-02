@@ -197,10 +197,10 @@ void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine:
 int getDLLIndex_callback(void* veryUsed, int argc, char** argv, char** azcolename)
 {
 	int* ret = (int*)veryUsed;
-	LOG_DEBUG("Here");
 	for (int ii = 0; ii < argc; ii++)
 	{
-		*ret = (int)*argv[ii];
+		*ret = std::atoi(argv[ii]);
+		LOG_DEBUG("READ: " << argv[ii]);
 		return 0;
 	}
 	*ret = -1;
@@ -211,11 +211,10 @@ int UTILS::DB::DatabaseManager::getDLLIndex(std::string dllName)
 {
 	std::string sql = "SELECT idx FROM dll_names WHERE dll_name='" + dllName + "'";
 	char* errMsg = 0;
-	int* ret;
-	*ret = -1;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getDLLIndex_callback, ret, &errMsg);
-	LOG_DEBUG("returning " << *ret);
-	return *ret;
+	int ret = -1;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getDLLIndex_callback, &ret, &errMsg);
+	LOG_DEBUG("returning " << ret);
+	return ret;
 }
 
 void UTILS::DB::DatabaseManager::insertDLLName(std::string dllName)

@@ -1,0 +1,16 @@
+# ninja log v5
+5	904	7074493962462338	PinTracerUI_autogen/timestamp	960759fc80e6b5af
+5	904	7074493962462338	PinTracerUI_autogen/mocs_compilation.cpp	960759fc80e6b5af
+5	904	7074493962462338	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Debug/PinTracerUI_autogen/timestamp	960759fc80e6b5af
+5	904	7074493962462338	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Debug/PinTracerUI_autogen/mocs_compilation.cpp	960759fc80e6b5af
+907	1097	7074493966549916	PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp	8d7dbedef9ea1deb
+907	1097	7074493966549916	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Debug/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp	8d7dbedef9ea1deb
+1115	4812	7074494003519759	CMakeFiles/PinTracerUI.dir/Globals.cpp.obj	9c2e966f0eae8aa4
+1180	7816	7074494033279802	CMakeFiles/PinTracerUI.dir/ExecutionBridge.cpp.obj	3e289e00b7ce0cbe
+7817	8233	7074494037729779	CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/EWIEGA46WW/qrc_MainToolBarResource.cpp.obj	63c90b7a0adb9195
+1147	9818	7074494053539764	CMakeFiles/PinTracerUI.dir/PinconfigurationDialog.cpp.obj	320862d92b27a854
+1127	10041	7074494055969795	CMakeFiles/PinTracerUI.dir/main.cpp.obj	79d1e5ac0d5d0392
+1098	10098	7074494056449762	CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/mocs_compilation.cpp.obj	6679e44d5b27a7e7
+4814	10784	7074494063439755	CMakeFiles/PinTracerUI.dir/DatabaseManager.cpp.obj	a0431c7db400b84
+1106	11420	7074494069809714	CMakeFiles/PinTracerUI.dir/mainwindow.cpp.obj	e9ab1aa40a818e53
+11421	12827	7074494083653600	PinTracerUI.exe	50b12b650d633ab8

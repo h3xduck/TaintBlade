@@ -7,6 +7,7 @@
 #include <vector>
 #include "../../taint/data/TagLog.h"
 #include "../io/DataDumpLine.h"
+#include <cstdio>
 
 namespace UTILS
 {
