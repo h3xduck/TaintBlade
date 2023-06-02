@@ -1,4 +1,7 @@
 #include "DatabaseManager.h"
+#include "../../common/Context.h"
+
+extern Context ctx;
 
 std::string quotesql(const std::string& s) {
 	return std::string("'") + s + std::string("'");
@@ -141,10 +144,8 @@ void UTILS::DB::DatabaseManager::openDatabase()
 
 void UTILS::DB::DatabaseManager::insertOriginalColorLine(UINT16& color, TagLog::original_color_data_t& data, int routineIndex)
 {
-	LOG_DEBUG("Inserting original color line in DB");
 	if (!databaseOpened())
 	{
-		LOG_DEBUG("Not opened!");
 		this->openDatabase();
 	}
 	std::string sql = "INSERT INTO original_colors(color, function, dll, func_index) VALUES(" +
@@ -152,6 +153,31 @@ void UTILS::DB::DatabaseManager::insertOriginalColorLine(UINT16& color, TagLog::
 		quotesql(data.dllName) +", "+
 		quotesql(data.funcName) +", "+
 		quotesql(std::to_string(routineIndex)) + ");";
+	LOG_DEBUG("running sql: " << sql);
+	char* errMsg = 0;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+}
+
+void UTILS::DB::DatabaseManager::insertTaintEventLine(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex)
+{
+	if (!databaseOpened())
+	{
+		this->openDatabase();
+	}
+	std::string sql = "INSERT INTO taint_events(type, func_index, inst_address, mem_address, color, mem_value, mem_len) VALUES(" +
+		quotesql(std::to_string((int)event.eventType)) + ", " +
+		quotesql(std::to_string(routineIndex)) + ", " +
+		quotesql(std::to_string(ctx.getCurrentBaseInstruction())) + ", " +
+		quotesql(std::to_string(event.memAddr)) + ", " +
+		quotesql(std::to_string((int)event.color)) + ", " +
+		quotesql(ctx.getLastMemoryValue()) + ", " +
+		quotesql(std::to_string(ctx.getLastMemoryLength())) + ");";
 	LOG_DEBUG("running sql: " << sql);
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);

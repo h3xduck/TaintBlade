@@ -51,7 +51,7 @@ struct wininet_internetreadfile_t
 };
 static wininet_internetreadfile_t wininetInternetReadFile;
 
-static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_line_t> genericRoutineCalls;
+static std::tr1::unordered_map<ADDRINT, struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t> genericRoutineCalls;
 
 class TaintSource
 {
@@ -215,7 +215,7 @@ public:
 			if (branchTaken)
 			{
 
-				struct DataDumper::func_dll_names_dump_line_t data;
+				struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data;
 				IMG moduleFrom = IMG_FindByAddress(ip);
 				if (!IMG_Valid(moduleFrom))
 				{
@@ -242,7 +242,7 @@ public:
 				data.arg5 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg5));
 
 				genericRoutineCalls.erase(nextInstAddr);
-				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(nextInstAddr, data));
+				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t>(nextInstAddr, data));
 				//LOG_DEBUG("Inserted entry jump at " << to_hex_dbg(branchTargetAddress));
 
 				//At this point, we dump the function and the arguments
@@ -278,7 +278,7 @@ public:
 					//LOG_DEBUG("Found retIP in the generic routine calls map");
 					
 					//At this point, we dump the function and the arguments
-					struct DataDumper::func_dll_names_dump_line_t data;
+					struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data;
 					data = it->second;
 					ctx.getDataDumper().writeRoutineDumpLine(data);
 					//Now we dump the current tainted memory

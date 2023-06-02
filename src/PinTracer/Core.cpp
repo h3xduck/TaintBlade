@@ -496,7 +496,7 @@ VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchT
 			}
 
 			//Dumping routine in dumpfiles
-			DataDumper::func_dll_names_dump_line_t data;
+			UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data;
 			data.dllFrom = dllFrom;
 			data.funcFrom = routineNameFrom;
 			data.memAddrFrom = baseAddrFrom;

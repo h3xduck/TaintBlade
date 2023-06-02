@@ -6,6 +6,7 @@
 #include "../io/log.h"
 #include <vector>
 #include "../../taint/data/TagLog.h"
+#include "../io/DataDumpLine.h"
 
 namespace UTILS
 {
@@ -37,6 +38,7 @@ namespace UTILS
 
 			//Data insertion
 			void insertOriginalColorLine(UINT16 &color, TagLog::original_color_data_t &data, int routineIndex);
+			void insertTaintEventLine(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex);
 
 			//setters and getters
 			bool& databaseOpened() { return this->databaseOpened_; };

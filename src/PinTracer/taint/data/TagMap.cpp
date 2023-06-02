@@ -42,10 +42,10 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 		LOG_MESSAGE_TAINT_MEM("New mem taint", "ins", addr, tag.color);
 		
 		//Register event for dump files
-		struct DataDumper::memory_color_event_line_t event;
+		struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 		event.color = tag.color;
 		event.memAddr = addr;
-		event.eventType = DataDumper::TAINT;
+		event.eventType = UTILS::IO::DataDumpLine::TAINT;
 		ctx.getDataDumper().writeMemoryColorEventDump(event);
 	}
 	else
@@ -56,10 +56,10 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 		LOG_MESSAGE_TAINT_MEM("New color for existing memory taint", "modified", addr, it->second.color);
 		
 		//Register event for dump files
-		struct DataDumper::memory_color_event_line_t event;
+		struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 		event.color = tag.color;
 		event.memAddr = addr;
-		event.eventType = DataDumper::CHANGE;
+		event.eventType = UTILS::IO::DataDumpLine::CHANGE;
 		ctx.getDataDumper().writeMemoryColorEventDump(event);
 	}
 
@@ -81,10 +81,10 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 			LOG_MESSAGE_TAINT_MEM("New mem taint", "ins", addr, tag.color);
 			
 			//Register event for dump files
-			struct DataDumper::memory_color_event_line_t event;
+			struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 			event.color = tag.color;
 			event.memAddr = addr;
-			event.eventType = manualTaint==true ? DataDumper::TAINTGEN : DataDumper::TAINT;
+			event.eventType = manualTaint==true ? UTILS::IO::DataDumpLine::TAINTGEN : UTILS::IO::DataDumpLine::TAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		//No empty color tainting
@@ -96,10 +96,10 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 		LOG_MESSAGE_TAINT_MEM("New color for existing memory taint", "ins", addr, it->second.color);
 		
 		//Register event for dump files
-		struct DataDumper::memory_color_event_line_t event;
+		struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 		event.color = color;
 		event.memAddr = addr;
-		event.eventType = manualTaint == true ? DataDumper::CHANGEGEN : DataDumper::CHANGE;
+		event.eventType = manualTaint == true ? UTILS::IO::DataDumpLine::CHANGEGEN : UTILS::IO::DataDumpLine::CHANGE;
 		ctx.getDataDumper().writeMemoryColorEventDump(event);
 
 	}
@@ -114,9 +114,9 @@ void TagMap::untaintMem(ADDRINT addr)
 		LOG_MESSAGE_TAINT_MEM("Untainted mem", "erase", addr, 0);
 		
 		//Register event for dump files
-		struct DataDumper::memory_color_event_line_t event;
+		struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 		event.memAddr = addr;
-		event.eventType = DataDumper::UNTAINT;
+		event.eventType = UTILS::IO::DataDumpLine::UNTAINT;
 		ctx.getDataDumper().writeMemoryColorEventDump(event);
 	}
 	this->memTaintField.erase(addr);
@@ -154,10 +154,10 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			//LOG_DEBUG("New memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", "<< to_hex_dbg(src2) <<") --> mem.ins(" << dest << ", T(" << tag.color << ", "<<tag.derivate1<<", "<<tag.derivate2<<"))");
 		
 			//Register event for dump files
-			struct DataDumper::memory_color_event_line_t event;
+			struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 			event.color = tag.color;
 			event.memAddr = dest;
-			event.eventType = DataDumper::TAINT;
+			event.eventType = UTILS::IO::DataDumpLine::TAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		//else, nothing, since src2=empty_color and dest=src1 was not tainted
@@ -179,10 +179,10 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				//LOG_DEBUG("Mixed memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> modified T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
 			
 				//Register event for dump files
-				struct DataDumper::memory_color_event_line_t event;
+				struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 				event.color = tag.color;
 				event.memAddr = dest;
-				event.eventType = DataDumper::MIX;
+				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			else
@@ -194,10 +194,10 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				//LOG_DEBUG("Reused mix taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> reused T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
 			
 				//Register event for dump files
-				struct DataDumper::memory_color_event_line_t event;
+				struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 				event.color = tag.color;
 				event.memAddr = dest;
-				event.eventType = DataDumper::MIX;
+				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			
@@ -210,10 +210,10 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			//LOG_DEBUG("New color for existing memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> modified T(" << tag.color << ", X, X))");
 		
 			//Register event for dump files
-			struct DataDumper::memory_color_event_line_t event;
+			struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 			event.color = tag.color;
 			event.memAddr = dest;
-			event.eventType = DataDumper::UNTAINT;
+			event.eventType = UTILS::IO::DataDumpLine::UNTAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 	}
@@ -391,9 +391,9 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 					//LOG_DEBUG("(in loop) Mixed reg taint, new color generated, mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ")--> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P : " << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 				
 					//Register event for dump files
-					struct DataDumper::memory_color_event_line_t event;
+					struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 					event.color = tag.color;
-					event.eventType = DataDumper::MIX;
+					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 				else
@@ -405,9 +405,9 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 					//LOG_DEBUG("(in loop) Reused mix taint in reg mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ")--> reused Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P : " << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 					
 					//Register event for dump files
-					struct DataDumper::memory_color_event_line_t event;
+					struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 					event.color = tag.color;
-					event.eventType = DataDumper::MIX;
+					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 			}
@@ -490,9 +490,9 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 					//LOG_DEBUG("(in loop) Mixed reg taint mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 				
 					//Register event for dump files
-					struct DataDumper::memory_color_event_line_t event;
+					struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 					event.color = tag.color;
-					event.eventType = DataDumper::MIX;
+					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 				else
@@ -504,9 +504,9 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 					//LOG_DEBUG("(in loop) Reused mix in reg taint mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ") --> reused Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 				
 					//Register event for dump files
-					struct DataDumper::memory_color_event_line_t event;
+					struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 					event.color = tag.color;
-					event.eventType = DataDumper::MIX;
+					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
 				}
 			}
@@ -587,9 +587,9 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 			//LOG_DEBUG("Mixed taint reg "<< REG_StringShort(dest) <<" mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 		
 			//Register event for dump files
-			struct DataDumper::memory_color_event_line_t event;
+			struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 			event.color = tag.color;
-			event.eventType = DataDumper::MIX;
+			event.eventType = UTILS::IO::DataDumpLine::MIX;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		else
@@ -601,9 +601,9 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 			//LOG_DEBUG("Reused mix taint reg "<< REG_StringShort(dest) <<" mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> reused Tag for reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 		
 			//Register event for dump files
-			struct DataDumper::memory_color_event_line_t event;
+			struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 			event.color = tag.color;
-			event.eventType = DataDumper::MIX;
+			event.eventType = UTILS::IO::DataDumpLine::MIX;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 	}
@@ -664,10 +664,10 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				//LOG_DEBUG("(in loop) New memory taint using reg "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> mem.ins(" << to_hex_dbg(dest + ii) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 			
 				//Register event for dump files
-				struct DataDumper::memory_color_event_line_t event;
+				struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 				event.color = tag.color;
 				event.memAddr = dest+ii;
-				event.eventType = DataDumper::TAINT;
+				event.eventType = UTILS::IO::DataDumpLine::TAINT;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			continue;
@@ -683,10 +683,10 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 			//LOG_DEBUG("(in loop) Memory taint with empty color using reg "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> modified mem at " << dest + ii << " with T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 		
 			//Register event for dump files
-			struct DataDumper::memory_color_event_line_t event;
+			struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 			event.color = tag.color;
 			event.memAddr = dest;
-			event.eventType = DataDumper::UNTAINT;
+			event.eventType = UTILS::IO::DataDumpLine::UNTAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
 		}
 		else
@@ -703,10 +703,10 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				//LOG_DEBUG("(in loop) Mixed taint reg using "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> modified mem tag at " << dest + ii << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 			
 				//Register event for dump files
-				struct DataDumper::memory_color_event_line_t event;
+				struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 				event.color = tag.color;
 				event.memAddr = dest;
-				event.eventType = DataDumper::MIX;
+				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 			else
@@ -718,10 +718,10 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				//LOG_DEBUG("(in loop) Reused mix taint reg of "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> reused mem tag for " << to_hex_dbg(dest + ii) << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 			
 				//Register event for dump files
-				struct DataDumper::memory_color_event_line_t event;
+				struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
 				event.color = tag.color;
 				event.memAddr = dest;
-				event.eventType = DataDumper::MIX;
+				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
 			}
 		}

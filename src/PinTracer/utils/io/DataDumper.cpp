@@ -34,8 +34,9 @@ void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::or
 	}
 }
 
-void DataDumper::writeMemoryColorEventDump(memory_color_event_line_t event)
+void DataDumper::writeMemoryColorEventDump(UTILS::IO::DataDumpLine::memory_color_event_line_t event)
 {
+#if(FILE_LOGGING_ACTIVATE==1)
 	this->memColorEventDumpFile << event.eventType << DUMP_INTER_SEPARATOR <<
 		this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR <<
 		ctx.getCurrentBaseInstruction() << DUMP_INTER_SEPARATOR <<
@@ -43,9 +44,13 @@ void DataDumper::writeMemoryColorEventDump(memory_color_event_line_t event)
 		event.color << DUMP_INTER_SEPARATOR <<
 		ctx.getLastMemoryValue() << DUMP_INTER_SEPARATOR <<
 		ctx.getLastMemoryLength() << DUMP_OUTER_SEPARATOR;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertTaintEventLine(event, this->lastRoutineDumpIndex);
+#endif
 }
 
-void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
+void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data)
 {
 	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << 
 		data.dllFrom.c_str() << DUMP_INTER_SEPARATOR << data.funcFrom.c_str() << 

@@ -363,6 +363,7 @@
     <ClInclude Include="utils\inst\ScopeFilterer.h" />
     <ClInclude Include="utils\io\CommandCenter.h" />
     <ClInclude Include="utils\io\DataDumper.h" />
+    <ClInclude Include="utils\io\DataDumpLine.h" />
     <ClInclude Include="utils\io\format.h" />
     <ClInclude Include="utils\io\log.h" />
     <ClInclude Include="utils\inst\InstructionWorker.h" />
