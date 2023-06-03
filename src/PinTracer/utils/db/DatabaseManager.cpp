@@ -158,7 +158,7 @@ void UTILS::DB::DatabaseManager::emptyDatabase()
 
 void UTILS::DB::DatabaseManager::openDatabase()
 {
-	if (sqlite3_open(DB_LOCATION, &this->dbSession) == SQLITE_OK)
+	if (sqlite3_open(getFilenameFullName(DB_LOCATION).c_str(), &this->dbSession) == SQLITE_OK)
 	{
 		LOG_DEBUG("Opened the system database");
 		this->databaseOpened() = true;
