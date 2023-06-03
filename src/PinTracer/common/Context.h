@@ -11,7 +11,8 @@
 
 class Context {
 private:
-	ADDRINT currentBaseInstruction;
+	ADDRINT currentInstructionFullAddress; //full dynamic address of instruction inside de process
+	ADDRINT currentBaseInstruction; //offset from the start of the image
 	std::string lastMemoryValue;
 	int lastMemoryLength;
 	RevContext revContext;
@@ -21,10 +22,12 @@ private:
 	DataDumper dataDumper;
 
 public:
+	ADDRINT getCurrentInstructionFullAddress();
 	ADDRINT getCurrentBaseInstruction();
 	std::string getLastMemoryValue();
 	int getLastMemoryLength();
 
+	void updateCurrentInstructionFullAddress(ADDRINT instAddr);
 	void updateCurrentBaseInstruction(ADDRINT instAddr);
 	void updateLastMemoryValue(std::string value, int len);
 

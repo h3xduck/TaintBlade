@@ -200,7 +200,6 @@ int getDLLIndex_callback(void* veryUsed, int argc, char** argv, char** azcolenam
 	for (int ii = 0; ii < argc; ii++)
 	{
 		*ret = std::atoi(argv[ii]);
-		LOG_DEBUG("READ: " << argv[ii]);
 		return 0;
 	}
 	*ret = -1;
@@ -213,7 +212,6 @@ int UTILS::DB::DatabaseManager::getDLLIndex(std::string dllName)
 	char* errMsg = 0;
 	int ret = -1;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getDLLIndex_callback, &ret, &errMsg);
-	LOG_DEBUG("returning " << ret);
 	return ret;
 }
 
@@ -231,15 +229,9 @@ void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::Dat
 	{
 		this->openDatabase();
 	}
-	std::replace(event.arg0.begin(), event.arg0.end(), '\'', (char)'\\\'');
-	std::replace(event.arg1.begin(), event.arg1.end(), '\'', (char)'\\\'');
-	std::replace(event.arg2.begin(), event.arg2.end(), '\'', (char)'\\\'');
-	std::replace(event.arg3.begin(), event.arg3.end(), '\'', (char)'\\\'');
-	std::replace(event.arg4.begin(), event.arg4.end(), '\'', (char)'\\\'');
-	std::replace(event.arg5.begin(), event.arg5.end(), '\'', (char)'\\\'');
 
 	int dllFromIx = this->getDLLIndex(event.dllFrom);
-	LOG_DEBUG("Got IX: " << dllFromIx);
+	//LOG_DEBUG("Got IX: " << dllFromIx);
 	if (dllFromIx == -1)
 	{
 		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + event.dllFrom + "')";
@@ -248,7 +240,7 @@ void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::Dat
 	}
 
 	int dllToIx = this->getDLLIndex(event.dllTo);
-	LOG_DEBUG("Got IX2: " << dllToIx);
+	//LOG_DEBUG("Got IX2: " << dllToIx);
 	if (dllToIx == -1)
 	{
 		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + event.dllTo + "')";
@@ -259,6 +251,13 @@ void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::Dat
 	std::string sql;
 	if (this->dumpFuncCallsArgs())
 	{
+		std::replace(event.arg0.begin(), event.arg0.end(), '\'', (char)'\\\'');
+		std::replace(event.arg1.begin(), event.arg1.end(), '\'', (char)'\\\'');
+		std::replace(event.arg2.begin(), event.arg2.end(), '\'', (char)'\\\'');
+		std::replace(event.arg3.begin(), event.arg3.end(), '\'', (char)'\\\'');
+		std::replace(event.arg4.begin(), event.arg4.end(), '\'', (char)'\\\'');
+		std::replace(event.arg5.begin(), event.arg5.end(), '\'', (char)'\\\'');
+		
 		sql = "INSERT INTO function_calls(appearance, dll_from_ix, func_from, memaddr_from, dll_to_ix, func_to, memaddr_to, arg0, arg1, arg2, arg3, arg4, arg5) VALUES(" +
 			quotesql(std::to_string(routineIndex)) + ", " +
 			quotesql(std::to_string(dllFromIx)) + ", " +

@@ -6,6 +6,7 @@ void OPC_INST::ovw_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, AD
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
@@ -17,6 +18,7 @@ void OPC_INST::ovw_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
@@ -28,6 +30,7 @@ void OPC_INST::ovw_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
@@ -42,6 +45,7 @@ void OPC_INST::ovw_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
@@ -51,6 +55,7 @@ void OPC_INST::ovw_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, AD
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);

@@ -253,6 +253,7 @@ public:
 				if (!vec.empty()) {
 					ctx.getDataDumper().writeCurrentTaintedMemoryDump(ip, vec);
 				}
+				
 			}
 		}
 

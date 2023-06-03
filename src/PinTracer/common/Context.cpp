@@ -2,6 +2,11 @@
 
 Context ctx;
 
+ADDRINT Context::getCurrentInstructionFullAddress()
+{
+	return this->currentInstructionFullAddress;
+}
+
 ADDRINT Context::getCurrentBaseInstruction()
 {
 	return this->currentBaseInstruction;
@@ -40,6 +45,11 @@ UTILS::DB::DatabaseManager& Context::getDatabaseManager()
 DataDumper& Context::getDataDumper()
 {
 	return this->dataDumper;
+}
+
+void Context::updateCurrentInstructionFullAddress(ADDRINT inst_addr)
+{
+	this->currentInstructionFullAddress = inst_addr;
 }
 
 void Context::updateCurrentBaseInstruction(ADDRINT inst_addr)

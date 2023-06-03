@@ -6,6 +6,7 @@ extern Context ctx;
 void OPC_INST::binary_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().taintRegWithMem(regDest, regDest, memSrc, memSrcLen);
@@ -14,6 +15,7 @@ void OPC_INST::binary_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip,
 void OPC_INST::binary_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().taintRegWithReg(regDest, regSrc, false);
@@ -22,6 +24,7 @@ void OPC_INST::binary_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip,
 void OPC_INST::binary_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
 	ctx.updateLastMemoryValue(val, memDestLen);
@@ -35,6 +38,7 @@ void OPC_INST::binary_clr_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT
 {
 	TaintController tController = taintManager.getController();
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	taintManager.getController().untaintReg(regDest);
