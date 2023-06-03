@@ -235,7 +235,7 @@ void DataDumper::writeTaintRoutineDumpLine(UTILS::IO::DataDumpLine::taint_routin
 #if(FILE_LOGGING_ACTIVATE==1)
 	this->taintRoutinesDumpFile << data.instAddrEntry << DUMP_INTER_SEPARATOR <<
 		data.instAddrLast << DUMP_INTER_SEPARATOR << data.dll << DUMP_INTER_SEPARATOR << data.func
-		<< DUMP_OUTER_SEPARATOR;
+		<< data.containedEventsType << DUMP_OUTER_SEPARATOR;
 #endif
 #if(DB_LOGGING_ACTIVATE==1)
 	ctx.getDatabaseManager().insertTaintRoutineRecord(data);

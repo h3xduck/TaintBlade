@@ -1,11 +1,14 @@
 #include "TaintSink.h"
+#include "../../common/Context.h"
 
 extern TaintController taintController;
+extern Context ctx;
 
 typedef struct func_dll_and_args_t
 {
 	std::string dllName;
 	std::string funcName;
+	ADDRINT ip;
 	void* arg1;
 	void* arg2;
 	void* arg3;
@@ -23,6 +26,7 @@ static std::tr1::unordered_map<size_t, struct func_dll_and_args_t> sinkCallsData
 void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10)
 {
 	LOG_DEBUG("Called createProcessA!");
+	bool taintSinkActivated = false; //whether any tainted data did end up into the sink function
 	const std::string* dllNameStr = static_cast<std::string*>(dllName);
 	const std::string* funcNameStr = static_cast<std::string*>(funcName);
 
@@ -45,6 +49,7 @@ void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT currIp, ADDRINT retIp,
 
 			if (memTainted)
 			{
+				taintSinkActivated = true;
 				UINT16 color = taintController.memGetColor((ADDRINT)appNameArr + ii);
 				LOG_DEBUG("Memory at " << to_hex_dbg((ADDRINT)appNameArr + ii) << " with color " << color << " is tainted: " << memTainted);
 
@@ -81,6 +86,7 @@ void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT currIp, ADDRINT retIp,
 
 			if (memTainted)
 			{
+				taintSinkActivated = true;
 				UINT16 color = taintController.memGetColor((ADDRINT)commandLineArr + ii);
 				LOG_DEBUG("Memory at " << to_hex_dbg((ADDRINT)commandLineArr + ii) << " with color " << color << " is tainted: " << memTainted);
 
@@ -103,12 +109,34 @@ void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT currIp, ADDRINT retIp,
 			ii++;
 		}
 	}
+
+	if (taintSinkActivated)
+	{
+		//Register that this routine had some taint event
+		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+		PIN_LockClient();
+		data.instAddrEntry = currIp;
+		RTN rtn = RTN_FindByAddress(currIp);
+		if (rtn == RTN_Invalid())
+		{
+			return;
+		}
+		RTN_Open(rtn);
+		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+		data.dll = *dllNameStr;
+		data.func = *funcNameStr;
+		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SINK;
+		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
+		RTN_Close(rtn);
+		PIN_UnlockClient();
+	}
 }
 	
 
 void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10)
 {
 	LOG_DEBUG("Called createProcessW!");
+	bool taintSinkActivated = false; //whether any tainted data did end up into the sink function
 	const std::string* dllNameStr = static_cast<std::string*>(dllName);
 	const std::string* funcNameStr = static_cast<std::string*>(funcName);
 
@@ -132,6 +160,7 @@ void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT currIp, ADDRINT retIp,
 
 			if (memTainted)
 			{
+				taintSinkActivated = true;
 				UINT16 color = taintController.memGetColor((ADDRINT)appNameArr + ii);
 				LOG_DEBUG("Memory at " << to_hex_dbg((ADDRINT)appNameArr + ii) << " with color " << color << " is tainted: " << memTainted);
 
@@ -169,6 +198,7 @@ void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT currIp, ADDRINT retIp,
 			LOG_DEBUG("Examining memory at " << to_hex_dbg((ADDRINT)commandLineArr + ii));
 			if (memTainted)
 			{
+				taintSinkActivated = true;
 				UINT16 color = taintController.memGetColor((ADDRINT)commandLineArr + ii);
 				LOG_DEBUG("Memory at " << to_hex_dbg((ADDRINT)commandLineArr + ii) << " with color " << color << " is tainted: " << memTainted);
 
@@ -191,6 +221,27 @@ void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT currIp, ADDRINT retIp,
 			ii++;
 		}
 	}
+
+	if (taintSinkActivated)
+	{
+		//Register that this routine had some taint event
+		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+		PIN_LockClient();
+		data.instAddrEntry = currIp;
+		RTN rtn = RTN_FindByAddress(currIp);
+		if (rtn == RTN_Invalid())
+		{
+			return;
+		}
+		RTN_Open(rtn);
+		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+		data.dll = *dllNameStr;
+		data.func = *funcNameStr;
+		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SINK;
+		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
+		RTN_Close(rtn);
+		PIN_UnlockClient();
+	}
 }
 
 void TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
@@ -207,6 +258,7 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter(ADDRINT currIp, ADDRINT r
 	struct func_dll_and_args_t data;
 	data.dllName = *dllNameStr;
 	data.funcName = *funcNameStr;
+	data.ip = currIp;
 	data.arg1 = arg1;
 	data.arg2 = arg2;
 	data.arg3 = arg3;
@@ -228,6 +280,7 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter(ADDRINT currIp, ADDRINT r
 void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllName, VOID* funcName)
 {
 	LOG_DEBUG("Called MultiByteToWideChar at exit!");
+	bool taintSinkActivated = false; //whether any tainted data did end up into the sink function
 	const std::string* dllNameStr = static_cast<std::string*>(dllName);
 	const std::string* funcNameStr = static_cast<std::string*>(funcName);
 
@@ -242,14 +295,14 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 	else
 	{
 		//At this point, we dump the function and the arguments
-		struct func_dll_and_args_t data;
-		data = it->second;
+		struct func_dll_and_args_t funcDllData;
+		funcDllData = it->second;
 
 		//Instrument the function MultiByteToWideCharExit according to:
 		//https://learn.microsoft.com/en-us/windows/win32/api/stringapiset/nf-stringapiset-multibytetowidechar
 
 		//If args are 0, either fails or returns data we don't care about
-		if (retVal == 0 || data.arg6 == 0 || data.arg4 == 0)
+		if (retVal == 0 || funcDllData.arg6 == 0 || funcDllData.arg4 == 0)
 		{
 			sinkCallsData.erase(hash);
 			return;
@@ -258,9 +311,9 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 		//The number of bytes indicated in arg3 are the ones transformed
 		int transLen = retVal;
 		//If the bytes from the src sring were tainted, the ones from the wide one will be too
-		WINDOWS::LPCCH srcStrW = (WINDOWS::LPCCH)data.arg3;
+		WINDOWS::LPCCH srcStrW = (WINDOWS::LPCCH)funcDllData.arg3;
 		char* srcStr = (char*)srcStrW;
-		WINDOWS::LPWSTR destStrW = (WINDOWS::LPWSTR)data.arg5;
+		WINDOWS::LPWSTR destStrW = (WINDOWS::LPWSTR)funcDllData.arg5;
 		wchar_t* destStr = (wchar_t*)destStrW;
 
 		if(srcStr!=NULL) LOG_DEBUG("SrcString: " << std::string(srcStr));
@@ -272,6 +325,7 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 			bool memTainted = taintController.memIsTainted((ADDRINT)srcStr + ii);
 			if (memTainted)
 			{
+				taintSinkActivated = true;
 				UINT16 color = taintController.memGetColor((ADDRINT)srcStr + ii);
 				taintController.taintMemByteWithColor((ADDRINT)destStr + ii, color);
 				LOG_DEBUG("MultiByteToWideChar: Tainted mem[" << to_hex_dbg((ADDRINT)destStr + ii) << "] with color " << color << " from mem[" << to_hex_dbg((ADDRINT)srcStr + ii) << "]");
@@ -280,6 +334,27 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 		}
 			
 		sinkCallsData.erase(hash);
+
+		if (taintSinkActivated)
+		{
+			//Register that this routine had some taint event
+			UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+			PIN_LockClient();
+			data.instAddrEntry = funcDllData.ip;
+			RTN rtn = RTN_FindByAddress(funcDllData.ip);
+			if (rtn == RTN_Invalid())
+			{
+				return;
+			}
+			RTN_Open(rtn);
+			data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+			data.dll = *dllNameStr;
+			data.func = *funcNameStr;
+			data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SINK;
+			ctx.getDataDumper().writeTaintRoutineDumpLine(data);
+			RTN_Close(rtn);
+			PIN_UnlockClient();
+		}
 		
 	}
 

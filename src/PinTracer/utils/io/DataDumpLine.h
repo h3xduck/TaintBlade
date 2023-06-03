@@ -9,7 +9,6 @@ namespace UTILS
 	{
 		namespace DataDumpLine
 		{
-
 			typedef struct extended_data_dump_line_t
 			{
 				int funcDllIndex;
@@ -39,12 +38,24 @@ namespace UTILS
 				std::string arg5;
 			};
 
+			typedef enum contained_taint_events_type
+			{
+				NONE,			//No event
+				TAINT_SRC,		//Taint was manually originated from this routine
+				TAINT_SINK,		//The routine is surely operating with tainted data
+				TAINT_EVENTFUL, //The taint changed at some point inside this routine = taint events happened while running
+
+				//The next taint types are only selected when we do not trace that DLL, we just guess what happens inside
+				TAINT_SUS_ARGS	//We believe that some argument which was tainted was passed to this routine. We do not
+			};
+
 			typedef struct taint_routine_dump_line_t
 			{
 				std::string dll;
 				std::string func;
 				ADDRINT instAddrEntry;
 				ADDRINT instAddrLast;
+				contained_taint_events_type containedEventsType;
 			};
 
 			typedef enum memory_color_event

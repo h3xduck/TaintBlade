@@ -137,6 +137,7 @@ public:
 		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
 		data.dll = *dllNameStr;
 		data.func = *funcNameStr;
+		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SRC;
 		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
 		RTN_Close(rtn);
 		PIN_UnlockClient();
@@ -198,6 +199,7 @@ public:
 		data.dll = *dllNameStr;
 		data.func = *funcNameStr;
 		RTN_Close(rtn);
+		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SRC;
 		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
 	};
 

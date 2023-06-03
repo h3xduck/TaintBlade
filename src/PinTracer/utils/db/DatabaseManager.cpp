@@ -119,7 +119,8 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"inst_entry	INTEGER,"\
 		"inst_last	INTEGER,"\
 		"inst_base_entry	INTEGER,"\
-		"inst_base_last		INTEGER"\
+		"inst_base_last		INTEGER,"\
+		"events_type		INTEGER"\
 		"); ";
 	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)
@@ -332,13 +333,14 @@ void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::Data
 	}
 
 	PIN_LockClient();
-	std::string sql = "INSERT INTO taint_routines(function, dll_idx, inst_entry, inst_last, inst_base_entry, inst_base_last) VALUES(" +
+	std::string sql = "INSERT INTO taint_routines(function, dll_idx, inst_entry, inst_last, inst_base_entry, inst_base_last, events_type) VALUES(" +
 		quotesql(data.func) + ", " +
 		quotesql(std::to_string(dllIx)) + ", " +
 		quotesql(std::to_string(data.instAddrEntry)) + ", " +
 		quotesql(std::to_string(data.instAddrLast)) + ", " +
 		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrEntry))) + ", " +
-		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrLast))) + ");";
+		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrLast))) + ", " +
+		quotesql(std::to_string((int)data.containedEventsType)) + ");";
 	PIN_UnlockClient();
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
