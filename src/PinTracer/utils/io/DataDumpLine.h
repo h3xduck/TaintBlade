@@ -39,6 +39,14 @@ namespace UTILS
 				std::string arg5;
 			};
 
+			typedef struct taint_routine_dump_line_t
+			{
+				std::string dll;
+				std::string func;
+				ADDRINT instAddrEntry;
+				ADDRINT instAddrLast;
+			};
+
 			typedef enum memory_color_event
 			{
 				UNDEFINED,  //Undefined

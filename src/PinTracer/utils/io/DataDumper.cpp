@@ -14,6 +14,7 @@ DataDumper::DataDumper()
 	this->heuristicsResultsDumpFile.open(getFilenameFullName(HEURISTIC_RESULTS_DUMP_FILE).c_str());
 	this->protocolResultsDumpFile.open(getFilenameFullName(PROTOCOL_RESULTS_DUMP_FILE).c_str());
 	this->traceResultsDumpFile.open(getFilenameFullName(TRACE_RESULTS_DUMP_FILE).c_str());
+	this->taintRoutinesDumpFile.open(getFilenameFullName(TAINT_ROUTINE_DUMP_FILE).c_str());
 }
 
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec)
@@ -52,6 +53,7 @@ void DataDumper::writeMemoryColorEventDump(UTILS::IO::DataDumpLine::memory_color
 
 void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data)
 {
+#if(ALL_ROUTINE_LOGGING==1)
 #if(FILE_LOGGING_ACTIVATE==1)
 	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << 
 		data.dllFrom.c_str() << DUMP_INTER_SEPARATOR << data.funcFrom.c_str() << 
@@ -68,6 +70,7 @@ void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_n
 #endif
 #if(DB_LOGGING_ACTIVATE==1)
 	ctx.getDatabaseManager().insertFunctionCallsRecord(data, this->lastRoutineDumpIndex);
+#endif
 #endif
 	this->lastRoutineDumpIndex++;
 }
@@ -227,6 +230,18 @@ void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
 	this->traceResultsDumpFile << std::endl;
 }
 
+void DataDumper::writeTaintRoutineDumpLine(UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data)
+{
+#if(FILE_LOGGING_ACTIVATE==1)
+	this->taintRoutinesDumpFile << data.instAddrEntry << DUMP_INTER_SEPARATOR <<
+		data.instAddrLast << DUMP_INTER_SEPARATOR << data.dll << DUMP_INTER_SEPARATOR << data.func
+		<< DUMP_OUTER_SEPARATOR;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertTaintRoutineRecord(data);
+#endif
+}
+
 
 void DataDumper::resetDumpFiles()
 {
@@ -300,5 +315,14 @@ void DataDumper::resetDumpFiles()
 	else
 	{
 		LOG_DEBUG("Trace results dump file successfully deleted");
+	}
+
+	if (remove(TAINT_ROUTINE_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting taint routines dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Taint routine dump file successfully deleted");
 	}
 }

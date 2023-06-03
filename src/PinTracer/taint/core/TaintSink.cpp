@@ -20,7 +20,7 @@ typedef struct func_dll_and_args_t
 
 static std::tr1::unordered_map<size_t, struct func_dll_and_args_t> sinkCallsData;
 
-void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10)
+void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10)
 {
 	LOG_DEBUG("Called createProcessA!");
 	const std::string* dllNameStr = static_cast<std::string*>(dllName);
@@ -106,7 +106,7 @@ void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT retIp, VOID* dllName, 
 }
 	
 
-void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10)
+void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10)
 {
 	LOG_DEBUG("Called createProcessW!");
 	const std::string* dllNameStr = static_cast<std::string*>(dllName);
@@ -193,7 +193,7 @@ void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT retIp, VOID* dllName, 
 	}
 }
 
-void TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
+void TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 {
 	LOG_DEBUG("Called MultiByteToWideChar at enter!");
 	const std::string* dllNameStr = static_cast<std::string*>(dllName);

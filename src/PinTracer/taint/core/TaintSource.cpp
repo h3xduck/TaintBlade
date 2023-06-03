@@ -12,7 +12,7 @@ void TaintSource::taintSourceLogAll()
 }
 
 TaintSource::TaintSource(const std::string dllName, const std::string funcName, int numArgs, 
-	VOID(*enter)(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6),
+	VOID(*enter)(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6),
 	VOID(*exit)(ADDRINT, VOID*, VOID*))
 {
 	this->dllName = dllName;

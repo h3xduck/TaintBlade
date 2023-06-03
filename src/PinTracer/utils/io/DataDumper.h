@@ -26,6 +26,7 @@ private:
 	std::ofstream heuristicsResultsDumpFile;
 	std::ofstream protocolResultsDumpFile;
 	std::ofstream traceResultsDumpFile;
+	std::ofstream taintRoutinesDumpFile;
 
 	int lastRoutineDumpIndex;
 
@@ -46,6 +47,7 @@ public:
 	void writeRevHeuristicDumpLine(HLPointerField log);
 	void writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol);
 	void writeTraceDumpLine(UTILS::TRACE::TracePoint& tp);
+	void writeTaintRoutineDumpLine(UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data);
 
 	void resetDumpFiles();
 

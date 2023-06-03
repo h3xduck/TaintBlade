@@ -29,6 +29,8 @@ extern Context ctx;
 //Function arguments
 struct wsock_recv_t
 {
+	ADDRINT ip;
+
 	//Args
 	WINDOWS::SOCKET s;
 	char* buf;
@@ -41,6 +43,8 @@ static wsock_recv_t wsockRecv;
 
 struct wininet_internetreadfile_t
 {
+	ADDRINT ip;
+
 	//Args
 	WINDOWS::LPVOID hFile;
 	WINDOWS::LPVOID lpBuffer;
@@ -74,9 +78,10 @@ public:
 	//****************Handlers***********************************************************//
 	
 	///////////////// WSOCK /////////////////
-	static VOID wsockRecvEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
+	static VOID wsockRecvEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		int NUM_ARGS = 4;
+		wsockRecv.ip = currIp;
 		wsockRecv.s = (WINDOWS::SOCKET)arg1;
 		wsockRecv.buf = (char*)arg2;
 		wsockRecv.len = (int)arg3;
@@ -118,13 +123,31 @@ public:
 		}
 
 		LOG_DEBUG("Called wsockexit");
+
+		//Register that this routine had some taint event
+		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+		PIN_LockClient();
+		data.instAddrEntry = wsockRecv.ip;
+		RTN rtn = RTN_FindByAddress(wsockRecv.ip);
+		if (rtn == RTN_Invalid())
+		{
+			return;
+		}
+		RTN_Open(rtn);
+		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+		data.dll = *dllNameStr;
+		data.func = *funcNameStr;
+		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
+		RTN_Close(rtn);
+		PIN_UnlockClient();
 	};
 
 	///////////////// WININET /////////////////
-	static VOID wininetInternetReadFileEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
+	static VOID wininetInternetReadFileEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		int NUM_ARGS = 4;
-
+		
+		wininetInternetReadFile.ip = currIp;
 		wininetInternetReadFile.hFile = (WINDOWS::LPVOID)arg1;
 		wininetInternetReadFile.lpBuffer = (WINDOWS::LPVOID)arg2;
 		wininetInternetReadFile.dwNumberOfBytesToRead = (WINDOWS::DWORD)arg3;
@@ -160,12 +183,28 @@ public:
 			offset++;
 		}
 
+		//Register that this routine had some taint event
+		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+		data.instAddrEntry = wininetInternetReadFile.ip;
+		PIN_LockClient();
+		RTN rtn = RTN_FindByAddress(wininetInternetReadFile.ip);
+		if (rtn == RTN_Invalid())
+		{
+			return;
+		}
+		RTN_Open(rtn);
+		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+		PIN_UnlockClient();
+		data.dll = *dllNameStr;
+		data.func = *funcNameStr;
+		RTN_Close(rtn);
+		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
 	};
 
 
 
 	///////////////// MAIN (FOR TESTING). Taints RAX and RBX /////////////////
-	static VOID mainEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
+	static VOID mainEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		LOG_DEBUG("Called mainEnter()");
 		
@@ -193,12 +232,12 @@ public:
 	int numArgs = 0;
 
 	//placeholders
-	VOID(*enterHandler)(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6) = NULL;
+	VOID(*enterHandler)(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6) = NULL;
 	VOID(*exitHandler)(ADDRINT, VOID*, VOID*) = NULL;
 
 	TaintSource() {};
 	TaintSource(const std::string dllName, const std::string funcName, int numArgs, 
-		VOID(*enter)(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6),
+		VOID(*enter)(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6),
 		VOID(*exit)(ADDRINT, VOID*, VOID*));
 
 	void taintSourceLogAll();

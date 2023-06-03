@@ -111,6 +111,23 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		return;
 	}
 
+	//Table holding routines in which there was some taint event
+	sql = "CREATE TABLE taint_routines ("\
+		"idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"function	TEXT(150),"\
+		"dll_idx	TEXT(150),"\
+		"inst_entry	INTEGER,"\
+		"inst_last	INTEGER,"\
+		"inst_base_entry	INTEGER,"\
+		"inst_base_last		INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
 }
 
 void UTILS::DB::DatabaseManager::emptyDatabase()
@@ -132,6 +149,9 @@ void UTILS::DB::DatabaseManager::emptyDatabase()
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	
 	sql = "DROP TABLE original_colors";
+	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+
+	sql = "DROP TABLE taint_routines";
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 }
 
@@ -285,6 +305,41 @@ void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::Dat
 			quotesql(std::to_string(event.memAddrTo)) + ");";
 	}
 	
+	char* errMsg = 0;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
+		sqlite3_close(this->dbSession);
+		return;
+	}
+}
+
+void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data)
+{
+	if (!databaseOpened())
+	{
+		this->openDatabase();
+	}
+
+	int dllIx = this->getDLLIndex(data.dll);
+	//LOG_DEBUG("Got IX: " << dllFromIx);
+	if (dllIx == -1)
+	{
+		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + data.dll + "')";
+		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		dllIx = this->getDLLIndex(data.dll);
+	}
+
+	PIN_LockClient();
+	std::string sql = "INSERT INTO taint_routines(function, dll_idx, inst_entry, inst_last, inst_base_entry, inst_base_last) VALUES(" +
+		quotesql(data.func) + ", " +
+		quotesql(std::to_string(dllIx)) + ", " +
+		quotesql(std::to_string(data.instAddrEntry)) + ", " +
+		quotesql(std::to_string(data.instAddrLast)) + ", " +
+		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrEntry))) + ", " +
+		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrLast))) + ");";
+	PIN_UnlockClient();
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)

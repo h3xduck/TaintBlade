@@ -30,6 +30,7 @@
 #define COLOR_TRANS_DUMP_FILE "colortransdump.dfx"
 #define FUNC_DLL_NAMES_DUMP_FILE "funcdllnames.dfx"
 #define HEURISTIC_RESULTS_DUMP_FILE "heuristics.dfx"
+#define TAINT_ROUTINE_DUMP_FILE "taintroutines.dfx"
 #define PROTOCOL_RESULTS_DUMP_FILE "protocol.dfx"
 #define TRACE_RESULTS_DUMP_FILE "trace.dfx"
 #define STATE_TRACKER_FILE "state_tracker.dfx"
@@ -50,6 +51,8 @@
 #define DB_LOGGING_ACTIVATE 1
 //Activates file logging
 #define FILE_LOGGING_ACTIVATE 1
+//Activates, the logging of all routines
+#define ALL_ROUTINE_LOGGING 0
 
 //Location of DB (current directory)
 #define DB_LOCATION "dump.db"
