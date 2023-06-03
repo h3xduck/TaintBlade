@@ -14,6 +14,7 @@
 #include "../db/DatabaseManager.h"
 #include "../../reversing/heuristics/HLPointerField.h"
 #include "DataDumpLine.h"
+#include "../inst/PerformanceOperator.h"
 
 class DataDumper
 {
@@ -38,6 +39,7 @@ private:
 public:
 	DataDumper();
 
+	void writeTracedProcessDump(std::string mainImageName);
 	void writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec);
 	void writeMemoryColorEventDump(UTILS::IO::DataDumpLine::memory_color_event_line_t event);
 	void writeColorTransformationDump(std::vector<Tag>);

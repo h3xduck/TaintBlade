@@ -24,6 +24,7 @@
 //******************************* DATA DUMPING CONFIG *******************************//
 
 //Data dumping files
+#define TRACED_PROCESS_DUMP_FILE "tracedprocess.dfx"
 #define CURRENT_TAINTED_MEMORY_DUMP_FILE "memdump.dfx"
 #define TAINT_EVENT_DUMP_FILE "tainteventdump.dfx"
 #define ORG_COLORS_DUMP_FILE "orgcolorsdump.dfx"

@@ -134,6 +134,23 @@ void cleanDfxFiles()
 	}
 }
 
+//Deletes all previous databases in the directory
+void cleanDatabases()
+{
+	WINDOWS::HANDLE hFind;
+	WINDOWS::WIN32_FIND_DATA FindFileData;
+
+	if ((hFind = FindFirstFile("./*.db", &FindFileData)) != ((WINDOWS::HANDLE)(WINDOWS::LONG_PTR)-1))
+	{
+		do
+		{
+			int res = std::remove(FindFileData.cFileName);
+			LOG_DEBUG("Cleaning old database " << FindFileData.cFileName << " (result: " << res << ")" << std::endl);
+		} while (FindNextFile(hFind, &FindFileData));
+		WINDOWS::FindClose(hFind);
+	}
+}
+
 /* ===================================================================== */
 // Analysis routines
 /* ===================================================================== */
@@ -360,6 +377,7 @@ VOID ImageTrace(IMG img, VOID* v)
 		mainImageName = IMG_Name(img);
 		//Only the specified program is to be instrumented
 		scopeFilterer = ScopeFilterer(mainImageName);
+		ctx.getDataDumper().writeTracedProcessDump(mainImageName);
 	}
 	//Check if we must trace all images because the user requested it like that via program flags
 	else if (settingTraceAllImages) {
@@ -758,9 +776,6 @@ int main(int argc, char* argv[])
 	{
 		return Usage();
 	}
-
-	//Clean all .dfx files that were left from previous runs
-	cleanDfxFiles();
 
 	std::string fileName = KnobOutputFile.Value();
 	std::string sysinfoFilename = KnobSyscallFile.Value();

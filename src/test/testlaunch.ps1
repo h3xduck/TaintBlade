@@ -29,6 +29,18 @@ function runTest {
         return
     }
 
+    #First we remove all old db and dfx files
+    $rmFiles = Get-ChildItem -Path $directoryPath -Filter "*.dfx" -File
+    foreach ($file in $rmFiles) {
+        $filePath = $file.FullName
+        Remove-Item -Path $filePath -Force
+    }
+    $rmFiles = Get-ChildItem -Path $directoryPath -Filter "*.db" -File
+    foreach ($file in $rmFiles) {
+        $filePath = $file.FullName
+        Remove-Item -Path $filePath -Force
+    }
+
     $programInfo = (Get-Content -Path .\programinfo.txt)
     Write-Host 'Running program'$programInfo
 

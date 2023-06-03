@@ -22,6 +22,12 @@ namespace PerformanceOperator {
 	*/
 	void trackCurrentState(INS &ins);
 
+	/**
+	Get current time timestamp
+	*/
+	UINT64 getCurrentTimeTimestamp();
+	
+
 };
 
 

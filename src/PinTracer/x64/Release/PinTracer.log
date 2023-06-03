@@ -1,18 +1,10 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: El directorio intermedio (x64\Release\) contiene archivos compartidos de otro proyecto (MyPinTool.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
 cl : línea de comandos  warning D9002: se omite la opción desconocida '/FP:strict'
-  Core.cpp
+  DataDumper.cpp
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversión de 'unsigned __int64' a 'unsigned long'; posible pérdida de datos
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: la clase sin nombre que se usa en el nombre typedef no puede declarar miembros que no sean miembros de datos no estáticos, enumeraciones de miembros o clases de miembros
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: la clase sin nombre que se usa en el nombre typedef no puede declarar miembros que no sean miembros de datos no estáticos, enumeraciones de miembros o clases de miembros
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: la clase sin nombre que se usa en el nombre typedef no puede declarar miembros que no sean miembros de datos no estáticos, enumeraciones de miembros o clases de miembros
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(156,1): warning C4005: 'FD_CLR': redefinición de macro
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\select.h(68): message : vea la definición anterior de 'FD_CLR'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(171,1): warning C4005: 'FD_SET': redefinición de macro
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\select.h(69): message : vea la definición anterior de 'FD_SET'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(173,1): warning C4005: 'FD_ZERO': redefinición de macro
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\select.h(58): message : vea la definición anterior de 'FD_ZERO'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(175,1): warning C4005: 'FD_ISSET': redefinición de macro
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\select.h(70): message : vea la definición anterior de 'FD_ISSET'
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': redefinición de macro
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(49): message : vea la definición anterior de 'timerisset'
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': redefinición de macro
@@ -21,45 +13,6 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(194,1)
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(46): message : vea la definición anterior de 'timerclear'
 C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\data\TagLog.h(18): warning C4091: 'typedef ': se ha omitido a la izquierda de 'TagLog::original_color_data_t' cuando no hay ninguna variable declarada
 C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\data\TagLog.h(34): warning C4091: 'typedef ': se ha omitido a la izquierda de 'TagLog::color_taint_reason_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(18,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::extended_data_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(23,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::org_colors_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(39,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::func_dll_names_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(50,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::contained_taint_events_type' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(59,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::taint_routine_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(70,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::memory_color_event' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(77,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::memory_color_event_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\test\Test.h(132,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(87,1): warning C4311: 'conversión de tipo': truncamiento de puntero de 'void *' a 'int'
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(87,1): warning C4302: 'conversión de tipo': truncamiento de 'void *' a 'int'
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(88,1): warning C4311: 'conversión de tipo': truncamiento de puntero de 'void *' a 'int'
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(88,1): warning C4302: 'conversión de tipo': truncamiento de 'void *' a 'int'
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(108,88): warning C4244: 'argumento': conversión de 'ADDRINT' a 'int'; posible pérdida de datos
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(110,34): warning C4244: 'argumento': conversión de 'ADDRINT' a 'int'; posible pérdida de datos
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(114,97): warning C4244: 'argumento': conversión de 'ADDRINT' a 'const UINT32'; posible pérdida de datos
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(154,1): warning C4311: 'conversión de tipo': truncamiento de puntero de 'void *' a 'WINDOWS::DWORD'
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\core\TaintSource.h(154,1): warning C4302: 'conversión de tipo': truncamiento de 'void *' a 'WINDOWS::DWORD'
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\Core.cpp(540,25): warning C4101: 'instManager': variable local sin referencia
-  DatabaseManager.cpp
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\stlport\include\stl\_string.h(1269,10): warning C4244: 'return': conversión de 'unsigned __int64' a 'unsigned long'; posible pérdida de datos
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(105,1): warning C5208: la clase sin nombre que se usa en el nombre typedef no puede declarar miembros que no sean miembros de datos no estáticos, enumeraciones de miembros o clases de miembros
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(238,1): warning C5208: la clase sin nombre que se usa en el nombre typedef no puede declarar miembros que no sean miembros de datos no estáticos, enumeraciones de miembros o clases de miembros
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\source\include\pin\gen\pinsync.hpp(842,1): warning C5208: la clase sin nombre que se usa en el nombre typedef no puede declarar miembros que no sean miembros de datos no estáticos, enumeraciones de miembros o clases de miembros
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\data\TagLog.h(18): warning C4091: 'typedef ': se ha omitido a la izquierda de 'TagLog::original_color_data_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\taint\data\TagLog.h(34): warning C4091: 'typedef ': se ha omitido a la izquierda de 'TagLog::color_taint_reason_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(18,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::extended_data_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(23,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::org_colors_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(39,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::func_dll_names_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(50,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::contained_taint_events_type' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(59,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::taint_routine_dump_line_t' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(70,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::memory_color_event' cuando no hay ninguna variable declarada
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(77,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::memory_color_event_line_t' cuando no hay ninguna variable declarada
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(190,1): warning C4005: 'timerisset': redefinición de macro
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(49): message : vea la definición anterior de 'timerisset'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(193,1): warning C4005: 'timercmp': redefinición de macro
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(54): message : vea la definición anterior de 'timercmp'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(194,1): warning C4005: 'timerclear': redefinición de macro
-C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\time.h(46): message : vea la definición anterior de 'timerclear'
-C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\test\Test.h(132,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\select.h(45,1): warning C4005: 'FD_SETSIZE': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(133): message : vea la definición anterior de 'FD_SETSIZE'
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\select.h(58,1): warning C4005: 'FD_ZERO': redefinición de macro
@@ -70,7 +23,14 @@ C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(171): message : vea la definición anterior de 'FD_SET'
 C:\Users\Marcos\Documents\GitHub\TFM\src\external\pin-3.25-98650-g8f6168173-msvc-windows\pin-3.25-98650-g8f6168173-msvc-windows\extras\crt\include\sys\select.h(70,1): warning C4005: 'FD_ISSET': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\WinSock2.h(175): message : vea la definición anterior de 'FD_ISSET'
-  Generando código...
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(18,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::extended_data_dump_line_t' cuando no hay ninguna variable declarada
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(23,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::org_colors_dump_line_t' cuando no hay ninguna variable declarada
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(39,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::func_dll_names_dump_line_t' cuando no hay ninguna variable declarada
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(50,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::contained_taint_events_type' cuando no hay ninguna variable declarada
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(59,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::taint_routine_dump_line_t' cuando no hay ninguna variable declarada
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(70,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::memory_color_event' cuando no hay ninguna variable declarada
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\utils\io\DataDumpLine.h(77,5): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UTILS::IO::DataDumpLine::memory_color_event_line_t' cuando no hay ninguna variable declarada
+C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\test\Test.h(132,1): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
      Creando biblioteca C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\x64\Release\PinTracer.lib y objeto C:\Users\Marcos\Documents\GitHub\TFM\src\PinTracer\x64\Release\PinTracer.exp
 LINK : warning LNK4281: dirección base 0xC5000000 no deseada para una imagen de x64. Establecer una dirección base con más de 4 GB para mejorar la optimización de ASLR
 crtbeginS.obj : warning LNK4210: la sección .CRT existe; podría haber terminadores o inicializadores estáticos no controlados

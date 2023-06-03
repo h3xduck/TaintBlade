@@ -17,6 +17,15 @@ DataDumper::DataDumper()
 	this->taintRoutinesDumpFile.open(getFilenameFullName(TAINT_ROUTINE_DUMP_FILE).c_str());
 }
 
+void DataDumper::writeTracedProcessDump(std::string mainImageName)
+{
+	std::ofstream tracedProcessDumpFile;
+	tracedProcessDumpFile.open(getFilenameFullName(TRACED_PROCESS_DUMP_FILE).c_str());
+	LOG_DEBUG("Writing processtracefile at "<< getFilenameFullName(TRACED_PROCESS_DUMP_FILE).c_str());
+	tracedProcessDumpFile << PIN_GetPid() << DUMP_INTER_SEPARATOR << mainImageName << DUMP_INTER_SEPARATOR << PerformanceOperator::getCurrentTimeTimestamp();
+	tracedProcessDumpFile.close();
+}
+
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec)
 {
 	//NOTE: in here we also have the memAddress available
