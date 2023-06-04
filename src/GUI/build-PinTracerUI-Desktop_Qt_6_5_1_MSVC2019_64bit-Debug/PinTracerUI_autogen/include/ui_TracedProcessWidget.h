@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,7 @@ QT_BEGIN_NAMESPACE
 class Ui_tracedProcessWidget
 {
 public:
+    QVBoxLayout *verticalLayout;
     QPushButton *pushButton;
 
     void setupUi(QWidget *tracedProcessWidget)
@@ -32,9 +34,13 @@ public:
         sizePolicy.setHeightForWidth(tracedProcessWidget->sizePolicy().hasHeightForWidth());
         tracedProcessWidget->setSizePolicy(sizePolicy);
         tracedProcessWidget->setBaseSize(QSize(7, 7));
+        verticalLayout = new QVBoxLayout(tracedProcessWidget);
+        verticalLayout->setObjectName("verticalLayout");
         pushButton = new QPushButton(tracedProcessWidget);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(20, 30, 75, 24));
+
+        verticalLayout->addWidget(pushButton);
+
 
         retranslateUi(tracedProcessWidget);
 

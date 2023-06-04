@@ -11,9 +11,11 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     this->setAutoFillBackground(true);
     this->setPalette(pal);
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    this->layout()->setContentsMargins(0,0,0,0);
     this->tracedProcessWidget = new TracedProcessWidget(ui->frameUp);
     //ui->frameUp->setLayout(new QVBoxLayout());
     ui->frameUp->layout()->addWidget(this->tracedProcessWidget);
+    ui->frameUp->layout()->setContentsMargins(0,0,0,0);
     ui->frameUp->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pal.setColor(QPalette::Window, Qt::green);
     ui->frameDown->setAutoFillBackground(true);

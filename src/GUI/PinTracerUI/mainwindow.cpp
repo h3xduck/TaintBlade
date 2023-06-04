@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     QVBoxLayout* centralLayout = new QVBoxLayout();
     ui->centralWidget->setLayout(centralLayout);
+    ui->centralWidget->layout()->setContentsMargins(0,0,0,0);
     centralLayout->addWidget(new MultiWindowViewWidget(this));
     //centralLayout->stretch(0);
 
