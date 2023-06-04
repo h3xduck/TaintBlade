@@ -145,7 +145,10 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMenu \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMessageBox \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QPushButton \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QVBoxLayout \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QWidget \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qboxlayout.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qfiledialog.h \
@@ -155,9 +158,12 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qmenu.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qmessagebox.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgetsglobal.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qwidget.h
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qwidget.h \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h

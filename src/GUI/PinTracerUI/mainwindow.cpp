@@ -9,8 +9,20 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setCentralWidget(ui->centralWidget);
+    QVBoxLayout* centralLayout = new QVBoxLayout();
+    ui->centralWidget->setLayout(centralLayout);
+    centralLayout->addWidget(new MultiWindowViewWidget(this));
+    //centralLayout->stretch(0);
 
+    QPalette pal = QPalette();
+
+    // set black background
+    // Qt::black / "#000000" / "black"
+    pal.setColor(QPalette::Window, Qt::yellow);
+
+    ui->centralWidget->setAutoFillBackground(true);
+    ui->centralWidget->setPalette(pal);
+    this->setCentralWidget(ui->centralWidget);
 }
 
 MainWindow::~MainWindow()
@@ -37,7 +49,7 @@ void MainWindow::on_actionSelect_configuration_triggered()
     dialog->exec();
 }
 
-void MainWindow::on_tracerProcess_finished()
+void MainWindow::tracerProcess_finished()
 {
     qDebug()<<"TRACER PROCESS FINISHED";
     ui->actionRun->setEnabled(true);
@@ -91,6 +103,6 @@ void MainWindow::on_actionRun_triggered()
     ui->actionStop->setEnabled(true);
 
     //Now, register a callback so that we can know when the process finishes
-    connect(EXECUTION::tracerProcess, (void(QProcess::*)(int))&QProcess::finished, [=]{ on_tracerProcess_finished(); });
+    connect(EXECUTION::tracerProcess, (void(QProcess::*)(int))&QProcess::finished, [=]{ MainWindow::tracerProcess_finished(); });
 }
 

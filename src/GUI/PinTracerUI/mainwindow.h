@@ -7,6 +7,9 @@
 #include <QDebug>
 #include <QVBoxLayout>
 #include <QMenu>
+#include <QPushButton>
+#include "TracedProcessWidget.h"
+#include "MultiWindowViewWidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,9 +30,10 @@ class MainWindow : public QMainWindow
 
         void on_actionRun_triggered();
 
-        void on_tracerProcess_finished();
+        void tracerProcess_finished();
 
     private:
         Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H

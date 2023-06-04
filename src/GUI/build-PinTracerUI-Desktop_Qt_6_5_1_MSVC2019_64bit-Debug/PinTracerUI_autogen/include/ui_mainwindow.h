@@ -102,10 +102,16 @@ public:
         actionAuthors->setObjectName("actionAuthors");
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
+        centralWidget->setEnabled(true);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
+        centralWidget->setSizePolicy(sizePolicy);
         MainWindow->setCentralWidget(centralWidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 808, 26));
+        menubar->setGeometry(QRect(0, 0, 808, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName("menuFile");
         menuAbout = new QMenu(menubar);

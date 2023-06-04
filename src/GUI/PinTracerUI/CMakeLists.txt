@@ -24,11 +24,17 @@ set(PROJECT_SOURCES
         PinConfigurationDialog.cpp
         DatabaseManager.h
         DatabaseManager.cpp
+        TracedProcessWidget.h
+        TracedProcessWidget.cpp
+        MultiWindowViewWidget.h
+        MultiWindowViewWidget.cpp
 )
 
 set(UI_HEADERS
     mainwindow.ui
     PinConfigurationDialog.ui
+    TracedProcessWidget.ui
+    MultiWindowViewWidget.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
