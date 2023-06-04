@@ -26,7 +26,6 @@ void TracedProcessDrawer::run()
 
             //We remove the file so that it is not consumed again
             file.remove();
-
             file.close();
         }
     }

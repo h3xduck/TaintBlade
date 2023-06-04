@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QString>
 #include "TracedProcessDrawer.h"
+#include <QDateTime>
 
 namespace Ui {
 class tracedProcessWidget;

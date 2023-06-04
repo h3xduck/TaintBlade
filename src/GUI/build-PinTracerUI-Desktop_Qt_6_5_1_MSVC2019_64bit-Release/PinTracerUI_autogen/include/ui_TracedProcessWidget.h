@@ -38,9 +38,6 @@ public:
         verticalLayout = new QVBoxLayout(tracedProcessWidget);
         verticalLayout->setObjectName("verticalLayout");
         treeWidget = new QTreeWidget(tracedProcessWidget);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
-        treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName("treeWidget");
 
         verticalLayout->addWidget(treeWidget);

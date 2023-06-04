@@ -1,4 +1,5 @@
 C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/EWIEGA46WW/moc_TracedProcessWidget.cpp: C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDateTime \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDebug \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDir \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QFile \

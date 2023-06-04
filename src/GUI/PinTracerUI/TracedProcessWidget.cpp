@@ -12,6 +12,13 @@ TracedProcessWidget::TracedProcessWidget(QWidget *parent) :
     this->setAutoFillBackground(true);
     this->setPalette(pal);
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    ui->treeWidget->setColumnCount(3);
+    ui->treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    QStringList headers;
+    headers << "PID" << "PROCESS BINARY" << "TIMESTAMP";
+    ui->treeWidget->setHeaderLabels(headers);
 }
 
 TracedProcessWidget::~TracedProcessWidget()
@@ -33,7 +40,15 @@ void TracedProcessWidget::drawTracedProgramWidget(QString pid, QString dll, QStr
     qDebug()<<"Received signal PID:"<<pid<<" DLL:"<<dll<<" TIME:"<<timestamp;
 
     //We will draw the data into the list (which is a tree btw, for aesthetic reasons)
-
+    QTreeWidgetItem* errorItem = new QTreeWidgetItem();
+    QDateTime timestampDate;
+    timestampDate = QDateTime::fromSecsSinceEpoch(timestamp.toInt());
+    errorItem->setForeground(1, QBrush(QColor(255, 0, 0)));
+    errorItem->setText(0, pid);
+    errorItem->setText(1, dll);
+    errorItem->setText(2, timestampDate.toString("yyyy-MM-dd hh:mm:ss"));
+    ui->treeWidget->addTopLevelItem(errorItem);
+    ui->treeWidget->scrollToItem(errorItem);
 }
 
 void TracedProcessWidget::endTracedProcess()
