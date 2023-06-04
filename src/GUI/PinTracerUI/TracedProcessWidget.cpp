@@ -19,6 +19,7 @@ TracedProcessWidget::TracedProcessWidget(QWidget *parent) :
     QStringList headers;
     headers << "PID" << "PROCESS BINARY" << "START TIME";
     ui->treeWidget->setHeaderLabels(headers);
+    connect(ui->treeWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(treeViewRowDoubleClicked(QModelIndex)));
 }
 
 TracedProcessWidget::~TracedProcessWidget()
@@ -40,22 +41,27 @@ void TracedProcessWidget::drawTracedProgramWidget(QString pid, QString dll, QStr
     qDebug()<<"Received signal PID:"<<pid<<" DLL:"<<dll<<" TIME:"<<timestamp;
 
     //We will draw the data into the list (which is a tree btw, for aesthetic reasons)
-    QTreeWidgetItem* errorItem = new QTreeWidgetItem();
+    QTreeWidgetItem* item = new QTreeWidgetItem();
     QDateTime timestampDate;
     timestampDate = QDateTime::fromSecsSinceEpoch(timestamp.toInt());
-    errorItem->setForeground(1, QBrush(QColor(255, 0, 0)));
-    errorItem->setText(0, pid);
-    errorItem->setText(1, dll);
-    errorItem->setText(2, timestampDate.toString("hh:mm:ss"));
-    ui->treeWidget->addTopLevelItem(errorItem);
+    item->setText(0, pid);
+    item->setText(1, dll);
+    item->setText(2, timestampDate.toString("hh:mm:ss"));
+    ui->treeWidget->addTopLevelItem(item);
     ui->treeWidget->resizeColumnToContents(0);
     ui->treeWidget->resizeColumnToContents(1);
     ui->treeWidget->resizeColumnToContents(2);
-    ui->treeWidget->scrollToItem(errorItem);
+    ui->treeWidget->scrollToItem(item);
 }
 
 void TracedProcessWidget::endTracedProcess()
 {
     //We terminate the drawer thread
     this->processDrawer->terminate();
+}
+
+void TracedProcessWidget::treeViewRowDoubleClicked(QModelIndex index)
+{
+    QTreeWidgetItem* item = ui->treeWidget->itemFromIndex(index);
+    qDebug()<<"Double clicked traced process, PID: "<<item->text(0);
 }

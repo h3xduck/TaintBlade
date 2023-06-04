@@ -3,10 +3,12 @@ PinTracerUI_autogen/timestamp: \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDebug \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDir \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/QFile \
+	C:/Qt/6.5.1/msvc2019_64/include/QtCore/QModelIndex \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/QString \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/QThread \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20memory.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20type_traits.h \
+	C:/Qt/6.5.1/msvc2019_64/include/QtCore/qabstractitemmodel.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/qalgorithms.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/qanystringview.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtCore/qarraydata.h \
