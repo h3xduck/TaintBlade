@@ -17,7 +17,7 @@ TracedProcessWidget::TracedProcessWidget(QWidget *parent) :
     ui->treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
     QStringList headers;
-    headers << "PID" << "PROCESS BINARY" << "TIMESTAMP";
+    headers << "PID" << "PROCESS BINARY" << "START TIME";
     ui->treeWidget->setHeaderLabels(headers);
 }
 
@@ -46,8 +46,11 @@ void TracedProcessWidget::drawTracedProgramWidget(QString pid, QString dll, QStr
     errorItem->setForeground(1, QBrush(QColor(255, 0, 0)));
     errorItem->setText(0, pid);
     errorItem->setText(1, dll);
-    errorItem->setText(2, timestampDate.toString("yyyy-MM-dd hh:mm:ss"));
+    errorItem->setText(2, timestampDate.toString("hh:mm:ss"));
     ui->treeWidget->addTopLevelItem(errorItem);
+    ui->treeWidget->resizeColumnToContents(0);
+    ui->treeWidget->resizeColumnToContents(1);
+    ui->treeWidget->resizeColumnToContents(2);
     ui->treeWidget->scrollToItem(errorItem);
 }
 
