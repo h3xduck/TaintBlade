@@ -2,11 +2,32 @@
 
 QProcess* EXECUTION::tracerProcess;
 
+/**
+ * Delete all files from previous tracer runs
+ */
+void deletePreviousRunFiles()
+{
+    qDebug()<<"Starting file deletion";
+    QString path = GLOBAL_VARS::selectedOutputDirPath;
+    QDir dir(path);
+    dir.setNameFilters(QStringList() << "*.dfx" << "*dump.db");
+    dir.setFilter(QDir::Files);
+    foreach(QString dirFile, dir.entryList())
+    {
+        qDebug()<<"Removing: "<<dirFile;
+        dir.remove(path+"/"+dirFile);
+    }
+}
+
 void EXECUTION::executeTracer(QString programPath, QString pinExe, QString tracerDLL, QString outputDir)
 {
     //Run the tracer program with all provided arguments.
     qDebug() << "Launching the tracer program with arguments:\n\tProgram:"<<programPath<<"\n\tPIN exe:"<<pinExe<<"\n\tTracer DLL:"<<tracerDLL<<"\n\tOutput dir:"<<outputDir;
 
+    //First we remove all previous run files
+    deletePreviousRunFiles();
+
+    //Then, execute the tracer
     EXECUTION::tracerProcess = new QProcess();
     QString program = pinExe;
     QStringList programArgs;

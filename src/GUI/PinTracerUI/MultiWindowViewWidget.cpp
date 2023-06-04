@@ -13,7 +13,6 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->layout()->setContentsMargins(0,0,0,0);
     this->tracedProcessWidget = new TracedProcessWidget(ui->frameUp);
-    //ui->frameUp->setLayout(new QVBoxLayout());
     ui->frameUp->layout()->addWidget(this->tracedProcessWidget);
     ui->frameUp->layout()->setContentsMargins(0,0,0,0);
     ui->frameUp->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -29,6 +28,19 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
 
 MultiWindowViewWidget::~MultiWindowViewWidget()
 {
-    delete this->tracedProcessWidget;
     delete ui;
+}
+
+void MultiWindowViewWidget::showTracedProcesses()
+{
+    this->tracedProcessWidget->showTracedProcess();
+}
+
+void MultiWindowViewWidget::tracedProcessFinished()
+{
+    //First, we tell the drawer window to stop showing more processes
+    this->tracedProcessWidget->endTracedProcess();
+
+    //Now, we will enable the user to query all data and show the rest of widgets
+    //TODO
 }

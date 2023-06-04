@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QProcess>
+#include "Globals.h"
+#include <QDir>
 
 namespace EXECUTION
 {

@@ -372,6 +372,12 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h",
+			"MU",
+			"EWIEGA46WW/moc_TracedProcessDrawer.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h",
 			"MU",
 			"EWIEGA46WW/moc_TracedProcessWidget.cpp",
@@ -462,6 +468,11 @@
 		],
 		[
 			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.cpp",
 			"MU",
 			null
 		],

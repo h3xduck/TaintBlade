@@ -28,6 +28,8 @@ set(PROJECT_SOURCES
         TracedProcessWidget.cpp
         MultiWindowViewWidget.h
         MultiWindowViewWidget.cpp
+        TracedProcessDrawer.h
+        TracedProcessDrawer.cpp
 )
 
 set(UI_HEADERS

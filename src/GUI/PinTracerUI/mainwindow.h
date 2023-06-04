@@ -23,6 +23,8 @@ class MainWindow : public QMainWindow
         MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
 
+        void renderMultiWindow();
+
     private slots:
         void on_actionOpen_triggered();
 
@@ -34,6 +36,8 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
+        QVBoxLayout* centralLayout;
+        MultiWindowViewWidget *multiWindowViewWidget;
 
 };
 #endif // MAINWINDOW_H

@@ -1,6 +1,7 @@
 PinTracerUI_autogen/timestamp: \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDebug \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QString \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QThread \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20memory.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20type_traits.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qalgorithms.h \
@@ -31,8 +32,10 @@ PinTracerUI_autogen/timestamp: \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdatastream.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdatetime.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdeadlinetimer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdebug.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdir.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qelapsedtimer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qexceptionhandling.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfile.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfiledevice.h \
@@ -101,6 +104,7 @@ PinTracerUI_autogen/timestamp: \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtdeprecationmarkers.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtextstream.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qthread.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtnoop.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtpreprocessorsupport.h \
@@ -427,6 +431,8 @@ PinTracerUI_autogen/timestamp: \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.cpp \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.cpp \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/main.cpp \

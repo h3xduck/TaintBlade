@@ -9,20 +9,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QVBoxLayout* centralLayout = new QVBoxLayout();
-    ui->centralWidget->setLayout(centralLayout);
-    ui->centralWidget->layout()->setContentsMargins(0,0,0,0);
-    centralLayout->addWidget(new MultiWindowViewWidget(this));
-    //centralLayout->stretch(0);
-
-    QPalette pal = QPalette();
-
-    // set black background
-    // Qt::black / "#000000" / "black"
-    pal.setColor(QPalette::Window, Qt::yellow);
-
-    ui->centralWidget->setAutoFillBackground(true);
-    ui->centralWidget->setPalette(pal);
     this->setCentralWidget(ui->centralWidget);
 }
 
@@ -31,6 +17,19 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::renderMultiWindow()
+{
+    this->centralLayout = new QVBoxLayout();
+    ui->centralWidget->setLayout(centralLayout);
+    ui->centralWidget->layout()->setContentsMargins(0,0,0,0);
+    this->multiWindowViewWidget = new MultiWindowViewWidget(this);
+    this->centralLayout->addWidget(this->multiWindowViewWidget);
+
+    QPalette pal = QPalette();
+    pal.setColor(QPalette::Window, Qt::yellow);
+    ui->centralWidget->setAutoFillBackground(true);
+    ui->centralWidget->setPalette(pal);
+}
 
 void MainWindow::on_actionOpen_triggered()
 {
@@ -52,9 +51,15 @@ void MainWindow::on_actionSelect_configuration_triggered()
 
 void MainWindow::tracerProcess_finished()
 {
+    //This is called when the tracer process is finished
     qDebug()<<"TRACER PROCESS FINISHED";
+
+    //Toggle the state of the run/stop buttons
     ui->actionRun->setEnabled(true);
     ui->actionStop->setEnabled(false);
+
+    //Also terminate the tracer process drawer
+    this->multiWindowViewWidget->tracedProcessFinished();
 }
 
 void MainWindow::on_actionRun_triggered()
@@ -105,5 +110,10 @@ void MainWindow::on_actionRun_triggered()
 
     //Now, register a callback so that we can know when the process finishes
     connect(EXECUTION::tracerProcess, (void(QProcess::*)(int))&QProcess::finished, [=]{ MainWindow::tracerProcess_finished(); });
+
+    //Finally, we will render the elements of the multi window
+    renderMultiWindow();
+    //And start to show any process that we find in the traced process window
+    this->multiWindowViewWidget->showTracedProcesses();
 }
 

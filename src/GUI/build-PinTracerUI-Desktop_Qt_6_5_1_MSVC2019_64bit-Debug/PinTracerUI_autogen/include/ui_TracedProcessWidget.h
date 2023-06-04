@@ -11,7 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QPushButton>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -21,7 +21,7 @@ class Ui_tracedProcessWidget
 {
 public:
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
+    QListWidget *listWidget;
 
     void setupUi(QWidget *tracedProcessWidget)
     {
@@ -36,10 +36,10 @@ public:
         tracedProcessWidget->setBaseSize(QSize(7, 7));
         verticalLayout = new QVBoxLayout(tracedProcessWidget);
         verticalLayout->setObjectName("verticalLayout");
-        pushButton = new QPushButton(tracedProcessWidget);
-        pushButton->setObjectName("pushButton");
+        listWidget = new QListWidget(tracedProcessWidget);
+        listWidget->setObjectName("listWidget");
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(listWidget);
 
 
         retranslateUi(tracedProcessWidget);
@@ -50,7 +50,6 @@ public:
     void retranslateUi(QWidget *tracedProcessWidget)
     {
         tracedProcessWidget->setWindowTitle(QCoreApplication::translate("tracedProcessWidget", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("tracedProcessWidget", "PushButton", nullptr));
     } // retranslateUi
 
 };
