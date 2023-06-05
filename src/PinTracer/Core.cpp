@@ -613,20 +613,6 @@ void TraceBase(TRACE trace, VOID* v)
 				continue;
 			}
 			
-			//Instrumentation of instructions - calls the tainting engine and all the underlaying analysis ones
-			InstrumentationManager instManager;
-			if (scopeFilterer.isMainExecutable(ins) || scopeFilterer.isScopeImage(ins)) {
-				instManager.instrumentInstruction(ins);
-
-			#if(CONFIG_INST_LOG_FILES==1)
-				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-					INS_Address(inst), IARG_UINT32, INS_Size(inst),
-					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
-
-				
-			#endif
-			}
-
 			//Register jumps
 			if (INS_IsControlFlow(ins) || INS_IsFarJump(ins))
 				{
@@ -681,6 +667,21 @@ void TraceBase(TRACE trace, VOID* v)
 							IARG_END);
 					}
 			}
+
+			//Instrumentation of instructions - calls the tainting engine and all the underlaying analysis ones
+			InstrumentationManager instManager;
+			if (scopeFilterer.isMainExecutable(ins) || scopeFilterer.isScopeImage(ins)) {
+				instManager.instrumentInstruction(ins);
+
+			#if(CONFIG_INST_LOG_FILES==1)
+				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+					INS_Address(inst), IARG_UINT32, INS_Size(inst),
+					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+
+
+			#endif
+			}
+
 		}
 
 	}

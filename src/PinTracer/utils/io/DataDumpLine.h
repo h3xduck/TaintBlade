@@ -44,9 +44,10 @@ namespace UTILS
 				TAINT_SRC,		//Taint was manually originated from this routine
 				TAINT_SINK,		//The routine is surely operating with tainted data
 				TAINT_EVENTFUL, //The taint changed at some point inside this routine = taint events happened while running
+				TAINT_INDIRECT, //The routine is part of a scoped image, and it was the one which called the code that caused the taint event
 
 				//The next taint types are only selected when we do not trace that DLL, we just guess what happens inside
-				TAINT_SUS_ARGS	//We believe that some argument which was tainted was passed to this routine. We do not
+				TAINT_SUS_ARGS	//We believe that some argument which was tainted was passed to this routine
 			};
 
 			typedef struct taint_routine_dump_line_t
@@ -56,6 +57,9 @@ namespace UTILS
 				ADDRINT instAddrEntry;
 				ADDRINT instAddrLast;
 				contained_taint_events_type containedEventsType;
+				bool optionalBaseAddrs = false; //optional, indicates base addresses are included
+				ADDRINT instAddrEntryBase; //optional, if not passed then the image at dll is assumed not to be stale and it will be calculated from instAddrEntry
+				ADDRINT instAddrLastBase; //optional, if not passed then the image at dll is assumed not to be stale and it will be calculated from instAddrLast
 			};
 
 			typedef enum memory_color_event

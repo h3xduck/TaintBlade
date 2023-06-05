@@ -44,9 +44,13 @@ namespace UTILS
 			Returns the index in the DLLnames table of the DLL name. Returns -1 if not found
 			*/
 			int getDLLIndex(std::string dllName);
+			/**
+			Returns the index of the last inserted routine in the taint routines table. Returns -1 if not found
+			*/
+			int getAutoIncrementIndexFromLastInsert();
 			void insertDLLName(std::string dllName);
 			void insertOriginalColorRecord(UINT16 &color, TagLog::original_color_data_t &data, int routineIndex);
-			void insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex);
+			void insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event);
 			void insertFunctionCallsRecord(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t event, int routineIndex);
 			void insertTaintRoutineRecord(struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data);
 			void insertTraceFunctionRecord(UTILS::TRACE::TracePoint& tp);

@@ -467,6 +467,8 @@ PinTracerUI_autogen/timestamp: \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintEventsWidget.cpp \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintEventsWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.cpp \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.cpp \
@@ -484,6 +486,7 @@ PinTracerUI_autogen/timestamp: \
   CMakeFiles/3.24.2/CMakeSystem.cmake \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.ui \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.ui \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintEventsWidget.ui \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.ui \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.ui \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.ui \

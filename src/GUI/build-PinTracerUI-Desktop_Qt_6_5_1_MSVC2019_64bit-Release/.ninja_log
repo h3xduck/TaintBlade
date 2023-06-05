@@ -21,3 +21,16 @@
 54	75	0	clean	7c4ab7700f810e4a
 11163	18300	7076857751742964	CMakeFiles/PinTracerUI.dir/TaintRoutinesWidget.cpp.obj	739cb951923675d
 9114	16890	7076857737632962	CMakeFiles/PinTracerUI.dir/TraceFunctionsWidget.cpp.obj	cf11b481ebb507ae
+12	2500	7076958824721182	PinTracerUI_autogen/timestamp	b9ab89ea835063fd
+12	2500	7076958824721182	PinTracerUI_autogen/mocs_compilation.cpp	b9ab89ea835063fd
+12	2500	7076958824721182	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/timestamp	b9ab89ea835063fd
+12	2500	7076958824721182	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/mocs_compilation.cpp	b9ab89ea835063fd
+2501	7866	7076958881420306	CMakeFiles/PinTracerUI.dir/DatabaseManager.cpp.obj	f51dbd4ca37d9afe
+2508	10238	7076958905220011	CMakeFiles/PinTracerUI.dir/MultiWindowViewWidget.cpp.obj	eb54b1d3295c13c8
+2527	10529	7076958908129936	CMakeFiles/PinTracerUI.dir/PinTracerUI_autogen/mocs_compilation.cpp.obj	4151121f051caecf
+27	613	7076958994825346	PinTracerUI_autogen/timestamp	b9ab89ea835063fd
+27	613	7076958994825346	PinTracerUI_autogen/mocs_compilation.cpp	b9ab89ea835063fd
+27	613	7076958994825346	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/timestamp	b9ab89ea835063fd
+27	613	7076958994825346	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/mocs_compilation.cpp	b9ab89ea835063fd
+633	5475	7076959043374662	CMakeFiles/PinTracerUI.dir/TaintEventsWidget.cpp.obj	807e9dfe1fdf8424
+5478	5986	7076959048484587	PinTracerUI.exe	ba5282214eb2d9f4

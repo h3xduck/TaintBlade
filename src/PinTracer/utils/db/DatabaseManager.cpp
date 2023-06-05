@@ -52,7 +52,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 	//Taint events table
 	sql = "CREATE TABLE taint_events("\
 		"type         INTEGER,"\
-		"func_index   INTEGER,"\
+		"routine_idx  INTEGER,"\
 		"inst_address INTEGER,"\
 		"mem_address  INTEGER,"\
 		"color        INTEGER NOT NULL,"\
@@ -221,15 +221,26 @@ void UTILS::DB::DatabaseManager::insertOriginalColorRecord(UINT16& color, TagLog
 	}
 }
 
-void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex)
+void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event)
 {
 	if (!databaseOpened())
 	{
 		this->openDatabase();
 	}
-	std::string sql = "INSERT INTO taint_events(type, func_index, inst_address, mem_address, color, mem_value, mem_len) VALUES(" +
+
+	//First, we will insert the last routine from the main executable or a scoped image that we know was executed before this taint event happened
+	struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+	data.dll = ctx.currentRoutineInfo().dllName;
+	data.func = ctx.currentRoutineInfo().funcName;
+	data.instAddrEntry = ctx.currentRoutineInfo().routineStart;
+	data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_INDIRECT;
+	data.instAddrLast = 0; //We do not have this info just because of optimization reasons
+	this->insertTaintRoutineRecord(data);
+	int routine_idx = getAutoIncrementIndexFromLastInsert();
+
+	std::string sql = "INSERT INTO taint_events(type, routine_idx, inst_address, mem_address, color, mem_value, mem_len) VALUES(" +
 		quotesql(std::to_string((int)event.eventType)) + ", " +
-		quotesql(std::to_string(routineIndex)) + ", " +
+		quotesql(std::to_string(routine_idx)) + ", " +
 		quotesql(std::to_string(ctx.getCurrentBaseInstruction())) + ", " +
 		quotesql(std::to_string(event.memAddr)) + ", " +
 		quotesql(std::to_string((int)event.color)) + ", " +
@@ -243,6 +254,28 @@ void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine:
 		sqlite3_close(this->dbSession);
 		return;
 	}
+}
+
+int getAutoIncrementIndexFromLastInsert_callback(void* veryUsed, int argc, char** argv, char** azcolename)
+{
+	int* ret = (int*)veryUsed;
+	for (int ii = 0; ii < argc; ii++)
+	{
+		*ret = std::atoi(argv[ii]);
+		return 0;
+	}
+	*ret = -1;
+	return 0;
+}
+
+int UTILS::DB::DatabaseManager::getAutoIncrementIndexFromLastInsert()
+{
+	std::string sql = "SELECT last_insert_rowid()";
+	char* errMsg = 0;
+	int ret = -1;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getAutoIncrementIndexFromLastInsert_callback, &ret, &errMsg);
+	LOG_DEBUG("XGH: " << ret);
+	return ret;
 }
 
 int getDLLIndex_callback(void* veryUsed, int argc, char** argv, char** azcolename)
@@ -363,13 +396,15 @@ void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::Data
 	}
 
 	PIN_LockClient();
+	ADDRINT baseEntry = data.optionalBaseAddrs == true ? data.instAddrEntryBase : InstructionWorker::getBaseAddress(data.instAddrEntry);
+	ADDRINT baseLast = data.optionalBaseAddrs == true ? data.instAddrLastBase: InstructionWorker::getBaseAddress(data.instAddrLast);
 	std::string sql = "INSERT INTO taint_routines(function, dll_idx, inst_entry, inst_last, inst_base_entry, inst_base_last, events_type) VALUES(" +
 		quotesql(data.func) + ", " +
 		quotesql(std::to_string(dllIx)) + ", " +
 		quotesql(std::to_string(data.instAddrEntry)) + ", " +
 		quotesql(std::to_string(data.instAddrLast)) + ", " +
-		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrEntry))) + ", " +
-		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrLast))) + ", " +
+		quotesql(std::to_string(baseEntry)) + ", " +
+		quotesql(std::to_string(baseLast)) + ", " +
 		quotesql(std::to_string((int)data.containedEventsType)) + ");";
 	PIN_UnlockClient();
 	char* errMsg = 0;

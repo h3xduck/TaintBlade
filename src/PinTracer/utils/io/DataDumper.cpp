@@ -56,7 +56,7 @@ void DataDumper::writeMemoryColorEventDump(UTILS::IO::DataDumpLine::memory_color
 		ctx.getLastMemoryLength() << DUMP_OUTER_SEPARATOR;
 #endif
 #if(DB_LOGGING_ACTIVATE==1)
-	ctx.getDatabaseManager().insertTaintEventRecord(event, this->lastRoutineDumpIndex);
+	ctx.getDatabaseManager().insertTaintEventRecord(event);
 #endif
 }
 

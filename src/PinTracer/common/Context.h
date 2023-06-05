@@ -10,6 +10,16 @@
 #include "../utils/db/DatabaseManager.h"
 
 class Context {
+public:
+	//This struct contains information about the last routine that was executed and was contained in the DLLs that the user specified to trace
+	struct currentRoutineInfo_t
+	{
+		std::string funcName;
+		std::string dllName;
+		ADDRINT routineStart;
+		ADDRINT possibleJumpPoint; //possible address at which the routine jumped to another non-traced dll
+		ADDRINT possibleBaseJumpPoint; //same as previous, but base address
+	};
 private:
 	ADDRINT currentInstructionFullAddress; //full dynamic address of instruction inside de process
 	ADDRINT currentBaseInstruction; //offset from the start of the image
@@ -20,6 +30,7 @@ private:
 	UTILS::EXEC::ExecutionManager executionManager;
 	UTILS::DB::DatabaseManager databaseManager;
 	DataDumper dataDumper;
+	struct currentRoutineInfo_t currentRoutineInfo_;
 
 public:
 	ADDRINT getCurrentInstructionFullAddress();
@@ -41,6 +52,7 @@ public:
 	UTILS::DB::DatabaseManager& getDatabaseManager();
 	DataDumper& getDataDumper();
 
+	struct currentRoutineInfo_t& currentRoutineInfo() { return this->currentRoutineInfo_; };
 };
 
 #endif

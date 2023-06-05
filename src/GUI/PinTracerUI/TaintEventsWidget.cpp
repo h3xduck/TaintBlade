@@ -7,7 +7,7 @@ TaintEventsWidget::TaintEventsWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     this->layout()->setContentsMargins(0,0,0,0);
-    globalDBManager.buildTaintEventsTree(ui->treeWidget);
+    //globalDBManager.buildTaintEventsTree(ui->treeWidget);
 }
 
 TaintEventsWidget::~TaintEventsWidget()

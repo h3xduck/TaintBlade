@@ -249,7 +249,21 @@ public:
 	{
 		PIN_LockClient();
 		
-		//Only if we are going from main dll to another, or another scoped image
+		//In the case this goes from our main executable or a scoped image to another one, we log the address from which
+		//we are jumping from since it might be interesting to be dumped
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isScopeImage(ip))
+		{
+			ctx.currentRoutineInfo().possibleJumpPoint = ip;
+			ctx.currentRoutineInfo().possibleBaseJumpPoint = InstructionWorker::getBaseAddress(ip);
+			RTN rtn = RTN_FindByAddress(ip); 
+			RTN_Open(rtn);
+			ctx.currentRoutineInfo().routineStart = INS_Address(RTN_InsHeadOnly(rtn));
+			RTN_Close(rtn);
+			ctx.currentRoutineInfo().funcName = InstructionWorker::getDllFromAddress(ip);
+			ctx.currentRoutineInfo().dllName = InstructionWorker::getDllFromAddress(ip);
+		}
+
+		//We will log the arguments of this routine, but only if we are going from main dll to another, or another scoped image
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
 			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
 		{
@@ -291,6 +305,7 @@ public:
 				//Now we dump the current tainted memory
 				std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
 				//In the case we don't have tainted memory yet, we write nothing
+				//THIS MAY GET DEPRECATED, REVISE IT LATER
 				if (!vec.empty()) {
 					ctx.getDataDumper().writeCurrentTaintedMemoryDump(ip, vec);
 				}

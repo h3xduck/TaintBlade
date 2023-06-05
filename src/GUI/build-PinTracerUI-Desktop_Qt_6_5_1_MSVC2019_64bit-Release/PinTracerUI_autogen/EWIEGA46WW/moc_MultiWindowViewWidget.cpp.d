@@ -199,6 +199,7 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/DatabaseManager.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/ExecutionBridge.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/Globals.h \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintEventsWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h \
