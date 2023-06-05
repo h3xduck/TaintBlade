@@ -378,6 +378,12 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedFunctionsWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_TracedFunctionsWidget.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h",
 			"MU",
 			"EWIEGA46WW/moc_TracedProcessDrawer.cpp",
@@ -480,6 +486,11 @@
 		],
 		[
 			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedFunctionsWidget.cpp",
 			"MU",
 			null
 		],

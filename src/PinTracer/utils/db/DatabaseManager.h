@@ -8,6 +8,7 @@
 #include "../../taint/data/TagLog.h"
 #include "../io/DataDumpLine.h"
 #include <cstdio>
+#include "../trace/TracePoint.h"
 
 namespace UTILS
 {
@@ -48,6 +49,7 @@ namespace UTILS
 			void insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event, int routineIndex);
 			void insertFunctionCallsRecord(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t event, int routineIndex);
 			void insertTaintRoutineRecord(struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data);
+			void insertTraceFunctionRecord(UTILS::TRACE::TracePoint& tp);
 
 			//setters and getters
 			bool& databaseOpened() { return this->databaseOpened_; };

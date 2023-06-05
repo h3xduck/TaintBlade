@@ -129,6 +129,27 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		sqlite3_close(this->dbSession);
 		return;
 	}
+
+	//Table holding functions which the user selected to trace
+	sql = "CREATE TABLE trace_functions ("\
+		"idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"function	TEXT(150),"\
+		"dll_idx	TEXT(150),"\
+		"num_args	INTEGER,"\
+		"arg0		BLOB,"\
+		"arg1		BLOB,"\
+		"arg2		BLOB,"\
+		"arg3		BLOB,"\
+		"arg4		BLOB,"\
+		"arg5		BLOB"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
 }
 
 void UTILS::DB::DatabaseManager::emptyDatabase()
@@ -153,6 +174,9 @@ void UTILS::DB::DatabaseManager::emptyDatabase()
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 
 	sql = "DROP TABLE taint_routines";
+	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+
+	sql = "DROP TABLE trace_functions";
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 }
 
@@ -341,6 +365,102 @@ void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::Data
 		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrEntry))) + ", " +
 		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrLast))) + ", " +
 		quotesql(std::to_string((int)data.containedEventsType)) + ");";
+	PIN_UnlockClient();
+	char* errMsg = 0;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
+		sqlite3_close(this->dbSession);
+		return;
+	}
+}
+
+void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePoint& tp)
+{
+	if (!databaseOpened())
+	{
+		this->openDatabase();
+	}
+
+	int dllIx = this->getDLLIndex(tp.getDllName());
+	//LOG_DEBUG("Got IX: " << dllFromIx);
+	if (dllIx == -1)
+	{
+		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + tp.getDllName() + "')";
+		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		dllIx = this->getDLLIndex(tp.getDllName());
+	}
+
+	PIN_LockClient();
+	std::string sql;
+	switch (tp.getNumArgs())
+	{
+	case 0:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ");";
+		break;
+	case 1:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ", " +
+			quotesql(tp.getArgsPre().at(0)) + ");";
+		break;
+	case 2:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ", " +
+			quotesql(tp.getArgsPre().at(0)) + ", " +
+			quotesql(tp.getArgsPre().at(1)) + ");";
+		break;
+	case 3:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ", " +
+			quotesql(tp.getArgsPre().at(0)) + ", " +
+			quotesql(tp.getArgsPre().at(1)) + ", " +
+			quotesql(tp.getArgsPre().at(2)) + ");";
+		break;
+	case 4:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2, arg3) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ", " +
+			quotesql(tp.getArgsPre().at(0)) + ", " +
+			quotesql(tp.getArgsPre().at(1)) + ", " +
+			quotesql(tp.getArgsPre().at(2)) + ", " +
+			quotesql(tp.getArgsPre().at(3)) + ");";
+		break;
+	case 5:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2, arg3, arg4) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ", " +
+			quotesql(tp.getArgsPre().at(0)) + ", " +
+			quotesql(tp.getArgsPre().at(1)) + ", " +
+			quotesql(tp.getArgsPre().at(2)) + ", " +
+			quotesql(tp.getArgsPre().at(3)) + ", " +
+			quotesql(tp.getArgsPre().at(4)) + ");";
+		break;
+	case 6:
+	default:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2, arg3, arg4, arg5) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ", " +
+			quotesql(tp.getArgsPre().at(0)) + ", " +
+			quotesql(tp.getArgsPre().at(1)) + ", " +
+			quotesql(tp.getArgsPre().at(2)) + ", " +
+			quotesql(tp.getArgsPre().at(3)) + ", " +
+			quotesql(tp.getArgsPre().at(4)) + ", " +
+			quotesql(tp.getArgsPre().at(5)) + ");";
+	}
+	
 	PIN_UnlockClient();
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);

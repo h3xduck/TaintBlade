@@ -29,7 +29,7 @@ namespace UTILS
 			std::string getDllName();
 			std::string getFuncName();
 			int getNumArgs();
-			std::vector<std::string> getArgsPre();
+			std::vector<std::string>& getArgsPre();
 			void setArgsPre(std::vector<std::string> vec);
 			std::vector<void*> getArgsPrePtr();
 			void setArgsPrePtr(std::vector<void*> vec);

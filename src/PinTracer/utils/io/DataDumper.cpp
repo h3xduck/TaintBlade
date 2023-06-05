@@ -225,6 +225,7 @@ void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
 {
 	std::vector<std::string> argsPre = tp.getArgsPre();
 	std::vector<std::string> argsPost = tp.getArgsPost();
+#if(FILE_LOGGING_ACTIVATE==1)
 	this->traceResultsDumpFile << "DLL: " << tp.getDllName() << " | FUNC: " << tp.getFuncName() << std::endl;
 	this->traceResultsDumpFile << "Called with arguments:" << std::endl;
 	for (int ii = 0; ii < tp.getNumArgs(); ii++)
@@ -237,6 +238,10 @@ void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
 		this->traceResultsDumpFile << "\targ" << ii << ": " << argsPost.at(ii) << std::endl;
 	}
 	this->traceResultsDumpFile << std::endl;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertTraceFunctionRecord(tp);
+#endif
 }
 
 void DataDumper::writeTaintRoutineDumpLine(UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data)
