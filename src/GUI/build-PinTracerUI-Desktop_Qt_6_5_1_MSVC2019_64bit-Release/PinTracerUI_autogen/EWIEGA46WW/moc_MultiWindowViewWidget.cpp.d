@@ -4,6 +4,7 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDir \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QFile \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QModelIndex \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QProcess \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QString \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QThread \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20memory.h \
@@ -56,6 +57,7 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qhashfunctions.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiodevice.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiodevicebase.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qitemselectionmodel.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiterable.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiterator.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qline.h \
@@ -78,9 +80,11 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qoverload.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qpair.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qpoint.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qprocess.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qrect.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qrefcount.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qregularexpression.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qset.h \
@@ -148,14 +152,46 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtGui/qtguiexports.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtGui/qtguiglobal.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtGui/qtransform.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtGui/qvalidator.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtSql/QSqlDatabase \
+  C:/Qt/6.5.1/msvc2019_64/include/QtSql/qsqldatabase.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsql-config.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlexports.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlglobal.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QLayout \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMessageBox \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTreeWidgetItem \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QWidget \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractitemdelegate.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractitemview.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractscrollarea.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractslider.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractspinbox.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qboxlayout.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qdialog.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qgridlayout.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qlayout.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qlayoutitem.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qmessagebox.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qsizepolicy.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qslider.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qstyle.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qstyleoption.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtabbar.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtabwidget.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtreeview.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtreewidget.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtreewidgetitemiterator.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgetsglobal.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qwidget.h \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/DatabaseManager.h \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/ExecutionBridge.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/Globals.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h

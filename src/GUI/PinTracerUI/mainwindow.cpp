@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setCentralWidget(ui->centralWidget);
+    this->window()->setWindowState(Qt::WindowMaximized);
 }
 
 MainWindow::~MainWindow()

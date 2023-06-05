@@ -427,11 +427,11 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "PinTracerUI_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "PinTracerUI_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "PinTracerUI_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "PinTracerUI::@6890427a1f51a3e7e1df",

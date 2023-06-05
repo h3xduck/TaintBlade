@@ -1,5 +1,8 @@
 C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Debug/PinTracerUI_autogen/EWIEGA46WW/moc_TracedProcessDrawer.cpp: C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDebug \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDir \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QFile \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QString \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QThread \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20memory.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20type_traits.h \
@@ -17,6 +20,7 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qbytearrayalgorithms.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qbytearraylist.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qbytearrayview.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcalendar.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qchar.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcompare.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcompare_impl.h \
@@ -29,10 +33,15 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcontiguouscache.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdatastream.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdatetime.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdeadlinetimer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdebug.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdir.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qelapsedtimer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qexceptionhandling.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfile.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfiledevice.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfileinfo.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qflags.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfloat16.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qforeach.h \
@@ -42,10 +51,12 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qglobalstatic.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qhash.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qhashfunctions.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiodevice.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiterable.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiterator.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qlist.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qlocale.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qlogging.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qmalloc.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qmap.h \
@@ -102,6 +113,8 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtypeinfo.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtypes.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qutf8stringview.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qvariant.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qversiontagging.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qxptype_traits.h
+  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qxptype_traits.h \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/Globals.h

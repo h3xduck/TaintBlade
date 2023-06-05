@@ -49,7 +49,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(808, 588);
+        MainWindow->resize(853, 620);
         actionProperties = new QAction(MainWindow);
         actionProperties->setObjectName("actionProperties");
         QIcon icon;
@@ -111,7 +111,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 808, 22));
+        menubar->setGeometry(QRect(0, 0, 853, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName("menuFile");
         menuAbout = new QMenu(menubar);

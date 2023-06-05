@@ -11,7 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -21,7 +22,7 @@ class Ui_tracedProcessWidget
 {
 public:
     QVBoxLayout *verticalLayout;
-    QListWidget *listWidget;
+    QTreeWidget *treeWidget;
 
     void setupUi(QWidget *tracedProcessWidget)
     {
@@ -36,10 +37,10 @@ public:
         tracedProcessWidget->setBaseSize(QSize(7, 7));
         verticalLayout = new QVBoxLayout(tracedProcessWidget);
         verticalLayout->setObjectName("verticalLayout");
-        listWidget = new QListWidget(tracedProcessWidget);
-        listWidget->setObjectName("listWidget");
+        treeWidget = new QTreeWidget(tracedProcessWidget);
+        treeWidget->setObjectName("treeWidget");
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(treeWidget);
 
 
         retranslateUi(tracedProcessWidget);

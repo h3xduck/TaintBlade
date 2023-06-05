@@ -7,10 +7,10 @@ TracedProcessWidget::TracedProcessWidget(QWidget *parent) :
     ui(new Ui::tracedProcessWidget)
 {
     ui->setupUi(this);
-    QPalette pal = QPalette();
-    pal.setColor(QPalette::Window, Qt::blue);
-    this->setAutoFillBackground(true);
-    this->setPalette(pal);
+    //QPalette pal = QPalette();
+    //pal.setColor(QPalette::Window, Qt::blue);
+    //this->setAutoFillBackground(true);
+    //this->setPalette(pal);
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     ui->treeWidget->setColumnCount(3);
@@ -19,7 +19,8 @@ TracedProcessWidget::TracedProcessWidget(QWidget *parent) :
     QStringList headers;
     headers << "PID" << "PROCESS BINARY" << "START TIME";
     ui->treeWidget->setHeaderLabels(headers);
-    connect(ui->treeWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(treeViewRowDoubleClicked(QModelIndex)));
+    //Connect the double-click event to a slot at the parent. Note that we've got a frame and splitters in the middle... a bit dirty but works :)
+    connect(ui->treeWidget, SIGNAL(doubleClicked(QModelIndex)), this->parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget(), SLOT(treeViewRowDoubleClicked(QModelIndex)));
 }
 
 TracedProcessWidget::~TracedProcessWidget()
@@ -60,8 +61,7 @@ void TracedProcessWidget::endTracedProcess()
     this->processDrawer->terminate();
 }
 
-void TracedProcessWidget::treeViewRowDoubleClicked(QModelIndex index)
+QTreeWidgetItem* TracedProcessWidget::getItemFromTableView(QModelIndex index)
 {
-    QTreeWidgetItem* item = ui->treeWidget->itemFromIndex(index);
-    qDebug()<<"Double clicked traced process, PID: "<<item->text(0);
+    return  ui->treeWidget->itemFromIndex(index);
 }

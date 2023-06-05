@@ -257,7 +257,7 @@ build PinTracerUI_autogen\EWIEGA46WW\qrc_MainToolBarResource.cpp | ${cmake_ninja
 #############################################
 # Phony custom command for CMakeFiles\PinTracerUI_autogen_timestamp_deps
 
-build CMakeFiles\PinTracerUI_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles\PinTracerUI_autogen_timestamp_deps: phony C$:\Qt\6.5.1\msvc2019_64\.\bin\moc.exe C$:\Qt\6.5.1\msvc2019_64\lib\Qt6Core.lib C$:\Qt\6.5.1\msvc2019_64\.\bin\uic.exe C$:\Qt\6.5.1\msvc2019_64\lib\Qt6Widgets.lib
+build CMakeFiles\PinTracerUI_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles\PinTracerUI_autogen_timestamp_deps: phony C$:\Qt\6.5.1\msvc2019_64\.\bin\moc.exe C$:\Qt\6.5.1\msvc2019_64\.\bin\uic.exe C$:\Qt\6.5.1\msvc2019_64\lib\Qt6Core.lib C$:\Qt\6.5.1\msvc2019_64\lib\Qt6Widgets.lib
 
 
 #############################################

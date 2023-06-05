@@ -6,6 +6,7 @@
 #include "TracedProcessDrawer.h"
 #include <QDateTime>
 #include <QModelIndex>
+#include <QTreeWidgetItem>
 
 namespace Ui {
 class tracedProcessWidget;
@@ -22,9 +23,10 @@ public:
     void showTracedProcess();
     void endTracedProcess();
 
+    QTreeWidgetItem* getItemFromTableView(QModelIndex index);
+
 public slots:
     void drawTracedProgramWidget(QString pid, QString dll, QString timestamp);
-    void treeViewRowDoubleClicked(QModelIndex index);
 
 private:
     Ui::tracedProcessWidget *ui;
