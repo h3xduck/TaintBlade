@@ -372,15 +372,21 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintEventsWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_TaintEventsWidget.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h",
 			"MU",
 			"EWIEGA46WW/moc_TaintRoutinesWidget.cpp",
 			null
 		],
 		[
-			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedFunctionsWidget.h",
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.h",
 			"MU",
-			"EWIEGA46WW/moc_TracedFunctionsWidget.cpp",
+			"EWIEGA46WW/moc_TraceFunctionsWidget.cpp",
 			null
 		],
 		[
@@ -485,12 +491,17 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintEventsWidget.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedFunctionsWidget.cpp",
+			"C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.cpp",
 			"MU",
 			null
 		],

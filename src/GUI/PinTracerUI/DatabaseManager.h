@@ -19,10 +19,10 @@ public:
      */
     int initializeDatabase(const QString& path);
 
-    /**
-     * Puts all data related to taint routines into the tree widget passed
-     */
+    //Functions for building trees with database data
     void buildTaintRoutinesTree(QTreeWidget *treeWidget);
+    void buildTraceFunctionsTree(QTreeWidget *treeWidget);
+    void buildTaintEventsTree(QTreeWidget *treeWidget);
 
 private:
     QSqlDatabase m_db;

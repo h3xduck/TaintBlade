@@ -32,8 +32,10 @@ set(PROJECT_SOURCES
         TracedProcessDrawer.cpp
         TaintRoutinesWidget.h
         TaintRoutinesWidget.cpp
-        TracedFunctionsWidget.h
-        TracedFunctionsWidget.cpp
+        TraceFunctionsWidget.h
+        TraceFunctionsWidget.cpp
+        TaintEventsWidget.h
+        TaintEventsWidget.cpp
 )
 
 set(UI_HEADERS
@@ -42,7 +44,8 @@ set(UI_HEADERS
     TracedProcessWidget.ui
     MultiWindowViewWidget.ui
     TaintRoutinesWidget.ui
-    TracedFunctionsWidget.ui
+    TraceFunctionsWidget.ui
+    TaintEventsWidget.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

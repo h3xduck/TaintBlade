@@ -114,4 +114,22 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     ui->frameRightDownRight->layout()->addWidget(new TaintRoutinesWidget(ui->frameRightDownRight));
     ui->frameRightDownRight->layout()->setContentsMargins(0,0,0,0);
 
+    //Trace functions widget. Delete any preious one.
+    if((layoutItem = ui->frameLeftDownRight->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+    ui->frameLeftDownRight->layout()->addWidget(new TraceFunctionsWidget(ui->frameLeftDownRight));
+    ui->frameLeftDownRight->layout()->setContentsMargins(0,0,0,0);
+
+    //Taint events widget. Delete any preious one.
+    if((layoutItem = ui->frameRightUpRight->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+    ui->frameRightUpRight->layout()->addWidget(new TaintEventsWidget(ui->frameRightUpRight));
+    ui->frameRightUpRight->layout()->setContentsMargins(0,0,0,0);
+
 }

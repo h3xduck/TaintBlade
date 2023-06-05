@@ -40,7 +40,7 @@ void UTILS::TRACE::TracePoint::setArgsPrePtr(std::vector<void*> vec)
 	this->argsPrePtr = vec;
 }
 
-std::vector<std::string> UTILS::TRACE::TracePoint::getArgsPost()
+std::vector<std::string>& UTILS::TRACE::TracePoint::getArgsPost()
 {
 	return this->argsPost;
 }

@@ -8,6 +8,8 @@
 #include "DatabaseManager.h"
 #include <QLayout>
 #include "TaintRoutinesWidget.h"
+#include "TraceFunctionsWidget.h"
+#include "TaintEventsWidget.h"
 
 namespace Ui {
 class MultiWindowViewWidget;

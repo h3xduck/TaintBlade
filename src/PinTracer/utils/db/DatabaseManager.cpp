@@ -136,12 +136,18 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"function	TEXT(150),"\
 		"dll_idx	TEXT(150),"\
 		"num_args	INTEGER,"\
-		"arg0		BLOB,"\
-		"arg1		BLOB,"\
-		"arg2		BLOB,"\
-		"arg3		BLOB,"\
-		"arg4		BLOB,"\
-		"arg5		BLOB"\
+		"argpre0		BLOB,"\
+		"argpre1		BLOB,"\
+		"argpre2		BLOB,"\
+		"argpre3		BLOB,"\
+		"argpre4		BLOB,"\
+		"argpre5		BLOB,"\
+		"argpost0		BLOB,"\
+		"argpost1		BLOB,"\
+		"argpost2		BLOB,"\
+		"argpost3		BLOB,"\
+		"argpost4		BLOB,"\
+		"argpost5		BLOB"\
 		"); ";
 	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)
@@ -403,41 +409,37 @@ void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePo
 			quotesql(std::to_string(tp.getNumArgs())) + ");";
 		break;
 	case 1:
-		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0) VALUES(" +
-			quotesql(tp.getFuncName()) + ", " +
-			quotesql(std::to_string(dllIx)) + ", " +
-			quotesql(std::to_string(tp.getNumArgs())) + ", " +
-			quotesql(tp.getArgsPre().at(0)) + ");";
-		break;
-	case 2:
-		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1) VALUES(" +
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, argpre0, argpost0) VALUES(" +
 			quotesql(tp.getFuncName()) + ", " +
 			quotesql(std::to_string(dllIx)) + ", " +
 			quotesql(std::to_string(tp.getNumArgs())) + ", " +
 			quotesql(tp.getArgsPre().at(0)) + ", " +
-			quotesql(tp.getArgsPre().at(1)) + ");";
+			quotesql(tp.getArgsPost().at(0)) + ");";
 		break;
-	case 3:
-		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2) VALUES(" +
+	case 2:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, argpre0, argpre1, argpost0, argpost1) VALUES(" +
 			quotesql(tp.getFuncName()) + ", " +
 			quotesql(std::to_string(dllIx)) + ", " +
 			quotesql(std::to_string(tp.getNumArgs())) + ", " +
 			quotesql(tp.getArgsPre().at(0)) + ", " +
 			quotesql(tp.getArgsPre().at(1)) + ", " +
-			quotesql(tp.getArgsPre().at(2)) + ");";
+			quotesql(tp.getArgsPost().at(0)) + ", " +
+			quotesql(tp.getArgsPost().at(1)) + ");";
 		break;
-	case 4:
-		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2, arg3) VALUES(" +
+	case 3:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, argpre0, argpre1, argpre2, argpost0, argpost1, argpost2) VALUES(" +
 			quotesql(tp.getFuncName()) + ", " +
 			quotesql(std::to_string(dllIx)) + ", " +
 			quotesql(std::to_string(tp.getNumArgs())) + ", " +
 			quotesql(tp.getArgsPre().at(0)) + ", " +
 			quotesql(tp.getArgsPre().at(1)) + ", " +
 			quotesql(tp.getArgsPre().at(2)) + ", " +
-			quotesql(tp.getArgsPre().at(3)) + ");";
+			quotesql(tp.getArgsPost().at(0)) + ", " +
+			quotesql(tp.getArgsPost().at(1)) + ", " +
+			quotesql(tp.getArgsPost().at(2)) + ");";
 		break;
-	case 5:
-		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2, arg3, arg4) VALUES(" +
+	case 4:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, argpre0, argpre1, argpre2, argpre3, argpost0, argpost1, argpost2, argpost3) VALUES(" +
 			quotesql(tp.getFuncName()) + ", " +
 			quotesql(std::to_string(dllIx)) + ", " +
 			quotesql(std::to_string(tp.getNumArgs())) + ", " +
@@ -445,11 +447,13 @@ void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePo
 			quotesql(tp.getArgsPre().at(1)) + ", " +
 			quotesql(tp.getArgsPre().at(2)) + ", " +
 			quotesql(tp.getArgsPre().at(3)) + ", " +
-			quotesql(tp.getArgsPre().at(4)) + ");";
+			quotesql(tp.getArgsPost().at(0)) + ", " +
+			quotesql(tp.getArgsPost().at(1)) + ", " +
+			quotesql(tp.getArgsPost().at(2)) + ", " +
+			quotesql(tp.getArgsPost().at(3)) + ");";
 		break;
-	case 6:
-	default:
-		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, arg0, arg1, arg2, arg3, arg4, arg5) VALUES(" +
+	case 5:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, argpre0, argpre1, argpre2, argpre3, argpre4, argpost0, argpost1, argpost2, argpost3, argpost4) VALUES(" +
 			quotesql(tp.getFuncName()) + ", " +
 			quotesql(std::to_string(dllIx)) + ", " +
 			quotesql(std::to_string(tp.getNumArgs())) + ", " +
@@ -458,7 +462,30 @@ void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePo
 			quotesql(tp.getArgsPre().at(2)) + ", " +
 			quotesql(tp.getArgsPre().at(3)) + ", " +
 			quotesql(tp.getArgsPre().at(4)) + ", " +
-			quotesql(tp.getArgsPre().at(5)) + ");";
+			quotesql(tp.getArgsPost().at(0)) + ", " +
+			quotesql(tp.getArgsPost().at(1)) + ", " +
+			quotesql(tp.getArgsPost().at(2)) + ", " +
+			quotesql(tp.getArgsPost().at(3)) + ", " +
+			quotesql(tp.getArgsPost().at(4)) + ");";
+		break;
+	case 6:
+	default:
+		sql = "INSERT INTO trace_functions(function, dll_idx, num_args, argpre0, argpre1, argpre2, argpre3, argpre4, argpre5, argpost0, argpost1, argpost2, argpost3, argpost4, argpost5) VALUES(" +
+			quotesql(tp.getFuncName()) + ", " +
+			quotesql(std::to_string(dllIx)) + ", " +
+			quotesql(std::to_string(tp.getNumArgs())) + ", " +
+			quotesql(tp.getArgsPre().at(0)) + ", " +
+			quotesql(tp.getArgsPre().at(1)) + ", " +
+			quotesql(tp.getArgsPre().at(2)) + ", " +
+			quotesql(tp.getArgsPre().at(3)) + ", " +
+			quotesql(tp.getArgsPre().at(4)) + ", " +
+			quotesql(tp.getArgsPre().at(5)) + ", " +
+			quotesql(tp.getArgsPost().at(0)) + ", " +
+			quotesql(tp.getArgsPost().at(1)) + ", " +
+			quotesql(tp.getArgsPost().at(2)) + ", " +
+			quotesql(tp.getArgsPost().at(3)) + ", " +
+			quotesql(tp.getArgsPost().at(4)) + ", " +
+			quotesql(tp.getArgsPost().at(5)) + ");";
 	}
 	
 	PIN_UnlockClient();

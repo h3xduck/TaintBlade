@@ -33,7 +33,7 @@ namespace UTILS
 			void setArgsPre(std::vector<std::string> vec);
 			std::vector<void*> getArgsPrePtr();
 			void setArgsPrePtr(std::vector<void*> vec);
-			std::vector<std::string> getArgsPost();
+			std::vector<std::string>& getArgsPost();
 			void setArgsPost(std::vector<std::string> vec);
 		};
 
