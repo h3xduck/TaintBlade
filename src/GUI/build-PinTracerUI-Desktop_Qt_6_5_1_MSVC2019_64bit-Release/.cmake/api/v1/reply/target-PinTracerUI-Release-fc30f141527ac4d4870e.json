@@ -53,7 +53,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 43,
+				"line" : 46,
 				"parent" : 0
 			},
 			{
@@ -77,7 +77,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 57,
+				"line" : 60,
 				"parent" : 0
 			},
 			{
@@ -89,7 +89,7 @@
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 51,
+				"line" : 54,
 				"parent" : 0
 			},
 			{
@@ -420,18 +420,19 @@
 				14,
 				16,
 				18,
-				28
+				20,
+				32
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "PinTracerUI_autogen::@6890427a1f51a3e7e1df"
+			"id" : "PinTracerUI_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "PinTracerUI_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "PinTracerUI_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "PinTracerUI::@6890427a1f51a3e7e1df",
@@ -581,7 +582,8 @@
 				14,
 				16,
 				18,
-				28
+				20,
+				32
 			]
 		},
 		{
@@ -589,11 +591,12 @@
 			"sourceIndexes" : 
 			[
 				1,
-				19,
-				20,
 				21,
 				22,
-				27
+				23,
+				24,
+				25,
+				31
 			]
 		},
 		{
@@ -608,18 +611,20 @@
 				13,
 				15,
 				17,
-				23,
-				24,
-				25,
-				26
+				19,
+				26,
+				27,
+				28,
+				29,
+				30
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				29,
-				30
+				33,
+				34
 			]
 		}
 	],
@@ -733,6 +738,17 @@
 		},
 		{
 			"backtrace" : 4,
+			"path" : "TaintRoutinesWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "TaintRoutinesWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
 			"path" : "mainwindow.ui",
 			"sourceGroupIndex" : 1
 		},
@@ -749,6 +765,11 @@
 		{
 			"backtrace" : 4,
 			"path" : "MultiWindowViewWidget.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TaintRoutinesWidget.ui",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -773,6 +794,12 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/include/ui_MultiWindowViewWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/include/ui_TaintRoutinesWidget.h",
 			"sourceGroupIndex" : 2
 		},
 		{

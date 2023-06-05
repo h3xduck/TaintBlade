@@ -7,6 +7,7 @@
 #include "ExecutionBridge.h"
 #include "DatabaseManager.h"
 #include <QLayout>
+#include "TaintRoutinesWidget.h"
 
 namespace Ui {
 class MultiWindowViewWidget;

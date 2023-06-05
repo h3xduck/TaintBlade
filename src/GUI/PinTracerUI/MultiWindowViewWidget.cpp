@@ -102,7 +102,16 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     }
 
     //Now that we are connected to the database, we can draw the rest of windows
+    //TODO add here all widgets
 
-
+    //Taint routines widget. Delete any preious one.
+    QLayoutItem *layoutItem;
+    if((layoutItem = ui->frameRightDownRight->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+    ui->frameRightDownRight->layout()->addWidget(new TaintRoutinesWidget(ui->frameRightDownRight));
+    ui->frameRightDownRight->layout()->setContentsMargins(0,0,0,0);
 
 }

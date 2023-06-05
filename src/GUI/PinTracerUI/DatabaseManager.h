@@ -4,6 +4,9 @@
 #include <QString>
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
+#include <QTreeWidget>
+#include <QSqlQuery>
+#include <QTableWidgetItem>
 
 class DatabaseManager
 {
@@ -15,6 +18,11 @@ public:
      * Returns 0 if database was correctly opened.
      */
     int initializeDatabase(const QString& path);
+
+    /**
+     * Puts all data related to taint routines into the tree widget passed
+     */
+    void buildTaintRoutinesTree(QTreeWidget *treeWidget);
 
 private:
     QSqlDatabase m_db;

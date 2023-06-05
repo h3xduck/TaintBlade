@@ -162,7 +162,9 @@ PinTracerUI_autogen/timestamp: \
 	C:/Qt/6.5.1/msvc2019_64/include/QtGui/qwindowdefs.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtGui/qwindowdefs_win.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtSql/QSqlDatabase \
+	C:/Qt/6.5.1/msvc2019_64/include/QtSql/QSqlQuery \
 	C:/Qt/6.5.1/msvc2019_64/include/QtSql/qsqldatabase.h \
+	C:/Qt/6.5.1/msvc2019_64/include/QtSql/qsqlquery.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsql-config.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlexports.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlglobal.h \
@@ -174,6 +176,8 @@ PinTracerUI_autogen/timestamp: \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMenu \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMessageBox \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QPushButton \
+	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTableWidgetItem \
+	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTreeWidget \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTreeWidgetItem \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QVBoxLayout \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QWidget \
@@ -201,6 +205,8 @@ PinTracerUI_autogen/timestamp: \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qstyle.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qstyleoption.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtabbar.h \
+	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtableview.h \
+	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtablewidget.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtabwidget.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtreeview.h \
 	C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtreewidget.h \
@@ -461,6 +467,8 @@ PinTracerUI_autogen/timestamp: \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.h \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp \
+	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.cpp \
+	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.cpp \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.cpp \
@@ -474,6 +482,7 @@ PinTracerUI_autogen/timestamp: \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/CMakeFiles/3.24.2/CMakeSystem.cmake \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.ui \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.ui \
+	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.ui \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.ui \
 	C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

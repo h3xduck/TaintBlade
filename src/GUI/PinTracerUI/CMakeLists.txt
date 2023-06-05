@@ -30,6 +30,8 @@ set(PROJECT_SOURCES
         MultiWindowViewWidget.cpp
         TracedProcessDrawer.h
         TracedProcessDrawer.cpp
+        TaintRoutinesWidget.h
+        TaintRoutinesWidget.cpp
 )
 
 set(UI_HEADERS
@@ -37,6 +39,7 @@ set(UI_HEADERS
     PinConfigurationDialog.ui
     TracedProcessWidget.ui
     MultiWindowViewWidget.ui
+    TaintRoutinesWidget.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

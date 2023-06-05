@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Release-7a095417eb5a0e8fc39d.json",
+					"jsonFile" : "directory-.-Release-dce653bb5ef9acf94c34.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PinTracerUI::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PinTracerUI-Release-9c0a39a403482b24a29d.json",
+					"jsonFile" : "target-PinTracerUI-Release-4296ef2c1a2f221cfda0.json",
 					"name" : "PinTracerUI",
 					"projectIndex" : 0
 				},

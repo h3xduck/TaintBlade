@@ -1,12 +1,6 @@
-C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/EWIEGA46WW/moc_MultiWindowViewWidget.cpp: C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDateTime \
+C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MSVC2019_64bit-Release/PinTracerUI_autogen/EWIEGA46WW/moc_TaintRoutinesWidget.cpp: C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDebug \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QDir \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QFile \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QModelIndex \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QProcess \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/QString \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/QThread \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20memory.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/q20type_traits.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qabstractitemmodel.h \
@@ -24,7 +18,6 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qbytearrayalgorithms.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qbytearraylist.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qbytearrayview.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcalendar.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qchar.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcompare.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcompare_impl.h \
@@ -37,15 +30,8 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qcontiguouscache.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdatastream.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdatetime.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdeadlinetimer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdebug.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qdir.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qelapsedtimer.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qexceptionhandling.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfile.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfiledevice.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfileinfo.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qflags.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qfloat16.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qforeach.h \
@@ -55,7 +41,6 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qglobalstatic.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qhash.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qhashfunctions.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiodevice.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qitemselectionmodel.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qiterable.h \
@@ -80,7 +65,6 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qoverload.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qpair.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qpoint.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qprocess.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qrect.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qrefcount.h \
@@ -113,7 +97,6 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtdeprecationmarkers.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtextstream.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtCore/qthread.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtnoop.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtCore/qtpreprocessorsupport.h \
@@ -162,8 +145,6 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsql-config.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlglobal.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QLayout \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTableWidgetItem \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTreeWidget \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTreeWidgetItem \
@@ -173,13 +154,7 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractscrollarea.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractslider.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qabstractspinbox.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qboxlayout.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qframe.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qgridlayout.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qlayout.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qlayoutitem.h \
-  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qmessagebox.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qslider.h \
@@ -196,9 +171,4 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtwidgetsglobal.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qwidget.h \
-  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/DatabaseManager.h \
-  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/ExecutionBridge.h \
-  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/Globals.h \
-  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h \
-  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h \
-  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/DatabaseManager.h

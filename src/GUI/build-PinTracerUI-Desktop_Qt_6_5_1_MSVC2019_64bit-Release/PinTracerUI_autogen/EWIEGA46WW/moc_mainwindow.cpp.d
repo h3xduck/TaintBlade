@@ -157,7 +157,9 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/QSqlDatabase \
+  C:/Qt/6.5.1/msvc2019_64/include/QtSql/QSqlQuery \
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/qsqldatabase.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtSql/qsqlquery.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsql-config.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtSql/qtsqlglobal.h \
@@ -167,6 +169,8 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMenu \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QPushButton \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTableWidgetItem \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTreeWidget \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QTreeWidgetItem \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QVBoxLayout \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/QWidget \
@@ -193,6 +197,8 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qstyle.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qstyleoption.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtabbar.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtableview.h \
+  C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtablewidget.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtreeview.h \
   C:/Qt/6.5.1/msvc2019_64/include/QtWidgets/qtreewidget.h \
@@ -205,5 +211,6 @@ C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/ExecutionBridge.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/Globals.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h \
+  C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h \
   C:/Users/Marcos/Documents/GitHub/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h
