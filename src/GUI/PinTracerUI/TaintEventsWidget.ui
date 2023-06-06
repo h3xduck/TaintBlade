@@ -22,7 +22,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTreeView" name="treeView"/>
+    <widget class="QTreeWidget" name="treeWidget"/>
    </item>
   </layout>
  </widget>

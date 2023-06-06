@@ -106,10 +106,22 @@ public:
 		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retValSigned << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wsockRecv.buf, retVal);
-		//LOG_DEBUG("Here0\n");
-		ctx.updateLastMemoryValue(val, retVal);
 
-		//LOG_DEBUG("Here1\n");
+		//Update the instruction values so that we are right at the end of the routine right now, 
+		//where we taint the data
+		PIN_LockClient();
+		RTN rtn = RTN_FindByAddress(wsockRecv.ip);
+		if (rtn == RTN_Invalid())
+		{
+			return;
+		}
+		RTN_Open(rtn);
+		const ADDRINT routineEndInstAddress = INS_Address(RTN_InsTail(rtn));
+		RTN_Close(rtn);
+		ctx.updateCurrentInstructionFullAddress(routineEndInstAddress);
+		ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(routineEndInstAddress));
+		ctx.updateLastMemoryValue(val, retVal);
+		PIN_UnlockClient();
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
@@ -126,21 +138,12 @@ public:
 
 		//Register that this routine had some taint event
 		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
-		PIN_LockClient();
 		data.instAddrEntry = wsockRecv.ip;
-		RTN rtn = RTN_FindByAddress(wsockRecv.ip);
-		if (rtn == RTN_Invalid())
-		{
-			return;
-		}
-		RTN_Open(rtn);
-		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+		data.instAddrLast = routineEndInstAddress;
 		data.dll = *dllNameStr;
 		data.func = *funcNameStr;
 		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SRC;
 		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
-		RTN_Close(rtn);
-		PIN_UnlockClient();
 	};
 
 	///////////////// WININET /////////////////
@@ -171,8 +174,23 @@ public:
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
 		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << *wininetInternetReadFile.lpdwNumberOfBytesRead);
 
+		//Update the instruction values so that we are right at the end of the routine right now, 
+		//where we taint the data
+		PIN_LockClient();
+		RTN rtn = RTN_FindByAddress(wininetInternetReadFile.ip);
+		if (rtn == RTN_Invalid())
+		{
+			return;
+		}
+		RTN_Open(rtn);
+		const ADDRINT routineEndInstAddress = INS_Address(RTN_InsTail(rtn));
+		RTN_Close(rtn);
+		ctx.updateCurrentInstructionFullAddress(routineEndInstAddress);
+		ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(routineEndInstAddress));
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
 		ctx.updateLastMemoryValue(val, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+		PIN_UnlockClient();
+
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
@@ -186,19 +204,10 @@ public:
 
 		//Register that this routine had some taint event
 		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
-		data.instAddrEntry = wininetInternetReadFile.ip;
-		PIN_LockClient();
-		RTN rtn = RTN_FindByAddress(wininetInternetReadFile.ip);
-		if (rtn == RTN_Invalid())
-		{
-			return;
-		}
-		RTN_Open(rtn);
+		data.instAddrEntry = routineEndInstAddress;
 		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
-		PIN_UnlockClient();
 		data.dll = *dllNameStr;
 		data.func = *funcNameStr;
-		RTN_Close(rtn);
 		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SRC;
 		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
 	};
@@ -253,15 +262,15 @@ public:
 		//we are jumping from since it might be interesting to be dumped
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isScopeImage(ip))
 		{
-			ctx.currentRoutineInfo().possibleJumpPoint = ip;
-			ctx.currentRoutineInfo().possibleBaseJumpPoint = InstructionWorker::getBaseAddress(ip);
+			ctx.lastRoutineInfo().possibleJumpPoint = ip;
+			ctx.lastRoutineInfo().possibleBaseJumpPoint = InstructionWorker::getBaseAddress(ip);
 			RTN rtn = RTN_FindByAddress(ip); 
 			RTN_Open(rtn);
-			ctx.currentRoutineInfo().routineStart = INS_Address(RTN_InsHeadOnly(rtn));
-			ctx.currentRoutineInfo().routineBaseStart = InstructionWorker::getBaseAddress(ctx.currentRoutineInfo().routineStart);
+			ctx.lastRoutineInfo().routineStart = INS_Address(RTN_InsHeadOnly(rtn));
+			ctx.lastRoutineInfo().routineBaseStart = InstructionWorker::getBaseAddress(ctx.lastRoutineInfo().routineStart);
 			RTN_Close(rtn);
-			ctx.currentRoutineInfo().funcName = InstructionWorker::getFunctionNameFromAddress(ip);
-			ctx.currentRoutineInfo().dllName = InstructionWorker::getDllFromAddress(ip);
+			ctx.lastRoutineInfo().funcName = InstructionWorker::getFunctionNameFromAddress(ip);
+			ctx.lastRoutineInfo().dllName = InstructionWorker::getDllFromAddress(ip);
 		}
 
 		//We will log the arguments of this routine, but only if we are going from main dll to another, or another scoped image

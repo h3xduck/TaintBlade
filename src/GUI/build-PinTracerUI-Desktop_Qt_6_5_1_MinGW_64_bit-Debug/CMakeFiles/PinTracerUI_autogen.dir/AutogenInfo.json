@@ -329,9 +329,45 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_MultiWindowViewWidget.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.h",
 			"MU",
 			"EWIEGA46WW/moc_PinConfigurationDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintEventsWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_TaintEventsWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_TaintRoutinesWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_TraceFunctionsWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.h",
+			"MU",
+			"EWIEGA46WW/moc_TracedProcessDrawer.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TracedProcessWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_TracedProcessWidget.cpp",
 			null
 		],
 		[
@@ -428,7 +464,37 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintEventsWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TracedProcessDrawer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TracedProcessWidget.cpp",
 			"MU",
 			null
 		],

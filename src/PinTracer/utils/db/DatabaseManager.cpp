@@ -259,7 +259,7 @@ void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine:
 	int indirect_routine_idx = getLastInsertedIndex();
 
 	int routine_idx = -1;
-	if (event.eventType == UTILS::IO::DataDumpLine::TAINTGEN || event.eventType == UTILS::IO::DataDumpLine::CHANGEGEN)
+	//if (event.eventType == UTILS::IO::DataDumpLine::TAINTGEN || event.eventType == UTILS::IO::DataDumpLine::CHANGEGEN)
 	{
 		routine_idx = getIndexNextInsertedTaintRoutine();
 	}
@@ -479,23 +479,23 @@ void UTILS::DB::DatabaseManager::insertIndirectTaintRoutineRecordFromContextData
 		this->openDatabase();
 	}
 
-	int dllIx = this->getDLLIndex(ctx.currentRoutineInfo().dllName);
+	int dllIx = this->getDLLIndex(ctx.lastRoutineInfo().dllName);
 	//LOG_DEBUG("Got IX: " << dllFromIx);
 	if (dllIx == -1)
 	{
-		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + ctx.currentRoutineInfo().dllName + "')";
+		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + ctx.lastRoutineInfo().dllName + "')";
 		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
-		dllIx = this->getDLLIndex(ctx.currentRoutineInfo().dllName);
+		dllIx = this->getDLLIndex(ctx.lastRoutineInfo().dllName);
 	}
 
 	PIN_LockClient();
 	std::string sql = "INSERT INTO indirect_taint_routines(function, dll_idx, inst_entry, inst_base_entry, possible_jump, possible_base_jump) VALUES(" +
-		quotesql(ctx.currentRoutineInfo().funcName) + ", " +
+		quotesql(ctx.lastRoutineInfo().funcName) + ", " +
 		quotesql(std::to_string(dllIx)) + ", " +
-		quotesql(std::to_string(ctx.currentRoutineInfo().routineStart)) + ", " +
-		quotesql(std::to_string(ctx.currentRoutineInfo().routineBaseStart)) + ", " +
-		quotesql(std::to_string(ctx.currentRoutineInfo().possibleJumpPoint)) + ", " +
-		quotesql(std::to_string(ctx.currentRoutineInfo().possibleBaseJumpPoint)) + ");";
+		quotesql(std::to_string(ctx.lastRoutineInfo().routineStart)) + ", " +
+		quotesql(std::to_string(ctx.lastRoutineInfo().routineBaseStart)) + ", " +
+		quotesql(std::to_string(ctx.lastRoutineInfo().possibleJumpPoint)) + ", " +
+		quotesql(std::to_string(ctx.lastRoutineInfo().possibleBaseJumpPoint)) + ");";
 	PIN_UnlockClient();
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);

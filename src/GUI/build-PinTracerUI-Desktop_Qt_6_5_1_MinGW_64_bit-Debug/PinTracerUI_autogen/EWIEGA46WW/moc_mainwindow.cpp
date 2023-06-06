@@ -43,7 +43,7 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "",
     "on_actionSelect_configuration_triggered",
     "on_actionRun_triggered",
-    "on_tracerProcess_finished"
+    "tracerProcess_finished"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
@@ -53,7 +53,7 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata2[1];
     char stringdata3[40];
     char stringdata4[23];
-    char stringdata5[26];
+    char stringdata5[23];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -64,14 +64,14 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(35, 0),  // ""
         QT_MOC_LITERAL(36, 39),  // "on_actionSelect_configuration..."
         QT_MOC_LITERAL(76, 22),  // "on_actionRun_triggered"
-        QT_MOC_LITERAL(99, 25)   // "on_tracerProcess_finished"
+        QT_MOC_LITERAL(99, 22)   // "tracerProcess_finished"
     },
     "MainWindow",
     "on_actionOpen_triggered",
     "",
     "on_actionSelect_configuration_triggered",
     "on_actionRun_triggered",
-    "on_tracerProcess_finished"
+    "tracerProcess_finished"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -120,7 +120,7 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_actionRun_triggered'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_tracerProcess_finished'
+        // method 'tracerProcess_finished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -135,7 +135,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->on_actionOpen_triggered(); break;
         case 1: _t->on_actionSelect_configuration_triggered(); break;
         case 2: _t->on_actionRun_triggered(); break;
-        case 3: _t->on_tracerProcess_finished(); break;
+        case 3: _t->tracerProcess_finished(); break;
         default: ;
         }
     }

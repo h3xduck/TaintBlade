@@ -49,7 +49,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(808, 588);
+        MainWindow->resize(853, 620);
         actionProperties = new QAction(MainWindow);
         actionProperties->setObjectName("actionProperties");
         QIcon icon;
@@ -79,6 +79,7 @@ public:
         actionRun->setIcon(icon3);
         actionStop = new QAction(MainWindow);
         actionStop->setObjectName("actionStop");
+        actionStop->setEnabled(false);
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/res/icons/icons8-stop-26.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionStop->setIcon(icon4);
@@ -101,10 +102,16 @@ public:
         actionAuthors->setObjectName("actionAuthors");
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
+        centralWidget->setEnabled(true);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
+        centralWidget->setSizePolicy(sizePolicy);
         MainWindow->setCentralWidget(centralWidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 808, 26));
+        menubar->setGeometry(QRect(0, 0, 853, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName("menuFile");
         menuAbout = new QMenu(menubar);

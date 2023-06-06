@@ -10,6 +10,30 @@ void reportUnsupportedRegister(REG reg)
 #endif
 }
 
+//TODO - A setting that activates or deactivates this, since RTN operations have a temporal cost
+void dumpCurrentTaintRoutineFromContext()
+{
+	//Register that this routine had some taint event
+	UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+	PIN_LockClient();
+	RTN rtn = RTN_FindByAddress(ctx.getCurrentInstructionFullAddress());
+	if (rtn == RTN_Invalid())
+	{
+		return;
+	}
+	RTN_Open(rtn);
+	data.instAddrEntry = INS_Address(RTN_InsHeadOnly(rtn));
+	data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+	data.dll = InstructionWorker::getDllFromAddress(ctx.getCurrentInstructionFullAddress());
+	data.func = InstructionWorker::getFunctionNameFromAddress(ctx.getCurrentInstructionFullAddress());
+	data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_EVENTFUL;
+	ctx.getDataDumper().writeTaintRoutineDumpLine(data);
+
+	LOG_DEBUG("DUMPTAINTROUTINE:: DLL:" << data.dll << " FUNC:" << data.func << " ENTRY:" << data.instAddrEntry << " CURR:" << ctx.getCurrentInstructionFullAddress());
+	RTN_Close(rtn);
+	PIN_UnlockClient();
+}
+
 
 TagMap::TagMap()
 {
@@ -86,6 +110,10 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 			event.memAddr = addr;
 			event.eventType = manualTaint==true ? UTILS::IO::DataDumpLine::TAINTGEN : UTILS::IO::DataDumpLine::TAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
+			
+			//If it was not manually tainted (in which case it is already registered as so
+			//in the tainted function), then we dump the routine data as taint routine
+			if(!manualTaint) dumpCurrentTaintRoutineFromContext();
 		}
 		//No empty color tainting
 	}
@@ -101,7 +129,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 		event.memAddr = addr;
 		event.eventType = manualTaint == true ? UTILS::IO::DataDumpLine::CHANGEGEN : UTILS::IO::DataDumpLine::CHANGE;
 		ctx.getDataDumper().writeMemoryColorEventDump(event);
-
+		if (!manualTaint) dumpCurrentTaintRoutineFromContext();
 	}
 }
 
@@ -159,6 +187,9 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			event.memAddr = dest;
 			event.eventType = UTILS::IO::DataDumpLine::TAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+			//Log the routine that led to this event
+			dumpCurrentTaintRoutineFromContext();
 		}
 		//else, nothing, since src2=empty_color and dest=src1 was not tainted
 	}
@@ -184,6 +215,9 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				event.memAddr = dest;
 				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+				//Log the routine that led to this event
+				dumpCurrentTaintRoutineFromContext();
 			}
 			else
 			{
@@ -199,6 +233,9 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 				event.memAddr = dest;
 				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+				//Log the routine that led to this event
+				dumpCurrentTaintRoutineFromContext();
 			}
 			
 		}
@@ -215,6 +252,9 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			event.memAddr = dest;
 			event.eventType = UTILS::IO::DataDumpLine::UNTAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+			//Log the routine that led to this event
+			dumpCurrentTaintRoutineFromContext();
 		}
 	}
 
@@ -395,6 +435,9 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 					event.color = tag.color;
 					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+					//Log the routine that led to this event
+					dumpCurrentTaintRoutineFromContext();
 				}
 				else
 				{
@@ -409,6 +452,9 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 					event.color = tag.color;
 					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+					//Log the routine that led to this event
+					dumpCurrentTaintRoutineFromContext();
 				}
 			}
 		}
@@ -494,6 +540,9 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 					event.color = tag.color;
 					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+					//Log the routine that led to this event
+					dumpCurrentTaintRoutineFromContext();
 				}
 				else
 				{
@@ -508,6 +557,9 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 					event.color = tag.color;
 					event.eventType = UTILS::IO::DataDumpLine::MIX;
 					ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+					//Log the routine that led to this event
+					dumpCurrentTaintRoutineFromContext();
 				}
 			}
 		}
@@ -591,6 +643,9 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 			event.color = tag.color;
 			event.eventType = UTILS::IO::DataDumpLine::MIX;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+			//Log the routine that led to this event
+			dumpCurrentTaintRoutineFromContext();
 		}
 		else
 		{
@@ -605,6 +660,9 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 			event.color = tag.color;
 			event.eventType = UTILS::IO::DataDumpLine::MIX;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+			//Log the routine that led to this event
+			dumpCurrentTaintRoutineFromContext();
 		}
 	}
 }
@@ -669,6 +727,9 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				event.memAddr = dest+ii;
 				event.eventType = UTILS::IO::DataDumpLine::TAINT;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+				//Log the routine that led to this event
+				dumpCurrentTaintRoutineFromContext();
 			}
 			continue;
 		}
@@ -688,6 +749,9 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 			event.memAddr = dest;
 			event.eventType = UTILS::IO::DataDumpLine::UNTAINT;
 			ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+			//Log the routine that led to this event
+			dumpCurrentTaintRoutineFromContext();
 		}
 		else
 		{
@@ -708,6 +772,9 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				event.memAddr = dest;
 				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+				//Log the routine that led to this event
+				dumpCurrentTaintRoutineFromContext();
 			}
 			else
 			{
@@ -723,6 +790,9 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 				event.memAddr = dest;
 				event.eventType = UTILS::IO::DataDumpLine::MIX;
 				ctx.getDataDumper().writeMemoryColorEventDump(event);
+
+				//Log the routine that led to this event
+				dumpCurrentTaintRoutineFromContext();
 			}
 		}
 	}

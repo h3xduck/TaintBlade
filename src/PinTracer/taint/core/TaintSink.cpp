@@ -319,6 +319,21 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 		if(srcStr!=NULL) LOG_DEBUG("SrcString: " << std::string(srcStr));
 		if (destStr != NULL) LOG_DEBUG("DestString: " << wcharstrToCharstr(std::wstring(destStr)));
 
+		//Update the instruction values so that we are right at the end of the routine right now, 
+		//where we taint the data (or not)
+		PIN_LockClient();
+		RTN rtn = RTN_FindByAddress(funcDllData.ip);
+		if (rtn == RTN_Invalid())
+		{
+			return;
+		}
+		RTN_Open(rtn);
+		const ADDRINT routineEndInstAddress = INS_Address(RTN_InsTail(rtn));
+		RTN_Close(rtn);
+		ctx.updateCurrentInstructionFullAddress(routineEndInstAddress);
+		ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(routineEndInstAddress));
+		PIN_UnlockClient();
+
 		for (int ii = 0; ii < transLen; ii++)
 		{
 			//If the byte was tainted, the one from the dest is too
@@ -341,18 +356,11 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 			UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
 			PIN_LockClient();
 			data.instAddrEntry = funcDllData.ip;
-			RTN rtn = RTN_FindByAddress(funcDllData.ip);
-			if (rtn == RTN_Invalid())
-			{
-				return;
-			}
-			RTN_Open(rtn);
-			data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+			data.instAddrLast = routineEndInstAddress;
 			data.dll = *dllNameStr;
 			data.func = *funcNameStr;
 			data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SINK;
 			ctx.getDataDumper().writeTaintRoutineDumpLine(data);
-			RTN_Close(rtn);
 			PIN_UnlockClient();
 		}
 		
