@@ -341,6 +341,18 @@
 			null
 		],
 		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_ProtocolBufferWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolVisualizationWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_ProtocolVisualizationWidget.cpp",
+			null
+		],
+		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintEventsWidget.h",
 			"MU",
 			"EWIEGA46WW/moc_TaintEventsWidget.cpp",
@@ -471,6 +483,16 @@
 		],
 		[
 			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolVisualizationWidget.cpp",
 			"MU",
 			null
 		],

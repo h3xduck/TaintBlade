@@ -54,6 +54,10 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     ui->level2HSplitterLeft->setSizes(QList<int>() << 300 << 200);
     ui->level2HSplitterRight->setSizes(QList<int>() << 200 << 200);
     ui->level3VSplitterLeftUp->setSizes(QList<int>() << 300 << 100);
+
+    //TEST DEVELOP
+    ui->frameLeftDownLeft->layout()->addWidget(new ProtocolVisualizationWidget(ui->frameLeftDownLeft));
+    ui->frameLeftDownLeft->layout()->setContentsMargins(0,0,0,0);
 }
 
 MultiWindowViewWidget::~MultiWindowViewWidget()
@@ -131,5 +135,14 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     }
     ui->frameRightUpRight->layout()->addWidget(new TaintEventsWidget(ui->frameRightUpRight));
     ui->frameRightUpRight->layout()->setContentsMargins(0,0,0,0);
+
+    //Protocol buffers widget. Delete any previous one.
+    if((layoutItem = ui->frameLeftDownLeft->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+    ui->frameLeftDownLeft->layout()->addWidget(new ProtocolVisualizationWidget(ui->frameLeftDownLeft));
+    ui->frameLeftDownLeft->layout()->setContentsMargins(0,0,0,0);
 
 }

@@ -36,6 +36,10 @@ set(PROJECT_SOURCES
         TraceFunctionsWidget.cpp
         TaintEventsWidget.h
         TaintEventsWidget.cpp
+        ProtocolVisualizationWidget.h
+        ProtocolVisualizationWidget.cpp
+        ProtocolBufferWidget.h
+        ProtocolBufferWidget.cpp
 )
 
 set(UI_HEADERS
@@ -46,6 +50,8 @@ set(UI_HEADERS
     TaintRoutinesWidget.ui
     TraceFunctionsWidget.ui
     TaintEventsWidget.ui
+    ProtocolVisualizationWidget.ui
+    ProtocolBufferWidget.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

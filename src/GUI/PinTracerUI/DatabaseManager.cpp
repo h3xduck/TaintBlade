@@ -154,14 +154,14 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             item = lastTopLevel;
             reusedDLL = true;
             lastTopLevelFirstLevelChildCount = lastTopLevel->childCount();
-            qDebug()<<"Reused top level item";
+            //qDebug()<<"Reused top level item";
         }
         else
         {
             //Show new DLL
             item = new QTreeWidgetItem();
             item->setText(0, query.value("indirect_dll").toString());
-            qDebug()<<"New top level item of DLL: "<<item->text(0);
+            //qDebug()<<"New top level item of DLL: "<<item->text(0);
         }
 
 
@@ -177,7 +177,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             child = lastTopLevel->child(lastTopLevelFirstLevelChildCount-1);
             reusedRoutine = true;
             lastTopLevelLastFirstLevelSecondLevelChildCount = child->childCount();
-            qDebug()<<"Reused first child";
+            //qDebug()<<"Reused first child";
         }
         else
         {
@@ -196,7 +196,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             child->setText(0, query.value("indirect_function").toString());
             child->setText(1, query.value("indirect_base_entry").toString());
             child->setText(2, query.value("indirect_jump").toString());
-            qDebug()<<"New first child with function: "<<child->text(0);
+            //qDebug()<<"New first child with function: "<<child->text(0);
         }
 
 
@@ -214,7 +214,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
         QTreeWidgetItem *secondChild = new QTreeWidgetItem();
         secondChild->setText(0, query.value("direct_dll").toString());
         secondChild->setText(1, query.value("direct_function").toString());
-        qDebug()<<"New second child with dll: "<<secondChild->text(0);
+        //qDebug()<<"New second child with dll: "<<secondChild->text(0);
 
         //Fourth level, information about the taint event itself
         QTreeWidgetItem *thirdChildHeader = new QTreeWidgetItem();

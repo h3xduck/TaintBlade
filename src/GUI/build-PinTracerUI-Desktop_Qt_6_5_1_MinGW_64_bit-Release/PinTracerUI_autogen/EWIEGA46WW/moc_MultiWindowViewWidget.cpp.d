@@ -165,10 +165,12 @@ C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_
   C:/Qt/6.5.1/mingw_64/include/QtSql/qtsqlglobal.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QLayout \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QMessageBox \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QTableWidgetItem \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QTreeWidget \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QTreeWidgetItem \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QWidget \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemview.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
@@ -181,6 +183,7 @@ C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qlayout.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qmessagebox.h \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qslider.h \
@@ -433,6 +436,8 @@ C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/DatabaseManager.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ExecutionBridge.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/Globals.h \
+  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferWidget.h \
+  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolVisualizationWidget.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintEventsWidget.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TraceFunctionsWidget.h \

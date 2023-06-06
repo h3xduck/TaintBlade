@@ -32,16 +32,18 @@
 			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake",
 			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake",
 			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6/Qt6Config.cmake",
-			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake",
-			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
+			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake",
+			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake",
 			"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeFindDependencyMacro.cmake",
 			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
 			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake",
+			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Sql/Qt6SqlVersionlessTargets.cmake",
+			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Sql/Qt6SqlConfig.cmake",
+			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake",
+			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
 			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake",
 			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake",
-			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake",
-			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake",
-			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake"
+			"C:/Qt/6.5.1/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake"
 		],
 		"nodes" : 
 		[
@@ -51,7 +53,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 33,
+				"line" : 59,
 				"parent" : 0
 			},
 			{
@@ -75,13 +77,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 47,
+				"line" : 73,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 41,
+				"line" : 67,
 				"parent" : 0
 			},
 			{
@@ -121,12 +123,6 @@
 				"parent" : 12
 			},
 			{
-				"command" : 5,
-				"file" : 0,
-				"line" : 550,
-				"parent" : 2
-			},
-			{
 				"command" : 7,
 				"file" : 3,
 				"line" : 40,
@@ -134,131 +130,163 @@
 			},
 			{
 				"file" : 9,
-				"parent" : 15
+				"parent" : 14
 			},
 			{
 				"command" : 10,
 				"file" : 9,
 				"line" : 39,
+				"parent" : 15
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 111,
 				"parent" : 16
 			},
 			{
-				"command" : 9,
-				"file" : 8,
-				"line" : 111,
-				"parent" : 17
-			},
-			{
 				"command" : 8,
 				"file" : 7,
 				"line" : 47,
+				"parent" : 17
+			},
+			{
+				"file" : 6,
 				"parent" : 18
 			},
 			{
+				"command" : 7,
 				"file" : 6,
+				"line" : 52,
 				"parent" : 19
 			},
 			{
-				"command" : 7,
-				"file" : 6,
-				"line" : 52,
+				"file" : 5,
 				"parent" : 20
 			},
 			{
+				"command" : 6,
 				"file" : 5,
+				"line" : 61,
 				"parent" : 21
 			},
 			{
-				"command" : 6,
-				"file" : 5,
-				"line" : 61,
-				"parent" : 22
+				"command" : 8,
+				"file" : 4,
+				"line" : 157,
+				"parent" : 8
+			},
+			{
+				"file" : 11,
+				"parent" : 23
 			},
 			{
 				"command" : 7,
-				"file" : 6,
-				"line" : 40,
-				"parent" : 20
-			},
-			{
-				"file" : 12,
+				"file" : 11,
+				"line" : 55,
 				"parent" : 24
 			},
 			{
-				"command" : 10,
-				"file" : 12,
-				"line" : 39,
+				"file" : 10,
 				"parent" : 25
 			},
 			{
-				"command" : 9,
-				"file" : 8,
-				"line" : 111,
+				"command" : 6,
+				"file" : 10,
+				"line" : 61,
 				"parent" : 26
 			},
 			{
-				"command" : 8,
-				"file" : 7,
-				"line" : 47,
-				"parent" : 27
-			},
-			{
-				"file" : 11,
-				"parent" : 28
-			},
-			{
-				"command" : 7,
-				"file" : 11,
-				"line" : 52,
-				"parent" : 29
-			},
-			{
-				"file" : 10,
-				"parent" : 30
-			},
-			{
-				"command" : 6,
-				"file" : 10,
-				"line" : 61,
-				"parent" : 31
-			},
-			{
-				"command" : 6,
-				"file" : 10,
-				"line" : 76,
-				"parent" : 31
+				"command" : 5,
+				"file" : 0,
+				"line" : 550,
+				"parent" : 2
 			},
 			{
 				"command" : 9,
 				"file" : 8,
 				"line" : 111,
-				"parent" : 17
+				"parent" : 16
 			},
 			{
 				"command" : 8,
 				"file" : 7,
 				"line" : 47,
-				"parent" : 34
+				"parent" : 29
 			},
 			{
-				"file" : 14,
-				"parent" : 35
+				"file" : 13,
+				"parent" : 30
 			},
 			{
 				"command" : 7,
-				"file" : 14,
+				"file" : 13,
 				"line" : 52,
-				"parent" : 36
+				"parent" : 31
 			},
 			{
-				"file" : 13,
-				"parent" : 37
+				"file" : 12,
+				"parent" : 32
 			},
 			{
 				"command" : 6,
-				"file" : 13,
+				"file" : 12,
 				"line" : 61,
+				"parent" : 33
+			},
+			{
+				"command" : 7,
+				"file" : 13,
+				"line" : 40,
+				"parent" : 31
+			},
+			{
+				"file" : 16,
+				"parent" : 35
+			},
+			{
+				"command" : 10,
+				"file" : 16,
+				"line" : 39,
+				"parent" : 36
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 111,
+				"parent" : 37
+			},
+			{
+				"command" : 8,
+				"file" : 7,
+				"line" : 47,
 				"parent" : 38
+			},
+			{
+				"file" : 15,
+				"parent" : 39
+			},
+			{
+				"command" : 7,
+				"file" : 15,
+				"line" : 52,
+				"parent" : 40
+			},
+			{
+				"file" : 14,
+				"parent" : 41
+			},
+			{
+				"command" : 6,
+				"file" : 14,
+				"line" : 61,
+				"parent" : 42
+			},
+			{
+				"command" : 6,
+				"file" : 14,
+				"line" : 76,
+				"parent" : 42
 			}
 		]
 	},
@@ -277,11 +305,11 @@
 			"defines" : 
 			[
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "MINGW_HAS_SECURE_API=1"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "QT_CORE_LIB"
 				},
 				{
@@ -289,39 +317,43 @@
 					"define" : "QT_GUI_LIB"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "QT_NEEDS_QMAIN"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "QT_NO_DEBUG"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_SQL_LIB"
 				},
 				{
 					"backtrace" : 6,
 					"define" : "QT_WIDGETS_LIB"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "UNICODE"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "WIN32"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "WIN64"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "_UNICODE"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"define" : "_WIN64"
 				}
 			],
@@ -332,17 +364,17 @@
 					"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"isSystem" : true,
 					"path" : "C:/Qt/6.5.1/mingw_64/include/QtCore"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"isSystem" : true,
 					"path" : "C:/Qt/6.5.1/mingw_64/include"
 				},
 				{
-					"backtrace" : 14,
+					"backtrace" : 28,
 					"isSystem" : true,
 					"path" : "C:/Qt/6.5.1/mingw_64/mkspecs/win32-g++"
 				},
@@ -355,6 +387,11 @@
 					"backtrace" : 6,
 					"isSystem" : true,
 					"path" : "C:/Qt/6.5.1/mingw_64/include/QtGui"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.5.1/mingw_64/include/QtSql"
 				}
 			],
 			"language" : "CXX",
@@ -362,8 +399,8 @@
 			{
 				"backtraces" : 
 				[
-					14,
-					14
+					28,
+					28
 				],
 				"standard" : "17"
 			},
@@ -375,18 +412,27 @@
 				6,
 				8,
 				10,
-				16
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				28,
+				49
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "PinTracerUI_autogen::@6890427a1f51a3e7e1df"
+			"id" : "PinTracerUI_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "PinTracerUI_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "PinTracerUI_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "PinTracerUI::@6890427a1f51a3e7e1df",
@@ -427,53 +473,58 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 14,
-				"fragment" : "C:\\Qt\\6.5.1\\mingw_64\\lib\\libQt6Core.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 23,
-				"fragment" : "-lmpr",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 23,
-				"fragment" : "-luserenv",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 32,
-				"fragment" : "-lmingw32",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 32,
-				"fragment" : "C:\\Qt\\6.5.1\\mingw_64\\lib\\libQt6EntryPoint.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 33,
-				"fragment" : "-lshell32",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 39,
+				"backtrace" : 22,
 				"fragment" : "-ld3d11",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 39,
+				"backtrace" : 22,
 				"fragment" : "-ldxgi",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 39,
+				"backtrace" : 22,
 				"fragment" : "-ldxguid",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 39,
+				"backtrace" : 22,
 				"fragment" : "-ldcomp",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 27,
+				"fragment" : "C:\\Qt\\6.5.1\\mingw_64\\lib\\libQt6Sql.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 28,
+				"fragment" : "C:\\Qt\\6.5.1\\mingw_64\\lib\\libQt6Core.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 34,
+				"fragment" : "-lmpr",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 34,
+				"fragment" : "-luserenv",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 43,
+				"fragment" : "-lmingw32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 43,
+				"fragment" : "C:\\Qt\\6.5.1\\mingw_64\\lib\\libQt6EntryPoint.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 44,
+				"fragment" : "-lshell32",
 				"role" : "libraries"
 			},
 			{
@@ -502,7 +553,16 @@
 				6,
 				8,
 				10,
-				16
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				28,
+				49
 			]
 		},
 		{
@@ -510,9 +570,16 @@
 			"sourceIndexes" : 
 			[
 				1,
-				11,
-				12,
-				15
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				48
 			]
 		},
 		{
@@ -523,16 +590,33 @@
 				5,
 				7,
 				9,
+				11,
 				13,
-				14
+				15,
+				17,
+				19,
+				21,
+				23,
+				25,
+				27,
+				29,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				17,
-				18
+				50,
+				51
 			]
 		}
 	],
@@ -602,12 +686,151 @@
 		},
 		{
 			"backtrace" : 4,
+			"path" : "DatabaseManager.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "DatabaseManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TracedProcessWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "TracedProcessWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "MultiWindowViewWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "MultiWindowViewWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TracedProcessDrawer.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "TracedProcessDrawer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TaintRoutinesWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "TaintRoutinesWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TraceFunctionsWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "TraceFunctionsWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TaintEventsWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "TaintEventsWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "ProtocolVisualizationWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "ProtocolVisualizationWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "ProtocolBufferWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "ProtocolBufferWidget.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Style.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
 			"path" : "mainwindow.ui",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"path" : "PinConfigurationDialog.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TracedProcessWidget.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "MultiWindowViewWidget.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TaintRoutinesWidget.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TraceFunctionsWidget.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "TaintEventsWidget.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "ProtocolVisualizationWidget.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "ProtocolBufferWidget.ui",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -620,6 +843,48 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_PinConfigurationDialog.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_TracedProcessWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_MultiWindowViewWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_TaintRoutinesWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_TraceFunctionsWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_TaintEventsWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_ProtocolVisualizationWidget.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_ProtocolBufferWidget.h",
 			"sourceGroupIndex" : 2
 		},
 		{

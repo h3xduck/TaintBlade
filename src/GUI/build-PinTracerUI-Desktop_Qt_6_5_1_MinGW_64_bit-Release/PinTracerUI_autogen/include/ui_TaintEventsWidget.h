@@ -52,7 +52,7 @@ public:
     void retranslateUi(QWidget *TaintEventsWidget)
     {
         TaintEventsWidget->setWindowTitle(QCoreApplication::translate("TaintEventsWidget", "Form", nullptr));
-        label->setText(QCoreApplication::translate("TaintEventsWidget", "TAINT EVENTS", nullptr));
+        label->setText(QCoreApplication::translate("TaintEventsWidget", "TAINT EVENTS (chronological)", nullptr));
     } // retranslateUi
 
 };

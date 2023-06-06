@@ -10,6 +10,7 @@
 #include "TaintRoutinesWidget.h"
 #include "TraceFunctionsWidget.h"
 #include "TaintEventsWidget.h"
+#include "ProtocolVisualizationWidget.h"
 
 namespace Ui {
 class MultiWindowViewWidget;

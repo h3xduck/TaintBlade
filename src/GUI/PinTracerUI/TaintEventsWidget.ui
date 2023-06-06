@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>TAINT EVENTS</string>
+      <string>TAINT EVENTS (chronological)</string>
      </property>
     </widget>
    </item>
