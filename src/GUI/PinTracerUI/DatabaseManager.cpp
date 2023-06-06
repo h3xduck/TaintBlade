@@ -125,8 +125,8 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
 {
     qDebug()<<"Building taint events tree";
     treeWidget->clear();
-    treeWidget->setColumnCount(4);
-    QStringList headers = { "Dll", "", "", "" };
+    treeWidget->setColumnCount(3);
+    QStringList headers = { "Dll", "", ""};
     treeWidget->setHeaderLabels(headers);
     QSqlQuery query;
     query.exec("SELECT te.type AS event_type, te.inst_address AS event_address, te.mem_address, te.color, te.mem_value, te.mem_len, "\
@@ -216,11 +216,45 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
         secondChild->setText(1, query.value("direct_function").toString());
         qDebug()<<"New second child with dll: "<<secondChild->text(0);
 
-        //Fourth level, information about the taint event
+        //Fourth level, information about the taint event itself
+        QTreeWidgetItem *thirdChildHeader = new QTreeWidgetItem();
+        thirdChildHeader->setText(0, "Base instruction");
+        thirdChildHeader->setText(1, "Event type");
+        thirdChildHeader->setText(2, "Color");
+        secondChild->addChild(thirdChildHeader);
+        QTreeWidgetItem *thirdChild = new QTreeWidgetItem();
+        thirdChild->setText(0, query.value("event_address").toString());
+        int eventType = query.value("event_type").toInt();
+        QString eventTypeStr;
+        switch(eventType)
+        {
+            case 1: eventTypeStr = "UNTAINT"; break;
+            case 2: eventTypeStr = "TAINT"; break;
+            case 3: eventTypeStr = "MOVED TAINT"; break;
+            case 4: eventTypeStr = "MIXED COLORS"; break;
+            case 5: eventTypeStr = "RULE TAINT"; break;
+            case 6: eventTypeStr = "RULE MOVE TAINT"; break;
+            case 0:
+            default: eventTypeStr = "ERROR"; break;
+        }
+        thirdChild->setText(1, eventTypeStr);
+        thirdChild->setText(2, query.value("color").toString());
+
+        //Fifth level, detailed info about memory at the taint event
+        QTreeWidgetItem *fourthChildHeader = new QTreeWidgetItem();
+        fourthChildHeader->setText(0, "Memory value");
+        fourthChildHeader->setText(1, "Length");
+        fourthChildHeader->setText(2, "Address");
+        thirdChild->addChild(fourthChildHeader);
+        QTreeWidgetItem *fourthChild = new QTreeWidgetItem();
+        fourthChild->setText(0, query.value("mem_value").toString());
+        fourthChild->setText(1, query.value("mem_len").toString());
+        fourthChild->setText(2, query.value("mem_address").toString());
 
 
-
-
+        //Add all elements one inside the other
+        thirdChild->addChild(fourthChild);
+        secondChild->addChild(thirdChild);
         child->addChild(secondChild);
         if(!reusedRoutine)
         {
