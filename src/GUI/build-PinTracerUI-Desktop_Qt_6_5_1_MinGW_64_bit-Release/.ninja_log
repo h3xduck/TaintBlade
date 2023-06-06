@@ -124,3 +124,16 @@
 324	3416	7077678051259711	CMakeFiles/PinTracerUI.dir/MultiWindowViewWidget.cpp.obj	c4cdb81d4cd2b2e4
 310	3446	7077678051510504	CMakeFiles/PinTracerUI.dir/mainwindow.cpp.obj	f4998961be67411b
 3446	3607	7077678052997230	PinTracerUI.exe	cc1efdd604c588c5
+6	333	7077765780929012	PinTracerUI_autogen/timestamp	4e16b1bb836b81b5
+6	333	7077765780929012	PinTracerUI_autogen/mocs_compilation.cpp	4e16b1bb836b81b5
+6	333	7077765780929012	C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/timestamp	4e16b1bb836b81b5
+6	333	7077765780929012	C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/mocs_compilation.cpp	4e16b1bb836b81b5
+362	2923	7077765806836069	CMakeFiles/PinTracerUI.dir/TaintRoutinesWidget.cpp.obj	da4ca8c260371085
+366	3041	7077765807795485	CMakeFiles/PinTracerUI.dir/TraceFunctionsWidget.cpp.obj	3b728ee4c19ae33c
+369	3105	7077765808660015	CMakeFiles/PinTracerUI.dir/TaintEventsWidget.cpp.obj	8775996eacafb8b3
+348	3276	7077765810336789	CMakeFiles/PinTracerUI.dir/DatabaseManager.cpp.obj	930556f3f62a4a66
+355	3371	7077765811210062	CMakeFiles/PinTracerUI.dir/PinconfigurationDialog.cpp.obj	7a710b326cad936b
+352	3652	7077765814109189	CMakeFiles/PinTracerUI.dir/TracedProcessWidget.cpp.obj	7d6fb04e24de2eb6
+359	3907	7077765816460832	CMakeFiles/PinTracerUI.dir/MultiWindowViewWidget.cpp.obj	c4cdb81d4cd2b2e4
+345	4034	7077765817899032	CMakeFiles/PinTracerUI.dir/mainwindow.cpp.obj	f4998961be67411b
+4034	4401	7077765821415125	PinTracerUI.exe	cc1efdd604c588c5

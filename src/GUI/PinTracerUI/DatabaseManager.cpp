@@ -29,8 +29,8 @@ void DatabaseManager::buildTaintRoutinesTree(QTreeWidget *treeWidget)
     QStringList headers = { "Function name", "Dll", "Base entry address", "Base exit address", "Event type"};
     treeWidget->setHeaderLabels(headers);
     QSqlQuery query;
-    //Get all events, but not those which refer to routines that indirectly taint others
-    query.exec("SELECT * from taint_routines as t JOIN dll_names as d ON (t.dll_idx = d.idx);");
+    //Get all taint routines that were selected by the user, but not those where just some taint operation happened (type 3), only sources, sinks...
+    query.exec("SELECT * from taint_routines as t JOIN dll_names as d ON (t.dll_idx = d.idx) WHERE events_type IS NOT 3;");
 
     while(query.next())
     {
