@@ -327,7 +327,7 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 			{
 				taintSinkActivated = true;
 				UINT16 color = taintController.memGetColor((ADDRINT)srcStr + ii);
-				taintController.taintMemByteWithColor((ADDRINT)destStr + ii, color);
+				taintController.taintMemByteWithColor((ADDRINT)destStr + ii, color, true);
 				LOG_DEBUG("MultiByteToWideChar: Tainted mem[" << to_hex_dbg((ADDRINT)destStr + ii) << "] with color " << color << " from mem[" << to_hex_dbg((ADDRINT)srcStr + ii) << "]");
 			}
 

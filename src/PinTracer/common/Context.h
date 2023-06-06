@@ -17,6 +17,7 @@ public:
 		std::string funcName;
 		std::string dllName;
 		ADDRINT routineStart;
+		ADDRINT routineBaseStart;
 		ADDRINT possibleJumpPoint; //possible address at which the routine jumped to another non-traced dll
 		ADDRINT possibleBaseJumpPoint; //same as previous, but base address
 	};

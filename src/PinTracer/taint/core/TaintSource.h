@@ -258,8 +258,9 @@ public:
 			RTN rtn = RTN_FindByAddress(ip); 
 			RTN_Open(rtn);
 			ctx.currentRoutineInfo().routineStart = INS_Address(RTN_InsHeadOnly(rtn));
+			ctx.currentRoutineInfo().routineBaseStart = InstructionWorker::getBaseAddress(ctx.currentRoutineInfo().routineStart);
 			RTN_Close(rtn);
-			ctx.currentRoutineInfo().funcName = InstructionWorker::getDllFromAddress(ip);
+			ctx.currentRoutineInfo().funcName = InstructionWorker::getFunctionNameFromAddress(ip);
 			ctx.currentRoutineInfo().dllName = InstructionWorker::getDllFromAddress(ip);
 		}
 

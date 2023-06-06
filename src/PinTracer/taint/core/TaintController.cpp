@@ -49,9 +49,9 @@ void TaintController::taintMemWithMem(const ADDRINT destMem, const UINT32 destBy
 	}
 }
 
-void TaintController::taintMemByteWithColor(const ADDRINT destMem, UINT16 color)
+void TaintController::taintMemByteWithColor(const ADDRINT destMem, UINT16 color, BOOL manualTaint)
 {
-	this->tagMap.taintMem(destMem, color);
+	this->tagMap.taintMem(destMem, color, manualTaint);
 }
 
 void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg, BOOL colorOverwrite)

@@ -53,6 +53,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 	sql = "CREATE TABLE taint_events("\
 		"type         INTEGER,"\
 		"routine_idx  INTEGER,"\
+		"indirect_routine_idx  INTEGER,"\
 		"inst_address INTEGER,"\
 		"mem_address  INTEGER,"\
 		"color        INTEGER NOT NULL,"\
@@ -130,6 +131,24 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		return;
 	}
 
+	//Table holding routines from scoped images which indirectly lead to some taint event (that happens at some other routine)
+	sql = "CREATE TABLE indirect_taint_routines ("\
+		"idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"function	TEXT(150),"\
+		"dll_idx	TEXT(150),"\
+		"inst_entry	INTEGER,"\
+		"inst_base_entry	INTEGER,"\
+		"possible_jump		INTEGER,"\
+		"possible_base_jump	INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
 	//Table holding functions which the user selected to trace
 	sql = "CREATE TABLE trace_functions ("\
 		"idx		INTEGER PRIMARY KEY NOT NULL,"\
@@ -182,6 +201,9 @@ void UTILS::DB::DatabaseManager::emptyDatabase()
 	sql = "DROP TABLE taint_routines";
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 
+	sql = "DROP TABLE indirect_taint_routines";
+	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+
 	sql = "DROP TABLE trace_functions";
 	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 }
@@ -228,35 +250,43 @@ void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine:
 		this->openDatabase();
 	}
 
-	//First, we will insert the last routine from the main executable or a scoped image that we know was executed before this taint event happened
-	struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
-	data.dll = ctx.currentRoutineInfo().dllName;
-	data.func = ctx.currentRoutineInfo().funcName;
-	data.instAddrEntry = ctx.currentRoutineInfo().routineStart;
-	data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_INDIRECT;
-	data.instAddrLast = 0; //We do not have this info just because of optimization reasons
-	this->insertTaintRoutineRecord(data);
-	int routine_idx = getAutoIncrementIndexFromLastInsert();
+	//We insert the taint event and put the routine index as the next routine that will be tainted, and only if it is a "manual taint". This is because
+	//only the functions at taint routines will be responsible of generating a manual taint event (the rest are just moving the taint around). Also, we want to
+	//get the next index because the taint event will always be dumped before the taint routine, since that one is only dumped after all of its instructions are
+	//executed and it exists.
+	//Secondly, we will insert the indirect taint, that is, the last routine from the main executable or a scoped image that we know was executed before this taint event happened
+	this->insertIndirectTaintRoutineRecordFromContextData();
+	int indirect_routine_idx = getLastInsertedIndex();
 
-	std::string sql = "INSERT INTO taint_events(type, routine_idx, inst_address, mem_address, color, mem_value, mem_len) VALUES(" +
+	int routine_idx = -1;
+	if (event.eventType == UTILS::IO::DataDumpLine::TAINTGEN || event.eventType == UTILS::IO::DataDumpLine::CHANGEGEN)
+	{
+		routine_idx = getIndexNextInsertedTaintRoutine();
+	}
+
+	LOG_DEBUG("INSERTING TAINT EVENT:: IRI:" << indirect_routine_idx << " RI:" << routine_idx);
+
+	std::string sql = "INSERT INTO taint_events(type, routine_idx, indirect_routine_idx, inst_address, mem_address, color, mem_value, mem_len) VALUES(" +
 		quotesql(std::to_string((int)event.eventType)) + ", " +
 		quotesql(std::to_string(routine_idx)) + ", " +
+		quotesql(std::to_string(indirect_routine_idx)) + ", " +
 		quotesql(std::to_string(ctx.getCurrentBaseInstruction())) + ", " +
 		quotesql(std::to_string(event.memAddr)) + ", " +
 		quotesql(std::to_string((int)event.color)) + ", " +
 		quotesql(ctx.getLastMemoryValue()) + ", " +
 		quotesql(std::to_string(ctx.getLastMemoryLength())) + ");";
 	char* errMsg = 0;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)
 	{
 		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
 		sqlite3_close(this->dbSession);
 		return;
 	}
+
 }
 
-int getAutoIncrementIndexFromLastInsert_callback(void* veryUsed, int argc, char** argv, char** azcolename)
+int getLastInsertedIndex_callback(void* veryUsed, int argc, char** argv, char** azcolename)
 {
 	int* ret = (int*)veryUsed;
 	for (int ii = 0; ii < argc; ii++)
@@ -268,13 +298,38 @@ int getAutoIncrementIndexFromLastInsert_callback(void* veryUsed, int argc, char*
 	return 0;
 }
 
-int UTILS::DB::DatabaseManager::getAutoIncrementIndexFromLastInsert()
+int UTILS::DB::DatabaseManager::getLastInsertedIndex()
 {
 	std::string sql = "SELECT last_insert_rowid()";
 	char* errMsg = 0;
 	int ret = -1;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getAutoIncrementIndexFromLastInsert_callback, &ret, &errMsg);
-	LOG_DEBUG("XGH: " << ret);
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getLastInsertedIndex_callback, &ret, &errMsg);
+	return ret;
+}
+
+int getIndexNextInsertedTaintRoutine_callback(void* veryUsed, int argc, char** argv, char** azcolename)
+{
+	int* ret = (int*)veryUsed;
+	for (int ii = 0; ii < argc; ii++)
+	{
+		if (argv[ii] != NULL)
+		{
+			*ret = std::atoi(argv[ii]);
+			//We get the next index to be inserted, so +1
+			(* ret)++;
+			return 0;
+		}
+	}
+	*ret = 1;
+	return 0;
+}
+
+int UTILS::DB::DatabaseManager::getIndexNextInsertedTaintRoutine()
+{
+	std::string sql = "SELECT MAX(idx) FROM taint_routines";
+	char* errMsg = 0;
+	int ret = 1;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), getIndexNextInsertedTaintRoutine_callback, &ret, &errMsg);
 	return ret;
 }
 
@@ -286,7 +341,7 @@ int getDLLIndex_callback(void* veryUsed, int argc, char** argv, char** azcolenam
 		*ret = std::atoi(argv[ii]);
 		return 0;
 	}
-	*ret = -1;
+	*ret = 1;
 	return 0;
 }
 
@@ -396,16 +451,51 @@ void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::Data
 	}
 
 	PIN_LockClient();
-	ADDRINT baseEntry = data.optionalBaseAddrs == true ? data.instAddrEntryBase : InstructionWorker::getBaseAddress(data.instAddrEntry);
-	ADDRINT baseLast = data.optionalBaseAddrs == true ? data.instAddrLastBase: InstructionWorker::getBaseAddress(data.instAddrLast);
 	std::string sql = "INSERT INTO taint_routines(function, dll_idx, inst_entry, inst_last, inst_base_entry, inst_base_last, events_type) VALUES(" +
 		quotesql(data.func) + ", " +
 		quotesql(std::to_string(dllIx)) + ", " +
 		quotesql(std::to_string(data.instAddrEntry)) + ", " +
 		quotesql(std::to_string(data.instAddrLast)) + ", " +
-		quotesql(std::to_string(baseEntry)) + ", " +
-		quotesql(std::to_string(baseLast)) + ", " +
+		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrEntry))) + ", " +
+		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrLast))) + ", " +
 		quotesql(std::to_string((int)data.containedEventsType)) + ");";
+	PIN_UnlockClient();
+	char* errMsg = 0;
+	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
+		sqlite3_close(this->dbSession);
+		return;
+	}
+	LOG_DEBUG("Inserted taint routine: " << data.func);
+
+}
+
+void UTILS::DB::DatabaseManager::insertIndirectTaintRoutineRecordFromContextData()
+{
+	if (!databaseOpened())
+	{
+		this->openDatabase();
+	}
+
+	int dllIx = this->getDLLIndex(ctx.currentRoutineInfo().dllName);
+	//LOG_DEBUG("Got IX: " << dllFromIx);
+	if (dllIx == -1)
+	{
+		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + ctx.currentRoutineInfo().dllName + "')";
+		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		dllIx = this->getDLLIndex(ctx.currentRoutineInfo().dllName);
+	}
+
+	PIN_LockClient();
+	std::string sql = "INSERT INTO indirect_taint_routines(function, dll_idx, inst_entry, inst_base_entry, possible_jump, possible_base_jump) VALUES(" +
+		quotesql(ctx.currentRoutineInfo().funcName) + ", " +
+		quotesql(std::to_string(dllIx)) + ", " +
+		quotesql(std::to_string(ctx.currentRoutineInfo().routineStart)) + ", " +
+		quotesql(std::to_string(ctx.currentRoutineInfo().routineBaseStart)) + ", " +
+		quotesql(std::to_string(ctx.currentRoutineInfo().possibleJumpPoint)) + ", " +
+		quotesql(std::to_string(ctx.currentRoutineInfo().possibleBaseJumpPoint)) + ");";
 	PIN_UnlockClient();
 	char* errMsg = 0;
 	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
