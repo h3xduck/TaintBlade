@@ -176,24 +176,107 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		return;
 	}
 
-	//Table holding protocol netbuffer bytes (bytes of each netbuffer)
+	//Table holding protocol netbuffers
 	sql = "CREATE TABLE protocol_buffer ("\
 		"buffer_idx		INTEGER PRIMARY KEY NOT NULL,"\
-		"function	TEXT(150),"\
-		"dll_idx	TEXT(150),"\
-		"num_args	INTEGER,"\
-		"argpre0		BLOB,"\
-		"argpre1		BLOB,"\
-		"argpre2		BLOB,"\
-		"argpre3		BLOB,"\
-		"argpre4		BLOB,"\
-		"argpre5		BLOB,"\
-		"argpost0		BLOB,"\
-		"argpost1		BLOB,"\
-		"argpost2		BLOB,"\
-		"argpost3		BLOB,"\
-		"argpost4		BLOB,"\
-		"argpost5		BLOB"\
+		"mem_start		INTEGER,"\
+		"mem_end		INTEGER,"\
+		"color_start	INTEGER,"\
+		"color_end		INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
+	//Table holding protocol netbuffer bytes (bytes of each netbuffer)
+	sql = "CREATE TABLE protocol_buffer_byte ("\
+		"buffer_idx		INTEGER,"\
+		"byte_offset	INTEGER,"\
+		"value			INTEGER,"\
+		"color			INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
+	//Table holding protocol words
+	sql = "CREATE TABLE protocol_word ("\
+		"buffer_idx		INTEGER,"\
+		"word_idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"type			INTEGER,"\
+		"buffer_start	INTEGER,"\
+		"buffer_end		INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
+	//Table holding one byte inside a protocol word
+	sql = "CREATE TABLE protocol_word_byte ("\
+		"word_idx		INTEGER,"\
+		"byte_offset	INTEGER,"\
+		"value			INTEGER,"\
+		"color			INTEGER,"\
+		"success		INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
+	//Table holding a protocol pointer belonging to a buffer
+	sql = "CREATE TABLE protocol_pointer ("\
+		"buffer_idx		INTEGER,"\
+		"pointer_idx	INTEGER PRIMARY KEY NOT NULL,"\
+		"pointed_color	INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
+	//Table holding a byte of a protocol pointer
+	sql = "CREATE TABLE protocol_pointer_byte ("\
+		"pointer_idx	INTEGER,"\
+		"byte_offset	INTEGER,"\
+		"value			INTEGER,"\
+		"color			INTEGER"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
+
+	//Table holding taint leads belonging to a byte at a buffer
+	sql = "CREATE TABLE protocol_taint_leads ("\
+		"buffer_idx		INTEGER,"\
+		"lead_idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"class			INTEGER,"\
+		"dll_name		TEXT(150),"\
+		"func_name		TEXT(150),"\
+		"arg_number		INTEGER,"\
+		"start_offset	INTEGER"\
 		"); ";
 	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
 	if (rc)
