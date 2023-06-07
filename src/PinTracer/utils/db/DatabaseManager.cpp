@@ -7,6 +7,21 @@ std::string quotesql(const std::string& s) {
 	return std::string("'") + s + std::string("'");
 }
 
+#define EXECUTE_SQL_QUERY(sql)\
+{\
+	char* errMsg = 0;																				\
+	int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);							\
+	if (rc)																							\
+	{																								\
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << "while running SQL : " << sql);	\
+		sqlite3_close(this->dbSession);																\
+		return;																						\
+	}																								\
+}
+
+#define EXECUTE_SQL_QUERY_IGNORE_ERROR(sql) sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);																							\
+
+
 UTILS::DB::DatabaseManager::DatabaseManager() {};
 
 void UTILS::DB::DatabaseManager::createDatabase()
@@ -16,14 +31,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"idx		INTEGER PRIMARY KEY AUTOINCREMENT, "\
 		"dll_name	TEXT(150)"\
 		"); ";
-	char* errMsg = 0;
-	int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << "while running SQL : "<< sql);
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Function calls table
 	sql = "CREATE TABLE function_calls ("\
@@ -41,13 +49,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"arg4         BLOB,"\
 		"arg5         BLOB"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Taint events table
 	sql = "CREATE TABLE taint_events("\
@@ -60,13 +62,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"mem_value    TEXT(16),"\
 		"mem_len      INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Color transformation table
 	sql = "CREATE TABLE color_transformation("\
@@ -74,13 +70,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"color_mix_1     INTEGER,"\
 		"color_mix_2     INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Memory colors table
 	sql = "CREATE TABLE memory_colors ("\
@@ -89,13 +79,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"mem_address  INTEGER,"\
 		"color        INTEGER NOT NULL"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Original colors table
 	sql = "CREATE TABLE original_colors ("\
@@ -104,13 +88,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"dll,"\
 		"func_index INTEGER NOT NULL"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding routines in which there was some taint event
 	sql = "CREATE TABLE taint_routines ("\
@@ -123,13 +101,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"inst_base_last		INTEGER,"\
 		"events_type		INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding routines from scoped images which indirectly lead to some taint event (that happens at some other routine)
 	sql = "CREATE TABLE indirect_taint_routines ("\
@@ -141,13 +113,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"possible_jump		INTEGER,"\
 		"possible_base_jump	INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding functions which the user selected to trace
 	sql = "CREATE TABLE trace_functions ("\
@@ -168,13 +134,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"argpost4		BLOB,"\
 		"argpost5		BLOB"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding protocol netbuffers
 	sql = "CREATE TABLE protocol_buffer ("\
@@ -184,13 +144,7 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"color_start	INTEGER,"\
 		"color_end		INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding protocol netbuffer bytes (bytes of each netbuffer)
 	sql = "CREATE TABLE protocol_buffer_byte ("\
@@ -199,29 +153,17 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"value			INTEGER,"\
 		"color			INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding protocol words
 	sql = "CREATE TABLE protocol_word ("\
 		"buffer_idx		INTEGER,"\
-		"word_idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"word_idx		INTEGER,"\
 		"type			INTEGER,"\
 		"buffer_start	INTEGER,"\
 		"buffer_end		INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding one byte inside a protocol word
 	sql = "CREATE TABLE protocol_word_byte ("\
@@ -231,27 +173,15 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"color			INTEGER,"\
 		"success		INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding a protocol pointer belonging to a buffer
 	sql = "CREATE TABLE protocol_pointer ("\
 		"buffer_idx		INTEGER,"\
-		"pointer_idx	INTEGER PRIMARY KEY NOT NULL,"\
+		"pointer_idx	INTEGER,"\
 		"pointed_color	INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding a byte of a protocol pointer
 	sql = "CREATE TABLE protocol_pointer_byte ("\
@@ -260,62 +190,48 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"value			INTEGER,"\
 		"color			INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding taint leads belonging to a byte at a buffer
 	sql = "CREATE TABLE protocol_taint_leads ("\
 		"buffer_idx		INTEGER,"\
-		"lead_idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"byte_offset	INTEGER,"\
 		"class			INTEGER,"\
 		"dll_name		TEXT(150),"\
 		"func_name		TEXT(150),"\
-		"arg_number		INTEGER,"\
-		"start_offset	INTEGER"\
+		"arg_number		INTEGER"\
 		"); ";
-	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 }
 
 void UTILS::DB::DatabaseManager::emptyDatabase()
 {
 	std::string sql = "DROP TABLE function_calls";
-	char* errMsg = 0;
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 
 	sql = "DROP TABLE dll_names";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 
 	sql = "DROP TABLE taint_events";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 
 	sql = "DROP TABLE color_transformation";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 	
 	sql = "DROP TABLE memory_colors";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 	
 	sql = "DROP TABLE original_colors";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 
 	sql = "DROP TABLE taint_routines";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 
 	sql = "DROP TABLE indirect_taint_routines";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 
 	sql = "DROP TABLE trace_functions";
-	sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 }
 
 void UTILS::DB::DatabaseManager::openDatabase()
@@ -343,14 +259,7 @@ void UTILS::DB::DatabaseManager::insertOriginalColorRecord(UINT16& color, TagLog
 		quotesql(data.dllName) +", "+
 		quotesql(data.funcName) +", "+
 		quotesql(std::to_string(routineIndex)) + ");";
-	char* errMsg = 0;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession)<<" while running SQL: "<< sql);
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 }
 
 void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine::memory_color_event_line_t event)
@@ -385,15 +294,7 @@ void UTILS::DB::DatabaseManager::insertTaintEventRecord(UTILS::IO::DataDumpLine:
 		quotesql(std::to_string((int)event.color)) + ", " +
 		quotesql(ctx.getLastMemoryValue()) + ", " +
 		quotesql(std::to_string(ctx.getLastMemoryLength())) + ");";
-	char* errMsg = 0;
-	int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
-		sqlite3_close(this->dbSession);
-		return;
-	}
-
+	EXECUTE_SQL_QUERY(sql);
 }
 
 int getLastInsertedIndex_callback(void* veryUsed, int argc, char** argv, char** azcolename)
@@ -468,7 +369,7 @@ void UTILS::DB::DatabaseManager::insertDLLName(std::string dllName)
 {
 	std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + dllName + "')";
 	char* errMsg = 0;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	EXECUTE_SQL_QUERY(sql);
 }
 
 
@@ -484,7 +385,7 @@ void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::Dat
 	if (dllFromIx == -1)
 	{
 		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + event.dllFrom + "')";
-		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		EXECUTE_SQL_QUERY(sql);
 		dllFromIx = this->getDLLIndex(event.dllFrom);
 	}
 
@@ -493,7 +394,7 @@ void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::Dat
 	if (dllToIx == -1)
 	{
 		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + event.dllTo + "')";
-		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		EXECUTE_SQL_QUERY(sql);
 		dllToIx = this->getDLLIndex(event.dllTo);
 	}
 
@@ -534,14 +435,7 @@ void UTILS::DB::DatabaseManager::insertFunctionCallsRecord(struct UTILS::IO::Dat
 			quotesql(std::to_string(event.memAddrTo)) + ");";
 	}
 	
-	char* errMsg = 0;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 }
 
 void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data)
@@ -556,7 +450,7 @@ void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::Data
 	if (dllIx == -1)
 	{
 		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + data.dll + "')";
-		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		EXECUTE_SQL_QUERY(sql);
 		dllIx = this->getDLLIndex(data.dll);
 	}
 
@@ -570,14 +464,8 @@ void UTILS::DB::DatabaseManager::insertTaintRoutineRecord(struct UTILS::IO::Data
 		quotesql(std::to_string(InstructionWorker::getBaseAddress(data.instAddrLast))) + ", " +
 		quotesql(std::to_string((int)data.containedEventsType)) + ");";
 	PIN_UnlockClient();
-	char* errMsg = 0;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
-		sqlite3_close(this->dbSession);
-		return;
-	}
+
+	EXECUTE_SQL_QUERY(sql);
 	LOG_DEBUG("Inserted taint routine: " << data.func);
 
 }
@@ -594,7 +482,7 @@ void UTILS::DB::DatabaseManager::insertIndirectTaintRoutineRecordFromContextData
 	if (dllIx == -1)
 	{
 		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + ctx.lastRoutineInfo().dllName + "')";
-		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		EXECUTE_SQL_QUERY(sql);
 		dllIx = this->getDLLIndex(ctx.lastRoutineInfo().dllName);
 	}
 
@@ -607,14 +495,7 @@ void UTILS::DB::DatabaseManager::insertIndirectTaintRoutineRecordFromContextData
 		quotesql(std::to_string(ctx.lastRoutineInfo().possibleJumpPoint)) + ", " +
 		quotesql(std::to_string(ctx.lastRoutineInfo().possibleBaseJumpPoint)) + ");";
 	PIN_UnlockClient();
-	char* errMsg = 0;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 }
 
 void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePoint& tp)
@@ -629,7 +510,7 @@ void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePo
 	if (dllIx == -1)
 	{
 		std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + tp.getDllName() + "')";
-		const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, NULL);
+		EXECUTE_SQL_QUERY(sql);
 		dllIx = this->getDLLIndex(tp.getDllName());
 	}
 
@@ -724,12 +605,5 @@ void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePo
 	}
 	
 	PIN_UnlockClient();
-	char* errMsg = 0;
-	const int rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
-	if (rc)
-	{
-		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession) << " while running SQL: " << sql);
-		sqlite3_close(this->dbSession);
-		return;
-	}
+	EXECUTE_SQL_QUERY(sql);
 }
