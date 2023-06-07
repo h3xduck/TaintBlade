@@ -1,4 +1,4 @@
-C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/EWIEGA46WW/moc_ProtocolBufferWidget.cpp: C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferWidget.h \
+C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/EWIEGA46WW/moc_ProtocolBufferDrawer.cpp: C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferDrawer.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/moc_predefs.h \
   C:/Qt/6.5.1/mingw_64/include/QtCore/q20memory.h \
   C:/Qt/6.5.1/mingw_64/include/QtCore/q20type_traits.h \

@@ -773,13 +773,13 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "ProtocolBufferWidget.h",
+			"path" : "ProtocolBufferDrawer.h",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
-			"path" : "ProtocolBufferWidget.cpp",
+			"path" : "ProtocolBufferDrawer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -824,7 +824,7 @@
 		},
 		{
 			"backtrace" : 4,
-			"path" : "ProtocolBufferWidget.ui",
+			"path" : "ProtocolBufferDrawer.ui",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -878,7 +878,7 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_ProtocolBufferWidget.h",
+			"path" : "C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_5_1_MinGW_64_bit-Release/PinTracerUI_autogen/include/ui_ProtocolBufferDrawer.h",
 			"sourceGroupIndex" : 2
 		},
 		{

@@ -54,10 +54,6 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     ui->level2HSplitterLeft->setSizes(QList<int>() << 300 << 200);
     ui->level2HSplitterRight->setSizes(QList<int>() << 200 << 200);
     ui->level3VSplitterLeftUp->setSizes(QList<int>() << 300 << 100);
-
-    //TEST DEVELOP
-    ui->frameLeftDownLeft->layout()->addWidget(new ProtocolVisualizationWidget(ui->frameLeftDownLeft));
-    ui->frameLeftDownLeft->layout()->setContentsMargins(0,0,0,0);
 }
 
 MultiWindowViewWidget::~MultiWindowViewWidget()
@@ -119,13 +115,13 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     ui->frameRightDownRight->layout()->setContentsMargins(0,0,0,0);
 
     //Trace functions widget. Delete any preious one.
-    if((layoutItem = ui->frameLeftDownRight->layout()->takeAt(0)) != NULL)
+    if((layoutItem = ui->frameRightDownLeft->layout()->takeAt(0)) != NULL)
     {
         delete layoutItem->widget();
         delete layoutItem;
     }
-    ui->frameLeftDownRight->layout()->addWidget(new TraceFunctionsWidget(ui->frameLeftDownRight));
-    ui->frameLeftDownRight->layout()->setContentsMargins(0,0,0,0);
+    ui->frameRightDownLeft->layout()->addWidget(new TraceFunctionsWidget(ui->frameRightDownLeft));
+    ui->frameRightDownLeft->layout()->setContentsMargins(0,0,0,0);
 
     //Taint events widget. Delete any preious one.
     if((layoutItem = ui->frameRightUpRight->layout()->takeAt(0)) != NULL)
@@ -136,13 +132,13 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     ui->frameRightUpRight->layout()->addWidget(new TaintEventsWidget(ui->frameRightUpRight));
     ui->frameRightUpRight->layout()->setContentsMargins(0,0,0,0);
 
-    //Protocol buffers widget. Delete any previous one.
-    if((layoutItem = ui->frameLeftDownLeft->layout()->takeAt(0)) != NULL)
+    //Protocol widgets. Include buffers and other displays
+    if((layoutItem = ui->frameLeftDownRight->layout()->takeAt(0)) != NULL)
     {
         delete layoutItem->widget();
         delete layoutItem;
     }
-    ui->frameLeftDownLeft->layout()->addWidget(new ProtocolVisualizationWidget(ui->frameLeftDownLeft));
-    ui->frameLeftDownLeft->layout()->setContentsMargins(0,0,0,0);
+    ui->frameLeftDownRight->layout()->addWidget(new ProtocolVisualizationWidget(ui->frameLeftDownRight));
+    ui->frameLeftDownRight->layout()->setContentsMargins(0,0,0,0);
 
 }

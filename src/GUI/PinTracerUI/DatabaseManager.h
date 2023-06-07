@@ -7,6 +7,7 @@
 #include <QTreeWidget>
 #include <QSqlQuery>
 #include <QTableWidgetItem>
+#include "ProtocolBufferDrawer.h"
 
 class DatabaseManager
 {
@@ -23,6 +24,7 @@ public:
     void buildTaintRoutinesTree(QTreeWidget *treeWidget);
     void buildTraceFunctionsTree(QTreeWidget *treeWidget);
     void buildTaintEventsTree(QTreeWidget *treeWidget);
+    void buildBufferVisualization(ProtocolBufferDrawer *bufferWidget, int bufferIndex);
 
 private:
     QSqlDatabase m_db;

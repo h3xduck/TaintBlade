@@ -1,12 +1,12 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'ProtocolBufferWidget.h'
+** Meta object code from reading C++ file 'ProtocolBufferDrawer.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../PinTracerUI/ProtocolBufferWidget.h"
+#include "../../../PinTracerUI/ProtocolBufferDrawer.h"
 #include <QtCore/qmetatype.h>
 
 #if __has_include(<QtCore/qtmochelpers.h>)
@@ -19,7 +19,7 @@ QT_BEGIN_MOC_NAMESPACE
 #include <memory>
 
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'ProtocolBufferWidget.h' doesn't include <QObject>."
+#error "The header file 'ProtocolBufferDrawer.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -36,28 +36,28 @@ QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
 
 #ifdef QT_MOC_HAS_STRINGDATA
-struct qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS_t {};
-static constexpr auto qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS = QtMocHelpers::stringData(
-    "ProtocolBufferWidget"
+struct qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS = QtMocHelpers::stringData(
+    "ProtocolBufferDrawer"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
-struct qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS_t {
+struct qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS_t {
     uint offsetsAndSizes[2];
     char stringdata0[21];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS_t qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS = {
+    uint(sizeof(qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS_t qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS = {
     {
-        QT_MOC_LITERAL(0, 20)   // "ProtocolBufferWidget"
+        QT_MOC_LITERAL(0, 20)   // "ProtocolBufferDrawer"
     },
-    "ProtocolBufferWidget"
+    "ProtocolBufferDrawer"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_CLASSProtocolBufferWidgetENDCLASS[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSProtocolBufferDrawerENDCLASS[] = {
 
  // content:
       11,       // revision
@@ -73,20 +73,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSProtocolBufferWidgetENDCLASS[] =
        0        // eod
 };
 
-Q_CONSTINIT const QMetaObject ProtocolBufferWidget::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject ProtocolBufferDrawer::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS.offsetsAndSizes,
-    qt_meta_data_CLASSProtocolBufferWidgetENDCLASS,
+    qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSProtocolBufferDrawerENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<ProtocolBufferWidget, std::true_type>
+        QtPrivate::TypeAndForceComplete<ProtocolBufferDrawer, std::true_type>
     >,
     nullptr
 } };
 
-void ProtocolBufferWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void ProtocolBufferDrawer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -94,20 +94,20 @@ void ProtocolBufferWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
     (void)_a;
 }
 
-const QMetaObject *ProtocolBufferWidget::metaObject() const
+const QMetaObject *ProtocolBufferDrawer::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ProtocolBufferWidget::qt_metacast(const char *_clname)
+void *ProtocolBufferDrawer::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CLASSProtocolBufferWidgetENDCLASS.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSProtocolBufferDrawerENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int ProtocolBufferWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int ProtocolBufferDrawer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     return _id;

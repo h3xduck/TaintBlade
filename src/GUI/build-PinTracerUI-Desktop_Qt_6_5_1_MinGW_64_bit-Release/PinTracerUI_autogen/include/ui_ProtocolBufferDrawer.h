@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'ProtocolBufferWidget.ui'
+** Form generated from reading UI file 'ProtocolBufferDrawer.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_PROTOCOLBUFFERWIDGET_H
-#define UI_PROTOCOLBUFFERWIDGET_H
+#ifndef UI_PROTOCOLBUFFERDRAWER_H
+#define UI_PROTOCOLBUFFERDRAWER_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -47,9 +47,9 @@ public:
 };
 
 namespace Ui {
-    class ProtocolBufferWidget: public Ui_ProtocolBufferWidget {};
+class ProtocolBufferDrawer: public Ui_ProtocolBufferWidget {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_PROTOCOLBUFFERWIDGET_H
+#endif // UI_PROTOCOLBUFFERDRAWER_H

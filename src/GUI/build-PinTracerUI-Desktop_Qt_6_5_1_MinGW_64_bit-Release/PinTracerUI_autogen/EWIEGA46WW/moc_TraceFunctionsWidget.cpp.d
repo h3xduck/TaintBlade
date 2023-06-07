@@ -146,15 +146,18 @@ C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_
   C:/Qt/6.5.1/mingw_64/include/QtSql/qtsql-config.h \
   C:/Qt/6.5.1/mingw_64/include/QtSql/qtsqlexports.h \
   C:/Qt/6.5.1/mingw_64/include/QtSql/qtsqlglobal.h \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QTableWidgetItem \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QTreeWidget \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/QWidget \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractitemview.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractslider.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.5.1/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.5.1/mingw_64/include/QtWidgets/qslider.h \
@@ -386,4 +389,5 @@ C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/build-PinTracerUI-Desktop_Qt_6_
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wctype.h \
-  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/DatabaseManager.h
+  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/DatabaseManager.h \
+  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferDrawer.h

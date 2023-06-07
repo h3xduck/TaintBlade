@@ -38,8 +38,8 @@ set(PROJECT_SOURCES
         TaintEventsWidget.cpp
         ProtocolVisualizationWidget.h
         ProtocolVisualizationWidget.cpp
-        ProtocolBufferWidget.h
-        ProtocolBufferWidget.cpp
+        ProtocolBufferDrawer.h
+        ProtocolBufferDrawer.cpp
 )
 
 set(UI_HEADERS
@@ -51,7 +51,7 @@ set(UI_HEADERS
     TraceFunctionsWidget.ui
     TaintEventsWidget.ui
     ProtocolVisualizationWidget.ui
-    ProtocolBufferWidget.ui
+    ProtocolBufferDrawer.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

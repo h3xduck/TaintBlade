@@ -13,13 +13,11 @@ ProtocolVisualizationWidget::ProtocolVisualizationWidget(QWidget *parent) :
     QVBoxLayout *layout = new QVBoxLayout(contentWidget);
     ui->scrollArea->setWidget(contentWidget);
 
-    ProtocolBufferWidget* bufferWidget = new ProtocolBufferWidget();
+    ProtocolBufferDrawer* bufferWidget = new ProtocolBufferDrawer();
     layout->addWidget(bufferWidget);
     layout->setAlignment(Qt::AlignCenter);
 
-
-    for(int ii=0; ii<100; ii++)
-    bufferWidget->addButton();
+    globalDBManager.buildBufferVisualization(bufferWidget, 0);
 }
 
 ProtocolVisualizationWidget::~ProtocolVisualizationWidget()

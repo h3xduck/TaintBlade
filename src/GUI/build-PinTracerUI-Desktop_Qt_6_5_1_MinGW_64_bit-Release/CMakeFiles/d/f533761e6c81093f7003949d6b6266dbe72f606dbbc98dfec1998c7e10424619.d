@@ -670,8 +670,8 @@ PinTracerUI_autogen/timestamp: \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinconfigurationDialog.cpp \
-  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferWidget.cpp \
-  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferWidget.h \
+  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferDrawer.cpp \
+  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferDrawer.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolVisualizationWidget.cpp \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolVisualizationWidget.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintEventsWidget.cpp \
@@ -694,7 +694,7 @@ PinTracerUI_autogen/timestamp: \
   PinTracerUI_autogen/moc_predefs.h \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/MultiWindowViewWidget.ui \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/PinConfigurationDialog.ui \
-  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferWidget.ui \
+  C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolBufferDrawer.ui \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/ProtocolVisualizationWidget.ui \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintEventsWidget.ui \
   C:/Users/Marcos/source/repos/h3xduck/TFM/src/GUI/PinTracerUI/TaintRoutinesWidget.ui \

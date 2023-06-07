@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ProtocolBufferWidget</class>
- <widget class="QWidget" name="ProtocolBufferWidget">
+ <class>ProtocolBufferDrawer</class>
+ <widget class="QWidget" name="ProtocolBufferDrawer">
   <property name="geometry">
    <rect>
     <x>0</x>

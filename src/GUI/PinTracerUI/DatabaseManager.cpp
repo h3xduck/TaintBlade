@@ -267,3 +267,19 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
         }
     }
 }
+
+void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidget, int bufferIndex)
+{
+    qDebug()<<"Drawing protocol buffer for buffer" << bufferIndex;
+
+    //Get the value of the bytes of the buffer
+    QSqlQuery query;
+    query.exec("SELECT byte_value FROM protocol_buffer_byte WHERE buffer_idx = 0;");
+
+    while(query.next())
+    {
+        //Display the byte at the widget
+        bufferWidget->addProtocolBufferByte(QString(QChar(query.value("byte_value").toInt())));
+    }
+
+}

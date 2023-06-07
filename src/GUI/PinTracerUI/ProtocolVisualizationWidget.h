@@ -2,7 +2,8 @@
 #define PROTOCOLVISUALIZATIONWIDGET_H
 
 #include <QWidget>
-#include "ProtocolBufferWidget.h"
+#include "ProtocolBufferDrawer.h"
+#include "DatabaseManager.h"
 
 namespace Ui {
 class ProtocolVisualizationWidget;

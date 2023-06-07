@@ -1,14 +1,14 @@
-#include "ProtocolBufferWidget.h"
-#include "ui_ProtocolBufferWidget.h"
+#include "ProtocolBufferDrawer.h"
+#include "ui_ProtocolBufferDrawer.h"
 
-ProtocolBufferWidget::ProtocolBufferWidget(QWidget *parent) :
+ProtocolBufferDrawer::ProtocolBufferDrawer(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ProtocolBufferWidget)
+    ui(new Ui::ProtocolBufferDrawer)
 {
     ui->setupUi(this);
 
     //Build a series of buttons representing bytes
-    QPushButton *button = new QPushButton(QString("No\nprotocol\nfound"), this);
+    /*QPushButton *button = new QPushButton(QString("No\nprotocol\nfound"), this);
     button->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     button->setFixedSize(60,90);
 
@@ -29,19 +29,27 @@ ProtocolBufferWidget::ProtocolBufferWidget(QWidget *parent) :
     QPalette pal = QPalette();
     pal.setColor(QPalette::Window, Qt::red);
     this->setAutoFillBackground(true);
-    this->setPalette(pal);
+    this->setPalette(pal);*/
 
 
 }
 
-ProtocolBufferWidget::~ProtocolBufferWidget()
+ProtocolBufferDrawer::~ProtocolBufferDrawer()
 {
     delete ui;
 }
 
-void ProtocolBufferWidget::addButton()
+void ProtocolBufferDrawer::addButton()
 {
     QPushButton *button = new QPushButton(QString("No\nprotocol\nfound"), this);
+    button->setFixedSize(60,90);
+    button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->horizontalLayout->addWidget(button);
+}
+
+void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue)
+{
+    QPushButton *button = new QPushButton(byteValue, this);
     button->setFixedSize(60,90);
     button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     ui->horizontalLayout->addWidget(button);
