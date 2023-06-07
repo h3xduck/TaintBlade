@@ -175,6 +175,33 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		sqlite3_close(this->dbSession);
 		return;
 	}
+
+	//Table holding protocol netbuffer bytes (bytes of each netbuffer)
+	sql = "CREATE TABLE protocol_buffer ("\
+		"buffer_idx		INTEGER PRIMARY KEY NOT NULL,"\
+		"function	TEXT(150),"\
+		"dll_idx	TEXT(150),"\
+		"num_args	INTEGER,"\
+		"argpre0		BLOB,"\
+		"argpre1		BLOB,"\
+		"argpre2		BLOB,"\
+		"argpre3		BLOB,"\
+		"argpre4		BLOB,"\
+		"argpre5		BLOB,"\
+		"argpost0		BLOB,"\
+		"argpost1		BLOB,"\
+		"argpost2		BLOB,"\
+		"argpost3		BLOB,"\
+		"argpost4		BLOB,"\
+		"argpost5		BLOB"\
+		"); ";
+	rc = sqlite3_exec(this->dbSession, sql.c_str(), NULL, 0, &errMsg);
+	if (rc)
+	{
+		LOG_ERR("DB Error: " << sqlite3_errmsg(this->dbSession));
+		sqlite3_close(this->dbSession);
+		return;
+	}
 }
 
 void UTILS::DB::DatabaseManager::emptyDatabase()

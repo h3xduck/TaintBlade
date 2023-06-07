@@ -59,10 +59,10 @@ namespace REVERSING
 			std::vector<ProtocolPointer> pointerVector_;
 
 			/**
-			Vector of taint reasons, one for each color, detailing whether there is a special reason behind
+			Vector of taint leads, one for each color, detailing whether there is a special use for
 			any byte was tainted
 			*/
-			std::vector<TagLog::color_taint_reason_t> colorTaintReasonsVector;
+			std::vector<TagLog::color_taint_lead_t> colorTaintLeadsVector;
 
 		public:
 			ProtocolNetworkBuffer();
@@ -86,9 +86,9 @@ namespace REVERSING
 			void setWordVector(std::vector<ProtocolWord> vec);
 			void addWordToWordVector(ProtocolWord &word);
 			std::vector<ProtocolWord> getWordVector();
-			void setcolorTaintReasonsVector(std::vector<TagLog::color_taint_reason_t> vec);
-			void addReasonTocolorTaintReasonsVector(TagLog::color_taint_reason_t& reason);
-			std::vector<TagLog::color_taint_reason_t> gecolorTaintReasonsVector();
+			void setcolorTaintLeadsVector(std::vector<TagLog::color_taint_lead_t> vec);
+			void addLeadTocolorTaintLeadsVector(TagLog::color_taint_lead_t& lead);
+			std::vector<TagLog::color_taint_lead_t> gecolorTaintLeadsVector();
 
 			std::vector<ProtocolPointer>& pointerVector() { return this->pointerVector_; }
 		};

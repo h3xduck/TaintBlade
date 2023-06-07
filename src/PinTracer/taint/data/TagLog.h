@@ -17,15 +17,15 @@ public:
 		UINT8 byteValue; //Original value of the byte at which the color was generated
 	};
 
-	enum taint_reason_class
+	enum taint_lead_class
 	{
 		NONE,
-		TAINT_REASON_SINK //Was sent to CreateProccess or similar
+		TAINT_LEAD_SINK //Was sent to CreateProccess or similar
 	};
-	typedef struct color_taint_reason_t
+	typedef struct color_taint_lead_t
 	{
-		taint_reason_class reasonClass;
-		struct taint_reason_sink_data_t {
+		taint_lead_class leadClass;
+		struct taint_lead_sink_data_t {
 			std::string dllName;
 			std::string funcName;
 			int argNumber; //Argument in which the tainted data is found
@@ -40,10 +40,10 @@ private:
 	//Stores original colors, not created by mixing two others
 	std::tr1::unordered_map<UINT16, original_color_data_t> originalColorsMap;
 	/*
-	Stores colors, and a list of 'reasons' why they are not just a normal taint(e.g.: they were sent into a taint sink)
+	Stores colors, and a list of 'leads' which indicate special places this color is involved in (e.g.: they were sent into a taint sink)
 	If a color does not appear here, it did not take part in any special operation
 	*/
-	std::tr1::unordered_map<UINT16, color_taint_reason_t> colorReasonMap;
+	std::tr1::unordered_map<UINT16, color_taint_lead_t> colorLeadMap;
 
 	void printBT(const std::string& prefix, const UINT16 color, bool isLeft);
 	void printBT(const UINT16 color);
@@ -58,9 +58,9 @@ public:
 	void logTagOriginal(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue);
 
 	/**
-	Stores in the map of taint color reasons a value
+	Stores in the map of taint color leads a value
 	*/
-	void logColorTaintReason(UINT16 color, TagLog::color_taint_reason_t reason);
+	void logColorTaintLead(UINT16 color, TagLog::color_taint_lead_t lead);
 
 	void dumpTagLogOriginalColors();
 
@@ -85,14 +85,14 @@ public:
 	std::vector<std::pair<UINT16, original_color_data_t>> getOriginalColorsVector();
 
 	/**
-	Get vector of color taint reasons
+	Get vector of color taint leads
 	*/
-	std::vector<std::pair<UINT16, color_taint_reason_t>> getColorsReasonsVector();
+	std::vector<std::pair<UINT16, color_taint_lead_t>> getColorsLeadsVector();
 
 	/**
-	Get the reason why a color was tainted, returns NONE reason if none
+	Get the leads of a color, returns NONE lead if none
 	*/
-	color_taint_reason_t getColorTaintReason(UINT16 color);
+	color_taint_lead_t getColorTaintLead(UINT16 color);
 
 	/**
 	Get vector of color transformations

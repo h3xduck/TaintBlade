@@ -812,14 +812,14 @@ std::vector<std::pair<UINT16, TagLog::original_color_data_t>> TagMap::getOrigina
 	return this->tagLog.getOriginalColorsVector();
 }
 
-std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> TagMap::getColorReasonsVector()
+std::vector<std::pair<UINT16, TagLog::color_taint_lead_t>> TagMap::getColorLeadsVector()
 {
-	return this->tagLog.getColorsReasonsVector();
+	return this->tagLog.getColorsLeadsVector();
 }
 
-TagLog::color_taint_reason_t TagMap::getColorTaintReason(UINT16 color)
+TagLog::color_taint_lead_t TagMap::getColorTaintLead(UINT16 color)
 {
-	return this->tagLog.getColorTaintReason(color);
+	return this->tagLog.getColorTaintLead(color);
 }
 
 std::vector<Tag> TagMap::getColorTransVector()

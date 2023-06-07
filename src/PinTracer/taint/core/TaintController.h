@@ -37,9 +37,9 @@ public:
 	void registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue);
 	
 	/**
-	Registers a taint reason for a color
+	Registers a taint lead for a color
 	*/
-	void registerColorReason(UINT16 color, TagLog::color_taint_reason_t reason);
+	void registerColorLead(UINT16 color, TagLog::color_taint_lead_t lead);
 
 	/**
 	Returns a vector will all parents of a color (recursively, not limited to 1 generation)
@@ -52,8 +52,8 @@ public:
 	void dumpTagLogOriginalColors();
 	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();
 	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> getOriginalColorsVector();
-	std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> getColorReasonsVector();
-	TagLog::color_taint_reason_t getColorTaintReason(UINT16 color);
+	std::vector<std::pair<UINT16, TagLog::color_taint_lead_t>> getColorLeadsVector();
+	TagLog::color_taint_lead_t getColorTaintLead(UINT16 color);
 	std::vector<Tag> getColorTransVector();
 
 	bool regIsTainted(REG reg);

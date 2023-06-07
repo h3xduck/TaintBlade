@@ -75,7 +75,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		const ADDRINT memAddress = data.second.memAddress;
 		const UINT8 byteValue = data.second.byteValue;
 		const UINT16 color = data.first;
-		TagLog::color_taint_reason_t taintReason = taintManager.getController().getColorTaintReason(color);
+		TagLog::color_taint_lead_t taintLead = taintManager.getController().getColorTaintLead(color);
 		if (memAddress != lastMemValue+1)
 		{
 			LOG_DEBUG("Found new buffer, starting at " << to_hex_dbg(memAddress));
@@ -95,7 +95,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addValueToValuesVector(byteValue);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
-			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
+			protNetBuffer.addLeadTocolorTaintLeadsVector(taintLead);
 		}
 		else
 		{
@@ -108,7 +108,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addColorToColorsVector(color);
 			//We get the actual value of the byte at that memory address and store it
 			protNetBuffer.addValueToValuesVector(byteValue);
-			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
+			protNetBuffer.addLeadTocolorTaintLeadsVector(taintLead);
 			
 		}
 		lastMemValue = memAddress;

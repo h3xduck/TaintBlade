@@ -56,16 +56,16 @@ void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT currIp, ADDRINT retIp,
 				//We will mark any color that was a parent of this one to be part of a command (since their data will be here)
 				for (UINT16& colorParent : taintController.getColorParents(color))
 				{
-					TagLog::color_taint_reason_t reason;
-					reason.reasonClass = TagLog::TAINT_REASON_SINK;
-					reason.sinkData = {
+					TagLog::color_taint_lead_t lead;
+					lead.leadClass = TagLog::TAINT_LEAD_SINK;
+					lead.sinkData = {
 						*dllNameStr,
 						*funcNameStr,
 						0,
 						(ADDRINT)ii
 					};
 
-					taintController.registerColorReason(colorParent, reason);
+					taintController.registerColorLead(colorParent, lead);
 				}
 			}
 
@@ -93,16 +93,16 @@ void TAINT::CORE::TAINT_SINK::createProcessAEnter(ADDRINT currIp, ADDRINT retIp,
 				//We will mark any color that was a parent of this one to be part of a command (since their data will be here)
 				for (UINT16& colorParent : taintController.getColorParents(color)) {
 					UINT16 color = taintController.memGetColor((ADDRINT)commandLineArr + ii);
-					TagLog::color_taint_reason_t reason;
-					reason.reasonClass = TagLog::TAINT_REASON_SINK;
-					reason.sinkData = {
+					TagLog::color_taint_lead_t lead;
+					lead.leadClass = TagLog::TAINT_LEAD_SINK;
+					lead.sinkData = {
 						*dllNameStr,
 						*funcNameStr,
 						1,
 						(ADDRINT)ii
 					};
 
-					taintController.registerColorReason(colorParent, reason);
+					taintController.registerColorLead(colorParent, lead);
 				}
 			}
 
@@ -167,16 +167,16 @@ void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT currIp, ADDRINT retIp,
 				//We will mark any color that was a parent of this one to be part of a command (since their data will be here)
 				for (UINT16& colorParent : taintController.getColorParents(color))
 				{
-					TagLog::color_taint_reason_t reason;
-					reason.reasonClass = TagLog::TAINT_REASON_SINK;
-					reason.sinkData = {
+					TagLog::color_taint_lead_t lead;
+					lead.leadClass = TagLog::TAINT_LEAD_SINK;
+					lead.sinkData = {
 						*dllNameStr,
 						*funcNameStr,
 						0,
 						(ADDRINT)ii
 					};
 
-					taintController.registerColorReason(colorParent, reason);
+					taintController.registerColorLead(colorParent, lead);
 				}
 			}
 
@@ -205,16 +205,16 @@ void TAINT::CORE::TAINT_SINK::createProcessWEnter(ADDRINT currIp, ADDRINT retIp,
 				//We will mark any color that was a parent of this one to be part of a command (since their data will be here)
 				for (UINT16& colorParent : taintController.getColorParents(color)) {
 					UINT16 color = taintController.memGetColor((ADDRINT)commandLineArr + ii);
-					TagLog::color_taint_reason_t reason;
-					reason.reasonClass = TagLog::TAINT_REASON_SINK;
-					reason.sinkData = {
+					TagLog::color_taint_lead_t lead;
+					lead.leadClass = TagLog::TAINT_LEAD_SINK;
+					lead.sinkData = {
 						*dllNameStr,
 						*funcNameStr,
 						1,
 						(ADDRINT)ii
 					};
 
-					taintController.registerColorReason(colorParent, reason);
+					taintController.registerColorLead(colorParent, lead);
 				}
 			}
 

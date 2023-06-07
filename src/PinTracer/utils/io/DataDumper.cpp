@@ -150,7 +150,7 @@ void DataDumper::writeRevHeuristicDumpLine(HLPointerField log)
 void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 {
 	std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& protNetbufferVec = protocol.getNetworkBufferVector();
-	
+#if(FILE_LOGGING_ACTIVATE==1)
 	//We will iterate over each protocol netbuffer and print the data of their data
 	for (int ii = 0; ii < protNetbufferVec.size(); ii++)
 	{
@@ -160,7 +160,7 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		REVERSING::PROTOCOL::ProtocolNetworkBuffer& protNetBuf = protNetbufferVec.at(ii);
 		std::vector<UINT16> &colors = protNetBuf.getColorsVector();
 		std::vector<UINT8> &values = protNetBuf.getValuesVector();
-		std::vector<TagLog::color_taint_reason_t>& taintReasons = protNetBuf.gecolorTaintReasonsVector();
+		std::vector<TagLog::color_taint_lead_t>& taintLeads = protNetBuf.gecolorTaintLeadsVector();
 		ADDRINT start = protNetBuf.getStartMemAddress();
 		ADDRINT end = protNetBuf.getEndMemAddress();
 		this->protocolResultsDumpFile << "\tMemory start: " << start << " | Memory end: " << end << std::endl;
@@ -170,13 +170,13 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		{
 			UINT16& color = colors.at(jj);
 			UINT8& value = values.at(jj);
-			TagLog::color_taint_reason_t& reason = taintReasons.at(jj);
+			TagLog::color_taint_lead_t& lead = taintLeads.at(jj);
 			this->protocolResultsDumpFile << "\t\t Color: " << color << " | Byte value: " << InstructionWorker::byteToHexValueString(value) << " (as char: " << value <<")";
-			//Print whether the byte has any special reason to be tainted
-			switch (reason.reasonClass)
+			//Print whether the byte has any special lead
+			switch (lead.leadClass)
 			{
-			case TagLog::TAINT_REASON_SINK:
-				this->protocolResultsDumpFile << " | used as arg " << reason.sinkData.argNumber << " in " << reason.sinkData.dllName << " ::> " << reason.sinkData.funcName << " at offset " << reason.sinkData.offsetFromArgStart;
+			case TagLog::TAINT_LEAD_SINK:
+				this->protocolResultsDumpFile << " | used as arg " << lead.sinkData.argNumber << " in " << lead.sinkData.dllName << " ::> " << lead.sinkData.funcName << " at offset " << lead.sinkData.offsetFromArgStart;
 				break;
 			}
 			this->protocolResultsDumpFile << std::endl;
@@ -219,6 +219,10 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		}
 		this->protocolResultsDumpFile << std::endl;
 	}
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	
+#endif
 }
 
 void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
