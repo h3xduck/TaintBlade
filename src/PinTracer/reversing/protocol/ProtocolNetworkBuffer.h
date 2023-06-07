@@ -88,7 +88,7 @@ namespace REVERSING
 			std::vector<ProtocolWord> getWordVector();
 			void setcolorTaintLeadsVector(std::vector<TagLog::color_taint_lead_t> vec);
 			void addLeadTocolorTaintLeadsVector(TagLog::color_taint_lead_t& lead);
-			std::vector<TagLog::color_taint_lead_t> gecolorTaintLeadsVector();
+			std::vector<TagLog::color_taint_lead_t>& getColorTaintLeadsVector();
 
 			std::vector<ProtocolPointer>& pointerVector() { return this->pointerVector_; }
 		};

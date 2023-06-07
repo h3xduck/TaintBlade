@@ -107,7 +107,7 @@ void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addLeadTocolorTaintLeadsVector(
 	this->colorTaintLeadsVector.push_back(lead);
 }
 
-std::vector<TagLog::color_taint_lead_t> REVERSING::PROTOCOL::ProtocolNetworkBuffer::gecolorTaintLeadsVector()
+std::vector<TagLog::color_taint_lead_t>& REVERSING::PROTOCOL::ProtocolNetworkBuffer::getColorTaintLeadsVector()
 {
 	return this->colorTaintLeadsVector;
 }

@@ -149,8 +149,8 @@ void DataDumper::writeRevHeuristicDumpLine(HLPointerField log)
 
 void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 {
-	std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& protNetbufferVec = protocol.getNetworkBufferVector();
 #if(FILE_LOGGING_ACTIVATE==1)
+	std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& protNetbufferVec = protocol.getNetworkBufferVector();
 	//We will iterate over each protocol netbuffer and print the data of their data
 	for (int ii = 0; ii < protNetbufferVec.size(); ii++)
 	{
@@ -160,7 +160,7 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		REVERSING::PROTOCOL::ProtocolNetworkBuffer& protNetBuf = protNetbufferVec.at(ii);
 		std::vector<UINT16> &colors = protNetBuf.getColorsVector();
 		std::vector<UINT8> &values = protNetBuf.getValuesVector();
-		std::vector<TagLog::color_taint_lead_t>& taintLeads = protNetBuf.gecolorTaintLeadsVector();
+		std::vector<TagLog::color_taint_lead_t>& taintLeads = protNetBuf.getColorTaintLeadsVector();
 		ADDRINT start = protNetBuf.getStartMemAddress();
 		ADDRINT end = protNetBuf.getEndMemAddress();
 		this->protocolResultsDumpFile << "\tMemory start: " << start << " | Memory end: " << end << std::endl;
@@ -221,7 +221,7 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 	}
 #endif
 #if(DB_LOGGING_ACTIVATE==1)
-	
+	ctx.getDatabaseManager().insertProtocolRecords(protocol);
 #endif
 }
 

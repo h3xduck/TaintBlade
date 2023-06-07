@@ -9,6 +9,7 @@
 #include "../io/DataDumpLine.h"
 #include <cstdio>
 #include "../trace/TracePoint.h"
+#include "../../reversing/protocol/Protocol.h"
 
 namespace UTILS
 {
@@ -68,6 +69,7 @@ namespace UTILS
 			void insertFunctionCallsRecord(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t event, int routineIndex);
 			void insertTaintRoutineRecord(struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data);
 			void insertTraceFunctionRecord(UTILS::TRACE::TracePoint& tp);
+			void insertProtocolRecords(REVERSING::PROTOCOL::Protocol& protocol);
 
 			//setters and getters
 			bool& databaseOpened() { return this->databaseOpened_; };

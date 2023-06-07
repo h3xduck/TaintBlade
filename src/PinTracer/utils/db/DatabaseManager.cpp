@@ -142,7 +142,9 @@ void UTILS::DB::DatabaseManager::createDatabase()
 		"mem_start		INTEGER,"\
 		"mem_end		INTEGER,"\
 		"color_start	INTEGER,"\
-		"color_end		INTEGER"\
+		"color_end		INTEGER,"\
+		"num_words		INTEGER,"\
+		"num_pointers	INTEGER"\
 		"); ";
 	EXECUTE_SQL_QUERY(sql);
 
@@ -150,7 +152,8 @@ void UTILS::DB::DatabaseManager::createDatabase()
 	sql = "CREATE TABLE protocol_buffer_byte ("\
 		"buffer_idx		INTEGER,"\
 		"byte_offset	INTEGER,"\
-		"value			INTEGER,"\
+		"byte_value		TEXT(10),"\
+		"hex_value		TEXT(10),"\
 		"color			INTEGER"\
 		"); ";
 	EXECUTE_SQL_QUERY(sql);
@@ -167,9 +170,10 @@ void UTILS::DB::DatabaseManager::createDatabase()
 
 	//Table holding one byte inside a protocol word
 	sql = "CREATE TABLE protocol_word_byte ("\
+		"buffer_idx		INTEGER,"\
 		"word_idx		INTEGER,"\
 		"byte_offset	INTEGER,"\
-		"value			INTEGER,"\
+		"value			TEXT(10),"\
 		"color			INTEGER,"\
 		"success		INTEGER"\
 		"); ";
@@ -185,21 +189,22 @@ void UTILS::DB::DatabaseManager::createDatabase()
 
 	//Table holding a byte of a protocol pointer
 	sql = "CREATE TABLE protocol_pointer_byte ("\
+		"buffer_idx		INTEGER,"\
 		"pointer_idx	INTEGER,"\
 		"byte_offset	INTEGER,"\
-		"value			INTEGER,"\
+		"value			TEXT(10),"\
 		"color			INTEGER"\
 		"); ";
 	EXECUTE_SQL_QUERY(sql);
 
 	//Table holding taint leads belonging to a byte at a buffer
 	sql = "CREATE TABLE protocol_taint_leads ("\
-		"buffer_idx		INTEGER,"\
-		"byte_offset	INTEGER,"\
-		"class			INTEGER,"\
-		"dll_name		TEXT(150),"\
-		"func_name		TEXT(150),"\
-		"arg_number		INTEGER"\
+		"buffer_idx			INTEGER,"\
+		"buffer_byte_offset	INTEGER,"\
+		"class				INTEGER,"\
+		"dll_idx			INTEGER,"\
+		"func_name			TEXT(150),"\
+		"arg_number			INTEGER"\
 		"); ";
 	EXECUTE_SQL_QUERY(sql);
 }
@@ -231,6 +236,27 @@ void UTILS::DB::DatabaseManager::emptyDatabase()
 	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 
 	sql = "DROP TABLE trace_functions";
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
+
+	sql = "DROP TABLE protocol_buffer";
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
+
+	sql = "DROP TABLE protocol_buffer_byte";
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
+
+	sql = "DROP TABLE protocol_word";
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
+
+	sql = "DROP TABLE protocol_word_byte";
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
+
+	sql = "DROP TABLE protocol_pointer";
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
+
+	sql = "DROP TABLE protocol_pointer_byte";
+	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
+
+	sql = "DROP TABLE protocol_taint_leads";
 	EXECUTE_SQL_QUERY_IGNORE_ERROR(sql);
 }
 
@@ -606,4 +632,122 @@ void UTILS::DB::DatabaseManager::insertTraceFunctionRecord(UTILS::TRACE::TracePo
 	
 	PIN_UnlockClient();
 	EXECUTE_SQL_QUERY(sql);
+}
+
+void UTILS::DB::DatabaseManager::insertProtocolRecords(REVERSING::PROTOCOL::Protocol& protocol)
+{
+	//Inserting the protocol takes up a lot of steps, since we need to take all its different fields into different tables of the db
+	//First, we extract the buffers in the protocol
+	std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& protNetbufferVec = protocol.getNetworkBufferVector();
+	for (int ii = 0; ii < protNetbufferVec.size(); ii++)
+	{
+		REVERSING::PROTOCOL::ProtocolNetworkBuffer& protNetBuf = protNetbufferVec.at(ii);
+		std::vector<UINT16>& colors = protNetBuf.getColorsVector();
+		std::vector<UINT8>& values = protNetBuf.getValuesVector();
+		std::vector<TagLog::color_taint_lead_t>& taintLeads = protNetBuf.getColorTaintLeadsVector();
+		std::vector<REVERSING::PROTOCOL::ProtocolWord>& protWordVec = protNetBuf.getWordVector();
+		std::vector<REVERSING::PROTOCOL::ProtocolPointer>& protPointerVec = protNetBuf.pointerVector();
+
+		//We insert the protocol info itself
+		std::string sql = "INSERT INTO protocol_buffer(mem_start, mem_end, color_start, color_end, num_words, num_pointers) VALUES(" +
+			quotesql(std::to_string(protNetBuf.getStartMemAddress())) + ", " +
+			quotesql(std::to_string(protNetBuf.getEndMemAddress())) + ", " +
+			quotesql(std::to_string((int)protNetBuf.getStartColor())) + ", " +
+			quotesql(std::to_string((int)protNetBuf.getEndColor())) + ", " +
+			quotesql(std::to_string(protWordVec.size())) + ", " +
+			quotesql(std::to_string(protPointerVec.size())) + ");";
+		EXECUTE_SQL_QUERY(sql);
+
+		//Now, we will insert each protocol byte info, together with its taint lead
+		for (int jj = 0; jj < colors.size(); jj++)
+		{
+			UINT16& color = colors.at(jj);
+			UINT8& value = values.at(jj);
+			TagLog::color_taint_lead_t& lead = taintLeads.at(jj);
+			sql = "INSERT INTO protocol_buffer_byte(buffer_idx, byte_offset, byte_value, hex_value, color) VALUES(" +
+				quotesql(std::to_string(ii)) + ", " +
+				quotesql(std::to_string(jj)) + ", " +
+				quotesql(std::to_string((int)value)) + ", " +
+				quotesql(InstructionWorker::byteToHexValueString(value)) + ", " +
+				quotesql(std::to_string((int)color)) + ");";
+			EXECUTE_SQL_QUERY(sql);
+
+			//Only if the taint lead exists for this byte, we will insert it
+			if (lead.leadClass == TagLog::TAINT_LEAD_SINK)
+			{
+				//TODO - add here other types of taint lead when incorporated
+				//The DLL must get inserted into the dll's table
+				int dllIx = this->getDLLIndex(lead.sinkData.dllName);
+				//LOG_DEBUG("Got IX: " << dllFromIx);
+				if (dllIx == -1)
+				{
+					std::string sql = "INSERT INTO dll_names(dll_name) VALUES('" + lead.sinkData.dllName + "')";
+					EXECUTE_SQL_QUERY(sql);
+					dllIx = this->getDLLIndex(lead.sinkData.dllName);
+				}
+				sql = "INSERT INTO protocol_taint_leads(buffer_idx, buffer_byte_offset, class, dll_idx, func_name, arg_number) VALUES(" +
+					quotesql(std::to_string(ii)) + ", " +
+					quotesql(std::to_string(jj)) + ", " +
+					quotesql(std::to_string((int)lead.leadClass)) + ", " +
+					quotesql(std::to_string(dllIx)) + ", " +
+					quotesql(lead.sinkData.funcName) + ", " +
+					quotesql(std::to_string(lead.sinkData.argNumber)) + ");";
+				EXECUTE_SQL_QUERY(sql);
+			}
+		}
+
+		//Now we insert each protocol word associated to the protocol
+		for (int jj = 0; jj < protWordVec.size(); jj++)
+		{
+			REVERSING::PROTOCOL::ProtocolWord &protWord = protWordVec.at(jj);
+			sql = "INSERT INTO protocol_word(buffer_idx, word_idx, type, buffer_start, buffer_end) VALUES(" +
+				quotesql(std::to_string(ii)) + ", " +
+				quotesql(std::to_string(jj)) + ", " +
+				quotesql(std::to_string((int)protWord.getWordType())) + ", " +
+				quotesql(std::to_string(protWord.getStartIndex())) + ", " +
+				quotesql(std::to_string(protWord.getEndIndex())) + ");";
+			EXECUTE_SQL_QUERY(sql);
+
+			//For each protocol word, we insert its bytes too
+			std::vector<UINT8>& bytesVec = protWord.getAllBytes();
+			std::vector<UINT16>& colorVec = protWord.getComparedColors();
+			std::vector<int>& compVec = protWord.getSuccessIndexes();
+			for (int kk = 0; kk < bytesVec.size(); kk++)
+			{
+				sql = "INSERT INTO protocol_word_byte(buffer_idx, word_idx, byte_offset, value, color, success) VALUES(" +
+					quotesql(std::to_string(ii)) + ", " +
+					quotesql(std::to_string(jj)) + ", " +
+					quotesql(std::to_string(kk)) + ", " +
+					quotesql(std::to_string((int)bytesVec.at(kk))) + ", " +
+					quotesql(std::to_string((int)colorVec.at(kk))) + ", " +
+					quotesql(std::to_string(compVec.at(kk))) + ");";
+				EXECUTE_SQL_QUERY(sql);
+			}
+		}
+
+		//Now we insert the buffer pointer fields
+		for (int jj = 0; jj < protPointerVec.size(); jj++)
+		{
+			REVERSING::PROTOCOL::ProtocolPointer& protPointer = protPointerVec.at(jj);
+			sql = "INSERT INTO protocol_pointer(buffer_idx, pointer_idx, pointed_color) VALUES(" +
+				quotesql(std::to_string(ii)) + ", " +
+				quotesql(std::to_string(jj)) + ", " +
+				quotesql(std::to_string((int)protPointer.pointedColor())) + ");";
+			EXECUTE_SQL_QUERY(sql);
+
+			//For each protocol pointer, we insert its bytes
+			std::vector<UINT8>& bytesVec = protPointer.pointerValue();
+			std::vector<UINT16>& colorVec = protPointer.pointerColors();
+			for (int kk = 0; kk < bytesVec.size(); kk++)
+			{
+				sql = "INSERT INTO protocol_pointer_byte(buffer_idx, pointer_idx, byte_offset, value, color) VALUES(" +
+					quotesql(std::to_string(ii)) + ", " +
+					quotesql(std::to_string(jj)) + ", " +
+					quotesql(std::to_string(kk)) + ", " +
+					quotesql(std::to_string((int)bytesVec.at(kk))) + ", " +
+					quotesql(std::to_string((int)colorVec.at(kk))) + ");";
+				EXECUTE_SQL_QUERY(sql);
+			}
+		}
+	}
 }
