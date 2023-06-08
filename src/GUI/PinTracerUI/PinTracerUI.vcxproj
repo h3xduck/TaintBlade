@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CE2BC0E1-ED27-46DB-A3D4-037082C63FF2}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.5.1_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets;sql;</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.5.1_msvc2019_64</QtInstall>
+    <QtModules>
+    </QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Marcos\source\repos\h3xduck\TFM\src\GUI\PinTracerUI\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\common\Globals.cpp" />
+    <ClCompile Include="src\dialogs\PinconfigurationDialog.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\mainwindow.cpp" />
+    <ClCompile Include="src\utils\db\DatabaseManager.cpp" />
+    <ClCompile Include="src\utils\exec\ExecutionBridge.cpp" />
+    <ClCompile Include="src\widgets\MultiWindowViewWidget.cpp" />
+    <ClCompile Include="src\widgets\process\TracedProcessDrawer.cpp" />
+    <ClCompile Include="src\widgets\process\TracedProcessWidget.cpp" />
+    <ClCompile Include="src\widgets\protocol\ProtocolBufferDrawer.cpp" />
+    <ClCompile Include="src\widgets\protocol\ProtocolVisualizationWidget.cpp" />
+    <ClCompile Include="src\widgets\taint\TaintEventsWidget.cpp" />
+    <ClCompile Include="src\widgets\taint\TaintRoutinesWidget.cpp" />
+    <ClCompile Include="src\widgets\trace\TraceFunctionsWidget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="forms\mainwindow.ui" />
+    <QtUic Include="forms\MultiWindowViewWidget.ui" />
+    <QtUic Include="forms\PinConfigurationDialog.ui" />
+    <QtUic Include="forms\ProtocolBufferDrawer.ui" />
+    <QtUic Include="forms\ProtocolVisualizationWidget.ui" />
+    <QtUic Include="forms\TaintEventsWidget.ui" />
+    <QtUic Include="forms\TaintRoutinesWidget.ui" />
+    <QtUic Include="forms\TracedProcessWidget.ui" />
+    <QtUic Include="forms\TraceFunctionsWidget.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\common\Globals.h" />
+    <QtMoc Include="include\mainwindow.h" />
+    <ClInclude Include="include\utils\db\DatabaseManager.h" />
+    <ClInclude Include="include\utils\exec\ExecutionBridge.h" />
+    <QtMoc Include="include\widgets\MultiWindowViewWidget.h" />
+    <QtMoc Include="include\widgets\trace\TraceFunctionsWidget.h" />
+    <QtMoc Include="include\widgets\taint\TaintRoutinesWidget.h" />
+    <QtMoc Include="include\widgets\taint\TaintEventsWidget.h" />
+    <QtMoc Include="include\widgets\protocol\ProtocolVisualizationWidget.h" />
+    <QtMoc Include="include\widgets\protocol\ProtocolBufferDrawer.h" />
+    <QtMoc Include="include\widgets\process\TracedProcessWidget.h" />
+    <QtMoc Include="include\widgets\process\TracedProcessDrawer.h" />
+    <QtMoc Include="include\dialogs\PinConfigurationDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="forms\MainToolBarResource.qrc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
