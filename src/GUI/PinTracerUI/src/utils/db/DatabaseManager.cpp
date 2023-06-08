@@ -270,7 +270,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
 
 void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidget, int bufferIndex)
 {
-    std::shared_ptr<PROTOCOL::Protocol> protocol = bufferWidget->protocol();
+    std::shared_ptr<PROTOCOL::Protocol> protocol = std::shared_ptr<PROTOCOL::Protocol>(new PROTOCOL::Protocol());//bufferWidget->protocol();
     qDebug()<<"Drawing protocol buffer for buffer" << bufferIndex;
 
     //Get the value of the bytes of the buffer
@@ -281,34 +281,103 @@ void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidge
         int bufferCount = query.value("count(*)").toInt();
         for (int ii = 0; ii < bufferCount; ii++)
         {
-            std::vector<std::shared_ptr<PROTOCOL::ProtocolBuffer>> bufferVector = protocol->bufferVector();
+            qDebug() << "Filling protocol buffer " << ii;
+            std::vector<std::shared_ptr<PROTOCOL::ProtocolBuffer>> bufferVector = protocol->bufferVector(); 
             PROTOCOL::ProtocolBuffer* protocolBuffer = new PROTOCOL::ProtocolBuffer();
             //Get the bytes from this buffer
             QSqlQuery bufferQuery;
-            bufferQuery.exec("SELECT byte_value FROM protocol_buffer_byte WHERE buffer_idx = 0;");
+            bufferQuery.exec(QString("SELECT byte_value, hex_value, color FROM protocol_buffer_byte WHERE buffer_idx = %1;").arg(ii));
+            int byteOffset = 0;
             while (bufferQuery.next())
             {
-                PROTOCOL::ProtocolByte* byte = new PROTOCOL::ProtocolByte(protocolBuffer, );
+                qDebug() << "Adding byte " << byteOffset;
+                //Add the byte into the protocol
+                PROTOCOL::ProtocolByte* byte = new PROTOCOL::ProtocolByte(protocolBuffer, byteOffset, bufferQuery.value("byte_value").toInt(), bufferQuery.value("hex_value").toString().toStdString(), bufferQuery.value("color").toInt());
+                byte->belongingBuffer() = std::shared_ptr<PROTOCOL::ProtocolBuffer>(protocolBuffer);
+                qDebug() << "Byte info:: Color:"<<byte->color()<<" BValue:"<<byte->byteValue();
+                protocolBuffer->byteVector().push_back(std::shared_ptr<PROTOCOL::ProtocolByte>(byte));
+                qDebug() << "here";
+
+                byteOffset++;
+            }
+            qDebug()<< "Finished filling bytes of buffer";
+
+            //Now we get the words
+            bufferQuery.exec("SELECT * FROM protocol_word w JOIN protocol_word_byte pb ON (w.buffer_idx = pb.buffer_idx AND w.word_idx = pb.word_idx) WHERE w.buffer_idx = "+ii);
+            int lastWord = -1;
+            while (bufferQuery.next())
+            {
+                PROTOCOL::ProtocolWord* word;
+                bool newWord = false;
+                if (bufferQuery.value("w.word_idx").toInt() > lastWord)
+                {
+                    word = new PROTOCOL::ProtocolWord();
+                }
+                else
+                {
+                    newWord = true;
+                    word = bufferVector.at(ii).get()->wordVector().back().get();
+                }
+                word->belongingBuffer() = std::shared_ptr<PROTOCOL::ProtocolBuffer>(protocolBuffer);
+                word->type() = bufferQuery.value("type").toInt();
+                word->bufferStart() = bufferQuery.value("buffer_start").toInt();
+                word->bufferEnd() = bufferQuery.value("buffer_end").toInt();
+
+                //Add the word byte info
+                PROTOCOL::ProtocolWordByte *byte = new PROTOCOL::ProtocolWordByte(word, bufferQuery.value("byte_offset").toInt(), bufferQuery.value("value").toInt(), bufferQuery.value("color").toInt(), bufferQuery.value("success").toInt());
+                word->byteVector().push_back(std::shared_ptr<PROTOCOL::ProtocolWordByte>(byte));
+
+                if(newWord)
+                {
+                    bufferVector.at(ii).get()->wordVector().push_back(std::shared_ptr<PROTOCOL::ProtocolWord>(word));
+                }
             }
 
+            //Now we get the pointers
+            bufferQuery.exec("SELECT * FROM protocol_pointer p JOIN protocol_pointer_byte pb ON (p.buffer_idx = pb.buffer_idx AND p.pointer_idx = pb.pointer_idx) LEFT JOIN protocol_buffer_byte bb ON(pb.color = bb.color) WHERE p.buffer_idx = "+ii);
+            int lastPointer = -1;
+            while (bufferQuery.next())
+            {
+                PROTOCOL::ProtocolPointer* pointer;
+                bool newPointer = false;
+                if (bufferQuery.value("p.pointer_idx").toInt() > lastWord)
+                {
+                    pointer = new PROTOCOL::ProtocolPointer();
+                }
+                else
+                {
+                    newPointer = true;
+                    pointer = bufferVector.at(ii).get()->pointerVector().back().get();
+                }
+                pointer->belongingBuffer() = std::shared_ptr<PROTOCOL::ProtocolBuffer>(protocolBuffer);
+                pointer->pointedColor() = bufferQuery.value("pointed_color").toInt();
+                if (!bufferQuery.value("bb.color").isNull())
+                {
+                    //The pointed byte will be that of the only color we will find in the pointer
+                    pointer->pointedByte() = protocolBuffer->byteVector().at(bufferQuery.value("bb.byte_offset").toInt());
+                }
 
-            bufferVector.push_back(std::shared_ptr<PROTOCOL::ProtocolBuffer>(new PROTOCOL::ProtocolBuffer));
+                //Add the pointer byte info
+                PROTOCOL::ProtocolPointerByte* byte = new PROTOCOL::ProtocolPointerByte(pointer, bufferQuery.value("pb.byte_offset").toInt(), bufferQuery.value("value").toInt(), bufferQuery.value("color").toInt());
+                pointer->byteVector().push_back(std::shared_ptr<PROTOCOL::ProtocolPointerByte>(byte));
+
+                if (newPointer)
+                {
+                    bufferVector.at(ii).get()->pointerVector().push_back(std::shared_ptr<PROTOCOL::ProtocolPointer>(pointer));
+                }
+            }
+
+            //Finally push the buffer we just filled
+            bufferVector.push_back(std::shared_ptr<PROTOCOL::ProtocolBuffer>(protocolBuffer));
         }
     }
 
-
-
-
-
-
-
-
-
-
-    while(query.next())
+    //Now that we've got the data, we can draw it
+    //TODO - Support rest of the buffers
+    for(std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocol.get()->bufferVector().at(0).get()->byteVector())
     {
         //Display the byte at the widget
-        bufferWidget->addProtocolBufferByte(QString(QChar(query.value("byte_value").toInt())));
+        bufferWidget->addProtocolBufferByte(QString(QChar(byte.get()->byteValue())));
     }
 
 }

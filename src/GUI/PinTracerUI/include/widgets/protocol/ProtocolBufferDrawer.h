@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QPropertyAnimation>
-#include "data/Protocol.h"
+#include "widgets/protocol/data/Protocol.h"
 #include <memory>
 
 namespace Ui {

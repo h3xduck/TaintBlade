@@ -121,7 +121,9 @@
     <ClInclude Include="include\widgets\protocol\data\ProtocolBuffer.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolByte.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolPointer.h" />
+    <ClInclude Include="include\widgets\protocol\data\ProtocolPointerByte.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolWord.h" />
+    <ClInclude Include="include\widgets\protocol\data\ProtocolWordByte.h" />
     <QtMoc Include="include\mainwindow.h" />
     <ClInclude Include="include\utils\db\DatabaseManager.h" />
     <ClInclude Include="include\utils\exec\ExecutionBridge.h" />
