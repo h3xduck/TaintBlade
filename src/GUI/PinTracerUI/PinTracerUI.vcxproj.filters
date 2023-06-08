@@ -105,6 +105,21 @@
     <ClInclude Include="include\utils\exec\ExecutionBridge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\widgets\protocol\data\ProtocolByte.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\widgets\protocol\data\ProtocolBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\widgets\protocol\data\ProtocolWord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\widgets\protocol\data\ProtocolPointer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\widgets\protocol\data\Protocol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="include\dialogs\PinConfigurationDialog.h">

@@ -72,7 +72,7 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -117,6 +117,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\common\Globals.h" />
+    <ClInclude Include="include\widgets\protocol\data\Protocol.h" />
+    <ClInclude Include="include\widgets\protocol\data\ProtocolBuffer.h" />
+    <ClInclude Include="include\widgets\protocol\data\ProtocolByte.h" />
+    <ClInclude Include="include\widgets\protocol\data\ProtocolPointer.h" />
+    <ClInclude Include="include\widgets\protocol\data\ProtocolWord.h" />
     <QtMoc Include="include\mainwindow.h" />
     <ClInclude Include="include\utils\db\DatabaseManager.h" />
     <ClInclude Include="include\utils\exec\ExecutionBridge.h" />

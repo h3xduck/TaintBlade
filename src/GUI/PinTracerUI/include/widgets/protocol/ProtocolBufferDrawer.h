@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QPropertyAnimation>
+#include "data/Protocol.h"
+#include <memory>
 
 namespace Ui {
 class ProtocolBufferDrawer;
@@ -20,8 +22,11 @@ public:
     void addButton();
     void addProtocolBufferByte(QString byteValue);
 
+    std::shared_ptr<PROTOCOL::Protocol> protocol() { return this->protocol_; }
+
 private:
     Ui::ProtocolBufferDrawer *ui;
+    std::shared_ptr<PROTOCOL::Protocol> protocol_;
 };
 
 #endif // PROTOCOLBUFFERDRAWER_H

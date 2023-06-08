@@ -8,6 +8,8 @@
 #include <QSqlQuery>
 #include <QTableWidgetItem>
 #include "widgets/protocol/ProtocolBufferDrawer.h"
+#include "widgets/protocol/data/Protocol.h"
+#include "widgets/protocol/data/ProtocolBuffer.h"
 
 class DatabaseManager
 {

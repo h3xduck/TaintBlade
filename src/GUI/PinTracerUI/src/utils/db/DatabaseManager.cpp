@@ -270,11 +270,40 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
 
 void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidget, int bufferIndex)
 {
+    std::shared_ptr<PROTOCOL::Protocol> protocol = bufferWidget->protocol();
     qDebug()<<"Drawing protocol buffer for buffer" << bufferIndex;
 
     //Get the value of the bytes of the buffer
     QSqlQuery query;
-    query.exec("SELECT byte_value FROM protocol_buffer_byte WHERE buffer_idx = 0;");
+    query.exec("SELECT count(*) FROM protocol_buffer;");
+    if (query.next())
+    {
+        int bufferCount = query.value("count(*)").toInt();
+        for (int ii = 0; ii < bufferCount; ii++)
+        {
+            std::vector<std::shared_ptr<PROTOCOL::ProtocolBuffer>> bufferVector = protocol->bufferVector();
+            PROTOCOL::ProtocolBuffer* protocolBuffer = new PROTOCOL::ProtocolBuffer();
+            //Get the bytes from this buffer
+            QSqlQuery bufferQuery;
+            bufferQuery.exec("SELECT byte_value FROM protocol_buffer_byte WHERE buffer_idx = 0;");
+            while (bufferQuery.next())
+            {
+                PROTOCOL::ProtocolByte* byte = new PROTOCOL::ProtocolByte(protocolBuffer, );
+            }
+
+
+            bufferVector.push_back(std::shared_ptr<PROTOCOL::ProtocolBuffer>(new PROTOCOL::ProtocolBuffer));
+        }
+    }
+
+
+
+
+
+
+
+
+
 
     while(query.next())
     {
