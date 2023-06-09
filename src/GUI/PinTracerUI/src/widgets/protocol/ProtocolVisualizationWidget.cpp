@@ -18,7 +18,7 @@ ProtocolVisualizationWidget::ProtocolVisualizationWidget(QWidget *parent) :
     layout->setAlignment(Qt::AlignCenter);
 
     globalDBManager.loadProtocolData(bufferWidget);
-    bufferWidget->visualizeBufferByWordtype(0);
+    bufferWidget->visualizeBufferByPurpose(0);
 }
 
 ProtocolVisualizationWidget::~ProtocolVisualizationWidget()

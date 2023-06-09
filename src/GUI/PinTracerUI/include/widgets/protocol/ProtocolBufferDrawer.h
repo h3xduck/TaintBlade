@@ -24,6 +24,8 @@ public:
     void addProtocolBufferByte(QString byteValue, int byteOffset);
     //Puts the protocol data into the widget based on the protocol data gathered from the DB
     void visualizeBufferByWordtype(int bufferIndex);
+    //Puts the protocol data into the widget based on the purpose inside the program of the gathered bytes
+    void visualizeBufferByPurpose(int bufferIndex);
     //Joins or separates widget buttons based on whether they should be together or not
     void redistributeLayoutButtons();
 

@@ -286,7 +286,7 @@ void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)
             std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = std::make_shared<PROTOCOL::ProtocolBuffer>();
             //Get the bytes from this buffer
             QSqlQuery bufferQuery;
-            bufferQuery.exec(QString("SELECT byte_value, hex_value, color FROM protocol_buffer_byte WHERE buffer_idx = %1;").arg(ii));
+            bufferQuery.exec(QString("SELECT * FROM protocol_buffer_byte pbb LEFT JOIN protocol_taint_leads ptl ON (pbb.buffer_idx=ptl.buffer_idx AND pbb.byte_offset=ptl.buffer_byte_offset) LEFT JOIN dll_names dn ON(ptl.dll_idx = dn.idx) WHERE pbb.buffer_idx = %1").arg(ii));
             int byteOffset = 0;
             while (bufferQuery.next())
             {
@@ -296,7 +296,14 @@ void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)
                 std::string hexValue = bufferQuery.value("hex_value").toString().toStdString();
                 int color = bufferQuery.value("color").toInt();
                 std::shared_ptr<PROTOCOL::ProtocolByte> byte = std::make_shared<PROTOCOL::ProtocolByte>(protocolBuffer, byteOffset, byteValue, hexValue, color);
-                byte->belongingBuffer() = (protocolBuffer);
+                byte->belongingBuffer() = protocolBuffer;
+                struct PROTOCOL::ProtocolByte::taint_lead_t lead
+                {
+                    bufferQuery.value("class").toInt(),
+                    bufferQuery.value("dll_name").toString().toStdString(),
+                    bufferQuery.value("arg_number").toInt()
+                };
+                byte->taintLead() = lead;
                 qDebug() << "Byte info:: Color:" << byte->color() << " BValue:" << byte->byteValue();
                 protocolBuffer->byteVector().push_back(byte);
                 qDebug() << "here";

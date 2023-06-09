@@ -68,10 +68,9 @@ void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue, int byteOffs
 
 void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
 {
-    qDebug() << "Drawing data in the widget";
+    qDebug() << "Drawing data in the widget by word type";
 
     //Now that we've got the data, we can draw it
-    //TODO - Support rest of the buffers
     std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = this->protocol().get()->bufferVector().at(bufferIndex);
     for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocolBuffer.get()->byteVector())
     {
@@ -111,7 +110,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
-                button->type() = PROTOCOL::ByteBufferPushButton::DELIMETER;
+                button->type() = PROTOCOL::ByteBufferPushButton::TDELIMETER_CTAINTSINK;
                 break;
             case 2: //KEYWORD
                 buttonStylesheet = QString("QPushButton { "
@@ -121,7 +120,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
-                button->type() = PROTOCOL::ByteBufferPushButton::KEYWORD;
+                button->type() = PROTOCOL::ByteBufferPushButton::TKEYWORD;
                 break;
             case 5: //BYTEKEYWORD
                 buttonStylesheet = QString("QPushButton { "
@@ -131,7 +130,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
-                button->type() = PROTOCOL::ByteBufferPushButton::BYTEKEYWORD;
+                button->type() = PROTOCOL::ByteBufferPushButton::TBYTEKEYWORD;
                 break;
             case 0:
             default:
@@ -142,7 +141,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
-                button->type() = PROTOCOL::ByteBufferPushButton::NONE;
+                button->type() = PROTOCOL::ByteBufferPushButton::TNONE_CNONE;
                 break;
             }
 
@@ -173,7 +172,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                 "border-radius: 0px; "
                 "border-color: black; "
                 "padding: 4px; }");
-            button->type() = PROTOCOL::ByteBufferPushButton::POINTER;
+            button->type() = PROTOCOL::ByteBufferPushButton::TPOINTER;
             button->setStyleSheet(buttonStylesheet);
         }
     }
@@ -181,20 +180,67 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
     redistributeLayoutButtons();
 }
 
+void ProtocolBufferDrawer::visualizeBufferByPurpose(int bufferIndex)
+{
+    qDebug() << "Drawing data in the widget by purpose";
+
+    //Now that we've got the data, we can draw it
+    std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = this->protocol().get()->bufferVector().at(bufferIndex);
+    for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocolBuffer.get()->byteVector())
+    {
+        //Display the byte at the widget, color of the button depends on taint lead class
+        PROTOCOL::ProtocolByte::taint_lead_t lead = byte.get()->taintLead();
+        QString buttonStylesheet;
+        int selectedType = 0;
+        switch (lead.leadClass)
+        {
+        case 1: //TAINT SINK
+            buttonStylesheet = QString("QPushButton { "
+                "background-color: orange; "
+                "border-style: outset; "
+                "border-width: 2px; "
+                "border-radius: 0px; "
+                "border-color: black; "
+                "padding: 4px; }");
+            selectedType = PROTOCOL::ByteBufferPushButton::TDELIMETER_CTAINTSINK;
+            break;
+        case 0:
+        default:
+            //ERROR
+            buttonStylesheet = QString("QPushButton { "
+                "background-color: white; "
+                "border-style: outset; "
+                "border-width: 2px; "
+                "border-radius: 0px; "
+                "border-color: black; "
+                "padding: 4px; }");
+            break;
+        }
+
+        this->addProtocolBufferByte(QString(QChar(byte.get()->byteValue())), byte.get()->byteOffset());
+        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget();
+        button->type() = (PROTOCOL::ByteBufferPushButton::buttonType_t)selectedType;
+        button->setStyleSheet(buttonStylesheet);
+        //Connect the signal that will trigger when someone clicks the button
+    }
+
+    redistributeLayoutButtons();
+}
+
 void ProtocolBufferDrawer::redistributeLayoutButtons()
 {
-    int lastType = PROTOCOL::ByteBufferPushButton::NONE;
+    int lastType = PROTOCOL::ByteBufferPushButton::TNONE_CNONE;
     bool firstInGroup = true;
     qDebug() << "Starting button redistrubution, there are "<< ui->horizontalLayout->count()<<" buttons";
     for (int ii= ui->horizontalLayout->count()-1; ii>=0; ii--)
     {
         qDebug()<<"Going for button at index " << ii;
         PROTOCOL::ByteBufferPushButton *button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii)->widget();
-        if (button->type() != PROTOCOL::ByteBufferPushButton::NONE && (button->type() == lastType || ii == ui->horizontalLayout->count() - 1))
+        if (button->type() != PROTOCOL::ByteBufferPushButton::TNONE_CNONE && button->type() == lastType && ii != ui->horizontalLayout->count() - 1)
         {
             //Join the button to the last one if it is part of the same type
             PROTOCOL::ByteBufferPushButton* lastButton = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii + 1)->widget();
-            button->joinAdditionalByte(lastButton->text(), ii + 1);
+            button->joinAdditionalButton(lastButton->textList(), lastButton->startByte(), lastButton->endByte());
             //Delete the old button
             delete lastButton;
             qDebug() << "Redistributed button!";
