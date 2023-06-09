@@ -13,7 +13,7 @@ ProtocolVisualizationWidget::ProtocolVisualizationWidget(QWidget *parent) :
     QVBoxLayout *layout = new QVBoxLayout(contentWidget);
     ui->scrollArea->setWidget(contentWidget);
 
-    ProtocolBufferDrawer* bufferWidget = new ProtocolBufferDrawer();
+    ProtocolBufferDrawer* bufferWidget = new ProtocolBufferDrawer(this);
     layout->addWidget(bufferWidget);
     layout->setAlignment(Qt::AlignCenter);
 

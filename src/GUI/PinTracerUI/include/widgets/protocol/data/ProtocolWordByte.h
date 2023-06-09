@@ -19,10 +19,10 @@ namespace PROTOCOL
 		int success_;
 
 	public:
-		ProtocolWordByte(ProtocolWord* word, int offset, char byteValue, int color, int success) :
+		ProtocolWordByte(std::shared_ptr<ProtocolWord> word, int offset, char byteValue, int color, int success) :
 			belongingWord_(word), byteOffset_(offset), byteValue_(byteValue), color_(color), success_(success) {}
 
-		std::shared_ptr<ProtocolWord>& belongingWord() { return this->belongingWord_; }
+		std::shared_ptr<ProtocolWord> belongingWord() { return this->belongingWord_; }
 		int& byteOffset() { return this->byteOffset_; }
 		char& byteValue() { return this->byteValue_; }
 		int& color() { return this->color_; }

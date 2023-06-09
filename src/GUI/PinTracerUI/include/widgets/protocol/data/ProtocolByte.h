@@ -20,7 +20,7 @@ namespace PROTOCOL
 
 	public:
 		ProtocolByte() {}
-		ProtocolByte(ProtocolBuffer* buffer, int offset, char byteValue, std::string hexValue, int color) :
+		ProtocolByte(std::shared_ptr<ProtocolBuffer> buffer, int offset, char byteValue, std::string hexValue, int color) :
 			belongingBuffer_(buffer), byteOffset_(offset), byteValue_(byteValue), hexValue_(hexValue), color_(color) {}
 
 		std::shared_ptr<ProtocolBuffer> belongingBuffer() { return this->belongingBuffer_; }

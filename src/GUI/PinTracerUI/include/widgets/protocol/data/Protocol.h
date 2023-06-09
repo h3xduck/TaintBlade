@@ -12,6 +12,11 @@ namespace PROTOCOL
 		std::vector<std::shared_ptr<ProtocolBuffer>> bufferVector_;
 
 	public:
+		Protocol()
+		{
+			this->bufferVector_ = std::vector<std::shared_ptr<ProtocolBuffer>>();
+		}
+
 		std::vector<std::shared_ptr<ProtocolBuffer>>& bufferVector() { return this->bufferVector_; }
 	};
 }

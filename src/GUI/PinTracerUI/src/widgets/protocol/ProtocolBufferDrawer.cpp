@@ -8,7 +8,8 @@ ProtocolBufferDrawer::ProtocolBufferDrawer(QWidget *parent) :
     ui->setupUi(this);
 
     //Initialize protocol
-    this->protocol() = std::make_shared<PROTOCOL::Protocol>();
+    //std::shared_ptr<PROTOCOL::Protocol> protocol = this->protocol();
+    this->protocol_ = std::make_shared<PROTOCOL::Protocol>();
 
     //Build a series of buttons representing bytes
     /*QPushButton *button = new QPushButton(QString("No\nprotocol\nfound"), this);
