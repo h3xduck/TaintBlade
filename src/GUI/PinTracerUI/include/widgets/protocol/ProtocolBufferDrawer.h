@@ -7,6 +7,7 @@
 #include "widgets/protocol/data/Protocol.h"
 #include <memory>
 #include "ui/ByteBufferButton.h"
+#include "common/Globals.h"
 
 namespace Ui {
 class ProtocolBufferDrawer;
@@ -29,11 +30,8 @@ public:
     //Joins or separates widget buttons based on whether they should be together or not
     void redistributeLayoutButtons();
 
-    std::shared_ptr<PROTOCOL::Protocol> protocol() { return this->protocol_; }
-
 private:
     Ui::ProtocolBufferDrawer *ui;
-    std::shared_ptr<PROTOCOL::Protocol> protocol_;
 };
 
 #endif // PROTOCOLBUFFERDRAWER_H

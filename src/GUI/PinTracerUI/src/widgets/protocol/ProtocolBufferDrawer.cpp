@@ -9,7 +9,7 @@ ProtocolBufferDrawer::ProtocolBufferDrawer(QWidget *parent) :
 
     //Initialize protocol
     //std::shared_ptr<PROTOCOL::Protocol> protocol = this->protocol();
-    this->protocol_ = std::make_shared<PROTOCOL::Protocol>();
+    GLOBAL_VARS::globalProtocol = std::make_shared<PROTOCOL::Protocol>();
 
     //Build a series of buttons representing bytes
     /*QPushButton *button = new QPushButton(QString("No\nprotocol\nfound"), this);
@@ -71,7 +71,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
     qDebug() << "Drawing data in the widget by word type";
 
     //Now that we've got the data, we can draw it
-    std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = this->protocol().get()->bufferVector().at(bufferIndex);
+    std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(bufferIndex);
     for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocolBuffer.get()->byteVector())
     {
         //Display the byte at the widget
@@ -185,7 +185,7 @@ void ProtocolBufferDrawer::visualizeBufferByPurpose(int bufferIndex)
     qDebug() << "Drawing data in the widget by purpose";
 
     //Now that we've got the data, we can draw it
-    std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = this->protocol().get()->bufferVector().at(bufferIndex);
+    std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(bufferIndex);
     for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocolBuffer.get()->byteVector())
     {
         //Display the byte at the widget, color of the button depends on taint lead class

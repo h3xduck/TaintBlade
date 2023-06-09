@@ -13,15 +13,20 @@ ProtocolVisualizationWidget::ProtocolVisualizationWidget(QWidget *parent) :
     QVBoxLayout *layout = new QVBoxLayout(contentWidget);
     ui->scrollArea->setWidget(contentWidget);
 
-    ProtocolBufferDrawer* bufferWidget = new ProtocolBufferDrawer(this);
-    layout->addWidget(bufferWidget);
+    this->bufferDrawerWidget = new ProtocolBufferDrawer(this);
+    layout->addWidget(this->bufferDrawerWidget);
     layout->setAlignment(Qt::AlignCenter);
 
-    globalDBManager.loadProtocolData(bufferWidget);
-    bufferWidget->visualizeBufferByPurpose(0);
+    globalDBManager.loadProtocolData(this->bufferDrawerWidget);
+    startProtocolBufferVisualization(0);
 }
 
 ProtocolVisualizationWidget::~ProtocolVisualizationWidget()
 {
     delete ui;
+}
+
+void ProtocolVisualizationWidget::startProtocolBufferVisualization(int bufferIndex)
+{
+    this->bufferDrawerWidget->visualizeBufferByPurpose(bufferIndex);
 }

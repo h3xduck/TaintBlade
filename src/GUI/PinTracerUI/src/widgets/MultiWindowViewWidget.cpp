@@ -140,5 +140,13 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     }
     ui->frameLeftDownRight->layout()->addWidget(new ProtocolVisualizationWidget(ui->frameLeftDownRight));
     ui->frameLeftDownRight->layout()->setContentsMargins(0,0,0,0);
+    if ((layoutItem = ui->frameLeftDownLeft->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+    ui->frameLeftDownLeft->layout()->addWidget(new ProtocolPartsWidget(ui->frameLeftDownLeft));
+    ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
+
 
 }

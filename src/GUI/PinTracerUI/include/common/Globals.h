@@ -2,6 +2,8 @@
 #define GLOBALS_H
 
 #include <QString>
+#include "widgets/protocol/data/Protocol.h"
+#include <memory>
 
 namespace GLOBAL_VARS
 {
@@ -13,6 +15,9 @@ namespace GLOBAL_VARS
     extern QString pinExeDirPath;
     //Path of the tracer DLL
     extern QString tracerDLLDirPath;
+
+    //Protocol. Gathered from the DB.
+    extern std::shared_ptr<PROTOCOL::Protocol> globalProtocol;
 }
 
 

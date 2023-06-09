@@ -17,9 +17,12 @@ public:
     explicit ProtocolVisualizationWidget(QWidget *parent = nullptr);
     ~ProtocolVisualizationWidget();
 
+    void startProtocolBufferVisualization(int bufferIndex);
+
 private:
     Ui::ProtocolVisualizationWidget *ui;
     QWidget *contentWidget;
+    ProtocolBufferDrawer* bufferDrawerWidget;
 };
 
 #endif // PROTOCOLVISUALIZATIONWIDGET_H

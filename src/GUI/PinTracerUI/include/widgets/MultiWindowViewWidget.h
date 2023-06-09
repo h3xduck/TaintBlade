@@ -11,6 +11,7 @@
 #include "widgets/trace/TraceFunctionsWidget.h"
 #include "widgets/taint/TaintEventsWidget.h"
 #include "widgets/protocol/ProtocolVisualizationWidget.h"
+#include "widgets/protocol/ProtocolPartsWidget.h"
 
 namespace Ui {
 class MultiWindowViewWidget;

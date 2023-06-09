@@ -68,6 +68,9 @@
     <ClCompile Include="src\widgets\protocol\ui\ByteBufferButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\widgets\protocol\ProtocolPartsWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="forms\mainwindow.ui">
@@ -95,6 +98,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="forms\TraceFunctionsWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="forms\ProtocolPartsWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -162,6 +168,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="include\widgets\protocol\ui\ByteBufferButton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\widgets\protocol\ProtocolPartsWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
