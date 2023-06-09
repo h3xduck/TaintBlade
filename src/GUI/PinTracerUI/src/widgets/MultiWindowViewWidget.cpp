@@ -138,15 +138,25 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
         delete layoutItem->widget();
         delete layoutItem;
     }
-    ui->frameLeftDownRight->layout()->addWidget(new ProtocolVisualizationWidget(ui->frameLeftDownRight));
+    this->protocolVisualizationWidget = new ProtocolVisualizationWidget(ui->frameLeftDownRight);
+    ui->frameLeftDownRight->layout()->addWidget(this->protocolVisualizationWidget);
     ui->frameLeftDownRight->layout()->setContentsMargins(0,0,0,0);
     if ((layoutItem = ui->frameLeftDownLeft->layout()->takeAt(0)) != NULL)
     {
         delete layoutItem->widget();
         delete layoutItem;
     }
-    ui->frameLeftDownLeft->layout()->addWidget(new ProtocolPartsWidget(ui->frameLeftDownLeft));
+    this->protocolPartsWidget = new ProtocolPartsWidget(ui->frameLeftDownLeft);
+    ui->frameLeftDownLeft->layout()->addWidget(this->protocolPartsWidget);
     ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
+    connect(this->protocolPartsWidget, SIGNAL(onSelectedProtocolBuffer(int)), this, SLOT(selectedProtocolBufferFromWidget(int)));
+
+}
 
 
+void MultiWindowViewWidget::selectedProtocolBufferFromWidget(int bufferIndex)
+{
+    //The user clicked on a buffer at the protocolPartsWidget.
+    //We must display that buffer at the protocolVisualizationWidget
+    this->protocolVisualizationWidget->startProtocolBufferVisualization(bufferIndex);
 }

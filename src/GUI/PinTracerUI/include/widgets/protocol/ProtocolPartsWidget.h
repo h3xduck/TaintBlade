@@ -21,6 +21,9 @@ public:
 public slots:
     void onTopListItemClicked(QListWidgetItem*);
 
+signals:
+    void onSelectedProtocolBuffer(int bufferIndex);
+
 private:
     Ui::ProtocolPartsWidget* ui;
 };

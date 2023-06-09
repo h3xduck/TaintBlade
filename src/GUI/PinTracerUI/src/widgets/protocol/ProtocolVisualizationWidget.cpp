@@ -18,7 +18,6 @@ ProtocolVisualizationWidget::ProtocolVisualizationWidget(QWidget *parent) :
     layout->setAlignment(Qt::AlignCenter);
 
     globalDBManager.loadProtocolData(this->bufferDrawerWidget);
-    startProtocolBufferVisualization(0);
 }
 
 ProtocolVisualizationWidget::~ProtocolVisualizationWidget()

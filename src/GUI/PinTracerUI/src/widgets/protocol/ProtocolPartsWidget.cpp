@@ -77,6 +77,5 @@ void ProtocolPartsWidget::onTopListItemClicked(QListWidgetItem* item)
     }
 
     //Once all fields are ready, we also setup the buffer visualization in the other widget
-
-
+    emit onSelectedProtocolBuffer(bufferPosition);
 }

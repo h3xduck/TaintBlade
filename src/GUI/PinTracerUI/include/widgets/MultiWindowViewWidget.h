@@ -50,9 +50,17 @@ public slots:
      */
     void treeViewRowDoubleClicked(QModelIndex index);
 
+    /**
+    * Called when the protocol parts widget requests to show the data from a certain buffer.
+    * This will show the data of the buffer in the protocol visualization widget.
+    */
+    void selectedProtocolBufferFromWidget(int bufferIndex);
+
 private:
     Ui::MultiWindowViewWidget *ui;
     TracedProcessWidget* tracedProcessWidget;
+    ProtocolPartsWidget* protocolPartsWidget;
+    ProtocolVisualizationWidget* protocolVisualizationWidget;
 };
 
 #endif // MULTIWINDOWVIEWWIDGET_H
