@@ -36,28 +36,28 @@ QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
 
 #ifdef QT_MOC_HAS_STRINGDATA
-struct qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS_t {};
-static constexpr auto qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS = QtMocHelpers::stringData(
-    "ByteBufferPushButton"
+struct qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS = QtMocHelpers::stringData(
+    "PROTOCOL::ByteBufferPushButton"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
-struct qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS_t {
+struct qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS_t {
     uint offsetsAndSizes[2];
-    char stringdata0[21];
+    char stringdata0[31];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS_t qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS = {
+    uint(sizeof(qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS_t qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS = {
     {
-        QT_MOC_LITERAL(0, 20)   // "ByteBufferPushButton"
+        QT_MOC_LITERAL(0, 30)   // "PROTOCOL::ByteBufferPushButton"
     },
-    "ByteBufferPushButton"
+    "PROTOCOL::ByteBufferPushButton"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_CLASSByteBufferPushButtonENDCLASS[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS[] = {
 
  // content:
       11,       // revision
@@ -73,20 +73,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSByteBufferPushButtonENDCLASS[] =
        0        // eod
 };
 
-Q_CONSTINIT const QMetaObject ByteBufferPushButton::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject PROTOCOL::ByteBufferPushButton::staticMetaObject = { {
     QMetaObject::SuperData::link<QPushButton::staticMetaObject>(),
-    qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS.offsetsAndSizes,
-    qt_meta_data_CLASSByteBufferPushButtonENDCLASS,
+    qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<ByteBufferPushButton, std::true_type>
     >,
     nullptr
 } };
 
-void ByteBufferPushButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void PROTOCOL::ByteBufferPushButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -94,20 +94,20 @@ void ByteBufferPushButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
     (void)_a;
 }
 
-const QMetaObject *ByteBufferPushButton::metaObject() const
+const QMetaObject *PROTOCOL::ByteBufferPushButton::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ByteBufferPushButton::qt_metacast(const char *_clname)
+void *PROTOCOL::ByteBufferPushButton::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CLASSByteBufferPushButtonENDCLASS.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSPROTOCOLSCOPEByteBufferPushButtonENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QPushButton::qt_metacast(_clname);
 }
 
-int ByteBufferPushButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int PROTOCOL::ByteBufferPushButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QPushButton::qt_metacall(_c, _id, _a);
     return _id;

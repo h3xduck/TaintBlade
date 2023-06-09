@@ -6,6 +6,7 @@
 #include <QPropertyAnimation>
 #include "widgets/protocol/data/Protocol.h"
 #include <memory>
+#include "ui/ByteBufferButton.h"
 
 namespace Ui {
 class ProtocolBufferDrawer;
@@ -20,8 +21,11 @@ public:
     ~ProtocolBufferDrawer();
 
     void addButton();
-    void addProtocolBufferByte(QString byteValue);
+    void addProtocolBufferByte(QString byteValue, int byteOffset);
+    //Puts the protocol data into the widget based on the protocol data gathered from the DB
     void visualizeBufferByWordtype(int bufferIndex);
+    //Joins or separates widget buttons based on whether they should be together or not
+    void redistributeLayoutButtons();
 
     std::shared_ptr<PROTOCOL::Protocol> protocol() { return this->protocol_; }
 

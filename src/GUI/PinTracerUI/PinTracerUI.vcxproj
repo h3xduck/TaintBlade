@@ -100,6 +100,7 @@
     <ClCompile Include="src\widgets\process\TracedProcessWidget.cpp" />
     <ClCompile Include="src\widgets\protocol\ProtocolBufferDrawer.cpp" />
     <ClCompile Include="src\widgets\protocol\ProtocolVisualizationWidget.cpp" />
+    <ClCompile Include="src\widgets\protocol\ui\ByteBufferButton.cpp" />
     <ClCompile Include="src\widgets\taint\TaintEventsWidget.cpp" />
     <ClCompile Include="src\widgets\taint\TaintRoutinesWidget.cpp" />
     <ClCompile Include="src\widgets\trace\TraceFunctionsWidget.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="include\widgets\protocol\data\ProtocolPointerByte.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolWord.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolWordByte.h" />
+    <QtMoc Include="include\widgets\protocol\ui\ByteBufferButton.h" />
     <QtMoc Include="include\mainwindow.h" />
     <ClInclude Include="include\utils\db\DatabaseManager.h" />
     <ClInclude Include="include\utils\exec\ExecutionBridge.h" />

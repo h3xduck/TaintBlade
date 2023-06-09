@@ -65,6 +65,9 @@
     <ClCompile Include="src\common\Globals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\widgets\protocol\ui\ByteBufferButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="forms\mainwindow.ui">
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="include\mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\widgets\protocol\ui\ByteBufferButton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

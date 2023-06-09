@@ -54,18 +54,16 @@ void ProtocolBufferDrawer::addButton()
     ui->horizontalLayout->addWidget(button);
 }
 
-void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue)
+void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue, int byteOffset)
 {
-    QPushButton *button = new QPushButton(byteValue, this);
-    button->setFixedSize(30,90);
+    PROTOCOL::ByteBufferPushButton *button = new PROTOCOL::ByteBufferPushButton(byteValue, this, byteOffset);
 
-    button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     ui->horizontalLayout->addWidget(button);
-    QPropertyAnimation animation(button, "geometry");
+    /*QPropertyAnimation animation(button, "geometry");
     animation.setDuration(5000);  //2000 miliseconds = 2 seconds
     animation.setStartValue(QRect(0,0, button->width(),button->height()));
     animation.setEndValue(QRect(180,180, button->width(),button->height()));
-    animation.start();
+    animation.start();*/
 }
 
 void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
@@ -78,7 +76,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
     for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocolBuffer.get()->byteVector())
     {
         //Display the byte at the widget
-        this->addProtocolBufferByte(QString(QChar(byte.get()->byteValue())));
+        this->addProtocolBufferByte(QString(QChar(byte.get()->byteValue())), byte.get()->byteOffset());
     }
 
     //Now, each of the widget buttons will be colored differently depending on whether it belongs to a word or pointer
@@ -88,6 +86,12 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
         for (auto byte : word.get()->byteVector())
         {
             int wordType = word.get()->type();
+            int offset = protocolBuffer.get()->getOffsetOfColor(byte.get()->color());
+            if (offset == -1)
+            {
+                continue;
+            }
+            PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(offset)->widget();
             QString buttonStylesheet;
 
             //If the word byte was a fail check, we don't mark it
@@ -107,6 +111,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
+                button->type() = PROTOCOL::ByteBufferPushButton::DELIMETER;
                 break;
             case 2: //KEYWORD
                 buttonStylesheet = QString("QPushButton { "
@@ -116,6 +121,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
+                button->type() = PROTOCOL::ByteBufferPushButton::KEYWORD;
                 break;
             case 5: //BYTEKEYWORD
                 buttonStylesheet = QString("QPushButton { "
@@ -125,6 +131,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
+                button->type() = PROTOCOL::ByteBufferPushButton::BYTEKEYWORD;
                 break;
             case 0:
             default:
@@ -135,10 +142,11 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                     "border-radius: 0px; "
                     "border-color: black; "
                     "padding: 4px; }");
+                button->type() = PROTOCOL::ByteBufferPushButton::NONE;
                 break;
             }
 
-            ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget()->setStyleSheet(buttonStylesheet);
+            button->setStyleSheet(buttonStylesheet);
         }
     }
 
@@ -147,6 +155,12 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
     {
         for (auto byte : pointer.get()->byteVector())
         {
+            int offset = protocolBuffer.get()->getOffsetOfColor(byte.get()->color());
+            if (offset == -1)
+            {
+                continue;
+            }
+            PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(offset)->widget();
             //If the pointer references color 0, means it did not take part in the referencig job (but rather some other byte)
             if (byte.get()->color() == 0)
             {
@@ -159,9 +173,32 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
                 "border-radius: 0px; "
                 "border-color: black; "
                 "padding: 4px; }");
-
-            ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget()->setStyleSheet(buttonStylesheet);
-
+            button->type() = PROTOCOL::ByteBufferPushButton::POINTER;
+            button->setStyleSheet(buttonStylesheet);
         }
+    }
+
+    redistributeLayoutButtons();
+}
+
+void ProtocolBufferDrawer::redistributeLayoutButtons()
+{
+    int lastType = PROTOCOL::ByteBufferPushButton::NONE;
+    bool firstInGroup = true;
+    qDebug() << "Starting button redistrubution, there are "<< ui->horizontalLayout->count()<<" buttons";
+    for (int ii= ui->horizontalLayout->count()-1; ii>=0; ii--)
+    {
+        qDebug()<<"Going for button at index " << ii;
+        PROTOCOL::ByteBufferPushButton *button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii)->widget();
+        if (button->type() != PROTOCOL::ByteBufferPushButton::NONE && (button->type() == lastType || ii == ui->horizontalLayout->count() - 1))
+        {
+            //Join the button to the last one if it is part of the same type
+            PROTOCOL::ByteBufferPushButton* lastButton = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii + 1)->widget();
+            button->joinAdditionalByte(lastButton->text(), ii + 1);
+            //Delete the old button
+            delete lastButton;
+            qDebug() << "Redistributed button!";
+        }
+        lastType = button->type();
     }
 }
