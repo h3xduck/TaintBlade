@@ -268,10 +268,10 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
     }
 }
 
-void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidget, int bufferIndex)
+void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)
 {
     std::shared_ptr<PROTOCOL::Protocol> protocol = bufferWidget->protocol();
-    qDebug()<<"Drawing protocol buffer for buffer" << bufferIndex;
+    qDebug() << "Gathering protocol data";
 
     //Get the value of the bytes of the buffer
     QSqlQuery query;
@@ -282,7 +282,7 @@ void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidge
         for (int ii = 0; ii < bufferCount; ii++)
         {
             qDebug() << "Filling protocol buffer " << ii;
-            std::vector<std::shared_ptr<PROTOCOL::ProtocolBuffer>>& bufferVector = protocol->bufferVector(); 
+            std::vector<std::shared_ptr<PROTOCOL::ProtocolBuffer>>& bufferVector = protocol->bufferVector();
             std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = std::make_shared<PROTOCOL::ProtocolBuffer>();
             //Get the bytes from this buffer
             QSqlQuery bufferQuery;
@@ -297,12 +297,12 @@ void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidge
                 int color = bufferQuery.value("color").toInt();
                 std::shared_ptr<PROTOCOL::ProtocolByte> byte = std::make_shared<PROTOCOL::ProtocolByte>(protocolBuffer, byteOffset, byteValue, hexValue, color);
                 byte->belongingBuffer() = (protocolBuffer);
-                qDebug() << "Byte info:: Color:"<<byte->color()<<" BValue:"<<byte->byteValue();
+                qDebug() << "Byte info:: Color:" << byte->color() << " BValue:" << byte->byteValue();
                 protocolBuffer->byteVector().push_back(byte);
                 qDebug() << "here";
                 byteOffset++;
             }
-            qDebug()<< "Finished filling bytes of buffer";
+            qDebug() << "Finished filling bytes of buffer";
 
             //Now we get the words
             bufferQuery.exec(QString("SELECT * FROM protocol_word w JOIN protocol_word_byte pb ON (w.buffer_idx = pb.buffer_idx AND w.word_idx = pb.word_idx) WHERE w.buffer_idx = %1;").arg(ii));
@@ -335,7 +335,7 @@ void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidge
                 std::shared_ptr<PROTOCOL::ProtocolWordByte> byte = std::make_shared<PROTOCOL::ProtocolWordByte>(word, bufferQuery.value("byte_offset").toInt(), bufferQuery.value("value").toInt(), bufferQuery.value("color").toInt(), bufferQuery.value("success").toInt());
                 word->byteVector().push_back(byte);
 
-                if(newWord)
+                if (newWord)
                 {
                     protocolBuffer->wordVector().push_back(word);
                 }
@@ -387,16 +387,6 @@ void DatabaseManager::buildBufferVisualization(ProtocolBufferDrawer *bufferWidge
             //Finally push the buffer we just filled
             bufferVector.push_back(protocolBuffer);
         }
-    }
-
-    qDebug() << "Now drawing data in the widget";
-
-    //Now that we've got the data, we can draw it
-    //TODO - Support rest of the buffers
-    for(std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocol.get()->bufferVector().at(0).get()->byteVector())
-    {
-        //Display the byte at the widget
-        bufferWidget->addProtocolBufferByte(QString(QChar(byte.get()->byteValue())));
     }
 
 }

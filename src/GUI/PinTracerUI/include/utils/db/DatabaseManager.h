@@ -26,7 +26,7 @@ public:
     void buildTaintRoutinesTree(QTreeWidget *treeWidget);
     void buildTraceFunctionsTree(QTreeWidget *treeWidget);
     void buildTaintEventsTree(QTreeWidget *treeWidget);
-    void buildBufferVisualization(ProtocolBufferDrawer *bufferWidget, int bufferIndex);
+    void loadProtocolData(ProtocolBufferDrawer *bufferWidget);
 
 private:
     QSqlDatabase m_db;

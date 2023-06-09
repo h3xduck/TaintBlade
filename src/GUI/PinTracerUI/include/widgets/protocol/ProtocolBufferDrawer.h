@@ -21,6 +21,7 @@ public:
 
     void addButton();
     void addProtocolBufferByte(QString byteValue);
+    void visualizeBufferByWordtype(int bufferIndex);
 
     std::shared_ptr<PROTOCOL::Protocol> protocol() { return this->protocol_; }
 
