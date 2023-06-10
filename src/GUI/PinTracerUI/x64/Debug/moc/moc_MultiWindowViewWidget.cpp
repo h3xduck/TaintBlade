@@ -44,11 +44,15 @@ static constexpr auto qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS = Qt
     "QModelIndex",
     "index",
     "selectedProtocolBufferFromWidget",
-    "bufferIndex"
+    "bufferIndex",
+    "selectedProtocolWord",
+    "wordIndex",
+    "selectedProtocolPointer",
+    "pointerIndex"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t {
-    uint offsetsAndSizes[14];
+    uint offsetsAndSizes[22];
     char stringdata0[22];
     char stringdata1[25];
     char stringdata2[1];
@@ -56,6 +60,10 @@ struct qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t {
     char stringdata4[6];
     char stringdata5[33];
     char stringdata6[12];
+    char stringdata7[21];
+    char stringdata8[10];
+    char stringdata9[24];
+    char stringdata10[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -67,7 +75,11 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t
         QT_MOC_LITERAL(48, 11),  // "QModelIndex"
         QT_MOC_LITERAL(60, 5),  // "index"
         QT_MOC_LITERAL(66, 32),  // "selectedProtocolBufferFromWidget"
-        QT_MOC_LITERAL(99, 11)   // "bufferIndex"
+        QT_MOC_LITERAL(99, 11),  // "bufferIndex"
+        QT_MOC_LITERAL(111, 20),  // "selectedProtocolWord"
+        QT_MOC_LITERAL(132, 9),  // "wordIndex"
+        QT_MOC_LITERAL(142, 23),  // "selectedProtocolPointer"
+        QT_MOC_LITERAL(166, 12)   // "pointerIndex"
     },
     "MultiWindowViewWidget",
     "treeViewRowDoubleClicked",
@@ -75,7 +87,11 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t
     "QModelIndex",
     "index",
     "selectedProtocolBufferFromWidget",
-    "bufferIndex"
+    "bufferIndex",
+    "selectedProtocolWord",
+    "wordIndex",
+    "selectedProtocolPointer",
+    "pointerIndex"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -87,7 +103,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMultiWindowViewWidgetENDCLASS[] 
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -95,12 +111,16 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMultiWindowViewWidgetENDCLASS[] 
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   26,    2, 0x0a,    1 /* Public */,
-       5,    1,   29,    2, 0x0a,    3 /* Public */,
+       1,    1,   38,    2, 0x0a,    1 /* Public */,
+       5,    1,   41,    2, 0x0a,    3 /* Public */,
+       7,    1,   44,    2, 0x0a,    5 /* Public */,
+       9,    1,   47,    2, 0x0a,    7 /* Public */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Int,    8,
+    QMetaType::Void, QMetaType::Int,   10,
 
        0        // eod
 };
@@ -119,6 +139,12 @@ Q_CONSTINIT const QMetaObject MultiWindowViewWidget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QModelIndex, std::false_type>,
         // method 'selectedProtocolBufferFromWidget'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'selectedProtocolWord'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'selectedProtocolPointer'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
@@ -132,6 +158,8 @@ void MultiWindowViewWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         switch (_id) {
         case 0: _t->treeViewRowDoubleClicked((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1]))); break;
         case 1: _t->selectedProtocolBufferFromWidget((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 2: _t->selectedProtocolWord((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->selectedProtocolPointer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
@@ -156,13 +184,13 @@ int MultiWindowViewWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

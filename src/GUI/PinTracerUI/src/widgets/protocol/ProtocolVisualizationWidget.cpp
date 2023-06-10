@@ -45,3 +45,15 @@ void ProtocolVisualizationWidget::buttonColorByPurposeClicked()
     if (this->currentlyVisualizedBufferIndex == -1) return;
     this->bufferDrawerWidget->visualizeBufferByPurpose(this->currentlyVisualizedBufferIndex);
 }
+
+void ProtocolVisualizationWidget::highlightProtocolWord(int wordIndex)
+{
+    if (this->currentlyVisualizedBufferIndex == -1) return;
+    this->bufferDrawerWidget->highlightButtonWithProtocolWord(wordIndex);
+}
+
+void ProtocolVisualizationWidget::highlightProtocolPointer(int pointerIndex)
+{
+    if (this->currentlyVisualizedBufferIndex == -1) return;
+    this->bufferDrawerWidget->highlightButtonWithProtocolPointer(pointerIndex);
+}

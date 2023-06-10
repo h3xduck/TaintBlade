@@ -8,6 +8,7 @@
 #include <memory>
 #include "ui/ByteBufferButton.h"
 #include "common/Globals.h"
+#include <QGraphicsColorizeEffect>
 
 namespace Ui {
 class ProtocolBufferDrawer;
@@ -29,9 +30,14 @@ public:
     void visualizeBufferByPurpose(int bufferIndex);
     //Joins or separates widget buttons based on whether they should be together or not
     void redistributeLayoutButtons();
+    //Highlights a button corresponding to a protocol word at index
+    void highlightButtonWithProtocolWord(int index);
+    //Highlights a button corresponding to a protocol pointer at index
+    void highlightButtonWithProtocolPointer(int index);
 
 private:
     Ui::ProtocolBufferDrawer *ui;
+    int currentBufferIndex = -1;
 };
 
 #endif // PROTOCOLBUFFERDRAWER_H

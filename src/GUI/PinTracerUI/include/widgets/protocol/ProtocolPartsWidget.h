@@ -20,9 +20,13 @@ public:
 
 public slots:
     void onTopListItemClicked(QListWidgetItem*);
+    void onMidListItemClicked(QListWidgetItem*);
+    void onBotListItemClicked(QListWidgetItem*);
 
 signals:
     void onSelectedProtocolBuffer(int bufferIndex);
+    void onSelectedBufferWord(int wordIndex);
+    void onSelectedBufferPointer(int pointerIndex);
 
 private:
     Ui::ProtocolPartsWidget* ui;

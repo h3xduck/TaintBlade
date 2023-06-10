@@ -18,6 +18,8 @@ public:
     ~ProtocolVisualizationWidget();
 
     void startProtocolBufferVisualization(int bufferIndex);
+    void highlightProtocolWord(int wordIndex);
+    void highlightProtocolPointer(int pointerIndex);
 
 public slots:
     void buttonColorByWordTypeClicked();

@@ -69,6 +69,7 @@ void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue, int byteOffs
 void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
 {
     qDebug() << "Drawing data in the widget by word type";
+    this->currentBufferIndex = bufferIndex;
 
     QLayoutItem* child;
     while ((child = ui->horizontalLayout->takeAt(0)) != nullptr) {
@@ -84,8 +85,9 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
     }
 
     //Now, each of the widget buttons will be colored differently depending on whether it belongs to a word or pointer
-    for (std::shared_ptr<PROTOCOL::ProtocolWord> word : protocolBuffer.get()->wordVector())
+    for (int ii=0; ii<protocolBuffer.get()->wordVector().size(); ii++)
     {
+        std::shared_ptr<PROTOCOL::ProtocolWord> word = protocolBuffer.get()->wordVector().at(ii);
         //Color it depending on the word type       
         for (auto byte : word.get()->byteVector())
         {
@@ -108,55 +110,31 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
             switch (wordType)
             {
             case 1: //DELIMETER
-                buttonStylesheet = QString("QPushButton { "
-                    "background-color: blue; "
-                    "border-style: outset; "
-                    "border-width: 2px; "
-                    "border-radius: 0px; "
-                    "border-color: black; "
-                    "padding: 4px; }");
+                button->setColor(QColor(Qt::blue));
                 button->type() = PROTOCOL::ByteBufferPushButton::TDELIMETER_CTAINTSINK;
                 break;
             case 2: //KEYWORD
-                buttonStylesheet = QString("QPushButton { "
-                    "background-color: green; "
-                    "border-style: outset; "
-                    "border-width: 2px; "
-                    "border-radius: 0px; "
-                    "border-color: black; "
-                    "padding: 4px; }");
+                button->setColor(QColor(0, 207, 29));
                 button->type() = PROTOCOL::ByteBufferPushButton::TKEYWORD;
                 break;
             case 5: //BYTEKEYWORD
-                buttonStylesheet = QString("QPushButton { "
-                    "background-color: yellow; "
-                    "border-style: outset; "
-                    "border-width: 2px; "
-                    "border-radius: 0px; "
-                    "border-color: black; "
-                    "padding: 4px; }");
+                button->setColor(QColor(Qt::lightGray));
                 button->type() = PROTOCOL::ByteBufferPushButton::TBYTEKEYWORD;
                 break;
             case 0:
             default:
-                buttonStylesheet = QString("QPushButton { "
-                    "background-color: white; "
-                    "border-style: outset; "
-                    "border-width: 2px; "
-                    "border-radius: 0px; "
-                    "border-color: black; "
-                    "padding: 4px; }");
+                button->setColor(QColor(Qt::white));
                 button->type() = PROTOCOL::ByteBufferPushButton::TNONE_CNONE;
                 break;
             }
-
-            button->setStyleSheet(buttonStylesheet);
+            button->protocolElementIndex() = ii;
         }
     }
 
     //We do the same but for pointer fields
-    for (std::shared_ptr<PROTOCOL::ProtocolPointer> pointer : protocolBuffer.get()->pointerVector())
+    for (int ii=0; ii< protocolBuffer.get()->pointerVector().size(); ii++)
     {
+        std::shared_ptr<PROTOCOL::ProtocolPointer> pointer = protocolBuffer.get()->pointerVector().at(ii);
         for (auto byte : pointer.get()->byteVector())
         {
             int offset = protocolBuffer.get()->getOffsetOfColor(byte.get()->color());
@@ -170,15 +148,9 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
             {
                 continue;
             }
-            QString buttonStylesheet = QString("QPushButton { "
-                "background-color: purple; "
-                "border-style: outset; "
-                "border-width: 2px; "
-                "border-radius: 0px; "
-                "border-color: black; "
-                "padding: 4px; }");
+            button->setColor(QColor(193,77,255));
             button->type() = PROTOCOL::ByteBufferPushButton::TPOINTER;
-            button->setStyleSheet(buttonStylesheet);
+            button->protocolElementIndex() = ii;
         }
     }
 
@@ -188,6 +160,7 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
 void ProtocolBufferDrawer::visualizeBufferByPurpose(int bufferIndex)
 {
     qDebug() << "Drawing data in the widget by purpose";
+    this->currentBufferIndex = bufferIndex;
 
     QLayoutItem* child;
     while ((child = ui->horizontalLayout->takeAt(0)) != nullptr) {
@@ -199,38 +172,26 @@ void ProtocolBufferDrawer::visualizeBufferByPurpose(int bufferIndex)
     {
         //Display the byte at the widget, color of the button depends on taint lead class
         PROTOCOL::ProtocolByte::taint_lead_t lead = byte.get()->taintLead();
-        QString buttonStylesheet;
+        this->addProtocolBufferByte(QString(QChar(byte.get()->byteValue())), byte.get()->byteOffset());
+        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget();
+
         int selectedType = 0;
         switch (lead.leadClass)
         {
         case 1: //TAINT SINK
-            buttonStylesheet = QString("QPushButton { "
-                "background-color: orange; "
-                "border-style: outset; "
-                "border-width: 2px; "
-                "border-radius: 0px; "
-                "border-color: black; "
-                "padding: 4px; }");
+            button->setColor(QColor(254,130,0));
             selectedType = PROTOCOL::ByteBufferPushButton::TDELIMETER_CTAINTSINK;
             break;
         case 0:
         default:
             //ERROR
-            buttonStylesheet = QString("QPushButton { "
-                "background-color: white; "
-                "border-style: outset; "
-                "border-width: 2px; "
-                "border-radius: 0px; "
-                "border-color: black; "
-                "padding: 4px; }");
+            button->setColor(QColor(Qt::white));
             break;
         }
 
-        this->addProtocolBufferByte(QString(QChar(byte.get()->byteValue())), byte.get()->byteOffset());
-        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget();
         button->type() = (PROTOCOL::ByteBufferPushButton::buttonType_t)selectedType;
-        button->setStyleSheet(buttonStylesheet);
         //Connect the signal that will trigger when someone clicks the button
+        //TODO
     }
 
     redistributeLayoutButtons();
@@ -255,5 +216,74 @@ void ProtocolBufferDrawer::redistributeLayoutButtons()
             qDebug() << "Redistributed button!";
         }
         lastType = button->type();
+    }
+}
+
+void ProtocolBufferDrawer::highlightButtonWithProtocolWord(int index)
+{
+    //First we check whether that word index is shown at the buffer or not. If it was not a successful check, then it should not be shown
+    std::shared_ptr<PROTOCOL::ProtocolWord> word = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(this->currentBufferIndex).get()->wordVector().at(index);
+    bool successWord = false;
+    for (std::shared_ptr<PROTOCOL::ProtocolWordByte> byte : word.get()->byteVector())
+    {
+        if (byte.get()->success() == 1)
+        {
+            successWord = true;
+        }
+    }
+    if (!successWord)
+    {
+        qDebug() << "Requested to highlight button of word which was not a success word";
+        return;
+    }
+
+    for (int ii = 0; ii< ui->horizontalLayout->count(); ii++)
+    {
+        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii)->widget();
+        //Check if the button holds a word
+        if (button->type() == PROTOCOL::ByteBufferPushButton::TKEYWORD ||
+            button->type() == PROTOCOL::ByteBufferPushButton::TBYTEKEYWORD ||
+            button->type() == PROTOCOL::ByteBufferPushButton::TDELIMETER_CTAINTSINK)
+        {
+            if (button->protocolElementIndex() == index)
+            {
+                //Highlight the button
+                QPropertyAnimation* paAnimation = new QPropertyAnimation(button, "color");
+                QColor initialColor = button->getColor();
+                paAnimation->setStartValue(initialColor);
+                paAnimation->setEndValue(QColor(242, 253, 111));
+                paAnimation->setDuration(500);
+                paAnimation->setLoopCount(10);
+                paAnimation->start();
+
+                return;
+            }
+        }
+    }
+}
+
+void ProtocolBufferDrawer::highlightButtonWithProtocolPointer(int index)
+{
+    for (int ii = 0; ii < ui->horizontalLayout->count(); ii++)
+    {
+        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii)->widget();
+        //Check if the button holds a word
+        if (button->type() == PROTOCOL::ByteBufferPushButton::TPOINTER)
+        {
+            if (button->protocolElementIndex() == index)
+            {
+                //Highlight the button
+                QPropertyAnimation* paAnimation = new QPropertyAnimation(button, "color");
+                QColor initialColor = button->getColor();
+                qDebug() << "Read initial color: " << initialColor;
+                paAnimation->setStartValue(initialColor);
+                paAnimation->setEndValue(QColor(242, 253, 111));
+                paAnimation->setDuration(500);
+                paAnimation->setLoopCount(10);
+                paAnimation->start();
+
+                return;
+            }
+        }
     }
 }

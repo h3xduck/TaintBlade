@@ -64,6 +64,7 @@ void ProtocolPartsWidget::onTopListItemClicked(QListWidgetItem* item)
         }
         
         ui->midListWidget->addItem(item);
+        connect(ui->midListWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onMidListItemClicked(QListWidgetItem*)));
     }
     int pointerFieldNum = 0;
     std::vector<std::shared_ptr<PROTOCOL::ProtocolPointer>> pointerVec = buffer.get()->pointerVector();
@@ -74,8 +75,23 @@ void ProtocolPartsWidget::onTopListItemClicked(QListWidgetItem* item)
         item->setData(Qt::UserRole, ii);
         item->setText(QString("%1 %2").arg("POINTER FIELD").arg(pointerFieldNum++));
         ui->botListWidget->addItem(item);
+        connect(ui->botListWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onBotListItemClicked(QListWidgetItem*)));
     }
 
     //Once all fields are ready, we also setup the buffer visualization in the other widget
     emit onSelectedProtocolBuffer(bufferPosition);
+}
+
+void ProtocolPartsWidget::onMidListItemClicked(QListWidgetItem* item)
+{
+    int wordPosition = item->data(Qt::UserRole).toInt();
+    qDebug() << "User clicked in protocol word " << wordPosition;
+    emit onSelectedBufferWord(wordPosition);
+}
+
+void ProtocolPartsWidget::onBotListItemClicked(QListWidgetItem* item)
+{
+    int pointerPosition = item->data(Qt::UserRole).toInt();
+    qDebug() << "User clicked in protocol pointer " << pointerPosition;
+    emit onSelectedBufferPointer(pointerPosition);
 }

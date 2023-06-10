@@ -56,6 +56,18 @@ public slots:
     */
     void selectedProtocolBufferFromWidget(int bufferIndex);
 
+    /**
+    * Called when the protocolPartsWidget requests to remark the data of a protocol word.
+    * Will highlight the data at the protocolVisualizationWidget. Also switch to filter by word type.
+    */
+    void selectedProtocolWord(int wordIndex);
+
+    /**
+    * Called when the protocolPartsWidget requests to remark the data of a protocol pointer.
+    * Will highlight the data at the protocolVisualizationWidget. Also switch to filter by word type.
+    */
+    void selectedProtocolPointer(int pointerIndex);
+
 private:
     Ui::MultiWindowViewWidget *ui;
     TracedProcessWidget* tracedProcessWidget;

@@ -150,6 +150,8 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     ui->frameLeftDownLeft->layout()->addWidget(this->protocolPartsWidget);
     ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
     connect(this->protocolPartsWidget, SIGNAL(onSelectedProtocolBuffer(int)), this, SLOT(selectedProtocolBufferFromWidget(int)));
+    connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
+    connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));
 
 }
 
@@ -159,4 +161,17 @@ void MultiWindowViewWidget::selectedProtocolBufferFromWidget(int bufferIndex)
     //The user clicked on a buffer at the protocolPartsWidget.
     //We must display that buffer at the protocolVisualizationWidget
     this->protocolVisualizationWidget->startProtocolBufferVisualization(bufferIndex);
+}
+
+void MultiWindowViewWidget::selectedProtocolWord(int wordIndex)
+{
+    this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
+    this->protocolVisualizationWidget->highlightProtocolWord(wordIndex);
+}
+
+
+void MultiWindowViewWidget::selectedProtocolPointer(int pointerIndex)
+{
+    this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
+    this->protocolVisualizationWidget->highlightProtocolPointer(pointerIndex);
 }
