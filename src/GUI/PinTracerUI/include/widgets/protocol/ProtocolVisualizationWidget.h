@@ -19,10 +19,15 @@ public:
 
     void startProtocolBufferVisualization(int bufferIndex);
 
+public slots:
+    void buttonColorByWordTypeClicked();
+    void buttonColorByPurposeClicked();
+
 private:
     Ui::ProtocolVisualizationWidget *ui;
     QWidget *contentWidget;
     ProtocolBufferDrawer* bufferDrawerWidget;
+    int currentlyVisualizedBufferIndex = -1;
 };
 
 #endif // PROTOCOLVISUALIZATIONWIDGET_H

@@ -30,8 +30,8 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *leftButtonColumn;
     QLabel *radioButtonLabel;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton_4;
+    QRadioButton *buttonColorWordType;
+    QRadioButton *buttonColorPurpose;
     QVBoxLayout *rightButtonColumn;
     QCheckBox *checkBox;
     QScrollArea *scrollArea;
@@ -42,7 +42,7 @@ public:
     {
         if (ProtocolVisualizationWidget->objectName().isEmpty())
             ProtocolVisualizationWidget->setObjectName("ProtocolVisualizationWidget");
-        ProtocolVisualizationWidget->resize(1029, 587);
+        ProtocolVisualizationWidget->resize(929, 587);
         verticalLayout = new QVBoxLayout(ProtocolVisualizationWidget);
         verticalLayout->setObjectName("verticalLayout");
         label = new QLabel(ProtocolVisualizationWidget);
@@ -59,19 +59,20 @@ public:
 
         leftButtonColumn->addWidget(radioButtonLabel);
 
-        radioButton_3 = new QRadioButton(ProtocolVisualizationWidget);
+        buttonColorWordType = new QRadioButton(ProtocolVisualizationWidget);
         buttonGroup = new QButtonGroup(ProtocolVisualizationWidget);
         buttonGroup->setObjectName("buttonGroup");
-        buttonGroup->addButton(radioButton_3);
-        radioButton_3->setObjectName("radioButton_3");
+        buttonGroup->addButton(buttonColorWordType);
+        buttonColorWordType->setObjectName("buttonColorWordType");
+        buttonColorWordType->setChecked(true);
 
-        leftButtonColumn->addWidget(radioButton_3);
+        leftButtonColumn->addWidget(buttonColorWordType);
 
-        radioButton_4 = new QRadioButton(ProtocolVisualizationWidget);
-        buttonGroup->addButton(radioButton_4);
-        radioButton_4->setObjectName("radioButton_4");
+        buttonColorPurpose = new QRadioButton(ProtocolVisualizationWidget);
+        buttonGroup->addButton(buttonColorPurpose);
+        buttonColorPurpose->setObjectName("buttonColorPurpose");
 
-        leftButtonColumn->addWidget(radioButton_4);
+        leftButtonColumn->addWidget(buttonColorPurpose);
 
 
         horizontalLayout->addLayout(leftButtonColumn);
@@ -94,7 +95,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1009, 467));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 909, 467));
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         verticalLayout->addWidget(scrollArea);
@@ -110,8 +111,8 @@ public:
         ProtocolVisualizationWidget->setWindowTitle(QCoreApplication::translate("ProtocolVisualizationWidget", "Form", nullptr));
         label->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "PROTOCOL", nullptr));
         radioButtonLabel->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "Color buffer bytes by...", nullptr));
-        radioButton_3->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By word type", nullptr));
-        radioButton_4->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By purpose", nullptr));
+        buttonColorWordType->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By word type", nullptr));
+        buttonColorPurpose->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By purpose", nullptr));
         checkBox->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "CheckBox", nullptr));
     } // retranslateUi
 

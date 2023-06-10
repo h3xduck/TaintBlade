@@ -70,6 +70,11 @@ void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
 {
     qDebug() << "Drawing data in the widget by word type";
 
+    QLayoutItem* child;
+    while ((child = ui->horizontalLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+    }
+
     //Now that we've got the data, we can draw it
     std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(bufferIndex);
     for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocolBuffer.get()->byteVector())
@@ -184,6 +189,10 @@ void ProtocolBufferDrawer::visualizeBufferByPurpose(int bufferIndex)
 {
     qDebug() << "Drawing data in the widget by purpose";
 
+    QLayoutItem* child;
+    while ((child = ui->horizontalLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+    }
     //Now that we've got the data, we can draw it
     std::shared_ptr<PROTOCOL::ProtocolBuffer> protocolBuffer = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(bufferIndex);
     for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : protocolBuffer.get()->byteVector())

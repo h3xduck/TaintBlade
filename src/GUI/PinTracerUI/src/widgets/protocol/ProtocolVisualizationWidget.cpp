@@ -17,6 +17,9 @@ ProtocolVisualizationWidget::ProtocolVisualizationWidget(QWidget *parent) :
     layout->addWidget(this->bufferDrawerWidget);
     layout->setAlignment(Qt::AlignCenter);
 
+    connect(ui->buttonColorWordType, SIGNAL(clicked()), this, SLOT(buttonColorByWordTypeClicked()));
+    connect(ui->buttonColorPurpose, SIGNAL(clicked()), this, SLOT(buttonColorByPurposeClicked()));
+
     globalDBManager.loadProtocolData(this->bufferDrawerWidget);
 }
 
@@ -27,5 +30,18 @@ ProtocolVisualizationWidget::~ProtocolVisualizationWidget()
 
 void ProtocolVisualizationWidget::startProtocolBufferVisualization(int bufferIndex)
 {
-    this->bufferDrawerWidget->visualizeBufferByPurpose(bufferIndex);
+    this->bufferDrawerWidget->visualizeBufferByWordtype(bufferIndex);
+    currentlyVisualizedBufferIndex = bufferIndex;
+}
+
+void ProtocolVisualizationWidget::buttonColorByWordTypeClicked()
+{
+    if (this->currentlyVisualizedBufferIndex == -1) return;
+    this->bufferDrawerWidget->visualizeBufferByWordtype(this->currentlyVisualizedBufferIndex);
+}
+
+void ProtocolVisualizationWidget::buttonColorByPurposeClicked()
+{
+    if (this->currentlyVisualizedBufferIndex == -1) return;
+    this->bufferDrawerWidget->visualizeBufferByPurpose(this->currentlyVisualizedBufferIndex);
 }
