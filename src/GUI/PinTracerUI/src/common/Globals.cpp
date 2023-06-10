@@ -7,5 +7,6 @@ QString GLOBAL_VARS::pinExeDirPath = "C:/Users/Marcos/source/repos/h3xduck/TFM/s
 QString GLOBAL_VARS::tracerDLLDirPath = "C:/Users/Marcos/source/repos/h3xduck/TFM/src/PinTracer/x64/Release/PinTracer.dll";
 
 QString GLOBAL_VARS::selectedProcessPID = "";
+int GLOBAL_VARS::selectedBufferIndex = -1;
 
 std::shared_ptr<PROTOCOL::Protocol> GLOBAL_VARS::globalProtocol;

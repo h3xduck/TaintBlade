@@ -82,7 +82,6 @@ private:
     ProtocolPartsWidget* protocolPartsWidget;
     ProtocolVisualizationWidget* protocolVisualizationWidget;
     ProtocolBufferElementVisualization* protocolBufferElementVisualizationWidget;
-    int lastRequestedBufferIndex = -1;
 };
 
 #endif // MULTIWINDOWVIEWWIDGET_H

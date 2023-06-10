@@ -156,7 +156,6 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
     ui->frameLeftDownLeft->layout()->addWidget(this->protocolPartsWidget);
     ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
 
-    QLayoutItem* layoutItem;
     if ((layoutItem = ui->frameLeftUpRight->layout()->takeAt(0)) != NULL)
     {
         delete layoutItem->widget();
@@ -177,14 +176,14 @@ void MultiWindowViewWidget::selectedProtocolBufferFromWidget(int bufferIndex)
     //The user clicked on a buffer at the protocolPartsWidget.
     //We must display that buffer at the protocolVisualizationWidget
     this->protocolVisualizationWidget->startProtocolBufferVisualization(bufferIndex);
-    lastRequestedBufferIndex = bufferIndex;
+    GLOBAL_VARS::selectedBufferIndex = bufferIndex;
 }
 
 void MultiWindowViewWidget::selectedProtocolWord(int wordIndex)
 {
     this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
     this->protocolVisualizationWidget->highlightProtocolWord(wordIndex);
-    showProtocolElementVisualizationWidget(this->lastRequestedBufferIndex, wordIndex, true);
+    showProtocolElementVisualizationWidget(GLOBAL_VARS::selectedBufferIndex, wordIndex, true);
 }
 
 
@@ -192,7 +191,7 @@ void MultiWindowViewWidget::selectedProtocolPointer(int pointerIndex)
 {
     this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
     this->protocolVisualizationWidget->highlightProtocolPointer(pointerIndex);
-    showProtocolElementVisualizationWidget(this->lastRequestedBufferIndex, pointerIndex, false);
+    showProtocolElementVisualizationWidget(GLOBAL_VARS::selectedBufferIndex, pointerIndex, false);
 }
 
 void MultiWindowViewWidget::showProtocolElementVisualizationWidget(int bufferIndex, int elementIndex, bool isWord)

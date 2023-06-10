@@ -263,7 +263,7 @@ void ProtocolBufferDrawer::visualizeWordBytes(std::shared_ptr<PROTOCOL::Protocol
 {
     for (std::shared_ptr<PROTOCOL::ProtocolWordByte> byte : word.get()->byteVector())
     {
-        addProtocolBufferByte(UTILS::getHexValueOfByte(byte.get()->byteValue(), 2), byte.get()->byteOffset(), 1.3);
+        addProtocolBufferByte(UTILS::getHexValueOfByte(byte.get()->byteValue(), 2), byte.get()->byteOffset(), 1.2);
         PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget();
         //Depending on whether the check is a fail or a success in this byte, we color in one way or another
         if (byte.get()->success() == 0)
@@ -281,7 +281,7 @@ void ProtocolBufferDrawer::visualizePointerBytes(std::shared_ptr<PROTOCOL::Proto
 {
     for (std::shared_ptr<PROTOCOL::ProtocolPointerByte> byte : pointer.get()->byteVector())
     {
-        addProtocolBufferByte(UTILS::getHexValueOfByte(byte.get()->byteValue(), 2), byte.get()->byteOffset(), 1.3);
+        addProtocolBufferByte(UTILS::getHexValueOfByte(byte.get()->byteValue(), 2), byte.get()->byteOffset(), 1.2);
         PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget();
         //Depending on whether there is a color in the byte or not, we show that the byte was useful or not
         if (byte.get()->color() == 0)

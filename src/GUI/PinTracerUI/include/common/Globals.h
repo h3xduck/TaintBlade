@@ -18,6 +18,8 @@ namespace GLOBAL_VARS
 
     //PID of currently selected traced process data (the one being visualized in the GUI)
     extern QString selectedProcessPID;
+    //Index of currently selected buffer
+    extern int selectedBufferIndex;
 
     //Protocol. Gathered from the DB.
     extern std::shared_ptr<PROTOCOL::Protocol> globalProtocol;
