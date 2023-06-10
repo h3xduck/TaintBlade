@@ -74,6 +74,9 @@
     <ClCompile Include="src\widgets\protocol\ProtocolBufferElementVisualization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\ProtoUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="forms\mainwindow.ui">
@@ -139,6 +142,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\widgets\protocol\data\ProtocolPointerByte.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\proto\ProtoUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

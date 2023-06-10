@@ -7,35 +7,6 @@ ProtocolBufferDrawer::ProtocolBufferDrawer(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //Initialize protocol
-    //std::shared_ptr<PROTOCOL::Protocol> protocol = this->protocol();
-    GLOBAL_VARS::globalProtocol = std::make_shared<PROTOCOL::Protocol>();
-
-    //Build a series of buttons representing bytes
-    /*QPushButton *button = new QPushButton(QString("No\nprotocol\nfound"), this);
-    button->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    button->setFixedSize(60,90);
-
-    ui->horizontalLayout->addWidget(button);
-    ui->horizontalLayout->setContentsMargins(0, 0, 0, 0);
-    ui->horizontalLayout->setSpacing(0);
-    button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    button->setStyleSheet(
-        "QPushButton { "
-        "background-color: orange; "
-        "border-style: outset; "
-        "border-width: 2px; "
-        "border-radius: 0px; "
-        "border-color: black; "
-        "padding: 4px; }"
-        );
-
-    QPalette pal = QPalette();
-    pal.setColor(QPalette::Window, Qt::red);
-    this->setAutoFillBackground(true);
-    this->setPalette(pal);*/
-
-
     ui->horizontalLayout->setContentsMargins(0, 0, 0, 0);
     ui->horizontalLayout->setSpacing(0);
 
@@ -54,9 +25,10 @@ void ProtocolBufferDrawer::addButton()
     ui->horizontalLayout->addWidget(button);
 }
 
-void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue, int byteOffset)
+void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue, int byteOffset, float widthMultiplicator, float heightMultiplicator)
 {
     PROTOCOL::ByteBufferPushButton *button = new PROTOCOL::ByteBufferPushButton(byteValue, this, byteOffset);
+    button->setFixedSize(button->width() * widthMultiplicator, button->height() * heightMultiplicator);
 
     ui->horizontalLayout->addWidget(button);
     /*QPropertyAnimation animation(button, "geometry");
@@ -283,6 +255,42 @@ void ProtocolBufferDrawer::highlightButtonWithProtocolPointer(int index)
 
                 return;
             }
+        }
+    }
+}
+
+void ProtocolBufferDrawer::visualizeWordBytes(std::shared_ptr<PROTOCOL::ProtocolWord> word)
+{
+    for (std::shared_ptr<PROTOCOL::ProtocolWordByte> byte : word.get()->byteVector())
+    {
+        addProtocolBufferByte(UTILS::getHexValueOfByte(byte.get()->byteValue(), 2), byte.get()->byteOffset(), 1.3);
+        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget();
+        //Depending on whether the check is a fail or a success in this byte, we color in one way or another
+        if (byte.get()->success() == 0)
+        {
+            button->setColor(QColor(255, 100, 95));
+        }
+        else if(byte.get()->success() == 1)
+        {
+            button->setColor(QColor(95, 255, 100));
+        }
+    }
+}
+
+void ProtocolBufferDrawer::visualizePointerBytes(std::shared_ptr<PROTOCOL::ProtocolPointer> pointer)
+{
+    for (std::shared_ptr<PROTOCOL::ProtocolPointerByte> byte : pointer.get()->byteVector())
+    {
+        addProtocolBufferByte(UTILS::getHexValueOfByte(byte.get()->byteValue(), 2), byte.get()->byteOffset(), 1.3);
+        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(byte.get()->byteOffset())->widget();
+        //Depending on whether there is a color in the byte or not, we show that the byte was useful or not
+        if (byte.get()->color() == 0)
+        {
+            button->setColor(QColor(230, 230, 230));
+        }
+        else
+        {
+            button->setColor(QColor(78, 108, 254));
         }
     }
 }

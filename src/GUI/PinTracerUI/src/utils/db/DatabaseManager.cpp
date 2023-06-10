@@ -270,6 +270,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
 
 void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)
 {
+    GLOBAL_VARS::globalProtocol = std::make_shared<PROTOCOL::Protocol>();
     std::shared_ptr<PROTOCOL::Protocol> protocol = GLOBAL_VARS::globalProtocol;
     qDebug() << "Gathering protocol data";
 

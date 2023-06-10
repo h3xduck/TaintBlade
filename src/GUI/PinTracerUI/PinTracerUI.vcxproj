@@ -95,6 +95,7 @@
     <ClCompile Include="src\mainwindow.cpp" />
     <ClCompile Include="src\utils\db\DatabaseManager.cpp" />
     <ClCompile Include="src\utils\exec\ExecutionBridge.cpp" />
+    <ClCompile Include="src\utils\ProtoUtils.cpp" />
     <ClCompile Include="src\widgets\MultiWindowViewWidget.cpp" />
     <ClCompile Include="src\widgets\process\TracedProcessDrawer.cpp" />
     <ClCompile Include="src\widgets\process\TracedProcessWidget.cpp" />
@@ -122,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\common\Globals.h" />
+    <ClInclude Include="include\utils\proto\ProtoUtils.h" />
     <ClInclude Include="include\widgets\protocol\data\Protocol.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolBuffer.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolByte.h" />

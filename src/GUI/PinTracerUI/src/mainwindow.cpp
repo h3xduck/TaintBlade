@@ -26,10 +26,10 @@ void MainWindow::renderMultiWindow()
     this->multiWindowViewWidget = new MultiWindowViewWidget(this);
     this->centralLayout->addWidget(this->multiWindowViewWidget);
 
-    QPalette pal = QPalette();
+    /*QPalette pal = QPalette();
     pal.setColor(QPalette::Window, Qt::yellow);
     ui->centralWidget->setAutoFillBackground(true);
-    ui->centralWidget->setPalette(pal);
+    ui->centralWidget->setPalette(pal);*/
 }
 
 void MainWindow::on_actionOpen_triggered()

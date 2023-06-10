@@ -11,41 +11,45 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     this->tracedProcessWidget = new TracedProcessWidget(ui->frameLeftUpLeft);
     ui->frameLeftUpLeft->layout()->addWidget(this->tracedProcessWidget);
     ui->frameLeftUpLeft->layout()->setContentsMargins(0,0,0,0);
+    
+    ui->frameLeftUpLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->frameLeftUpRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->frameLeftDownRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->frameLeftDownLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->frameRightUpLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->frameRightUpRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->frameRightDownRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    ui->frameRightDownLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
+    //COLORINGS, set in case you want to visualize each widget
+    /*
     QPalette pal = QPalette();
     pal.setColor(QPalette::Window, Qt::red);
     ui->frameLeftUpLeft->setAutoFillBackground(true);
     ui->frameLeftUpLeft->setPalette(pal);
-    ui->frameLeftUpLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pal.setColor(QPalette::Window, Qt::green);
     ui->frameLeftUpRight->setAutoFillBackground(true);
     ui->frameLeftUpRight->setPalette(pal);
-    ui->frameLeftUpRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pal.setColor(QPalette::Window, Qt::blue);
     ui->frameLeftDownRight->setAutoFillBackground(true);
     ui->frameLeftDownRight->setPalette(pal);
-    ui->frameLeftDownRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pal.setColor(QPalette::Window, Qt::gray);
     ui->frameLeftDownLeft->setAutoFillBackground(true);
     ui->frameLeftDownLeft->setPalette(pal);
-    ui->frameLeftDownLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     pal.setColor(QPalette::Window, Qt::darkRed);
     ui->frameRightUpLeft->setAutoFillBackground(true);
     ui->frameRightUpLeft->setPalette(pal);
-    ui->frameRightUpLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pal.setColor(QPalette::Window, Qt::darkGreen);
     ui->frameRightUpRight->setAutoFillBackground(true);
     ui->frameRightUpRight->setPalette(pal);
-    ui->frameRightUpRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pal.setColor(QPalette::Window, Qt::darkBlue);
     ui->frameRightDownRight->setAutoFillBackground(true);
     ui->frameRightDownRight->setPalette(pal);
-    ui->frameRightDownRight->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pal.setColor(QPalette::Window, Qt::darkGray);
     ui->frameRightDownLeft->setAutoFillBackground(true);
     ui->frameRightDownLeft->setPalette(pal);
-    ui->frameRightDownLeft->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    */
 
     //Initialize splitters position
     //ui->frameLeftUpLeft->sizePolicy().setHorizontalStretch(1);

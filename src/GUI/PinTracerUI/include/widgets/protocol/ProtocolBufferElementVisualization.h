@@ -7,6 +7,7 @@
 #include <memory>
 #include "ui/ByteBufferButton.h"
 #include "common/Globals.h"
+#include "widgets/protocol/ProtocolBufferDrawer.h"
 
 namespace Ui {
     class ProtocolBufferElementVisualization;
@@ -23,6 +24,8 @@ public:
 
 private:
     Ui::ProtocolBufferElementVisualization* ui;
+    QWidget* contentWidget;
+    ProtocolBufferDrawer* bufferDrawerWidget;
 };
 
 #endif 
