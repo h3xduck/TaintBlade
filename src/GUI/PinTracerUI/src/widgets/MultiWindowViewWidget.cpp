@@ -217,4 +217,11 @@ void MultiWindowViewWidget::showProtocolElementVisualizationWidget(int bufferInd
 
     ui->frameLeftUpRight->layout()->addWidget(this->protocolBufferElementVisualizationWidget);
     ui->frameLeftUpRight->layout()->setContentsMargins(0, 0, 0, 0);
+    connect(this->protocolBufferElementVisualizationWidget, SIGNAL(onPointedByteHighlighButtonClicked(int)), this, SLOT(selectedHighlightPointedToByte(int)));
+}
+
+void MultiWindowViewWidget::selectedHighlightPointedToByte(int byteOffset)
+{
+    this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
+    this->protocolVisualizationWidget->highlightProtocolByte(byteOffset);
 }

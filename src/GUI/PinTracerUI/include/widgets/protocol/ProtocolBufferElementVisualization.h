@@ -22,10 +22,17 @@ public:
     ProtocolBufferElementVisualization(std::shared_ptr<PROTOCOL::ProtocolPointer> pointer, QWidget* parent = nullptr);
     ~ProtocolBufferElementVisualization();
 
+signals:
+    void onPointedByteHighlighButtonClicked(int byteOffset);
+
+private slots:
+    void buttonRequestHighlightPointedToByte();
+
 private:
     Ui::ProtocolBufferElementVisualization* ui;
     QWidget* contentWidget;
     ProtocolBufferDrawer* bufferDrawerWidget;
+    std::shared_ptr<PROTOCOL::ProtocolByte> pointedToByte;
 };
 
 #endif 

@@ -50,6 +50,7 @@ ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shar
     ui->treeWidget->resizeColumnToContents(1);
     ui->treeWidget->resizeColumnToContents(2);
     ui->treeWidget->resizeColumnToContents(3);
+    delete ui->pointedByteButton;
 }
 
 ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shared_ptr<PROTOCOL::ProtocolPointer> pointer, QWidget* parent) :
@@ -70,9 +71,39 @@ ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shar
     //Show the bytes of the pointer in the widget
     this->bufferDrawerWidget->visualizePointerBytes(pointer);
 
+    //Put the data into the labels
+    ui->bufferIndexLabel->setText(QString("%1 %2").arg(ui->wordTypeLabel->text()).arg(GLOBAL_VARS::selectedBufferIndex));
+    ui->wordTypeLabel->setText(QString("%1 %2").arg("POINTED COLOR:").arg(pointer.get()->pointedColor()));   
+
+    this->pointedToByte = pointer.get()->pointedByte();
+    connect(ui->pointedByteButton, SIGNAL(clicked()), this, SLOT(buttonRequestHighlightPointedToByte()));
+
+    //Finally fill in the tree widget with byte data
+    ui->treeWidget->clear();
+    ui->treeWidget->setColumnCount(3);
+    QStringList headers = { "Byte offset", "Value", "Color" };
+    ui->treeWidget->setHeaderLabels(headers);
+
+    for (std::shared_ptr<PROTOCOL::ProtocolPointerByte> byte : pointer.get()->byteVector())
+    {
+        QTreeWidgetItem* item = new QTreeWidgetItem();
+        item->setText(0, QString::number(byte.get()->byteOffset()));
+        item->setText(1, QString::number(byte.get()->byteValue()));
+        item->setText(2, QString::number(byte.get()->color()));
+        ui->treeWidget->addTopLevelItem(item);
+    }
+
+    ui->treeWidget->resizeColumnToContents(0);
+    ui->treeWidget->resizeColumnToContents(1);
+    ui->treeWidget->resizeColumnToContents(2);
 }
 
 ProtocolBufferElementVisualization::~ProtocolBufferElementVisualization()
 {
     delete ui;
+}
+
+void ProtocolBufferElementVisualization::buttonRequestHighlightPointedToByte()
+{
+    emit onPointedByteHighlighButtonClicked(this->pointedToByte.get()->byteOffset());
 }

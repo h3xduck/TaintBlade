@@ -42,11 +42,28 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="wordTypeLabel">
-     <property name="text">
-      <string>WORD TYPE: </string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="wordTypeLabel">
+       <property name="text">
+        <string>WORD TYPE: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pointedByteButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Highlight pointed byte</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
@@ -59,7 +76,7 @@
         <x>0</x>
         <y>0</y>
         <width>430</width>
-        <height>244</height>
+        <height>239</height>
        </rect>
       </property>
      </widget>

@@ -35,6 +35,8 @@ public:
     void highlightButtonWithProtocolWord(int index);
     //Highlights a button corresponding to a protocol pointer at index
     void highlightButtonWithProtocolPointer(int index);
+    //Highlights a button corresponding (or containing) a specific byte
+    void highlightButtonWithProtocolByte(int byteOffset);
     //Shows the bytes of a word in the widget
     void visualizeWordBytes(std::shared_ptr<PROTOCOL::ProtocolWord> word);
     //Shows the bytes of a pointer in the widget

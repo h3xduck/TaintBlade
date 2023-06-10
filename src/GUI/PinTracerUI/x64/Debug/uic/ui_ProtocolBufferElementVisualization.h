@@ -14,6 +14,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -29,7 +30,9 @@ public:
     QVBoxLayout *mainItemsLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *bufferIndexLabel;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *wordTypeLabel;
+    QPushButton *pointedByteButton;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *detailsLayout;
@@ -68,17 +71,32 @@ public:
 
         verticalLayout_2->addWidget(bufferIndexLabel);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
         wordTypeLabel = new QLabel(ProtocolBufferElementVisualization);
         wordTypeLabel->setObjectName("wordTypeLabel");
 
-        verticalLayout_2->addWidget(wordTypeLabel);
+        horizontalLayout_2->addWidget(wordTypeLabel);
+
+        pointedByteButton = new QPushButton(ProtocolBufferElementVisualization);
+        pointedByteButton->setObjectName("pointedByteButton");
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pointedByteButton->sizePolicy().hasHeightForWidth());
+        pointedByteButton->setSizePolicy(sizePolicy1);
+
+        horizontalLayout_2->addWidget(pointedByteButton);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
 
         scrollArea = new QScrollArea(ProtocolBufferElementVisualization);
         scrollArea->setObjectName("scrollArea");
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 430, 244));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 430, 239));
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         verticalLayout_2->addWidget(scrollArea);
@@ -113,6 +131,7 @@ public:
         label->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "PROTOCOL ELEMENT DETAILS:", nullptr));
         bufferIndexLabel->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "BUFFER INDEX: ", nullptr));
         wordTypeLabel->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "WORD TYPE: ", nullptr));
+        pointedByteButton->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "Highlight pointed byte", nullptr));
         label_2->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "BYTES:", nullptr));
     } // retranslateUi
 

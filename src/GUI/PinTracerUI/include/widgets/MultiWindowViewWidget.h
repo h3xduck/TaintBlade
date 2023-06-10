@@ -76,6 +76,12 @@ public slots:
     */
     void showProtocolElementVisualizationWidget(int bufferIndex, int elementIndex, bool isWord);
 
+    /**
+    * Called when the user requests to highlight a specific byte (or the whole word, if inside a word) 
+    * indicated at the protocol visualization widget.
+    */
+    void selectedHighlightPointedToByte(int byteOffset);
+
 private:
     Ui::MultiWindowViewWidget *ui;
     TracedProcessWidget* tracedProcessWidget;

@@ -294,3 +294,27 @@ void ProtocolBufferDrawer::visualizePointerBytes(std::shared_ptr<PROTOCOL::Proto
         }
     }
 }
+
+void ProtocolBufferDrawer::highlightButtonWithProtocolByte(int byteOffset)
+{
+    int byteOffsetAccumulator = 0;
+    for (int ii = 0; ii < ui->horizontalLayout->count(); ii++)
+    {
+        PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii)->widget();
+        //Check if the button contains the byte
+        if ((byteOffsetAccumulator + button->getInternalByteSize()) >= byteOffset)
+        {
+            //Highlight the button
+            QPropertyAnimation* paAnimation = new QPropertyAnimation(button, "color");
+            QColor initialColor = button->getColor();
+            paAnimation->setStartValue(initialColor);
+            paAnimation->setEndValue(QColor(249, 23, 13));
+            paAnimation->setDuration(500);
+            paAnimation->setLoopCount(10);
+            paAnimation->start();
+
+            return;
+        }
+        byteOffsetAccumulator += button->getInternalByteSize();
+    }
+}

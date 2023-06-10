@@ -18,7 +18,7 @@ namespace PROTOCOL
 		std::shared_ptr<ProtocolBuffer> belongingBuffer() { return this->belongingBuffer_; }
 		std::vector<std::shared_ptr<ProtocolPointerByte>>& byteVector() { return this->byteVector_; }
 		int& pointedColor() { return this->pointedColor_; }
-		std::shared_ptr<ProtocolByte> pointedByte() { return this->pointedByte_; }
+		std::shared_ptr<ProtocolByte>& pointedByte() { return this->pointedByte_; }
 	};
 }
 

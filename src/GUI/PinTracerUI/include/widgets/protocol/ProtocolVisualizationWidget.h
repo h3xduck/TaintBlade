@@ -23,6 +23,7 @@ public:
     void startProtocolBufferVisualization(int bufferIndex);
     void highlightProtocolWord(int wordIndex);
     void highlightProtocolPointer(int pointerIndex);
+    void highlightProtocolByte(int byteOffset);
 
 public slots:
     void buttonColorByWordTypeClicked();

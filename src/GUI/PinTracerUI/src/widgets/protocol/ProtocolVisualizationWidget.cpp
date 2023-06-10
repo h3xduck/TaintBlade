@@ -85,3 +85,9 @@ void ProtocolVisualizationWidget::buttonViewRawProtocolClicked()
         QMessageBox::critical(this, "Error", "Could not open the protocol data file.");
     }
 }
+
+void ProtocolVisualizationWidget::highlightProtocolByte(int byteOffset)
+{
+    if (this->currentlyVisualizedBufferIndex == -1) return;
+    this->bufferDrawerWidget->highlightButtonWithProtocolByte(byteOffset);
+}
