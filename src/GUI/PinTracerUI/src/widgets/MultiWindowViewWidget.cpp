@@ -143,14 +143,24 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
     ui->frameLeftDownRight->layout()->addWidget(this->protocolVisualizationWidget);
     ui->frameLeftDownRight->layout()->setContentsMargins(0,0,0,0);
     
+    if ((layoutItem = ui->frameLeftDownLeft->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+    this->protocolPartsWidget = new ProtocolPartsWidget(ui->frameLeftDownLeft);
+    ui->frameLeftDownLeft->layout()->addWidget(this->protocolPartsWidget);
+    ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
+
     if ((layoutItem = ui->frameLeftUpRight->layout()->takeAt(0)) != NULL)
     {
         delete layoutItem->widget();
         delete layoutItem;
     }
-    this->protocolPartsWidget = new ProtocolPartsWidget(ui->frameLeftUpRight);
-    ui->frameLeftUpRight->layout()->addWidget(this->protocolPartsWidget);
+    this->protocolBufferElementVisualizationWidget = new ProtocolBufferElementVisualization(ui->frameLeftUpRight);
+    ui->frameLeftUpRight->layout()->addWidget(this->protocolBufferElementVisualizationWidget);
     ui->frameLeftUpRight->layout()->setContentsMargins(0, 0, 0, 0);
+
     connect(this->protocolPartsWidget, SIGNAL(onSelectedProtocolBuffer(int)), this, SLOT(selectedProtocolBufferFromWidget(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));

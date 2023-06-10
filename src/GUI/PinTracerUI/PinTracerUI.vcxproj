@@ -99,6 +99,7 @@
     <ClCompile Include="src\widgets\process\TracedProcessDrawer.cpp" />
     <ClCompile Include="src\widgets\process\TracedProcessWidget.cpp" />
     <ClCompile Include="src\widgets\protocol\ProtocolBufferDrawer.cpp" />
+    <ClCompile Include="src\widgets\protocol\ProtocolBufferElementVisualization.cpp" />
     <ClCompile Include="src\widgets\protocol\ProtocolPartsWidget.cpp" />
     <ClCompile Include="src\widgets\protocol\ProtocolVisualizationWidget.cpp" />
     <ClCompile Include="src\widgets\protocol\ui\ByteBufferButton.cpp" />
@@ -111,6 +112,7 @@
     <QtUic Include="forms\MultiWindowViewWidget.ui" />
     <QtUic Include="forms\PinConfigurationDialog.ui" />
     <QtUic Include="forms\ProtocolBufferDrawer.ui" />
+    <QtUic Include="forms\ProtocolBufferElementVisualization.ui" />
     <QtUic Include="forms\ProtocolPartsWidget.ui" />
     <QtUic Include="forms\ProtocolVisualizationWidget.ui" />
     <QtUic Include="forms\TaintEventsWidget.ui" />
@@ -127,6 +129,7 @@
     <ClInclude Include="include\widgets\protocol\data\ProtocolPointerByte.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolWord.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolWordByte.h" />
+    <QtMoc Include="include\widgets\protocol\ProtocolBufferElementVisualization.h" />
     <QtMoc Include="include\widgets\protocol\ProtocolPartsWidget.h" />
     <QtMoc Include="include\widgets\protocol\ui\ByteBufferButton.h" />
     <QtMoc Include="include\mainwindow.h" />

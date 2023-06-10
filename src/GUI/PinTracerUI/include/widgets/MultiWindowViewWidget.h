@@ -12,6 +12,7 @@
 #include "widgets/taint/TaintEventsWidget.h"
 #include "widgets/protocol/ProtocolVisualizationWidget.h"
 #include "widgets/protocol/ProtocolPartsWidget.h"
+#include "widgets/protocol/ProtocolBufferElementVisualization.h"
 
 namespace Ui {
 class MultiWindowViewWidget;
@@ -73,6 +74,7 @@ private:
     TracedProcessWidget* tracedProcessWidget;
     ProtocolPartsWidget* protocolPartsWidget;
     ProtocolVisualizationWidget* protocolVisualizationWidget;
+    ProtocolBufferElementVisualization* protocolBufferElementVisualizationWidget;
 };
 
 #endif // MULTIWINDOWVIEWWIDGET_H
