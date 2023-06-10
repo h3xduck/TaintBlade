@@ -16,6 +16,9 @@ namespace GLOBAL_VARS
     //Path of the tracer DLL
     extern QString tracerDLLDirPath;
 
+    //PID of currently selected traced process data (the one being visualized in the GUI)
+    extern QString selectedProcessPID;
+
     //Protocol. Gathered from the DB.
     extern std::shared_ptr<PROTOCOL::Protocol> globalProtocol;
 }

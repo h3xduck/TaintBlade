@@ -81,12 +81,12 @@ void MultiWindowViewWidget::initializeResultWidgets()
     //TODO change colors or something
 }
 
-void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
+void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
 {
     QTreeWidgetItem* item = this->tracedProcessWidget->getItemFromTableView(index);
-    qDebug()<<"Double-clicked traced process, PID: "<<item->text(0);
+    qDebug()<<"Clicked traced process, PID: "<<item->text(0);
 
-    //For the double-clicked item, we will show the rest of windows
+    //For the clicked item, we will show the rest of windows
     //First check that the tracing process has already finished, otherwise let's try not to be
     if(EXECUTION::tracerProcessRunning())
     {
@@ -100,6 +100,7 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     {
         return;
     }
+    GLOBAL_VARS::selectedProcessPID = item->text(0);
 
     //Now that we are connected to the database, we can draw the rest of windows
     //TODO add here all widgets
@@ -141,14 +142,15 @@ void MultiWindowViewWidget::treeViewRowDoubleClicked(QModelIndex index)
     this->protocolVisualizationWidget = new ProtocolVisualizationWidget(ui->frameLeftDownRight);
     ui->frameLeftDownRight->layout()->addWidget(this->protocolVisualizationWidget);
     ui->frameLeftDownRight->layout()->setContentsMargins(0,0,0,0);
-    if ((layoutItem = ui->frameLeftDownLeft->layout()->takeAt(0)) != NULL)
+    
+    if ((layoutItem = ui->frameLeftUpRight->layout()->takeAt(0)) != NULL)
     {
         delete layoutItem->widget();
         delete layoutItem;
     }
-    this->protocolPartsWidget = new ProtocolPartsWidget(ui->frameLeftDownLeft);
-    ui->frameLeftDownLeft->layout()->addWidget(this->protocolPartsWidget);
-    ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
+    this->protocolPartsWidget = new ProtocolPartsWidget(ui->frameLeftUpRight);
+    ui->frameLeftUpRight->layout()->addWidget(this->protocolPartsWidget);
+    ui->frameLeftUpRight->layout()->setContentsMargins(0, 0, 0, 0);
     connect(this->protocolPartsWidget, SIGNAL(onSelectedProtocolBuffer(int)), this, SLOT(selectedProtocolBufferFromWidget(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));

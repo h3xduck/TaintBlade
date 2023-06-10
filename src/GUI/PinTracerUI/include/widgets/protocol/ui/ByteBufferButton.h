@@ -45,7 +45,6 @@ namespace PROTOCOL
                 "padding: 4px; }"
             ).arg(color.red()).arg(color.green()).arg(color.blue());
             this->setStyleSheet(styleSheet);
-            qDebug() << "R:" << color.red() << " G:" << color.green() << " B:" << color.blue()<<" STYLE: "<<styleSheet;
             this->color_ = color;
         }
         QColor getColor() { return this->color_; }

@@ -275,7 +275,6 @@ void ProtocolBufferDrawer::highlightButtonWithProtocolPointer(int index)
                 //Highlight the button
                 QPropertyAnimation* paAnimation = new QPropertyAnimation(button, "color");
                 QColor initialColor = button->getColor();
-                qDebug() << "Read initial color: " << initialColor;
                 paAnimation->setStartValue(initialColor);
                 paAnimation->setEndValue(QColor(242, 253, 111));
                 paAnimation->setDuration(500);

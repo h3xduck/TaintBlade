@@ -21,6 +21,9 @@ ProtocolVisualizationWidget::ProtocolVisualizationWidget(QWidget *parent) :
     connect(ui->buttonColorPurpose, SIGNAL(clicked()), this, SLOT(buttonColorByPurposeClicked()));
 
     globalDBManager.loadProtocolData(this->bufferDrawerWidget);
+
+    //If we click the viewrawprotocol button, we display a dialog with the full protocol data
+    connect(ui->viewRawProtocolButton, SIGNAL(clicked()), this, SLOT(buttonViewRawProtocolClicked()));
 }
 
 ProtocolVisualizationWidget::~ProtocolVisualizationWidget()
@@ -56,4 +59,29 @@ void ProtocolVisualizationWidget::highlightProtocolPointer(int pointerIndex)
 {
     if (this->currentlyVisualizedBufferIndex == -1) return;
     this->bufferDrawerWidget->highlightButtonWithProtocolPointer(pointerIndex);
+}
+
+void ProtocolVisualizationWidget::buttonViewRawProtocolClicked()
+{
+    //We will open the file PID_protocol.dfx and put it on a dialog
+    QFile file(GLOBAL_VARS::selectedOutputDirPath + "/" + GLOBAL_VARS::selectedProcessPID + "_" + "protocol.dfx");
+    qDebug() << "Reading raw protocol data from file " << file.fileName();
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        QString fileContent = in.readAll();
+        file.close();
+
+        QDialog dialog(this);
+        dialog.setWindowTitle("Raw protocol data");
+        dialog.setMinimumSize(400, 300);
+        QVBoxLayout layout(&dialog);
+        QTextEdit textEdit(&dialog);
+        textEdit.setText(fileContent);
+        textEdit.setReadOnly(true);
+        layout.addWidget(&textEdit);
+        dialog.exec();
+    }
+    else {
+        QMessageBox::critical(this, "Error", "Could not open the protocol data file.");
+    }
 }

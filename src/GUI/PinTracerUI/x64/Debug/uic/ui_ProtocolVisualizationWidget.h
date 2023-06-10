@@ -15,6 +15,7 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QVBoxLayout>
@@ -26,7 +27,9 @@ class Ui_ProtocolVisualizationWidget
 {
 public:
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *label;
+    QPushButton *viewRawProtocolButton;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *leftButtonColumn;
     QLabel *radioButtonLabel;
@@ -45,10 +48,25 @@ public:
         ProtocolVisualizationWidget->resize(929, 587);
         verticalLayout = new QVBoxLayout(ProtocolVisualizationWidget);
         verticalLayout->setObjectName("verticalLayout");
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
         label = new QLabel(ProtocolVisualizationWidget);
         label->setObjectName("label");
 
-        verticalLayout->addWidget(label);
+        horizontalLayout_2->addWidget(label);
+
+        viewRawProtocolButton = new QPushButton(ProtocolVisualizationWidget);
+        viewRawProtocolButton->setObjectName("viewRawProtocolButton");
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(viewRawProtocolButton->sizePolicy().hasHeightForWidth());
+        viewRawProtocolButton->setSizePolicy(sizePolicy);
+
+        horizontalLayout_2->addWidget(viewRawProtocolButton);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
@@ -95,7 +113,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 909, 467));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 909, 457));
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         verticalLayout->addWidget(scrollArea);
@@ -110,6 +128,7 @@ public:
     {
         ProtocolVisualizationWidget->setWindowTitle(QCoreApplication::translate("ProtocolVisualizationWidget", "Form", nullptr));
         label->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "PROTOCOL", nullptr));
+        viewRawProtocolButton->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "View raw protocol", nullptr));
         radioButtonLabel->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "Color buffer bytes by...", nullptr));
         buttonColorWordType->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By word type", nullptr));
         buttonColorPurpose->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By purpose", nullptr));

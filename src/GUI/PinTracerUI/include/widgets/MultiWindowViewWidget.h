@@ -45,10 +45,10 @@ public:
 
 public slots:
     /**
-     * Called when the user double-click on some item of the tree view of the traced processes window.
+     * Called when the user clicks on some item of the tree view of the traced processes window.
      * We must load all data from that process if the process execution has finished.
      */
-    void treeViewRowDoubleClicked(QModelIndex index);
+    void treeViewRowClicked(QModelIndex index);
 
     /**
     * Called when the protocol parts widget requests to show the data from a certain buffer.

@@ -20,7 +20,8 @@ TracedProcessWidget::TracedProcessWidget(QWidget *parent) :
     headers << "PID" << "PROCESS BINARY" << "START TIME";
     ui->treeWidget->setHeaderLabels(headers);
     //Connect the double-click event to a slot at the parent. Note that we've got a frame and splitters in the middle... a bit dirty but works :)
-    connect(ui->treeWidget, SIGNAL(doubleClicked(QModelIndex)), this->parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget(), SLOT(treeViewRowDoubleClicked(QModelIndex)));
+    //TODO - Connect this signal&slot from the multiwidget, not from here.
+    connect(ui->treeWidget, SIGNAL(clicked(QModelIndex)), this->parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget(), SLOT(treeViewRowClicked(QModelIndex)));
 }
 
 TracedProcessWidget::~TracedProcessWidget()

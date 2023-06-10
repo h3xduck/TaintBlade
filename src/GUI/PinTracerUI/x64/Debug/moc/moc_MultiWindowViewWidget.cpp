@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../include/widgets/MultiWindowViewWidget.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #if __has_include(<QtCore/qtmochelpers.h>)
@@ -39,7 +40,7 @@ namespace {
 struct qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS = QtMocHelpers::stringData(
     "MultiWindowViewWidget",
-    "treeViewRowDoubleClicked",
+    "treeViewRowClicked",
     "",
     "QModelIndex",
     "index",
@@ -54,7 +55,7 @@ static constexpr auto qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS = Qt
 struct qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t {
     uint offsetsAndSizes[22];
     char stringdata0[22];
-    char stringdata1[25];
+    char stringdata1[19];
     char stringdata2[1];
     char stringdata3[12];
     char stringdata4[6];
@@ -70,19 +71,19 @@ struct qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t {
 Q_CONSTINIT static const qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS = {
     {
         QT_MOC_LITERAL(0, 21),  // "MultiWindowViewWidget"
-        QT_MOC_LITERAL(22, 24),  // "treeViewRowDoubleClicked"
-        QT_MOC_LITERAL(47, 0),  // ""
-        QT_MOC_LITERAL(48, 11),  // "QModelIndex"
-        QT_MOC_LITERAL(60, 5),  // "index"
-        QT_MOC_LITERAL(66, 32),  // "selectedProtocolBufferFromWidget"
-        QT_MOC_LITERAL(99, 11),  // "bufferIndex"
-        QT_MOC_LITERAL(111, 20),  // "selectedProtocolWord"
-        QT_MOC_LITERAL(132, 9),  // "wordIndex"
-        QT_MOC_LITERAL(142, 23),  // "selectedProtocolPointer"
-        QT_MOC_LITERAL(166, 12)   // "pointerIndex"
+        QT_MOC_LITERAL(22, 18),  // "treeViewRowClicked"
+        QT_MOC_LITERAL(41, 0),  // ""
+        QT_MOC_LITERAL(42, 11),  // "QModelIndex"
+        QT_MOC_LITERAL(54, 5),  // "index"
+        QT_MOC_LITERAL(60, 32),  // "selectedProtocolBufferFromWidget"
+        QT_MOC_LITERAL(93, 11),  // "bufferIndex"
+        QT_MOC_LITERAL(105, 20),  // "selectedProtocolWord"
+        QT_MOC_LITERAL(126, 9),  // "wordIndex"
+        QT_MOC_LITERAL(136, 23),  // "selectedProtocolPointer"
+        QT_MOC_LITERAL(160, 12)   // "pointerIndex"
     },
     "MultiWindowViewWidget",
-    "treeViewRowDoubleClicked",
+    "treeViewRowClicked",
     "",
     "QModelIndex",
     "index",
@@ -134,7 +135,7 @@ Q_CONSTINIT const QMetaObject MultiWindowViewWidget::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<MultiWindowViewWidget, std::true_type>,
-        // method 'treeViewRowDoubleClicked'
+        // method 'treeViewRowClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QModelIndex, std::false_type>,
         // method 'selectedProtocolBufferFromWidget'
@@ -156,7 +157,7 @@ void MultiWindowViewWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         auto *_t = static_cast<MultiWindowViewWidget *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->treeViewRowDoubleClicked((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1]))); break;
+        case 0: _t->treeViewRowClicked((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1]))); break;
         case 1: _t->selectedProtocolBufferFromWidget((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->selectedProtocolWord((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 3: _t->selectedProtocolPointer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;

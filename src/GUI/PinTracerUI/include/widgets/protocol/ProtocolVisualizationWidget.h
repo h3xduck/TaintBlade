@@ -4,6 +4,9 @@
 #include <QWidget>
 #include "widgets/protocol/ProtocolBufferDrawer.h"
 #include "utils/db/DatabaseManager.h"
+#include <QFile>
+#include <QMessageBox>
+#include <QTextEdit>
 
 namespace Ui {
 class ProtocolVisualizationWidget;
@@ -24,6 +27,7 @@ public:
 public slots:
     void buttonColorByWordTypeClicked();
     void buttonColorByPurposeClicked();
+    void buttonViewRawProtocolClicked();
 
 private:
     Ui::ProtocolVisualizationWidget *ui;
