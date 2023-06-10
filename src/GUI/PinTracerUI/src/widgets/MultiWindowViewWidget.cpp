@@ -156,6 +156,15 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
     ui->frameLeftDownLeft->layout()->addWidget(this->protocolPartsWidget);
     ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
 
+    QLayoutItem* layoutItem;
+    if ((layoutItem = ui->frameLeftUpRight->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+    //Only deleted elements, the protocol element visualization widget is drawn when the user clicks on a buffer word/pointer
+
+
     connect(this->protocolPartsWidget, SIGNAL(onSelectedProtocolBuffer(int)), this, SLOT(selectedProtocolBufferFromWidget(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));
