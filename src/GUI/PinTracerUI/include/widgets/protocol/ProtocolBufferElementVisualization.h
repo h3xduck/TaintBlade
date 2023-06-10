@@ -17,7 +17,8 @@ class ProtocolBufferElementVisualization : public QWidget
     Q_OBJECT
 
 public:
-    ProtocolBufferElementVisualization(QWidget* parent = nullptr);
+    ProtocolBufferElementVisualization(std::shared_ptr<PROTOCOL::ProtocolWord> word, QWidget* parent = nullptr);
+    ProtocolBufferElementVisualization(std::shared_ptr<PROTOCOL::ProtocolPointer> pointer, QWidget* parent = nullptr);
     ~ProtocolBufferElementVisualization();
 
 private:

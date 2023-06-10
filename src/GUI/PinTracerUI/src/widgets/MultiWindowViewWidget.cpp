@@ -152,15 +152,6 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
     ui->frameLeftDownLeft->layout()->addWidget(this->protocolPartsWidget);
     ui->frameLeftDownLeft->layout()->setContentsMargins(0, 0, 0, 0);
 
-    if ((layoutItem = ui->frameLeftUpRight->layout()->takeAt(0)) != NULL)
-    {
-        delete layoutItem->widget();
-        delete layoutItem;
-    }
-    this->protocolBufferElementVisualizationWidget = new ProtocolBufferElementVisualization(ui->frameLeftUpRight);
-    ui->frameLeftUpRight->layout()->addWidget(this->protocolBufferElementVisualizationWidget);
-    ui->frameLeftUpRight->layout()->setContentsMargins(0, 0, 0, 0);
-
     connect(this->protocolPartsWidget, SIGNAL(onSelectedProtocolBuffer(int)), this, SLOT(selectedProtocolBufferFromWidget(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));
@@ -173,12 +164,14 @@ void MultiWindowViewWidget::selectedProtocolBufferFromWidget(int bufferIndex)
     //The user clicked on a buffer at the protocolPartsWidget.
     //We must display that buffer at the protocolVisualizationWidget
     this->protocolVisualizationWidget->startProtocolBufferVisualization(bufferIndex);
+    lastRequestedBufferIndex = bufferIndex;
 }
 
 void MultiWindowViewWidget::selectedProtocolWord(int wordIndex)
 {
     this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
     this->protocolVisualizationWidget->highlightProtocolWord(wordIndex);
+    showProtocolElementVisualizationWidget(this->lastRequestedBufferIndex, wordIndex, true);
 }
 
 
@@ -186,4 +179,30 @@ void MultiWindowViewWidget::selectedProtocolPointer(int pointerIndex)
 {
     this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
     this->protocolVisualizationWidget->highlightProtocolPointer(pointerIndex);
+    showProtocolElementVisualizationWidget(this->lastRequestedBufferIndex, pointerIndex, false);
+}
+
+void MultiWindowViewWidget::showProtocolElementVisualizationWidget(int bufferIndex, int elementIndex, bool isWord)
+{
+    QLayoutItem* layoutItem;
+    if ((layoutItem = ui->frameLeftUpRight->layout()->takeAt(0)) != NULL)
+    {
+        delete layoutItem->widget();
+        delete layoutItem;
+    }
+
+    //Before constructing the widget, we get the element we will pass to it
+    if (isWord)
+    {
+        std::shared_ptr<PROTOCOL::ProtocolWord> word = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(bufferIndex).get()->wordVector().at(elementIndex);
+        this->protocolBufferElementVisualizationWidget = new ProtocolBufferElementVisualization(word, ui->frameLeftUpRight);
+    }
+    else
+    {
+        std::shared_ptr<PROTOCOL::ProtocolPointer> pointer = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(bufferIndex).get()->pointerVector().at(elementIndex);
+        this->protocolBufferElementVisualizationWidget = new ProtocolBufferElementVisualization(pointer, ui->frameLeftUpRight);
+    }
+
+    ui->frameLeftUpRight->layout()->addWidget(this->protocolBufferElementVisualizationWidget);
+    ui->frameLeftUpRight->layout()->setContentsMargins(0, 0, 0, 0);
 }

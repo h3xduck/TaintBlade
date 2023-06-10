@@ -69,12 +69,20 @@ public slots:
     */
     void selectedProtocolPointer(int pointerIndex);
 
+    /**
+    * Shows (or resets) a widget with information about an specific buffer element (word / pointer)
+    * Gets the element from the chosen buffer, at the specified element index. 
+    * If isWord, chooses word. Otherwise, interprets it as a pointer field.
+    */
+    void showProtocolElementVisualizationWidget(int bufferIndex, int elementIndex, bool isWord);
+
 private:
     Ui::MultiWindowViewWidget *ui;
     TracedProcessWidget* tracedProcessWidget;
     ProtocolPartsWidget* protocolPartsWidget;
     ProtocolVisualizationWidget* protocolVisualizationWidget;
     ProtocolBufferElementVisualization* protocolBufferElementVisualizationWidget;
+    int lastRequestedBufferIndex = -1;
 };
 
 #endif // MULTIWINDOWVIEWWIDGET_H
