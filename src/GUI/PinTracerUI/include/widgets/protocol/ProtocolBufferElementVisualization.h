@@ -8,6 +8,8 @@
 #include "ui/ByteBufferButton.h"
 #include "common/Globals.h"
 #include "widgets/protocol/ProtocolBufferDrawer.h"
+#include <QPoint>
+#include <QTreeWidget>
 
 namespace Ui {
     class ProtocolBufferElementVisualization;
@@ -22,11 +24,15 @@ public:
     ProtocolBufferElementVisualization(std::shared_ptr<PROTOCOL::ProtocolPointer> pointer, QWidget* parent = nullptr);
     ~ProtocolBufferElementVisualization();
 
+    void setupByteTreeWidgetContextMenu();
+
 signals:
     void onPointedByteHighlighButtonClicked(int byteOffset);
+    void showTreeWidgetContextMenu(const QPoint& point, QTreeWidget* treeWidget);
 
 private slots:
     void buttonRequestHighlightPointedToByte();
+    void sendRequestShowTreeWidgetContextMenu(const QPoint& point);
 
 private:
     Ui::ProtocolBufferElementVisualization* ui;

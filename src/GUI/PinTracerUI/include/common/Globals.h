@@ -5,6 +5,8 @@
 #include "widgets/protocol/data/Protocol.h"
 #include <memory>
 
+class MultiWindowViewWidget;
+
 namespace GLOBAL_VARS
 {
     //Path of the binary that will be traced
@@ -20,6 +22,8 @@ namespace GLOBAL_VARS
     extern QString selectedProcessPID;
     //Index of currently selected buffer
     extern int selectedBufferIndex;
+    //Main window widget
+    extern MultiWindowViewWidget* mainMultiWindowWidget;
 
     //Protocol. Gathered from the DB.
     extern std::shared_ptr<PROTOCOL::Protocol> globalProtocol;

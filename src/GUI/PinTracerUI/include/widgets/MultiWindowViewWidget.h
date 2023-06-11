@@ -13,6 +13,8 @@
 #include "widgets/protocol/ProtocolVisualizationWidget.h"
 #include "widgets/protocol/ProtocolPartsWidget.h"
 #include "widgets/protocol/ProtocolBufferElementVisualization.h"
+#include <QTreeWidget>
+#include <QMenu>
 
 namespace Ui {
 class MultiWindowViewWidget;
@@ -81,6 +83,18 @@ public slots:
     * indicated at the protocol visualization widget.
     */
     void selectedHighlightPointedToByte(int byteOffset);
+
+    /**
+    Shows a context menu with an only option: to highlight the bytes at the visualization widget that are
+    parents of an specific user-selected color tree element.
+    */
+    void showHighlightColorByteContextMenu(const QPoint& pos, QTreeWidget* treeWidget);
+
+    /**
+    * Called when the a widget requests to highlight the parent colors of a specific color at the visualization widget.
+    * Will highlight all parent original colors at the protocolVisualizationWidget. Also switch to filter by word type
+    */
+    void selectedProtocolColor(int color);
 
 private:
     Ui::MultiWindowViewWidget *ui;

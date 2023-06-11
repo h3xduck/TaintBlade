@@ -6,6 +6,7 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     ui(new Ui::MultiWindowViewWidget)
 {
     ui->setupUi(this);
+    GLOBAL_VARS::mainMultiWindowWidget = this;
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->layout()->setContentsMargins(0,0,0,0);
     this->tracedProcessWidget = new TracedProcessWidget(ui->frameLeftUpLeft);
@@ -218,10 +219,34 @@ void MultiWindowViewWidget::showProtocolElementVisualizationWidget(int bufferInd
     ui->frameLeftUpRight->layout()->addWidget(this->protocolBufferElementVisualizationWidget);
     ui->frameLeftUpRight->layout()->setContentsMargins(0, 0, 0, 0);
     connect(this->protocolBufferElementVisualizationWidget, SIGNAL(onPointedByteHighlighButtonClicked(int)), this, SLOT(selectedHighlightPointedToByte(int)));
+    connect(this->protocolBufferElementVisualizationWidget, SIGNAL(showTreeWidgetContextMenu(const QPoint&, QTreeWidget*)), this, SLOT(showHighlightColorByteContextMenu(const QPoint&, QTreeWidget*)));
 }
 
 void MultiWindowViewWidget::selectedHighlightPointedToByte(int byteOffset)
 {
     this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
     this->protocolVisualizationWidget->highlightProtocolByte(byteOffset);
+}
+
+void MultiWindowViewWidget::showHighlightColorByteContextMenu(const QPoint& pos, QTreeWidget* treeWidget)
+{
+    //Connect the specific row clicked by the user to the action of highlighting the color of that row
+    QTreeWidgetItem* item = treeWidget->itemAt(pos);
+    qDebug() << "Requested to highlight color byte at pos " << pos << " with color " << item->text(2);
+    
+    QAction* newAct = new QAction(QIcon(":/res/res/icons8-external-link-26.png"), "Highlight parent colors", this);
+    connect(newAct, &QAction::triggered, this, [this, item] {selectedProtocolColor(item->text(2).toInt()); });
+
+
+    QMenu menu(this);
+    menu.addAction(newAct);
+
+    QPoint pt(pos);
+    menu.exec(treeWidget->mapToGlobal(pos));
+}
+
+void MultiWindowViewWidget::selectedProtocolColor(int color)
+{
+    //We will have to find all parents of this color to be highlighted
+
 }

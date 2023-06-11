@@ -1,5 +1,6 @@
 #include "widgets/protocol/ProtocolBufferElementVisualization.h"
 #include "ui_ProtocolBufferElementVisualization.h"
+#include "widgets/MultiWindowViewWidget.h"
 
 ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shared_ptr<PROTOCOL::ProtocolWord> word, QWidget* parent) :
     QWidget(parent),
@@ -51,6 +52,8 @@ ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shar
     ui->treeWidget->resizeColumnToContents(2);
     ui->treeWidget->resizeColumnToContents(3);
     delete ui->pointedByteButton;
+
+    setupByteTreeWidgetContextMenu();
 }
 
 ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shared_ptr<PROTOCOL::ProtocolPointer> pointer, QWidget* parent) :
@@ -96,6 +99,8 @@ ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shar
     ui->treeWidget->resizeColumnToContents(0);
     ui->treeWidget->resizeColumnToContents(1);
     ui->treeWidget->resizeColumnToContents(2);
+
+    setupByteTreeWidgetContextMenu();
 }
 
 ProtocolBufferElementVisualization::~ProtocolBufferElementVisualization()
@@ -106,4 +111,15 @@ ProtocolBufferElementVisualization::~ProtocolBufferElementVisualization()
 void ProtocolBufferElementVisualization::buttonRequestHighlightPointedToByte()
 {
     emit onPointedByteHighlighButtonClicked(this->pointedToByte.get()->byteOffset());
+}
+
+void ProtocolBufferElementVisualization::setupByteTreeWidgetContextMenu()
+{
+    ui->treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->treeWidget, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(sendRequestShowTreeWidgetContextMenu(const QPoint&)));
+}
+
+void ProtocolBufferElementVisualization::sendRequestShowTreeWidgetContextMenu(const QPoint& point)
+{
+    emit this->showTreeWidgetContextMenu(point, ui->treeWidget);
 }

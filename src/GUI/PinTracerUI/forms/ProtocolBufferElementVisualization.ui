@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>PROTOCOL ELEMENT DETAILS:</string>
+      <string>PROTOCOL ELEMENT DETAILS</string>
      </property>
     </widget>
    </item>
@@ -87,7 +87,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>BYTES:</string>
+        <string>BYTES</string>
        </property>
       </widget>
      </item>

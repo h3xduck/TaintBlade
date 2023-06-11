@@ -128,11 +128,11 @@ public:
     void retranslateUi(QWidget *ProtocolBufferElementVisualization)
     {
         ProtocolBufferElementVisualization->setWindowTitle(QCoreApplication::translate("ProtocolBufferElementVisualization", "Form", nullptr));
-        label->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "PROTOCOL ELEMENT DETAILS:", nullptr));
+        label->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "PROTOCOL ELEMENT DETAILS", nullptr));
         bufferIndexLabel->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "BUFFER INDEX: ", nullptr));
         wordTypeLabel->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "WORD TYPE: ", nullptr));
         pointedByteButton->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "Highlight pointed byte", nullptr));
-        label_2->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "BYTES:", nullptr));
+        label_2->setText(QCoreApplication::translate("ProtocolBufferElementVisualization", "BYTES", nullptr));
     } // retranslateUi
 
 };

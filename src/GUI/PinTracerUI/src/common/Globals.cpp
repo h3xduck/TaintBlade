@@ -1,5 +1,5 @@
 #include "common/Globals.h"
-
+#include "widgets/MultiWindowViewWidget.h"
 
 QString GLOBAL_VARS::selectedToTraceBinaryPath = "C:/Users/Marcos/source/repos/h3xduck/TFM/samples/tcp_client.exe";
 QString GLOBAL_VARS::selectedOutputDirPath = "C:/Users/Marcos/source/repos/h3xduck/TFM/src/test/testgui";
@@ -8,5 +8,6 @@ QString GLOBAL_VARS::tracerDLLDirPath = "C:/Users/Marcos/source/repos/h3xduck/TF
 
 QString GLOBAL_VARS::selectedProcessPID = "";
 int GLOBAL_VARS::selectedBufferIndex = -1;
+MultiWindowViewWidget* GLOBAL_VARS::mainMultiWindowWidget;
 
 std::shared_ptr<PROTOCOL::Protocol> GLOBAL_VARS::globalProtocol;
