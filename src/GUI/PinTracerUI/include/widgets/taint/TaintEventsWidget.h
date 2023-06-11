@@ -18,6 +18,9 @@ public:
     explicit TaintEventsWidget(QWidget *parent = nullptr);
     ~TaintEventsWidget();
 
+private slots:
+    void toggleIndirectRoutinesVisualization(bool activate);
+
 private:
     Ui::TaintEventsWidget *ui;
 };

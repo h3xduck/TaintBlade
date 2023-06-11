@@ -121,7 +121,7 @@ void DatabaseManager::buildTraceFunctionsTree(QTreeWidget *treeWidget)
     }
 }
 
-void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
+void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withIndirectRoutines)
 {
     qDebug()<<"Building taint events tree";
     treeWidget->clear();
@@ -138,107 +138,109 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
                 "JOIN indirect_taint_routines AS itr ON (te.indirect_routine_idx = itr.idx) "\
                 "JOIN dll_names AS d2 ON (itr.dll_idx = d2.idx);");
 
-    while(query.next())
+    if (withIndirectRoutines)
     {
-        //The first level will only show the dll of the scoped image
-        qDebug()<<"Received item";
-        //If is exactly the same as the one already displayed, refrain from showing it
-        //If it was shown before but it is not exactly directly the same, no problems, we want to show cronological order
-        QTreeWidgetItem *item;
-        QTreeWidgetItem *lastTopLevel = treeWidget->topLevelItem(treeWidget->topLevelItemCount()-1);
-        int lastTopLevelFirstLevelChildCount = 0;
-        bool reusedDLL = false;
-        if(lastTopLevel!=nullptr && query.value("indirect_dll").toString() == lastTopLevel->text(0))
+        while (query.next())
         {
-            //Reuse the same DLL as before
-            item = lastTopLevel;
-            reusedDLL = true;
-            lastTopLevelFirstLevelChildCount = lastTopLevel->childCount();
-            //qDebug()<<"Reused top level item";
-        }
-        else
-        {
-            //Show new DLL
-            item = new QTreeWidgetItem();
-            item->setText(0, query.value("indirect_dll").toString());
-            //qDebug()<<"New top level item of DLL: "<<item->text(0);
-        }
-
-
-        //Second level will show the functions (routines)
-        //If it is exactly the same as before, we reuse the function
-        bool reusedRoutine = false;
-        int lastTopLevelLastFirstLevelSecondLevelChildCount = 0;
-        QTreeWidgetItem *child;
-        if(reusedDLL && lastTopLevelFirstLevelChildCount > 0 &&
-            lastTopLevel->child(lastTopLevelFirstLevelChildCount-1)->text(2) == query.value("indirect_jump").toString())
-        {
-            //Reuse last first-level child
-            child = lastTopLevel->child(lastTopLevelFirstLevelChildCount-1);
-            reusedRoutine = true;
-            lastTopLevelLastFirstLevelSecondLevelChildCount = child->childCount();
-            //qDebug()<<"Reused first child";
-        }
-        else
-        {
-            //Not the same, new function + addresses
-            //If this is the first item, insert child showing headers for second level
-            if(lastTopLevelFirstLevelChildCount==0)
+            //The first level will only show the dll of the scoped image
+            qDebug() << "Received item";
+            //If is exactly the same as the one already displayed, refrain from showing it
+            //If it was shown before but it is not exactly directly the same, no problems, we want to show cronological order
+            QTreeWidgetItem* item;
+            QTreeWidgetItem* lastTopLevel = treeWidget->topLevelItem(treeWidget->topLevelItemCount() - 1);
+            int lastTopLevelFirstLevelChildCount = 0;
+            bool reusedDLL = false;
+            if (lastTopLevel != nullptr && query.value("indirect_dll").toString() == lastTopLevel->text(0))
             {
-                QTreeWidgetItem *childHeader = new QTreeWidgetItem();
-                childHeader->setText(0, "Routine");
-                childHeader->setText(1, "Base start");
-                childHeader->setText(2, "Jump address to taint routine");
-                item->addChild(childHeader);
+                //Reuse the same DLL as before
+                item = lastTopLevel;
+                reusedDLL = true;
+                lastTopLevelFirstLevelChildCount = lastTopLevel->childCount();
+                //qDebug()<<"Reused top level item";
             }
-            //Now add the actual data
-            child = new QTreeWidgetItem();
-            QString routineStr = query.value("indirect_function").toString();
+            else
+            {
+                //Show new DLL
+                item = new QTreeWidgetItem();
+                item->setText(0, query.value("indirect_dll").toString());
+                //qDebug()<<"New top level item of DLL: "<<item->text(0);
+            }
+
+
+            //Second level will show the functions (routines)
+            //If it is exactly the same as before, we reuse the function
+            bool reusedRoutine = false;
+            int lastTopLevelLastFirstLevelSecondLevelChildCount = 0;
+            QTreeWidgetItem* child;
+            if (reusedDLL && lastTopLevelFirstLevelChildCount > 0 &&
+                lastTopLevel->child(lastTopLevelFirstLevelChildCount - 1)->text(2) == query.value("indirect_jump").toString())
+            {
+                //Reuse last first-level child
+                child = lastTopLevel->child(lastTopLevelFirstLevelChildCount - 1);
+                reusedRoutine = true;
+                lastTopLevelLastFirstLevelSecondLevelChildCount = child->childCount();
+                //qDebug()<<"Reused first child";
+            }
+            else
+            {
+                //Not the same, new function + addresses
+                //If this is the first item, insert child showing headers for second level
+                if (lastTopLevelFirstLevelChildCount == 0)
+                {
+                    QTreeWidgetItem* childHeader = new QTreeWidgetItem();
+                    childHeader->setText(0, "Routine");
+                    childHeader->setText(1, "Base start");
+                    childHeader->setText(2, "Jump address to taint routine");
+                    item->addChild(childHeader);
+                }
+                //Now add the actual data
+                child = new QTreeWidgetItem();
+                QString routineStr = query.value("indirect_function").toString();
+                if (routineStr == "unnamedImageEntryPoint" || routineStr == ".text")
+                {
+                    routineStr = "No Symbol";
+                }
+                child->setText(0, routineStr);
+                child->setText(1, query.value("indirect_base_entry").toString());
+                child->setText(2, query.value("indirect_jump").toString());
+                //qDebug()<<"New first child with function: "<<child->text(0);
+            }
+
+
+            //Third level, show actual dll+function that contain the instructions resposible of the taint event
+            //In here we do not care if values are repeated - if a taint event is repeated it is still relevant
+            if (lastTopLevelLastFirstLevelSecondLevelChildCount == 0)
+            {
+                //Means we are the first, introduce the children header
+                QTreeWidgetItem* secondChildHeader;
+                secondChildHeader = new QTreeWidgetItem();
+                secondChildHeader->setText(0, "Binary image");
+                secondChildHeader->setText(1, "Function");
+                secondChildHeader->setText(2, "Base taint instruction");
+                child->addChild(secondChildHeader);
+            }
+            QTreeWidgetItem* secondChild = new QTreeWidgetItem();
+            secondChild->setText(0, query.value("direct_dll").toString());
+            QString routineStr = query.value("direct_function").toString();
             if (routineStr == "unnamedImageEntryPoint" || routineStr == ".text")
             {
                 routineStr = "No Symbol";
             }
-            child->setText(0, routineStr);
-            child->setText(1, query.value("indirect_base_entry").toString());
-            child->setText(2, query.value("indirect_jump").toString());
-            //qDebug()<<"New first child with function: "<<child->text(0);
-        }
+            secondChild->setText(0, query.value("direct_dll").toString());
+            secondChild->setText(1, routineStr);
+            secondChild->setText(2, query.value("event_address").toString());
+            //qDebug()<<"New second child with dll: "<<secondChild->text(0);
 
-
-        //Third level, show actual dll+function that contain the instructions resposible of the taint event
-        //In here we do not care if values are repeated - if a taint event is repeated it is still relevant
-        if(lastTopLevelLastFirstLevelSecondLevelChildCount==0)
-        {
-            //Means we are the first, introduce the children header
-            QTreeWidgetItem *secondChildHeader;
-            secondChildHeader = new QTreeWidgetItem();
-            secondChildHeader->setText(0, "Binary image");
-            secondChildHeader->setText(1, "Function");
-            secondChildHeader->setText(2, "Base taint instruction");
-            child->addChild(secondChildHeader);
-        }
-        QTreeWidgetItem *secondChild = new QTreeWidgetItem();
-        secondChild->setText(0, query.value("direct_dll").toString());
-        QString routineStr = query.value("direct_function").toString();
-        if (routineStr == "unnamedImageEntryPoint" || routineStr == ".text")
-        {
-            routineStr = "No Symbol";
-        }
-        secondChild->setText(0, query.value("direct_dll").toString());
-        secondChild->setText(1, routineStr);
-        secondChild->setText(2, query.value("event_address").toString());
-        //qDebug()<<"New second child with dll: "<<secondChild->text(0);
-
-        //Fourth level, information about the taint event itself
-        QTreeWidgetItem *thirdChildHeader = new QTreeWidgetItem();
-        thirdChildHeader->setText(0, "Event type");
-        thirdChildHeader->setText(1, "Color");
-        secondChild->addChild(thirdChildHeader);
-        QTreeWidgetItem *thirdChild = new QTreeWidgetItem();
-        int eventType = query.value("event_type").toInt();
-        QString eventTypeStr;
-        switch(eventType)
-        {
+            //Fourth level, information about the taint event itself
+            QTreeWidgetItem* thirdChildHeader = new QTreeWidgetItem();
+            thirdChildHeader->setText(0, "Event type");
+            thirdChildHeader->setText(1, "Color");
+            secondChild->addChild(thirdChildHeader);
+            QTreeWidgetItem* thirdChild = new QTreeWidgetItem();
+            int eventType = query.value("event_type").toInt();
+            QString eventTypeStr;
+            switch (eventType)
+            {
             case 1: eventTypeStr = "UNTAINT"; break;
             case 2: eventTypeStr = "TAINT"; break;
             case 3: eventTypeStr = "MOVED TAINT"; break;
@@ -247,38 +249,137 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             case 6: eventTypeStr = "RULE MOVE TAINT"; break;
             case 0:
             default: eventTypeStr = "ERROR"; break;
+            }
+            thirdChild->setText(0, eventTypeStr);
+            thirdChild->setText(1, query.value("color").toString());
+
+            //Fifth level, detailed info about memory at the taint event
+            QTreeWidgetItem* fourthChildHeader = new QTreeWidgetItem();
+            fourthChildHeader->setText(0, "Memory value");
+            fourthChildHeader->setText(1, "Length");
+            fourthChildHeader->setText(2, "Address");
+            thirdChild->addChild(fourthChildHeader);
+            QTreeWidgetItem* fourthChild = new QTreeWidgetItem();
+            fourthChild->setText(0, query.value("mem_value").toString());
+            fourthChild->setText(1, query.value("mem_len").toString());
+            fourthChild->setText(2, query.value("mem_address").toString());
+
+
+            //Add all elements one inside the other
+            thirdChild->addChild(fourthChild);
+            secondChild->addChild(thirdChild);
+            child->addChild(secondChild);
+            if (!reusedRoutine)
+            {
+                item->addChild(child);
+            }
+
+            if (!reusedDLL)
+            {
+                treeWidget->addTopLevelItem(item);
+            }
+
+            treeWidget->resizeColumnToContents(0);
         }
-        thirdChild->setText(0, eventTypeStr);
-        thirdChild->setText(1, query.value("color").toString());
-
-        //Fifth level, detailed info about memory at the taint event
-        QTreeWidgetItem *fourthChildHeader = new QTreeWidgetItem();
-        fourthChildHeader->setText(0, "Memory value");
-        fourthChildHeader->setText(1, "Length");
-        fourthChildHeader->setText(2, "Address");
-        thirdChild->addChild(fourthChildHeader);
-        QTreeWidgetItem *fourthChild = new QTreeWidgetItem();
-        fourthChild->setText(0, query.value("mem_value").toString());
-        fourthChild->setText(1, query.value("mem_len").toString());
-        fourthChild->setText(2, query.value("mem_address").toString());
-
-
-        //Add all elements one inside the other
-        thirdChild->addChild(fourthChild);
-        secondChild->addChild(thirdChild);
-        child->addChild(secondChild);
-        if(!reusedRoutine)
-        {
-            item->addChild(child);
-        }
-
-        if(!reusedDLL)
-        {
-            treeWidget->addTopLevelItem(item);
-        }
-
-        treeWidget->resizeColumnToContents(0);
     }
+    else
+    {
+        while (query.next())
+        {
+            //The first level will only show the dll of the tainted image
+            qDebug() << "Received item";
+            //If is exactly the same as the one already displayed, refrain from showing it
+            //If it was shown before but it is not exactly directly the same, no problems, we want to show cronological order
+            QTreeWidgetItem* item;
+            QTreeWidgetItem* lastTopLevel = treeWidget->topLevelItem(treeWidget->topLevelItemCount() - 1);
+            int lastTopLevelFirstLevelChildCount = 0;
+            bool reusedDLL = false;
+            if (lastTopLevel != nullptr && query.value("direct_dll").toString() == lastTopLevel->text(0))
+            {
+                //Reuse the same DLL as before
+                item = lastTopLevel;
+                reusedDLL = true;
+                lastTopLevelFirstLevelChildCount = lastTopLevel->childCount();
+                //qDebug()<<"Reused top level item";
+            }
+            else
+            {
+                //Show new DLL
+                item = new QTreeWidgetItem();
+                item->setText(0, query.value("direct_dll").toString());
+                //qDebug()<<"New top level item of DLL: "<<item->text(0);
+            }
+
+            //Second level, show actual function+address that contain the taint event
+            //In here we do not care if values are repeated anymore
+            QTreeWidgetItem* child = new QTreeWidgetItem();
+            if (lastTopLevelFirstLevelChildCount == 0)
+            {
+                //Means we are the first, introduce the children header
+                QTreeWidgetItem* childHeader;
+                childHeader = new QTreeWidgetItem();
+                childHeader->setText(0, "Function");
+                childHeader->setText(1, "Base taint instruction");
+                child->addChild(childHeader);
+            }
+            child->setText(0, query.value("direct_dll").toString());
+            QString routineStr = query.value("direct_function").toString();
+            if (routineStr == "unnamedImageEntryPoint" || routineStr == ".text")
+            {
+                routineStr = "No Symbol";
+            }
+            child->setText(0, routineStr);
+            child->setText(1, query.value("event_address").toString());
+            //qDebug()<<"New second child with dll: "<<secondChild->text(0);
+
+            //Fourth level, information about the taint event itself
+            QTreeWidgetItem* secondChild = new QTreeWidgetItem();
+            QTreeWidgetItem* secondChildHeader = new QTreeWidgetItem();
+            secondChildHeader->setText(0, "Event type");
+            secondChildHeader->setText(1, "Color");
+            child->addChild(secondChildHeader);
+            int eventType = query.value("event_type").toInt();
+            QString eventTypeStr;
+            switch (eventType)
+            {
+            case 1: eventTypeStr = "UNTAINT"; break;
+            case 2: eventTypeStr = "TAINT"; break;
+            case 3: eventTypeStr = "MOVED TAINT"; break;
+            case 4: eventTypeStr = "MIXED COLORS"; break;
+            case 5: eventTypeStr = "RULE TAINT"; break;
+            case 6: eventTypeStr = "RULE MOVE TAINT"; break;
+            case 0:
+            default: eventTypeStr = "ERROR"; break;
+            }
+            secondChild->setText(0, eventTypeStr);
+            secondChild->setText(1, query.value("color").toString());
+
+            //Fifth level, detailed info about memory at the taint event
+            QTreeWidgetItem* thirdChildHeader = new QTreeWidgetItem();
+            thirdChildHeader->setText(0, "Memory value");
+            thirdChildHeader->setText(1, "Length");
+            thirdChildHeader->setText(2, "Address");
+            secondChild->addChild(thirdChildHeader);
+            QTreeWidgetItem* thirdChild = new QTreeWidgetItem();
+            thirdChild->setText(0, query.value("mem_value").toString());
+            thirdChild->setText(1, query.value("mem_len").toString());
+            thirdChild->setText(2, query.value("mem_address").toString());
+
+
+            //Add all elements one inside the other
+            secondChild->addChild(thirdChild);
+            child->addChild(secondChild);
+            item->addChild(child);
+
+            if (!reusedDLL)
+            {
+                treeWidget->addTopLevelItem(item);
+            }
+
+            treeWidget->resizeColumnToContents(0);
+        }
+    }
+    
 }
 
 void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)

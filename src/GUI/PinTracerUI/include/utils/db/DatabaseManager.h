@@ -25,7 +25,7 @@ public:
     //Functions for building trees with database data
     void buildTaintRoutinesTree(QTreeWidget *treeWidget);
     void buildTraceFunctionsTree(QTreeWidget *treeWidget);
-    void buildTaintEventsTree(QTreeWidget *treeWidget);
+    void buildTaintEventsTree(QTreeWidget *treeWidget, bool withIndirectRoutines);
     void loadProtocolData(ProtocolBufferDrawer *bufferWidget);
     std::vector<int> getColorParentsListFromColor(int color);
 
