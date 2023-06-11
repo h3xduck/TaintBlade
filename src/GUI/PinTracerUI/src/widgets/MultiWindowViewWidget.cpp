@@ -59,6 +59,13 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     ui->level2HSplitterLeft->setSizes(QList<int>() << 300 << 200);
     ui->level2HSplitterRight->setSizes(QList<int>() << 200 << 200);
     ui->level3VSplitterLeftUp->setSizes(QList<int>() << 300 << 100);
+    ui->level1VSplitter->setStyleSheet("QSplitter::handle { background-color: rgb(180, 180, 180); }");
+    ui->level1VSplitter->setHandleWidth(1);
+    ui->level2HSplitterLeft->setHandleWidth(1);
+    ui->level2HSplitterRight->setHandleWidth(1);
+    ui->level3VSplitterLeftUp->setHandleWidth(1);
+    ui->level3VSplitterRightDown->setHandleWidth(1);
+    ui->level3VSplitterLeftDown->setHandleWidth(1);
 
     //For now, we will delete this widget, since it is not being used
     delete ui->frameRightUpLeft;
@@ -86,7 +93,11 @@ void MultiWindowViewWidget::tracedProcessFinished()
 void MultiWindowViewWidget::initializeResultWidgets()
 {
     qDebug()<<"Requested to initiliaze all result widgets";
-    //TODO change colors or something
+    
+    //In here we show the different frames (although we do not initialize them still, 
+    //that is when the user clicks a protocol buffer)
+    ui->level1VSplitter->setStyleSheet("QSplitter::handle { background-color: rgb(180, 180, 180); }");
+    ui->level1VSplitter->setHandleWidth(1);
 }
 
 void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)

@@ -12,6 +12,7 @@ TracedProcessWidget::TracedProcessWidget(QWidget *parent) :
     //this->setAutoFillBackground(true);
     //this->setPalette(pal);
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    this->layout()->setContentsMargins(0, 0, 0, 0);
 
     ui->treeWidget->setColumnCount(3);
     ui->treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
