@@ -20,9 +20,12 @@ public:
 
 private slots:
     void toggleIndirectRoutinesVisualization(bool activate);
+    void toggleGroupTaintEvents(bool setting);
 
 private:
     Ui::TaintEventsWidget *ui;
+    bool indirectRoutinesShow = false;
+    bool groupTaintEvents = false;
 };
 
 #endif // TAINTEVENTSWIDGET_H

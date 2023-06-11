@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTreeWidget>
@@ -23,9 +24,11 @@ QT_BEGIN_NAMESPACE
 class Ui_TaintEventsWidget
 {
 public:
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout;
     QLabel *label;
+    QHBoxLayout *horizontalLayout;
     QCheckBox *checkBox;
+    QCheckBox *checkBoxGroupEvents;
     QTreeWidget *treeWidget;
 
     void setupUi(QWidget *TaintEventsWidget)
@@ -33,18 +36,28 @@ public:
         if (TaintEventsWidget->objectName().isEmpty())
             TaintEventsWidget->setObjectName("TaintEventsWidget");
         TaintEventsWidget->resize(400, 300);
-        verticalLayout_2 = new QVBoxLayout(TaintEventsWidget);
-        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout = new QVBoxLayout(TaintEventsWidget);
+        verticalLayout->setObjectName("verticalLayout");
         label = new QLabel(TaintEventsWidget);
         label->setObjectName("label");
 
-        verticalLayout_2->addWidget(label);
+        verticalLayout->addWidget(label);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
         checkBox = new QCheckBox(TaintEventsWidget);
         checkBox->setObjectName("checkBox");
-        checkBox->setChecked(true);
+        checkBox->setChecked(false);
 
-        verticalLayout_2->addWidget(checkBox);
+        horizontalLayout->addWidget(checkBox);
+
+        checkBoxGroupEvents = new QCheckBox(TaintEventsWidget);
+        checkBoxGroupEvents->setObjectName("checkBoxGroupEvents");
+
+        horizontalLayout->addWidget(checkBoxGroupEvents);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
         treeWidget = new QTreeWidget(TaintEventsWidget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
@@ -52,7 +65,7 @@ public:
         treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName("treeWidget");
 
-        verticalLayout_2->addWidget(treeWidget);
+        verticalLayout->addWidget(treeWidget);
 
 
         retranslateUi(TaintEventsWidget);
@@ -65,6 +78,7 @@ public:
         TaintEventsWidget->setWindowTitle(QCoreApplication::translate("TaintEventsWidget", "Form", nullptr));
         label->setText(QCoreApplication::translate("TaintEventsWidget", "TAINT EVENTS (chronological)", nullptr));
         checkBox->setText(QCoreApplication::translate("TaintEventsWidget", "Show jumps from scoped routines", nullptr));
+        checkBoxGroupEvents->setText(QCoreApplication::translate("TaintEventsWidget", "Group taint events", nullptr));
     } // retranslateUi
 
 };

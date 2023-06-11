@@ -10,6 +10,7 @@
 #include "widgets/protocol/ProtocolBufferDrawer.h"
 #include "widgets/protocol/data/Protocol.h"
 #include "widgets/protocol/data/ProtocolBuffer.h"
+#include "utils/proto/ProtoUtils.h"
 
 class DatabaseManager
 {

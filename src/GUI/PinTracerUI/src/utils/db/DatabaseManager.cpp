@@ -201,8 +201,8 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
                     routineStr = "No Symbol";
                 }
                 child->setText(0, routineStr);
-                child->setText(1, query.value("indirect_base_entry").toString());
-                child->setText(2, query.value("indirect_jump").toString());
+                child->setText(1, UTILS::getHexValueOfByteAuto(query.value("indirect_base_entry").toInt()));
+                child->setText(2, UTILS::getHexValueOfByteAuto(query.value("indirect_jump").toInt()));
                 //qDebug()<<"New first child with function: "<<child->text(0);
             }
 
@@ -228,7 +228,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
             }
             secondChild->setText(0, query.value("direct_dll").toString());
             secondChild->setText(1, routineStr);
-            secondChild->setText(2, query.value("event_address").toString());
+            secondChild->setText(2, UTILS::getHexValueOfByteAuto(query.value("event_address").toInt()));
             //qDebug()<<"New second child with dll: "<<secondChild->text(0);
 
             //Fourth level, information about the taint event itself
@@ -261,8 +261,8 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
             thirdChild->addChild(fourthChildHeader);
             QTreeWidgetItem* fourthChild = new QTreeWidgetItem();
             fourthChild->setText(0, query.value("mem_value").toString());
-            fourthChild->setText(1, query.value("mem_len").toString());
-            fourthChild->setText(2, query.value("mem_address").toString());
+            fourthChild->setText(1, UTILS::getHexValueOfByteAuto(query.value("mem_len").toInt()));
+            fourthChild->setText(2, UTILS::getHexValueOfByteAuto(query.value("mem_address").toInt()));
 
 
             //Add all elements one inside the other
@@ -320,7 +320,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
                 childHeader = new QTreeWidgetItem();
                 childHeader->setText(0, "Function");
                 childHeader->setText(1, "Base taint instruction");
-                child->addChild(childHeader);
+                item->addChild(childHeader);
             }
             child->setText(0, query.value("direct_dll").toString());
             QString routineStr = query.value("direct_function").toString();
@@ -329,7 +329,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
                 routineStr = "No Symbol";
             }
             child->setText(0, routineStr);
-            child->setText(1, query.value("event_address").toString());
+            child->setText(1, UTILS::getHexValueOfByteAuto(query.value("event_address").toInt()));
             //qDebug()<<"New second child with dll: "<<secondChild->text(0);
 
             //Fourth level, information about the taint event itself
@@ -362,8 +362,8 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
             secondChild->addChild(thirdChildHeader);
             QTreeWidgetItem* thirdChild = new QTreeWidgetItem();
             thirdChild->setText(0, query.value("mem_value").toString());
-            thirdChild->setText(1, query.value("mem_len").toString());
-            thirdChild->setText(2, query.value("mem_address").toString());
+            thirdChild->setText(1, UTILS::getHexValueOfByteAuto(query.value("mem_len").toInt()));
+            thirdChild->setText(2, UTILS::getHexValueOfByteAuto(query.value("mem_address").toInt()));
 
 
             //Add all elements one inside the other

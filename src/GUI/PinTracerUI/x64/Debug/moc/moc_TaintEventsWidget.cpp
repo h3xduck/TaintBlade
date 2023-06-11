@@ -41,15 +41,19 @@ static constexpr auto qt_meta_stringdata_CLASSTaintEventsWidgetENDCLASS = QtMocH
     "TaintEventsWidget",
     "toggleIndirectRoutinesVisualization",
     "",
-    "activate"
+    "activate",
+    "toggleGroupTaintEvents",
+    "setting"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSTaintEventsWidgetENDCLASS_t {
-    uint offsetsAndSizes[8];
+    uint offsetsAndSizes[12];
     char stringdata0[18];
     char stringdata1[36];
     char stringdata2[1];
     char stringdata3[9];
+    char stringdata4[23];
+    char stringdata5[8];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSTaintEventsWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -58,12 +62,16 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSTaintEventsWidgetENDCLASS_t qt_
         QT_MOC_LITERAL(0, 17),  // "TaintEventsWidget"
         QT_MOC_LITERAL(18, 35),  // "toggleIndirectRoutinesVisuali..."
         QT_MOC_LITERAL(54, 0),  // ""
-        QT_MOC_LITERAL(55, 8)   // "activate"
+        QT_MOC_LITERAL(55, 8),  // "activate"
+        QT_MOC_LITERAL(64, 22),  // "toggleGroupTaintEvents"
+        QT_MOC_LITERAL(87, 7)   // "setting"
     },
     "TaintEventsWidget",
     "toggleIndirectRoutinesVisualization",
     "",
-    "activate"
+    "activate",
+    "toggleGroupTaintEvents",
+    "setting"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -75,7 +83,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTaintEventsWidgetENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -83,10 +91,12 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSTaintEventsWidgetENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   20,    2, 0x08,    1 /* Private */,
+       1,    1,   26,    2, 0x08,    1 /* Private */,
+       4,    1,   29,    2, 0x08,    3 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void, QMetaType::Bool,    5,
 
        0        // eod
 };
@@ -102,6 +112,9 @@ Q_CONSTINIT const QMetaObject TaintEventsWidget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<TaintEventsWidget, std::true_type>,
         // method 'toggleIndirectRoutinesVisualization'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'toggleGroupTaintEvents'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<bool, std::false_type>
     >,
     nullptr
@@ -114,6 +127,7 @@ void TaintEventsWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         (void)_t;
         switch (_id) {
         case 0: _t->toggleIndirectRoutinesVisualization((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 1: _t->toggleGroupTaintEvents((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         default: ;
         }
     }
@@ -138,13 +152,13 @@ int TaintEventsWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
