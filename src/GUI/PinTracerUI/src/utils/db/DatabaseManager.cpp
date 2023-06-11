@@ -194,7 +194,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             //Now add the actual data
             child = new QTreeWidgetItem();
             QString routineStr = query.value("indirect_function").toString();
-            if (routineStr == "unnamedImageEntrypoint" || routineStr == ".text")
+            if (routineStr == "unnamedImageEntryPoint" || routineStr == ".text")
             {
                 routineStr = "No Symbol";
             }
@@ -224,7 +224,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
         {
             routineStr = "No Symbol";
         }
-        child->setText(0, routineStr);
+        secondChild->setText(0, query.value("direct_dll").toString());
         secondChild->setText(1, routineStr);
         secondChild->setText(2, query.value("event_address").toString());
         //qDebug()<<"New second child with dll: "<<secondChild->text(0);

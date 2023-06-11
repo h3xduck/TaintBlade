@@ -59,6 +59,9 @@ MultiWindowViewWidget::MultiWindowViewWidget(QWidget *parent) :
     ui->level2HSplitterLeft->setSizes(QList<int>() << 300 << 200);
     ui->level2HSplitterRight->setSizes(QList<int>() << 200 << 200);
     ui->level3VSplitterLeftUp->setSizes(QList<int>() << 300 << 100);
+
+    //For now, we will delete this widget, since it is not being used
+    delete ui->frameRightUpLeft;
 }
 
 MultiWindowViewWidget::~MultiWindowViewWidget()
@@ -169,9 +172,6 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));
 
-
-    //For now, we will delete this widget, since it is not being used
-    delete ui->frameRightUpLeft;
 }
 
 

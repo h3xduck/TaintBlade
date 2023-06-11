@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTreeWidget>
@@ -24,6 +25,7 @@ class Ui_TaintEventsWidget
 public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
+    QCheckBox *checkBox;
     QTreeWidget *treeWidget;
 
     void setupUi(QWidget *TaintEventsWidget)
@@ -38,7 +40,16 @@ public:
 
         verticalLayout_2->addWidget(label);
 
+        checkBox = new QCheckBox(TaintEventsWidget);
+        checkBox->setObjectName("checkBox");
+        checkBox->setChecked(true);
+
+        verticalLayout_2->addWidget(checkBox);
+
         treeWidget = new QTreeWidget(TaintEventsWidget);
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
+        treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName("treeWidget");
 
         verticalLayout_2->addWidget(treeWidget);
@@ -53,6 +64,7 @@ public:
     {
         TaintEventsWidget->setWindowTitle(QCoreApplication::translate("TaintEventsWidget", "Form", nullptr));
         label->setText(QCoreApplication::translate("TaintEventsWidget", "TAINT EVENTS (chronological)", nullptr));
+        checkBox->setText(QCoreApplication::translate("TaintEventsWidget", "Show jumps from scoped routines", nullptr));
     } // retranslateUi
 
 };

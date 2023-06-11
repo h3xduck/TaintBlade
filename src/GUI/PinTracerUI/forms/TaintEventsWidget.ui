@@ -22,7 +22,23 @@
     </widget>
    </item>
    <item>
-    <widget class="QTreeWidget" name="treeWidget"/>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="text">
+      <string>Show jumps from scoped routines</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTreeWidget" name="treeWidget">
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
    </item>
   </layout>
  </widget>
