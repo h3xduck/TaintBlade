@@ -377,6 +377,8 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
             }
 
             treeWidget->resizeColumnToContents(0);
+            TreeWidgetHeaderItemDelegate* delegate = new TreeWidgetHeaderItemDelegate(treeWidget);
+            treeWidget->setItemDelegate(delegate);
         }
     }
     

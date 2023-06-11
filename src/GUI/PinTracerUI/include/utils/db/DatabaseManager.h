@@ -11,6 +11,7 @@
 #include "widgets/protocol/data/Protocol.h"
 #include "widgets/protocol/data/ProtocolBuffer.h"
 #include "utils/proto/ProtoUtils.h"
+#include "widgets/misc/TreeWidgetItemHeader.h"
 
 class DatabaseManager
 {
