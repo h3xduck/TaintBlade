@@ -248,7 +248,10 @@ public:
 	*/
 	std::vector<UINT16> memRangeGetColor(ADDRINT mem, int bytes);
 
-
+	/**
+	Returns the full internal taglog with mixed colors
+	*/
+	std::tr1::unordered_map<UINT16, Tag> getTaintLog();
 
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();

@@ -70,6 +70,7 @@ namespace UTILS
 			void insertTaintRoutineRecord(struct UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data);
 			void insertTraceFunctionRecord(UTILS::TRACE::TracePoint& tp);
 			void insertProtocolRecords(REVERSING::PROTOCOL::Protocol& protocol);
+			void insertColorTransformationRecords(std::vector<Tag> vec);
 
 			//setters and getters
 			bool& databaseOpened() { return this->databaseOpened_; };

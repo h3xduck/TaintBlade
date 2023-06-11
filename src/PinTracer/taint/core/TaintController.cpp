@@ -244,6 +244,11 @@ void TaintController::dumpTaintLog()
 	this->tagMap.dumpTaintLog();
 }
 
+std::tr1::unordered_map<UINT16, Tag> TaintController::getTaintLog()
+{
+	return this->tagMap.getTaintLog();
+}
+
 void TaintController::dumpTaintLogPrettified(UINT16 color)
 {
 	this->tagMap.dumpTaintLogPrettified(color);

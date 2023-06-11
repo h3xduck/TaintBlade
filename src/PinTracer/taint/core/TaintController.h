@@ -48,6 +48,7 @@ public:
 
 	void printTaint();
 	void dumpTaintLog();
+	std::tr1::unordered_map<UINT16, Tag> getTaintLog();
 	void dumpTaintLogPrettified(UINT16 color);
 	void dumpTagLogOriginalColors();
 	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();

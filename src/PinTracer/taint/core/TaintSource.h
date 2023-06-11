@@ -315,7 +315,6 @@ public:
 				//Now we dump the current tainted memory
 				std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
 				//In the case we don't have tainted memory yet, we write nothing
-				//THIS MAY GET DEPRECATED, REVISE IT LATER
 				if (!vec.empty()) {
 					ctx.getDataDumper().writeCurrentTaintedMemoryDump(ip, vec);
 				}

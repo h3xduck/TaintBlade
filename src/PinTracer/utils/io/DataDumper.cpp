@@ -117,12 +117,17 @@ void DataDumper::writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair
 
 void DataDumper::writeColorTransformationDump(std::vector<Tag> vec)
 {
+#if(FILE_LOGGING_ACTIVATE==1)
 	for (auto& it : vec)
 	{
 		this->colorTransDumpFile << it.color << DUMP_INTER_SEPARATOR <<
 			it.derivate1 << DUMP_INTER_SEPARATOR <<
 			it.derivate2 << DUMP_OUTER_SEPARATOR;
 	}
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertColorTransformationRecords(vec);
+#endif
 }
 
 void DataDumper::writeRevHeuristicDumpLine(HLComparison log)

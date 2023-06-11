@@ -751,3 +751,20 @@ void UTILS::DB::DatabaseManager::insertProtocolRecords(REVERSING::PROTOCOL::Prot
 		}
 	}
 }
+
+void UTILS::DB::DatabaseManager::insertColorTransformationRecords(std::vector<Tag> vec)
+{
+	if (!databaseOpened())
+	{
+		this->openDatabase();
+	}
+
+	for (Tag tag : vec)
+	{
+		std::string sql = "INSERT INTO color_transformation(derivate_color, color_mix_1, color_mix_2) VALUES("+
+			quotesql(std::to_string((int)tag.color)) + ", " +
+			quotesql(std::to_string((int)tag.derivate1)) + ", " +
+			quotesql(std::to_string((int)tag.derivate2)) + ");";
+		EXECUTE_SQL_QUERY(sql);
+	}
+}

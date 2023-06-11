@@ -863,6 +863,11 @@ void TagMap::dumpTaintLog()
 	this->tagLog.dumpTagLog();
 }
 
+std::tr1::unordered_map<UINT16, Tag> TagMap::getTaintLog()
+{
+	return this->tagLog.getTagLogMap();
+}
+
 void TagMap::dumpTaintLogPrettified(UINT16 startColor)
 {
 	this->tagLog.dumpTagLogPrettified(startColor);
