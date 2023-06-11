@@ -126,7 +126,7 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
     qDebug()<<"Building taint events tree";
     treeWidget->clear();
     treeWidget->setColumnCount(3);
-    QStringList headers = { "Dll", "", ""};
+    QStringList headers = { "Binary image", "", ""};
     treeWidget->setHeaderLabels(headers);
     QSqlQuery query;
     query.exec("SELECT te.type AS event_type, te.inst_address AS event_address, te.mem_address, te.color, te.mem_value, te.mem_len, "\
@@ -193,7 +193,12 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             }
             //Now add the actual data
             child = new QTreeWidgetItem();
-            child->setText(0, query.value("indirect_function").toString());
+            QString routineStr = query.value("indirect_function").toString();
+            if (routineStr == "unnamedImageEntrypoint" || routineStr == ".text")
+            {
+                routineStr = "No Symbol";
+            }
+            child->setText(0, routineStr);
             child->setText(1, query.value("indirect_base_entry").toString());
             child->setText(2, query.value("indirect_jump").toString());
             //qDebug()<<"New first child with function: "<<child->text(0);
@@ -207,23 +212,29 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             //Means we are the first, introduce the children header
             QTreeWidgetItem *secondChildHeader;
             secondChildHeader = new QTreeWidgetItem();
-            secondChildHeader->setText(0, "DLL");
+            secondChildHeader->setText(0, "Binary image");
             secondChildHeader->setText(1, "Function");
+            secondChildHeader->setText(2, "Base taint instruction");
             child->addChild(secondChildHeader);
         }
         QTreeWidgetItem *secondChild = new QTreeWidgetItem();
         secondChild->setText(0, query.value("direct_dll").toString());
-        secondChild->setText(1, query.value("direct_function").toString());
+        QString routineStr = query.value("direct_function").toString();
+        if (routineStr == "unnamedImageEntryPoint" || routineStr == ".text")
+        {
+            routineStr = "No Symbol";
+        }
+        child->setText(0, routineStr);
+        secondChild->setText(1, routineStr);
+        secondChild->setText(2, query.value("event_address").toString());
         //qDebug()<<"New second child with dll: "<<secondChild->text(0);
 
         //Fourth level, information about the taint event itself
         QTreeWidgetItem *thirdChildHeader = new QTreeWidgetItem();
-        thirdChildHeader->setText(0, "Base instruction");
-        thirdChildHeader->setText(1, "Event type");
-        thirdChildHeader->setText(2, "Color");
+        thirdChildHeader->setText(0, "Event type");
+        thirdChildHeader->setText(1, "Color");
         secondChild->addChild(thirdChildHeader);
         QTreeWidgetItem *thirdChild = new QTreeWidgetItem();
-        thirdChild->setText(0, query.value("event_address").toString());
         int eventType = query.value("event_type").toInt();
         QString eventTypeStr;
         switch(eventType)
@@ -237,8 +248,8 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
             case 0:
             default: eventTypeStr = "ERROR"; break;
         }
-        thirdChild->setText(1, eventTypeStr);
-        thirdChild->setText(2, query.value("color").toString());
+        thirdChild->setText(0, eventTypeStr);
+        thirdChild->setText(1, query.value("color").toString());
 
         //Fifth level, detailed info about memory at the taint event
         QTreeWidgetItem *fourthChildHeader = new QTreeWidgetItem();
@@ -265,6 +276,8 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget)
         {
             treeWidget->addTopLevelItem(item);
         }
+
+        treeWidget->resizeColumnToContents(0);
     }
 }
 

@@ -169,6 +169,9 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));
 
+
+    //For now, we will delete this widget, since it is not being used
+    delete ui->frameRightUpLeft;
 }
 
 
