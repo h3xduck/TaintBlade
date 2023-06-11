@@ -248,5 +248,29 @@ void MultiWindowViewWidget::showHighlightColorByteContextMenu(const QPoint& pos,
 void MultiWindowViewWidget::selectedProtocolColor(int color)
 {
     //We will have to find all parents of this color to be highlighted
+    std::vector<int> originalParentColors = globalDBManager.getColorParentsListFromColor(color);
+    //We add the color itself too
+    originalParentColors.push_back(color);
 
+    //For every color we've got, we will highlight them in the buffer visualization widget
+    selectedHighlightBytesWithColors(originalParentColors);
+}
+
+void MultiWindowViewWidget::selectedHighlightBytesWithColors(std::vector<int> colorVector)
+{
+    this->protocolVisualizationWidget->buttonColorByWordTypeClicked();
+
+    //We take the offset in the currently selected buffer that corresponds to each color
+    std::vector<int> offsetVec;
+    std::shared_ptr<PROTOCOL::ProtocolBuffer> buffer = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(GLOBAL_VARS::selectedBufferIndex);
+    for (int color : colorVector)
+    {
+        int offset = buffer.get()->getOffsetOfColor(color);
+        if (offset != -1)
+        {
+            offsetVec.push_back(offset);
+        }
+    }
+
+    this->protocolVisualizationWidget->highlightProtocolBytes(offsetVec);
 }

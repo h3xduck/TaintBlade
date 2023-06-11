@@ -24,6 +24,7 @@ public:
     void highlightProtocolWord(int wordIndex);
     void highlightProtocolPointer(int pointerIndex);
     void highlightProtocolByte(int byteOffset);
+    void highlightProtocolBytes(std::vector<int> byteOffsets);
 
 public slots:
     void buttonColorByWordTypeClicked();

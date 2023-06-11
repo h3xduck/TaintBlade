@@ -91,3 +91,12 @@ void ProtocolVisualizationWidget::highlightProtocolByte(int byteOffset)
     if (this->currentlyVisualizedBufferIndex == -1) return;
     this->bufferDrawerWidget->highlightButtonWithProtocolByte(byteOffset);
 }
+
+void ProtocolVisualizationWidget::highlightProtocolBytes(std::vector<int> byteOffsets)
+{
+    if (this->currentlyVisualizedBufferIndex == -1) return;
+    for (int byteOffset : byteOffsets)
+    {
+        this->bufferDrawerWidget->highlightButtonWithProtocolByte(byteOffset);
+    }   
+}

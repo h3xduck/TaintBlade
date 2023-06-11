@@ -96,6 +96,11 @@ public slots:
     */
     void selectedProtocolColor(int color);
 
+    /**
+    * Highlight any byte with the specified colors at the protocolVisualizationWidget. Also switch to filter by word type.
+    */
+    void selectedHighlightBytesWithColors(std::vector<int> colorVector);
+
 private:
     Ui::MultiWindowViewWidget *ui;
     TracedProcessWidget* tracedProcessWidget;

@@ -374,7 +374,7 @@ void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)
                 }
                 pointer->belongingBuffer() = protocolBuffer;
                 pointer->pointedColor() = bufferQuery.value("pointed_color").toInt();
-                pointer->pointedByte() = protocolBuffer->byteVector().at(bufferQuery.value("protocol_pointer.pointed_color").toInt());
+                pointer->pointedByte() = protocolBuffer->byteVector().at(protocolBuffer.get()->getOffsetOfColor(bufferQuery.value("protocol_pointer.pointed_color").toInt()));
 
                 //Add the pointer byte info
                 std::shared_ptr<PROTOCOL::ProtocolPointerByte> byte = std::make_shared<PROTOCOL::ProtocolPointerByte>(pointer, bufferQuery.value("protocol_pointer_byte.byte_offset").toInt(), bufferQuery.value("value").toInt(), bufferQuery.value("color").toInt());

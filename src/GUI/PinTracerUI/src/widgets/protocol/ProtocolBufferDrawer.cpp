@@ -302,7 +302,7 @@ void ProtocolBufferDrawer::highlightButtonWithProtocolByte(int byteOffset)
     {
         PROTOCOL::ByteBufferPushButton* button = (PROTOCOL::ByteBufferPushButton*)ui->horizontalLayout->itemAt(ii)->widget();
         //Check if the button contains the byte
-        if ((byteOffsetAccumulator + button->getInternalByteSize()) >= byteOffset)
+        if ((byteOffsetAccumulator + button->getInternalByteSize()) > byteOffset)
         {
             //Highlight the button
             QPropertyAnimation* paAnimation = new QPropertyAnimation(button, "color");
