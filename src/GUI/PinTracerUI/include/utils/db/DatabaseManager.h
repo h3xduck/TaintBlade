@@ -27,6 +27,7 @@ public:
     void buildTraceFunctionsTree(QTreeWidget *treeWidget);
     void buildTaintEventsTree(QTreeWidget *treeWidget);
     void loadProtocolData(ProtocolBufferDrawer *bufferWidget);
+    std::vector<int> getColorParentsListFromColor(int color);
 
 private:
     QSqlDatabase m_db;

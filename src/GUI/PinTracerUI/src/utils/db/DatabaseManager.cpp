@@ -392,5 +392,49 @@ void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)
             bufferVector.push_back(protocolBuffer);
         }
     }
+}
 
+
+
+std::vector<int> DatabaseManager::getColorParentsListFromColor(int color)
+{
+    std::shared_ptr<PROTOCOL::Protocol> protocol = GLOBAL_VARS::globalProtocol;
+    int currentBufferIndex = GLOBAL_VARS::selectedBufferIndex;
+    QSqlQuery query;
+    //The following query returns rows if the color is not an original color. For each row, one of its parents,
+    //which really is an original color, is returned. If the color passed is original, then no row is returned.
+    query.exec(QString(
+        "WITH RECURSIVE color_ancestors(derivate_color, color_mix_1, color_mix_2) AS( "
+            "SELECT derivate_color, color_mix_1, color_mix_2 "
+            "FROM color_transformation "
+            "WHERE derivate_color = %1 "
+            "UNION "
+            "SELECT ct.derivate_color, ct.color_mix_1, ct.color_mix_2 "
+            "FROM color_transformation AS ct "
+            "JOIN color_ancestors "
+                "ON color_ancestors.color_mix_1 = ct.derivate_color OR color_ancestors.color_mix_2 = ct.derivate_color "
+        ") "
+        "SELECT DISTINCT color_mix_1 AS original_color "
+        "FROM color_ancestors "
+        "WHERE color_mix_1 NOT IN( "
+            "SELECT derivate_color "
+            "FROM color_transformation "
+        ") "
+        "UNION "
+        "SELECT DISTINCT color_mix_2 AS original_color " 
+        "FROM color_ancestors "
+        "WHERE color_mix_2 NOT IN( "
+            "SELECT derivate_color "
+            "FROM color_transformation "
+        ")"
+    ).arg(color));
+
+    //We will take the original color parents of the color and put them in a vector
+    std::vector<int> colorParents;
+    while (query.next())
+    {
+        colorParents.push_back(query.value("original_color").toInt());
+    }
+
+    return colorParents;
 }
