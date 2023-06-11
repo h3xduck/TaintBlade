@@ -63,11 +63,14 @@ static constexpr auto qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS = Qt
     "color",
     "selectedHighlightBytesWithColors",
     "std::vector<int>",
-    "colorVector"
+    "colorVector",
+    "showBufferByteContextMenu",
+    "std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>>",
+    "byteVec"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t {
-    uint offsetsAndSizes[50];
+    uint offsetsAndSizes[56];
     char stringdata0[22];
     char stringdata1[19];
     char stringdata2[1];
@@ -93,6 +96,9 @@ struct qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t {
     char stringdata22[33];
     char stringdata23[17];
     char stringdata24[12];
+    char stringdata25[26];
+    char stringdata26[53];
+    char stringdata27[8];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -122,7 +128,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t
         QT_MOC_LITERAL(358, 5),  // "color"
         QT_MOC_LITERAL(364, 32),  // "selectedHighlightBytesWithColors"
         QT_MOC_LITERAL(397, 16),  // "std::vector<int>"
-        QT_MOC_LITERAL(414, 11)   // "colorVector"
+        QT_MOC_LITERAL(414, 11),  // "colorVector"
+        QT_MOC_LITERAL(426, 25),  // "showBufferByteContextMenu"
+        QT_MOC_LITERAL(452, 52),  // "std::vector<std::shared_ptr<P..."
+        QT_MOC_LITERAL(505, 7)   // "byteVec"
     },
     "MultiWindowViewWidget",
     "treeViewRowClicked",
@@ -148,7 +157,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMultiWindowViewWidgetENDCLASS_t
     "color",
     "selectedHighlightBytesWithColors",
     "std::vector<int>",
-    "colorVector"
+    "colorVector",
+    "showBufferByteContextMenu",
+    "std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>>",
+    "byteVec"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -160,7 +172,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMultiWindowViewWidgetENDCLASS[] 
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -168,15 +180,16 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMultiWindowViewWidgetENDCLASS[] 
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   68,    2, 0x0a,    1 /* Public */,
-       5,    1,   71,    2, 0x0a,    3 /* Public */,
-       7,    1,   74,    2, 0x0a,    5 /* Public */,
-       9,    1,   77,    2, 0x0a,    7 /* Public */,
-      11,    3,   80,    2, 0x0a,    9 /* Public */,
-      14,    1,   87,    2, 0x0a,   13 /* Public */,
-      16,    2,   90,    2, 0x0a,   15 /* Public */,
-      20,    1,   95,    2, 0x0a,   18 /* Public */,
-      22,    1,   98,    2, 0x0a,   20 /* Public */,
+       1,    1,   74,    2, 0x0a,    1 /* Public */,
+       5,    1,   77,    2, 0x0a,    3 /* Public */,
+       7,    1,   80,    2, 0x0a,    5 /* Public */,
+       9,    1,   83,    2, 0x0a,    7 /* Public */,
+      11,    3,   86,    2, 0x0a,    9 /* Public */,
+      14,    1,   93,    2, 0x0a,   13 /* Public */,
+      16,    2,   96,    2, 0x0a,   15 /* Public */,
+      20,    1,  101,    2, 0x0a,   18 /* Public */,
+      22,    1,  104,    2, 0x0a,   20 /* Public */,
+      25,    1,  107,    2, 0x0a,   22 /* Public */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -188,6 +201,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMultiWindowViewWidgetENDCLASS[] 
     QMetaType::Void, QMetaType::QPoint, 0x80000000 | 18,   17,   19,
     QMetaType::Void, QMetaType::Int,   21,
     QMetaType::Void, 0x80000000 | 23,   24,
+    QMetaType::Void, 0x80000000 | 26,   27,
 
        0        // eod
 };
@@ -230,7 +244,10 @@ Q_CONSTINIT const QMetaObject MultiWindowViewWidget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'selectedHighlightBytesWithColors'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<std::vector<int>, std::false_type>
+        QtPrivate::TypeAndForceComplete<std::vector<int>, std::false_type>,
+        // method 'showBufferByteContextMenu'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>>, std::false_type>
     >,
     nullptr
 } };
@@ -250,6 +267,7 @@ void MultiWindowViewWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 6: _t->showHighlightColorByteContextMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTreeWidget*>>(_a[2]))); break;
         case 7: _t->selectedProtocolColor((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 8: _t->selectedHighlightBytesWithColors((*reinterpret_cast< std::add_pointer_t<std::vector<int>>>(_a[1]))); break;
+        case 9: _t->showBufferByteContextMenu((*reinterpret_cast< std::add_pointer_t<std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>>>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -285,13 +303,13 @@ int MultiWindowViewWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

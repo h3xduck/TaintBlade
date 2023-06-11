@@ -17,6 +17,8 @@ class ProtocolVisualizationWidget : public QWidget
     Q_OBJECT
 
 public:
+    ProtocolBufferDrawer* bufferDrawerWidget;
+
     explicit ProtocolVisualizationWidget(QWidget *parent = nullptr);
     ~ProtocolVisualizationWidget();
 
@@ -34,7 +36,6 @@ public slots:
 private:
     Ui::ProtocolVisualizationWidget *ui;
     QWidget *contentWidget;
-    ProtocolBufferDrawer* bufferDrawerWidget;
     int currentlyVisualizedBufferIndex = -1;
 };
 

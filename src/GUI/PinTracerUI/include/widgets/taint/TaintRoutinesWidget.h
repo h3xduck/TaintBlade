@@ -5,6 +5,7 @@
 #include "utils/db/DatabaseManager.h"
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
+#include "widgets/misc/TreeWidgetItemColourableDelegate.h"
 
 namespace Ui {
 class TaintRoutinesWidget;
@@ -18,6 +19,7 @@ public:
     explicit TaintRoutinesWidget(QWidget *parent = nullptr);
     ~TaintRoutinesWidget();
 
+    void highlightTaintRoutineByLead(PROTOCOL::ProtocolByte::taint_lead_t& lead);
 private:
     Ui::TaintRoutinesWidget *ui;
 };

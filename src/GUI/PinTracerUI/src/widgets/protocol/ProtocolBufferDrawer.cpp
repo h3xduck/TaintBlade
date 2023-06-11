@@ -31,11 +31,6 @@ void ProtocolBufferDrawer::addProtocolBufferByte(QString byteValue, int byteOffs
     button->setFixedSize(button->width() * widthMultiplicator, button->height() * heightMultiplicator);
 
     ui->horizontalLayout->addWidget(button);
-    /*QPropertyAnimation animation(button, "geometry");
-    animation.setDuration(5000);  //2000 miliseconds = 2 seconds
-    animation.setStartValue(QRect(0,0, button->width(),button->height()));
-    animation.setEndValue(QRect(180,180, button->width(),button->height()));
-    animation.start();*/
 }
 
 void ProtocolBufferDrawer::visualizeBufferByWordtype(int bufferIndex)
@@ -162,8 +157,10 @@ void ProtocolBufferDrawer::visualizeBufferByPurpose(int bufferIndex)
         }
 
         button->type() = (PROTOCOL::ByteBufferPushButton::buttonType_t)selectedType;
-        //Connect the signal that will trigger when someone clicks the button
-        //TODO
+        
+        //Add a custom context menu for the button
+        button->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(button, &QPushButton::customContextMenuRequested, this, [this, button](const QPoint& pos) {sendRequestShowBufferByteContextMenu(pos, button); });
     }
 
     redistributeLayoutButtons();
@@ -317,4 +314,41 @@ void ProtocolBufferDrawer::highlightButtonWithProtocolByte(int byteOffset)
         }
         byteOffsetAccumulator += button->getInternalByteSize();
     }
+}
+
+void ProtocolBufferDrawer::sendRequestShowBufferByteContextMenu(const QPoint& pos, PROTOCOL::ByteBufferPushButton* button)
+{
+    qDebug() << "Received context menu request at X:" << pos.x() << " Y:" << pos.y() << " and button with text:" << button->text();
+    if (button)
+    {
+        // Create a QMenu
+        QMenu contextMenu(this);
+        QAction* newAct = new QAction(QIcon(":/res/res/icons8-external-link-26.png"), "Show routine using this", this);
+        contextMenu.addAction(newAct);
+
+        //Get the taint lead associated to the bytes at the button clicked
+        std::vector<int> bytesInButton;
+        std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>> chosenBytes;
+        for (int ii = button->startByte(); ii <= button->endByte(); ii++)
+        {
+            bytesInButton.push_back(ii);
+        }
+        std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>> byteVec = GLOBAL_VARS::globalProtocol.get()->bufferVector().at(GLOBAL_VARS::selectedBufferIndex).get()->byteVector();
+        for (std::shared_ptr<PROTOCOL::ProtocolByte> byte : byteVec)
+        {
+            if (std::find(bytesInButton.begin(), bytesInButton.end(), byte.get()->byteOffset()) != bytesInButton.end())
+            {
+                chosenBytes.push_back(byte);
+            }
+        }
+        connect(newAct, &QAction::triggered, this, [this, chosenBytes] {actionShowBufferBytesContextMenu(chosenBytes); });
+
+        // Display the context menu at the requested position
+        contextMenu.exec(button->mapToGlobal(pos));
+    }
+}
+
+void ProtocolBufferDrawer::actionShowBufferBytesContextMenu(std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>> bytes)
+{
+    emit signalShowBufferByteContextMenu(bytes);
 }

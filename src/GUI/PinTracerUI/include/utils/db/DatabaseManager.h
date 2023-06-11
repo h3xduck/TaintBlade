@@ -12,6 +12,7 @@
 #include "widgets/protocol/data/ProtocolBuffer.h"
 #include "utils/proto/ProtoUtils.h"
 #include "widgets/misc/TreeWidgetItemHeader.h"
+#include "widgets/misc/ColorAnimableTreeWidgetItem.h"
 
 class DatabaseManager
 {

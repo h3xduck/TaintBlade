@@ -124,6 +124,8 @@
   <ItemGroup>
     <ClInclude Include="include\common\Globals.h" />
     <ClInclude Include="include\utils\proto\ProtoUtils.h" />
+    <ClInclude Include="include\widgets\misc\ColorAnimableTreeWidgetItem.h" />
+    <ClInclude Include="include\widgets\misc\TreeWidgetItemColourableDelegate.h" />
     <ClInclude Include="include\widgets\misc\TreeWidgetItemHeader.h" />
     <ClInclude Include="include\widgets\protocol\data\Protocol.h" />
     <ClInclude Include="include\widgets\protocol\data\ProtocolBuffer.h" />

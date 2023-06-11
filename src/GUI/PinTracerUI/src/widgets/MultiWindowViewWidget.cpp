@@ -120,7 +120,8 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
         delete layoutItem->widget();
         delete layoutItem;
     }
-    ui->frameRightDownRight->layout()->addWidget(new TaintRoutinesWidget(ui->frameRightDownRight));
+    this->taintRoutinesWidget = new TaintRoutinesWidget(ui->frameRightDownRight);
+    ui->frameRightDownRight->layout()->addWidget(this->taintRoutinesWidget);
     ui->frameRightDownRight->layout()->setContentsMargins(0,0,0,0);
 
     //Trace functions widget. Delete any preious one.
@@ -171,7 +172,8 @@ void MultiWindowViewWidget::treeViewRowClicked(QModelIndex index)
     connect(this->protocolPartsWidget, SIGNAL(onSelectedProtocolBuffer(int)), this, SLOT(selectedProtocolBufferFromWidget(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferWord(int)), this, SLOT(selectedProtocolWord(int)));
     connect(this->protocolPartsWidget, SIGNAL(onSelectedBufferPointer(int)), this, SLOT(selectedProtocolPointer(int)));
-
+    connect(this->protocolVisualizationWidget->bufferDrawerWidget, SIGNAL(signalShowBufferByteContextMenu(std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>>)), 
+        this, SLOT(showBufferByteContextMenu(std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>>)));
 }
 
 
@@ -246,6 +248,17 @@ void MultiWindowViewWidget::showHighlightColorByteContextMenu(const QPoint& pos,
 
     QPoint pt(pos);
     menu.exec(treeWidget->mapToGlobal(pos));
+}
+
+void MultiWindowViewWidget::showBufferByteContextMenu(std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>> byteVec)
+{
+    //We will take the function responsible of the taint lead here
+    PROTOCOL::ProtocolByte::taint_lead_t lead;
+    //Any byte will do, they belong to the same function
+    //TODO - allow for bytes having multiple taint leads
+    lead = byteVec.at(0).get()->taintLead();
+    qDebug() << "Requested to highlight the taint routine named " << lead.funcName;
+    this->taintRoutinesWidget->highlightTaintRoutineByLead(lead);
 }
 
 void MultiWindowViewWidget::selectedProtocolColor(int color)

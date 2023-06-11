@@ -101,12 +101,18 @@ public slots:
     */
     void selectedHighlightBytesWithColors(std::vector<int> colorVector);
 
+    /**
+    * Highlights in the tainted routines widget the routines responsible (by means of taint leads) of a byte
+    */
+    void showBufferByteContextMenu(std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>> byteVec);
+
 private:
     Ui::MultiWindowViewWidget *ui;
     TracedProcessWidget* tracedProcessWidget;
     ProtocolPartsWidget* protocolPartsWidget;
     ProtocolVisualizationWidget* protocolVisualizationWidget;
     ProtocolBufferElementVisualization* protocolBufferElementVisualizationWidget;
+    TaintRoutinesWidget* taintRoutinesWidget;
 };
 
 #endif // MULTIWINDOWVIEWWIDGET_H

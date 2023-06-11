@@ -10,6 +10,8 @@
 #include "common/Globals.h"
 #include <QGraphicsColorizeEffect>
 #include "utils/proto/ProtoUtils.h"
+#include <QMenu>
+#include <QAction>
 
 namespace Ui {
 class ProtocolBufferDrawer;
@@ -42,7 +44,18 @@ public:
     //Shows the bytes of a pointer in the widget
     void visualizePointerBytes(std::shared_ptr<PROTOCOL::ProtocolPointer> pointer);
 
+private slots:
+    //Intermediate slot, requests to show the context menu of a buffer byte when right-clicking a button in by purpose mode
+    void sendRequestShowBufferByteContextMenu(const QPoint& pos, PROTOCOL::ByteBufferPushButton* button);
+    //Intermediate slot, requests to highlight the bytes at the taint routines widget after clicking that action in the context menu
+    void actionShowBufferBytesContextMenu(std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>> bytes);
+
+signals:
+    void signalShowBufferByteContextMenu(std::vector<std::shared_ptr<PROTOCOL::ProtocolByte>> chosenBytes);
+
 private:
+    QPushButton* findButtonAtPoint(const QPoint& pos);
+
     Ui::ProtocolBufferDrawer *ui;
     int currentBufferIndex = -1;
 };

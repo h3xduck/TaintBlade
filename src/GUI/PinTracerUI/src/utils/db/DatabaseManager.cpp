@@ -418,6 +418,7 @@ void DatabaseManager::loadProtocolData(ProtocolBufferDrawer* bufferWidget)
                 {
                     bufferQuery.value("class").toInt(),
                     bufferQuery.value("dll_name").toString().toStdString(),
+                    bufferQuery.value("func_name").toString().toStdString(),
                     bufferQuery.value("arg_number").toInt()
                 };
                 byte->taintLead() = lead;

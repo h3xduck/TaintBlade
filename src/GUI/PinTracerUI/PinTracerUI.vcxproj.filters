@@ -150,6 +150,12 @@
     <ClInclude Include="include\widgets\misc\TreeWidgetItemHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\widgets\misc\ColorAnimableTreeWidgetItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\widgets\misc\TreeWidgetItemColourableDelegate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="include\dialogs\PinConfigurationDialog.h">

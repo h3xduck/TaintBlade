@@ -16,6 +16,7 @@ namespace PROTOCOL
 		{
 			int leadClass = 0;
 			std::string dllName = "";
+			std::string funcName = "";
 			int argNumber = 0;
 		};
 	private:
