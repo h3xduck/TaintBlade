@@ -11,6 +11,7 @@
 #include "widgets/process/TracedProcessWidget.h"
 #include "widgets/MultiWindowViewWidget.h"
 #include "dialogs/DLLSelectorDialog.h"
+#include "dialogs/TaintSourceSelectorDialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,6 +37,7 @@ class MainWindow : public QMainWindow
         void tracerProcess_finished();
 
         void actionDLL_triggered();
+        void actionTaintSources_triggered();
 
     private:
         Ui::MainWindow *ui;

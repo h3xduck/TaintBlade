@@ -7,6 +7,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setApplicationName("TaintBlade");
+    a.setWindowIcon(QIcon(":/res/res/appicon.png"));
 
     //Launch main app window
     MainWindow w;

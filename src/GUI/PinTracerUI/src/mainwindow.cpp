@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->window()->setWindowState(Qt::WindowMaximized);
 
     connect(ui->actionDll, SIGNAL(triggered()), this, SLOT(actionDLL_triggered()));
+    connect(ui->actionTaintSources, SIGNAL(triggered()), this, SLOT(actionTaintSources_triggered()));
 }
 
 MainWindow::~MainWindow()
@@ -119,5 +120,12 @@ void MainWindow::actionDLL_triggered()
 {
     //The button should be deactivated, the output path should be set prior to this being enables
     DLLSelectorDialog dialog;
+    dialog.exec();
+}
+
+void MainWindow::actionTaintSources_triggered()
+{
+    //The button should be deactivated, the output path should be set prior to this being enables
+    TaintSourceSelectorDialog dialog;
     dialog.exec();
 }

@@ -31,7 +31,7 @@ public:
     QAction *actionRun;
     QAction *actionStop;
     QAction *actionTracepoints;
-    QAction *actionTaint_sources;
+    QAction *actionTaintSources;
     QAction *actionNOP_sections;
     QAction *actionAuthors;
     QWidget *centralWidget;
@@ -88,11 +88,11 @@ public:
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/res/res/icons8-flag-filled-26.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionTracepoints->setIcon(icon5);
-        actionTaint_sources = new QAction(MainWindow);
-        actionTaint_sources->setObjectName("actionTaint_sources");
+        actionTaintSources = new QAction(MainWindow);
+        actionTaintSources->setObjectName("actionTaintSources");
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/res/res/icons8-select-26.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionTaint_sources->setIcon(icon6);
+        actionTaintSources->setIcon(icon6);
         actionNOP_sections = new QAction(MainWindow);
         actionNOP_sections->setObjectName("actionNOP_sections");
         QIcon icon7;
@@ -148,7 +148,7 @@ public:
         menuTracer->addAction(actionRun);
         menuTracer->addAction(actionStop);
         menuOptions->addAction(actionTracepoints);
-        menuOptions->addAction(actionTaint_sources);
+        menuOptions->addAction(actionTaintSources);
         menuAdvanced->addAction(actionNOP_sections);
         toolBar->addAction(actionOpen);
         toolBar->addAction(actionSelect_configuration);
@@ -156,7 +156,7 @@ public:
         toolBar->addAction(actionRun);
         toolBar->addAction(actionStop);
         toolBar->addSeparator();
-        toolBar->addAction(actionTaint_sources);
+        toolBar->addAction(actionTaintSources);
         toolBar->addAction(actionTracepoints);
         toolBar->addAction(actionNOP_sections);
         toolBar->addAction(actionDll);
@@ -179,7 +179,7 @@ public:
         actionRun->setText(QCoreApplication::translate("MainWindow", "Run", nullptr));
         actionStop->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
         actionTracepoints->setText(QCoreApplication::translate("MainWindow", "Tracepoints", nullptr));
-        actionTaint_sources->setText(QCoreApplication::translate("MainWindow", "Taint sources", nullptr));
+        actionTaintSources->setText(QCoreApplication::translate("MainWindow", "Taint sources", nullptr));
         actionNOP_sections->setText(QCoreApplication::translate("MainWindow", "NOP sections", nullptr));
         actionAuthors->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
