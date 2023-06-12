@@ -41,9 +41,9 @@ void TaintSourceSelectorDialog::addLineToTreeWidget(const QString& dll, const QS
     item->setText(4, arch);
 
     QPushButton* rightButton = new QPushButton(ui->treeWidget);
-    rightButton->setIcon(QIcon(":/res/res/icons8-info-26.png")); // Replace with the actual path to your icon resource
-    rightButton->setIconSize(QSize(24, 24)); // Set the desired size of the icon
-    rightButton->setFixedSize(QSize(24, 24)); // Set a fixed size for the button
+    rightButton->setIcon(QIcon(":/res/res/icons8-info-26.png"));
+    rightButton->setIconSize(QSize(24, 24));
+    rightButton->setFixedSize(QSize(24, 24));
     ui->treeWidget->setItemWidget(item, 5, rightButton);
 
     ui->treeWidget->setColumnWidth(0, 50);

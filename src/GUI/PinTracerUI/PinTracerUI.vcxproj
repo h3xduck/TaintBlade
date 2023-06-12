@@ -93,6 +93,7 @@
     <ClCompile Include="src\dialogs\DLLSelectorDialog.cpp" />
     <ClCompile Include="src\dialogs\PinconfigurationDialog.cpp" />
     <ClCompile Include="src\dialogs\TaintSourceSelectorDialog.cpp" />
+    <ClCompile Include="src\dialogs\TracePointSelectorDialog.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainwindow.cpp" />
     <ClCompile Include="src\utils\db\DatabaseManager.cpp" />
@@ -124,11 +125,13 @@
     <QtUic Include="forms\TaintSourceSelectorDialog.ui" />
     <QtUic Include="forms\TracedProcessWidget.ui" />
     <QtUic Include="forms\TraceFunctionsWidget.ui" />
+    <QtUic Include="forms\TracePointSelectorDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\common\Globals.h" />
     <ClInclude Include="include\dialogs\DLLSelectorDialog.h" />
     <ClInclude Include="include\dialogs\TaintSourceSelectorDialog.h" />
+    <ClInclude Include="include\dialogs\TracePointSelectorDialog.h" />
     <ClInclude Include="include\utils\proto\ProtoUtils.h" />
     <ClInclude Include="include\widgets\misc\ColorAnimableTreeWidgetItem.h" />
     <ClInclude Include="include\widgets\misc\TreeWidgetItemColourableDelegate.h" />

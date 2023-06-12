@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->actionDll, SIGNAL(triggered()), this, SLOT(actionDLL_triggered()));
     connect(ui->actionTaintSources, SIGNAL(triggered()), this, SLOT(actionTaintSources_triggered()));
+    connect(ui->actionTracePoints, SIGNAL(triggered()), this, SLOT(actionTracePoints_triggered()));
 }
 
 MainWindow::~MainWindow()
@@ -127,5 +128,12 @@ void MainWindow::actionTaintSources_triggered()
 {
     //The button should be deactivated, the output path should be set prior to this being enables
     TaintSourceSelectorDialog dialog;
+    dialog.exec();
+}
+
+void MainWindow::actionTracePoints_triggered()
+{
+    //The button should be deactivated, the output path should be set prior to this being enables
+    TracePointSelectorDialog dialog;
     dialog.exec();
 }

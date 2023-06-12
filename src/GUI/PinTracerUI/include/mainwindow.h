@@ -12,6 +12,7 @@
 #include "widgets/MultiWindowViewWidget.h"
 #include "dialogs/DLLSelectorDialog.h"
 #include "dialogs/TaintSourceSelectorDialog.h"
+#include "dialogs/TracePointSelectorDialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +39,7 @@ class MainWindow : public QMainWindow
 
         void actionDLL_triggered();
         void actionTaintSources_triggered();
+        void actionTracePoints_triggered();
 
     private:
         Ui::MainWindow *ui;

@@ -83,6 +83,9 @@
     <ClCompile Include="src\dialogs\TaintSourceSelectorDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\dialogs\TracePointSelectorDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="forms\mainwindow.ui">
@@ -122,6 +125,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="forms\TaintSourceSelectorDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="forms\TracePointSelectorDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -172,6 +178,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\dialogs\TaintSourceSelectorDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dialogs\TracePointSelectorDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

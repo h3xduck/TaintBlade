@@ -66,7 +66,7 @@
     <property name="title">
      <string>Options</string>
     </property>
-    <addaction name="actionTracepoints"/>
+    <addaction name="actionTracePoints"/>
     <addaction name="actionTaintSources"/>
    </widget>
    <widget class="QMenu" name="menuAdvanced">
@@ -100,7 +100,7 @@
    <addaction name="actionStop"/>
    <addaction name="separator"/>
    <addaction name="actionTaintSources"/>
-   <addaction name="actionTracepoints"/>
+   <addaction name="actionTracePoints"/>
    <addaction name="actionNOP_sections"/>
    <addaction name="actionDll"/>
   </widget>
@@ -160,7 +160,7 @@
     <string>Stop</string>
    </property>
   </action>
-  <action name="actionTracepoints">
+  <action name="actionTracePoints">
    <property name="icon">
     <iconset resource="MainToolBarResource.qrc">
      <normaloff>:/res/res/icons8-flag-filled-26.png</normaloff>:/res/res/icons8-flag-filled-26.png</iconset>

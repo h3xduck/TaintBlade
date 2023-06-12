@@ -9,16 +9,16 @@ void DLLSelectorDialog::addLineToListWidget(const QString& line, QListWidget* li
 
     QWidget* widget = new QWidget();
     QHBoxLayout* layout = new QHBoxLayout(widget);
-    layout->setContentsMargins(0, 0, 0, 0); // Remove any margins
+    layout->setContentsMargins(0, 0, 0, 0);
 
     QLabel* label = new QLabel(line);
     layout->addWidget(label);
 
-    layout->addStretch(); // Add stretchable space to push the button to the right
-    QPushButton* button = new QPushButton(widget); // Set parent widget for proper alignment
-    button->setIcon(QIcon(":/res/res/icons8-cross-26.png")); // Replace with the actual path to your icon resource
-    button->setIconSize(QSize(24, 24)); // Set the desired size of the icon
-    button->setFixedSize(QSize(24, 24)); // Set a fixed size for the button
+    layout->addStretch(); 
+    QPushButton* button = new QPushButton(widget); 
+    button->setIcon(QIcon(":/res/res/icons8-cross-26.png"));
+    button->setIconSize(QSize(24, 24)); 
+    button->setFixedSize(QSize(24, 24)); 
     layout->addWidget(button);
 
     connect(button, &QPushButton::clicked, [=]() {
