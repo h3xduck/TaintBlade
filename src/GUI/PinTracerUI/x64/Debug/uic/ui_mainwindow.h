@@ -24,7 +24,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionProperties;
+    QAction *actionDll;
     QAction *actionExit;
     QAction *actionOpen;
     QAction *actionSelect_configuration;
@@ -50,8 +50,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(853, 620);
-        actionProperties = new QAction(MainWindow);
-        actionProperties->setObjectName("actionProperties");
+        actionDll = new QAction(MainWindow);
+        actionDll->setObjectName("actionDll");
         QIcon icon;
         QString iconThemeName = QString::fromUtf8("audio-volume-medium");
         if (QIcon::hasThemeIcon(iconThemeName)) {
@@ -59,7 +59,7 @@ public:
         } else {
             icon.addFile(QString::fromUtf8(":/res/res/icons8-dll-26.png"), QSize(), QIcon::Normal, QIcon::Off);
         }
-        actionProperties->setIcon(icon);
+        actionDll->setIcon(icon);
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName("actionExit");
         actionOpen = new QAction(MainWindow);
@@ -141,7 +141,7 @@ public:
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionSelect_configuration);
         menuFile->addSeparator();
-        menuFile->addAction(actionProperties);
+        menuFile->addAction(actionDll);
         menuFile->addSeparator();
         menuFile->addAction(actionExit);
         menuAbout->addAction(actionAuthors);
@@ -159,7 +159,7 @@ public:
         toolBar->addAction(actionTaint_sources);
         toolBar->addAction(actionTracepoints);
         toolBar->addAction(actionNOP_sections);
-        toolBar->addAction(actionProperties);
+        toolBar->addAction(actionDll);
 
         retranslateUi(MainWindow);
 
@@ -169,7 +169,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        actionProperties->setText(QCoreApplication::translate("MainWindow", "DLL selector", nullptr));
+        actionDll->setText(QCoreApplication::translate("MainWindow", "DLL selector", nullptr));
         actionExit->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
         actionSelect_configuration->setText(QCoreApplication::translate("MainWindow", "PIN configuration", nullptr));

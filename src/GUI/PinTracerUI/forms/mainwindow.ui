@@ -40,7 +40,7 @@
     <addaction name="actionOpen"/>
     <addaction name="actionSelect_configuration"/>
     <addaction name="separator"/>
-    <addaction name="actionProperties"/>
+    <addaction name="actionDll"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -102,9 +102,9 @@
    <addaction name="actionTaint_sources"/>
    <addaction name="actionTracepoints"/>
    <addaction name="actionNOP_sections"/>
-   <addaction name="actionProperties"/>
+   <addaction name="actionDll"/>
   </widget>
-  <action name="actionProperties">
+  <action name="actionDll">
    <property name="icon">
     <iconset theme="audio-volume-medium" resource="MainToolBarResource.qrc">
      <normaloff>:/res/res/icons8-dll-26.png</normaloff>:/res/res/icons8-dll-26.png</iconset>

@@ -10,6 +10,7 @@
 #include <QPushButton>
 #include "widgets/process/TracedProcessWidget.h"
 #include "widgets/MultiWindowViewWidget.h"
+#include "dialogs/DLLSelectorDialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,6 +34,8 @@ class MainWindow : public QMainWindow
         void on_actionRun_triggered();
 
         void tracerProcess_finished();
+
+        void actionDLL_triggered();
 
     private:
         Ui::MainWindow *ui;

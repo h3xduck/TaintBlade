@@ -77,6 +77,9 @@
     <ClCompile Include="src\utils\ProtoUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\dialogs\DLLSelectorDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="forms\mainwindow.ui">
@@ -110,6 +113,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="forms\ProtocolBufferElementVisualization.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="forms\DLLSelectorDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -154,6 +160,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\widgets\misc\TreeWidgetItemColourableDelegate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dialogs\DLLSelectorDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

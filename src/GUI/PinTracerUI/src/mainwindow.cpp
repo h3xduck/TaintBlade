@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setCentralWidget(ui->centralWidget);
     this->window()->setWindowState(Qt::WindowMaximized);
+
+    connect(ui->actionDll, SIGNAL(triggered()), this, SLOT(actionDLL_triggered()));
 }
 
 MainWindow::~MainWindow()
@@ -25,11 +27,6 @@ void MainWindow::renderMultiWindow()
     ui->centralWidget->layout()->setContentsMargins(0,0,0,0);
     this->multiWindowViewWidget = new MultiWindowViewWidget(this);
     this->centralLayout->addWidget(this->multiWindowViewWidget);
-
-    /*QPalette pal = QPalette();
-    pal.setColor(QPalette::Window, Qt::yellow);
-    ui->centralWidget->setAutoFillBackground(true);
-    ui->centralWidget->setPalette(pal);*/
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -118,3 +115,9 @@ void MainWindow::on_actionRun_triggered()
     this->multiWindowViewWidget->showTracedProcesses();
 }
 
+void MainWindow::actionDLL_triggered()
+{
+    //The button should be deactivated, the output path should be set prior to this being enables
+    DLLSelectorDialog dialog;
+    dialog.exec();
+}

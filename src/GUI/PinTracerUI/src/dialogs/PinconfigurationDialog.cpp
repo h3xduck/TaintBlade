@@ -12,7 +12,7 @@ PinConfigurationDialog::PinConfigurationDialog(QWidget* parent)
 
 PinConfigurationDialog::~PinConfigurationDialog()
 {
-
+    delete ui;
 }
 
 void PinConfigurationDialog::enableOkButtonIfAllDataSet()
