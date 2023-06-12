@@ -14,7 +14,8 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
@@ -27,7 +28,10 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
     QLabel *label_2;
-    QPlainTextEdit *textEdit;
+    QListWidget *listWidget;
+    QHBoxLayout *horizontalLayout;
+    QLineEdit *lineEdit;
+    QPushButton *addLinePushButton;
     QHBoxLayout *hboxLayout;
     QSpacerItem *spacerItem;
     QPushButton *okButton;
@@ -50,11 +54,25 @@ public:
 
         verticalLayout_2->addWidget(label_2);
 
-        textEdit = new QPlainTextEdit(DLLSelectorDialog);
-        textEdit->setObjectName("textEdit");
-        textEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
+        listWidget = new QListWidget(DLLSelectorDialog);
+        listWidget->setObjectName("listWidget");
 
-        verticalLayout_2->addWidget(textEdit);
+        verticalLayout_2->addWidget(listWidget);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
+        lineEdit = new QLineEdit(DLLSelectorDialog);
+        lineEdit->setObjectName("lineEdit");
+
+        horizontalLayout->addWidget(lineEdit);
+
+        addLinePushButton = new QPushButton(DLLSelectorDialog);
+        addLinePushButton->setObjectName("addLinePushButton");
+
+        horizontalLayout->addWidget(addLinePushButton);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
 
         hboxLayout = new QHBoxLayout();
 #ifndef Q_OS_MAC
@@ -92,6 +110,7 @@ public:
         DLLSelectorDialog->setWindowTitle(QCoreApplication::translate("DLLSelectorDialog", "Dialog", nullptr));
         label->setText(QCoreApplication::translate("DLLSelectorDialog", "Enter the full path of the DLLs to include to the scope. Write one DLL per line.", nullptr));
         label_2->setText(QCoreApplication::translate("DLLSelectorDialog", "*Note that the main binary is always included in the scope.", nullptr));
+        addLinePushButton->setText(QCoreApplication::translate("DLLSelectorDialog", "Add", nullptr));
         okButton->setText(QCoreApplication::translate("DLLSelectorDialog", "OK", nullptr));
         cancelButton->setText(QCoreApplication::translate("DLLSelectorDialog", "Cancel", nullptr));
     } // retranslateUi

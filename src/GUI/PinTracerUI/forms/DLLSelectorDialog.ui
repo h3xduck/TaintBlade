@@ -29,11 +29,21 @@
     </widget>
    </item>
    <item>
-    <widget class="QPlainTextEdit" name="textEdit">
-     <property name="lineWrapMode">
-      <enum>QPlainTextEdit::NoWrap</enum>
-     </property>
-    </widget>
+    <widget class="QListWidget" name="listWidget"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addLinePushButton">
+       <property name="text">
+        <string>Add</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout">

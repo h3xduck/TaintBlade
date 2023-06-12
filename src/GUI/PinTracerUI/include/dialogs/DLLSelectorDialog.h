@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include "common/Globals.h"
 #include <QObject>
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DLLSelectorDialog; }
@@ -18,6 +19,8 @@ class DLLSelectorDialog : public QDialog
 public:
     DLLSelectorDialog(QWidget* parent = nullptr);
     ~DLLSelectorDialog();
+
+    void addLineToListWidget(const QString& line, QListWidget* listWidget);
 
 public slots:
     void saveTextContents();
