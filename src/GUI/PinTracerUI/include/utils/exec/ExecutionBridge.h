@@ -24,6 +24,11 @@ namespace EXECUTION
      * Returns whether the tracer process is currently running
      */
     bool tracerProcessRunning();
+
+    /**
+    * Sends a command to the running processes using the command api to stop their execution.
+    */
+    void commandStopExecution();
 }
 
 #endif // EXECUTIONBRIDGE_H

@@ -34,7 +34,6 @@ void DatabaseManager::buildTaintRoutinesTree(QTreeWidget *treeWidget)
 
     while(query.next())
     {
-        qDebug("Received item");
         QTreeWidgetItem *item = new QTreeWidgetItem();
         item->setText(0, query.value("function").toString());
         item->setText(1, query.value("dll_name").toString());
@@ -57,7 +56,6 @@ void DatabaseManager::buildTraceFunctionsTree(QTreeWidget *treeWidget)
 
     while(query.next())
     {
-        qDebug("Received item");
         QTreeWidgetItem *item = new QTreeWidgetItem();
         item->setText(0, query.value("function").toString());
         item->setText(1, query.value("dll_name").toString());
@@ -143,7 +141,6 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
         while (query.next())
         {
             //The first level will only show the dll of the scoped image
-            qDebug() << "Received item";
             //If is exactly the same as the one already displayed, refrain from showing it
             //If it was shown before but it is not exactly directly the same, no problems, we want to show cronological order
             QTreeWidgetItem* item;
@@ -287,7 +284,6 @@ void DatabaseManager::buildTaintEventsTree(QTreeWidget *treeWidget, bool withInd
         while (query.next())
         {
             //The first level will only show the dll of the tainted image
-            qDebug() << "Received item";
             //If is exactly the same as the one already displayed, refrain from showing it
             //If it was shown before but it is not exactly directly the same, no problems, we want to show cronological order
             QTreeWidgetItem* item;

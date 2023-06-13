@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionTaintSources, SIGNAL(triggered()), this, SLOT(actionTaintSources_triggered()));
     connect(ui->actionTracePoints, SIGNAL(triggered()), this, SLOT(actionTracePoints_triggered()));
     connect(ui->actionNOPSections, SIGNAL(triggered()), this, SLOT(actionNOPSections_triggered()));
+    connect(ui->actionStop, SIGNAL(triggered()), this, SLOT(actionStop_triggered()));
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +27,19 @@ MainWindow::~MainWindow()
 void MainWindow::renderMultiWindow()
 {
     this->centralLayout = new QVBoxLayout();
+    if(ui->centralWidget->layout())
+    {
+        qDebug() << "Resetting multiwindow";
+        ui->centralWidget = new QWidget(this);
+        ui->centralWidget->setObjectName("centralWidget");
+        ui->centralWidget->setEnabled(true);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(ui->centralWidget->sizePolicy().hasHeightForWidth());
+        ui->centralWidget->setSizePolicy(sizePolicy);
+        this->setCentralWidget(ui->centralWidget);
+    }
     ui->centralWidget->setLayout(centralLayout);
     ui->centralWidget->layout()->setContentsMargins(0,0,0,0);
     this->multiWindowViewWidget = new MultiWindowViewWidget(this);
@@ -144,4 +158,9 @@ void MainWindow::actionNOPSections_triggered()
     //The button should be deactivated, the output path should be set prior to this being enables
     NopSectionSelectorDialog dialog;
     dialog.exec();
+}
+
+void MainWindow::actionStop_triggered()
+{
+    EXECUTION::commandStopExecution();
 }

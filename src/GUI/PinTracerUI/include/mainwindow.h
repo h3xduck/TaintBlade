@@ -42,6 +42,7 @@ class MainWindow : public QMainWindow
         void actionTaintSources_triggered();
         void actionTracePoints_triggered();
         void actionNOPSections_triggered();
+        void actionStop_triggered();
 
     private:
         Ui::MainWindow *ui;

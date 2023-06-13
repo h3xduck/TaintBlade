@@ -50,3 +50,25 @@ bool EXECUTION::tracerProcessRunning()
 
     return false;
 }
+
+void EXECUTION::commandStopExecution()
+{
+    QDir directory(GLOBAL_VARS::selectedOutputDirPath);
+    QStringList processFiles = directory.entryList(QStringList() << "*command.dfx", QDir::Files);
+    foreach(QString filename, processFiles) {
+        //For each command file we find, write the STOP command in it
+        QFile file(GLOBAL_VARS::selectedOutputDirPath + "/" + filename);
+        if (!file.open(QIODevice::ReadWrite))
+        {
+            qDebug() << "Error opening command file: " << file.errorString();
+        }
+
+        QTextStream out(&file);
+        QString line = "C_APP_EXIT";
+
+        file.write(line.toLatin1());
+        qDebug() << "Sending command to stop the execution of process owning file "<<filename;
+
+        file.close();
+    }
+}
