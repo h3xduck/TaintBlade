@@ -48,7 +48,7 @@
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionAuthors"/>
+    <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuTracer">
     <property name="title">
@@ -185,7 +185,7 @@
     <string>NOP sections</string>
    </property>
   </action>
-  <action name="actionAuthors">
+  <action name="actionAbout">
    <property name="icon">
     <iconset resource="MainToolBarResource.qrc">
      <normaloff>:/res/res/appicon.png</normaloff>:/res/res/appicon.png</iconset>

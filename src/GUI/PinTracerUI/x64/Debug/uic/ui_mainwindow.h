@@ -33,7 +33,7 @@ public:
     QAction *actionTracePoints;
     QAction *actionTaintSources;
     QAction *actionNOPSections;
-    QAction *actionAuthors;
+    QAction *actionAbout;
     QWidget *centralWidget;
     QMenuBar *menubar;
     QMenu *menuFile;
@@ -100,11 +100,11 @@ public:
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/res/res/icons8-knight-26.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionNOPSections->setIcon(icon8);
-        actionAuthors = new QAction(MainWindow);
-        actionAuthors->setObjectName("actionAuthors");
+        actionAbout = new QAction(MainWindow);
+        actionAbout->setObjectName("actionAbout");
         QIcon icon9;
         icon9.addFile(QString::fromUtf8(":/res/res/appicon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionAuthors->setIcon(icon9);
+        actionAbout->setIcon(icon9);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
         centralWidget->setEnabled(true);
@@ -146,7 +146,7 @@ public:
         menuFile->addAction(actionDll);
         menuFile->addSeparator();
         menuFile->addAction(actionExit);
-        menuAbout->addAction(actionAuthors);
+        menuAbout->addAction(actionAbout);
         menuTracer->addAction(actionRun);
         menuTracer->addAction(actionStop);
         menuOptions->addAction(actionTracePoints);
@@ -183,7 +183,7 @@ public:
         actionTracePoints->setText(QCoreApplication::translate("MainWindow", "Tracepoints", nullptr));
         actionTaintSources->setText(QCoreApplication::translate("MainWindow", "Taint sources", nullptr));
         actionNOPSections->setText(QCoreApplication::translate("MainWindow", "NOP sections", nullptr));
-        actionAuthors->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
+        actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuAbout->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));
         menuTracer->setTitle(QCoreApplication::translate("MainWindow", "Tracer", nullptr));

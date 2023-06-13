@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setCentralWidget(ui->centralWidget);
     this->window()->setWindowState(Qt::WindowMaximized);
+    this->setWindowTitle("TaintBlade v0.3.0-alpha");
 
     connect(ui->actionDll, SIGNAL(triggered()), this, SLOT(actionDLL_triggered()));
     connect(ui->actionTaintSources, SIGNAL(triggered()), this, SLOT(actionTaintSources_triggered()));
@@ -18,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionNOPSections, SIGNAL(triggered()), this, SLOT(actionNOPSections_triggered()));
     connect(ui->actionStop, SIGNAL(triggered()), this, SLOT(actionStop_triggered()));
     connect(ui->actionExit, &QAction::triggered, [=]() {this->close(); });
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(actionAbout_triggered()));
 
     configureToolBarOptionsCheckOutputdirIsSet();
 }
@@ -180,4 +182,10 @@ void MainWindow::configureToolBarOptionsCheckOutputdirIsSet()
     ui->actionNOPSections->setEnabled(state);
     ui->actionTaintSources->setEnabled(state);
     ui->actionTracePoints->setEnabled(state);
+}
+
+void MainWindow::actionAbout_triggered()
+{
+    AboutDialog dialog;
+    dialog.exec();
 }

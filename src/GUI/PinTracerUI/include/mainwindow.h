@@ -14,6 +14,7 @@
 #include "dialogs/TaintSourceSelectorDialog.h"
 #include "dialogs/TracePointSelectorDialog.h"
 #include "dialogs/NopSectionSelectorDialog.h"
+#include "dialogs/AboutDialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,6 +45,7 @@ class MainWindow : public QMainWindow
         void actionTracePoints_triggered();
         void actionNOPSections_triggered();
         void actionStop_triggered();
+        void actionAbout_triggered();
 
     private:
         Ui::MainWindow *ui;

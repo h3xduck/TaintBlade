@@ -90,6 +90,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\common\Globals.cpp" />
+    <ClCompile Include="src\dialogs\AboutDialog.cpp" />
     <ClCompile Include="src\dialogs\DLLSelectorDialog.cpp" />
     <ClCompile Include="src\dialogs\NopSectionSelectorDialog.cpp" />
     <ClCompile Include="src\dialogs\PinconfigurationDialog.cpp" />
@@ -113,6 +114,7 @@
     <ClCompile Include="src\widgets\trace\TraceFunctionsWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="forms\AboutDialog.ui" />
     <QtUic Include="forms\DLLSelectorDialog.ui" />
     <QtUic Include="forms\mainwindow.ui" />
     <QtUic Include="forms\MultiWindowViewWidget.ui" />
@@ -131,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\common\Globals.h" />
+    <ClInclude Include="include\dialogs\AboutDialog.h" />
     <ClInclude Include="include\dialogs\DLLSelectorDialog.h" />
     <ClInclude Include="include\dialogs\NopSectionSelectorDialog.h" />
     <ClInclude Include="include\dialogs\TaintSourceSelectorDialog.h" />
