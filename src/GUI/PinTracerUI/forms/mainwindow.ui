@@ -50,11 +50,6 @@
     </property>
     <addaction name="actionAuthors"/>
    </widget>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>View</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuTracer">
     <property name="title">
      <string>Tracer</string>
@@ -76,7 +71,6 @@
     <addaction name="actionNOPSections"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuView"/>
    <addaction name="menuTracer"/>
    <addaction name="menuOptions"/>
    <addaction name="menuAdvanced"/>
@@ -114,6 +108,10 @@
    </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="MainToolBarResource.qrc">
+     <normaloff>:/res/res/icons8-exit-26.png</normaloff>:/res/res/icons8-exit-26.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
@@ -188,6 +186,10 @@
    </property>
   </action>
   <action name="actionAuthors">
+   <property name="icon">
+    <iconset resource="MainToolBarResource.qrc">
+     <normaloff>:/res/res/appicon.png</normaloff>:/res/res/appicon.png</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>

@@ -13,5 +13,6 @@
         <file>res/icons8-cross-26.png</file>
         <file>res/icons8-info-26.png</file>
         <file>res/appicon.png</file>
+        <file>res/icons8-exit-26.png</file>
     </qresource>
 </RCC>

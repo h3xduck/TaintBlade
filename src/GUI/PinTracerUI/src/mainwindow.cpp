@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionTracePoints, SIGNAL(triggered()), this, SLOT(actionTracePoints_triggered()));
     connect(ui->actionNOPSections, SIGNAL(triggered()), this, SLOT(actionNOPSections_triggered()));
     connect(ui->actionStop, SIGNAL(triggered()), this, SLOT(actionStop_triggered()));
+    connect(ui->actionExit, &QAction::triggered, [=]() {this->close(); });
 
     configureToolBarOptionsCheckOutputdirIsSet();
 }

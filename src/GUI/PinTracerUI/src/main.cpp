@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setApplicationName("TaintBlade");
     a.setWindowIcon(QIcon(":/res/res/appicon.png"));
-
+    a.setQuitOnLastWindowClosed(true);
     //Launch main app window
     MainWindow w;
     w.show();
