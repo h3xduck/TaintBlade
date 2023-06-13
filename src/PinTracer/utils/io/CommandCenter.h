@@ -8,6 +8,7 @@
 #include <fstream> 
 #include <sstream>
 #include <string>
+#include "format.h"
 
 extern UINT32 timeoutMillis;
 

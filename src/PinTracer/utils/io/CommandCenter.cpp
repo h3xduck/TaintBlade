@@ -55,7 +55,13 @@ void UTILS::IO::CommandCenter::queryCommandAvailable(VOID* arg)
     {
         PIN_Sleep(UTILS::IO::CommandCenter::MILLIS_PERIOD_QUERY_COMMAND);
         LOG_DEBUG("Querying");
-        commandFile.open(PINTOOL_COMMAND_FILE);
+        const char* commandFilename = getFilenameFullName(PINTOOL_COMMAND_FILE).c_str();
+        commandFile.open(commandFilename);
+        if (!commandFile)
+        {
+            //We need to create the file first
+            std::ofstream outputFile(commandFilename);
+        }
         std::string line;
         while (std::getline(commandFile, line))
         {
@@ -64,7 +70,7 @@ void UTILS::IO::CommandCenter::queryCommandAvailable(VOID* arg)
             LOG_DEBUG("Read line from commands file: " << line);
             commandFile.close();
             //This erases the file contents
-            commandFile.open(PINTOOL_COMMAND_FILE, std::ofstream::out | std::ofstream::trunc);
+            commandFile.open(commandFilename, std::ofstream::out | std::ofstream::trunc);
             executeCommand(line);
         }
         commandFile.close();
