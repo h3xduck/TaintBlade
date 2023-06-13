@@ -73,7 +73,7 @@
     <property name="title">
      <string>Advanced</string>
     </property>
-    <addaction name="actionNOP_sections"/>
+    <addaction name="actionNOPSections"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -101,7 +101,7 @@
    <addaction name="separator"/>
    <addaction name="actionTaintSources"/>
    <addaction name="actionTracePoints"/>
-   <addaction name="actionNOP_sections"/>
+   <addaction name="actionNOPSections"/>
    <addaction name="actionDll"/>
   </widget>
   <action name="actionDll">
@@ -178,7 +178,7 @@
     <string>Taint sources</string>
    </property>
   </action>
-  <action name="actionNOP_sections">
+  <action name="actionNOPSections">
    <property name="icon">
     <iconset resource="MainToolBarResource.qrc">
      <normaloff>:/res/res/icons8-knight-26.png</normaloff>:/res/res/icons8-knight-26.png</iconset>

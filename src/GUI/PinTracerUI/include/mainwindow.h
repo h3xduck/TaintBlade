@@ -13,6 +13,7 @@
 #include "dialogs/DLLSelectorDialog.h"
 #include "dialogs/TaintSourceSelectorDialog.h"
 #include "dialogs/TracePointSelectorDialog.h"
+#include "dialogs/NopSectionSelectorDialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -40,6 +41,7 @@ class MainWindow : public QMainWindow
         void actionDLL_triggered();
         void actionTaintSources_triggered();
         void actionTracePoints_triggered();
+        void actionNOPSections_triggered();
 
     private:
         Ui::MainWindow *ui;

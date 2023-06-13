@@ -31,7 +31,10 @@ void EXECUTION::executeTracer(QString programPath, QString pinExe, QString trace
     EXECUTION::tracerProcess = new QProcess();
     QString program = pinExe;
     QStringList programArgs;
-    programArgs << "-follow_execv" << "-t" << tracerDLL << "-o" << "pinlog.dfx" << "-s"<< "syspinlog.dfx" << "-i"<<"imgpinlog.dfx" << "-dllinclude" << "dllinclude.txt" << "-d" << "debuglogfile.dfx" << "-taint" << "taintsources.txt" << "--" << programPath << "127.0.0.1";
+    programArgs << "-follow_execv" << "-t" << tracerDLL << "-o" << "pinlog.dfx" << "-s"<< "syspinlog.dfx" 
+        << "-i"<<"imgpinlog.dfx" << "-dllinclude" << "dllinclude.txt" << "-d" << "debuglogfile.dfx" 
+        << "-nopsections" << "nopsections.txt" << "-trace" << "tracepoints.txt"
+        << "-taint" << "taintsources.txt" << "--" << programPath << "127.0.0.1";
     EXECUTION::tracerProcess->setWorkingDirectory(outputDir);
     EXECUTION::tracerProcess->start(program, programArgs);
     qDebug() <<"Executing: "<<EXECUTION::tracerProcess->program() << "Args: " <<EXECUTION::tracerProcess->arguments();

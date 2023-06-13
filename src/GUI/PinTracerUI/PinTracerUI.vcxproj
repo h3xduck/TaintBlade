@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="src\common\Globals.cpp" />
     <ClCompile Include="src\dialogs\DLLSelectorDialog.cpp" />
+    <ClCompile Include="src\dialogs\NopSectionSelectorDialog.cpp" />
     <ClCompile Include="src\dialogs\PinconfigurationDialog.cpp" />
     <ClCompile Include="src\dialogs\TaintSourceSelectorDialog.cpp" />
     <ClCompile Include="src\dialogs\TracePointSelectorDialog.cpp" />
@@ -115,6 +116,7 @@
     <QtUic Include="forms\DLLSelectorDialog.ui" />
     <QtUic Include="forms\mainwindow.ui" />
     <QtUic Include="forms\MultiWindowViewWidget.ui" />
+    <QtUic Include="forms\NopSectionSelectorDialog.ui" />
     <QtUic Include="forms\PinConfigurationDialog.ui" />
     <QtUic Include="forms\ProtocolBufferDrawer.ui" />
     <QtUic Include="forms\ProtocolBufferElementVisualization.ui" />
@@ -130,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="include\common\Globals.h" />
     <ClInclude Include="include\dialogs\DLLSelectorDialog.h" />
+    <ClInclude Include="include\dialogs\NopSectionSelectorDialog.h" />
     <ClInclude Include="include\dialogs\TaintSourceSelectorDialog.h" />
     <ClInclude Include="include\dialogs\TracePointSelectorDialog.h" />
     <ClInclude Include="include\utils\proto\ProtoUtils.h" />

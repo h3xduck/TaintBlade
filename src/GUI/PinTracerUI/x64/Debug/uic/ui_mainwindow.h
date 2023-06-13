@@ -32,7 +32,7 @@ public:
     QAction *actionStop;
     QAction *actionTracePoints;
     QAction *actionTaintSources;
-    QAction *actionNOP_sections;
+    QAction *actionNOPSections;
     QAction *actionAuthors;
     QWidget *centralWidget;
     QMenuBar *menubar;
@@ -93,11 +93,11 @@ public:
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/res/res/icons8-select-26.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionTaintSources->setIcon(icon6);
-        actionNOP_sections = new QAction(MainWindow);
-        actionNOP_sections->setObjectName("actionNOP_sections");
+        actionNOPSections = new QAction(MainWindow);
+        actionNOPSections->setObjectName("actionNOPSections");
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/res/res/icons8-knight-26.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionNOP_sections->setIcon(icon7);
+        actionNOPSections->setIcon(icon7);
         actionAuthors = new QAction(MainWindow);
         actionAuthors->setObjectName("actionAuthors");
         centralWidget = new QWidget(MainWindow);
@@ -149,7 +149,7 @@ public:
         menuTracer->addAction(actionStop);
         menuOptions->addAction(actionTracePoints);
         menuOptions->addAction(actionTaintSources);
-        menuAdvanced->addAction(actionNOP_sections);
+        menuAdvanced->addAction(actionNOPSections);
         toolBar->addAction(actionOpen);
         toolBar->addAction(actionSelect_configuration);
         toolBar->addSeparator();
@@ -158,7 +158,7 @@ public:
         toolBar->addSeparator();
         toolBar->addAction(actionTaintSources);
         toolBar->addAction(actionTracePoints);
-        toolBar->addAction(actionNOP_sections);
+        toolBar->addAction(actionNOPSections);
         toolBar->addAction(actionDll);
 
         retranslateUi(MainWindow);
@@ -180,7 +180,7 @@ public:
         actionStop->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
         actionTracePoints->setText(QCoreApplication::translate("MainWindow", "Tracepoints", nullptr));
         actionTaintSources->setText(QCoreApplication::translate("MainWindow", "Taint sources", nullptr));
-        actionNOP_sections->setText(QCoreApplication::translate("MainWindow", "NOP sections", nullptr));
+        actionNOPSections->setText(QCoreApplication::translate("MainWindow", "NOP sections", nullptr));
         actionAuthors->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuAbout->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));
