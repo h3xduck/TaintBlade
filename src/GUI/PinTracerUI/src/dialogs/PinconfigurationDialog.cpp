@@ -8,6 +8,12 @@ PinConfigurationDialog::PinConfigurationDialog(QWidget* parent)
     //OK button not enabled initially until all options set
     ui->setupUi(this);
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+
+    ui->outputDirLineEdit->setText(GLOBAL_VARS::selectedOutputDirPath);
+    ui->pinExeLineEdit->setText(GLOBAL_VARS::pinExeDirPath);
+    ui->tracerdllLineEdit->setText(GLOBAL_VARS::tracerDLLDirPath);
+
+    enableOkButtonIfAllDataSet();
 }
 
 PinConfigurationDialog::~PinConfigurationDialog()

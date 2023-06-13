@@ -37,7 +37,7 @@ NopSectionSelectorDialog::NopSectionSelectorDialog(QWidget* parent)
 
     ui->treeWidget->clear();
     ui->treeWidget->setColumnCount(3);
-    ui->treeWidget->setHeaderLabels({ "DLL", "Routine name", "Number of arguments" });
+    ui->treeWidget->setHeaderLabels({ "DLL", "Range start RVA", "Range end RVA" });
     connect(ui->okButton, &QPushButton::clicked, this, &NopSectionSelectorDialog::saveTextContents);
     connect(ui->cancelButton, &QPushButton::clicked, [=]() {this->reject(); });
 
