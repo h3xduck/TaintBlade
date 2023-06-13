@@ -28,6 +28,7 @@ class MainWindow : public QMainWindow
         ~MainWindow();
 
         void renderMultiWindow();
+        void configureToolBarOptionsCheckOutputdirIsSet();
 
     private slots:
         void on_actionOpen_triggered();

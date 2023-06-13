@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionTracePoints, SIGNAL(triggered()), this, SLOT(actionTracePoints_triggered()));
     connect(ui->actionNOPSections, SIGNAL(triggered()), this, SLOT(actionNOPSections_triggered()));
     connect(ui->actionStop, SIGNAL(triggered()), this, SLOT(actionStop_triggered()));
+
+    configureToolBarOptionsCheckOutputdirIsSet();
 }
 
 MainWindow::~MainWindow()
@@ -62,6 +64,7 @@ void MainWindow::on_actionSelect_configuration_triggered()
     qDebug() << "Launching pin configuration option dialog";
     PinConfigurationDialog *dialog = new PinConfigurationDialog;
     dialog->exec();
+    configureToolBarOptionsCheckOutputdirIsSet();
 }
 
 void MainWindow::tracerProcess_finished()
@@ -163,4 +166,17 @@ void MainWindow::actionNOPSections_triggered()
 void MainWindow::actionStop_triggered()
 {
     EXECUTION::commandStopExecution();
+}
+
+void MainWindow::configureToolBarOptionsCheckOutputdirIsSet()
+{
+    bool state = false;
+    if (!GLOBAL_VARS::selectedOutputDirPath.isEmpty())
+    {
+        state = true;
+    }
+    ui->actionDll->setEnabled(state);
+    ui->actionNOPSections->setEnabled(state);
+    ui->actionTaintSources->setEnabled(state);
+    ui->actionTracePoints->setEnabled(state);
 }
