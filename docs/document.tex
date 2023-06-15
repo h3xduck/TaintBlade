@@ -8,58 +8,113 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
 \title{TaintBlade: A framework for automated protocol reverse engineering and study of botnet command and control protocols
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organizatiosn (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+    \IEEEauthorblockA{\textit{dept. name of organizatiosn (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+    \and
+    \IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
 }
 
 \maketitle
 
 \begin{abstract}
-TODO redact this at the end
+    TODO redact this at the end
 \end{abstract}
 
 \begin{IEEEkeywords}
-TODO keywords
+    TODO keywords
 \end{IEEEkeywords}
 
 \section{Introduction}
-TODO - This section introduces the problem we are dealing with and motivates the creation of this tool
+TODO - This section introduces the problem we are dealing with and motivates
+the creation of this tool
 
 \section{Background}
 
-TODO - This section goes over the state of the art on analyzing malware binaries, past work on protocol reverse 
-engineering and available tools. 
+TODO - This section goes over the state of the art on analyzing malware
+binaries, past work on protocol reverse engineering and available tools.
 
 \section{Design}
-TODO - This section covers the general structure of the tool and the different modules and functionalities implemented.
+TODO - This section covers the general structure of the tool and the different
+modules and functionalities implemented.
 
 - Requirements: overview and goals of the tool
 - Arch: overview and details of each stage
 - Implementation, with repo and how to use
 
-In the previous sections, we introduced the issue of automating protocol reverse engineering and the relevance of this
-task in the context of the analysis of malware transmitting malicious communications. We will now describe \textit{TaintBlade}, 
-the automated protocol reverse engineering framework we have developed for tackling this task. Overall, this tool pursues the following three main goals:
-(1) to perform message inference of the underlying ingress protocol of a program, offering an accurate representation of its compounding fields and the purpose of each byte;
-(2) to provide a complete trace of the activities carried out by the instrumented program, including a viewpoint into loaded images, child process, executed routines and their arguments, 
-therefore helping the analyst with the reversing task, instead of becoming a black-box tool;
-(3) to become an usable framework not only by malware analysts by offering specific functionalities aimed for studying malware behaviours, but also by the general public
-by providing an intuitive and fully enriched graphical user interface.
+\
+
+In the previous sections, we introduced the issue of automating protocol
+reverse engineering and the relevance of this task in the context of the
+analysis of malware transmitting malicious communications. We will now describe
+\textit{TaintBlade}, the automated protocol reverse engineering framework we
+have developed for tackling this task. Overall, this tool pursues three main
+goals: (1) to perform message inference of the underlying ingress protocol of a
+program, offering an accurate representation of its compounding fields and the
+purpose of each byte; (2) to provide a complete trace of the activities carried
+out by the instrumented program, including a viewpoint into loaded images,
+child processes, executed routines and their arguments, therefore helping the
+analyst with the reversing task, rathering than just offering a black-box tool;
+(3) to become a framework usable not only by malware analysts by offering
+specific functionalities aimed for studying malware behaviours, but also by the
+general public by providing an intuitive and fully enriched graphical user
+interface that adds cohesion and additional features over the data produced by
+the tool.
+
+\subsection{Architecture overview}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.9\columnwidth]{images/generalarch.drawio.png}}
+    \caption{Example of a figure caption.}
+    \label{fig_3_generalarch}
+\end{figure}
+
+From a general viewpoint, the functioning of \textit{TaintBlade} is, as shown
+in figure \ref{fig_3_generalarch}: (1) the user selects a binary (an
+executable) to be traced; (2) the program is executed and instrumented by
+\textit{Intel PIN}, using \textit{TaintBlade} as a pintool, which reverses the
+protocol of the program; (3) the pintool generates a set of output
+\textit{.dfx} dump files and/or a SQLite database with all traced data; (4) the
+user can navigate the resulting data by means of \textit{TaintBlade} GUI, which
+interacts with the database, or by accessing the output dump files.
+
+The \textit{TaintBlade} pintool is the central component of the framework. It
+comprises all instrumentation and tracing functionalities needed for the
+protocol reverse engineering task. It is compounded in its core by Intel PIN,
+which offers the instrumentation capabilities, and on top of which
+\textit{TaintBlade} features a series of \textit{modules} - sets of components
+centered on a specific stage of the protocol reverse engineering task or that
+offer other additional functionalities intended for easing malware reversing.
+
+As it can be observed in figure \ref{fig_3_archdetailedsteps}, \textit{TaintBlade} comprises
+six different modules, namely (1) an instrumentation module which instruments the programs
+
+Although each module works independently from the others, most of them operate
+in a pipeline fashion, where the input of one module depends on that of the one
+directly preceeding it. In particular, the instrumentation, tainting,
+heuristics and protocol reversing modules work sequentially towards the
+protocol reversing task, whilst the tracing and NOPer modules work separately,
+offering support features to the tool. We will now study each module
+individually and describe how they work internally and how they coordinate between them.
+
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/archdetailedsteps.drawio.png}}
+    \caption{Example of a figure caption.}
+    \label{fig_3_archdetailedsteps}
+\end{figure*}
+
 
 
 %\section{Implementation}
@@ -67,16 +122,21 @@ by providing an intuitive and fully enriched graphical user interface.
 %engine works and how the heuristics engine and the protocol reversing engine on top work.
 
 \section{Evaluation}
-TODO - This section covers multiple test cases, including custom programs that we will include in our repository that showcase
-some easy-to-understand cases we want to show that work, and some others that are real malware found in the wild.
+TODO - This section covers multiple test cases, including custom programs that
+we will include in our repository that showcase some easy-to-understand cases
+we want to show that work, and some others that are real malware found in the
+wild.
 
-Goal of the eval first. It's about checking functionality, and checking that we detect e.g. all commands we know are at the sample
+Goal of the eval first. It's about checking functionality, and checking that we
+detect e.g. all commands we know are at the sample
 
 \section{Related work}
-TODO decide whether to include this or not - It might fit better in the background
+TODO decide whether to include this or not - It might fit better in the
+background
 
 \section{Conclusion}
-TODO - This section offers an overview of the developed tool and the results obtained over the problem we were trying to solve.
+TODO - This section offers an overview of the developed tool and the results
+obtained over the problem we were trying to solve.
 
 \subsection{Future work \& limitations}
 
@@ -84,7 +144,7 @@ TODO - This section offers an overview of the developed tool and the results obt
 TODO
 
 \begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``Sample title,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
+    \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``Sample title,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
 \end{thebibliography}
 \vspace{12pt}
 
