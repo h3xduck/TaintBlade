@@ -52,6 +52,15 @@ TODO - This section covers the general structure of the tool and the different m
 - Arch: overview and details of each stage
 - Implementation, with repo and how to use
 
+In the previous sections, we introduced the issue of automating protocol reverse engineering and the relevance of this
+task in the context of the analysis of malware transmitting malicious communications. We will now describe \textit{TaintBlade}, 
+the automated protocol reverse engineering framework we have developed for tackling this task. Overall, this tool pursues the following three main goals:
+(1) to perform message inference of the underlying ingress protocol of a program, offering an accurate representation of its compounding fields and the purpose of each byte;
+(2) to provide a complete trace of the activities carried out by the instrumented program, including a viewpoint into loaded images, child process, executed routines and their arguments, 
+therefore helping the analyst with the reversing task, instead of becoming a black-box tool;
+(3) to become an usable framework not only by malware analysts by offering specific functionalities aimed for studying malware behaviours, but also by the general public
+by providing an intuitive and fully enriched graphical user interface.
+
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting

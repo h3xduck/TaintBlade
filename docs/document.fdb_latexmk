@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1686780494 "c:/Users/Marcos/source/repos/h3xduck/TFM/docs/document.tex" "document.pdf" "document" 1686780494 0
-  "C:/Users/Marcos/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1684347026 82507 a9eef8696c92627b87e9975edea03b2a ""
+["pdflatex"] 1686788167 "c:/Users/Marcos/source/repos/h3xduck/TFM/docs/document.tex" "document.pdf" "document" 1686788168 0
+  "C:/Users/Marcos/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1686785725 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Marcos/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1684347410 23189252 63ec4c24cb3feaf9250c92abc8db2c59 ""
   "C:/Users/Marcos/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458477487 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/Users/Marcos/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb7t.tfm" 1136772254 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -64,9 +64,9 @@
   "C:/Users/Marcos/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585257378 1007 15056f4a61917ceed3a44e4ac11fcc52 ""
   "C:/Users/Marcos/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1656236890 56148 51a9a8571c07b9921892ae11063ae853 ""
   "IEEEtran.cls" 1684347860 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Users/Marcos/source/repos/h3xduck/TFM/docs/document.tex" 1686780493 2923 2d00e64ac7090fe3de735134c19a5d6c ""
-  "document.aux" 1686780494 853 a19cb78e31ff5b691aa51e8593b288a6 "pdflatex"
-  "document.tex" 1686780493 2923 2d00e64ac7090fe3de735134c19a5d6c ""
+  "c:/Users/Marcos/source/repos/h3xduck/TFM/docs/document.tex" 1686788167 4022 080efcc8013120a7bd2b1a1a6535855a ""
+  "document.aux" 1686788168 853 a19cb78e31ff5b691aa51e8593b288a6 "pdflatex"
+  "document.tex" 1686788167 4022 080efcc8013120a7bd2b1a1a6535855a ""
   (generated)
   "document.aux"
   "document.log"
