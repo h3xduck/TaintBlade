@@ -58,20 +58,20 @@ modules and functionalities implemented.
 
 In the previous sections, we introduced the issue of automating protocol
 reverse engineering and the relevance of this task in the context of the
-analysis of malware transmitting malicious communications. We will now describe
-\textit{TaintBlade}, the automated protocol reverse engineering framework we
-have developed for tackling this task. Overall, this tool pursues three main
-goals: (1) to perform message inference of the underlying ingress protocol of a
-program, offering an accurate representation of its compounding fields and the
-purpose of each byte; (2) to provide a complete trace of the activities carried
-out by the instrumented program, including a viewpoint into loaded images,
-child processes, executed routines and their arguments, therefore helping the
-analyst with the reversing task, rathering than just offering a black-box tool;
-(3) to become a framework usable not only by malware analysts by offering
-specific functionalities aimed for studying malware behaviours, but also by the
-general public by providing an intuitive and fully enriched graphical user
-interface that adds cohesion and additional features over the data produced by
-the tool.
+analysis of malware transmitting malicious communications. In this section, we
+will now describe the automated protocol reverse engineering framework, called
+\textit{TaintBlade}, that we have developed for tackling this task. Overall,
+this tool pursues three main goals: (1) to perform message inference of the
+underlying ingress protocol of a program, offering an accurate representation
+of its compounding fields and the purpose of each byte; (2) to provide a
+complete trace of the activities carried out by the instrumented program,
+including a viewpoint into loaded images, child processes, executed routines
+and their arguments, therefore helping the analyst with the reversing task,
+rathering than just offering a black-box tool; (3) to become a framework usable
+not only by malware analysts by offering specific functionalities aimed for
+studying malware behaviours, but also by the general public by providing an
+intuitive and fully enriched graphical user interface that offers additional
+features and enhances cohesion over the data produced by the tool.
 
 \subsection{Architecture overview}
 
@@ -91,15 +91,26 @@ user can navigate the resulting data by means of \textit{TaintBlade} GUI, which
 interacts with the database, or by accessing the output dump files.
 
 The \textit{TaintBlade} pintool is the central component of the framework. It
-comprises all instrumentation and tracing functionalities needed for the
-protocol reverse engineering task. It is compounded in its core by Intel PIN,
-which offers the instrumentation capabilities, and on top of which
-\textit{TaintBlade} features a series of \textit{modules} - sets of components
-centered on a specific stage of the protocol reverse engineering task or that
-offer other additional functionalities intended for easing malware reversing.
+encompasses all the necessary instrumentation and tracing functionalities
+required for the protocol reverse engineering task. At its core, the pintool
+utilizes Intel PIN, which provides the instrumentation capabilities. On top of
+Intel PIN, \textit{TaintBlade} features a series of \textit{modules} -
+collections of components centered on a specific stage of the protocol reverse
+engineering task or that offer other additional functionalities intended to
+facilitate malware reversing.
 
-As it can be observed in figure \ref{fig_3_archdetailedsteps}, \textit{TaintBlade} comprises
-six different modules, namely (1) an instrumentation module which instruments the programs
+As it can be observed in figure \ref{fig_3_archdetailedsteps},
+\textit{TaintBlade} comprises six different modules, namely (1) an
+instrumentation module which enables the framework to hook on each loaded
+image, executed routines and on unique instructions, and to access any register
+or memory data; (2) a tainting module featuring a multi-color scheme, which
+enables to track the propagation of data at a byte level inside the instrumented
+program; (3) a heuristics module that matches executed instructions with tainted data
+to a set of heuristics corresponding to specific operations; (4) a protocol reversing
+module that constructs a full protocol from the gathered heuristics; (5) a tracing module
+that enables to detect the execution of routines, logging its arguments; (6) and an
+auxiliary NOPer module that allows for skipping code sections and to manually modify the
+program state at arbitrary points.
 
 Although each module works independently from the others, most of them operate
 in a pipeline fashion, where the input of one module depends on that of the one
@@ -107,7 +118,8 @@ directly preceeding it. In particular, the instrumentation, tainting,
 heuristics and protocol reversing modules work sequentially towards the
 protocol reversing task, whilst the tracing and NOPer modules work separately,
 offering support features to the tool. We will now study each module
-individually and describe how they work internally and how they coordinate between them.
+individually and describe how they work internally and the coordination
+between them.
 
 \begin{figure*}
     \centerline{\includegraphics[width=\textwidth]{images/archdetailedsteps.drawio.png}}
@@ -115,7 +127,12 @@ individually and describe how they work internally and how they coordinate betwe
     \label{fig_3_archdetailedsteps}
 \end{figure*}
 
-
+\subsection{Instrumentation module}
+The instrumentation module is the central component in the \textit{TaintBlade} framework and the one 
+that works at the lowest level. It utilizes Intel PIN to instrument the program that is being executed 
+at a triple level: creating hooks for every loaded program image (e.g. an imported DLL), for every executed routine
+(e.g. the \textit{main} function at the program) and for every executed instruction (e.g. a single call instruction to an
+imported function). 
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
