@@ -5,6 +5,8 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -104,13 +106,14 @@ As it can be observed in figure \ref{fig_3_archdetailedsteps},
 instrumentation module which enables the framework to hook on each loaded
 image, executed routines and on unique instructions, and to access any register
 or memory data; (2) a tainting module featuring a multi-color scheme, which
-enables to track the propagation of data at a byte level inside the instrumented
-program; (3) a heuristics module that matches executed instructions with tainted data
-to a set of heuristics corresponding to specific operations; (4) a protocol reversing
-module that constructs a full protocol from the gathered heuristics; (5) a tracing module
-that enables to detect the execution of routines, logging its arguments; (6) and an
-auxiliary NOPer module that allows for skipping code sections and to manually modify the
-program state at arbitrary points.
+enables to track the propagation of data at a byte level inside the
+instrumented program; (3) a heuristics module that matches executed
+instructions with tainted data to a set of heuristics corresponding to specific
+operations; (4) a protocol reversing module that constructs a full protocol
+from the gathered heuristics; (5) a tracing module that enables to detect the
+execution of routines, logging its arguments; (6) and an auxiliary NOPer module
+that allows for skipping code sections and to manually modify the program state
+at arbitrary points.
 
 Although each module works independently from the others, most of them operate
 in a pipeline fashion, where the input of one module depends on that of the one
@@ -118,8 +121,8 @@ directly preceeding it. In particular, the instrumentation, tainting,
 heuristics and protocol reversing modules work sequentially towards the
 protocol reversing task, whilst the tracing and NOPer modules work separately,
 offering support features to the tool. We will now study each module
-individually and describe how they work internally and the coordination
-between them.
+individually and describe how they work internally and the coordination between
+them.
 
 \begin{figure*}
     \centerline{\includegraphics[width=\textwidth]{images/archdetailedsteps.drawio.png}}
@@ -128,11 +131,95 @@ between them.
 \end{figure*}
 
 \subsection{Instrumentation module}
-The instrumentation module is the central component in the \textit{TaintBlade} framework and the one 
-that works at the lowest level. It utilizes Intel PIN to instrument the program that is being executed 
-at a triple level: creating hooks for every loaded program image (e.g. an imported DLL), for every executed routine
-(e.g. the \textit{main} function at the program) and for every executed instruction (e.g. a single call instruction to an
-imported function). 
+The instrumentation module is the central component in the \textit{TaintBlade}
+framework and the one that works closer to the assembly code. It utilizes Intel
+PIN to instrument the program that is being executed at a triple level:
+creating hooks for every loaded program image (e.g. an imported DLL), for every
+executed routine (e.g. the \textit{main} function at the program) and for every
+executed instruction (e.g. a single call instruction to some other function).
+
+\textbf{Image instrumentation.}
+\textit{TaintBlade} only instruments the instructions and routines that are included
+in a list known as the \textit{image scope}. This scope is, by default, the main image of the executable
+selected to be traced, although the user may select more images to be included via the GUI or
+the program configuration files. By instrumenting program images, \textit{TaintBlade} informs the
+user of when a new image is loaded - which may be of interest to the user, choosing it to be included
+in the scope. This instrumentation also acts as support to other modules - like the NOPer module -, by calculating in
+advance the virtual addresses of key instructions (such as those selected by the user to be manually skipped).
+
+\textbf{Routine instrumentation.}
+\textit{TaintBlade} instruments any newly executed routine included in the image scope. The instrumentation is dual: it instruments
+the routine right after it is called and before it returns. This enables
+the tool to extract information such as the function and image names, and the memory address of the arguments with which each
+function is called and with which it returns. Instrumenting routines is key for supporting the rest of the modules, and it is done in two different ways:
+
+\begin{itemize}
+    \item Comparing the name and image of the routine with an internal list of routines.
+          The instrumentation of these routines is hardcoded, and therefore the tool
+          knows exactly how to parse each of its arguments (the data structures each one
+          corresponds to). This type of instrumentation is used from the tainting module,
+          which needs to access specific data points in each routine at an specific time
+          (either before or after the execution).
+    \item Performing a more general instrumentation, without hardcoding the data types.
+          As we will explain in section \ref{?}, this is useful for the tracing module,
+          which will also attempt to guess the type of arguments later.
+\end{itemize}
+
+\textbf{Instruction instrumentation.}
+This is the most important instrumentation type since it is the entrypoint for the tainting functionality. 
+Here \textit{TaintBlade} will examine each executed instruction individually, and
+compare it with a list of instructions that the tool is prepared to work with. Table \ref{table:instruction_types_instrumentation_supported}
+covers the instruction types currently supported by \textit{TaintBlade}. It must be noted that, for this version of the tool, we have focused
+on supporting those instructions that we considered to be more commonly generated by compilers (and thus
+more commonly found at any program). 
+
+\begin{table}[htbp]
+    \caption{Instruction types for which instrumentation is supported}
+    \begin{center}
+    \begin{tabular}{|>{\centering\arraybackslash}p{2cm}|c|>{\centering\arraybackslash}p{3.5cm}|}
+    \hline
+    \textbf{Instruction type}&\textbf{Instruction}&\textbf{Description} \\
+    \hline 
+    \multirow{2}{*}{\shortstack{Arithmetic\\ operations}} & ADD & \multirow{2}{*}{\shortstack{Any addition of memory,\\ immediate or register operands}}\\
+    & SUB &\\
+    \hline
+    \multirow{4}{*}{\shortstack{Logical\\ operations}} & AND & \multirow{4}{*}{\shortstack{Any logical operation\\ between memory, immediate\\ or register operands}}\\
+    & OR &\\
+    & XOR &\\
+    & SHR &\\
+    \hline
+    \multirow{5}{*}{\shortstack{Data moving\\ operations}} & MOV & \multirow{5}{*}{\shortstack{Move values and pointers.\\ All types of LEA and MOV\\ instructions are supported}}\\
+    & MOVSX &\\
+    & MOVSXD &\\
+    & MOVZX &\\
+    & LEA &\\
+    \hline
+    \multirow{5}{*}{\shortstack{Control flow\\ instructions}} & CALL& \multirow{5}{*}{\shortstack{Any jump, call or return.\\ Supported both near and far\\ relative displacement types}}\\
+    & JMP &\\
+    & JB &\\
+    & JBE &\\
+    & RET &\\
+    \hline
+    \multirow{5}{*}{\shortstack{String\\ manipulation\\ operations}} & SCASB & \multirow{5}{*}{\shortstack{Instructions used for operating\\ with string types, supports\\ iterations with REPNE prefix}}\\
+    & SCASD &\\
+    & SCASQ &\\
+    & SCASW &\\
+    & REPNE SCASX &\\
+    \hline
+    \end{tabular}
+    \label{tab1}
+    \end{center}
+    \label{table:instruction_types_instrumentation_supported}
+\end{table}
+
+When an instruction is instrumented, \textit{TaintBlade} first checks the type of instruction by making use of the Intel XED decoder[?] that comes
+embedded in Intel PIN. This decoder lets the tool classify the instruction, grouping it with other instruction types that share the same properties (e.g. every
+arithmetic operation is instrumented similarly). Once classified, the tool analyzes the arguments of the instruction and extracts any needed addresses and/or values
+from it. This data will be then used as an input for the tainting functionality.
+
+
+\subsection{Tainting module}
+\textit{TaintBlade} features a custom multi-color tainting engine for the x86 and x86\_64 architectures.
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
