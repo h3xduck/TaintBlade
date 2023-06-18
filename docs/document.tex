@@ -232,15 +232,24 @@ By employing multiple colors, we can then gather key information regarding how t
 are combined between each other and to know how specific bytes are used inside the program.
 
 This initial version of the tool is fully prepared to work in Windows systems,
-although it could be extended to work in Linux easily in a future. It must also
+although it could be easily extended to work in Linux in a future. It must also
 be noted that we decided to develop the tainting system from the ground -
-instead of using an existing solution - because we could not find any
+instead of using an existing solution - because we did not find any
 implementation of a taint system for x86\_64 Windows machines that included
 multi-color taint tracking. We considered well-known engines like libdtf,
-Triton or Tytan but, as indicated in table \ref{}, we identified certain
-drawbacks in each of them. Therefore, we decided to create a new 64-bit
-compatible multi-color tainting engine that integrates with Intel PIN (it
-relyies on the instrumentation module we described previously).
+Triton or Tytan but, as indicated in table
+\ref{table:taining_engines_reason_not_chosen}, we identified certain drawbacks
+in each of them.
+
+We would like to highlight the difficulty of modifying these existing systems to support
+our purposes. Adapting an engine to a new architecture requires creating new taint rules for
+the new Instruction Set Architecture (ISA). Moreover, moving from a 32-bit-sized architecture
+to a 64-bit-sized one involves additional challenges. This is because tainting engines in the x86
+architecture are usually able to address their whole physical address space (limited to $2^{32}$ bytes)
+
+Therefore, we decided to
+create a new 64-bit compatible multi-color tainting engine that integrates with
+Intel PIN (it relyies on the instrumentation module we described previously).
 
 \begin{table}[htbp]
     \caption{Existing open-source tainting engines, not selected}
@@ -256,13 +265,13 @@ relyies on the instrumentation module we described previously).
             \multirow{2}{*}{\shortstack{libdft64                                                                         \\ (Angora)}} & Linux x86\_64 & \multirow{2}{*}{\shortstack{No Windows support\\Multi-color not supported}}\\
                                     & Mono-color               &                                                         \\
             \hline
-            \multirow{2}{*}{Dytan}  & Linux x86    & \multirow{2}{*}{\shortstack{No windows, x86\_64 support\\ Multi-color not supported}}\\
-                                    & Mono-color                        &                                                         \\
+            \multirow{2}{*}{Dytan}  & Linux x86                & \multirow{2}{*}{\shortstack{No windows, x86\_64 support \\ Multi-color not supported}}\\
+                                    & Mono-color               &                                                         \\
             \hline
-            \multirow{4}{*}{Triton} & Windows, Linux                      & \multirow{4}{*}{\shortstack{Multi-color not supported}}\\
-                                    & x86, x86\_64,                     &                                                         \\
-                                    & ARM32, AArch64                   &                                                         \\
-                                    & Mono-color                    &                                                         \\
+            \multirow{4}{*}{Triton} & Windows, Linux           & \multirow{4}{*}{\shortstack{Multi-color not supported}} \\
+                                    & x86, x86\_64,            &                                                         \\
+                                    & ARM32, AArch64           &                                                         \\
+                                    & Mono-color               &                                                         \\
             \hline
         \end{tabular}
         \label{tab1}
@@ -303,6 +312,7 @@ TODO
     \bibitem{paper_libdft} http://nsl.cs.columbia.edu/papers/2012/libdft.vee12.pdf
     \bibitem{github_libdft64} https://github.com/AngoraFuzzer/libdft64
     \bibitem{github_triton} https://github.com/JonathanSalwan/Triton
+    \bibitem{book_practical_binary_analysis} https://terrorgum.com/tfox/books/practicalbinaryanalysis.pdf
 
 \end{thebibliography}
 \vspace{12pt}
