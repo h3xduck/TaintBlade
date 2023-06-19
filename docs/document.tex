@@ -237,19 +237,9 @@ be noted that we decided to develop the tainting system from the ground -
 instead of using an existing solution - because we did not find any
 implementation of a taint system for x86\_64 Windows machines that included
 multi-color taint tracking. We considered well-known engines like libdtf,
-Triton or Tytan but, as indicated in table
+Triton or Dytan but, as indicated in table
 \ref{table:taining_engines_reason_not_chosen}, we identified certain drawbacks
 in each of them.
-
-We would like to highlight the difficulty of modifying these existing systems to support
-our purposes. Adapting an engine to a new architecture requires creating new taint rules for
-the new Instruction Set Architecture (ISA). Moreover, moving from a 32-bit-sized architecture
-to a 64-bit-sized one involves additional challenges. This is because tainting engines in the x86
-architecture are usually able to address their whole physical address space (limited to $2^{32}$ bytes)
-
-Therefore, we decided to
-create a new 64-bit compatible multi-color tainting engine that integrates with
-Intel PIN (it relyies on the instrumentation module we described previously).
 
 \begin{table}[htbp]
     \caption{Existing open-source tainting engines, not selected}
@@ -278,6 +268,49 @@ Intel PIN (it relyies on the instrumentation module we described previously).
     \end{center}
     \label{table:taining_engines_reason_not_chosen}
 \end{table}
+
+We would like to highlight the difficulty of modifying these existing systems
+to support our purposes. Adapting an engine to a new architecture requires
+creating new taint rules for the new Instruction Set Architecture (ISA).
+Moreover, moving from a 32-bit-sized architecture to a 64-bit-sized one
+involves additional challenges. One of them is that tainting engines in the x86
+architecture usually feature (like in libdft) a shadow memory with the same
+size as that of the whole virtual address space (limited to $2^{32}$ bytes in
+x86), which tracks the taint state of each byte. This is completely unfeasible
+to do in a 64-bit system, since the virtual address space can be up to $2^{64}$
+(although processor implementations may reduce this value
+\cite{book_practical_binary_analysis_p13}).
+
+Another challenge is the implementation of multi-color taint tracking in a
+mono-color system. The introduction of one of such systems involves changing
+the taint storage from a bitmap value, where 0=not tainted and 1=tainted, to a
+data structure that supports multiple values. Additionally, the number of
+possible colors is limited to the capacity of the structure.
+
+Therefore, taking all the previous into account, we decided to create our own
+completely new 64-bit-compatible multi-color tainting engine that integrates
+with Intel PIN (it relies on the instrumentation module we described
+previously).
+
+\textbf{Taint colors and storage.} The tainting module keeps a centralized set
+of data structures that store the taint information of the registers and memory of 
+a single instrumented process.
+Since \textit{TaintBlade} supports both the x86 and x86\_64 architectures, it is not feasiable to
+maintain a shadow memory of the process with the color of each byte. Instead, we have
+tried to achieve an optimized implementation that pursues two main goals:
+\begin{itemize}
+    \item Since we cannot shadow all memory in the process, we dynamically generate or destroy
+    taint data at runtime, thus giving up on temporal optimization but allowing to taint
+    any number of memory addresses.
+    \item We expect that taint colors from tainted bytes are frequently combined during 
+    program execution. Therefore, we will support an arbitrary number of color combinations,
+    improving the design described in section [??reference section showcasing libdft??].
+\end{itemize}
+
+Considering the goals described previously, we have developed the tainting engine whose
+architecture can be observed in figure \ref{}.
+
+
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
@@ -313,6 +346,7 @@ TODO
     \bibitem{github_libdft64} https://github.com/AngoraFuzzer/libdft64
     \bibitem{github_triton} https://github.com/JonathanSalwan/Triton
     \bibitem{book_practical_binary_analysis} https://terrorgum.com/tfox/books/practicalbinaryanalysis.pdf
+    \bibitem{book_practical_binary_analysis_p13} https://www.amd.com/system/files/TechDocs/24593.pdf, Page 13
 
 \end{thebibliography}
 \vspace{12pt}
