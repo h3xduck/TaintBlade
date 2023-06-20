@@ -101,7 +101,7 @@ collections of components centered on a specific stage of the protocol reverse
 engineering task or that offer other additional functionalities intended to
 facilitate malware reversing.
 
-As it can be observed in figure \ref{fig_3_archdetailedsteps},
+As it can be observed in figure \ref{figure:fig_3_archdetailedsteps},
 \textit{TaintBlade} comprises six different modules, namely (1) an
 instrumentation module which enables the framework to hook on each loaded
 image, executed routines and on unique instructions, and to access any register
@@ -127,7 +127,7 @@ them.
 \begin{figure*}
     \centerline{\includegraphics[width=\textwidth]{images/archdetailedsteps.drawio.png}}
     \caption{Example of a figure caption.}
-    \label{fig_3_archdetailedsteps}
+    \label{figure:fig_3_archdetailedsteps}
 \end{figure*}
 
 \subsection{Instrumentation module}
@@ -293,24 +293,74 @@ with Intel PIN (it relies on the instrumentation module we described
 previously).
 
 \textbf{Taint colors and storage.} The tainting module keeps a centralized set
-of data structures that store the taint information of the registers and memory of 
+of data structures that store the taint information of the registers and memory of
 a single instrumented process.
 Since \textit{TaintBlade} supports both the x86 and x86\_64 architectures, it is not feasiable to
 maintain a shadow memory of the process with the color of each byte. Instead, we have
 tried to achieve an optimized implementation that pursues two main goals:
 \begin{itemize}
-    \item Since we cannot shadow all memory in the process, we dynamically generate or destroy
-    taint data at runtime, thus giving up on temporal optimization but allowing to taint
-    any number of memory addresses.
-    \item We expect that taint colors from tainted bytes are frequently combined during 
-    program execution. Therefore, we will support an arbitrary number of color combinations,
-    improving the design described in section [??reference section showcasing libdft??].
+    \item Since we cannot shadow all memory in the process, we dynamically generate or
+          destroy taint data at runtime, thus giving up on temporal optimization but
+          allowing to taint any number of memory addresses.
+    \item We expect that taint colors from tainted bytes are frequently combined during
+          program execution. Therefore, we will support an arbitrary number of color
+          combinations, improving the design described in section [??reference section
+            showcasing libdft??].
 \end{itemize}
 
-Considering the goals described previously, we have developed the tainting engine whose
-architecture can be observed in figure \ref{}.
+Considering the goals described previously, the taint storage of our engine
+follows the architecture shown in figure \ref{figure:taintingengine}. As it can
+be observed, we dispose of two main structures, one for storing memory colors
+and another for register colors. In the case of memory tainting, we store in an
+unordered map pairs of data corresponding to each individual tainted memory
+address and the color that it has been tainted with. This map is modified at
+runtime, so that addresses not contained in the map are assumed not to be
+tainted.
 
+In the other hand, we will track the taint in each of the registers of the
+process by means of a vector that acts as a shadow processor. In this vector,
+we will contain one element for each byte of each register (including rax, rbx,
+rcx, rdx, r8, r9, ..., r15, rsi, rdi, rsp and rbp). Each element will hold the
+color with which an specific byte of that register has been tainted. Note that
+a value of 0 means that the register byte is not tainted. Also, support for the
+x86 architecture is guaranteed by, at runtime, ignoring half the bytes for each
+register.
 
+\begin{figure}
+    \centerline{\includegraphics[width=0.9\columnwidth]{images/TaintingEngine.drawio.png}}
+    \caption{Taint storage data structures.}
+    \label{figure:taintingengine}
+\end{figure}
+
+Although the previous architecture already allows us to store our taint data, a
+multi-color engine requires additional data structures for taint colors. During
+the program execution, taint colors will be generated and combined to create
+new ones. These combinations, known as color mixes in our engine, will need to
+be stored so that we can trackback which original colors were combined to
+generate a certain derivate color. 
+
+The tainting module features the color mixes functionality by means of two
+additional data structures. The current version of \textit{TaintBlade} supports
+binary color mixes, meaning that any color is either original or the
+combination of two other colors. As we will describe, the color mixes data
+structures will need to be frequently accessed for two main purposes:
+\begin{itemize}
+    \item Knowing whether a certain color has been already generated as a result of the
+          mix of two other colors.
+    \item Getting the colors that were combined to generate a certaint derivate color.
+\end{itemize}
+
+Therefore, we have developed the data structures that are detailed in figure
+\ref{figure:colormixtaintarch}. As it can be observed, we have two maps. The first
+map stores, for each entry, a color that was generated as a mix of two other colors,
+and the colors used in the mix. This map is constantly accessed during the tainting
+functionality, since for each time the pro 
+
+\begin{figure}
+    \centerline{\includegraphics[width=0.9\columnwidth]{images/colormixtaintarch.drawio.png}}
+    \caption{Taint storage data structures.}
+    \label{figure:colormixtaintarch}
+\end{figure}
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting

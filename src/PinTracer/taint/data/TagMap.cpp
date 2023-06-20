@@ -41,7 +41,7 @@ TagMap::TagMap()
 	this->tagLog = TagLog();
 	for (int ii = 0; ii < REG_TAINT_FIELD_LEN; ii++)
 	{
-		this->regTaintField[ii] = Tag(0);
+		this->regTaintField[ii] = Tag(0).color;
 	}
 	
 	//this->memTaintField.insert({ 0, memInfo });
@@ -62,7 +62,7 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 	if (it == this->memTaintField.end())
 	{
 		//Byte not in map yet
-		this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, tag));
+		this->memTaintField.insert(std::make_pair<ADDRINT, UINT16>(addr, tag.color));
 		LOG_MESSAGE_TAINT_MEM("New mem taint", "ins", addr, tag.color);
 		
 		//Register event for dump files
@@ -74,10 +74,8 @@ UINT16 TagMap::taintMemNew(ADDRINT addr)
 	}
 	else
 	{
-		it->second.color = tag.color;
-		it->second.derivate1 = EMPTY_COLOR;
-		it->second.derivate2 = EMPTY_COLOR;
-		LOG_MESSAGE_TAINT_MEM("New color for existing memory taint", "modified", addr, it->second.color);
+		it->second = tag.color;
+		LOG_MESSAGE_TAINT_MEM("New color for existing memory taint", "modified", addr, it->second);
 		
 		//Register event for dump files
 		struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
@@ -100,7 +98,7 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 			//LOG_DEBUG("New memory taint--> ADDR:" << addr << " COL:" << color);
 			//Byte not in map yet
 			Tag tag(color);
-			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(addr, tag));
+			this->memTaintField.insert(std::make_pair<ADDRINT, UINT16>(addr, tag.color));
 			//this->printMemTaintComplete();
 			LOG_MESSAGE_TAINT_MEM("New mem taint", "ins", addr, tag.color);
 			
@@ -120,8 +118,8 @@ void TagMap::taintMem(ADDRINT addr, UINT16 color, BOOL manualTaint)
 	else
 	{
 		//LOG_DEBUG("Memory taint--> ADDR:" << addr << " COL:" << color);
-		it->second.color = color;
-		LOG_MESSAGE_TAINT_MEM("New color for existing memory taint", "ins", addr, it->second.color);
+		it->second = color;
+		LOG_MESSAGE_TAINT_MEM("New color for existing memory taint", "ins", addr, it->second);
 		
 		//Register event for dump files
 		struct UTILS::IO::DataDumpLine::memory_color_event_line_t event;
@@ -159,7 +157,7 @@ UINT16 TagMap::getTaintColorMem(ADDRINT addr)
 	}
 	else
 	{
-		return it->second.color;
+		return it->second;
 	}
 }
 
@@ -177,7 +175,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 		{
 			//Dest=src1 is tainted with color of src2
 			tag = Tag(src2MemTag.color);
-			this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest, tag));
+			this->memTaintField.insert(std::make_pair<ADDRINT, UINT16>(dest, tag.color));
 			LOG_MESSAGE_MIX_MEM("New mem taint", "ins", dest, src2, tag.color,  0, src2MemTag.color);
 			//LOG_DEBUG("New memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", "<< to_hex_dbg(src2) <<") --> mem.ins(" << dest << ", T(" << tag.color << ", "<<tag.derivate1<<", "<<tag.derivate2<<"))");
 		
@@ -204,7 +202,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			{
 				//We need to mix both colors, log the generated tag
 				tag = Tag(src1MemTag.color, src2MemTag.color);
-				it->second = tag;
+				it->second = tag.color;
 				this->tagLog.logTag(tag);
 				LOG_MESSAGE_MIX_MEM("Mixed mem taint", "modified", dest, src2, tag.color, src1MemTag.color, src2MemTag.color);
 				//LOG_DEBUG("Mixed memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> modified T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
@@ -223,7 +221,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 			{
 				//Mix already generated before, use that color again
 				tag = Tag(mixColor);
-				it->second = tag;
+				it->second = tag.color;
 				LOG_MESSAGE_MIX_MEM("Reused mix mem taint", "reused", dest, src2, tag.color, src1MemTag.color, src2MemTag.color);
 				//LOG_DEBUG("Reused mix taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> reused T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << "))");
 			
@@ -242,7 +240,7 @@ Tag TagMap::mixTaintMem(ADDRINT dest, ADDRINT src1, ADDRINT src2)
 		else
 		{
 			//src2 is an empty_color, thus we directly taint dest=src1 with empty_color
-			it->second.color = EMPTY_COLOR;
+			it->second = EMPTY_COLOR;
 			LOG_MESSAGE_MIX_MEM("Mixed mem taint", "modified", dest, src2, EMPTY_COLOR, src1MemTag.color, src2MemTag.color);
 			//LOG_DEBUG("New color for existing memory taint mixTaintMem(" << to_hex_dbg(dest) << ", " << to_hex_dbg(src1) << ", " << to_hex_dbg(src2) << ") --> modified T(" << tag.color << ", X, X))");
 		
@@ -287,7 +285,7 @@ void TagMap::taintRegNew(LEVEL_BASE::REG reg)
 
 	for (INT ii = posStart; ii < posStart+taintLength; ii++)
 	{
-		this->regTaintField[ii] = tag;
+		this->regTaintField[ii] = tag.color;
 	}
 
 	LOG_MESSAGE_TAINT_REG_RANGE("New reg taint", "modified", reg, posStart, posStart + taintLength, firstColor, tag.color);
@@ -308,7 +306,7 @@ void TagMap::taintReg(LEVEL_BASE::REG reg, UINT16 color)
 
 	for (INT ii = posStart; ii < posStart+taintLength; ii++)
 	{
-		this->regTaintField[ii] = Tag(color);
+		this->regTaintField[ii] = Tag(color).color;
 	}
 	LOG_MESSAGE_TAINT_REG_UNIQUE("New reg taint", "modified", reg, posStart, posStart + taintLength, color);
 	//LOG_DEBUG("New reg taint taintReg(" << reg << ", "<<color<<") --> modified Tags of reg("<< REG_StringShort(reg) <<" R:" << reg << " PI:" << posStart << " PF:" << posStart + taintLength << ") with new color "<<color);
@@ -325,7 +323,7 @@ void TagMap::taintRegByte(LEVEL_BASE::REG reg, UINT32 byteIndex, UINT16 color)
 		return;
 	}
 
-	this->regTaintField[posStart + byteIndex] = Tag(color);
+	this->regTaintField[posStart + byteIndex] = Tag(color).color;
 
 	LOG_MESSAGE_TAINT_REG_UNIQUE("New reg byte taint", "modified", reg, posStart, posStart, color);
 	//LOG_DEBUG("New reg taint taintReg(" << reg << ", "<<color<<") --> modified Tags of reg("<< REG_StringShort(reg) <<" R:" << reg << " PI:" << posStart << " PF:" << posStart + taintLength << ") with new color "<<color);
@@ -347,13 +345,13 @@ void TagMap::untaintReg(LEVEL_BASE::REG reg, int byteIndex)
 		LOG_ERR("Tried to untaint an invalid position of register "<< REG_StringShort(reg) <<" --> R:"<<reg<<" ByteIndex:"<<byteIndex);
 	}
 
-	UINT16 taintColor = this->regTaintField[posStart + byteIndex].color;
+	UINT16 taintColor = this->regTaintField[posStart + byteIndex];
 	if (taintColor != EMPTY_COLOR)
 	{
 		LOG_MESSAGE_TAINT_REG_UNIQUE_WITHINDEX("Untainted reg", "modified", reg, posStart, byteIndex, EMPTY_COLOR);
 		//LOG_DEBUG("Untainted reg untaintReg(" << reg << ") --> modified Tag of reg("<< REG_StringShort(reg) <<" R:" << reg << " PosStart:" << posStart << "ByteIndex:" << byteIndex << ") with empty color");
 		//0 is considered the 'untainted' color
-		this->regTaintField[posStart + byteIndex] = Tag(0);
+		this->regTaintField[posStart + byteIndex] = Tag(0).color;
 	}
 }
 
@@ -424,7 +422,7 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 				{
 					//No previous mixes
 					Tag tag(colorSrc1, colorSrc2);
-					this->regTaintField[posStart + ii] = tag;
+					this->regTaintField[posStart + ii] = tag.color;
 					//LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
 					this->tagLog.logTag(tag);
 					LOG_MESSAGE_TAINT_REG_MULTI("(in loop) Mixed reg taint, new color gen,", "modified", dest, src2, posStart, ii, tag.color, colorSrc1, colorSrc2);
@@ -443,7 +441,7 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 				{
 					//Mix already generated before, use that color again
 					Tag tag = Tag(mixColor);
-					this->regTaintField[posStart + ii] = tag;
+					this->regTaintField[posStart + ii] = tag.color;
 					LOG_MESSAGE_TAINT_REG_MULTI("(in loop) Reused reg mix taint,", "modified", dest, src2, posStart, ii, tag.color, colorSrc1, colorSrc2);
 					//LOG_DEBUG("(in loop) Reused mix taint in reg mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ")--> reused Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P : " << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 					
@@ -465,7 +463,7 @@ void TagMap::mixTaintReg(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1, LEVEL_BASE:
 			if (colorSrc2 != EMPTY_COLOR)
 			{
 				Tag tag(colorSrc2);
-				this->regTaintField[posStart + ii] = tag;
+				this->regTaintField[posStart + ii] = tag.color;
 				LOG_MESSAGE_TAINT_REG_MULTI("(in loop) Tainted reg for the first time", "modified", dest, src2, posStart, ii, tag.color, colorSrc1, colorSrc2);
 				//LOG_DEBUG("(in loop) Tainted reg for the first time mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 			}
@@ -517,7 +515,7 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 			{
 				//src2=empty_color, thus just untaint that reg byte
 				Tag tag(0);
-				this->regTaintField[posStart + ii] = tag;
+				this->regTaintField[posStart + ii] = tag.color;
 				LOG_MESSAGE_TAINT_REG_MULTI("(in loop) Untainted full reg", "modified", dest, src2, posStart, ii, tag.color, colorSrc1, colorExt);
 				//LOG_DEBUG("(in loop) Untainted reg mixTaintRegWithExtension(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart + ii << ") with full empty color");
 			}
@@ -529,7 +527,7 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 				{
 					//No previous mixes
 					Tag tag(colorSrc1, colorExt);
-					this->regTaintField[posStart + ii] = tag;
+					this->regTaintField[posStart + ii] = tag.color;
 					//LOG_DEBUG("NEW DEST/SRC1COL:" << tag.color);
 					this->tagLog.logTag(tag);
 					LOG_MESSAGE_TAINT_REG_MULTI("(in loop) Mixed reg taint", "modified", dest, src2, posStart, ii, tag.color, colorSrc1, colorExt);
@@ -548,7 +546,7 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 				{
 					//Mix already generated before, use that color again
 					Tag tag = Tag(mixColor);
-					this->regTaintField[posStart + ii] = tag;
+					this->regTaintField[posStart + ii] = tag.color;
 					LOG_MESSAGE_TAINT_REG_MULTI("(in loop) Reused mix in reg taint", "modified", dest, src2, posStart, ii, tag.color, colorSrc1, colorExt);
 					//LOG_DEBUG("(in loop) Reused mix in reg taint mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ") --> reused Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 				
@@ -570,7 +568,7 @@ void TagMap::mixTaintRegWithExtension(LEVEL_BASE::REG dest, LEVEL_BASE::REG src1
 			if (colorExt != EMPTY_COLOR)
 			{
 				Tag tag(colorExt);
-				this->regTaintField[posStart + ii] = tag;
+				this->regTaintField[posStart + ii] = tag.color;
 				LOG_MESSAGE_TAINT_REG_MULTI("(in loop) Tainted reg with new color", "modified", dest, src2, posStart, ii, tag.color, colorSrc1, colorExt);
 				//LOG_DEBUG("(in loop) Tainted reg with new color mixTaintReg(" << REG_StringShort(dest) << ", " << REG_StringShort(src1) << ", " << REG_StringShort(src2) << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart + ii << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 			}
@@ -613,7 +611,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		{
 			//dest is empty_color, just taint it with color2
 			Tag tag(color2);
-			this->regTaintField[posStart] = tag;
+			this->regTaintField[posStart] = tag.color;
 			LOG_MESSAGE_TAINT_REG_MULTI_UNKNOWNSRC("Tainted reg with new color", "modified", dest, posStart, byteIndex, tag.color, color1, color2);
 			//LOG_DEBUG("Tainted reg "<< REG_StringShort(dest) <<" with new color mixTaintRegByte(" << dest << ", " << byteIndex<< ", " << color1 << ", " << color2 << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 		}
@@ -621,7 +619,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 	else if (color2 == EMPTY_COLOR)
 	{
 		//dest is non-empty_color but color2 is, taint dest with empty_color
-		this->regTaintField[posStart] = Tag(color2);
+		this->regTaintField[posStart] = Tag(color2).color;
 		LOG_MESSAGE_TAINT_REG_MULTI_UNKNOWNSRC("Tainted reg with empty color", "modified", dest, posStart, byteIndex, EMPTY_COLOR, color1, color2);
 		//LOG_DEBUG("Tainted reg "<< REG_StringShort(dest) <<" with empty color mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with empty tag");
 	}
@@ -633,7 +631,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		{
 			//No previous mixes
 			Tag tag(color1, color2);
-			this->regTaintField[posStart] = tag;
+			this->regTaintField[posStart] = tag.color;
 			this->tagLog.logTag(tag);
 			LOG_MESSAGE_TAINT_REG_MULTI_UNKNOWNSRC("Mixed taint reg", "modified", dest, posStart, byteIndex, tag.color, color1, color2);
 			//LOG_DEBUG("Mixed taint reg "<< REG_StringShort(dest) <<" mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> modified Tag of reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
@@ -651,7 +649,7 @@ void TagMap::mixTaintRegByte(LEVEL_BASE::REG dest, UINT32 byteIndex, UINT16 colo
 		{
 			//Mix already generated before, use that color again
 			Tag tag = Tag(mixColor);
-			this->regTaintField[posStart] = tag;
+			this->regTaintField[posStart] = tag.color;
 			LOG_MESSAGE_TAINT_REG_MULTI_UNKNOWNSRC("Reused mix taint reg", "modified", dest, posStart, byteIndex, tag.color, color1, color2);
 			//LOG_DEBUG("Reused mix taint reg "<< REG_StringShort(dest) <<" mixTaintRegByte(" << dest << ", " << byteIndex << ", " << color1 << ", " << color2 << ") --> reused Tag for reg("<< REG_StringShort(dest) <<" R:" << dest << " P:" << posStart << " B:" << byteIndex << ") with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 		
@@ -685,11 +683,11 @@ void TagMap::mixTaintRegColors(LEVEL_BASE::REG dest, UINT32 length, std::vector<
 		UINT16 color1 = colorV1.at(ii);
 		if (color1 == EMPTY_COLOR)
 		{
-			this->regTaintField[ii] = Tag(colorV2.at(ii));
+			this->regTaintField[ii] = Tag(colorV2.at(ii)).color;
 		}
 		else
 		{
-			this->regTaintField[ii] = Tag(color1, colorV2.at(ii));
+			this->regTaintField[ii] = Tag(color1, colorV2.at(ii)).color;
 		}
 	}
 }
@@ -717,7 +715,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 			{
 				//Byte not in map yet
 				Tag tag(src2color);
-				this->memTaintField.insert(std::make_pair<ADDRINT, Tag>(dest+ii, tag));
+				this->memTaintField.insert(std::make_pair<ADDRINT, UINT16>(dest+ii, tag.color));
 				LOG_MESSAGE_MIX_MEM_WITH_REG("(in loop) New mem taint using reg", "modified", dest+ii, src2, tag.color, EMPTY_COLOR, src2color);
 				//LOG_DEBUG("(in loop) New memory taint using reg "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> mem.ins(" << to_hex_dbg(dest + ii) << ", T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 			
@@ -733,13 +731,13 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 			}
 			continue;
 		}
-		UINT16 memColor = it->second.color;
+		UINT16 memColor = it->second;
 		//mem dest is already tainted with some color
 		if (src2color == EMPTY_COLOR)
 		{
 			//reg src2 has empty_color, just taint dest mem with empty_color
 			Tag tag(src2color);
-			it->second = tag;
+			it->second = tag.color;
 			LOG_MESSAGE_MIX_MEM_WITH_REG("(in loop) Mem taint with empty color using reg", "modified", dest + ii, src2, tag.color, memColor, src2color);
 			//LOG_DEBUG("(in loop) Memory taint with empty color using reg "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> modified mem at " << dest + ii << " with T(" << tag.color << "," << tag.derivate1 << "," << tag.derivate2 << "))");
 		
@@ -756,12 +754,12 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 		else
 		{
 			//mem dest and reg src2 have non-empty_color both, mix
-			UINT16 mixColor = this->tagLog.getMixColor(it->second.color, src2color);
+			UINT16 mixColor = this->tagLog.getMixColor(it->second, src2color);
 			if (mixColor == EMPTY_COLOR)
 			{
 				//No previous mixes
-				Tag tag(it->second.color, src2color);
-				it->second = tag;
+				Tag tag(it->second, src2color);
+				it->second = tag.color;
 				this->tagLog.logTag(tag);
 				LOG_MESSAGE_MIX_MEM_WITH_REG("(in loop) Mixed mem taint using reg", "modified", dest + ii, src2, tag.color, memColor, src2color);
 				//LOG_DEBUG("(in loop) Mixed taint reg using "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> modified mem tag at " << dest + ii << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
@@ -780,7 +778,7 @@ void TagMap::mixTaintMemRegAllBytes(ADDRINT dest, UINT32 length, ADDRINT src1, L
 			{
 				//Mix already generated before, use that color again
 				Tag tag = Tag(mixColor);
-				it->second = tag;
+				it->second = tag.color;
 				LOG_MESSAGE_MIX_MEM_WITH_REG("(in loop) Reused mem mix taint using reg", "modified", dest + ii, src2, tag.color, memColor, src2color);
 				//LOG_DEBUG("(in loop) Reused mix taint reg of "<< REG_StringShort(src2) <<" mixTaintMemRegAllBytes(" << to_hex_dbg(dest) << ", " << length << ", " << to_hex_dbg(src1) << ", " << src2 << ") --> reused mem tag for " << to_hex_dbg(dest + ii) << " with T(" << tag.color << ", " << tag.derivate1 << ", " << tag.derivate2 << ")");
 			
@@ -802,7 +800,7 @@ std::vector<std::pair<ADDRINT, UINT16>> TagMap::getTaintedMemoryVector()
 {
 	std::vector<std::pair<ADDRINT, UINT16>> vec;
 	for (auto const& pair : this->memTaintField) {
-		vec.push_back(std::make_pair<ADDRINT, UINT16>(pair.first, pair.second.color));
+		vec.push_back(std::make_pair<ADDRINT, UINT16>(pair.first, pair.second));
 	}
 	return vec;
 }
@@ -832,7 +830,7 @@ void TagMap::printMemTaintComplete()
 {
 	std::cerr << "MEM_TAINT_FIELD PRINT START" << std::endl;
 	for (auto const& pair : this->memTaintField) {
-		std::cerr << "{" << pair.first << ": " << pair.second.color << "}\n";
+		std::cerr << "{" << pair.first << ": " << pair.second << "}\n";
 	}
 	std::cerr << std::endl << "MEM_TAINT_FIELD PRINT END" << std::endl;
 }
@@ -845,7 +843,7 @@ void TagMap::printRegTaintComplete()
 	{
 		for (int jj = 0; jj < NUM_COLUMNS; jj++)
 		{
-			std::cerr << "{" << ii+jj << ": " << this->regTaintField[ii+jj].color << "} ";
+			std::cerr << "{" << ii+jj << ": " << this->regTaintField[ii+jj] << "} ";
 		}
 		std::cerr << std::endl;
 	}
@@ -885,7 +883,7 @@ bool TagMap::regIsTainted(REG reg)
 
 	for (UINT32 ii = posStart; ii < posStart + taintLength; ii++)
 	{
-		if (this->regTaintField[ii].color != EMPTY_COLOR)
+		if (this->regTaintField[ii] != EMPTY_COLOR)
 		{
 			return true;
 		}
@@ -927,7 +925,7 @@ std::vector<UINT16> TagMap::regGetColor(REG reg)
 
 	for (UINT32 ii = posStart; ii < posStart + taintLength; ii++)
 	{
-		colorVec.push_back(this->regTaintField[ii].color);
+		colorVec.push_back(this->regTaintField[ii]);
 	}
 
 	return colorVec;
@@ -941,7 +939,7 @@ UINT16 TagMap::memGetColor(ADDRINT mem)
 		return EMPTY_COLOR;
 	}
 
-	return it->second.color;
+	return it->second;
 }
 
 std::vector<UINT16> TagMap::memRangeGetColor(ADDRINT mem, int bytes)
@@ -952,7 +950,7 @@ std::vector<UINT16> TagMap::memRangeGetColor(ADDRINT mem, int bytes)
 		auto it = this->memTaintField.find(mem);
 		if (it != this->memTaintField.end())
 		{
-			colorVec.push_back(it->second.color);
+			colorVec.push_back(it->second);
 		}
 		else
 		{

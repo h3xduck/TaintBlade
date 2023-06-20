@@ -80,11 +80,11 @@ public:
 	TagMap();
 
 	//Memory tainting, byte-level
-	std::tr1::unordered_map<ADDRINT, Tag> memTaintField;
+	std::tr1::unordered_map<ADDRINT, UINT16> memTaintField;
 
 	//Register tainting
 	// 2 COLOR_BYTES * 8 bytes per register * 16 registers
-	Tag regTaintField[REG_TAINT_FIELD_LEN];
+	UINT16 regTaintField[REG_TAINT_FIELD_LEN];
 
 	//These are to be used from the Taint Manager, and not directly from instrumentation functions
 	size_t tagMapCount();

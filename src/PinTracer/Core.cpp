@@ -985,7 +985,7 @@ int main(int argc, char* argv[])
 		}
 		else if (instructionLevelTracing == 1)
 		{
-			//Instrumenting each instruction directly
+			//Instrumenting each instruction directly. Deprecated for now.
 			INS_AddInstrumentFunction(InstructionTrace, 0);
 		}
 
