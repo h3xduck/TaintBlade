@@ -229,7 +229,7 @@ functionality.
 and x86\_64 architectures, operating at the byte-level. The rationale for this is
 that we needed to track and distinguish each byte received from a specific code program point.
 By employing multiple colors, we can then gather key information regarding how these bytes
-are combined between each other and to know how specific bytes are used inside the program.
+are combined between each other and how they are used inside the program.
 
 This initial version of the tool is fully prepared to work in Windows systems,
 although it could be easily extended to work in Linux in a future. It must also
@@ -284,15 +284,17 @@ to do in a 64-bit system, since the virtual address space can be up to $2^{64}$
 Another challenge is the implementation of multi-color taint tracking in a
 mono-color system. The introduction of one of such systems involves changing
 the taint storage from a bitmap value, where 0=not tainted and 1=tainted, to a
-data structure that supports multiple values. Additionally, the number of
-possible colors is limited to the capacity of the structure.
+data structure that supports multiple values, together with all taint
+propagation policies in order to support this change. Additionally, we would
+find that the number of possible colors is limited to the capacity of the
+structure previously used.
 
 Therefore, taking all the previous into account, we decided to create our own
 completely new 64-bit-compatible multi-color tainting engine that integrates
 with Intel PIN (it relies on the instrumentation module we described
 previously).
 
-\textbf{Taint colors and storage.} The tainting module keeps a centralized set
+\textbf{Taint storage.} The tainting module keeps a centralized set
 of data structures that store the taint information of the registers and memory of
 a single instrumented process.
 Since \textit{TaintBlade} supports both the x86 and x86\_64 architectures, it is not feasiable to
@@ -319,12 +321,16 @@ tainted.
 
 In the other hand, we will track the taint in each of the registers of the
 process by means of a vector that acts as a shadow processor. In this vector,
-we will contain one element for each byte of each register (including rax, rbx,
-rcx, rdx, r8, r9, ..., r15, rsi, rdi, rsp and rbp). Each element will hold the
-color with which an specific byte of that register has been tainted. Note that
-a value of 0 means that the register byte is not tainted. Also, support for the
-x86 architecture is guaranteed by, at runtime, ignoring half the bytes for each
-register.
+we will contain one element for each byte of each register (including
+\textit{rax}, \textit{rbx}, \textit{rcx}, \textit{rdx}, \textit{r8} ...
+\textit{r15}, \textit{rsi}, \textit{rdi}, \textit{rsp} and \textit{rbp}). Each
+element will hold the color with which an specific byte of that register has
+been tainted. Note that a value of 0 means that the register byte is not
+tainted. Also, support for the x86 architecture is guaranteed by, at runtime,
+ignoring half the bytes for each register. We follow the same technique when
+instrumenting a program that makes use of, for example, 8-byte registers like
+\textit{al}, by only taking the last 8 bytes in the vector corresponding to
+register \textit{rax}.
 
 \begin{figure}
     \centerline{\includegraphics[width=0.9\columnwidth]{images/TaintingEngine.drawio.png}}
@@ -332,12 +338,12 @@ register.
     \label{figure:taintingengine}
 \end{figure}
 
-Although the previous architecture already allows us to store our taint data, a
-multi-color engine requires additional data structures for taint colors. During
-the program execution, taint colors will be generated and combined to create
-new ones. These combinations, known as color mixes in our engine, will need to
-be stored so that we can trackback which original colors were combined to
-generate a certain derivate color. 
+\textbf{Multi-color support.} Although the previous architecture already allows
+us to store our taint data, a multi-color engine requires additional data structures
+for taint colors. During the program execution, taint colors will be generated
+and combined to create new ones. These combinations, known as color mixes in
+our engine, will need to be stored so that we can trackback which original colors
+were combined to generate a certain derivate color.
 
 The tainting module features the color mixes functionality by means of two
 additional data structures. The current version of \textit{TaintBlade} supports
@@ -351,16 +357,120 @@ structures will need to be frequently accessed for two main purposes:
 \end{itemize}
 
 Therefore, we have developed the data structures that are detailed in figure
-\ref{figure:colormixtaintarch}. As it can be observed, we have two maps. The first
-map stores, for each entry, a color that was generated as a mix of two other colors,
-and the colors used in the mix. This map is constantly accessed during the tainting
-functionality, since for each time the pro 
+\ref{figure:colormixtaintarch}, consisting on two maps. The first map stores,
+for each entry, a color that was generated as a mix of two other colors, and
+the colors used in the mix. This is useful since we frequently need to access
+whether a color mix has been generated already. In turn, the second map stores,
+for each color, which colors it has been mixed with, and the result of the mix.
+This is particularly needed for the case of getting the result of the mix of
+two specific colors, since without an additional map we would need to traverse
+the whole first color mix map.
 
 \begin{figure}
     \centerline{\includegraphics[width=0.9\columnwidth]{images/colormixtaintarch.drawio.png}}
     \caption{Taint storage data structures.}
     \label{figure:colormixtaintarch}
 \end{figure}
+
+\textbf{Taint sources.} Once considered how taint colors are stored in the tainting
+module, we will discuss how these colors are generated in the first place. \textit{TaintBlade}'s
+tainting module follows the architecture described in section \ref{}, by specifying taint sources
+which generate the taint colors at specific registers and memory bytes.
+
+In \textit{TaintBlade}, every taint source is a routine. A routine declared as
+a taint source will perform the following actions:
+\begin{enumerate}
+    \item Using the instrumentation module, hook the routine before its execution and
+          take the arguments with which it was called.
+    \item Interpret the arguments received, casting them to the data structure that we
+          know corresponds to them, previously hardcoded.
+    \item Using the instrumentation module, hook the routine after its execution and the
+          arguments with which the function returns.
+    \item Again, cast the value of the arguments at the time of returning to the data
+          structure that has been hardcoded.
+    \item Depending on the routine, taint with different colors specific bytes of the
+          arguments that have been either received or returned.
+\end{enumerate}
+
+Currently, \textit{TaintBlade} is focused on working with network protocols
+and, therefore, the taint sources we have defined correspond to those routines
+most commonly used for receiving network information. Table \ref{table:taint_sources_and_taint_sinks} details the
+taint sources currently implemented and which bytes get tainted when they are
+triggered. Note, however, that these could be extended in the future to support any
+arbitrary routine.
+
+\textbf{Taint sinks.} Just like we define program points at which to generate taint colors,
+\textit{TaintBlade} also incorporates a series of routines acting at taint sinks, 
+at which we are interested to know whether any tainted data is received. In this 
+initial version, we have incorporated three routines, detailed at table \ref{table:taint_sources_and_taint_sinks},
+that have are relevant for our protocol reverse engineering goals and perfom certain 
+actions when triggered:
+\begin{enumerate}
+    \item CreateProcessA and CreateProcessW will receive a command to be executed. By defining them
+    as taint sinks, we will be alerted whenever a tainted byte (that comes from the network) happens
+    to be one of these commands.
+    \item In Windows, due to historical reasons, many API calls are available either with ANSI strings in the 
+    arguments (taking \textit{char*}) or with UNICODE "wide" strings (as \textit{wchar\_t*}). 
+    MultiByteToWideChar is a function that allows us to convert strings between these two types, and
+    it can thus be commonly found in programs. By defining this routine as taint sink, we are able not
+    only to detect whether it receives tainted data, but also to transfer this data to the new, converted
+    string, therefore ensuring we do not incur on undertainting.
+\end{enumerate}
+
+\begin{table*}[htbp]
+    \caption{Implemented taint sources and taint sinks in TaintBlade}
+    \begin{center}
+        \begin{tabular}{|c|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}p{1.4cm}|>{\centering\arraybackslash}p{0.8cm}|c|>{\centering\arraybackslash}p{4cm}|}
+            \hline
+             & \multirow{2}{*}{\textbf{\shortstack{Routine                                                                                                                                      \\name}}}                & \multirow{2}{*}{\textbf{DLL}} & \multirow{2}{*}{\textbf{Arch}} & \multirow{2}{*}{\textbf{Arguments}} & \multirow{2}{*}{\textbf{Taint actions}} \\
+             &                                             &  &  &  &                                                                                                                           \\
+            \hline
+            \multirow{10}{*}{\shortstack{\textbf{Taint}                                                                                                                                         \\\textbf{sources}}}& \multirow{5}{*}{Recv$^{(\mathrm{a})}$} & \multirow{5}{*}{\shortstack{ws2\_32.dll                                          \\wsock32.dll }}  & \multirow{5}{*}{\shortstack{x86\\x86\_64}} &   \multirow{5}{*}{\shortstack{SOCKET s;\\char* buf;\\int len;\\int flags;}}      & \multirow{5}{*}{\shortstack{At exit, taints as many bytes\\from argument \textit{buf} as\\indicated in the return value.}}  \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+            \cline{2-6}
+             & \multirow{5}{*}{\shortstack{InternetReadFile$^{(\mathrm{b})}$}} & \multirow{5}{*}{wininet.dll} & \multirow{5}{*}{\shortstack{x86\\x86\_64}}&    \multirow{5}{*}{\shortstack{LPVOID hFile;\\LPVOID lpBuffer;\\DWORD dwNumberOfBytesToRead;\\LPDWORD lpdwNumberOfBytesRead;}}      & \multirow{5}{*}{\shortstack{At exit, taints as many bytes\\from the argument \textit{lpBuffer} as\\indicated in argument\\\textit{lpdwNumberOfBytesRead}.}}\\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+            \hline
+            \hline
+            \multirow{15}{*}{\shortstack{\textbf{Taint}                                                                                                                                         \\\textbf{sinks}}}& \multirow{5}{*}{CreateProcessA$^{(\mathrm{c})}$} & \multirow{5}{*}{\shortstack{kernel32.dll}}  & \multirow{5}{*}{\shortstack{x86\\x86\_64}} &   \multirow{5}{*}{\shortstack{LPCSTR lpApplicationName;\\LPSTR lpCommandLine;\\LPSECURITY\_ATTRIBUTES lpProcessAttributes;\\(+7 other arguments)}}      & \multirow{5}{*}{\shortstack{Before executing the function,\\ it checks whether any byte from\\argument \textit{lpApplicationName}\\ is tainted.}}  \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             \cline{2-6}
+             & \multirow{5}{*}{\shortstack{CreateProcessW$^{(\mathrm{d})}$}} & \multirow{5}{*}{kernel32.dll} & \multirow{5}{*}{\shortstack{x86\\x86\_64}}&    \multirow{5}{*}{\shortstack{LPCWSTR lpApplicationName;\\LPWSTR lpCommandLine;\\LPSECURITY\_ATTRIBUTES lpProcessAttributes;\\(+7 other arguments)}}     & \multirow{5}{*}{\shortstack{Before executing the function,\\ it checks whether any byte from\\argument \textit{lpApplicationName}\\ is tainted.}}  \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             \cline{2-6}
+             & \multirow{7}{*}{\shortstack{MultiByteToWideChar$^{(\mathrm{e})}$}} & \multirow{7}{*}{kernel32.dll} & \multirow{7}{*}{\shortstack{x86\\x86\_64}}&    \multirow{7}{*}{\shortstack{UINT CodePage;\\DWORD dwFlags;\\LPCCH lpMultiByteStr;\\int cbMultiByte;\\LPWSTR lpWideCharStr;\\int cchWideChar;}}     & \multirow{7}{*}{\shortstack{After executing the function,\\ take a byte \textit{i} from \textit{lpMultiByteStr}\\ and, if tainted, taint with the same\\ color the byte \textit{i} at \textit{lpWideChar},\\for a maximum of bytes indicated\\in the return value.}}  \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             &                                             &  &  &  &                                                                                                                           \\
+             \hline
+            \multicolumn{6}{l}{\shortstack{$^{(\mathrm{a})}$Routine and arguments defined following https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv}}             \\
+            \multicolumn{6}{l}{\shortstack{$^{(\mathrm{b})}$Routine and arguments defined following https://learn.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetreadfile}} \\
+            \multicolumn{6}{l}{\shortstack{$^{(\mathrm{c})}$Routine and arguments defined following https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa}} \\
+            \multicolumn{6}{l}{\shortstack{$^{(\mathrm{d})}$Routine and arguments defined following https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessw}} \\
+            \multicolumn{6}{l}{\shortstack{$^{(\mathrm{e})}$Routine and arguments defined following https://learn.microsoft.com/en-us/windows/win32/api/stringapiset/nf-stringapiset-multibytetowidechar}} \\
+        \end{tabular}
+        \label{tab1}
+    \end{center}
+    \label{table:taint_sources_and_taint_sinks}
+\end{table*}
+
+\textbf{Taint propagation policy.} Once considered how taint colors are stored in the tainting
+module, we will discuss how this data propagates during the program execution.
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
