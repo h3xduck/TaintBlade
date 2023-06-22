@@ -43,10 +43,30 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 TODO - This section introduces the problem we are dealing with and motivates
 the creation of this tool
 
+%%%%%%%%%
+- Mention here the evolution of botnets towards http and similar from custom protocols.
+%%%%%%%%%
+
 \section{Background}
 
 TODO - This section goes over the state of the art on analyzing malware
 binaries, past work on protocol reverse engineering and available tools.
+
+%%%%%%%%%%%
+\subsection{Automated protocol reverse engineering}
+- Talk about what it is a protocol, and how to extract it.
+
+- Mention dynamic analysis vs static ones (e.g. from packet traces).
+
+- Talk about protocol message format inference vs state machine inference.
+
+- Keywords, delimeters, pointer fields.
+
+\subsection {Taint analysis}
+- Talk about tainting, goals and how it works in general terms.
+%%%%%%%%%%%
+
+
 
 \section{Design}
 TODO - This section covers the general structure of the tool and the different
@@ -189,12 +209,12 @@ which is the reason they were selected to be instrumented.
                                       & OR                   &                      \\
                                       & XOR                  &                      \\
             \hline
-            \multirow{6}{*}{\shortstack{Shift                                  \\ operations}} & \multirow{6}{*}{SHR} & \multirow{6}{*}{\shortstack{Shifting X number of bits\\ from a register to the right.\\Supports shifts of multiples\\of 8, since tainting module\\runs byte-based tracking.}}\\
-            &                   &                      \\
-            &                   &                      \\
-            &                   &                      \\
-            &                   &                      \\
-            &                   &                      \\
+            \multirow{6}{*}{\shortstack{Shift                                       \\ operations}} & \multirow{6}{*}{SHR} & \multirow{6}{*}{\shortstack{Shifting X number of bits\\ from a register to the right.\\Supports shifts of multiples\\of 8, since tainting module\\runs byte-based tracking.}}\\
+                                      &                      &                      \\
+                                      &                      &                      \\
+                                      &                      &                      \\
+                                      &                      &                      \\
+                                      &                      &                      \\
             \hline
             \multirow{2}{*}{\shortstack{Comparison                                  \\ operations}} &  \multirow{2}{*}{CMP} & \multirow{2}{*}{\shortstack{Comparison between memory,\\ immediate or register operands}}\\
                                       &                      &                      \\
@@ -204,9 +224,9 @@ which is the reason they were selected to be instrumented.
                                       & MOVSXD               &                      \\
                                       & MOVZX                &                      \\
             \hline
-            \multirow{3}{*}{\shortstack{Address moving                                 \\ operations}} & \multirow{3}{*}{LEA}                  &   \multirow{3}{*}{\shortstack{Moving a pointer, all types\\ of LEA operands supported}}                     \\
-            &&\\
-            &&\\
+            \multirow{3}{*}{\shortstack{Address moving                              \\ operations}} & \multirow{3}{*}{LEA}                  &   \multirow{3}{*}{\shortstack{Moving a pointer, all types\\ of LEA operands supported}}                     \\
+                                      &                      &                      \\
+                                      &                      &                      \\
             \hline
             \multirow{5}{*}{\shortstack{Control flow                                \\ instructions}} & CALL& \multirow{5}{*}{\shortstack{Any jump, call or return.\\ Supported both near and far\\ relative displacement types}}\\
                                       & JMP                  &                      \\
@@ -413,8 +433,8 @@ that these could be extended in the future to support any arbitrary routine.
 \textbf{Taint sinks.} Just like we define program points at which to generate taint colors,
 \textit{TaintBlade} also incorporates a series of routines acting as taint sinks,
 at which we are interested to know whether any tainted data is received via the passed
-arguments. In this initial version, we have incorporated three routines, detailed at 
-table \ref{table:taint_sources_and_taint_sinks}, that have are relevant for our protocol 
+arguments. In this initial version, we have incorporated three routines, detailed at
+table \ref{table:taint_sources_and_taint_sinks}, that have are relevant for our protocol
 reverse engineering task and perfom certain actions when triggered:
 \begin{enumerate}
     \item CreateProcessA and CreateProcessW will receive a command to be executed. By
@@ -483,9 +503,9 @@ reverse engineering task and perfom certain actions when triggered:
 
 \textbf{Taint propagation policy.} Once considered how taint colors are stored in the tainting
 module, we will discuss how this data is propagated during the program execution. The goal of
-the taint propagation policy is to define a set of rules that specify how taint colors are 
-moved across memory and registers depending on the instructions being executed. There exist 
-different rules, each corresponding to one of the instruction types we instrumented using the 
+the taint propagation policy is to define a set of rules that specify how taint colors are
+moved across memory and registers depending on the instructions being executed. There exist
+different rules, each corresponding to one of the instruction types we instrumented using the
 instrumentation module and that we detailed at table \ref{table:instruction_types_instrumentation_supported}.
 Note, however, that not all the instructions types incur in moving data, therefore only those
 operating with data will have an attached taint rule.
@@ -497,68 +517,166 @@ operating with data will have an attached taint rule.
             \hline
             \textbf{Instruction type} & \textbf{Taint rule} \\
             \hline
-            \multirow{3}{*}{\shortstack{Arithmetic\\operations}} & \multirow{3}{*}{\shortstack{Mix destination operand colors using\\colors of source operand.}}\\
-                                      &                      \\
-                                      &                      \\
+            \multirow{3}{*}{\shortstack{Arithmetic          \\operations}} & \multirow{3}{*}{\shortstack{Mix destination operand colors using\\colors of source operand.}}\\
+                                      &                     \\
+                                      &                     \\
             \hline
-            \multirow{4}{*}{\shortstack{Logical\\operations}} & \multirow{4}{*}{\shortstack{If the operands are the same, untaint the\\operands. Otherwise, mix destination operand \\colors using colors of source operand.}}\\
-                                      &                      \\
-                                      &                      \\
-                                      &                      \\
+            \multirow{4}{*}{\shortstack{Logical             \\operations}} & \multirow{4}{*}{\shortstack{If the operands are the same, untaint the\\operands. Otherwise, mix destination operand \\colors using colors of source operand.}}\\
+                                      &                     \\
+                                      &                     \\
+                                      &                     \\
             \hline
-            \multirow{5}{*}{\shortstack{Shift\\operations}} & \multirow{5}{*}{\shortstack{Calculates the number of bytes shifted. Moves\\every color of every byte of the register to the\\right (from MSB to LSB). If the color goes\\out of bounds, the color is lost.}}\\
-                                      &                      \\
-                                      &                      \\
-                                      &                      \\
-                                      &                      \\
+            \multirow{5}{*}{\shortstack{Shift               \\operations}} & \multirow{5}{*}{\shortstack{Calculates the number of bytes shifted. Moves\\every color of every byte of the register to the\\right (from MSB to LSB). If the color goes\\out of bounds, the color is lost.}}\\
+                                      &                     \\
+                                      &                     \\
+                                      &                     \\
+                                      &                     \\
             \hline
-            \multirow{4}{*}{\shortstack{Data moving\\operations}}  & \multirow{4}{*}{\shortstack{Untaint the destination operand.\\Then, taint the destination operand with the\\colors from the source operand.}}\\
-                                                         &                      \\
-                                                        &                      \\
-                                                        &                      \\
+            \multirow{4}{*}{\shortstack{Data moving         \\operations}}  & \multirow{4}{*}{\shortstack{Untaint the destination operand.\\Then, taint the destination operand with the\\colors from the source operand.}}\\
+                                      &                     \\
+                                      &                     \\
+                                      &                     \\
             \hline
-            \multirow{4}{*}{\shortstack{Address moving\\operations}} & \multirow{4}{*}{\shortstack{Take colors of reg. leaBase and reg. leaIndex.\\Mix the colors with those of destination reg.\\Calculate indirect tainting.}}\\
-            &                                         \\
-            &                                         \\
-            &                                         \\
+            \multirow{4}{*}{\shortstack{Address moving      \\operations}} & \multirow{4}{*}{\shortstack{Take colors of reg. leaBase and reg. leaIndex.\\Mix the colors with those of destination reg.\\Calculate indirect tainting.}}\\
+                                      &                     \\
+                                      &                     \\
+                                      &                     \\
             \hline
-            \multirow{6}{*}{\shortstack{String                                      \\ manipulation\\ operations}}  & \multirow{6}{*}{\shortstack{Take colors from memory being read. Mix them\\with colors of register \textit{al}, \textit{ax}, \textit{eax} or \textit{rax}\\depending on instruction length. Also, mix\\ them with colors of register \textit{di}, \textit{edi} or \textit{rdi}\\ depending on instruction length.}}\\
-                                      &                       \\
-                                      &                       \\
-                                      &                       \\
+            \multirow{6}{*}{\shortstack{String              \\ manipulation\\ operations}}  & \multirow{6}{*}{\shortstack{Take colors from memory being read. Mix them\\with colors of register \textit{al}, \textit{ax}, \textit{eax} or \textit{rax}\\depending on instruction length. Also, mix\\ them with colors of register \textit{di}, \textit{edi} or \textit{rdi}\\ depending on instruction length.}}\\
+                                      &                     \\
+                                      &                     \\
+                                      &                     \\
                                       &                     \\
                                       &                     \\
             \hline
         \end{tabular}
         \label{tab1}
     \end{center}
-    \label{table:instruction_types_instrumentation_supported}
+    \label{table:taint_rules}
 \end{table}
 
-As detailed in the table, every taint rule results on either tainting, untainting or mixing the colors of one or more operands:
+As detailed in the table, every taint rule results on either tainting,
+untainting or mixing the colors of one or more operands:
 \begin{itemize}
-    \item If an operand gets tainted by another, it means that the colors of the destination
-    operand get overwritten by those from the source operand.
-    \item If an operand gets untainted, it means that its colors get removed, all set to 0.
-    \item If an operand gets mixed with another, it means that the colors of the destination
-    operand get mixed, one by one, with those from the source operand.
+    \item If an operand gets tainted by another, it means that the colors of the
+          destination operand get overwritten by those from the source operand.
+    \item If an operand gets untainted, it means that its colors get removed, all set to
+          0.
+    \item If an operand gets mixed with another, it means that the colors of the
+          destination operand get mixed, one by one, with those from the source operand.
 \end{itemize}
 
 Mixing colors consists on the following steps:
 \begin{enumerate}
-    \item Take the two colors to mix. Check in the reverse color mix map if that combination already exists.
-        \begin{enumerate}
-            \item If the color exists in the map, it means that the color mix has been produced before.
-            Therefore, the result of the mix is the previously generated mix color.
-            \item If the color does not exist in the map, this is a new mix. Therefore, the result of the mix
-            is equal to the latest color mix produced + 1. (e.g. if the last mix was color 5, then the new mix is color 6).
-        \end{enumerate}
+    \item Take the two colors to mix. Check in the reverse color mix map if that
+          combination already exists.
+          \begin{enumerate}
+              \item If the color exists in the map, it means that the color mix has been produced
+                    before. Therefore, the result of the mix is the previously generated mix color.
+              \item If the color does not exist in the map, this is a new mix. Therefore, the
+                    result of the mix is equal to the latest color mix produced + 1. (e.g. if the
+                    last mix was color 5, then the new mix is color 6).
+          \end{enumerate}
     \item Take the resulting mix color and log the mix in the mix maps.
 \end{enumerate}
 
+%%TODO DETAIL HERE INDIRECT TAINTING
 
+\subsection{Heuristics module}
+The previous two modules have instrumented the instructions and routines to
+extract their arguments and operands, and also generated and propagated the
+taint colors during its execution. However, in order to achieve our reverse
+engineering task, we must be able to interpret the list of instrumented
+instructions and their associated taint colors, so that we can eventually
+extract the underlying operations that the program is performing with those
+instructions. The heuristics module does exactly that. Its goal is to match
+assembly instructions and taint data with the high-level operations the program
+is performing. For instance, a sequence of \textit{cmp} assembly instructions
+might indicate a program checking a buffer to have a certain value. In order to
+achieve this matching, we perform the following process:
 
+\textbf{Normalization.}
+Firstly, \textit{TaintBlade} normalizes the available data by encapsulating the instruction information
+extracted by the instrumentation module (the type of instruction, the value of the operands...) and the
+taint colors of each operand indicated by the tainting module into an standard structure called a 'RevAtom'.
+This RevAtom matches each operand values with the taint colors they have, and offer an abstraction
+so that the heuristic module can operate with all data independently on the instruction type. In essence,
+a RevAtom contains the following data:
 
+\begin{enumerate}
+    \item The instruction type.
+    \item For every operand in the instruction, it contains:
+          \begin{enumerate}
+              \item The value of the operand.
+              \item The taint color of the operand.
+          \end{enumerate}
+    \item Other optional data. This depends on the instruction type. For instance, for
+          \textit{cmp} operations, we store the value of the RFLAGS register after the
+          instruction execution, sot that we know if the comparison was successful. All
+          optional data is accessed via the instrumentation module.
+\end{enumerate}
+
+Once a RevAtom is generated, \textit{TaintBlade} will check whether there
+exists any operand in the RevAtom that holds a taint color. If every operand is
+untainted, it means that, at a high-level, that instruction does not take part
+in the management of tainted data, and thus has no relation to the underlying
+protocol of the program. Therefore, if every operand is untainted, the RevAtom
+is discarded. In the case that any operand is tainted, then we are interested
+in examining that instruction further. Therefore, the tool will introduce the
+RevAtom in a centralized vector known as the 'RevLog'. In essence, the RevLog
+will contain the RevAtoms containing instructions
+
+\textbf{Heuristic analysis}
+Once we have a new RevAtom in the RevLog vector, \textit{TaintBlade} will try to match the RevAtoms in the RevLog
+to a set of 'heuristics'. A heuristic is an instruction, or a set of instructions, that define a high-level
+operation happening in a program. In the previous example, a \textit{cmp} instruction where some of the operands
+are tainted may indicate that the program is looking for some value in the tainted bytes, that is, from the data
+received from the network (the taint sources). Therefore, in this case we would look in the RevLog for RevAtoms
+containing a \textit{cmp} instruction type and some tainted operand.
+
+As we explained in the introduction, our goal is to be able to perform protocol
+message inference, detecting keywords, delimeters and pointer fields in the
+protocol. In order to do this, we have developed the heuristics detailed on
+table \ref{table:implemented_heuristics}. As it can be observed, there exists two
+different heuristics, where the 'comparison operation' heuristic corresponds to
+the program performing some comparison against a value, and the 'pointer operation'
+describes a value that was added to a pointer, so that it now points to some other
+address, also belonging a the tainted buffer.
+
+\begin{table}[htbp]
+    \caption{Implemented heuristics in TaintBlade}
+    \begin{center}
+        \begin{tabular}{|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{6.3cm}|}
+            \hline
+            \textbf{Heuristic}         & \textbf{Instructions}                                      \\
+            \hline
+            \multirow{12}{*}{\shortstack{Comparison\\operation}} & \multirow{2}{*}{\shortstack{CMP(mem, imm), where mem is tainted.}}\\
+            & \\
+            \cline{2-2}
+            &\multirow{2}{*}{\shortstack{CMP(reg1, reg2), where reg1 is tainted.}}\\
+            & \\
+            \cline{2-2}
+            &\multirow{2}{*}{\shortstack{CMP(reg1, reg2), where reg2 is tainted.}}\\
+            & \\
+            \cline{2-2}
+            &\multirow{2}{*}{\shortstack{CMP(mem, reg), where mem is tainted.}}\\
+            & \\
+            \cline{2-2}
+            &\multirow{2}{*}{\shortstack{CMP(reg, mem), where reg is tainted.}}\\
+            & \\
+            \cline{2-2}
+            &\multirow{2}{*}{\shortstack{CMP(reg, imm), where reg is tainted.}}\\
+            & \\
+            \hline
+            \multirow{3}{*}{\shortstack{Pointer\\operation}} & \multirow{3}{*}{\shortstack{LEA(memDest, [leaBase+(leaIndex*leaScale)+leaDis]),\\where an indirect taint is detected.}}\\
+            &\\
+            &\\
+            \hline
+        \end{tabular}
+        \label{tab1}
+    \end{center}
+    \label{table:implemented_heuristics}
+\end{table}
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
