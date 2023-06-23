@@ -45,31 +45,65 @@ the creation of this tool
 
 %%%%%%%%%
 - Mention here the evolution of botnets towards http and similar from custom protocols.
+- Introduce protocol reverse engineering.
 %%%%%%%%%
+
+-----
+
+In today's interconnected world, software applications rarely work in
+isolation. The need for communication has become prevalent as programs often
+rely on exchanging data and messages with other remote entities. This sparked
+the creation of network protocols, that serve to define the rules, format and
+other conventions that follow the messages exchanged in the communication.
+
+Although many protocols are open and documented, it is common to find software
+using closed, propietary protocols whose specifications are undisclosed. 
+This is particularly true in the case of malware, where developers intentionally keep
+the protocol details hidden to hinder reversing efforts undertaken by malware analysts.
+
+Nowadays, a significant number of malware samples incorporate a command and
+control (C2) protocol that dictates the communication between the malware and
+the C2 server. Therefore, the need for reverse engineering these protocols has
+become increasingly relevant in the field.
+
+Protocol reverse engineering is the process of studying a communication
+protocol with the ultimate goal of uncovering its underlying structure and
+inferring its implementation, in particular the format of its messages and the
+grammar of the communication. Classically, this process is mainly done manually,
+which is inefficient and time consuming. Even for malware running simple protocols,
+we can find numerous technical challenges during the analysis, like obfucation, 
+that hinder easy access to the details of the protocol. Additionally, protocols
+may easily be changed across different versions of the same malware family,
+further increasing the time to be spent by analysts.
+
+Therefore, there exists a great interest on developing techniques for automating
+protocol reverse engineering, that are able to programatically infer the underlying
+protocol of an arbitrary program without access to the source code.
 
 \section{Background}
 TODO - This section goes over the state of the art on analyzing malware
 binaries, past work on protocol reverse engineering and available tools.
 
-This section introduces all the background needed for our research into automated protocol reverse engineering and 
-discusses the underlying techniques implemented in our tool.
+------
 
+This section introduces all the background needed for our research into
+automated protocol reverse engineering and discusses the underlying techniques
+implemented in our tool.
 
 %%%%%%%%%%%
-\subsection{Automated protocol reverse engineering}
+\subsection{Protocol reverse engineering}
 - Talk about what it is a protocol, and how to extract it.
 - Mention dynamic analysis vs static ones (e.g. from packet traces).
 - Talk about protocol message format inference vs state machine inference.
 - Keywords, delimeters, pointer fields.
 
-Protocol reverse engineering (PRE) is the process of studying a communication protocol by means of 
-different analysis techniques with the ultimate goal of uncovering its underlying structure and inferring
-its implementation, and in particular the format of its messages and the grammar of the communication.
-
-
+-------
+Protocol reverse engineering, just like the protocols it examines,
+is a constantly evolving field.
 
 \subsection {Dynamic Bynary Instrumentation}
-Describe briefly what is PIN and how it works, so that there is some context on how we are performing the dynamic analysis
+Describe briefly what is PIN and how it works, so that there is some context on
+how we are performing the dynamic analysis
 
 \subsection {Taint analysis}
 - Talk about tainting, goals and how it works in general terms.
@@ -456,8 +490,9 @@ reverse engineering task and perfom certain actions when triggered:
           the new, converted string, therefore ensuring we do not incur on undertainting.
 \end{enumerate}
 
-Whenever some taint color is found to reach a taint sink, that taint color is logged in an internal
-vector, so that it can later be used when reversing the protocol.
+Whenever some taint color is found to reach a taint sink, that taint color is
+logged in an internal vector, so that it can later be used when reversing the
+protocol.
 
 \begin{table*}[htbp]
     \caption{Implemented taint sources and taint sinks in TaintBlade}
@@ -710,51 +745,55 @@ where each one corresponds to a set of bytes received from the network in a
 single call (e.g. the bytes received from the taint source InternetReadFile
 would be included in a single buffer). In each of the protocol buffers, we will
 find a list of associated protocol words, that include keywords and delimeters,
-and protocol pointers fields. Additionally, each of the bytes in the buffer include
-whether or not they were found to have reached some of the taint sinks.
+and protocol pointers fields. Additionally, each of the bytes in the buffer
+include whether or not they were found to have reached some of the taint sinks.
 
-In order to reverse the protocol, a custom algorithm is used. This algorithm combines
-the knowledge about the chronological order of the RevAtoms, the taint sinks information and,
-in the case of the comparison operations, the result of the comparisons.
-The complete algorithm and process can be seen in ANNEX TODO. As a summary, it will take the 
-heuristics and output the protocol and associated buffers. In these buffers, we can find the 
-following word types:
+In order to reverse the protocol, a custom algorithm is used. This algorithm
+combines the knowledge about the chronological order of the RevAtoms, the taint
+sinks information and, in the case of the comparison operations, the result of
+the comparisons. The complete algorithm and process can be seen in ANNEX TODO.
+As a summary, it will take the heuristics and output the protocol and
+associated buffers. In these buffers, we can find the following word types:
 
-\textbf{Delimeter.} A delimeter is found when multiple comparison operations against the same byte 
-are found in a sequential manner for contiguous bytes of the buffer, either in an incrementing 
+\textbf{Delimeter.} A delimeter is found when multiple comparison operations against the same byte
+are found in a sequential manner for contiguous bytes of the buffer, either in an incrementing
 or decrementing order. For each byte, the algorithm will check that the result of the comparison
 was unsuccessful, that is, that the value being checked against the byte at the buffer was not equal.
 
-If we find that multiple comparison operations are checked sequentially, and that none succeed, then this
-indicates that the program was looking for a value in the buffer, yet it failed to find it. In this case,
-we will mark the delimeter as failed in the protocol, so that this event is reported. 
+If we find that multiple comparison operations are checked sequentially, and
+that none succeed, then this indicates that the program was looking for a value
+in the buffer, yet it failed to find it. In this case, we will mark the
+delimeter as failed in the protocol, so that this event is reported.
 
-Otherwise, if there exists a series of unsuccessful comparison operations followed by a single successful comparison
-operation using the same byte value, this indicates that the program found the delimeter it was looking for.
+Otherwise, if there exists a series of unsuccessful comparison operations
+followed by a single successful comparison operation using the same byte value,
+this indicates that the program found the delimeter it was looking for.
 
-\textbf{Keyword.} Every comparison operation is marked as a keyword if it is not part of a delimeter. After that, 
+\textbf{Keyword.} Every comparison operation is marked as a keyword if it is not part of a delimeter. After that,
 keywords are joined if they occupy sequential positions in the buffer, that is, if the color of the final byte of
 one keyword is the previous one to the initial color of the other, and if they happened in chronological order
 (one comparison after the other).
 
-Note that, sometimes, it is possible to find keywords of a single byte, where the comparison is unsuccessful, and which are 
-unable to be joined to another keyword. Due to the nature of dynamic analysis, this is ann event that happens when
-the program checks a keyword byte by byte instead of using, for instance, a common routine like \textit{strcmp()}.  
-In this cases, \textit{TaintBlade} marks the byte as a keyword but highlights the fact that it is isolated so
-that the user has the chance of investigating it further if wanted.
+Note that, sometimes, it is possible to find keywords of a single byte, where
+the comparison is unsuccessful, and which are unable to be joined to another
+keyword. Due to the nature of dynamic analysis, this is ann event that happens
+when the program checks a keyword byte by byte instead of using, for instance,
+a common routine like \textit{strcmp()}. In this cases, \textit{TaintBlade}
+marks the byte as a keyword but highlights the fact that it is isolated so that
+the user has the chance of investigating it further if wanted.
 
 \textbf{Pointer field.} The tool takes all pointer operations and, for each one, computes which byte is used as a source,
 and to which byte and to which buffer it points to.
 
 \textbf{Taint leads.} Taint leads are optional, additional information that applies to a single byte in a protocol buffer.
-These elements are not generated by the reversing algorithm using the gathered heuristics, but rather 
+These elements are not generated by the reversing algorithm using the gathered heuristics, but rather
 they are filled using the information about which colors were detected to reach certain taint sinks.
-A taint lead allows the protocol to enrich the message inference with data from the taint analysis, 
+A taint lead allows the protocol to enrich the message inference with data from the taint analysis,
 displaying in which routines each byte has been used.
 
 %%%%%%%
-TODO github repo + how to use. Requirements, etc.
-Should we mention the GUI somewhere in the design?
+TODO github repo + how to use. Requirements, etc. Should we mention the GUI
+somewhere in the design?
 %%%%%%%
 
 %\section{Implementation}
@@ -782,8 +821,6 @@ obtained over the problem we were trying to solve.
 
 \section*{Acknowledgment}
 TODO
-
-
 
 \begin{thebibliography}{00}
     %%TODO FORMAT THIS BY IEEE
