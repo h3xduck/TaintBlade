@@ -66,8 +66,6 @@ binaries, past work on protocol reverse engineering and available tools.
 - Talk about tainting, goals and how it works in general terms.
 %%%%%%%%%%%
 
-
-
 \section{Design}
 TODO - This section covers the general structure of the tool and the different
 modules and functionalities implemented.
@@ -449,6 +447,9 @@ reverse engineering task and perfom certain actions when triggered:
           the new, converted string, therefore ensuring we do not incur on undertainting.
 \end{enumerate}
 
+Whenever some taint color is found to reach a taint sink, that taint color is logged in an internal
+vector, so that it can later be used when reversing the protocol.
+
 \begin{table*}[htbp]
     \caption{Implemented taint sources and taint sinks in TaintBlade}
     \begin{center}
@@ -613,7 +614,7 @@ a RevAtom contains the following data:
     \item Other optional data. This depends on the instruction type. For instance, for
           \textit{cmp} operations, we store the value of the RFLAGS register after the
           instruction execution, sot that we know if the comparison was successful. All
-          optional data is accessed via the instrumentation module.
+          optional data is gathered via the instrumentation module.
 \end{enumerate}
 
 Once a RevAtom is generated, \textit{TaintBlade} will check whether there
@@ -622,13 +623,12 @@ untainted, it means that, at a high-level, that instruction does not take part
 in the management of tainted data, and thus has no relation to the underlying
 protocol of the program. Therefore, if every operand is untainted, the RevAtom
 is discarded. In the case that any operand is tainted, then we are interested
-in examining that instruction further. Therefore, the tool will introduce the
-RevAtom in a centralized vector known as the 'RevLog'. In essence, the RevLog
-will contain the RevAtoms containing instructions
+in examining that instruction further. In this case, the tool will introduce
+the RevAtom in a centralized vector known as the 'RevLog'.
 
 \textbf{Heuristic analysis}
 Once we have a new RevAtom in the RevLog vector, \textit{TaintBlade} will try to match the RevAtoms in the RevLog
-to a set of 'heuristics'. A heuristic is an instruction, or a set of instructions, that define a high-level
+to a set of heuristics. A heuristic is an instruction, or a set of instructions, that define a high-level
 operation happening in a program. In the previous example, a \textit{cmp} instruction where some of the operands
 are tainted may indicate that the program is looking for some value in the tainted bytes, that is, from the data
 received from the network (the taint sources). Therefore, in this case we would look in the RevLog for RevAtoms
@@ -637,46 +637,116 @@ containing a \textit{cmp} instruction type and some tainted operand.
 As we explained in the introduction, our goal is to be able to perform protocol
 message inference, detecting keywords, delimeters and pointer fields in the
 protocol. In order to do this, we have developed the heuristics detailed on
-table \ref{table:implemented_heuristics}. As it can be observed, there exists two
-different heuristics, where the 'comparison operation' heuristic corresponds to
-the program performing some comparison against a value, and the 'pointer operation'
-describes a value that was added to a pointer, so that it now points to some other
-address, also belonging a the tainted buffer.
+table \ref{table:implemented_heuristics}. As it can be observed, there exists
+two different heuristics, where the 'comparison operation' heuristic
+corresponds to the program performing some comparison against a value, and the
+'pointer operation' describes a value that was added to a pointer, so that it
+now points to some other address, also belonging to a the tainted buffer.
 
 \begin{table}[htbp]
     \caption{Implemented heuristics in TaintBlade}
     \begin{center}
         \begin{tabular}{|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{6.3cm}|}
             \hline
-            \textbf{Heuristic}         & \textbf{Instructions}                                      \\
+            \textbf{Heuristic} & \textbf{Instructions}                                                 \\
             \hline
-            \multirow{12}{*}{\shortstack{Comparison\\operation}} & \multirow{2}{*}{\shortstack{CMP(mem, imm), where mem is tainted.}}\\
-            & \\
+            \multirow{12}{*}{\shortstack{Comparison                                                    \\operation}} & \multirow{2}{*}{\shortstack{CMP(mem, imm), where mem is tainted.}}\\
+                               &                                                                       \\
             \cline{2-2}
-            &\multirow{2}{*}{\shortstack{CMP(reg1, reg2), where reg1 is tainted.}}\\
-            & \\
+                               & \multirow{2}{*}{\shortstack{CMP(reg1, reg2), where reg1 is tainted.}} \\
+                               &                                                                       \\
             \cline{2-2}
-            &\multirow{2}{*}{\shortstack{CMP(reg1, reg2), where reg2 is tainted.}}\\
-            & \\
+                               & \multirow{2}{*}{\shortstack{CMP(reg1, reg2), where reg2 is tainted.}} \\
+                               &                                                                       \\
             \cline{2-2}
-            &\multirow{2}{*}{\shortstack{CMP(mem, reg), where mem is tainted.}}\\
-            & \\
+                               & \multirow{2}{*}{\shortstack{CMP(mem, reg), where mem is tainted.}}    \\
+                               &                                                                       \\
             \cline{2-2}
-            &\multirow{2}{*}{\shortstack{CMP(reg, mem), where reg is tainted.}}\\
-            & \\
+                               & \multirow{2}{*}{\shortstack{CMP(reg, mem), where reg is tainted.}}    \\
+                               &                                                                       \\
             \cline{2-2}
-            &\multirow{2}{*}{\shortstack{CMP(reg, imm), where reg is tainted.}}\\
-            & \\
+                               & \multirow{2}{*}{\shortstack{CMP(reg, imm), where reg is tainted.}}    \\
+                               &                                                                       \\
             \hline
-            \multirow{3}{*}{\shortstack{Pointer\\operation}} & \multirow{3}{*}{\shortstack{LEA(memDest, [leaBase+(leaIndex*leaScale)+leaDis]),\\where an indirect taint is detected.}}\\
-            &\\
-            &\\
+            \multirow{3}{*}{\shortstack{Pointer                                                        \\operation}} & \multirow{3}{*}{\shortstack{LEA(memDest, [leaBase+(leaIndex*leaScale)+leaDis]),\\where an indirect taint is detected.}}\\
+                               &                                                                       \\
+                               &                                                                       \\
             \hline
         \end{tabular}
         \label{tab1}
     \end{center}
     \label{table:implemented_heuristics}
 \end{table}
+
+In order to match the RevAtoms to the heuristics, the module runs a search
+algorithm in the RevLog. In essence, this algorithm scans the RevLog, starting
+from the last inserted instruction, and checks whether there is any combination
+of instructions that match one of the heuristics. Note that, although this
+version of \textit{TaintBlade} does not incorporate heuristics with multiple
+instructions, the algorithm supports them already.
+
+Once an heuristic is found, the module extracts it and inserts it in an
+internal vector. The full algorithm and implementation details regarding how
+the heuristic matching process can be consulted in ANNEX TODO.
+
+\subsection{Protocol reversing module}
+As we described, during the program execution \textit{TaintBlade} will
+accumulate all found heuristics in an internal vector. The final step is to
+interpret the operations described in the heuristics, grouping or discarding
+them, so that we are able to reverse the underlying protocol. This process
+happens only once the program has finished.
+
+In \textit{TaintBlade}, a protocol consists of a series of protocol buffers,
+where each one corresponds to a set of bytes received from the network in a
+single call (e.g. the bytes received from the taint source InternetReadFile
+would be included in a single buffer). In each of the protocol buffers, we will
+find a list of associated protocol words, that include keywords and delimeters,
+and protocol pointers fields. Additionally, each of the bytes in the buffer include
+whether or not they were found to have reached some of the taint sinks.
+
+In order to reverse the protocol, a custom algorithm is used. This algorithm combines
+the knowledge about the chronological order of the RevAtoms, the taint sinks information and,
+in the case of the comparison operations, the result of the comparisons.
+The complete algorithm and process can be seen in ANNEX TODO. As a summary, it will take the 
+heuristics and output the protocol and associated buffers. In these buffers, we can find the 
+following word types:
+
+\textbf{Delimeter.} A delimeter is found when multiple comparison operations against the same byte 
+are found in a sequential manner for contiguous bytes of the buffer, either in an incrementing 
+or decrementing order. For each byte, the algorithm will check that the result of the comparison
+was unsuccessful, that is, that the value being checked against the byte at the buffer was not equal.
+
+If we find that multiple comparison operations are checked sequentially, and that none succeed, then this
+indicates that the program was looking for a value in the buffer, yet it failed to find it. In this case,
+we will mark the delimeter as failed in the protocol, so that this event is reported. 
+
+Otherwise, if there exists a series of unsuccessful comparison operations followed by a single successful comparison
+operation using the same byte value, this indicates that the program found the delimeter it was looking for.
+
+\textbf{Keyword.} Every comparison operation is marked as a keyword if it is not part of a delimeter. After that, 
+keywords are joined if they occupy sequential positions in the buffer, that is, if the color of the final byte of
+one keyword is the previous one to the initial color of the other, and if they happened in chronological order
+(one comparison after the other).
+
+Note that, sometimes, it is possible to find keywords of a single byte, where the comparison is unsuccessful, and which are 
+unable to be joined to another keyword. Due to the nature of dynamic analysis, this is ann event that happens when
+the program checks a keyword byte by byte instead of using, for instance, a common routine like \textit{strcmp()}.  
+In this cases, \textit{TaintBlade} marks the byte as a keyword but highlights the fact that it is isolated so
+that the user has the chance of investigating it further if wanted.
+
+\textbf{Pointer field.} The tool takes all pointer operations and, for each one, computes which byte is used as a source,
+and to which byte and to which buffer it points to.
+
+\textbf{Taint leads.} Taint leads are optional, additional information that applies to a single byte in a protocol buffer.
+These elements are not generated by the reversing algorithm using the gathered heuristics, but rather 
+they are filled using the information about which colors were detected to reach certain taint sinks.
+A taint lead allows the protocol to enrich the message inference with data from the taint analysis, 
+displaying in which routines each byte has been used.
+
+%%%%%%%
+TODO github repo + how to use. Requirements, etc.
+Should we mention the GUI somewhere in the design?
+%%%%%%%
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
@@ -704,8 +774,10 @@ obtained over the problem we were trying to solve.
 \section*{Acknowledgment}
 TODO
 
+
+
 \begin{thebibliography}{00}
-    \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``Sample title,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
+    %%TODO FORMAT THIS BY IEEE
     \bibitem{github_dytan} https://github.com/behzad-a/Dytan
     \bibitem{paper_dytan} https://faculty.cc.gatech.edu/~orso/papers/clause.li.orso.ISSTA07.pdf
     \bibitem{paper_libdft} http://nsl.cs.columbia.edu/papers/2012/libdft.vee12.pdf
