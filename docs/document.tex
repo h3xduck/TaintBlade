@@ -16,13 +16,13 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \title{TaintBlade: A framework for automated protocol reverse engineering and study of botnet command and control protocols
 }
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\author{\IEEEauthorblockN{1\textsuperscript{st} Marcos Sánchez Bajo}
     \IEEEauthorblockA{\textit{dept. name of organizatiosn (of Aff.)} \\
         \textit{name of organization (of Aff.)}\\
         City, Country \\
         email address or ORCID}
     \and
-    \IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+    \IEEEauthorblockN{2\textsuperscript{nd} Juan Manuel Estévez Tapiador}
     \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
         \textit{name of organization (of Aff.)}\\
         City, Country \\
@@ -57,9 +57,10 @@ the creation of network protocols, that serve to define the rules, format and
 other conventions that follow the messages exchanged in the communication.
 
 Although many protocols are open and documented, it is common to find software
-using closed, propietary protocols whose specifications are undisclosed. 
-This is particularly true in the case of malware, where developers intentionally keep
-the protocol details hidden to hinder reversing efforts undertaken by malware analysts.
+using closed, propietary protocols whose specifications are undisclosed. This
+is particularly true in the case of malware, where developers intentionally
+keep the protocol details hidden to hinder reversing efforts undertaken by
+malware analysts.
 
 Nowadays, a significant number of malware samples incorporate a command and
 control (C2) protocol that dictates the communication between the malware and
@@ -69,16 +70,103 @@ become increasingly relevant in the field.
 Protocol reverse engineering is the process of studying a communication
 protocol with the ultimate goal of uncovering its underlying structure and
 inferring its implementation, including the format of its messages and the
-grammar of the communication. Classically, this process is mainly done manually,
-which is inefficient and time consuming. Even for malware running simple protocols,
-we can find numerous technical challenges during the analysis, like obfucation, 
-that hinder easy access to the details of the protocol. Additionally, protocols
-may easily be changed across different versions of the same malware family,
-further increasing the time to be spent by analysts.
+grammar of the communication. Classically, this process is mainly done
+manually, which is inefficient and time consuming. Even for malware running
+simple protocols, we can find numerous technical challenges during the
+analysis, like obfucation, that hinder easy access to the details of the
+protocol. Additionally, protocols may easily be changed across different
+versions of the same malware family, further increasing the time to be spent by
+analysts. Therefore, there exists a great interest on developing techniques for
+automating protocol reverse engineering that are able to programatically infer
+the underlying protocol of an arbitrary program without access to the source
+code.
 
-Therefore, there exists a great interest on developing techniques for automating
-protocol reverse engineering, that are able to programatically infer the underlying
-protocol of an arbitrary program without access to the source code.
+The existing techniques for performing automated protocol reverse engineering
+are varied and can be grouped into two big categories depending on the
+techniques employed: those relying on execution traces and those using network
+traces \cite{sota_apre}\cite{sota_apre2}.
+
+\begin{itemize}
+    \item Execution tracing refers to the instrumentation of a program using dynamic
+          analysis techniques with the goal of capturing internal information about the
+          process of the binary executable. In the case of malware, this usually requires
+          setting up a sandboxed environment and the simulation of the C2 server, that
+          might be unavailable at the time of analysis.
+    \item Network tracing involves analyzing the communication using traffic capturing
+          tools, such as Wireshark or tcpdump. These tools dump the raw bytes sent and
+          received during the communication, which can then be analyzed with static
+          analysis techniques.
+\end{itemize}
+
+Independently on the techniques used, the ultimate goal of protocol reverse
+engineering tools is to produce a model of the protocol, which usually is
+represented either by a Protocol Format (PF), a Protocol Finite State Machine
+(PFSM), or both.
+\begin{itemize}
+    \item PFs represent the messages exchanged in the protocol partitioned into fields,
+          following a process known as message format inference. A field is a group of
+          bytes that share syntactic information, meaning that each field is delimited
+          and classified depending on how the analyzed binary interprets it during the
+          execution \cite{polyglot_caballero} (e.g. some bytes could be a keyword that is
+          checked during a C2 communication). When the message format inference is done
+          using dynamic tracing techniques, it can include semantic information regarding
+          the implementation of the binary (e.g. which routines are in charge of
+          interpreting the message), which enriches the syntactic meaning of each field
+          (e.g. the field is a keyword, but more specifically a command that the program
+          executes). We explain message format inference in more detail in section
+          \ref{TODO}.
+    \item PFSMs represent the exchange of messages in the protocol as a state machine.
+          Following a process of protocol grammar inference, representing the protocol as
+          a PFSM allows for including information about the time and order of messages,
+          displaying the rules that govern the exchange of messages in the protocol.
+\end{itemize}
+
+The decision to choose between a PF and a PFSM depends, as we discussed, on the
+nature of the data we aim to represent. However, there are advantages and
+disadvantages associated with selecting either execution tracing or network
+tracing techniques.
+
+Techniques based on network tracing are usually time-sensitive, easy to operate
+and do not require to execute the binary, which is particularly advantageous
+when dealing with malware. However, they only have access to the transmitted
+messages, lacking information about the internal program. This means that, unlike
+execution tracing techniques, they cannot be used for inferring the semantics
+of the message fields \cite{apre_survey}.
+
+On the other hand, execution tracing is usually slow, requires the execution of
+the binary, and needs of accurate instrumentation of the program, which is
+dependant of the architecture of the binary. Despite these challenges,
+execution tracing techniques provide access to internal program information,
+enabling the inference of message field semantics.
+
+\textbf{Project goals.}
+As we have identified, the development of
+protocol reverse engineering tools, specifically for the analysis of command and control protocols in malware, has gained significant attention.
+Consequently, a significant amount of research has emerged focusing on various methods for inferring protocols' messagees and grammar.
+However, we observed that many of these projects are either proof of concepts
+or remain with their code unavailable. Recent
+surveys on the matter\cite{apre_survey}\cite{apre_survey2} reveal that, in the recent years, only some projects such as Nemesys\cite{github_pre_nemesys}, Prisma\cite{github_pre_prisam}, Pulsar\cite{github_pre_pulsar}
+Netzob\cite{github_pre_netzob} and Reverx\cite{github_pre_reverx} are open and accessible.
+Some projects, like Polyglot\cite{polyglot_caballero}, have released partial source code for certain components.
+And among these projects, only Netzob is actively developed. As a major drawback, it focuses on static analysis techniques, therefore lacking some of the semantic information
+only accessible using dynamic analysis, as we previously identified.
+
+In this work, we present our automated protocol reverse engineering framework,
+called \textit{TaintBlade}, that leverages execution tracing techniques to
+infer the protocol message format of arbitrary programs. The development of
+this project pursues three main goals: (1) to accurately infer the underlying
+ingress protocol message format of a program, incorporating semantic
+information from dynamic analysis to represent its fields and the usage of each
+byte; (2) to provide a comprehensive trace of program activities, including
+loaded images, child processes, executed routines, and arguments, aiding
+analysts in the reversing process rather than offering a black-box tool; (3) to
+serve as an open-source malware analysis framework, offering specific
+functionalities for studying malicious behaviors, whilst catering to the
+general public with an intuitive and feature-rich graphical user interface that
+enhances cohesion over the generated data.
+
+This initial version of \textit{TaintBlade} is available for Windows systems
+and is prepared to work with the x86 and x86\_64 architectures.
 
 \section{Background}
 TODO - This section goes over the state of the art on analyzing malware
@@ -824,7 +912,18 @@ TODO
 
 \begin{thebibliography}{00}
     %%TODO FORMAT THIS BY IEEE
+    \bibitem{sota_apre} https://downloads.hindawi.com/journals/scn/2018/8370341.pdf
+    \bibitem{sota_apre2} https://link.springer.com/article/10.1007/s11416-016-0289-8
+    \bibitem{apre_survey} https://www.sciencedirect.com/science/article/pii/S0140366421004382
+    \bibitem{apre_survey2} https://inria.hal.science/hal-01496958/document
+    \bibitem{polyglot_caballero} https://people.eecs.berkeley.edu/~dawnsong/papers/2007%20p317-caballero.pdf
+    \bibitem{polyglot_source} http://bitblaze.cs.berkeley.edu/release/index.html
     \bibitem{github_dytan} https://github.com/behzad-a/Dytan
+    \bibitem{github_pre_reverx} https://github.com/jasantunes/reverx
+    \bibitem{github_pre_prisam} https://github.com/tammok/PRISMA/
+    \bibitem{github_pre_pulsar} https://github.com/hgascon/pulsar
+    \bibitem{github_pre_nemesys} https://github.com/vs-uulm/nemesys
+    \bibitem{github_pre_netzob} https://github.com/netzob/netzob
     \bibitem{paper_dytan} https://faculty.cc.gatech.edu/~orso/papers/clause.li.orso.ISSTA07.pdf
     \bibitem{paper_libdft} http://nsl.cs.columbia.edu/papers/2012/libdft.vee12.pdf
     \bibitem{github_libdft64} https://github.com/AngoraFuzzer/libdft64
