@@ -14,7 +14,7 @@
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{TaintBlade: A framework for automated protocol reverse engineering and study of botnet command and control protocols
+\title{TaintBlade: A framework for automated protocol reverse engineering and study of malware command and control protocols
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Marcos Sánchez Bajo}
@@ -33,11 +33,11 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \maketitle
 
 \begin{abstract}
-    TODO redact this at the end
+    
 \end{abstract}
 
 \begin{IEEEkeywords}
-    TODO keywords
+    Protocol reverse engineering; Command and control; Taint analysis; Intel Pin; Malware analysis 
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -1293,17 +1293,83 @@ data indicates that it was sent to the routine CreateProcessA, as shown in Figur
 \end{figure}
 
 \section{Related work}
-TODO decide whether to include this or not - It might fit better in the
-background
+As we discussed in previous sections, protocol reverse engineering is a mature field. Since the 2000s, there 
+has been multiple research papers exploring how to reverse protocols with different static and dynamic techniques.
+However, as we indicated, most of these tools do not have their code available. Additionally, sometimes they are
+mere proof of concepts, instead of trying to appeal to general public by being usable and accessible. In this section,
+we will compare \textit{TaintBlade} with two works: Netzob, which is an open-source project known to be usable,
+and Polyglot, which although mostly closed, it is one of the most complete protocol reverse engineering frameworks. 
+
+\textbf{Netzob} \cite{github_pre_netzob} is the largest open-source protocol reverse engineering project. It performs message
+format inference as a PF, and also extracts the protocol grammar as a PFSM. For this, it works with static analysis
+techniques, such as clustering\cite{netzob_clustering}, in order to partition the message into fields. It does not,
+however, include any semantic information into the fields (since for this dynamic analysis is needed). Netzob also
+includes a fuzzing system that allows for discovering the different behaviour of a program when receiving different
+messages.
+
+\textit{TaintBlade} does not infer the protocol grammar as Netzob but, in turn, we achieve a more accurate message 
+format inference with our dynamic techniques, getting semantic information. On the other hand, static analysis is
+much faster than \textit{TaintBlade}'s instrumentation. Regarding the fuzzing system, it is clearly a needed feature
+when performing protocol reversing (we did fuzzing manually at the evaluation section), and will be added eventually 
+to our tool. Finally, \textit{TaintBlade} has a GUI and a CLI, whilst Netzob is CLI-only.
+
+\textbf{Polyglot} \cite{polyglot_caballero} is one of the most well-known protocol reverse engineering research works. 
+It has been followed by other systems from the same authors such as Dispatcher\cite{dispatcher_paper}, which is a 
+protocol reversing tool for sent messages (instead of received messages). Overall, it is a very mature project with 
+a great group of researchers behind, and many of the ideas of \textit{TaintBlade} are based on it.
+
+Polyglot uses dynamic analysis techniques, that includes a custom dynamic analysis platform known as TEMU, based on the 
+emulator QEMU\cite{qemu}, that achieves instruction-level instrumentation. 
+However, it virtualizes the whole system instead of instrumenting a single binary. In turn, \textit{TaintBlade}
+achieves instruction-level instrumentation using Intel Pin and a custom multi-color taint engine.
+Polyglot features message format and grammar inference, whilst \textit{TaintBlade} is only focused on formats.
+Finally, Polyglot does not have an user interface, whilst we believe that the \textit{TaintBlade}'s GUI and the 
+helper modules (like the NOPer module) makes TaintBlade a more usable solution. Additionally, the majority of 
+its code is not open to the public (some components are, such as TEMU).
 
 \section{Conclusion}
-TODO - This section offers an overview of the developed tool and the results
-obtained over the problem we were trying to solve.
+In this work, we presented a practical and powerful solution for reverse engineering protocols. Our framework, based on Intel Pin,  
+enables comprehensive instrumentation of various programs on Windows systems across multiple architectures. By leveraging this tool, 
+we successfully inferred the message format of a command and control protocol used by a malware trojan, even without accessing its C2 server.
+Additionally, we uncovered the mechanism through which the C2 server transmits executable commands to the trojan.
+
+Our solution comprises two key components: the Pintool and the GUI. The Pintool facilitates precise program instrumentation and extensive 
+data extraction, while the GUI provides a user-friendly interface for seamless data navigation and visualization.
+
+In the case of the Pintool, it is a modular tool with features an unique multi-color tainting engine, which we believe
+to be a significant contribution. As far as we know, there does not exist any other multi-color
+tainting framework for 64 bits machines. Moreover, the Pintool is designed to be more than just a black-box tool, since
+it incorporates additional modules that facilitate the work of an analyst. For instance, the routine tracing module 
+allows easy access to the arguments of any routine, and the NOPer module enables the skipping of arbitrary code sections, 
+which is particularly useful for malware analysis. The remaining modules (instrumentation, tainting, heuristics, and protocol reversing)
+enable the inference of six different types of fields in the message format: delimiters, keywords, pointer fields, variable-length fields,
+and fixed-length fields. These modules also include semantic data, informing the user of the purpose of the field's purpose in the program, 
+such as its use as a command.
+
+Regarding the GUI, we have developed a production-ready tool that seamlessly integrates with the Pintool. 
+It allows users to easily visualize and interact with the data, providing a cohesive and intuitive display.
+
+In summary, our work is a great example of how to use dynamic analysis techniques for protocol reversing, whilst
+also serving as a useful tool for analyzing malware and non-malicious programs. 
 
 \subsection{Future work \& limitations}
-
-\section*{Acknowledgment}
-TODO
+Although \textit{TaintBlade} incorporates many features, during our research we identified a series 
+of capabilities and other functionalities which we believe would be a great addition to the work presented
+here:
+\begin{itemize}
+    \item Support for encrypted and compressed protocols. We dedicated a significant amount of time to the research
+    on how to analyze protocols where the messages are not sent in the clear. Even in the case of keywords, where
+    the program will eventually check the clear-text value of the message, an accurate system to detect when the
+    message has been decrypted is needed. Some options we discussed included detecting encryption routines by
+    counting the number of loops and logical operations (since these are very common in encryption and decryption),
+    but this feature did not make it to the deadline of this project.
+    \item Incorporation of a fuzzing system. As we noticed while evaluating the tool with malware samples,
+    an automated fuzzing system that analyzes the program behaviour upon different inputs would greatly enhance the 
+    analysis with \textit{TaintBlade}.
+    \item Support for Linux. Intel Pin is multi-platform, and therefore \textit{TaintBlade} could
+    easily support Linux systems. The main change that would need to be done is the addition of 
+    system calls as taint sources and taint sinks.
+\end{itemize}
 
 \begin{thebibliography}{00}
     %%TODO FORMAT THIS BY IEEE
@@ -1333,6 +1399,9 @@ TODO
     \bibitem{virtualbox_page} https://www.virtualbox.org/
     \bibitem{flarevm} https://github.com/mandiant/flare-vm
     \bibitem{remnux} https://remnux.org/
+    \bibitem{netzob_clustering} https://netzob.readthedocs.io/en/latest/overview/index.html\#step-1-clustering-messages-and-partitioning-in-fields
+    \bibitem{dispatcher_paper} http://bitblaze.cs.berkeley.edu/papers/dispatcher\_ccs09.pdf
+    \bibitem{qemu} https://www.qemu.org/
 
 \end{thebibliography}
 \vspace{12pt}
