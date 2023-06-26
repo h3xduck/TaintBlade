@@ -18,22 +18,40 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Marcos Sánchez Bajo}
-    \IEEEauthorblockA{\textit{dept. name of organizatiosn (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
+    \IEEEauthorblockA{\textit{University Carlos III of Madrid} \\
+        100405823@alumnos.uc3m.es}
     \and
     \IEEEauthorblockN{2\textsuperscript{nd} Juan Manuel Estévez Tapiador}
-    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
+    \IEEEauthorblockA{\textit{University Carlos III of Madrid} \\
+        jestevez@inf.uc3m.es}
 }
 
 \maketitle
 
 \begin{abstract}
-    
+    The exchange of information between applications heavily relies on 
+    communication protocols, which define the rules and conventions for message exchange.
+    However, many software applications rely on closed, proprietary protocols that lack publicly
+    disclosed specifications. This is particularly true for malware, where developers intentionally 
+    hide protocol details to impede reverse engineering by analysts. 
+
+    In this work, we present TaintBlade, a powerful protocol reverse engineering framework that 
+    that utilizes dynamic execution tracing techniques to infer the protocol message format 
+    of arbitrary programs. It features (1) an
+    instrumentation module that seamlessly hooks into loaded images, executed routines, 
+    and unique instructions, providing access to registers and memory data; 
+    (2) a tainting module with a multi-color scheme that precisely tracks data propagation 
+    at the byte level within the instrumented program; (3) a heuristics module that matches executed
+    instructions with tainted data to a set of heuristics corresponding to specific
+    operations; (4) a protocol reversing module that constructs a full protocol
+    based on the gathered heuristics; (5) a tracing module that detects the execution 
+    of routines and logs their arguments; and (6) a noper module
+    that allows for skipping code sections and to manually modify the program state
+    at arbitrary points.
+
+    TaintBlade aims to be an usable and practical solution for the analysis of C2s in malware.
+    It also features a GUI that provides a user-friendly interface for seamlessly navigating
+    the data produced by the tool.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -377,23 +395,21 @@ facilitate malware reversing.
 
 As it can be observed in Figure \ref{figure:fig_3_archdetailedsteps},
 \textit{TaintBlade} comprises six different modules, namely (1) an
-instrumentation module which enables the framework to hook on each loaded
-image, executed routines and on unique instructions, and to access any register
-or memory data; (2) a tainting module featuring a multi-color scheme, which
-enables to track the propagation of data at a byte level inside the
-instrumented program; (3) a heuristics module that matches executed
+instrumentation module that seamlessly hooks into loaded images, executed routines, 
+and unique instructions, providing access to registers and memory data; 
+(2) a tainting module with a multi-color scheme that precisely tracks data propagation 
+at the byte level within the instrumented program; (3) a heuristics module that matches executed
 instructions with tainted data to a set of heuristics corresponding to specific
 operations; (4) a protocol reversing module that constructs a full protocol
-from the gathered heuristics; (5) a tracing module that enables to detect the
-execution of routines, logging its arguments; (6) and an auxiliary NOPer module
-that allows for skipping code sections and to manually modify the program state
-at arbitrary points.
+based on the gathered heuristics; (5) a tracing module that detects the execution 
+of routines and logs their arguments; and (6) a noper module
+that allows for skipping code sections 
 
 Although each module works independently from the others, most of them operate
 in a pipeline fashion, where the input of one module depends on that of the one
 directly preceeding it. In particular, the instrumentation, tainting,
 heuristics and protocol reversing modules work sequentially towards the
-protocol reversing task, whilst the tracing and NOPer modules work separately,
+protocol reversing task, whilst the tracing and noper modules work separately,
 offering support features to the tool. We will now study each module
 individually and describe how they work internally and the coordination between
 them.
@@ -418,7 +434,7 @@ in a list known as the \textit{image scope}. This scope is, by default, the main
 selected to be traced, although the user may select more images to be included via the GUI or
 the program configuration files. By instrumenting program images, \textit{TaintBlade} informs the
 user of when a new image is loaded - which may be of interest to the user, choosing it to be included
-in the scope. This instrumentation also acts as support to other modules - like the NOPer module -, by calculating in
+in the scope. This instrumentation also acts as support to other modules - like the noper module -, by calculating in
 advance the virtual addresses of key instructions (such as those selected by the user to be manually skipped).
 
 \textbf{Routine instrumentation.}
@@ -1008,7 +1024,7 @@ displaying in which routines each byte has been used.
 \subsection{Tracing module}
 TODO
 
-\subsection{NOPer module}
+\subsection{noper module}
 TODO
 
 \subsection{\textit{TaintBlade} GUI}
@@ -1040,7 +1056,7 @@ from left to right:
     \item A menu for starting the instrumentation, and another for stopping it.
     \item A menu for selecting the taint sources to use from those available at the tainting module.
     \item A menu for selecting the routines to trace using the tracing module.
-    \item A menu for selecting the RVAs to skip using the NOPer module.
+    \item A menu for selecting the RVAs to skip using the noper module.
     \item A menu for selecting the DLLs to include in the scope of the instrumentation.
 \end{itemize} 
 
@@ -1324,7 +1340,7 @@ However, it virtualizes the whole system instead of instrumenting a single binar
 achieves instruction-level instrumentation using Intel Pin and a custom multi-color taint engine.
 Polyglot features message format and grammar inference, whilst \textit{TaintBlade} is only focused on formats.
 Finally, Polyglot does not have an user interface, whilst we believe that the \textit{TaintBlade}'s GUI and the 
-helper modules (like the NOPer module) makes TaintBlade a more usable solution. Additionally, the majority of 
+helper modules (like the noper module) makes TaintBlade a more usable solution. Additionally, the majority of 
 its code is not open to the public (some components are, such as TEMU).
 
 \section{Conclusion}
@@ -1340,7 +1356,7 @@ In the case of the Pintool, it is a modular tool with features an unique multi-c
 to be a significant contribution. As far as we know, there does not exist any other multi-color
 tainting framework for 64 bits machines. Moreover, the Pintool is designed to be more than just a black-box tool, since
 it incorporates additional modules that facilitate the work of an analyst. For instance, the routine tracing module 
-allows easy access to the arguments of any routine, and the NOPer module enables the skipping of arbitrary code sections, 
+allows easy access to the arguments of any routine, and the noper module enables the skipping of arbitrary code sections, 
 which is particularly useful for malware analysis. The remaining modules (instrumentation, tainting, heuristics, and protocol reversing)
 enable the inference of six different types of fields in the message format: delimiters, keywords, pointer fields, variable-length fields,
 and fixed-length fields. These modules also include semantic data, informing the user of the purpose of the field's purpose in the program, 
