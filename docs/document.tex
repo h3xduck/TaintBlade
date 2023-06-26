@@ -187,9 +187,9 @@ and the common approach towards their detection in a message.
 
 \textbf{Delimiter.} A delimiter is a constant field used as a separator,
 that is, it marks the boundaries between other fields, usually when these
-are of variable length. A delimeter can be formed by one or more bytes, 
-and its value is always specified by the protocol. 
-For example, in the JSON format, it is common to find the symbol ":" to 
+are of variable length. A delimeter can be formed by one or more bytes,
+and its value is always specified by the protocol.
+For example, in the JSON format, it is common to find the symbol ":" to
 separate a key and its corresponding value.
 
 Detecting a delimiter through dynamic analysis techniques requires analyzing
@@ -203,21 +203,24 @@ Their value is known a priori by the program, and thus usually checked during th
 The keyword may or may not appear in the message, but it is always checked by the program.
 For example, in a HTTP GET request, the request is indicated by the starting keyword "GET".
 
-Detecting a keyword using dynamic analysis can be done by analyzing thge program's executed
-comparisons during runtime. Unlike in a delimeter, these comparisons are executed only once rather 
-instead of repeatedly or sequentially. Given that long keywords may exceed 
-the processor word size, multiple assembly-level comparisons may be employed to check a single keyword.
-Consequently, reversing keywords requires taking into account the compared data,
-since multiple comparisons against consecutive bytes may need to be considered as a group.
+Detecting a keyword using dynamic analysis can be done by analyzing thge
+program's executed comparisons during runtime. Unlike in a delimeter, these
+comparisons are executed only once rather instead of repeatedly or
+sequentially. Given that long keywords may exceed the processor word size,
+multiple assembly-level comparisons may be employed to check a single keyword.
+Consequently, reversing keywords requires taking into account the compared
+data, since multiple comparisons against consecutive bytes may need to be
+considered as a group.
 
 \textbf{Direction fields.} A direction field is a field, usually numeric, that indicates the
 position of another field in the message. This is common for indicating the length of a variable-length
 field, whose length is unknown to the program a priori.
 
-During the program execution, we will find that the value of a direction field is usually added or
-substracted to a pointer variable, specifying an offset into the message. Therefore, using 
-dynamic analysis, we may detect a direction field whenever we find that the value of a byte from the
-message is used to specify an offset into another byte of the message.
+During the program execution, we will find that the value of a direction field
+is usually added or substracted to a pointer variable, specifying an offset
+into the message. Therefore, using dynamic analysis, we may detect a direction
+field whenever we find that the value of a byte from the message is used to
+specify an offset into another byte of the message.
 
 \textbf{Variable-length field.} A variable-length field is a field which the protocol specifies
 that it may have an arbitrary length. Its boundaries may be defined by a delimiter, and its length
@@ -225,8 +228,8 @@ is usually indicated by a direction field.
 When available, we can assign a common semantic meaning to each byte within the field by
 examining the routines utilizing the field.
 
-We can attempt to find variable-length fields by looking at the positions in the message pointed
-by direction fields.
+We can attempt to find variable-length fields by looking at the positions in
+the message pointed by direction fields.
 
 \textbf{Fixed-length field.} A fixed-length field is a field with a constant length. Its starting
 position may be specified by a delimiter, but also it may just appear sequential to another keyword
@@ -234,21 +237,24 @@ or field.
 As with variable-length fields, we can assign a common semantic meaning to each byte within the field by
 examining the routines utilizing the field.
 
-A field may be classified as fixed-length following a process of elimination (it does not correspond
-to any other field class) or when we know that bytes with an specific semantic meaning have a fixed length.
-For example, if we detect that a field is being used as an IP, then we know that the field has a constant
-length.
+A field may be classified as fixed-length following a process of elimination
+(it does not correspond to any other field class) or when we know that bytes
+with an specific semantic meaning have a fixed length. For example, if we
+detect that a field is being used as an IP, then we know that the field has a
+constant length.
 
 \subsection {Dynamic Binary Instrumentation}
-Our protocol reverse engineering framework \textit{TaintBlade} is built on top of Intel Pin \cite{intelpin_main},
-a dynamic binary instrumentation (DBI) tool developed by Intel. 
+Our protocol reverse engineering framework \textit{TaintBlade} is built on top
+of Intel Pin \cite{intelpin_main}, a dynamic binary instrumentation (DBI) tool
+developed by Intel.
 
-DBI is a powerful technique consisting on the
-instrumentation and modification of the instructions of a program during its execution. This is  
-achieved using dynamic code injection techniques (in the case of Intel Pin, a DLL is injected in
-the instrumented process), allowing for the analysis of the runtime behaviour of the program. 
-This includes observing the executed instructions and routines, accessing and modifying the contents
-of registers and memory, and the insertion at runtime of new instructions to execute.
+DBI is a powerful technique consisting on the instrumentation and modification
+of the instructions of a program during its execution. This is achieved using
+dynamic code injection techniques (in the case of Intel Pin, a DLL is injected
+in the instrumented process), allowing for the analysis of the runtime
+behaviour of the program. This includes observing the executed instructions and
+routines, accessing and modifying the contents of registers and memory, and the
+insertion at runtime of new instructions to execute.
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=1.0\columnwidth]{images/intelpin_arch.png}}
@@ -256,39 +262,72 @@ of registers and memory, and the insertion at runtime of new instructions to exe
     \label{figure:intelpin_arch}
 \end{figure}
 
-Figure \ref{figure:intelpin_arch} shows an overview of Intel Pin's architecture. At any time, there are 
-three programs running: the application that will be instrumented, Pin itself, and a Pintool. We will
-now explain how the instrumentation process works so that we understand these components and how they 
-interact between each other.
+Figure \ref{figure:intelpin_arch} shows an overview of Intel Pin's
+architecture. At any time, there are three programs running: the application
+that will be instrumented, Pin itself, and a Pintool. We will now explain how
+the instrumentation process works so that we understand these components and
+how they interact between each other.
 
-Once Pin's DLL is injected in the application to instrument, it incercepts the first
-instruction of the program. From that point on, Pin uses a Just-In-Time (JIT) compiler to process 
-the assembly code of the program, one basic block at a time. 
-This component compiles the received code and stores it in a code cache. Then, using a dispatcher, 
-Pin transfers the execution flow to the generated sequence. When the basic block ends, Pin proceeds 
-to take the next one from the application. Additionally, Pin utilizes an emulator to execute certain 
-special instructions that cannot be directly executed, such as specific system calls.
+Once Pin's DLL is injected in the application to instrument, it incercepts the
+first instruction of the program. From that point on, Pin uses a Just-In-Time
+(JIT) compiler to process the assembly code of the program, one basic block at
+a time. This component compiles the received code and stores it in a code
+cache. Then, using a dispatcher, Pin transfers the execution flow to the
+generated sequence. When the basic block ends, Pin proceeds to take the next
+one from the application. Additionally, Pin utilizes an emulator to execute
+certain special instructions that cannot be directly executed, such as specific
+system calls.
 
-Pintools are the instrumentation component of Pin. These are C/C++ programs 
-(developed by the user using Pin) that make use of Pin's instrumentation API.
-A Pintool is commonly made of two types of instrumentation routines:
+Pintools are the instrumentation component of Pin. These are C/C++ programs
+(developed by the user using Pin) that make use of Pin's instrumentation API. A
+Pintool is commonly made of two types of instrumentation routines:
 \begin{itemize}
-    \item Instrumentation routines, that are executed every time the JIT Compiler fetches code
-    from the application. They allow for accessing the static components (like the instructions
-    being executed), but not the dynamic ones (like the value of the registers when the instruction
-    executes).
-    \item Analysis routines, that are injected from instrumentation routines. These are called 
-    whenever Pin executes, from the code cache, an specific code point. They have access to the 
-    dynamic components, such as the value of the registers after the instruction execution.
+    \item Instrumentation routines, that are executed every time the JIT Compiler fetches
+          code from the application. They allow for accessing the static components (like
+          the instructions being executed), but not the dynamic ones (like the value of
+          the registers when the instruction executes).
+    \item Analysis routines, that are injected from instrumentation routines. These are
+          called whenever Pin executes, from the code cache, an specific code point. They
+          have access to the dynamic components, such as the value of the registers after
+          the instruction execution.
 \end{itemize}
 
 \textit{TaintBlade}'s main component is a Pintool and, therefore, it makes use of a combination of
 instrumentation and analysis routines.
 
+\subsection {Taint analysis}\label{subsec:taint_analysis}
+Our framework \textit{TaintBlade} features a novel tainting engine. In this
+section, we will briefly explain the basics of the taint analysis technique.
 
-\subsection {Taint analysis}
-- Talk about tainting, goals and how it works in general terms.
-%%%%%%%%%%%
+Taint analysis is a program analysis technique that allows for determining the
+influence that a selected program state has on other parts of the program
+state\cite{book_practical_binary_analysis}. In the context of a C2
+communication, this would allow us to determine whether the data received from
+the network (the initial code state, this data is said to be 'tainted') is used
+in any way at the time of executing a command (the final code state).
+
+Taint analysis usually involves three steps: defining taint sources, defining
+taint sinks, and the specification of some taint propagation rules.
+\begin{itemize}
+    \item Taint sources are program locations where some data is tainted. These are
+          usually routines, whose arguments or return value are tainted.
+    \item Taint sinks are program locations where we check whether they are influenced by
+          any previously tainted data.
+    \item Taint propagation rules determine how the taint propagates from the taint
+          source through the program execution. Every executed instruction is
+          instrumented, and evaluated to check whether it must spread the taints somehow
+          (or untaint some data). For example, if a register \textit{rax} is tainted, and
+          we execute the instruction \textit{add rbx, rax}, then now register
+          \textit{rbx} is tainted too.
+\end{itemize}
+
+Taint analysis is usually slow, and requires an efficient management of the
+taint data, which as the program is executed it can get exponentially large.
+Classically, the taint storage has been done using shadow memory and bitmaps,
+where a value of 0 indicates that a register/memory is not tainted and a value
+of 1 indicates that it is tainted. This is called mono-color tainting. As we 
+will explain, \textit{TaintBlade} features multi-color tainting which allows
+for distinguishing the different sources from which taint data is originated.
 
 \section{Design}
 TODO - This section covers the general structure of the tool and the different
@@ -302,20 +341,12 @@ modules and functionalities implemented.
 
 In the previous sections, we introduced the issue of automating protocol
 reverse engineering and the relevance of this task in the context of the
-analysis of malware transmitting malicious communications. In this section, we
-will now describe the automated protocol reverse engineering framework, called
-\textit{TaintBlade}, that we have developed for tackling this task. Overall,
-this tool pursues three main goals: (1) to perform message inference of the
-underlying ingress protocol of a program, offering an accurate representation
-of its compounding fields and the purpose of each byte; (2) to provide a
-complete trace of the activities carried out by the instrumented program,
-including a viewpoint into loaded images, child processes, executed routines
-and their arguments, therefore helping the analyst with the reversing task,
-rathering than just offering a black-box tool; (3) to become a framework usable
-not only by malware analysts by offering specific functionalities aimed for
-studying malware behaviours, but also by the general public by providing an
-intuitive and fully enriched graphical user interface that offers additional
-features and enhances cohesion over the data produced by the tool.
+analysis of malware transmitting malicious communications. Additionally, we
+discussed some techniques, such as message format inference and taint analysis,
+that we will be using in our too.
+
+In this section, we will now describe the automated protocol reverse
+engineering framework that we have developed, called \textit{TaintBlade}.
 
 \subsection{Architecture overview}
 
@@ -328,15 +359,15 @@ features and enhances cohesion over the data produced by the tool.
 From a general viewpoint, the functioning of \textit{TaintBlade} is, as shown
 in figure \ref{fig_3_generalarch}: (1) the user selects a binary (an
 executable) to be traced; (2) the program is executed and instrumented by
-\textit{Intel Pin}, using \textit{TaintBlade} as a pintool, which reverses the
-protocol of the program; (3) the pintool generates a set of output
+\textit{Intel Pin}, using \textit{TaintBlade} as a Pintool, which reverses the
+protocol of the program; (3) the Pintool generates a set of output
 \textit{.dfx} dump files and/or a SQLite database with all traced data; (4) the
 user can navigate the resulting data by means of \textit{TaintBlade} GUI, which
 interacts with the database, or by accessing the output dump files.
 
-The \textit{TaintBlade} pintool is the central component of the framework. It
+The \textit{TaintBlade} Pintool is the central component of the framework. It
 encompasses all the necessary instrumentation and tracing functionalities
-required for the protocol reverse engineering task. At its core, the pintool
+required for the protocol reverse engineering task. At its core, the Pintool
 utilizes Intel Pin, which provides the instrumentation capabilities. On top of
 Intel Pin, \textit{TaintBlade} features a series of \textit{modules} -
 collections of components centered on a specific stage of the protocol reverse
@@ -391,7 +422,7 @@ advance the virtual addresses of key instructions (such as those selected by the
 
 \textbf{Routine instrumentation.}
 \textit{TaintBlade} instruments any newly executed routine included in the image scope. The instrumentation is double: it instruments
-the routine right after it is called and before it returns. This enables
+the routine right before it is called and after it returns. This enables
 the tool to extract information such as the function and image names, and the memory address of the arguments with which each
 function is called and with which it returns. Instrumenting routines is key for supporting the rest of the modules, and it is done in two different ways:
 
@@ -469,7 +500,7 @@ which is the reason they were selected to be instrumented.
 \end{table}
 
 When an instruction is instrumented, \textit{TaintBlade} first checks the type
-of instruction by making use of the Intel XED decoder[?] that comes embedded in
+of instruction by making use of the Intel XED decoder\cite{intel_xed_site} that comes embedded in
 Intel Pin. This decoder lets the tool classify the instruction, grouping it
 with other instruction types that share the same properties (e.g. every
 arithmetic operation is instrumented similarly). Once classified, the tool
@@ -532,7 +563,7 @@ size as that of the whole virtual address space (limited to $2^{32}$ bytes in
 x86), which tracks the taint state of each byte. This is completely unfeasible
 to do in a 64-bit system, since the virtual address space can be up to $2^{64}$
 (although processor implementations may reduce this value
-\cite{book_practical_binary_analysis_p13}).
+\cite{amd_manual_p65}).
 
 Another challenge is the implementation of multi-color taint tracking in a
 mono-color system. The introduction of one of such systems involves changing
@@ -559,8 +590,7 @@ achieved an optimized implementation that pursues two main goals:
           allowing to taint any number of memory addresses.
     \item We expect that taint colors from tainted bytes are frequently combined during
           program execution. Therefore, we will support an arbitrary number of color
-          combinations, improving the design described in section [??reference section
-            showcasing libdft??].
+          combinations, improving the typical bitmap implementation.
 \end{itemize}
 
 Considering the goals described previously, the taint storage of our engine
@@ -627,7 +657,7 @@ the whole first color mix map.
 
 \textbf{Taint sources.} Once considered how taint colors are stored in the tainting
 module, we will discuss how these colors are generated in the first place. \textit{TaintBlade}'s
-tainting module follows the architecture described in section \ref{}, by specifying taint sources
+tainting module follows the architecture described in section \ref{subsec:taint_analysis}, by specifying taint sources
 which generate the taint colors at specific registers and memory bytes.
 
 In \textit{TaintBlade}, every taint source is a routine. A routine declared as
@@ -838,7 +868,7 @@ a RevAtom contains the following data:
           \end{enumerate}
     \item Other optional data. This depends on the instruction type. For instance, for
           \textit{cmp} operations, we store the value of the RFLAGS register after the
-          instruction execution, sot that we know if the comparison was successful. All
+          instruction execution, so that we know if the comparison was successful. All
           optional data is gathered via the instrumentation module.
 \end{enumerate}
 
@@ -1022,10 +1052,11 @@ TODO
     \bibitem{github_libdft64} https://github.com/AngoraFuzzer/libdft64
     \bibitem{github_triton} https://github.com/JonathanSalwan/Triton
     \bibitem{book_practical_binary_analysis} https://terrorgum.com/tfox/books/practicalbinaryanalysis.pdf
-    \bibitem{book_practical_binary_analysis_p13} https://www.amd.com/system/files/TechDocs/24593.pdf, Page 13
+    \bibitem{amd_manual_p65} https://www.amd.com/system/files/TechDocs/24593.pdf, Page 65
     \bibitem{intelpin_main} https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html
     \bibitem{intelpin_lukpaper} https://www.cs.ucr.edu/~heng/teaching/cs260-winter2017/luk05pin.pdf
-    
+    \bibitem{intel_xed_site} https://intelxed.github.io/ref-manual/
+
 \end{thebibliography}
 \vspace{12pt}
 
