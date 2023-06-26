@@ -274,7 +274,6 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharEnter(ADDRINT currIp, ADDRINT r
 	data.arg5 = arg5;
 	data.arg6 = arg6;
 	sinkCallsData.insert(std::make_pair<size_t, struct func_dll_and_args_t>(hash, data));
-	PIN_UnlockClient();
 }
 
 void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllName, VOID* funcName)
@@ -325,6 +324,7 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 		RTN rtn = RTN_FindByAddress(funcDllData.ip);
 		if (rtn == RTN_Invalid())
 		{
+			PIN_UnlockClient();
 			return;
 		}
 		RTN_Open(rtn);
@@ -365,6 +365,7 @@ void TAINT::CORE::TAINT_SINK::MultiByteToWideCharExit(ADDRINT retVal, VOID* dllN
 		}
 		
 	}
+	LOG_DEBUG("Exited MultiByteToWideChar at exit!");
 
 	
 }

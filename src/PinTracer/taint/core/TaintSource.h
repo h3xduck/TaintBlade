@@ -113,6 +113,7 @@ public:
 		RTN rtn = RTN_FindByAddress(wsockRecv.ip);
 		if (rtn == RTN_Invalid())
 		{
+			PIN_UnlockClient();
 			return;
 		}
 		RTN_Open(rtn);
@@ -180,6 +181,7 @@ public:
 		RTN rtn = RTN_FindByAddress(wininetInternetReadFile.ip);
 		if (rtn == RTN_Invalid())
 		{
+			PIN_UnlockClient();
 			return;
 		}
 		RTN_Open(rtn);
@@ -204,8 +206,8 @@ public:
 
 		//Register that this routine had some taint event
 		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
-		data.instAddrEntry = routineEndInstAddress;
-		data.instAddrLast = INS_Address(RTN_InsTail(rtn));
+		data.instAddrEntry = wininetInternetReadFile.ip;
+		data.instAddrLast = routineEndInstAddress;
 		data.dll = *dllNameStr;
 		data.func = *funcNameStr;
 		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SRC;
@@ -257,7 +259,6 @@ public:
 		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 	{
 		PIN_LockClient();
-		
 		//In the case this goes from our main executable or a scoped image to another one, we log the address from which
 		//we are jumping from since it might be interesting to be dumped
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isScopeImage(ip))
@@ -265,14 +266,20 @@ public:
 			ctx.lastRoutineInfo().possibleJumpPoint = ip;
 			ctx.lastRoutineInfo().possibleBaseJumpPoint = InstructionWorker::getBaseAddress(ip);
 			RTN rtn = RTN_FindByAddress(ip); 
-			RTN_Open(rtn);
-			ctx.lastRoutineInfo().routineStart = INS_Address(RTN_InsHeadOnly(rtn));
-			ctx.lastRoutineInfo().routineBaseStart = InstructionWorker::getBaseAddress(ctx.lastRoutineInfo().routineStart);
-			RTN_Close(rtn);
+			if (RTN_Valid(rtn))
+			{
+				LOG_DEBUG("Here3.1");
+				RTN_Open(rtn);
+				LOG_DEBUG("Here3.2");
+				ctx.lastRoutineInfo().routineStart = INS_Address(RTN_InsHeadOnly(rtn));
+				LOG_DEBUG("Here3,3");
+				ctx.lastRoutineInfo().routineBaseStart = InstructionWorker::getBaseAddress(ctx.lastRoutineInfo().routineStart);
+				LOG_DEBUG("Here3.4");
+				RTN_Close(rtn);
+			}
 			ctx.lastRoutineInfo().funcName = InstructionWorker::getFunctionNameFromAddress(ip);
 			ctx.lastRoutineInfo().dllName = InstructionWorker::getDllFromAddress(ip);
 		}
-
 		//We will log the arguments of this routine, but only if we are going from main dll to another, or another scoped image
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
 			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))

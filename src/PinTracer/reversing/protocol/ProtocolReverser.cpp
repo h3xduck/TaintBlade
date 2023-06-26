@@ -355,7 +355,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 	} //finished parsing for all protocol netbuffers
 	
-
+	LOG_DEBUG("Going for pointer fields");
 	//Once we've got all comparison heuristics interpreted into the protocol netbuffers, we will do the same with
 	//the pointer field heuristics
 	RevLog<HLPointerField>& pointerFieldheuristicsVec = ctx.getRevContext()->getPointerFieldHeuristicsVector();
@@ -385,7 +385,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 	//Once we have everything, we assign as variable-length fields those pointed by pointer fields
 	//This needs to be seriously refactored, did it right before the deadline tbh
-	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
+	/*for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
 	{
 		std::vector<UINT16> colorsVector = buf.getColorsVector();
 		for (UINT16 ii = 0; ii < colorsVector.size(); ii++)
@@ -438,7 +438,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		nextColor:
 			ii = colorPosition++;
 		}
-	}
+	}*/
 
 
 	//Test

@@ -410,6 +410,7 @@ VOID TraceTrace(TRACE trace, VOID* v)
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
 		{
+			PIN_LockClient();
 			if (scopeFilterer.isMainExecutable(inst) || scopeFilterer.isScopeImage(inst) ||
 				(scopeFilterer.wasMainExecutableReached() && !scopeFilterer.hasMainExecutableExited())) {
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
@@ -435,7 +436,8 @@ VOID TraceTrace(TRACE trace, VOID* v)
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 						IARG_END);
 				}
-			}			
+			}		
+			PIN_UnlockClient();
 		}
 	}
 }
@@ -562,15 +564,17 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 		return;
 	}*/
 
-
+	PIN_LockClient();
 	IMG module = IMG_FindByAddress(firstAddr);
 	if (!IMG_Valid(module))
 	{
 		//std::cerr << "Null IMG" << std::endl;
 		RTN_Close(rtn);
+		PIN_UnlockClient();
 		return;
 	}
 	std::string dllName = IMG_Name(module);
+	PIN_UnlockClient();
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 	std::transform(rtnName.begin(), rtnName.end(), rtnName.begin(), [](unsigned char c) { return std::tolower(c); });
@@ -593,11 +597,13 @@ void TraceBase(TRACE trace, VOID* v)
 	{
 		for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins))
 		{		
+			PIN_LockClient();
 			RTN rtn = INS_Rtn(ins);
 			ADDRINT addr = INS_Address(ins);
 			IMG dll = IMG_FindByAddress(addr);
 			if (!IMG_Valid(dll))
 			{
+				PIN_UnlockClient();
 				return;
 			}
 			std::string dllName = IMG_Name(dll);
@@ -682,7 +688,7 @@ void TraceBase(TRACE trace, VOID* v)
 
 			#endif
 			}
-
+			PIN_UnlockClient();
 		}
 
 	}
