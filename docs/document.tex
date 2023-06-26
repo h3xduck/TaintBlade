@@ -9,6 +9,7 @@
 \usepackage{array}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{url}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -357,7 +358,7 @@ engineering framework that we have developed, called \textit{TaintBlade}.
 \end{figure}
 
 From a general viewpoint, the functioning of \textit{TaintBlade} is, as shown
-in figure \ref{fig_3_generalarch}: (1) the user selects a binary (an
+in Figure \ref{fig_3_generalarch}: (1) the user selects a binary (an
 executable) to be traced; (2) the program is executed and instrumented by
 \textit{Intel Pin}, using \textit{TaintBlade} as a Pintool, which reverses the
 protocol of the program; (3) the Pintool generates a set of output
@@ -374,7 +375,7 @@ collections of components centered on a specific stage of the protocol reverse
 engineering task or that offer other additional functionalities intended to
 facilitate malware reversing.
 
-As it can be observed in figure \ref{figure:fig_3_archdetailedsteps},
+As it can be observed in Figure \ref{figure:fig_3_archdetailedsteps},
 \textit{TaintBlade} comprises six different modules, namely (1) an
 instrumentation module which enables the framework to hook on each loaded
 image, executed routines and on unique instructions, and to access any register
@@ -521,7 +522,7 @@ be noted that we decided to develop the tainting system from the ground -
 instead of using an existing solution - because we did not find any
 implementation of a taint system for x86\_64 Windows machines that included
 multi-color taint tracking. We considered well-known engines like libdtf,
-Triton or Dytan but, as indicated in table
+Triton or Dytan but, as indicated in Table
 \ref{table:taining_engines_reason_not_chosen}, we identified certain drawbacks
 in each of them.
 
@@ -594,7 +595,7 @@ achieved an optimized implementation that pursues two main goals:
 \end{itemize}
 
 Considering the goals described previously, the taint storage of our engine
-follows the architecture shown in figure \ref{figure:taintingengine}. As it can
+follows the architecture shown in Figure \ref{figure:taintingengine}. As it can
 be observed, we dispose of two main structures, one for storing memory colors
 and another for register colors. In the case of memory tainting, we store in an
 unordered map pairs of data corresponding to each individual tainted memory
@@ -639,7 +640,7 @@ structures will need to be frequently accessed for two main purposes:
     \item Getting the colors that were combined to generate a certain derivate color.
 \end{itemize}
 
-Therefore, we have developed the data structures that are detailed in figure
+Therefore, we have developed the data structures that are detailed in Figure
 \ref{figure:colormixtaintarch}, consisting on two maps. The first map stores,
 for each entry, a color that was generated as a mix of two other colors, and
 the colors used in the mix. This is useful since we frequently need to access
@@ -686,7 +687,7 @@ that these could be extended in the future to support any arbitrary routine.
 \textit{TaintBlade} also incorporates a series of routines acting as taint sinks,
 at which we are interested to know whether any tainted data is received via the passed
 arguments. In this initial version, we have incorporated three routines, detailed at
-table \ref{table:taint_sources_and_taint_sinks}, that have are relevant for our protocol
+Table \ref{table:taint_sources_and_taint_sinks}, that have are relevant for our protocol
 reverse engineering task and perfom certain actions when triggered:
 \begin{enumerate}
     \item CreateProcessA and CreateProcessW will receive a command to be executed. By
@@ -762,7 +763,7 @@ module, we will discuss how this data is propagated during the program execution
 the taint propagation policy is to define a set of rules that specify how taint colors are
 moved across memory and registers depending on the instructions being executed. There exist
 different rules, each corresponding to one of the instruction types we instrumented using the
-instrumentation module and that we detailed at table \ref{table:instruction_types_instrumentation_supported}.
+instrumentation module and that we detailed at Table \ref{table:instruction_types_instrumentation_supported}.
 Note, however, that not all the instructions types incur in moving data, therefore only those
 operating with data will have an attached taint rule.
 
@@ -892,7 +893,7 @@ containing a \textit{cmp} instruction type and some tainted operand.
 As we explained in the introduction, our goal is to be able to perform protocol
 message inference, detecting keywords, delimeters and pointer fields in the
 protocol. In order to do this, we have developed the heuristics detailed on
-table \ref{table:implemented_heuristics}. As it can be observed, there exists
+Table \ref{table:implemented_heuristics}. As it can be observed, there exists
 two different heuristics, where the 'comparison operation' heuristic
 corresponds to the program performing some comparison against a value, and the
 'pointer operation' describes a value that was added to a pointer, so that it
@@ -1003,20 +1004,125 @@ they are filled using the information about which colors were detected to reach 
 A taint lead allows the protocol to enrich the message inference with data from the taint analysis,
 displaying in which routines each byte has been used.
 
-%%%%%%%
-TODO github repo + how to use. Requirements, etc. Should we mention the GUI
-somewhere in the design?
-%%%%%%%
+
+\subsection{Tracing module}
+TODO
+
+\subsection{NOPer module}
+TODO
+
+\subsection{\textit{TaintBlade} GUI}
+The final component of the \textit{TaintBlade} framework is the GUI. It is 
+an interface made using QT6 that allows the user to easily access and navigate 
+the data produced by the\textit{TaintBlade} Pintool, plus it adds additional 
+features on top of it.
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/GUI_full.png}}
+    \caption{Screenshot of the GUI after instrumenting a sample program.}
+    \label{figure:gui_full}
+\end{figure}
+
+Figure \ref{figure:gui_full} shows the GUI after running a sample program that features all type
+of words (delimiters, keywords, variable length fields). The program being instrumented can be found in the project
+repository at \textit{/samples/tcp\_client.exe}. In essence, this program receives a bytearray
+from the network and checks multiple delimiters and fields, then executing a command using
+some of the bytes as the program name. We will not go into more detail provided we are only
+interested in the visualization. We will later go in depth about how to use the GUI with a
+malware sample during the evaluation section.
+
+There is a toolbar with menus for customizing the analysis and selecting options. Going
+from left to right:
+\begin{itemize}
+    \item A menu for selecting the binary to instrument.
+    \item A menu for selecting options for the instrumentation, such as a directory 
+    where to store output files.
+    \item A menu for starting the instrumentation, and another for stopping it.
+    \item A menu for selecting the taint sources to use from those available at the tainting module.
+    \item A menu for selecting the routines to trace using the tracing module.
+    \item A menu for selecting the RVAs to skip using the NOPer module.
+    \item A menu for selecting the DLLs to include in the scope of the instrumentation.
+\end{itemize} 
+
+Regarding the main screen, it is made of resizable windows, each displaying a different functionality.
+The following is a summary of the windows' functionalitity following the labels we have drawn:
+\begin{enumerate}
+    \item The \textbf{process window}. This window indicates which processes where executed by the instrumented
+    binary, since many times a binary delegates functionalities into child processes. 
+    \item The \textbf{protocol fields window}. This window displays the different messages and fields 
+    inferred during the program execution. It lists all buffers (messages) detected, and clicking
+    on them shows the fields detected for that message.
+    \item The \textbf{field details window}. This window shows information about the comparisons that delimiters
+    and fields are made of, and information about pointer fields (such as the byte they point to).
+    \item The \textbf{message visualization window}. This video shows the bytes that each message is made of.
+    Bytes belonging to delimiters or keywords are grouped and colored. Additionally, it also allows
+    for displaying the semantic meaning of fields (e.g. which bytes reach taint sinks).
+    \item The \textbf{taint events windows}. This window shows which routines are responsible of generating,
+    mixing and moving the taint colors during the execution. It displays the image and RVA of every instruction
+    reached by taint data. Additionally, it allows for displaying which instructions belonging to scoped imagesa
+    are responsible of jumping or calling external routines that manage taint data (e.g. visualizing where is the
+    \textit{call} instruction that jumps to a taint source routine).
+    \item The \textbf{traced routines window}. This window displays which routines selected by the user
+    where executed, along with their arguments at the time of calling and return. Also, incorporates the string
+    value of the argument when possible.
+    \item The \textbf{tainted routines window}. This window displays the taint sources and taint sinks
+    that have been involved in the taint analysis.
+\end{enumerate}
+
+Each window incorporates multiple functionalities activated when left and right-clicking on the
+displayed elements. The windows do not work separately, but rather the selected data modifies
+the visualization at other windows. For example, selecting a field at the protocol fields window 
+highlights the corresponding bytes at the message visualization window and changes the displayed
+field at the field details window. 
+
+We encourage to visit the project repository to learn about all the features of \textit{TaintBlade}'s GUI.
+
+\subsection{Code availability}
+All the source code belonging to the \textit{TaintBlade} framework can be visitied
+publicly at the GitHub repository \textit{\url{https://github.com/h3xduck/TaintBlade}} \cite{taintblade_github_repo}.
+The most important folders and files of this repository are described in Table \ref{table:repo_relevant_files}. 
+
+\begin{table}[htbp]
+    \caption{Relevant directories at the TaintBlade repository.}
+    \begin{center}
+        \begin{tabular}{|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{5.2cm}|}
+            \hline
+            \textbf{Directory} & \textbf{Description} \\
+            \hline
+            \multirow{1}{*}{\shortstack{src/PinTracer}} & \multirow{1}{*}{\shortstack{Source code of \textit{TaintBlade}'s Pintool.}}\\
+            \hline
+            \multirow{2}{*}{\shortstack{src/PinTracer/engine}} & \multirow{2}{*}{\shortstack{Instrumentation of executed instructions.\\Includes taint propagation routines. }}\\
+                &                     \\
+            \hline
+            \multirow{2}{*}{\shortstack{src/PinTracer/reversing}} & \multirow{2}{*}{\shortstack{Source code of the heuristics and protocol\\reversing modules.}}\\
+                                      &                     \\
+            \hline
+            \multirow{2}{*}{\shortstack{src/PinTracer/taint}} & \multirow{2}{*}{\shortstack{Source code of tainting module, includes\\taint sources, sinks and taint storage.}}\\
+                                      &                     \\
+            \hline
+            \multirow{1}{*}{\shortstack{src/external}} & \multirow{1}{*}{\shortstack{A distribution of Intel Pin for Windows.}}\\
+            \hline
+            \multirow{2}{*}{\shortstack{src/GUI/PinTracerUI}} & \multirow{2}{*}{\shortstack{TaintBlade's GUI source code.}}\\
+                                      &                     \\
+            \hline
+            \multirow{2}{*}{\shortstack{src/samples}} & \multirow{2}{*}{\shortstack{Sample programs, can be used for\\testing TaintBlade.}}\\
+                                      &                     \\
+            \hline
+        \end{tabular}
+        \label{tab1}
+    \end{center}
+    \label{table:repo_relevant_files}
+\end{table}
+
+\textit{TaintBlade} has been tested with Intel Pin v3.25. Currently, it is only available for Windows systems.
 
 %\section{Implementation}
 %NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
 %engine works and how the heuristics engine and the protocol reversing engine on top work.
 
 \section{Evaluation}
-TODO - This section covers multiple test cases, including custom programs that
-we will include in our repository that showcase some easy-to-understand cases
-we want to show that work, and some others that are real malware found in the
-wild.
+
+
 
 Goal of the eval first. It's about checking functionality, and checking that we
 detect e.g. all commands we know are at the sample
@@ -1057,6 +1163,7 @@ TODO
     \bibitem{intelpin_main} https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html
     \bibitem{intelpin_lukpaper} https://www.cs.ucr.edu/~heng/teaching/cs260-winter2017/luk05pin.pdf
     \bibitem{intel_xed_site} https://intelxed.github.io/ref-manual/
+    \bibitem{taintblade_github_repo} https://github.com/h3xduck/TaintBlade
 
 \end{thebibliography}
 \vspace{12pt}
