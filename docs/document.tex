@@ -1017,11 +1017,11 @@ an interface made using QT6 that allows the user to easily access and navigate
 the data produced by the\textit{TaintBlade} Pintool, plus it adds additional 
 features on top of it.
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/GUI_full.png}}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/GUI_full.png}}
     \caption{Screenshot of the GUI after instrumenting a sample program.}
     \label{figure:gui_full}
-\end{figure}
+\end{figure*}
 
 Figure \ref{figure:gui_full} shows the GUI after running a sample program that features all type
 of words (delimiters, keywords, variable length fields). The program being instrumented can be found in the project
@@ -1085,7 +1085,7 @@ The most important folders and files of this repository are described in Table \
 \begin{table}[htbp]
     \caption{Relevant directories at the TaintBlade repository.}
     \begin{center}
-        \begin{tabular}{|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{5.2cm}|}
+        \begin{tabular}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}p{5cm}|}
             \hline
             \textbf{Directory} & \textbf{Description} \\
             \hline
@@ -1108,6 +1108,12 @@ The most important folders and files of this repository are described in Table \
             \multirow{2}{*}{\shortstack{src/samples}} & \multirow{2}{*}{\shortstack{Sample programs, can be used for\\testing TaintBlade.}}\\
                                       &                     \\
             \hline
+            \multirow{2}{*}{\shortstack{src/PinTracer/x64\\/Release/PinTracer.dll}} & \multirow{2}{*}{\shortstack{TaintBlade's Pintool compiled executable.}}\\
+                                    &                     \\
+            \hline
+            \multirow{2}{*}{\shortstack{src/GUI/PinTracerUI/x64\\/Debug/PinTracerUI.exe}} & \multirow{2}{*}{\shortstack{TaintBlade's GUI compiled executable.}}\\
+                                        &                     \\
+            \hline
         \end{tabular}
         \label{tab1}
     \end{center}
@@ -1116,16 +1122,175 @@ The most important folders and files of this repository are described in Table \
 
 \textit{TaintBlade} has been tested with Intel Pin v3.25. Currently, it is only available for Windows systems.
 
-%\section{Implementation}
-%NO - This section goes into detail on the algorithms implemented in the tool, including an overview of how the tainting
-%engine works and how the heuristics engine and the protocol reversing engine on top work.
 
 \section{Evaluation}
+This section evaluates the \textit{TaintBlade} framework by using it in a real scenario of 
+analyzing a malware sample. 
 
+The malware sample we will be using is a trojan for 64-bit Windows systems. It is packed
+with UPX\cite{upx_page} and gains persistence using the Windows registry. Once activated, the malicious
+process remains in the background, connecting to a C2 server periodically. This communication is done 
+via HTTP GET requests (from the client to the c2 server) and their HTTP responses (from the c2 server to the client).
+The malware has the capability of executing the commands sent from the C2 server.
+The SHA-256 hash of the sample is \textit{f9227a44ea25a7ee8148e2d0532b14bb\-640f6dc52cb5b22a9f4fa7fa037417fa}.
 
+The goals of this evaluation are the following:
+\begin{enumerate}
+    \item Accurately infer the protocol message format of the malware sample, without needing access
+    to its source code. We will not have any information about the sample functionality prior to our analysis.
+    Additionally, we will not contact the real C2 server, but rather we will explain how the protocol can
+    be extracted via a process of manual fuzzing. This more closely resembles a real scenario, since the C2 
+    server may not be available.
+    \item In addition to the syntactic information, we aim to infer the semantic information of the bytes
+    received during the C2 communication. We are particularly interested in learning how the trojan executes 
+    commands sent from the C2 server.
+    \item Get an accurate visualization of the reversed protocol format in the GUI. This includes getting knowledge
+    about the routines that are used during the malware execution and which of them operate with tainted data.
+\end{enumerate}
 
-Goal of the eval first. It's about checking functionality, and checking that we
-detect e.g. all commands we know are at the sample
+\textbf{Experimental setting.}
+The test environment that will be used during this evaluation consists on two virtual machines
+running under Oracle VM VirtualBox\cite{virtualbox_page}:
+\begin{itemize}
+    \item The first machine is a Windows 10 system. This machine has been modified using Flare-VM's scripts\cite{flarevm}.
+    It will be in charge of running the malware sample under \textit{TaintBlade}'s instrumentation. 
+    Here, we will also launch the GUI to visualize the results.
+    \item The second machine is a REMnux Linux system\cite{remnux}. In this machine, we will make use of 
+    the INetSim tool for simulating the C2 server.
+\end{itemize}
+Both machines will be connected via a Host-only network. This ensures that the malware can contact the C2 simulator
+but without using a physical networking interface, so that it cannot communicate outside of the sandbox.
+
+\textbf{Compilation.}
+The first step is always to compile the two \textit{TaintBlade} components: the Pintool and the GUI.
+The two projects can be found under the directories specified at Table \ref{table:repo_relevant_files}.
+\begin{itemize}
+    \item In the case of the Pintool, the solution must be opened and compiled using Visual Studio. The Compilation
+    has been tested successfully in VS 2022, but it may work for other versions.
+    \item In the case of the GUI, it requires Qt 6.5.1. It is prepared to be compiled as a Visual Studio
+    project. Again, VS 2022 is the only tested version.
+\end{itemize}
+
+Once both components are compiled, we can find the Pintool DLL under the directories indicated at Table \ref{table:repo_relevant_files}.
+
+\textbf{First instrumentation.}
+Once we have compiled both the Pintool and the GUI, we are ready to start the instrumentation. We will
+now describe the steps that must be followed to instrument the sample using the GUI. Note that, alternatively,
+a user can also use \textit{TaintBlade}'s Pintool directly through the command line. See APPENDIX \ref{FLAGS} for
+how to do it and the program flags available. Also, we will be leaving screenshots for most of the steps in 
+the Appendix section.
+
+In the first instrumentation, we will leave INetSim in the default configuration, that is, it will catch
+any request sent by the malware and answer with generic data. Next, we launch the GUI by executing the GUI binary.
+
+The first step for using the GUI is selecting the malware binary to instrument, the location of \textit{TaintBlade}'s
+Pintool and a directory where to store the output files (Figure \ref{figure:ap_sch_s1}).
+
+Once set, we select the taint sources we want to use in our instrumentation. Since we do not know yet
+which ones the program uses, we leave all of the marked (Figure \ref{figure:ap_sch_s2}). Note that it
+is also possible to investigate which are the routines being executed by the malware using the tracing module,
+so that we can ensure that the APIs it uses are supported in \textit{TaintBlade} as taint sources (Figure
+schs3).
+
+Once we have selected the taint sources, we are ready to run the malware. We click the play button at the GUI
+and wait. At this point, the Pintool will start instrumenting the binary, and we will see that the GUI
+shows the process currently running in the process window. 
+
+As it happens with a lot of malware, usually the malicious process will keep running forever. This is logical
+since, once executed, the malware wants to operate as long as possible, and event attempt to get persistence.
+Therefore, we must stop the process using the stop button in the GUI. The moment at which we decide to stop
+the button depends on the analyst, but usually this is when we detect that the malware has started to communicate
+throught the network. In our case, we detect that the program has issued a HTTP GET request to \textless C2domain\textgreater.php.
+Note that it is also possible to set a timeout to automatically stop the program execution after
+a certain time, if using the CLI. See the flags at Appendix {FLAGS}.
+
+Once we stop the execution, we will be able to visualize the messages gathered and the fields found by the Pintool
+using message format inference. By clicking into the process at the process window, the 
+protocol fields window will display the fields detected, and the message visualization window will draw the bytes
+and fields that conform the message. Also, the taint events and the traced routines window 
+will start showing the used taint sources/sinks and the routines that have been traced respectively (Figure \ref{figure:ap_sch_s4}).
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s4.png}}
+    \caption{Visualization of gathered messages and fields after stopping the execution.}
+    \label{figure:ap_sch_s4}
+\end{figure}
+
+By clicking on each field at the protocol fields window, we can display the details of each field in the message.
+We can also click the raw protocol button to access the raw data gathered by the tool (Figure \ref{figure:ap_sch_s5}). By using any of these
+methods, we will find that there the first keyword that the program checked was the following (Figure \ref{figure:ap_sch_s6}):
+\noindent\fbox{%
+    \parbox{\linewidth}{%
+        BYTEKEYWORD \textbar STARTINDEX:0 \textbar ENDINDEX:0\\
+            Byte 0: 63 (as char: c) \textbar Comparison result: 0
+    }%
+}\\
+
+This indicates that the program was looking at position 0 of the message for the letter 'c', and failed
+to find it. Due to the nature of dynamic analysis, it may happen that this is the first byte of a longer
+keyword which the program is checking one letter at a time. 
+
+\textbf{Protocol fuzzing}
+Taking into consideration the above, we decide to run the protocol inference a second time. This is a similar 
+process as trying to 'fuzz' the protocol format, since we will be trying to enter the keywords that the 
+malware is looking for to see if something changes.
+
+For this, we will modify the data that INetSim sends to the malware, so that it starts with the character 'c'.
+Then, we repeat the same process as before. The result is that, this time, we can see that the program
+checked for character 'e' at the next byte after the comparison with character 'c' succeded (Figure \ref{figure:ap_sch_s6}):
+\noindent\fbox{%
+    \parbox{\linewidth}{%
+        KEYWORD \textbar STARTINDEX:0 \textbar ENDINDEX:1\\
+            Byte 0: 63 (as char: c) \textbar Comparison result: 1\\
+            Byte 1: 65 (as char: e) \textbar Comparison result: 0
+    }%
+}\\
+
+Therefore, it is clear that there is a hidden keyword. We will now proceed to repeat the process
+as many times as characters appear in the keyword. For each new byte that the program fails to find,
+we will add it into the message sent by INetSim.
+
+\textbf{Final protocol format.}
+After we repeat the fuzzing process for two more bytes, we eventually reach the following delimiter (Figure \ref{figure:ap_sch_s8}):
+\noindent\fbox{%
+    \parbox{\linewidth}{%
+        KEYWORD \textbar STARTINDEX:0 \textbar ENDINDEX:3\\
+            Byte 0: 63 (as char: c) \textbar Comparison result: 1\\
+            Byte 1: 65 (as char: e) \textbar Comparison result: 1\\
+            Byte 2: 78 (as char: x) \textbar Comparison result: 1\\
+            Byte 3: 65 (as char: e) \textbar Comparison result: 1
+    }%
+}\\
+
+At this point, using the GUI, we can observe that there is a new variable-length field with associated semantic data.
+By right-clicking on it, we can highlight in the taint routines window which taint sink has received those bytes of the
+message. We can see that, up until the newline delimiter, all bytes will be sent into the routine CreateProcessA
+(Figure \ref{figure:ap_sch_s9}). 
+
+Therefore we now know that the message follows the following format:
+\noindent\fbox{%
+    \parbox{\linewidth}{%
+        cexe \textless COMMAND\textgreater \textless newline\textgreater 
+    }%
+}\\
+
+We can check that this is the case by configuring INetSim to send the following string to the malware:
+\noindent\fbox{%
+    \parbox{\linewidth}{%
+        cexe c:\textbackslash windows\textbackslash system32\textbackslash calc.exe 
+    }%
+}\\
+
+Once we instrument the malware process sending that message, we will see that a calculator program
+is run. Also, we can see in the GUI the final form of the message format, with all successfully checked
+keywords and delimiters (Figure \ref{figure:ap_sch_s10}) and the variable-length field whose semantic
+data indicates that it was sent to the routine CreateProcessA, as shown in Figure \ref{figure:ap_sch_s11}.
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s11.png}}
+    \caption{Protocol message visualization window, showing the semantic information of a variable-length field.}
+    \label{figure:ap_sch_s11}
+\end{figure}
 
 \section{Related work}
 TODO decide whether to include this or not - It might fit better in the
@@ -1164,10 +1329,72 @@ TODO
     \bibitem{intelpin_lukpaper} https://www.cs.ucr.edu/~heng/teaching/cs260-winter2017/luk05pin.pdf
     \bibitem{intel_xed_site} https://intelxed.github.io/ref-manual/
     \bibitem{taintblade_github_repo} https://github.com/h3xduck/TaintBlade
+    \bibitem{upx_page} https://upx.github.io/
+    \bibitem{virtualbox_page} https://www.virtualbox.org/
+    \bibitem{flarevm} https://github.com/mandiant/flare-vm
+    \bibitem{remnux} https://remnux.org/
 
 \end{thebibliography}
 \vspace{12pt}
 
-\end{document}
+\newpage
+\section*{Appendix A - Evaluation GUI screenshots}\label{appendix_eval_screenshots}
 
-\appendix{}
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s1.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s2.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s2}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s3.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s5.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s5}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s6.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s6}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s7.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s7}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s8.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s8}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s9.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s9}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s10.png}}
+    \caption{Selection of program instrumentation options.}
+    \label{figure:ap_sch_s10}
+\end{figure}
+
+
+
+\end{document}
