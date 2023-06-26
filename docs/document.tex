@@ -122,8 +122,7 @@ represented either by a Protocol Format (PF), a Protocol Finite State Machine
           the implementation of the binary (e.g. which routines are in charge of
           interpreting the message), which enriches the syntactic meaning of each field
           (e.g. the field is a keyword, but more specifically a command that the program
-          executes). We explain message format inference in more detail in section
-          \ref{TODO}.
+          executes). We explain message format inference in more detail in later sections.
     \item PFSMs represent the exchange of messages in the protocol as a state machine.
           Following a process of protocol grammar inference, representing the protocol as
           a PFSM allows for including information about the time and order of messages,
@@ -206,7 +205,7 @@ and the common approach towards their detection in a message.
 
 \textbf{Delimiter.} A delimiter is a constant field used as a separator,
 that is, it marks the boundaries between other fields, usually when these
-are of variable length. A delimeter can be formed by one or more bytes,
+are of variable length. A delimiter can be formed by one or more bytes,
 and its value is always specified by the protocol.
 For example, in the JSON format, it is common to find the symbol ":" to
 separate a key and its corresponding value.
@@ -223,7 +222,7 @@ The keyword may or may not appear in the message, but it is always checked by th
 For example, in a HTTP GET request, the request is indicated by the starting keyword "GET".
 
 Detecting a keyword using dynamic analysis can be done by analyzing thge
-program's executed comparisons during runtime. Unlike in a delimeter, these
+program's executed comparisons during runtime. Unlike in a delimiter, these
 comparisons are executed only once rather instead of repeatedly or
 sequentially. Given that long keywords may exceed the processor word size,
 multiple assembly-level comparisons may be employed to check a single keyword.
@@ -349,15 +348,6 @@ will explain, \textit{TaintBlade} features multi-color tainting which allows
 for distinguishing the different sources from which taint data is originated.
 
 \section{Design}
-TODO - This section covers the general structure of the tool and the different
-modules and functionalities implemented.
-
-- Requirements: overview and goals of the tool
-- Arch: overview and details of each stage
-- Implementation, with repo and how to use
-
-\
-
 In the previous sections, we introduced the issue of automating protocol
 reverse engineering and the relevance of this task in the context of the
 analysis of malware transmitting malicious communications. Additionally, we
@@ -371,7 +361,7 @@ engineering framework that we have developed, called \textit{TaintBlade}.
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.9\columnwidth]{images/generalarch.drawio.png}}
-    \caption{Example of a figure caption.}
+    \caption{General architecture of TaintBlade}
     \label{fig_3_generalarch}
 \end{figure}
 
@@ -416,7 +406,7 @@ them.
 
 \begin{figure*}
     \centerline{\includegraphics[width=\textwidth]{images/archdetailedsteps.drawio.png}}
-    \caption{Example of a figure caption.}
+    \caption{Architecture of \textit{TaintBlade}.}
     \label{figure:fig_3_archdetailedsteps}
 \end{figure*}
 
@@ -434,7 +424,7 @@ in a list known as the \textit{image scope}. This scope is, by default, the main
 selected to be traced, although the user may select more images to be included via the GUI or
 the program configuration files. By instrumenting program images, \textit{TaintBlade} informs the
 user of when a new image is loaded - which may be of interest to the user, choosing it to be included
-in the scope. This instrumentation also acts as support to other modules - like the noper module -, by calculating in
+in the scope. This instrumentation also acts as support to other modules -like the noper module-, by calculating in
 advance the virtual addresses of key instructions (such as those selected by the user to be manually skipped).
 
 \textbf{Routine instrumentation.}
@@ -451,7 +441,7 @@ function is called and with which it returns. Instrumenting routines is key for 
           which needs to access specific data points in each routine at an specific time
           (either before or after the execution).
     \item Performing a more general instrumentation, without hardcoding the data types.
-          As we will explain in section \ref{?}, this is useful for the tracing module,
+          As we will explain in later sections, this is useful for the tracing module,
           which will also attempt to guess the type of arguments later.
 \end{itemize}
 
@@ -534,8 +524,8 @@ are combined between each other and how they are used inside the program.
 
 This initial version of the tool is fully prepared to work in Windows systems,
 although it could be easily extended to work in Linux in a future. It must also
-be noted that we decided to develop the tainting system from the ground -
-instead of using an existing solution - because we did not find any
+be noted that we decided to develop the tainting system from the ground -instead 
+of using an existing solution- because we did not find any
 implementation of a taint system for x86\_64 Windows machines that included
 multi-color taint tracking. We considered well-known engines like libdtf,
 Triton or Dytan but, as indicated in Table
@@ -668,7 +658,7 @@ the whole first color mix map.
 
 \begin{figure}
     \centerline{\includegraphics[width=0.9\columnwidth]{images/colormixtaintarch.drawio.png}}
-    \caption{Taint storage data structures.}
+    \caption{Taint colors management data structures.}
     \label{figure:colormixtaintarch}
 \end{figure}
 
@@ -907,7 +897,7 @@ received from the network (the taint sources). Therefore, in this case we would 
 containing a \textit{cmp} instruction type and some tainted operand.
 
 As we explained in the introduction, our goal is to be able to perform protocol
-message inference, detecting keywords, delimeters and pointer fields in the
+message inference, detecting keywords, delimiters and pointer fields in the
 protocol. In order to do this, we have developed the heuristics detailed on
 Table \ref{table:implemented_heuristics}. As it can be observed, there exists
 two different heuristics, where the 'comparison operation' heuristic
@@ -951,15 +941,14 @@ now points to some other address, also belonging to a the tainted buffer.
 \end{table}
 
 In order to match the RevAtoms to the heuristics, the module runs a search
-algorithm in the RevLog. In essence, this algorithm scans the RevLog, starting
+algorithm in the RevLog. This algorithm is a loop that scans the RevLog, starting
 from the last inserted instruction, and checks whether there is any combination
-of instructions that match one of the heuristics. Note that, although this
+of instructions that match one of the heuristics. Once an heuristic is found, 
+the module extracts it and inserts it in an internal vector. 
+
+Note that, although this
 version of \textit{TaintBlade} does not incorporate heuristics with multiple
 instructions, the algorithm supports them already.
-
-Once an heuristic is found, the module extracts it and inserts it in an
-internal vector. The full algorithm and implementation details regarding how
-the heuristic matching process can be consulted in ANNEX TODO.
 
 \subsection{Protocol reversing module}
 As we described, during the program execution \textit{TaintBlade} will
@@ -973,18 +962,18 @@ A protocol consists of a series of protocol messages, also known as buffers,
 where each one corresponds to a set of bytes received from the network in a
 single call (e.g. the bytes received from the taint source InternetReadFile
 would be included in a single buffer). In each of the protocol buffers, we will
-find a list of associated protocol fields, that include keywords and delimeters,
+find a list of associated protocol fields, that include keywords and delimiters,
 and protocol pointers fields. Additionally, each of the bytes in the buffer
 include whether or not they were found to have reached some of the taint sinks.
 
 In order to reverse the protocol, a custom algorithm is used. This algorithm
 combines the knowledge about the chronological order of the RevAtoms, the taint
 sinks information and, in the case of the comparison operations, the result of
-the comparisons. The complete algorithm and process can be seen in ANNEX TODO.
+the comparisons. The complete implementation can be consulted in our project repository.
 As a summary, it will take the heuristics and output the protocol and
 associated buffers. In these buffers, we can find the following word types:
 
-\textbf{Delimeter.} A delimeter is found when multiple comparison operations against the same byte
+\textbf{Delimiter.} A delimiter is found when multiple comparison operations against the same byte
 are found in a sequential manner for contiguous bytes of the buffer, either in an incrementing
 or decrementing order. For each byte, the algorithm will check that the result of the comparison
 was unsuccessful, that is, that the value being checked against the byte at the buffer was not equal.
@@ -992,20 +981,20 @@ was unsuccessful, that is, that the value being checked against the byte at the 
 If we find that multiple comparison operations are checked sequentially, and
 that none succeed, then this indicates that the program was looking for a value
 in the buffer, yet it failed to find it. In this case, we will mark the
-delimeter as failed in the protocol, so that this event is reported.
+delimiter as failed in the protocol, so that this event is reported.
 
 Otherwise, if there exists a series of unsuccessful comparison operations
 followed by a single successful comparison operation using the same byte value,
-this indicates that the program found the delimeter it was looking for.
+this indicates that the program found the delimiter it was looking for.
 
-\textbf{Keyword.} Every comparison operation is marked as a keyword if it is not part of a delimeter. After that,
+\textbf{Keyword.} Every comparison operation is marked as a keyword if it is not part of a delimiter. After that,
 keywords are joined if they occupy sequential positions in the buffer, that is, if the color of the final byte of
 one keyword is the previous one to the initial color of the other, and if they happened in chronological order
 (one comparison after the other).
 
 Note that, sometimes, it is possible to find keywords of a single byte, where
 the comparison is unsuccessful, and which are unable to be joined to another
-keyword. Due to the nature of dynamic analysis, this is ann event that happens
+keyword. Due to the nature of dynamic analysis, this is an event that happens
 when the program checks a keyword byte by byte instead of using, for instance,
 a common routine like \textit{strcmp()}. In this cases, \textit{TaintBlade}
 marks the byte as a keyword but highlights the fact that it is isolated so that
@@ -1018,14 +1007,34 @@ and to which byte and to which buffer it points to.
 These elements are not generated by the reversing algorithm using the gathered heuristics, but rather
 they are filled using the information about which colors were detected to reach certain taint sinks.
 A taint lead allows the protocol to enrich the message inference with data from the taint analysis,
-displaying in which routines each byte has been used.
+so that a fixed-length field or variable-length field is assigned with the lead.
+
+\textbf{Variable-length field} In \textit{TaintBlade}, we detect variable-length fields by inspecting the memory 
+pointed by pointer fields. If a group of bytes are pointed by a pointer field, and they are not yet assigned either
+to a delimiter or a keyword, then they get assigned as a variable-length field.
+
+\textbf{Fixed-length field} Currently, a fixed-length field is detected if a group of bytes are assigned semantic
+information and they do not belong to any other field type.
 
 
 \subsection{Tracing module}
-TODO
+This is an auxiliary module that allows for instrumenting any routine specified by the user. It will
+make use of the instrumentation module to gather all operands of the routine right after it is called,
+and before it returns. 
 
-\subsection{noper module}
-TODO
+For every traced argument, the module attempts to access its value as if it was an string.
+For this, it reads the memory pointed by the argument and tries to cast it either to a 
+\textit{char*} string or a UNICODE "wide" string (with \textit{wchar\_t*}).
+
+\subsection{Noper module}
+This is an auxiliary module that helps to instrument malicious programs. It makes use of 
+Pin's instrumentation to allow the user to skip specific code sections. For this, the user
+introduces a range of RVAs that the program will jump over when the instruction reaches that point.
+
+Additionally, it also allows for modifying, after jumping over the specified fields, the values of the
+registers. This is particularly useful to avoid execution specific routines (such as the ones checking
+whether a program is being debugger) and then modifying the return value, so that a potentially
+malicious program does not modify its behavious once it detects the sandbox.
 
 \subsection{\textit{TaintBlade} GUI}
 The final component of the \textit{TaintBlade} framework is the GUI. It is 
@@ -1192,7 +1201,7 @@ Once both components are compiled, we can find the Pintool DLL under the directo
 \textbf{First instrumentation.}
 Once we have compiled both the Pintool and the GUI, we are ready to start the instrumentation. We will
 now describe the steps that must be followed to instrument the sample using the GUI. Note that, alternatively,
-a user can also use \textit{TaintBlade}'s Pintool directly through the command line. See APPENDIX \ref{FLAGS} for
+a user can also use \textit{TaintBlade}'s Pintool directly through the command line. Check our project repository for
 how to do it and the program flags available. Also, we will be leaving screenshots for most of the steps in 
 the Appendix section.
 
@@ -1206,7 +1215,7 @@ Once set, we select the taint sources we want to use in our instrumentation. Sin
 which ones the program uses, we leave all of the marked (Figure \ref{figure:ap_sch_s2}). Note that it
 is also possible to investigate which are the routines being executed by the malware using the tracing module,
 so that we can ensure that the APIs it uses are supported in \textit{TaintBlade} as taint sources (Figure
-schs3).
+\ref{figure:ap_sch_s3}).
 
 Once we have selected the taint sources, we are ready to run the malware. We click the play button at the GUI
 and wait. At this point, the Pintool will start instrumenting the binary, and we will see that the GUI
@@ -1218,7 +1227,7 @@ Therefore, we must stop the process using the stop button in the GUI. The moment
 the button depends on the analyst, but usually this is when we detect that the malware has started to communicate
 throught the network. In our case, we detect that the program has issued a HTTP GET request to \textless C2domain\textgreater.php.
 Note that it is also possible to set a timeout to automatically stop the program execution after
-a certain time, if using the CLI. See the flags at Appendix {FLAGS}.
+a certain time, if using the CLI. You can access all the program flags available at our project repository .
 
 Once we stop the execution, we will be able to visualize the messages gathered and the fields found by the Pintool
 using message format inference. By clicking into the process at the process window, the 
@@ -1387,6 +1396,7 @@ here:
     system calls as taint sources and taint sinks.
 \end{itemize}
 
+\newpage
 \begin{thebibliography}{00}
     %%TODO FORMAT THIS BY IEEE
     \bibitem{sota_apre} https://downloads.hindawi.com/journals/scn/2018/8370341.pdf
@@ -1425,60 +1435,60 @@ here:
 \newpage
 \section*{Appendix A - Evaluation GUI screenshots}\label{appendix_eval_screenshots}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s1.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s1.png}}
+    \caption{}
     \label{figure:ap_sch_s1}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s2.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s2.png}}
+    \caption{}
     \label{figure:ap_sch_s2}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s3.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s3.png}}
+    \caption{}
     \label{figure:ap_sch_s3}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s5.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s5.png}}
+    \caption{}
     \label{figure:ap_sch_s5}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s6.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s6.png}}
+    \caption{}
     \label{figure:ap_sch_s6}
-\end{figure}
+\end{figure*}
 
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s7.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s7.png}}
+    \caption{}
     \label{figure:ap_sch_s7}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s8.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s8.png}}
+    \caption{}
     \label{figure:ap_sch_s8}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s9.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s9.png}}
+    \caption{}
     \label{figure:ap_sch_s9}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=1.0\columnwidth]{images/sch_s10.png}}
-    \caption{Selection of program instrumentation options.}
+\begin{figure*}
+    \centerline{\includegraphics[width=\textwidth]{images/sch_s10.png}}
+    \caption{}
     \label{figure:ap_sch_s10}
-\end{figure}
+\end{figure*}
 
 
 
