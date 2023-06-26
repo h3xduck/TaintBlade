@@ -383,6 +383,64 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		}
 	}
 
+	//Once we have everything, we assign as variable-length fields those pointed by pointer fields
+	//This needs to be seriously refactored, did it right before the deadline tbh
+	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
+	{
+		std::vector<UINT16> colorsVector = buf.getColorsVector();
+		for (UINT16 ii = 0; ii < colorsVector.size(); ii++)
+		{
+			//Check if pointed by pointer field
+			int colorPosition = 0;
+			for (HLPointerField& pointerField : logPointerFieldHeuristicVec)
+			{
+				std::vector<UINT16> colorPointerVec = pointerField.comparisonColorsPointed();
+				UINT16 pointedColor = colorPointerVec.at(0);
+				LOG_DEBUG("Trying to find variable length fields starting at color " << pointedColor);
+				//Found that the color is pointed.
+				//Proceed to mark it as variable-length field until some byte has an 
+				//assigned word or pointer already.
+				//Get the position in the buffer of that color
+				
+				for (int jj=0; jj<colorsVector.size(); jj++)
+				{
+					UINT16 color = colorsVector.at(jj);
+					if (color == pointedColor)
+					{
+						colorPosition = jj;
+					}
+				}
+				ProtocolWord word(buf.getValuesVector().at(colorPosition), colorPosition, colorPosition, ProtocolWord::VARIABLE_LENGTH_FIELD, 1);
+				colorPosition++;
+				while (colorPosition < buf.getColorsVector().size())
+				{
+					for (int jj = 0; jj< buf.getWordVector().size(); jj++)
+					{
+						ProtocolWord word = buf.getWordVector().at(jj);
+						if (word.getStartIndex() == colorPosition)
+						{
+							//Found the end of the field
+							word.setEndIndex(colorPosition-1);
+							buf.addWordToWordVector(word);
+							goto nextColor;
+						}
+					}
+					word.addByte(buf.getValuesVector().at(colorPosition));
+					word.addColor(0);
+					word.setEndIndex(colorPosition);
+					colorPosition++;
+				}
+				//If reached the end, then the variable field was positioned right at the end
+				//of the buffer. Insert the word.
+				buf.addWordToWordVector(word);
+				ii = colorPosition++;
+			}
+		nextColor:
+			ii = colorPosition++;
+		}
+	}
+
+
 	//Test
 	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
 	{

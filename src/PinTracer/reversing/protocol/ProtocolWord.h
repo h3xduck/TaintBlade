@@ -27,9 +27,12 @@ namespace REVERSING
 				//it is a keyword, a delimiter or something else. So just store it as some broad classes
 				SEPARATORLASTBYTE,	//A check that was done just for the last byte, not sure what it was
 				FAILEDDELIMETER,	//Something that seems a delimeter (sequential checks) but without a success comparison
-				BYTEKEYWORD			//A keyword... with just one byte. Because this provides us with a low degree of confidence
+				BYTEKEYWORD,		//A keyword... with just one byte. Because this provides us with a low degree of confidence
 									//of it being a keyword, we define this other type.
 
+				VARIABLE_LENGTH_FIELD,  //A generic field that is not a delimiter or keyword, but which
+										//is pointed by a pointer field
+				FIXED_LENGTH_FIELD		//A generic field, not keyword or delimiter, not pointed by any pointer field
 			};
 		private:
 			/**

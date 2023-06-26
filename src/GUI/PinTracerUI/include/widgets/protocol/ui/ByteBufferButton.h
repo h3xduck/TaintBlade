@@ -20,7 +20,8 @@ namespace PROTOCOL
             TDELIMETER_CTAINTSINK,
             TKEYWORD,
             TBYTEKEYWORD,
-            TPOINTER
+            TPOINTER,
+            TVARIABLELENGTHFIELD
         };
 
         ByteBufferPushButton(QString text, QWidget* parent, buttonType_t type, int byteIndex);

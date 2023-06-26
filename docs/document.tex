@@ -163,7 +163,7 @@ This section introduces all the background needed for our research into
 automated protocol reverse engineering and introduces the reader to the
 underlying techniques implemented in our tool.
 
-\subsection{Message format inference}
+\subsection{Message format inference}\label{subsec:msg_format_inference}
 In this section, we will introduce basic concepts about message format
 inference that we have implemented in \textit{TaintBlade}. It must be noted
 that we are presenting standard terminology, that is also common to other works
@@ -212,24 +212,24 @@ Consequently, reversing keywords requires taking into account the compared
 data, since multiple comparisons against consecutive bytes may need to be
 considered as a group.
 
-\textbf{Direction fields.} A direction field is a field, usually numeric, that indicates the
+\textbf{Pointer fields.} A pointer field is a field, usually numeric, that indicates the
 position of another field in the message. This is common for indicating the length of a variable-length
 field, whose length is unknown to the program a priori.
 
-During the program execution, we will find that the value of a direction field
+During the program execution, we will find that the value of a pointer field
 is usually added or substracted to a pointer variable, specifying an offset
-into the message. Therefore, using dynamic analysis, we may detect a direction
+into the message. Therefore, using dynamic analysis, we may detect a pointer
 field whenever we find that the value of a byte from the message is used to
 specify an offset into another byte of the message.
 
 \textbf{Variable-length field.} A variable-length field is a field which the protocol specifies
 that it may have an arbitrary length. Its boundaries may be defined by a delimiter, and its length
-is usually indicated by a direction field.
+is usually indicated by a pointer field.
 When available, we can assign a common semantic meaning to each byte within the field by
 examining the routines utilizing the field.
 
 We can attempt to find variable-length fields by looking at the positions in
-the message pointed by direction fields.
+the message pointed by pointer fields.
 
 \textbf{Fixed-length field.} A fixed-length field is a field with a constant length. Its starting
 position may be specified by a delimiter, but also it may just appear sequential to another keyword
@@ -948,14 +948,15 @@ the heuristic matching process can be consulted in ANNEX TODO.
 As we described, during the program execution \textit{TaintBlade} will
 accumulate all found heuristics in an internal vector. The final step is to
 interpret the operations described in the heuristics, grouping or discarding
-them, so that we are able to reverse the underlying protocol. This process
-happens only once the program has finished.
+them, so that we are able to complete the message format inference of the
+underlying protocol. This process happens only once the program has finished.
 
-In \textit{TaintBlade}, a protocol consists of a series of protocol buffers,
+In \textit{TaintBlade} we follow the field classification we described \ref{subsec:msg_format_inference}.
+A protocol consists of a series of protocol messages, also known as buffers,
 where each one corresponds to a set of bytes received from the network in a
 single call (e.g. the bytes received from the taint source InternetReadFile
 would be included in a single buffer). In each of the protocol buffers, we will
-find a list of associated protocol words, that include keywords and delimeters,
+find a list of associated protocol fields, that include keywords and delimeters,
 and protocol pointers fields. Additionally, each of the bytes in the buffer
 include whether or not they were found to have reached some of the taint sinks.
 

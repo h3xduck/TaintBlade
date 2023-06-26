@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -36,7 +35,6 @@ public:
     QRadioButton *buttonColorWordType;
     QRadioButton *buttonColorPurpose;
     QVBoxLayout *rightButtonColumn;
-    QCheckBox *checkBox;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QButtonGroup *buttonGroup;
@@ -97,11 +95,6 @@ public:
 
         rightButtonColumn = new QVBoxLayout();
         rightButtonColumn->setObjectName("rightButtonColumn");
-        checkBox = new QCheckBox(ProtocolVisualizationWidget);
-        checkBox->setObjectName("checkBox");
-
-        rightButtonColumn->addWidget(checkBox);
-
 
         horizontalLayout->addLayout(rightButtonColumn);
 
@@ -132,7 +125,6 @@ public:
         radioButtonLabel->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "Color buffer bytes by...", nullptr));
         buttonColorWordType->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By word type", nullptr));
         buttonColorPurpose->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "By purpose", nullptr));
-        checkBox->setText(QCoreApplication::translate("ProtocolVisualizationWidget", "CheckBox", nullptr));
     } // retranslateUi
 
 };

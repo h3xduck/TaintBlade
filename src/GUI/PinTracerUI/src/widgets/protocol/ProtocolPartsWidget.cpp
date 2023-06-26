@@ -59,6 +59,9 @@ void ProtocolPartsWidget::onTopListItemClicked(QListWidgetItem* item)
         case 5: 
             item->setText(QString("%1 %2").arg("BYTEKEYWORD").arg(byteKeywordNum++));
             break;
+        case 6:
+            item->setText(QString("%1 %2").arg("VARIABLE LENGTH FIELD").arg(byteKeywordNum++));
+            break;
         default:
             item->setText(QString("%1 %2").arg("UNKNOWN - ERROR").arg("??"));
         }

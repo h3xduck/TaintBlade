@@ -700,6 +700,12 @@ void UTILS::DB::DatabaseManager::insertProtocolRecords(REVERSING::PROTOCOL::Prot
 		for (int jj = 0; jj < protWordVec.size(); jj++)
 		{
 			REVERSING::PROTOCOL::ProtocolWord &protWord = protWordVec.at(jj);
+			
+			if (protWord.getWordType() == REVERSING::PROTOCOL::ProtocolWord::VARIABLE_LENGTH_FIELD)
+			{
+				//do not dump it, display in gui not supported yet
+				continue;
+			}
 			sql = "INSERT INTO protocol_word(buffer_idx, word_idx, type, buffer_start, buffer_end) VALUES(" +
 				quotesql(std::to_string(ii)) + ", " +
 				quotesql(std::to_string(jj)) + ", " +
