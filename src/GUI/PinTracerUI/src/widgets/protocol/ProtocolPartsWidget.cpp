@@ -51,10 +51,13 @@ void ProtocolPartsWidget::onTopListItemClicked(QListWidgetItem* item)
         switch (type)
         {
         case 1: 
-            item->setText(QString("%1 %2").arg("DELIMETER").arg(delimeterNum++));
+            item->setText(QString("%1 %2").arg("DELIMITER").arg(delimeterNum++));
             break;
         case 2: 
             item->setText(QString("%1 %2").arg("KEYWORD").arg(keywordNum++));
+            break;
+        case 4:
+            item->setText(QString("%1 %2").arg("FAILED_DELIMITER").arg(delimeterNum++));
             break;
         case 5: 
             item->setText(QString("%1 %2").arg("BYTEKEYWORD").arg(byteKeywordNum++));

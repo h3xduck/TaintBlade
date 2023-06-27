@@ -25,8 +25,9 @@ ProtocolBufferElementVisualization::ProtocolBufferElementVisualization(std::shar
     QString wordTypeText = "UNKNOWN";
     switch (word.get()->type())
     {
-    case 1: wordTypeText = "DELIMETER"; break;
+    case 1: wordTypeText = "DELIMITER"; break;
     case 2: wordTypeText = "KEYWORD"; break;
+    case 4: wordTypeText = "DELIMITER"; break;
     case 5: wordTypeText = "BYTEKEYWORD"; break;
     }
     ui->wordTypeLabel->setText(QString("%1 %2").arg(ui->wordTypeLabel->text()).arg(wordTypeText));
