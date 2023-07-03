@@ -82,13 +82,13 @@ Protocol reverse engineering is the process of studying a communication
 protocol with the ultimate goal of uncovering its underlying structure and
 inferring its implementation, including the format of its messages and the
 grammar of the communication. Classically, this process is mainly done
-manually, which is inefficient and time-consuming. Even for malware running
+manually, which is both inefficient and time-consuming. Even for malware running
 simple protocols, we can find numerous technical challenges during the
-analysis, like obfucation, that hinder easy access to the details of the
-protocol. Additionally, protocols may easily be changed across different
+analysis, like obfuscation, that hinders easy access to the protocol details.
+Additionally, protocols frequently undergo modifications across different
 versions of the same malware family, further increasing the time to be spent by
-analysts. Therefore, there exists a great interest on developing techniques for
-automating protocol reverse engineering that are able to programatically infer
+analysts. Therefore, there exists a great interest in developing techniques for
+automating protocol reverse engineering that are able to programmatically infer
 the underlying protocol of an arbitrary program without access to the source
 code.
 
@@ -110,21 +110,21 @@ traces \cite{sota_apre}\cite{sota_apre2}.
 \end{itemize}
 
 Independently on the techniques used, the ultimate goal of protocol reverse
-engineering tools is to produce a model of the protocol, which usually is
+engineering tools is to produce a model of the protocol, which is usually
 represented either by a Protocol Format (PF), a Protocol Finite State Machine
 (PFSM), or both.
 \begin{itemize}
-    \item PFs represent the messages exchanged in the protocol partitioned into fields,
-          following a process known as message format inference. A field is a group of
+    \item PFs represent the messages exchanged in the protocol, which are partitioned into fields
+          through a process known as message format inference. A field refers to a group of
           bytes that share syntactic information, meaning that each field is delimited
-          and classified depending on how the analyzed binary interprets it during the
-          execution \cite{polyglot_caballero} (e.g. some bytes could be a keyword that is
+          and classified depending on how the analyzed program interprets it during the
+          execution \cite{polyglot_caballero} (e.g. a field could be a keyword that is
           checked during a C2 communication). When the message format inference is done
-          using dynamic tracing techniques, it can include semantic information regarding
+          using dynamic tracing techniques, it can also include semantic information regarding
           the implementation of the binary (e.g. which routines are in charge of
           interpreting the message), which enriches the syntactic meaning of each field
-          (e.g. the field is a keyword, but more specifically a command that the program
-          executes). We explain message format inference in more detail in later sections.
+          (e.g. the field is not only a keyword, but also a command that the program
+          executes). We explain message format inference in more detail in section \ref{subsec:msg_format_inference}.
     \item PFSMs represent the exchange of messages in the protocol as a state machine.
           Following a process of protocol grammar inference, representing the protocol as
           a PFSM allows for including information about the time and order of messages,
@@ -137,25 +137,25 @@ disadvantages associated with selecting either execution tracing or network
 tracing techniques.
 
 Techniques based on network tracing are usually time-sensitive, easy to operate
-and do not require to execute the binary, which is particularly advantageous
+and do not require to instrument the binary, which is particularly advantageous
 when dealing with malware. However, they only have access to the transmitted
-messages, lacking information about the internal program. This means that,
+messages, lacking information about the internal program functionality. This means that,
 unlike execution tracing techniques, they cannot be used for inferring the
 semantics of the message fields \cite{apre_survey}.
 
 On the other hand, execution tracing is usually slow, requires the execution of
 the binary, and needs of accurate instrumentation of the program, which is
-dependant of the architecture of the binary. Despite these challenges,
+dependent of the architecture of the binary. Despite these challenges,
 execution tracing techniques provide access to internal program information,
 enabling the inference of message field semantics.
 
 \textbf{Project goals.}
 As we have identified, the development of
 protocol reverse engineering tools, specifically for the analysis of command and control protocols in malware, has gained significant attention.
-Consequently, a significant amount of research has emerged focusing on various methods for inferring protocols' messagees and grammar.
+Consequently, a significant amount of research has emerged focusing on various methods for inferring protocols' messages and grammar.
 However, we observed that many of these projects are either proof of concepts
 or remain with their code unavailable. Recent
-surveys on the matter\cite{apre_survey}\cite{apre_survey2} reveal that, in the recent years, only some projects such as Nemesys\cite{github_pre_nemesys}, Prisma\cite{github_pre_prisam}, Pulsar\cite{github_pre_pulsar}
+surveys on the matter\cite{apre_survey}\cite{apre_survey2} reveal that, in the recent years, only some projects such as Nemesys\cite{github_pre_nemesys}, Prisma\cite{github_pre_prisam}, Pulsar\cite{github_pre_pulsar},
 Netzob\cite{github_pre_netzob} and Reverx\cite{github_pre_reverx} are open and accessible.
 Some projects, like Polyglot\cite{polyglot_caballero}, have released partial source code for certain components.
 And among these projects, only Netzob is actively developed. As a major drawback, it focuses on static analysis techniques, therefore lacking some of the semantic information
@@ -166,9 +166,9 @@ called \textit{TaintBlade}, that leverages execution tracing techniques to
 infer the protocol message format of arbitrary programs. The development of
 this project pursues three main goals: (1) to accurately infer the underlying
 ingress protocol message format of a program, incorporating semantic
-information from dynamic analysis to represent its fields and the usage of each
-byte; (2) to provide a comprehensive trace of program activities, including
-loaded images, child processes, executed routines, and arguments, aiding
+information derived from dynamic analysis to represent its fields and their purpose
+in the protocol; (2) to provide a comprehensive trace of program activities, including
+loaded images, child processes, executed routines, and arguments, assisting
 analysts in the reversing process rather than offering a black-box tool; (3) to
 serve as an open-source malware analysis framework, offering specific
 functionalities for studying malicious behaviors, whilst catering to the
@@ -184,48 +184,47 @@ automated protocol reverse engineering and introduces the reader to the
 underlying techniques implemented in our tool.
 
 \subsection{Message format inference}\label{subsec:msg_format_inference}
-In this section, we will introduce basic concepts about message format
-inference that we have implemented in \textit{TaintBlade}. It must be noted
-that we are presenting standard terminology, that is also common to other works
+In this section, we will introduce basic concepts about the message format
+inference process that we have implemented in \textit{TaintBlade}. It must be noted
+that we are presenting standard terminology that is also common to other works
 like ReverX\cite{github_pre_reverx} or Polyglot\cite{polyglot_caballero}.
-During the description of our framework, we will go into detail on how these
-fields are detected.
+We will go into detail on how these fields are detected during the description of our framework.
 
 \textbf{Message.} A message is the data unit over which message format inference is applied. It
 consists of a group of bytes that are either sent or received in a single exchange of information
-in the communication. For example, in a HTTP botnet, if a C2 server sends a command via a GET request,
+in the communication. For example, in an HTTP botnet, if a C2 server sends a command via a GET request,
 then all the bytes in the request are grouped in a single message.
 
 \textbf{Field.} The result of the protocol message format inference process is the partition of each
-message into fields. A field is a consecutive sequence of bytes that form a distinct unit within the syntax of the message.
-If semantic information is available, then a field also shares semantic information, meaning that all bytes
-belonging to the field serve a common purpose when the program is executed. In the previous example of a HTTP botnet,
-a field could be the command that is being sent.
+message into fields. A field is a consecutive sequence of bytes that form a distinct unit within the message's syntax.
+When semantic information is accessible, then a field also shares semantic information, implying that all bytes
+within the field serve a common purpose during the program execution. In the previous example of an HTTP botnet,
+a field could represent the command being transmitted.
 
-Infering a field depends on their type. Next, we will cover the types of fields
+Inferring a field depends on its type. Next, we will cover the types of fields
 and the common approach towards their detection in a message.
 
 \textbf{Delimiter.} A delimiter is a constant field used as a separator,
-that is, it marks the boundaries between other fields, usually when these
-are of variable length. A delimiter can be formed by one or more bytes,
-and its value is always specified by the protocol.
-For example, in the JSON format, it is common to find the symbol ":" to
-separate a key and its corresponding value.
+marking the boundaries between other fields, particularly when these
+are of variable length. A delimiter can consist of one or more bytes,
+and its value is predetermined by the protocol.
+For instance, in the JSON format, it is common to find the symbol ":" for
+separating a key and its corresponding value.
 
-Detecting a delimiter through dynamic analysis techniques requires analyzing
-the specific bytes the program examines in the message. As the program is
+Detecting a delimiter through dynamic analysis techniques involves examining
+the specific bytes that the program analyzes in the message at runtime. Since the program is
 unaware of the exact location of the delimiter within the message, it typically
-compares the delimiter value with each byte of the message. These are
-sequential comparisons, always using the same delimiter value.
+compares the delimiter value with each byte of the message. These
+comparisons are performed sequentially, always using the same delimiter value.
 
-\textbf{Keyword.} A keyword is a constant field that is specific by the protocol.
-Their value is known a priori by the program, and thus usually checked during the execution.
-The keyword may or may not appear in the message, but it is always checked by the program.
-For example, in a HTTP GET request, the request is indicated by the starting keyword "GET".
+\textbf{Keyword.} A keyword is a constant field that is fixed by the protocol.
+Although it may or may not appear in the transmitted message,
+its value is known a priori by the program and always checked at runtime.
+For example, in an HTTP GET request, the request is indicated by the starting keyword "GET".
 
-Detecting a keyword using dynamic analysis can be done by analyzing thge
-program's executed comparisons during runtime. Unlike in a delimiter, these
-comparisons are executed only once rather instead of repeatedly or
+Detecting a keyword using dynamic analysis involves analyzing the
+program's executed comparisons during runtime. Unlike delimiters, these
+comparisons are performed only once rather than repeatedly or
 sequentially. Given that long keywords may exceed the processor word size,
 multiple assembly-level comparisons may be employed to check a single keyword.
 Consequently, reversing keywords requires taking into account the compared
@@ -237,14 +236,14 @@ position of another field in the message. This is common for indicating the leng
 field, whose length is unknown to the program a priori.
 
 During the program execution, we will find that the value of a pointer field
-is usually added or substracted to a pointer variable, specifying an offset
+is usually added or subtracted to a pointer variable, specifying an offset
 into the message. Therefore, using dynamic analysis, we may detect a pointer
 field whenever we find that the value of a byte from the message is used to
 specify an offset into another byte of the message.
 
-\textbf{Variable-length field.} A variable-length field is a field which the protocol specifies
-that it may have an arbitrary length. Its boundaries may be defined by a delimiter, and its length
-is usually indicated by a pointer field.
+\textbf{Variable-length field.} A variable-length field is a field that is designed 
+to accommodate an arbitrary length. Usually we can find its boundaries defined by
+a delimiter, or its length indicated by a pointer field.
 When available, we can assign a common semantic meaning to each byte within the field by
 examining the routines utilizing the field.
 
@@ -349,7 +348,7 @@ of 1 indicates that it is tainted. This is called mono-color tainting. As we
 will explain, \textit{TaintBlade} features multi-color tainting which allows
 for distinguishing the different sources from which taint data is originated.
 
-\section{Design}
+\section{Design} \label{sec:design}
 In the previous sections, we introduced the issue of automating protocol
 reverse engineering and the relevance of this task in the context of the
 analysis of malware transmitting malicious communications. Additionally, we

@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.5.17)  15 JUN 2023 02:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.6.15)  2 JUL 2023 21:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Marcos/source/repos/h3xduck/TFM/docs/document.tex
-(c:/Users/Marcos/source/repos/h3xduck/TFM/docs/document.tex
+**c:/Users/h3xduck/Documents/GitHub/TFM/docs/document.tex
+(c:/Users/h3xduck/Documents/GitHub/TFM/docs/document.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-05-11> (IEEEtran.cls
+L3 programming layer <2023-05-15> (IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -18,7 +18,7 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmpcountC=\count187
 \@IEEEtrantmptoksA=\toks16
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 503.
-(C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+(C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -104,25 +104,25 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \@IEEEtranrubishbin=\box52
 )
 ** ATTENTION: Overriding command lockouts (line 2).
-(C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/cite\cite.sty
+(C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/cite\cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2022/04/08 v2.17n AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
-(C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen164
-)) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+)) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen165
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count266
@@ -172,20 +172,20 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.sty
+)) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks22
 )
@@ -195,30 +195,45 @@ Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \c@ALC@depth=\count281
 \ALC@tlm=\skip54
 \algorithmicindent=\skip55
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen173
 \Gin@req@width=\dimen174
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip56
+\multirow@cntb=\count282
+\multirow@dima=\skip57
+\bigstrutjot=\dimen175
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen176
+\ar@mcellbox=\box55
+\extrarowheight=\dimen177
+\NC@list=\toks23
+\extratabsurround=\skip58
+\backup@length=\skip59
+\ar@cellbox=\box56
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 227.
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
 Package xcolor Info: Model `RGB' extended on input line 1369.
@@ -228,57 +243,513 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count282
-\l__pdf_internal_box=\box55
-) (document.aux)
+\l__color_backend_stack_int=\count283
+\l__pdf_internal_box=\box57
+) (document.aux
+
+LaTeX Warning: Label `tab1' multiply defined.
+
+
+LaTeX Warning: Label `tab1' multiply defined.
+
+
+LaTeX Warning: Label `tab1' multiply defined.
+
+
+LaTeX Warning: Label `tab1' multiply defined.
+
+
+LaTeX Warning: Label `tab1' multiply defined.
+
+)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 -- Lines per column: 56 (exact).
-(C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+(C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count283
-\scratchdimen=\dimen175
-\scratchbox=\box56
-\nofMPsegments=\count284
-\nofMParguments=\count285
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count286
-\MPscratchDim=\dimen176
-\MPnumerator=\count287
-\makeMPintoPDFobject=\count288
-\everyMPtoPDFconversion=\toks24
-) (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+\scratchcounter=\count284
+\scratchdimen=\dimen178
+\scratchbox=\box58
+\nofMPsegments=\count285
+\nofMParguments=\count286
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count287
+\MPscratchDim=\dimen179
+\MPnumerator=\count288
+\makeMPintoPDFobject=\count289
+\everyMPtoPDFconversion=\toks25
+) (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 30.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 101.
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
- (C:\Users\Marcos\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 101.
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1{C:/Users/h3xduck/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+
+
+] [2]
+<images/intelpin_arch.png, id=13, 825.83531pt x 581.17125pt>
+File: images/intelpin_arch.png Graphic file (type png)
+<use images/intelpin_arch.png>
+Package pdftex.def Info: images/intelpin_arch.png  used on input line 279.
+(pdftex.def)             Requested size: 252.0pt x 177.34122pt.
+ [3 <./images/intelpin_arch.png>]
+<images/generalarch.drawio.png, id=19, 553.06625pt x 101.37875pt>
+File: images/generalarch.drawio.png Graphic file (type png)
+<use images/generalarch.drawio.png>
+Package pdftex.def Info: images/generalarch.drawio.png  used on input line 364.
+(pdftex.def)             Requested size: 226.79846pt x 41.57173pt.
+<images/archdetailedsteps.drawio.png, id=20, 902.37125pt x 646.415pt>
+File: images/archdetailedsteps.drawio.png Graphic file (type png)
+<use images/archdetailedsteps.drawio.png>
+Package pdftex.def Info: images/archdetailedsteps.drawio.png  used on input line 409.
+(pdftex.def)             Requested size: 516.0pt x 369.65385pt.
+ [4 <./images/generalarch.drawio.png>]
+Underfull \hbox (badness 2376) in paragraph at lines 431--436
+[]\OT1/ptm/b/n/10 Routine in-stru-men-ta-tion. \OT1/ptm/m/it/10 Taint-Blade \OT1/ptm/m/n/10 in-stru-ments any
+ []
+
+
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+ [5 <./images/archdetailedsteps.drawio.png>]
+Overfull \hbox (2.00647pt too wide) in paragraph at lines 466--467
+ []|[]| 
+ []
+
+
+Overfull \vbox (1.5316pt too high) detected at line 469
+ []
+
+
+Overfull \hbox (2.00647pt too wide) in paragraph at lines 480--481
+ []|[]| 
+ []
+
+
+Overfull \hbox (4.00647pt too wide) in paragraph at lines 483--484
+ []|[]| 
+ []
+
+
+Overfull \hbox (0.79857pt too wide) in paragraph at lines 498--499
+ []|[]| 
+ []
+
+[6]
+<images/TaintingEngine.drawio.png, id=34, 594.22pt x 182.6825pt>
+File: images/TaintingEngine.drawio.png Graphic file (type png)
+<use images/TaintingEngine.drawio.png>
+Package pdftex.def Info: images/TaintingEngine.drawio.png  used on input line 627.
+(pdftex.def)             Requested size: 226.79846pt x 69.72668pt.
+<images/colormixtaintarch.drawio.png, id=35, 593.21625pt x 241.90375pt>
+File: images/colormixtaintarch.drawio.png Graphic file (type png)
+<use images/colormixtaintarch.drawio.png>
+Package pdftex.def Info: images/colormixtaintarch.drawio.png  used on input line 661.
+(pdftex.def)             Requested size: 226.79846pt x 92.48543pt.
+ [7 <./images/TaintingEngine.drawio.png> <./images/colormixtaintarch.drawio.png>]
+Overfull \hbox (1.23772pt too wide) in paragraph at lines 724--724
+ []|[]| 
+ []
+
+
+Overfull \hbox (1.23772pt too wide) in paragraph at lines 730--730
+ []|[]| 
+ []
+
+
+Overfull \hbox (1.23772pt too wide) in paragraph at lines 737--737
+ []|[]| 
+ []
+
+
+Overfull \hbox (1.23772pt too wide) in paragraph at lines 743--743
+ []|[]| 
+ []
+
+
+Overfull \hbox (3.59096pt too wide) in paragraph at lines 749--749
+ []|[]| 
+ []
+
+
+Overfull \hbox (1.23772pt too wide) in paragraph at lines 749--749
+ []|[]| 
+ []
+
+
+Overfull \hbox (7.95296pt too wide) in paragraph at lines 719--764
+ [] 
+ []
+
+
+Overfull \hbox (3.02898pt too wide) in paragraph at lines 809--810
+ []|[]| 
+ []
+
+[8]
+Overfull \hbox (2.16946pt too wide) in paragraph at lines 934--935
+ []|[]| 
+ []
+
+[9] [10]
+<images/GUI_full.png, id=52, 1156.32pt x 650.43pt>
+File: images/GUI_full.png Graphic file (type png)
+<use images/GUI_full.png>
+Package pdftex.def Info: images/GUI_full.png  used on input line 1047.
+(pdftex.def)             Requested size: 516.0pt x 290.2493pt.
+
+Overfull \hbox (2.25136pt too wide) in paragraph at lines 1140--1140
+ []|[]| 
+ []
+
+[11] [12 <./images/GUI_full.png>]
+LaTeX Font Info:    Trying to load font information for OML+ptm on input line 1229.
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlptm.fd
+File: omlptm.fd 
 )
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1229.
+<images/sch_s4.png, id=60, 860.46469pt x 208.52907pt>
+File: images/sch_s4.png Graphic file (type png)
+<use images/sch_s4.png>
+Package pdftex.def Info: images/sch_s4.png  used on input line 1240.
+(pdftex.def)             Requested size: 252.0pt x 61.07007pt.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 1253.
+ (C:\Users\h3xduck\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1253.
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1245--1254
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1245--1254
+
+ []
+
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1264--1274
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1264--1274
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1279--1290
+[]\OT1/ptm/b/n/10 Final pro-to-col for-mat. \OT1/ptm/m/n/10 Af-ter we re-peat the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1279--1290
+\OT1/ptm/m/n/10 fuzzing pro-cess for two more bytes, we even-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1279--1290
+\OT1/ptm/m/n/10 tu-ally reach the fol-low-ing de-lim-iter (Fig-ure 15[]):
+ []
+
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1279--1290
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1279--1290
+
+ []
+
+[13 <./images/sch_s4.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1296--1302
+[]\OT1/ptm/m/n/10 Therefore we now know that the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1296--1302
+\OT1/ptm/m/n/10 mes-sage fol-lows the fol-low-ing for-mat:
+ []
+
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1296--1302
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1296--1302
+
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 1303--1309
+[]\OT1/ptm/m/n/10 We can check that this is the case by con-fig-ur-ing
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 1303--1309
+\OT1/ptm/m/n/10 IN-et-Sim to send the fol-low-ing string to the mal-ware:
+ []
+
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1303--1309
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1303--1309
+
+ []
+
+<images/sch_s11.png, id=68, 865.73438pt x 270.25969pt>
+File: images/sch_s11.png Graphic file (type png)
+<use images/sch_s11.png>
+Package pdftex.def Info: images/sch_s11.png  used on input line 1316.
+(pdftex.def)             Requested size: 252.0pt x 78.66609pt.
+[14 <./images/sch_s11.png>]
+Underfull \hbox (badness 4608) in paragraph at lines 1402--1403
+[]\OT1/ptm/m/n/8 B. D. Sija, Y.-H. Goo, K.-S. Shim, H. Hasanova, and M.-
+ []
+
+
+Underfull \hbox (badness 4096) in paragraph at lines 1402--1403
+\OT1/ptm/m/n/8 S. Kim, \A Sur-vey of Au-to-matic Pro-to-col Re-verse En-gi-neer-
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 1402--1403
+\OT1/ptm/m/n/8 View," Se-cu-rity and Com-mu-ni-ca-tion Net-works, vol. 2018. Hin-
+ []
+
+
+Underfull \hbox (badness 3078) in paragraph at lines 1403--1404
+[]\OT1/ptm/m/n/8 J. Duch[]ene, C. Le Guer-nic, E. Alata, V. Nicomette, and M.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1404--1405
+[]\OT1/ptm/m/n/8 Y. Huang, H. Shu, F. Kang, and Y. Guang, \Pro-to-col
+ []
+
+
+Underfull \hbox (badness 4505) in paragraph at lines 1404--1405
+\OT1/ptm/m/n/8 Reverse-Engineering Meth-ods and Tools: A Sur-vey," Com-puter
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1404--1405
+\OT1/ptm/m/n/8 Com-mu-ni-ca-tions, vol. 182. El-se-vier BV, pp. 238{254,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1404--1405
+\OT1/ptm/m/n/8 Jan. 2022. doi: 10.1016/j.comcom.2021.11.009. Avail-able:
+ []
+
+
+Underfull \hbox (badness 3078) in paragraph at lines 1405--1406
+[]\OT1/ptm/m/n/8 J. Duch[]ene, C. Le Guer-nic, E. Alata, V. Nicomette, and M.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1409--1410
+[]\OT1/ptm/m/n/8 Jasantunes, \GitHub - jas-an-tunes/reverx: A pro-to-col re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1409--1410
+\OT1/ptm/m/n/8 verse en-gi-neer tool writ-ten in java.," GitHub. Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1410--1411
+[]\OT1/ptm/m/n/8 Tammok, \GitHub - tammok/PRISMA: Pro-to-col In-spec-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1410--1411
+\OT1/ptm/m/n/8 tion and State Ma-chine Anal-y-sis," GitHub. Avail-able:
+ []
+
+
+Underfull \hbox (badness 3240) in paragraph at lines 1412--1413
+[]\OT1/ptm/m/n/8 Vs-Uulm, \GitHub - vs-uulm/nemesys: NEt-work MEs-sage Syn-
+ []
+
+
+Underfull \hbox (badness 3861) in paragraph at lines 1412--1413
+\OT1/ptm/m/n/8 ti-fi-ca-tion by aLign-ment (IN-FO-COM 2020)," GitHub. Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1413--1414
+[]\OT1/ptm/m/n/8 Netzob, \GitHub - net-zob/netzob: Net-zob: Pro-to-col Re-verse
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1413--1414
+\OT1/ptm/m/n/8 En-gi-neer-ing, Mod-el-ing and Fuzzing," GitHub. Avail-able:
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 1414--1415
+[]\OT1/ptm/m/n/8 J. Clause, W. Li, and A. Orso, \Dy-tan," Pro-ceed-ings of the
+ []
+
+
+Underfull \hbox (badness 2119) in paragraph at lines 1414--1415
+\OT1/ptm/m/n/8 2007 in-ter-na-tional sym-po-sium on Soft-ware test-ing and anal-y-sis.
+ []
+
+
+Underfull \hbox (badness 3895) in paragraph at lines 1414--1415
+\OT1/ptm/m/n/8 ACM, Jul. 09, 2007. doi: 10.1145/1273463.1273490. Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1415--1416
+[]\OT1/ptm/m/n/8 V. P. Ke-merlis, G. Por-toka-lidis, K. Jee, and A. D.
+ []
+
+
+Underfull \hbox (badness 4291) in paragraph at lines 1415--1416
+\OT1/ptm/m/n/8 Keromytis, \libdft," ACM SIG-PLAN No-tices, vol. 47, no. 7.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1415--1416
+\OT1/ptm/m/n/8 As-so-ci-a-tion for Com-put-ing Ma-chin-ery (ACM), pp. 121{132,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1415--1416
+\OT1/ptm/m/n/8 Mar. 03, 2012. doi: 10.1145/2365864.2151042. Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+[]\OT1/ptm/m/n/8 AMD, \AMD64 Ar-chi-tec-ture Pro-gram-mer's Man-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+\OT1/ptm/m/n/8 ual Vol-ume 2: Sys-tem Pro-gram-ming." Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1420--1421
+\OT1/ptm/m/n/8 https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-
+ []
+
+
+Underfull \hbox (badness 6236) in paragraph at lines 1421--1422
+[]\OT1/ptm/m/n/8 C.-K. Luk et al., \Pin," ACM SIG-PLAN No-tices, vol. 40,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1421--1422
+\OT1/ptm/m/n/8 no. 6. As-so-ci-a-tion for Com-put-ing Ma-chin-ery (ACM), pp.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1423--1424
+[]\OT1/ptm/m/n/8 h3xduck, \GitHub - h3xduck/TaintBlade: A Pro-to-col
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1423--1424
+\OT1/ptm/m/n/8 Re-verse En-gi-neer-ing Frame-work" GitHub. Avail-able:
+ []
+
+
+Underfull \hbox (badness 3713) in paragraph at lines 1427--1428
+[]\OT1/ptm/m/n/8 \REMnux: A Linux Toolkit for Mal-ware An-a-lysts." Avail-able:
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 1428--1429
+[]\OT1/ptm/m/n/8 \Overview of Net-zob | Net-zob 1.0 git doc-u-men-ta-tion." Avail-
+ []
+
+[15]
+<images/sch_s1.png, id=76, 1927.2pt x 1084.05pt>
+File: images/sch_s1.png Graphic file (type png)
+<use images/sch_s1.png>
+Package pdftex.def Info: images/sch_s1.png  used on input line 1439.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s2.png, id=77, 1927.2pt x 1084.05pt>
+File: images/sch_s2.png Graphic file (type png)
+<use images/sch_s2.png>
+Package pdftex.def Info: images/sch_s2.png  used on input line 1445.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s3.png, id=78, 1927.2pt x 1084.05pt>
+File: images/sch_s3.png Graphic file (type png)
+<use images/sch_s3.png>
+Package pdftex.def Info: images/sch_s3.png  used on input line 1451.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s5.png, id=79, 1927.2pt x 1084.05pt>
+File: images/sch_s5.png Graphic file (type png)
+<use images/sch_s5.png>
+Package pdftex.def Info: images/sch_s5.png  used on input line 1457.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s6.png, id=80, 1927.2pt x 1084.05pt>
+File: images/sch_s6.png Graphic file (type png)
+<use images/sch_s6.png>
+Package pdftex.def Info: images/sch_s6.png  used on input line 1463.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s7.png, id=81, 1927.2pt x 1084.05pt>
+File: images/sch_s7.png Graphic file (type png)
+<use images/sch_s7.png>
+Package pdftex.def Info: images/sch_s7.png  used on input line 1470.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s8.png, id=82, 1927.2pt x 1084.05pt>
+File: images/sch_s8.png Graphic file (type png)
+<use images/sch_s8.png>
+Package pdftex.def Info: images/sch_s8.png  used on input line 1476.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s9.png, id=83, 1927.2pt x 1084.05pt>
+File: images/sch_s9.png Graphic file (type png)
+<use images/sch_s9.png>
+Package pdftex.def Info: images/sch_s9.png  used on input line 1482.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+<images/sch_s10.png, id=84, 1927.2pt x 1084.05pt>
+File: images/sch_s10.png Graphic file (type png)
+<use images/sch_s10.png>
+Package pdftex.def Info: images/sch_s10.png  used on input line 1488.
+(pdftex.def)             Requested size: 516.0pt x 290.24931pt.
+
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -290,22 +761,23 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[1{C:/Users/Marcos/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Marcos/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+[16] [17 <./images/sch_s1.png> <./images/sch_s2.png>] [18 <./images/sch_s3.png> <./images/sch_s5.png>] [19 <./images/sch_s6.png> <./images/sch_s7.png>] [20 <./images/sch_s8.png> <./images/sch_s9.png>] [21 <./images/sch_s10.png>] (document.aux)
 
+LaTeX Warning: There were multiply-defined labels.
 
-] (document.aux) ) 
+ ) 
 Here is how much of TeX's memory you used:
- 4231 strings out of 476360
- 67695 string characters out of 5787553
- 1862993 words of memory out of 5000000
- 24610 multiletter control sequences out of 15000+600000
- 546986 words of font info for 97 fonts, out of 8000000 for 9000
+ 4702 strings out of 476411
+ 76988 string characters out of 5788190
+ 1922845 words of memory out of 5000000
+ 24988 multiletter control sequences out of 15000+600000
+ 551527 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,62p,277b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Marcos/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Marcos/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Marcos/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Marcos/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on document.pdf (1 page, 55052 bytes).
+ 57i,18n,62p,759b,342s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/h3xduck/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on document.pdf (21 pages, 1135902 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
+ 156 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
