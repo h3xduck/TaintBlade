@@ -1,8 +1,0 @@
-;
-; Copyright (C) 2008-2008 Intel Corporation.
-; SPDX-License-Identifier: MIT
-;
-
-EXPORTS
- do_nothing
- nothing_doing

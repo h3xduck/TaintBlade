@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['windows_5fsys_1424',['WINDOWS_SYS',['../structEXCEPTION__INFO_1_1EXCEPTION__SPECIFIC_1_1WINDOWS__SYS.html',1,'EXCEPTION_INFO::EXCEPTION_SPECIFIC']]]
-];

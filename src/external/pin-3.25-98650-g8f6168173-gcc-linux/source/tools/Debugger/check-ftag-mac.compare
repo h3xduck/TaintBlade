@@ -1,7 +1,0 @@
-\s*ftag\s*.*\s*0x0000ffff
-\s*ftag\s*.*\s*0x0000ffff
-\s*ftag\s*.*\s*0x00007fff
-\s*ftag\s*.*\s*0x00007fff
-\s*ftag\s*.*\s*0x0000ffff
-\s*ftag\s*.*\s*0x0000bfff
-All breakpoints removed. \(5 breakpoints\)
