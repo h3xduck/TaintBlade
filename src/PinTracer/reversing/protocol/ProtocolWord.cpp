@@ -114,13 +114,24 @@ std::string REVERSING::PROTOCOL::ProtocolWord::toString()
 	case 3: wordType = "SEPARATORLASTVALUE"; break;
 	case 4: wordType = "FAILEDDELIMETER"; break;
 	case 5: wordType = "BYTEKEYWORD"; break;
+	case 6: wordType = "VARIABLE_LENGTH_FIELD"; break;
 	}
 	ss << "Word TYPE : " << wordType << " | STARTINDEX : " << this->getStartIndex() << " | ENDINDEX : " << this->getEndIndex();
 	std::vector<UINT8> &bytesVec = this->getAllBytes();
 	std::vector<int> &compVec = this->getSuccessIndexes();
-	for (int ii = 0; ii < bytesVec.size(); ii++)
+	if (this->getWordType() == 6)
 	{
-		ss << "\n\tByte " << ii << ": " << InstructionWorker::byteToHexValueString(bytesVec.at(ii)) << " (as char: " << bytesVec.at(ii) << ") | Comparison result: " << compVec.at(ii);
+		for (int ii = 0; ii < bytesVec.size(); ii++)
+		{
+			ss << "\n\tByte " << ii << ": " << InstructionWorker::byteToHexValueString(bytesVec.at(ii)) << " (as char: " << bytesVec.at(ii) << ")";
+		}
+	}
+	else
+	{
+		for (int ii = 0; ii < bytesVec.size(); ii++)
+		{
+			ss << "\n\tByte " << ii << ": " << InstructionWorker::byteToHexValueString(bytesVec.at(ii)) << " (as char: " << bytesVec.at(ii) << ") | Comparison result: " << compVec.at(ii);
+		}
 	}
 
 	return ss.str();

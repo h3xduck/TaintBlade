@@ -49,9 +49,9 @@ void TaintController::taintMemWithMem(const ADDRINT destMem, const UINT32 destBy
 	}
 }
 
-void TaintController::taintMemByteWithColor(const ADDRINT destMem, UINT16 color)
+void TaintController::taintMemByteWithColor(const ADDRINT destMem, UINT16 color, BOOL manualTaint)
 {
-	this->tagMap.taintMem(destMem, color);
+	this->tagMap.taintMem(destMem, color, manualTaint);
 }
 
 void TaintController::taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg, BOOL colorOverwrite)
@@ -223,9 +223,9 @@ void TaintController::registerOriginalColor(UINT16 color, std::string dllName, s
 	this->tagMap.tagLog.logTagOriginal(color, dllName, funcName, memAddress, byteValue);
 }
 
-void TaintController::registerColorReason(UINT16 color, TagLog::color_taint_reason_t reason)
+void TaintController::registerColorLead(UINT16 color, TagLog::color_taint_lead_t lead)
 {
-	this->tagMap.tagLog.logColorTaintReason(color, reason);
+	this->tagMap.tagLog.logColorTaintLead(color, lead);
 }
 
 std::vector<UINT16> TaintController::getColorParents(UINT16 color)
@@ -242,6 +242,11 @@ void TaintController::printTaint()
 void TaintController::dumpTaintLog()
 {
 	this->tagMap.dumpTaintLog();
+}
+
+std::tr1::unordered_map<UINT16, Tag> TaintController::getTaintLog()
+{
+	return this->tagMap.getTaintLog();
 }
 
 void TaintController::dumpTaintLogPrettified(UINT16 color)
@@ -264,14 +269,14 @@ std::vector<std::pair<UINT16, TagLog::original_color_data_t>> TaintController::g
 	return this->tagMap.getOriginalColorsVector();
 }
 
-std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> TaintController::getColorReasonsVector()
+std::vector<std::pair<UINT16, TagLog::color_taint_lead_t>> TaintController::getColorLeadsVector()
 {
-	return this->tagMap.getColorReasonsVector();
+	return this->tagMap.getColorLeadsVector();
 }
 
-TagLog::color_taint_reason_t TaintController::getColorTaintReason(UINT16 color)
+TagLog::color_taint_lead_t TaintController::getColorTaintLead(UINT16 color)
 {
-	return this->tagMap.getColorTaintReason(color);
+	return this->tagMap.getColorTaintLead(color);
 }
 
 std::vector<Tag> TaintController::getColorTransVector()

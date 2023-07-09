@@ -75,7 +75,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		const ADDRINT memAddress = data.second.memAddress;
 		const UINT8 byteValue = data.second.byteValue;
 		const UINT16 color = data.first;
-		TagLog::color_taint_reason_t taintReason = taintManager.getController().getColorTaintReason(color);
+		TagLog::color_taint_lead_t taintLead = taintManager.getController().getColorTaintLead(color);
 		if (memAddress != lastMemValue+1)
 		{
 			LOG_DEBUG("Found new buffer, starting at " << to_hex_dbg(memAddress));
@@ -95,7 +95,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addValueToValuesVector(byteValue);
 			//Include the color information into buffer byte
 			protNetBuffer.addColorToColorsVector(color);
-			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
+			protNetBuffer.addLeadTocolorTaintLeadsVector(taintLead);
 		}
 		else
 		{
@@ -108,7 +108,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 			protNetBuffer.addColorToColorsVector(color);
 			//We get the actual value of the byte at that memory address and store it
 			protNetBuffer.addValueToValuesVector(byteValue);
-			protNetBuffer.addReasonTocolorTaintReasonsVector(taintReason);
+			protNetBuffer.addLeadTocolorTaintLeadsVector(taintLead);
 			
 		}
 		lastMemValue = memAddress;
@@ -355,7 +355,7 @@ void REVERSING::PROTOCOL::reverseProtocol()
 
 	} //finished parsing for all protocol netbuffers
 	
-
+	LOG_DEBUG("Going for pointer fields");
 	//Once we've got all comparison heuristics interpreted into the protocol netbuffers, we will do the same with
 	//the pointer field heuristics
 	RevLog<HLPointerField>& pointerFieldheuristicsVec = ctx.getRevContext()->getPointerFieldHeuristicsVector();
@@ -383,6 +383,64 @@ void REVERSING::PROTOCOL::reverseProtocol()
 		}
 	}
 
+	//Once we have everything, we assign as variable-length fields those pointed by pointer fields
+	//This needs to be seriously refactored, did it right before the deadline tbh
+	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
+	{
+		std::vector<UINT16> colorsVector = buf.getColorsVector();
+		for (UINT16 ii = 0; ii < colorsVector.size(); ii++)
+		{
+			//Check if pointed by pointer field
+			int colorPosition = 0;
+			for (HLPointerField& pointerField : logPointerFieldHeuristicVec)
+			{
+				std::vector<UINT16> colorPointerVec = pointerField.comparisonColorsPointed();
+				UINT16 pointedColor = colorPointerVec.at(0);
+				LOG_DEBUG("Trying to find variable length fields starting at color " << pointedColor);
+				//Found that the color is pointed.
+				//Proceed to mark it as variable-length field until some byte has an 
+				//assigned word or pointer already.
+				//Get the position in the buffer of that color
+				
+				for (int jj=0; jj<colorsVector.size(); jj++)
+				{
+					UINT16 color = colorsVector.at(jj);
+					if (color == pointedColor)
+					{
+						colorPosition = jj;
+					}
+				}
+				ProtocolWord word(buf.getValuesVector().at(colorPosition), colorPosition, colorPosition, ProtocolWord::VARIABLE_LENGTH_FIELD, 1);
+				colorPosition++;
+				while (colorPosition < buf.getColorsVector().size())
+				{
+					for (int jj = 0; jj< buf.getWordVector().size(); jj++)
+					{
+						ProtocolWord word = buf.getWordVector().at(jj);
+						if (word.getStartIndex() == colorPosition)
+						{
+							//Found the end of the field
+							word.setEndIndex(colorPosition-1);
+							buf.addWordToWordVector(word);
+							goto nextColor;
+						}
+					}
+					word.addByte(buf.getValuesVector().at(colorPosition));
+					word.addColor(0);
+					word.setEndIndex(colorPosition);
+					colorPosition++;
+				}
+				//If reached the end, then the variable field was positioned right at the end
+				//of the buffer. Insert the word.
+				buf.addWordToWordVector(word);
+				ii = colorPosition++;
+			}
+		nextColor:
+			ii = colorPosition++;
+		}
+	}
+
+
 	//Test
 	for (ProtocolNetworkBuffer& buf : protocol.getNetworkBufferVector())
 	{
@@ -400,6 +458,6 @@ void REVERSING::PROTOCOL::reverseProtocol()
 	}
 
 	//Dump data about the protocol
-	dataDumper.writeProtocolDump(protocol);
+	ctx.getDataDumper().writeProtocolDump(protocol);
 
 }

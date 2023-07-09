@@ -25,3 +25,5 @@ src/AntiDebugTest
 *.txt
 *.db
 src/oldtest
+!CMakeLists.txt
+!tracepoints.txt

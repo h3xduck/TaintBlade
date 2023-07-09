@@ -1,8 +1,8 @@
 #include "TraceManager.h"
 #include "../io/DataDumper.h"
+#include "../../common/Context.h"
 
-extern DataDumper dataDumper;
-
+extern Context ctx;
 UTILS::TRACE::TraceManager::TraceManager() {};
 
 void UTILS::TRACE::TraceManager::addTracePoint(const std::string& dllName, const std::string& funcName, const int numArgs)
@@ -108,11 +108,10 @@ static void genericFunctionTraceEnter(ADDRINT retIp, VOID* dllNamePtr, VOID* fun
 
 static void genericFunctionTraceExit(ADDRINT retValue, VOID* dllNamePtr, VOID* funcNamePtr)
 {
-	LOG_DEBUG("mini");
 	const std::string* dllName = static_cast<std::string*>(dllNamePtr);
 	const std::string* funcName = static_cast<std::string*>(funcNamePtr);
 
-	LOG_DEBUG("miniexit: " << std::endl << "\tDLL:" << *dllName << " FUNC:" << *funcName);
+	//LOG_DEBUG("miniexit: " << std::endl << "\tDLL:" << *dllName << " FUNC:" << *funcName);
 
 	//Check if the trace point was inserted (it should, as the exit event should be called after the enter one)
 	for (int ii=0; ii< UTILS::TRACE::interFunctionCallsVector.size(); ii++)
@@ -135,7 +134,7 @@ static void genericFunctionTraceExit(ADDRINT retValue, VOID* dllNamePtr, VOID* f
 				LOG_DEBUG("arg" << jj << ": " << arg);
 			}
 
-			dataDumper.writeTraceDumpLine(tp);
+			ctx.getDataDumper().writeTraceDumpLine(tp);
 
 			UTILS::TRACE::interFunctionCallsVector.erase(UTILS::TRACE::interFunctionCallsVector.begin() + ii);
 			return;

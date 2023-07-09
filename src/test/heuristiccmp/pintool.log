@@ -1,4 +1,4 @@
 Pin: pin-3.25-98650-8f6168173
 Copyright 2002-2022 Intel Corporation.
-A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\base_ia32\reg_ia32.cpp: LEVEL_BASE::REG_Size: 2135: Invalid register for REG_Size: *invalid*
+A:  C:\tmp_proj\pinjen\workspace\pypl-pin-nightly\GitPin\Source\pin\pin\image.cpp: LEVEL_PINCLIENT::IMG_LoadOffset: 2886: The img passed to IMG_LoadOffset() is stale
 

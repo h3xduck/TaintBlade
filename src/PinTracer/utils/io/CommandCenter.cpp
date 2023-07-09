@@ -28,7 +28,7 @@ void UTILS::IO::CommandCenter::startCommandCenterJob()
     PIN_THREAD_UID threadUid;
 
     LOG_DEBUG("Starting Command Center job");
-    threadId = PIN_SpawnInternalThread(queryCommandAvailable, debugFile, 0, &threadUid);
+    threadId = PIN_SpawnInternalThread(queryCommandAvailable, &debugFile, 0, &threadUid);
     
     if (threadId == INVALID_THREADID)
     {
@@ -48,14 +48,20 @@ void UTILS::IO::CommandCenter::startCommandCenterJob()
 
 void UTILS::IO::CommandCenter::queryCommandAvailable(VOID* arg)
 {
-    debugFile = (std::ostream*)(arg);
+   // debugFile = (std::ofstream)(arg);
     
     //For every X seconds, try and see if there are commands to execute
     while (true)
     {
         PIN_Sleep(UTILS::IO::CommandCenter::MILLIS_PERIOD_QUERY_COMMAND);
         LOG_DEBUG("Querying");
-        commandFile.open(PINTOOL_COMMAND_FILE);
+        const char* commandFilename = getFilenameFullName(PINTOOL_COMMAND_FILE).c_str();
+        commandFile.open(commandFilename);
+        if (!commandFile)
+        {
+            //We need to create the file first
+            std::ofstream outputFile(commandFilename);
+        }
         std::string line;
         while (std::getline(commandFile, line))
         {
@@ -64,7 +70,7 @@ void UTILS::IO::CommandCenter::queryCommandAvailable(VOID* arg)
             LOG_DEBUG("Read line from commands file: " << line);
             commandFile.close();
             //This erases the file contents
-            commandFile.open(PINTOOL_COMMAND_FILE, std::ofstream::out | std::ofstream::trunc);
+            commandFile.open(commandFilename, std::ofstream::out | std::ofstream::trunc);
             executeCommand(line);
         }
         commandFile.close();

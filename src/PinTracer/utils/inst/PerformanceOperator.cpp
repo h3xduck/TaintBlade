@@ -62,3 +62,8 @@ void PerformanceOperator::trackCurrentState(INS &ins)
 		}
 	}
 }
+
+UINT64 PerformanceOperator::getCurrentTimeTimestamp()
+{
+	return time(NULL);
+}

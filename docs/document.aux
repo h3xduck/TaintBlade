@@ -1,11 +1,136 @@
 \relax 
-\bibcite{b1}{1}
+\citation{sota_apre}
+\citation{sota_apre2}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {II}Background}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {III}Design}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Evaluation}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {V}Related work}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Future work \& limitations}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{1}{}\protected@file@percent }
-\gdef \@abspage@last{1}
+\citation{polyglot_caballero}
+\citation{apre_survey}
+\citation{apre_survey}
+\citation{apre_survey2}
+\citation{github_pre_nemesys}
+\citation{github_pre_prisam}
+\citation{github_pre_pulsar}
+\citation{github_pre_netzob}
+\citation{github_pre_reverx}
+\citation{polyglot_caballero}
+\citation{github_pre_reverx}
+\citation{polyglot_caballero}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Background}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Message format inference}{2}{}\protected@file@percent }
+\newlabel{subsec:msg_format_inference}{{\mbox  {II-A}}{2}}
+\citation{intelpin_main}
+\citation{intelpin_lukpaper}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Dynamic Binary Instrumentation}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Intel Pin architecture, from\cite  {intelpin_lukpaper}.}}{3}{}\protected@file@percent }
+\newlabel{figure:intelpin_arch}{{1}{3}}
+\citation{book_practical_binary_analysis}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Taint analysis}{4}{}\protected@file@percent }
+\newlabel{subsec:taint_analysis}{{\mbox  {II-C}}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Design}{4}{}\protected@file@percent }
+\newlabel{sec:design}{{III}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Architecture overview}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces General architecture of TaintBlade}}{4}{}\protected@file@percent }
+\newlabel{fig_3_generalarch}{{2}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of \textit  {TaintBlade}.}}{5}{}\protected@file@percent }
+\newlabel{figure:fig_3_archdetailedsteps}{{3}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Instrumentation module}{5}{}\protected@file@percent }
+\citation{intel_xed_site}
+\citation{amd_manual_p65}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Instruction types for which instrumentation is supported}}{6}{}\protected@file@percent }
+\newlabel{tab1}{{I}{6}}
+\newlabel{table:instruction_types_instrumentation_supported}{{I}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Tainting module}{6}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Existing open-source tainting engines, not selected}}{6}{}\protected@file@percent }
+\newlabel{tab1}{{II}{6}}
+\newlabel{table:taining_engines_reason_not_chosen}{{II}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Taint storage data structures.}}{7}{}\protected@file@percent }
+\newlabel{figure:taintingengine}{{4}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Taint colors management data structures.}}{7}{}\protected@file@percent }
+\newlabel{figure:colormixtaintarch}{{5}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Heuristics module}{8}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Implemented taint sources and taint sinks in TaintBlade}}{9}{}\protected@file@percent }
+\newlabel{tab1}{{III}{9}}
+\newlabel{table:taint_sources_and_taint_sinks}{{III}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Taint rules for each instruction type}}{9}{}\protected@file@percent }
+\newlabel{tab1}{{IV}{9}}
+\newlabel{table:taint_rules}{{IV}{9}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Implemented heuristics in TaintBlade}}{10}{}\protected@file@percent }
+\newlabel{tab1}{{V}{10}}
+\newlabel{table:implemented_heuristics}{{V}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Protocol reversing module}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Tracing module}{10}{}\protected@file@percent }
+\citation{taintblade_github_repo}
+\citation{upx_page}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-G}}Noper module}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-H}}\textit  {TaintBlade} GUI}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-I}}Code availability}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Evaluation}{11}{}\protected@file@percent }
+\citation{virtualbox_page}
+\citation{flarevm}
+\citation{remnux}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Screenshot of the GUI after instrumenting a sample program.}}{12}{}\protected@file@percent }
+\newlabel{figure:gui_full}{{6}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Relevant directories at the TaintBlade repository.}}{12}{}\protected@file@percent }
+\newlabel{tab1}{{VI}{12}}
+\newlabel{table:repo_relevant_files}{{VI}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Visualization of gathered messages and fields after stopping the execution.}}{13}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s4}{{7}{13}}
+\citation{github_pre_netzob}
+\citation{netzob_clustering}
+\citation{polyglot_caballero}
+\citation{dispatcher_paper}
+\citation{qemu}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Protocol message visualization window, showing the semantic information of a variable-length field.}}{14}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s11}{{8}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Related work}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{14}{}\protected@file@percent }
+\bibcite{sota_apre}{1}
+\bibcite{sota_apre2}{2}
+\bibcite{apre_survey}{3}
+\bibcite{apre_survey2}{4}
+\bibcite{polyglot_caballero}{5}
+\bibcite{polyglot_source}{6}
+\bibcite{github_dytan}{7}
+\bibcite{github_pre_reverx}{8}
+\bibcite{github_pre_prisam}{9}
+\bibcite{github_pre_pulsar}{10}
+\bibcite{github_pre_nemesys}{11}
+\bibcite{github_pre_netzob}{12}
+\bibcite{paper_dytan}{13}
+\bibcite{paper_libdft}{14}
+\bibcite{github_libdft64}{15}
+\bibcite{github_triton}{16}
+\bibcite{book_practical_binary_analysis}{17}
+\bibcite{amd_manual_p65}{18}
+\bibcite{intelpin_main}{19}
+\bibcite{intelpin_lukpaper}{20}
+\bibcite{intel_xed_site}{21}
+\bibcite{taintblade_github_repo}{22}
+\bibcite{upx_page}{23}
+\bibcite{virtualbox_page}{24}
+\bibcite{flarevm}{25}
+\bibcite{remnux}{26}
+\bibcite{netzob_clustering}{27}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Future work \& limitations}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{15}{}\protected@file@percent }
+\bibcite{dispatcher_paper}{28}
+\bibcite{qemu}{29}
+\newlabel{appendix_eval_screenshots}{{\mbox  {VI-A}}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces }}{17}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s1}{{9}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces }}{17}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s2}{{10}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces }}{18}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s3}{{11}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces }}{18}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s5}{{12}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces }}{19}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s6}{{13}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces }}{19}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s7}{{14}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces }}{20}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s8}{{15}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces }}{20}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s9}{{16}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces }}{21}{}\protected@file@percent }
+\newlabel{figure:ap_sch_s10}{{17}{21}}
+\gdef \@abspage@last{21}

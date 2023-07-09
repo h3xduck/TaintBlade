@@ -8,6 +8,7 @@ extern Context ctx;
 void OPC_INST::cmp_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, ADDRINT memSrc, INT32 memSrcLen, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
@@ -19,6 +20,7 @@ void OPC_INST::cmp_mem2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, AD
 void OPC_INST::cmp_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
@@ -28,6 +30,7 @@ void OPC_INST::cmp_reg2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 void OPC_INST::cmp_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, REG regSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	//std::string val = InstructionWorker::getMemoryValueHexString(memDest, memDestLen);
 	//ctx.updateLastMemoryValue(val, memDestLen);
@@ -39,6 +42,7 @@ void OPC_INST::cmp_reg2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, RE
 void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint
@@ -48,6 +52,7 @@ void OPC_INST::cmp_imm2reg(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UI
 void OPC_INST::cmp_imm2mem(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, ADDRINT memDest, INT32 memDestLen, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//No taint

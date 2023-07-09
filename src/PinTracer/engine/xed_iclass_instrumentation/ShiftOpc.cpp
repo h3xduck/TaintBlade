@@ -5,6 +5,7 @@ extern Context ctx;
 void OPC_INST::shr_imm2reg(LEVEL_VM::CONTEXT* lctx, THREADID tid, ADDRINT ip, UINT64 immSrc, REG regDest, UINT32 opc)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	PIN_UnlockClient();
 	//Tainting depends on the value of the IMM

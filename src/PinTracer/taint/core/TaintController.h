@@ -17,10 +17,10 @@ private:
 public:
 	TaintController();
 
-	//To be used only by the taintSource, this marks the taint event as TAINTGEN (not a natural taint at the program)
+	//To be used only by the taintSource, this marks the taint event as TAINTGEN (not a natural taint at the program). Always sets manualTaint = true
 	std::vector<UINT16> taintMemoryNewColor(const ADDRINT memAddr, const UINT32 bytes);
 	void taintMemWithMem(const ADDRINT destMem, const UINT32 destBytes, const ADDRINT srcMem, const UINT32 srcBytes);
-	void taintMemByteWithColor(const ADDRINT destMem, UINT16 color);
+	void taintMemByteWithColor(const ADDRINT destMem, UINT16 color, BOOL manualTaint = false);
 	void taintMemWithReg(const ADDRINT destMem, const UINT32 destBytes, const LEVEL_BASE::REG srcReg, BOOL colorOverwrite = false);
 	void untaintMem(const ADDRINT destMem, const UINT32 destBytes);
 
@@ -37,9 +37,9 @@ public:
 	void registerOriginalColor(UINT16 color, std::string dllName, std::string funcName, ADDRINT memAddress, UINT8 byteValue);
 	
 	/**
-	Registers a taint reason for a color
+	Registers a taint lead for a color
 	*/
-	void registerColorReason(UINT16 color, TagLog::color_taint_reason_t reason);
+	void registerColorLead(UINT16 color, TagLog::color_taint_lead_t lead);
 
 	/**
 	Returns a vector will all parents of a color (recursively, not limited to 1 generation)
@@ -48,12 +48,13 @@ public:
 
 	void printTaint();
 	void dumpTaintLog();
+	std::tr1::unordered_map<UINT16, Tag> getTaintLog();
 	void dumpTaintLogPrettified(UINT16 color);
 	void dumpTagLogOriginalColors();
 	std::vector<std::pair<ADDRINT, UINT16>> getTaintedMemoryVector();
 	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> getOriginalColorsVector();
-	std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> getColorReasonsVector();
-	TagLog::color_taint_reason_t getColorTaintReason(UINT16 color);
+	std::vector<std::pair<UINT16, TagLog::color_taint_lead_t>> getColorLeadsVector();
+	TagLog::color_taint_lead_t getColorTaintLead(UINT16 color);
 	std::vector<Tag> getColorTransVector();
 
 	bool regIsTainted(REG reg);

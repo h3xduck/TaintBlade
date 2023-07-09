@@ -19,17 +19,19 @@
 #define DEBUG_IN_HEX 1
 
 //Debug heuristics process
-#define HEURISTIC_DEBUG 1
+#define HEURISTIC_DEBUG 0
 
 //******************************* DATA DUMPING CONFIG *******************************//
 
 //Data dumping files
+#define TRACED_PROCESS_DUMP_FILE "tracedprocess.dfx"
 #define CURRENT_TAINTED_MEMORY_DUMP_FILE "memdump.dfx"
 #define TAINT_EVENT_DUMP_FILE "tainteventdump.dfx"
 #define ORG_COLORS_DUMP_FILE "orgcolorsdump.dfx"
 #define COLOR_TRANS_DUMP_FILE "colortransdump.dfx"
 #define FUNC_DLL_NAMES_DUMP_FILE "funcdllnames.dfx"
 #define HEURISTIC_RESULTS_DUMP_FILE "heuristics.dfx"
+#define TAINT_ROUTINE_DUMP_FILE "taintroutines.dfx"
 #define PROTOCOL_RESULTS_DUMP_FILE "protocol.dfx"
 #define TRACE_RESULTS_DUMP_FILE "trace.dfx"
 #define STATE_TRACKER_FILE "state_tracker.dfx"
@@ -44,6 +46,25 @@
 //to avoid continously erasing values when we soon surpass it again. This sets how
 //many values are deleted apart from the truncation.
 #define REVLOG_TRUNCATE_ADDITIONAL 30
+
+//******************************* DATABASE CONFIG *******************************//
+//Activates DB logging.
+#define DB_LOGGING_ACTIVATE 1
+//Activates file logging
+#define FILE_LOGGING_ACTIVATE 1
+//Activates, the logging of all routines
+#define ALL_ROUTINE_LOGGING 0
+
+//Location of DB (current directory)
+#define DB_LOCATION "dump.db"
+
+//Table names
+#define DB_TABLE_FUNCTION_CALLS "function_calls"
+#define DB_TABLE_TAINT_EVENTS "taint_events"
+#define DB_TABLE_COLOR_TRANSFORMATION "color_transformation"
+#define DB_TABLE_MEMORY_COLORS "memory_colors"
+#define DB_TABLE_ORIGINAL_COLORS "original_colors"
+
 
 
 #endif

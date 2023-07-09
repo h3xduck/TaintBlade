@@ -1,6 +1,6 @@
 #include "DataDumper.h"
+#include "../../common/Context.h"
 
-DataDumper dataDumper;
 extern Context ctx;
 extern std::string pintracerSuffix;
 
@@ -14,22 +14,39 @@ DataDumper::DataDumper()
 	this->heuristicsResultsDumpFile.open(getFilenameFullName(HEURISTIC_RESULTS_DUMP_FILE).c_str());
 	this->protocolResultsDumpFile.open(getFilenameFullName(PROTOCOL_RESULTS_DUMP_FILE).c_str());
 	this->traceResultsDumpFile.open(getFilenameFullName(TRACE_RESULTS_DUMP_FILE).c_str());
+	this->taintRoutinesDumpFile.open(getFilenameFullName(TAINT_ROUTINE_DUMP_FILE).c_str());
+}
+
+void DataDumper::writeTracedProcessDump(std::string mainImageName)
+{
+	std::ofstream tracedProcessDumpFile;
+	tracedProcessDumpFile.open(getFilenameFullName(TRACED_PROCESS_DUMP_FILE).c_str());
+	LOG_DEBUG("Writing processtracefile at "<< getFilenameFullName(TRACED_PROCESS_DUMP_FILE).c_str());
+	tracedProcessDumpFile << PIN_GetPid() << DUMP_INTER_SEPARATOR << mainImageName << DUMP_INTER_SEPARATOR << PerformanceOperator::getCurrentTimeTimestamp();
+	tracedProcessDumpFile.close();
 }
 
 void DataDumper::writeOriginalColorDump(std::vector<std::pair<UINT16, TagLog::original_color_data_t>> &colorVec)
 {
 	//NOTE: in here we also have the memAddress available
+	LOG_DEBUG("Logging original size: " << colorVec.size());
 	for (auto it : colorVec)
 	{
+#if(FILE_LOGGING_ACTIVATE==1)
 		this->orgColorsDumpFile << it.first << DUMP_INTER_SEPARATOR <<
 			it.second.dllName << DUMP_INTER_SEPARATOR <<
 			it.second.funcName << DUMP_INTER_SEPARATOR <<
 			this->lastRoutineDumpIndex << DUMP_OUTER_SEPARATOR;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+		ctx.getDatabaseManager().insertOriginalColorRecord(it.first, it.second, this->lastRoutineDumpIndex);
+#endif
 	}
 }
 
-void DataDumper::writeMemoryColorEventDump(memory_color_event_line_t event)
+void DataDumper::writeMemoryColorEventDump(UTILS::IO::DataDumpLine::memory_color_event_line_t event)
 {
+#if(FILE_LOGGING_ACTIVATE==1)
 	this->memColorEventDumpFile << event.eventType << DUMP_INTER_SEPARATOR <<
 		this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR <<
 		ctx.getCurrentBaseInstruction() << DUMP_INTER_SEPARATOR <<
@@ -37,10 +54,16 @@ void DataDumper::writeMemoryColorEventDump(memory_color_event_line_t event)
 		event.color << DUMP_INTER_SEPARATOR <<
 		ctx.getLastMemoryValue() << DUMP_INTER_SEPARATOR <<
 		ctx.getLastMemoryLength() << DUMP_OUTER_SEPARATOR;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertTaintEventRecord(event);
+#endif
 }
 
-void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
+void DataDumper::writeRoutineDumpLine(struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data)
 {
+#if(ALL_ROUTINE_LOGGING==1)
+#if(FILE_LOGGING_ACTIVATE==1)
 	this->funcDllNamesDumpFile << this->lastRoutineDumpIndex << DUMP_INTER_SEPARATOR << 
 		data.dllFrom.c_str() << DUMP_INTER_SEPARATOR << data.funcFrom.c_str() << 
 		DUMP_INTER_SEPARATOR << data.memAddrFrom << DUMP_INTER_SEPARATOR << 
@@ -52,6 +75,12 @@ void DataDumper::writeRoutineDumpLine(struct func_dll_names_dump_line_t data)
 		data.arg3 << DUMP_INTER_SEPARATOR <<
 		data.arg4 << DUMP_INTER_SEPARATOR <<
 		data.arg5 << DUMP_OUTER_SEPARATOR;
+	
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertFunctionCallsRecord(data, this->lastRoutineDumpIndex);
+#endif
+#endif
 	this->lastRoutineDumpIndex++;
 }
 
@@ -88,12 +117,17 @@ void DataDumper::writeCurrentTaintedMemoryDump(ADDRINT ip, std::vector<std::pair
 
 void DataDumper::writeColorTransformationDump(std::vector<Tag> vec)
 {
+#if(FILE_LOGGING_ACTIVATE==1)
 	for (auto& it : vec)
 	{
 		this->colorTransDumpFile << it.color << DUMP_INTER_SEPARATOR <<
 			it.derivate1 << DUMP_INTER_SEPARATOR <<
 			it.derivate2 << DUMP_OUTER_SEPARATOR;
 	}
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertColorTransformationRecords(vec);
+#endif
 }
 
 void DataDumper::writeRevHeuristicDumpLine(HLComparison log)
@@ -120,8 +154,8 @@ void DataDumper::writeRevHeuristicDumpLine(HLPointerField log)
 
 void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 {
+#if(FILE_LOGGING_ACTIVATE==1)
 	std::vector<REVERSING::PROTOCOL::ProtocolNetworkBuffer>& protNetbufferVec = protocol.getNetworkBufferVector();
-	
 	//We will iterate over each protocol netbuffer and print the data of their data
 	for (int ii = 0; ii < protNetbufferVec.size(); ii++)
 	{
@@ -131,7 +165,7 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		REVERSING::PROTOCOL::ProtocolNetworkBuffer& protNetBuf = protNetbufferVec.at(ii);
 		std::vector<UINT16> &colors = protNetBuf.getColorsVector();
 		std::vector<UINT8> &values = protNetBuf.getValuesVector();
-		std::vector<TagLog::color_taint_reason_t>& taintReasons = protNetBuf.gecolorTaintReasonsVector();
+		std::vector<TagLog::color_taint_lead_t>& taintLeads = protNetBuf.getColorTaintLeadsVector();
 		ADDRINT start = protNetBuf.getStartMemAddress();
 		ADDRINT end = protNetBuf.getEndMemAddress();
 		this->protocolResultsDumpFile << "\tMemory start: " << start << " | Memory end: " << end << std::endl;
@@ -141,13 +175,13 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		{
 			UINT16& color = colors.at(jj);
 			UINT8& value = values.at(jj);
-			TagLog::color_taint_reason_t& reason = taintReasons.at(jj);
+			TagLog::color_taint_lead_t& lead = taintLeads.at(jj);
 			this->protocolResultsDumpFile << "\t\t Color: " << color << " | Byte value: " << InstructionWorker::byteToHexValueString(value) << " (as char: " << value <<")";
-			//Print whether the byte has any special reason to be tainted
-			switch (reason.reasonClass)
+			//Print whether the byte has any special lead
+			switch (lead.leadClass)
 			{
-			case TagLog::TAINT_REASON_SINK:
-				this->protocolResultsDumpFile << " | used as arg " << reason.sinkData.argNumber << " in " << reason.sinkData.dllName << " ::> " << reason.sinkData.funcName << " at offset " << reason.sinkData.offsetFromArgStart;
+			case TagLog::TAINT_LEAD_SINK:
+				this->protocolResultsDumpFile << " | used as arg " << lead.sinkData.argNumber << " in " << lead.sinkData.dllName << " ::> " << lead.sinkData.funcName << " at offset " << lead.sinkData.offsetFromArgStart;
 				break;
 			}
 			this->protocolResultsDumpFile << std::endl;
@@ -190,12 +224,17 @@ void DataDumper::writeProtocolDump(REVERSING::PROTOCOL::Protocol protocol)
 		}
 		this->protocolResultsDumpFile << std::endl;
 	}
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertProtocolRecords(protocol);
+#endif
 }
 
 void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
 {
 	std::vector<std::string> argsPre = tp.getArgsPre();
 	std::vector<std::string> argsPost = tp.getArgsPost();
+#if(FILE_LOGGING_ACTIVATE==1)
 	this->traceResultsDumpFile << "DLL: " << tp.getDllName() << " | FUNC: " << tp.getFuncName() << std::endl;
 	this->traceResultsDumpFile << "Called with arguments:" << std::endl;
 	for (int ii = 0; ii < tp.getNumArgs(); ii++)
@@ -208,6 +247,22 @@ void DataDumper::writeTraceDumpLine(UTILS::TRACE::TracePoint& tp)
 		this->traceResultsDumpFile << "\targ" << ii << ": " << argsPost.at(ii) << std::endl;
 	}
 	this->traceResultsDumpFile << std::endl;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertTraceFunctionRecord(tp);
+#endif
+}
+
+void DataDumper::writeTaintRoutineDumpLine(UTILS::IO::DataDumpLine::taint_routine_dump_line_t &data)
+{
+#if(FILE_LOGGING_ACTIVATE==1)
+	this->taintRoutinesDumpFile << data.instAddrEntry << DUMP_INTER_SEPARATOR <<
+		data.instAddrLast << DUMP_INTER_SEPARATOR << data.dll << DUMP_INTER_SEPARATOR << data.func
+		<< data.containedEventsType << DUMP_OUTER_SEPARATOR;
+#endif
+#if(DB_LOGGING_ACTIVATE==1)
+	ctx.getDatabaseManager().insertTaintRoutineRecord(data);
+#endif
 }
 
 
@@ -283,5 +338,14 @@ void DataDumper::resetDumpFiles()
 	else
 	{
 		LOG_DEBUG("Trace results dump file successfully deleted");
+	}
+
+	if (remove(TAINT_ROUTINE_DUMP_FILE) != 0)
+	{
+		LOG_ERR("Error deleting taint routines dump file");
+	}
+	else
+	{
+		LOG_DEBUG("Taint routine dump file successfully deleted");
 	}
 }

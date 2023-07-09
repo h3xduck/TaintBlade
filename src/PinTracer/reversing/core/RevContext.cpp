@@ -2,7 +2,6 @@
 #include "../heuristics/HeuristicsValidator.h"
 
 extern TestEngine globalTestEngine;
-extern DataDumper dataDumper;
 
 RevContext::RevContext()
 {
@@ -112,11 +111,11 @@ void RevContext::dumpFoundHeuristics()
 {
 	for (HLComparison& c : this->revLogComparisonHeuristics.getLogVector())
 	{
-		dataDumper.writeRevHeuristicDumpLine(c);
+		ctx.getDataDumper().writeRevHeuristicDumpLine(c);
 	}
 	for (HLPointerField& c : this->revLogPointerFieldHeuristics.getLogVector())
 	{
-		dataDumper.writeRevHeuristicDumpLine(c);
+		ctx.getDataDumper().writeRevHeuristicDumpLine(c);
 	}
 }
 

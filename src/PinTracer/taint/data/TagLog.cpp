@@ -122,10 +122,10 @@ void TagLog::logTagOriginal(UINT16 color, std::string dllName, std::string funcN
 	this->originalColorsMap.insert(std::make_pair<UINT16, original_color_data_t>(color, data));
 }
 
-void TagLog::logColorTaintReason(UINT16 color, TagLog::color_taint_reason_t reason)
+void TagLog::logColorTaintLead(UINT16 color, TagLog::color_taint_lead_t lead)
 {
-	LOG_DEBUG("Logged color taint reason for color [" << color << "], of reason class: " << reason.reasonClass);
-	this->colorReasonMap.insert(std::make_pair<UINT16, color_taint_reason_t>(color, reason));
+	LOG_DEBUG("Logged color taint lead for color [" << color << "], of lead class: " << lead.leadClass);
+	this->colorLeadMap.insert(std::make_pair<UINT16, color_taint_lead_t>(color, lead));
 }
 
 void TagLog::dumpTagLogOriginalColors()
@@ -147,26 +147,26 @@ std::vector<std::pair<UINT16, TagLog::original_color_data_t>> TagLog::getOrigina
 	return colorVec;
 }
 
-std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> TagLog::getColorsReasonsVector()
+std::vector<std::pair<UINT16, TagLog::color_taint_lead_t>> TagLog::getColorsLeadsVector()
 {
-	std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> reasonVec;
-	for (auto& it : this->colorReasonMap) {
-		reasonVec.push_back(it);
+	std::vector<std::pair<UINT16, TagLog::color_taint_lead_t>> leadVec;
+	for (auto& it : this->colorLeadMap) {
+		leadVec.push_back(it);
 	}
-	return reasonVec;
+	return leadVec;
 }
 
-TagLog::color_taint_reason_t TagLog::getColorTaintReason(UINT16 color)
+TagLog::color_taint_lead_t TagLog::getColorTaintLead(UINT16 color)
 {
-	auto it = this->colorReasonMap.find(color);
-	if (it == this->colorReasonMap.end())
+	auto it = this->colorLeadMap.find(color);
+	if (it == this->colorLeadMap.end())
 	{
-		//The color does not have a taint reason attached
-		color_taint_reason_t taintReason;
-		taintReason.reasonClass = TagLog::taint_reason_class::NONE;
-		return taintReason;
+		//The color does not have a taint lead attached
+		color_taint_lead_t taintLead;
+		taintLead.leadClass = TagLog::taint_lead_class::NONE;
+		return taintLead;
 	}
-	//Found some reason for that color
+	//Found some lead for that color
 	return it->second;
 }
 

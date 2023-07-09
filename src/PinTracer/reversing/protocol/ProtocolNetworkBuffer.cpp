@@ -97,17 +97,17 @@ std::vector<REVERSING::PROTOCOL::ProtocolWord> REVERSING::PROTOCOL::ProtocolNetw
 	return this->wordVector;
 }
 
-void REVERSING::PROTOCOL::ProtocolNetworkBuffer::setcolorTaintReasonsVector(std::vector<TagLog::color_taint_reason_t> vec)
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::setcolorTaintLeadsVector(std::vector<TagLog::color_taint_lead_t> vec)
 {
-	this->colorTaintReasonsVector = vec;
+	this->colorTaintLeadsVector = vec;
 }
 
-void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addReasonTocolorTaintReasonsVector(TagLog::color_taint_reason_t& reason)
+void REVERSING::PROTOCOL::ProtocolNetworkBuffer::addLeadTocolorTaintLeadsVector(TagLog::color_taint_lead_t& lead)
 {
-	this->colorTaintReasonsVector.push_back(reason);
+	this->colorTaintLeadsVector.push_back(lead);
 }
 
-std::vector<TagLog::color_taint_reason_t> REVERSING::PROTOCOL::ProtocolNetworkBuffer::gecolorTaintReasonsVector()
+std::vector<TagLog::color_taint_lead_t>& REVERSING::PROTOCOL::ProtocolNetworkBuffer::getColorTaintLeadsVector()
 {
-	return this->colorTaintReasonsVector;
+	return this->colorTaintLeadsVector;
 }

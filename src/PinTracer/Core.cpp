@@ -32,7 +32,7 @@
 
 #ifndef _WINDOWS_HEADERS_H_
 #define _WINDOWS_HEADERS_H_
-#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+#define _WINDOWS_H_PATH_ C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um
 namespace WINDOWS
 {
 #include <windows.h>
@@ -53,7 +53,7 @@ UINT32 timeoutMillis = 0; //Number of milliseconds to wait until the tracer halt
 std::ostream* out = &std::cerr;
 std::ostream* sysinfoOut = &std::cerr;
 std::ostream* imageInfoOut = &std::cerr;
-std::ostream* debugFile = &std::cerr;
+std::ofstream debugFile;
 
 std::string mainImageName;
 BOOL instructionLevelTracing = 0;
@@ -96,6 +96,9 @@ KNOB< BOOL > KnobAskForIndividualImageTrace(KNOB_MODE_WRITEONCE, "pintool", "cho
 KNOB< BOOL > KnobTraceAllImages(KNOB_MODE_WRITEONCE, "pintool", "traceallimages", "", "Force program to trace all images, without asking user input. Overrides choosetraceimages flag.");
 
 KNOB<UINT32> KnobAnalysisTimeout(KNOB_MODE_WRITEONCE, "pintool", "timeout", "", "If this flag is set, it specifies the number of milliseconds to wait until the analysis stops itself automatically");
+
+//DB
+KNOB<BOOL> KnobFuncCallsArgsDump(KNOB_MODE_WRITEONCE, "pintool", "funcargs", "0", "If set to true, the full arguments of every called function will be dumped to the DB. This is very slow");
 /* ===================================================================== */
 // Utilities
 /* ===================================================================== */
@@ -126,6 +129,23 @@ void cleanDfxFiles()
 		{
 			int res = std::remove(FindFileData.cFileName);
 			LOG_DEBUG("Cleaning old output file " << FindFileData.cFileName << " (result: " << res << ")" << std::endl);
+		} while (FindNextFile(hFind, &FindFileData));
+		WINDOWS::FindClose(hFind);
+	}
+}
+
+//Deletes all previous databases in the directory
+void cleanDatabases()
+{
+	WINDOWS::HANDLE hFind;
+	WINDOWS::WIN32_FIND_DATA FindFileData;
+
+	if ((hFind = FindFirstFile("./*.db", &FindFileData)) != ((WINDOWS::HANDLE)(WINDOWS::LONG_PTR)-1))
+	{
+		do
+		{
+			int res = std::remove(FindFileData.cFileName);
+			LOG_DEBUG("Cleaning old database " << FindFileData.cFileName << " (result: " << res << ")" << std::endl);
 		} while (FindNextFile(hFind, &FindFileData));
 		WINDOWS::FindClose(hFind);
 	}
@@ -357,6 +377,7 @@ VOID ImageTrace(IMG img, VOID* v)
 		mainImageName = IMG_Name(img);
 		//Only the specified program is to be instrumented
 		scopeFilterer = ScopeFilterer(mainImageName);
+		ctx.getDataDumper().writeTracedProcessDump(mainImageName);
 	}
 	//Check if we must trace all images because the user requested it like that via program flags
 	else if (settingTraceAllImages) {
@@ -389,6 +410,7 @@ VOID TraceTrace(TRACE trace, VOID* v)
 	{
 		for (INS inst = BBL_InsHead(bbl); INS_Valid(inst); inst = INS_Next(inst))
 		{
+			PIN_LockClient();
 			if (scopeFilterer.isMainExecutable(inst) || scopeFilterer.isScopeImage(inst) ||
 				(scopeFilterer.wasMainExecutableReached() && !scopeFilterer.hasMainExecutableExited())) {
 				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
@@ -414,7 +436,8 @@ VOID TraceTrace(TRACE trace, VOID* v)
 						IARG_FUNCARG_ENTRYPOINT_VALUE, 5,
 						IARG_END);
 				}
-			}			
+			}		
+			PIN_UnlockClient();
 		}
 	}
 }
@@ -436,6 +459,7 @@ VOID ContextChangeTrace(THREADID tid, CONTEXT_CHANGE_REASON reason, const CONTEX
 
 	*imageInfoOut << "ModuleFrom: " << dllFrom << " | " << addrFrom << std::endl;
 	*imageInfoOut << "ModuleTo: " << dllTo << " | " << addrTo << "\n" << std::endl;
+
 
 
 	PIN_UnlockClient();
@@ -496,7 +520,7 @@ VOID instrumentControlFlow(ADDRINT ip, ADDRINT branchTargetAddress, BOOL branchT
 			}
 
 			//Dumping routine in dumpfiles
-			DataDumper::func_dll_names_dump_line_t data;
+			UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data;
 			data.dllFrom = dllFrom;
 			data.funcFrom = routineNameFrom;
 			data.memAddrFrom = baseAddrFrom;
@@ -540,15 +564,17 @@ VOID RoutineTrace(RTN rtn, VOID* v)
 		return;
 	}*/
 
-
+	PIN_LockClient();
 	IMG module = IMG_FindByAddress(firstAddr);
 	if (!IMG_Valid(module))
 	{
 		//std::cerr << "Null IMG" << std::endl;
 		RTN_Close(rtn);
+		PIN_UnlockClient();
 		return;
 	}
 	std::string dllName = IMG_Name(module);
+	PIN_UnlockClient();
 	//tolower
 	std::transform(dllName.begin(), dllName.end(), dllName.begin(), [](unsigned char c) { return std::tolower(c); });
 	std::transform(rtnName.begin(), rtnName.end(), rtnName.begin(), [](unsigned char c) { return std::tolower(c); });
@@ -571,11 +597,13 @@ void TraceBase(TRACE trace, VOID* v)
 	{
 		for (INS ins = BBL_InsHead(bbl); INS_Valid(ins); ins = INS_Next(ins))
 		{		
+			PIN_LockClient();
 			RTN rtn = INS_Rtn(ins);
 			ADDRINT addr = INS_Address(ins);
 			IMG dll = IMG_FindByAddress(addr);
 			if (!IMG_Valid(dll))
 			{
+				PIN_UnlockClient();
 				return;
 			}
 			std::string dllName = IMG_Name(dll);
@@ -592,20 +620,6 @@ void TraceBase(TRACE trace, VOID* v)
 				continue;
 			}
 			
-			//Instrumentation of instructions - calls the tainting engine and all the underlaying analysis ones
-			InstrumentationManager instManager;
-			if (scopeFilterer.isMainExecutable(ins) || scopeFilterer.isScopeImage(ins)) {
-				instManager.instrumentInstruction(ins);
-
-			#if(CONFIG_INST_LOG_FILES==1)
-				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
-					INS_Address(inst), IARG_UINT32, INS_Size(inst),
-					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
-
-				
-			#endif
-			}
-
 			//Register jumps
 			if (INS_IsControlFlow(ins) || INS_IsFarJump(ins))
 				{
@@ -660,6 +674,21 @@ void TraceBase(TRACE trace, VOID* v)
 							IARG_END);
 					}
 			}
+
+			//Instrumentation of instructions - calls the tainting engine and all the underlaying analysis ones
+			InstrumentationManager instManager;
+			if (scopeFilterer.isMainExecutable(ins) || scopeFilterer.isScopeImage(ins)) {
+				instManager.instrumentInstruction(ins);
+
+			#if(CONFIG_INST_LOG_FILES==1)
+				INS_InsertCall(inst, IPOINT_BEFORE, (AFUNPTR)printInstructionOpcodes, IARG_ADDRINT,
+					INS_Address(inst), IARG_UINT32, INS_Size(inst),
+					IARG_CONST_CONTEXT, IARG_THREAD_ID, IARG_END);
+
+
+			#endif
+			}
+			PIN_UnlockClient();
 		}
 
 	}
@@ -697,11 +726,11 @@ void dumpEndInfo()
 
 	//Dump original colors vector
 	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> orgVec = taintController.getOriginalColorsVector();
-	dataDumper.writeOriginalColorDump(orgVec);
+	ctx.getDataDumper().writeOriginalColorDump(orgVec);
 
 	//Dump color transformations
 	std::vector<Tag> colorTrans = taintController.getColorTransVector();
-	dataDumper.writeColorTransformationDump(colorTrans);
+	ctx.getDataDumper().writeColorTransformationDump(colorTrans);
 
 	//Dump RevAtoms
 	//ctx.getRevContext()->printRevLogCurrent();
@@ -756,9 +785,6 @@ int main(int argc, char* argv[])
 		return Usage();
 	}
 
-	//Clean all .dfx files that were left from previous runs
-	cleanDfxFiles();
-
 	std::string fileName = KnobOutputFile.Value();
 	std::string sysinfoFilename = KnobSyscallFile.Value();
 	std::string imageInfoFilename = KnobImageFile.Value();
@@ -792,7 +818,7 @@ int main(int argc, char* argv[])
 
 	if (!debugFileFilename.empty())
 	{
-		debugFile = new std::ofstream(getFilenameFullName(debugFileFilename).c_str());
+		debugFile.open(getFilenameFullName(debugFileFilename).c_str());
 	}
 
 	if (!testFileFilename.empty())
@@ -965,7 +991,7 @@ int main(int argc, char* argv[])
 		}
 		else if (instructionLevelTracing == 1)
 		{
-			//Instrumenting each instruction directly
+			//Instrumenting each instruction directly. Deprecated for now.
 			INS_AddInstrumentFunction(InstructionTrace, 0);
 		}
 
@@ -1025,6 +1051,13 @@ int main(int argc, char* argv[])
 	//Starts a background threat that periodically checks whether
 	//we have any command from the user.
 	UTILS::IO::CommandCenter::startCommandCenterJob();
+
+	//Initialize database
+	ctx.getDatabaseManager().openDatabase();
+	ctx.getDatabaseManager().emptyDatabase();
+	ctx.getDatabaseManager().createDatabase();
+	ctx.getDatabaseManager().dumpFuncCallsArgs() = KnobFuncCallsArgsDump.Value();
+
 
 	// Start the program, never returns
 	PIN_StartProgram();

@@ -5,6 +5,7 @@ extern Context ctx;
 void OPC_INST::controlFlow_empty(LEVEL_VM::CONTEXT *lctx, THREADID tid, ADDRINT ip)
 {
 	PIN_LockClient();
+	ctx.updateCurrentInstructionFullAddress(ip);
 	ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(ip));
 	
 	//If in a control flow instruction, we check if the RevLog has surpassed some limit

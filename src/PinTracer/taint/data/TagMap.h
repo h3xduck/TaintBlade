@@ -44,8 +44,6 @@
 */
 
 const int REG_TAINT_FIELD_LEN = 128;
-extern DataDumper dataDumper;
-
 
 #define LOG_MESSAGE_TAINT_MEM(effect, op, memAddr, color)	\
 LOG_DEBUG("["<<to_hex_dbg(ctx.getCurrentBaseInstruction())<<"] " << effect << __FUNCTION__ << " --> mem." << op << "(addr:" << to_hex_dbg(memAddr) << " color:" << color << ")")
@@ -82,11 +80,11 @@ public:
 	TagMap();
 
 	//Memory tainting, byte-level
-	std::tr1::unordered_map<ADDRINT, Tag> memTaintField;
+	std::tr1::unordered_map<ADDRINT, UINT16> memTaintField;
 
 	//Register tainting
 	// 2 COLOR_BYTES * 8 bytes per register * 16 registers
-	Tag regTaintField[REG_TAINT_FIELD_LEN];
+	UINT16 regTaintField[REG_TAINT_FIELD_LEN];
 
 	//These are to be used from the Taint Manager, and not directly from instrumentation functions
 	size_t tagMapCount();
@@ -206,14 +204,14 @@ public:
 	std::vector<std::pair<UINT16, TagLog::original_color_data_t>> getOriginalColorsVector();
 
 	/**
-	Returns vector with taint reason for each color, if any
+	Returns vector with taint lead for each color, if any
 	*/
-	std::vector<std::pair<UINT16, TagLog::color_taint_reason_t>> getColorReasonsVector();
+	std::vector<std::pair<UINT16, TagLog::color_taint_lead_t>> getColorLeadsVector();
 
 	/**
-	Get reason why a color was tainted, if any. Reason class is NONE if color has no reason
+	Get leads of a color, if any. Lead class is NONE if color has no leads
 	*/
-	TagLog::color_taint_reason_t getColorTaintReason(UINT16 color);
+	TagLog::color_taint_lead_t getColorTaintLead(UINT16 color);
 
 	/**
 	Returns vector with color transformations
@@ -250,7 +248,10 @@ public:
 	*/
 	std::vector<UINT16> memRangeGetColor(ADDRINT mem, int bytes);
 
-
+	/**
+	Returns the full internal taglog with mixed colors
+	*/
+	std::tr1::unordered_map<UINT16, Tag> getTaintLog();
 
 	/*Debug: Dumps whole mem map, expensive*/
 	void printMemTaintComplete();

@@ -13,7 +13,7 @@
 
 #ifndef _WINDOWS_HEADERS_H_
 #define _WINDOWS_HEADERS_H_
-#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/um
 namespace WINDOWS
 {
 #include <windows.h>
@@ -29,10 +29,10 @@ namespace TAINT
 		namespace TAINT_SINK
 		{
 			//CreateProcess and related
-			void createProcessAEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10);
-			void createProcessWEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10);
+			void createProcessAEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10);
+			void createProcessWEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6, void* arg7, void* arg8, void* arg9, void* arg10);
 		
-			void MultiByteToWideCharEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6);
+			void MultiByteToWideCharEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6);
 			void MultiByteToWideCharExit(ADDRINT retVal, VOID* dllName, VOID* funcName);
 		}
 	}

@@ -2,18 +2,19 @@
 #define TAINT_IO_H
 
 #include <iostream>
+#include <fstream>
 #include <cstdio>
 #include "../../config/GlobalConfig.h"
 
-extern std::ostream *debugFile;
+extern std::ofstream debugFile;
 
 //In terminal
 
 #define LOG_INT(msg, ...) \
-    *debugFile << msg << "\n\t\tAT " << __FILE__ << "(:" << __LINE__ << ")" << std::endl;
+    debugFile << msg << "\n\t\tAT " << __FILE__ << "(:" << __LINE__ << ")" << std::endl;
 
 #define LOG_INT_SHORT(msg) \
-    *debugFile << msg << std::endl;
+    debugFile << msg << std::endl;
 
 #define LOG_ERR(msg, ...) LOG_INT("[ERROR] " << msg)
 #define LOG_ALERT(msg, ...) LOG_INT("[ALERT] " << msg)

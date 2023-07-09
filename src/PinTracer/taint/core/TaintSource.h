@@ -14,7 +14,7 @@
 
 #ifndef _WINDOWS_HEADERS_H_
 #define _WINDOWS_HEADERS_H_
-#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um
+#define _WINDOWS_H_PATH_ C:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/um
 namespace WINDOWS
 {
 #include <windows.h>
@@ -24,13 +24,13 @@ namespace WINDOWS
 #endif
 
 extern TaintController taintController;
-extern DataDumper dataDumper;
 extern ScopeFilterer scopeFilterer;
 extern Context ctx;
-
 //Function arguments
 struct wsock_recv_t
 {
+	ADDRINT ip;
+
 	//Args
 	WINDOWS::SOCKET s;
 	char* buf;
@@ -43,6 +43,8 @@ static wsock_recv_t wsockRecv;
 
 struct wininet_internetreadfile_t
 {
+	ADDRINT ip;
+
 	//Args
 	WINDOWS::LPVOID hFile;
 	WINDOWS::LPVOID lpBuffer;
@@ -53,7 +55,7 @@ struct wininet_internetreadfile_t
 };
 static wininet_internetreadfile_t wininetInternetReadFile;
 
-static std::tr1::unordered_map<ADDRINT, struct DataDumper::func_dll_names_dump_line_t> genericRoutineCalls;
+static std::tr1::unordered_map<ADDRINT, struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t> genericRoutineCalls;
 
 class TaintSource
 {
@@ -76,9 +78,10 @@ public:
 	//****************Handlers***********************************************************//
 	
 	///////////////// WSOCK /////////////////
-	static VOID wsockRecvEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
+	static VOID wsockRecvEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		int NUM_ARGS = 4;
+		wsockRecv.ip = currIp;
 		wsockRecv.s = (WINDOWS::SOCKET)arg1;
 		wsockRecv.buf = (char*)arg2;
 		wsockRecv.len = (int)arg3;
@@ -103,10 +106,23 @@ public:
 		LOG_INFO("Called wsockRecvExit()\n\tretVal:" << retValSigned << "\n\tbuf: " << wsockRecv.buf << "\n\tlen: " << wsockRecv.len);
 
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wsockRecv.buf, retVal);
-		//LOG_DEBUG("Here0\n");
-		ctx.updateLastMemoryValue(val, retVal);
 
-		//LOG_DEBUG("Here1\n");
+		//Update the instruction values so that we are right at the end of the routine right now, 
+		//where we taint the data
+		PIN_LockClient();
+		RTN rtn = RTN_FindByAddress(wsockRecv.ip);
+		if (rtn == RTN_Invalid())
+		{
+			PIN_UnlockClient();
+			return;
+		}
+		RTN_Open(rtn);
+		const ADDRINT routineEndInstAddress = INS_Address(RTN_InsTail(rtn));
+		RTN_Close(rtn);
+		ctx.updateCurrentInstructionFullAddress(routineEndInstAddress);
+		ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(routineEndInstAddress));
+		ctx.updateLastMemoryValue(val, retVal);
+		PIN_UnlockClient();
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wsockRecv.buf, retVal);
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
@@ -120,13 +136,23 @@ public:
 		}
 
 		LOG_DEBUG("Called wsockexit");
+
+		//Register that this routine had some taint event
+		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+		data.instAddrEntry = wsockRecv.ip;
+		data.instAddrLast = routineEndInstAddress;
+		data.dll = *dllNameStr;
+		data.func = *funcNameStr;
+		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SRC;
+		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
 	};
 
 	///////////////// WININET /////////////////
-	static VOID wininetInternetReadFileEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
+	static VOID wininetInternetReadFileEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		int NUM_ARGS = 4;
-
+		
+		wininetInternetReadFile.ip = currIp;
 		wininetInternetReadFile.hFile = (WINDOWS::LPVOID)arg1;
 		wininetInternetReadFile.lpBuffer = (WINDOWS::LPVOID)arg2;
 		wininetInternetReadFile.dwNumberOfBytesToRead = (WINDOWS::DWORD)arg3;
@@ -149,8 +175,24 @@ public:
 		//Otherwise, we taint as many bytes in buf as indicated by retVal
 		LOG_INFO("Called wininetInternetReadFileExit()\n\tretVal:" << retVal << "\n\tlpBuffer: " << wininetInternetReadFile.lpBuffer << "\n\tReceived len: " << *wininetInternetReadFile.lpdwNumberOfBytesRead);
 
+		//Update the instruction values so that we are right at the end of the routine right now, 
+		//where we taint the data
+		PIN_LockClient();
+		RTN rtn = RTN_FindByAddress(wininetInternetReadFile.ip);
+		if (rtn == RTN_Invalid())
+		{
+			PIN_UnlockClient();
+			return;
+		}
+		RTN_Open(rtn);
+		const ADDRINT routineEndInstAddress = INS_Address(RTN_InsTail(rtn));
+		RTN_Close(rtn);
+		ctx.updateCurrentInstructionFullAddress(routineEndInstAddress);
+		ctx.updateCurrentBaseInstruction(InstructionWorker::getBaseAddress(routineEndInstAddress));
 		std::string val = InstructionWorker::getMemoryValueHexString((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
 		ctx.updateLastMemoryValue(val, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
+		PIN_UnlockClient();
+
 
 		std::vector<UINT16> colorVector = taintController.taintMemoryNewColor((ADDRINT)wininetInternetReadFile.lpBuffer, *(wininetInternetReadFile.lpdwNumberOfBytesRead));
 		//LOG_DEBUG("Logging original color:: DLL:" << dllName << " FUNC:" << funcName);
@@ -162,12 +204,20 @@ public:
 			offset++;
 		}
 
+		//Register that this routine had some taint event
+		UTILS::IO::DataDumpLine::taint_routine_dump_line_t data;
+		data.instAddrEntry = wininetInternetReadFile.ip;
+		data.instAddrLast = routineEndInstAddress;
+		data.dll = *dllNameStr;
+		data.func = *funcNameStr;
+		data.containedEventsType = UTILS::IO::DataDumpLine::TAINT_SRC;
+		ctx.getDataDumper().writeTaintRoutineDumpLine(data);
 	};
 
 
 
 	///////////////// MAIN (FOR TESTING). Taints RAX and RBX /////////////////
-	static VOID mainEnter(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
+	static VOID mainEnter(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6)
 	{
 		LOG_DEBUG("Called mainEnter()");
 		
@@ -195,12 +245,12 @@ public:
 	int numArgs = 0;
 
 	//placeholders
-	VOID(*enterHandler)(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6) = NULL;
+	VOID(*enterHandler)(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6) = NULL;
 	VOID(*exitHandler)(ADDRINT, VOID*, VOID*) = NULL;
 
 	TaintSource() {};
 	TaintSource(const std::string dllName, const std::string funcName, int numArgs, 
-		VOID(*enter)(ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6),
+		VOID(*enter)(ADDRINT currIp, ADDRINT retIp, VOID* dllName, VOID* funcName, void* arg1, void* arg2, void* arg3, void* arg4, void* arg5, void* arg6),
 		VOID(*exit)(ADDRINT, VOID*, VOID*));
 
 	void taintSourceLogAll();
@@ -209,15 +259,35 @@ public:
 		VOID* arg0, VOID* arg1, VOID* arg2, VOID* arg3, VOID* arg4, VOID* arg5)
 	{
 		PIN_LockClient();
-		
-		//Only if we are going from main dll to another, or another scoped image
+		//In the case this goes from our main executable or a scoped image to another one, we log the address from which
+		//we are jumping from since it might be interesting to be dumped
+		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isScopeImage(ip))
+		{
+			ctx.lastRoutineInfo().possibleJumpPoint = ip;
+			ctx.lastRoutineInfo().possibleBaseJumpPoint = InstructionWorker::getBaseAddress(ip);
+			RTN rtn = RTN_FindByAddress(ip); 
+			if (RTN_Valid(rtn))
+			{
+				LOG_DEBUG("Here3.1");
+				RTN_Open(rtn);
+				LOG_DEBUG("Here3.2");
+				ctx.lastRoutineInfo().routineStart = INS_Address(RTN_InsHeadOnly(rtn));
+				LOG_DEBUG("Here3,3");
+				ctx.lastRoutineInfo().routineBaseStart = InstructionWorker::getBaseAddress(ctx.lastRoutineInfo().routineStart);
+				LOG_DEBUG("Here3.4");
+				RTN_Close(rtn);
+			}
+			ctx.lastRoutineInfo().funcName = InstructionWorker::getFunctionNameFromAddress(ip);
+			ctx.lastRoutineInfo().dllName = InstructionWorker::getDllFromAddress(ip);
+		}
+		//We will log the arguments of this routine, but only if we are going from main dll to another, or another scoped image
 		if (scopeFilterer.isMainExecutable(ip) || scopeFilterer.isMainExecutable(branchTargetAddress) ||
 			scopeFilterer.isScopeImage(ip) || scopeFilterer.isScopeImage(branchTargetAddress))
 		{
 			if (branchTaken)
 			{
 
-				struct DataDumper::func_dll_names_dump_line_t data;
+				struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data;
 				IMG moduleFrom = IMG_FindByAddress(ip);
 				if (!IMG_Valid(moduleFrom))
 				{
@@ -244,17 +314,18 @@ public:
 				data.arg5 = InstructionWorker::utf8Encode(InstructionWorker::printFunctionArgument(arg5));
 
 				genericRoutineCalls.erase(nextInstAddr);
-				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct DataDumper::func_dll_names_dump_line_t>(nextInstAddr, data));
+				genericRoutineCalls.insert(std::make_pair<ADDRINT, struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t>(nextInstAddr, data));
 				//LOG_DEBUG("Inserted entry jump at " << to_hex_dbg(branchTargetAddress));
 
 				//At this point, we dump the function and the arguments
-				dataDumper.writeRoutineDumpLine(data);
+				ctx.getDataDumper().writeRoutineDumpLine(data);
 				//Now we dump the current tainted memory
 				std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
 				//In the case we don't have tainted memory yet, we write nothing
 				if (!vec.empty()) {
-					dataDumper.writeCurrentTaintedMemoryDump(ip, vec);
+					ctx.getDataDumper().writeCurrentTaintedMemoryDump(ip, vec);
 				}
+				
 			}
 		}
 
@@ -280,14 +351,14 @@ public:
 					//LOG_DEBUG("Found retIP in the generic routine calls map");
 					
 					//At this point, we dump the function and the arguments
-					struct DataDumper::func_dll_names_dump_line_t data;
+					struct UTILS::IO::DataDumpLine::func_dll_names_dump_line_t data;
 					data = it->second;
-					dataDumper.writeRoutineDumpLine(data);
+					ctx.getDataDumper().writeRoutineDumpLine(data);
 					//Now we dump the current tainted memory
 					std::vector<std::pair<ADDRINT, UINT16>> vec = taintController.getTaintedMemoryVector();
 					//In the case we don't have tainted memory yet, we write nothing
 					if (!vec.empty()) {
-						dataDumper.writeCurrentTaintedMemoryDump(branchTargetAddress, vec);
+						ctx.getDataDumper().writeCurrentTaintedMemoryDump(branchTargetAddress, vec);
 					}
 
 					genericRoutineCalls.erase(branchTargetAddress);

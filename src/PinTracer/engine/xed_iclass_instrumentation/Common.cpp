@@ -270,7 +270,7 @@ void manageLeaIndirectTaints(LEVEL_VM::CONTEXT* lctx, RevAtom* atom, REG destReg
 	//leaBaseColor = taintController.memGetColor(leaBaseValue);
 	//if (leaBaseColor != EMPTY_COLOR) LOG_DEBUG("Detected indirect taint color: " << leaBaseColor << " with leaBase");
 
-	LOG_DEBUG("leaBaseAddr = " << to_hex_dbg(leaBaseDisAddr) << " leaBaseValue = " << to_hex_dbg(leaBaseValue) << " leaDis = " << to_hex_dbg(leaDis) << " leaIndex = " << REG_StringShort(leaIndex));
+	//LOG_DEBUG("leaBaseAddr = " << to_hex_dbg(leaBaseDisAddr) << " leaBaseValue = " << to_hex_dbg(leaBaseValue) << " leaDis = " << to_hex_dbg(leaDis) << " leaIndex = " << REG_StringShort(leaIndex));
 	free(leaBaseBuffer);
 }
 
